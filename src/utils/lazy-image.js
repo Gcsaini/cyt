@@ -49,6 +49,8 @@ export default function LazyImage(props) {
         return { height: "135", width: "120" };
       case "267-450":
         return { height: "267", width: "450" };
+      default:
+        return { height: "100", width: "100" };
     }
   };
   const dim = dimFn();

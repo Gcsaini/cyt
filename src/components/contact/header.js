@@ -33,10 +33,10 @@ export default function Header() {
                   <a href="/+222%20222%20222%20333">+222 222 222 333</a>
                 </p>
                 <p>
-                  <a href="mailto:undefined"></a>
+                  <a href="mailto:undefined">Mail</a>
                 </p>
                 <p>
-                  <a href="mailto:undefined"></a>
+                  <a href="mailto:undefined">Mail</a>
                 </p>
               </div>
             </div>
@@ -75,10 +75,10 @@ export default function Header() {
               <div className="inner">
                 <h4 className="title">Our Location</h4>
                 <p>
-                  <a href="mailto:undefined"></a>
+                  <a href="mailto:undefined">Location</a>
                 </p>
                 <p>
-                  <a href="mailto:undefined"></a>
+                  <a href="mailto:undefined">Location</a>
                 </p>
                 <p>5678 Bangla Main Road, cities 580 GBnagla, example 54786</p>
               </div>

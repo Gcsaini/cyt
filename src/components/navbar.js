@@ -76,20 +76,23 @@ export default function App() {
                     handleClick("/");
                   }}
                   style={{ cursor: "pointer" }}
+                  href={"#"}
                 >
                   Home<i className="feather-chevron-down"></i>
                 </a>
               </li>
               <li className="has-dropdown has-menu-child-item">
                 <a
+                  href={"#"}
                   className={about ? "open" : ""}
-                  onClick={() => setAbout(about != true)}
+                  onClick={() => setAbout(about !== true)}
                 >
                   About<i className="feather-chevron-down"></i>
                 </a>
                 <ul className={about ? "submenu active d-block" : "submenu"}>
                   <li>
                     <a
+                      href={"#"}
                       onClick={() => {
                         handleClick("/about-us");
                       }}
@@ -100,6 +103,7 @@ export default function App() {
                   </li>
                   <li>
                     <a
+                      href={"#"}
                       onClick={() => handleClick("/join-us")}
                       style={{ cursor: "pointer" }}
                     >
@@ -108,6 +112,7 @@ export default function App() {
                   </li>
                   <li>
                     <a
+                      href={"#"}
                       onClick={() => handleClick("/contact-us")}
                       style={{ cursor: "pointer" }}
                     >
@@ -118,8 +123,9 @@ export default function App() {
               </li>
               <li className="with-megamenu has-menu-child-item">
                 <a
+                  href={"#"}
                   className={service ? "open" : ""}
-                  onClick={() => setService(service != true)}
+                  onClick={() => setService(service !== true)}
                 >
                   Services<i className="feather-chevron-down"></i>
                 </a>
@@ -150,6 +156,7 @@ export default function App() {
                         <ul className="mega-menu-item">
                           <li>
                             <a
+                              href={"#"}
                               className=""
                               onClick={() => {
                                 handleClick("/services?id=cyt-tands");
@@ -215,6 +222,7 @@ export default function App() {
               </li>
               <li className="position-static">
                 <a
+                  href={"#"}
                   className=""
                   onClick={() => handleClick("/plans")}
                   style={{ cursor: "pointer" }}
@@ -225,6 +233,7 @@ export default function App() {
 
               <li className="position-static">
                 <a
+                  href={"#"}
                   className=""
                   onClick={() => handleClick("/blogs")}
                   style={{ cursor: "pointer" }}
@@ -234,6 +243,7 @@ export default function App() {
               </li>
               <li className="position-static">
                 <a
+                  href={"#"}
                   className=""
                   onClick={() => handleClick("/faqs")}
                   style={{ cursor: "pointer" }}
@@ -303,6 +313,7 @@ export default function App() {
                   <ul className="mainmenu">
                     <li className="position-static">
                       <a
+                        href={"#"}
                         className=""
                         onClick={() => {
                           handleClick("/");
@@ -319,6 +330,7 @@ export default function App() {
                       <ul className="submenu">
                         <li className="has-dropdown">
                           <a
+                            href={"#"}
                             style={{ cursor: "pointer" }}
                             onClick={() => {
                               handleClick("/about-us");
@@ -329,6 +341,7 @@ export default function App() {
                         </li>
                         <li className="has-dropdown">
                           <a
+                            href={"#"}
                             onClick={() => handleClick("/join-us")}
                             style={{ cursor: "pointer" }}
                           >
@@ -337,6 +350,7 @@ export default function App() {
                         </li>
                         <li className="has-dropdown">
                           <a
+                            href={"#"}
                             onClick={() => handleClick("/contact-us")}
                             style={{ cursor: "pointer" }}
                           >
@@ -370,6 +384,7 @@ export default function App() {
                               <ul className="mega-menu-item">
                                 <li>
                                   <a
+                                    href={"#"}
                                     className=""
                                     onClick={() => {
                                       handleClick("/services?id=cyt-tands");
@@ -439,6 +454,7 @@ export default function App() {
                     </li>
                     <li className="position-static">
                       <a
+                        href={"#"}
                         className=""
                         onClick={() => handleClick("/plans")}
                         style={{ cursor: "pointer" }}
@@ -449,6 +465,7 @@ export default function App() {
 
                     <li className="position-static">
                       <a
+                        href={"#"}
                         className=""
                         onClick={() => handleClick("/blogs")}
                         style={{ cursor: "pointer" }}
@@ -458,6 +475,7 @@ export default function App() {
                     </li>
                     <li className="position-static">
                       <a
+                        href={"#"}
                         className=""
                         onClick={() => handleClick("/faqs")}
                         style={{ cursor: "pointer" }}
@@ -477,7 +495,7 @@ export default function App() {
                           ? "search-trigger-active rbt-round-btn open"
                           : "search-trigger-active rbt-round-btn"
                       }
-                      onClick={() => setSearch(search != true)}
+                      onClick={() => setSearch(search !== true)}
                     >
                       <i className="feather-search"></i>
                     </button>
@@ -493,6 +511,7 @@ export default function App() {
                   </li>
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
                     <a
+                      href={"#"}
                       onClick={() => handleClick("/auth/login")}
                       style={{ cursor: "pointer", color: "#192335 " }}
                     >
@@ -1062,7 +1081,11 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <a class="close_side_menu" onClick={() => setCart(false)}></a>
+            <a
+              class="close_side_menu"
+              onClick={() => setCart(false)}
+              href={"#"}
+            ></a>
           </div>
         </div>
       </header>

@@ -5,7 +5,6 @@ import Newsletter from "../components/home/newsletter";
 import PlansHeader from "../components/plans/header";
 import PlansCards from "../components/plans/plan-cards";
 import RelaxationCards from "../components/plans/realaxation";
-import PromationalBanner from "../components/home/promational-banner";
 export default function Plans() {
   return (
     <div id="__next">

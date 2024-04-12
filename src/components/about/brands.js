@@ -1,7 +1,7 @@
 import LazyImage from "../../utils/lazy-image";
 import BrandImg from "../../assets/img/brand-018b2a.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 

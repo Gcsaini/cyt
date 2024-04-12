@@ -2,11 +2,9 @@ import TeamImg from "../../assets/img/team-07a91f.jpg";
 import ImageTag from "../../utils/image-tag";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 export default function TeamAbout() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <div class="rbt-team-area bg-color-white rbt-section-gap">
       <div class="container">

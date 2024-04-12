@@ -1,81 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import auth from "../utils/auth";
-import request from "../utils/request";
-import { isValidMail } from "../utils/validators";
-import { loginUrl } from "../utils/urls";
+import React from "react";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    console.log("submit", email);
-    if (email.length < 7 || !isValidMail(email)) {
-      setError("Please enter valid email address");
-      return;
-    }
-    if (password.length < 6) {
-      setError("Please enter valid password");
-      return;
-    }
-    const value = {
-      email,
-      password,
-    };
-    setLoading(true);
-    request(loginUrl, { method: "POST", body: value })
-      .then((response) => {
-        if (!response.status) {
-          setError(response.message);
-        } else {
-          auth.setToken(response.data.token, true);
-          auth.setUserInfo(response.data, true);
-          redirectUser();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        // setError(err.response.payload.error.message);
-      });
-    setLoading(false);
-  };
-
-  const redirectUser = () => {
-    navigate(`/home`);
-  };
-
-  useEffect(() => {
-    if (auth.getToken()) {
-      navigate(`/home`);
-    }
-  }, []);
   return (
     <div>
       <MyNavbar />
-      <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="breadcrumb-inner text-center">
-                <h2 class="title">Login &amp; Register</h2>
-                <ul class="page-list">
-                  <li class="rbt-breadcrumb-item">
+      <div className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="breadcrumb-inner text-center">
+                <h2 className="title">Login &amp; Register</h2>
+                <ul className="page-list">
+                  <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
                   </li>
                   <li>
-                    <div class="icon-right">
-                      <i class="feather-chevron-right"></i>
+                    <div className="icon-right">
+                      <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li class="rbt-breadcrumb-item active">
+                  <li className="rbt-breadcrumb-item active">
                     Login &amp; Register
                   </li>
                 </ul>

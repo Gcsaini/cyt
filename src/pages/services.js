@@ -5,10 +5,9 @@ import TherapistProfile from "../components/services/thrapist-profile";
 import NewsLetter from "../components/home/newsletter";
 import ServiceDetails from "../components/services/service-details";
 import React from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import NotFoundPage from "./notfound";
 export default function Services() {
-  const navigate = useNavigate();
   const [data, setData] = React.useState();
   const [searchParams, setSearchParams] = useSearchParams();
   const serviceContent = [
@@ -63,7 +62,8 @@ export default function Services() {
   ];
 
   React.useEffect(() => {
-    const data = serviceContent.find((x) => x.id == searchParams.get("id"));
+    setSearchParams(searchParams.get("id"));
+    const data = serviceContent.find((x) => x.id === searchParams);
     setData(data);
   }, []);
 

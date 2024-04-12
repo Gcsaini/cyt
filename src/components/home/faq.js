@@ -6,7 +6,7 @@ export default function FAQ(props) {
     <div className="accordion-item card">
       <h2 className="accordion-header card-header" id="headingOne3">
         <button
-          onClick={() => setFaq(faq != true)}
+          onClick={() => setFaq(faq !== true)}
           className="accordion-button"
           type="button"
           data-bs-toggle="collapse"

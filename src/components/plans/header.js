@@ -22,7 +22,7 @@ export default function PlansHeader() {
                   >
                     <a
                       className="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y"
-                      href="#"
+                      href="/"
                     >
                       <span data-text="Learn More About Us">Get Started</span>
                     </a>
