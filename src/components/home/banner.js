@@ -35,7 +35,7 @@ export default function Banner() {
                   <span className="rbt-new-badge-icon">
                     <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                   </span>{" "}
-                  Discovery channel mental wellness solutions.
+                  Discover mental wellness solutions.
                 </div>
                 <h4 class="title">
                   Find your therapist <br />
