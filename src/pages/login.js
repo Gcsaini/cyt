@@ -42,7 +42,6 @@ export default function Login() {
                       name="email"
                       type="text"
                       placeholder="Username or email *"
-                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <span className="focus-border"></span>
                   </div>
@@ -51,7 +50,6 @@ export default function Login() {
                       name="con_email"
                       type="password"
                       placeholder="Password *"
-                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <span className="focus-border"></span>
                   </div>
