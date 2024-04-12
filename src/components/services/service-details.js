@@ -75,7 +75,7 @@ export default function ServiceDetails(props) {
 
           <div class="tagcloud" style={{ marginTop: 20 }}>
             {props.data.tags.map((tag) => {
-              return <a href="">{tag}</a>;
+              return <a href="/">{tag}</a>;
             })}
           </div>
         </div>
