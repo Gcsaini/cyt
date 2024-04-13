@@ -1,6 +1,6 @@
 export default function BlogHeader() {
   return (
-    <div className="rbt-page-banner-wrapper">
+    <div className="rbt-page-banner-wrapper mt--60">
       <div className="rbt-banner-image"></div>
       <div className="rbt-banner-content">
         <div className="rbt-banner-content-top">

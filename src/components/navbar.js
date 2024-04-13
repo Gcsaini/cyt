@@ -155,16 +155,14 @@ export default function App() {
                         <h3 className="rbt-short-title">Our Solutions</h3>
                         <ul className="mega-menu-item">
                           <li>
-                            <a
-                              href={"#"}
-                              className=""
+                            <button
                               onClick={() => {
                                 handleClick("/services?id=cyt-tands");
                               }}
                               style={{ cursor: "pointer" }}
                             >
                               Therapy & Counselling
-                            </a>
+                            </button>
                           </li>
                           <li>
                             <a className="" href="/services?id=cyt-rs">
@@ -383,29 +381,36 @@ export default function App() {
                               <h3 className="rbt-short-title">Our Solutions</h3>
                               <ul className="mega-menu-item">
                                 <li>
-                                  <a
-                                    href={"#"}
-                                    className=""
+                                  <button
+                                    className="service-menu"
                                     onClick={() => {
                                       handleClick("/services?id=cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
                                     Therapy & Counselling
-                                  </a>
+                                  </button>
                                 </li>
                                 <li>
-                                  <a className="" href="course-filter-one-open">
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                  >
                                     Therapeutic Activities
-                                  </a>
+                                  </button>
                                 </li>
                                 <li>
-                                  <a
-                                    className=""
-                                    href="course-filter-two-toggle"
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                    style={{ cursor: "pointer" }}
                                   >
                                     Peer Support Groups
-                                  </a>
+                                  </button>
                                 </li>
                               </ul>
                             </div>
@@ -413,19 +418,37 @@ export default function App() {
                               <h3 className="rbt-short-title">Our Solutions</h3>
                               <ul className="mega-menu-item">
                                 <li>
-                                  <a className="" href="course-card-3">
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  >
                                     Student Based Orientations
-                                  </a>
+                                  </button>
                                 </li>
                                 <li>
-                                  <a className="" href="course-masonry">
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  >
                                     Workplace Based Training
-                                  </a>
+                                  </button>
                                 </li>
                                 <li>
-                                  <a className="" href="course-with-sidebar">
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  >
                                     Assessments
-                                  </a>
+                                  </button>
                                 </li>
                               </ul>
                             </div>
@@ -434,17 +457,29 @@ export default function App() {
                             <div className="col-lg-12">
                               <ul className="nav-quick-access">
                                 <li>
-                                  <a href="index.html#">
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  >
                                     <i className="feather-folder-minus"></i>{" "}
                                     Terms of services
-                                  </a>
+                                  </button>
                                 </li>
                                 <li>
-                                  <a href="index.html#">
+                                  <button
+                                    className="service-menu"
+                                    onClick={() => {
+                                      handleClick("/services?id=cyt-tands");
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  >
                                     {" "}
                                     <i className="feather-folder-minus"></i>
                                     Privecy policies
-                                  </a>
+                                  </button>
                                 </li>
                               </ul>
                             </div>
@@ -453,35 +488,29 @@ export default function App() {
                       </div>
                     </li>
                     <li className="position-static">
-                      <a
-                        href={"#"}
-                        className=""
+                      <button
+                        className="service-menu-parent"
                         onClick={() => handleClick("/plans")}
-                        style={{ cursor: "pointer" }}
                       >
                         Plans
-                      </a>
+                      </button>
                     </li>
 
                     <li className="position-static">
-                      <a
-                        href={"#"}
-                        className=""
+                      <button
+                        className="service-menu-parent"
                         onClick={() => handleClick("/blogs")}
-                        style={{ cursor: "pointer" }}
                       >
                         Blogs
-                      </a>
+                      </button>
                     </li>
                     <li className="position-static">
-                      <a
-                        href={"#"}
-                        className=""
+                      <button
+                        className="service-menu-parent"
                         onClick={() => handleClick("/faqs")}
-                        style={{ cursor: "pointer" }}
                       >
                         Faqs
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </nav>
@@ -510,14 +539,13 @@ export default function App() {
                     </button>
                   </li>
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
-                    <a
-                      href={"#"}
+                    <button
                       onClick={() => handleClick("/auth/login")}
-                      style={{ cursor: "pointer", color: "#192335 " }}
+                      className="service-menu-parent"
                     >
-                      <i className="feather-user"></i>Login
+                      <i className="feather-user"></i>&nbsp;Login
                       {/* <i className="feather-user"></i>Profile */}
-                    </a>
+                    </button>
                     {/* <div className="rbt-user-menu-list-wrapper">
                       <div className="inner">
                         <div className="rbt-admin-profile">

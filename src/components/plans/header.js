@@ -1,7 +1,7 @@
 export default function PlansHeader() {
   return (
     <div className="rbt-banner-area rbt-banner-8 variation-03" id="home">
-      <div className="wrapper bg-color-secondary-alt">
+      <div className="wrapper bg-color-secondary-alt mt--60">
         <div className="container">
           <div className="row g-5 align-items-center">
             <div className="col-lg-10 offset-lg-1">

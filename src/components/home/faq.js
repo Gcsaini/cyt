@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function FAQ(props) {
+export default function Faq(props) {
   const [faq, setFaq] = React.useState();
   return (
     <div className="accordion-item card">
       <h2 className="accordion-header card-header" id="headingOne3">
         <button
           onClick={() => setFaq(faq !== true)}
-          className="accordion-button"
+          className={faq ? "accordion-button" : "accordion-button collapsed"}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseOne3"

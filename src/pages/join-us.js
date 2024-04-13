@@ -11,7 +11,7 @@ export default function JoinUs() {
   return (
     <div id="__next">
       <MyNavbar />
-      <div className="rbt-overlay-page-wrapper">
+      <div className="rbt-overlay-page-wrapper mt--60">
         <JoinHeader />
         <div className="rbt-putchase-guide-area breadcrumb-style-max-width rbt-section-gapBottom">
           <ServiceBenefits />
