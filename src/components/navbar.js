@@ -15,9 +15,11 @@ import ActivitesImg from "../assets/img/activites.png";
 import AssessmentImg from "../assets/img/assessments.png";
 import ProjectsImg from "../assets/img/projects.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import auth from "../utils/auth";
 export default function App() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const [user, setUser] = React.useState();
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
   const [about, setAbout] = React.useState();
@@ -27,6 +29,12 @@ export default function App() {
   function handleClick(nav) {
     navigate(nav);
   }
+  React.useEffect(() => {
+    const user = auth.getUserInfo();
+    if (user) {
+      setUser(user);
+    }
+  }, []);
   return (
     <>
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>
@@ -539,105 +547,97 @@ export default function App() {
                     </button>
                   </li>
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
-                    <button
-                      onClick={() => handleClick("/auth/login")}
-                      className="service-menu-parent"
-                    >
-                      <i className="feather-user"></i>&nbsp;Login
-                      {/* <i className="feather-user"></i>Profile */}
-                    </button>
-                    {/* <div className="rbt-user-menu-list-wrapper">
-                      <div className="inner">
-                        <div className="rbt-admin-profile">
-                          <div className="admin-thumbnail">
-                            <LazyImage alt="User" dim={"43"} src={Avatar} />
+                    {user ? (
+                      <button className="service-menu-parent">
+                        <i className="feather-user"></i> &nbsp;Profile
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleClick("/auth/login")}
+                        className="service-menu-parent"
+                      >
+                        <i className="feather-user"></i>&nbsp;Login
+                      </button>
+                    )}{" "}
+                    {user && (
+                      <div className="rbt-user-menu-list-wrapper">
+                        <div className="inner">
+                          <div className="rbt-admin-profile">
+                            <div className="admin-thumbnail">
+                              <LazyImage
+                                alt="User"
+                                dim={"43"}
+                                src={user.profile}
+                              />
+                            </div>
+                            <div className="admin-info">
+                              <span className="name">{user.name}</span>
+                              <a
+                                className="rbt-btn-link color-primary"
+                                href="instructor/instructor-profile"
+                              >
+                                View Profile
+                              </a>
+                            </div>
                           </div>
-                          <div className="admin-info">
-                            <span className="name">Rafi Dev</span>
-                            <a
-                              className="rbt-btn-link color-primary"
-                              href="instructor/instructor-profile"
-                            >
-                              View Profile
-                            </a>
-                          </div>
+                          <ul className="user-list-wrapper">
+                            <li>
+                              <a href="instructor/instructor-dashboard">
+                                <i className="feather-home"></i>
+                                <span>My Dashboard</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="index.html#">
+                                <i className="feather-bookmark"></i>
+                                <span>Bookmark</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="instructor/instructor-enrolled-course">
+                                <i className="feather-shopping-bag"></i>
+                                <span>Enrolled Courses</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="instructor/instructor-wishlist">
+                                <i className="feather-heart"></i>
+                                <span>Wishlist</span>
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="instructor/instructor-order-history">
+                                <i className="feather-clock"></i>
+                                <span>Order History</span>
+                              </a>
+                            </li>
+                          </ul>
+
+                          <hr className="mt--10 mb--10" />
+                          <ul className="user-list-wrapper">
+                            <li>
+                              <a href="instructor/instructor-settings">
+                                <i className="feather-settings"></i>
+                                <span>Settings</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                onClick={() => {
+                                  auth.clearAppStorage();
+                                  navigate("/auth/login");
+                                }}
+                              >
+                                <i className="feather-log-out"></i>
+                                <span>Logout</span>
+                              </a>
+                            </li>
+                          </ul>
                         </div>
-                        <ul className="user-list-wrapper">
-                          <li>
-                            <a href="instructor/instructor-dashboard">
-                              <i className="feather-home"></i>
-                              <span>My Dashboard</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="index.html#">
-                              <i className="feather-bookmark"></i>
-                              <span>Bookmark</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="instructor/instructor-enrolled-course">
-                              <i className="feather-shopping-bag"></i>
-                              <span>Enrolled Courses</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="instructor/instructor-wishlist">
-                              <i className="feather-heart"></i>
-                              <span>Wishlist</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="instructor/instructor-reviews">
-                              <i className="feather-star"></i>
-                              <span>Reviews</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="instructor/404">
-                              <i className="feather-list"></i>
-                              <span>My Quiz Attempts</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="instructor/instructor-order-history">
-                              <i className="feather-clock"></i>
-                              <span>Order History</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="instructor/instructor-quiz-attempts">
-                              <i className="feather-message-square"></i>
-                              <span>Question &amp; Answer</span>
-                            </a>
-                          </li>
-                        </ul>
-                        <hr className="mt--10 mb--10" />
-                        <ul className="user-list-wrapper">
-                          <li>
-                            <a href="index.html#">
-                              <i className="feather-book-open"></i>
-                              <span>Getting Started</span>
-                            </a>
-                          </li>
-                        </ul>
-                        <hr className="mt--10 mb--10" />
-                        <ul className="user-list-wrapper">
-                          <li>
-                            <a href="instructor/instructor-settings">
-                              <i className="feather-settings"></i>
-                              <span>Settings</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="index.html">
-                              <i className="feather-log-out"></i>
-                              <span>Logout</span>
-                            </a>
-                          </li>
-                        </ul>
                       </div>
-                    </div> */}
+                    )}
                   </li>
                   <li className="access-icon rbt-user-wrapper d-block d-xl-none">
                     <a className="rbt-round-btn" href="index.html#">
@@ -727,7 +727,13 @@ export default function App() {
                             </a>
                           </li>
                           <li>
-                            <a href="index.html">
+                            <a
+                              href="#"
+                              onClick={() => {
+                                auth.clearAppStorage();
+                                navigate("/auth/login");
+                              }}
+                            >
                               <i className="feather-log-out"></i>
                               <span>Logout</span>
                             </a>
@@ -1046,62 +1052,64 @@ export default function App() {
               </div>
             </div>
           </div>
-          <div class={cart ? "cart-sidenav-menu-active" : "rbt-cart-side-menu"}>
+          <div
+            className={cart ? "cart-sidenav-menu-active" : "rbt-cart-side-menu"}
+          >
             <div
-              class={
+              className={
                 cart
                   ? "rbt-cart-side-menu side-menu-active"
                   : "rbt-cart-side-menu"
               }
             >
-              <div class="inner-wrapper">
-                <div class="inner-top">
-                  <div class="content">
-                    <div class="title">
-                      <h4 class="title mb--0">Your shopping cart</h4>
+              <div className="inner-wrapper">
+                <div className="inner-top">
+                  <div className="content">
+                    <div className="title">
+                      <h4 className="title mb--0">Your shopping cart</h4>
                     </div>
-                    <div class="rbt-btn-close" id="btn_sideNavClose">
+                    <div className="rbt-btn-close" id="btn_sideNavClose">
                       <button
-                        class="minicart-close-button rbt-round-btn"
+                        className="minicart-close-button rbt-round-btn"
                         onClick={() => setCart(false)}
                       >
-                        <i class="feather-x"></i>
+                        <i className="feather-x"></i>
                       </button>
                     </div>
                   </div>
                 </div>
-                <nav class="side-nav w-100">
-                  <div class="rbt-minicart-wrapper"></div>
+                <nav className="side-nav w-100">
+                  <div className="rbt-minicart-wrapper"></div>
                 </nav>
-                <div class="rbt-minicart-footer">
-                  <hr class="mb--0" />
-                  <div class="rbt-cart-subttotal">
-                    <p class="subtotal">
+                <div className="rbt-minicart-footer">
+                  <hr className="mb--0" />
+                  <div className="rbt-cart-subttotal">
+                    <p className="subtotal">
                       <strong>Subtotal:</strong>
                     </p>
-                    <p class="price">$0</p>
+                    <p className="price">$0</p>
                   </div>
-                  <hr class="mb--0" />
-                  <div class="rbt-minicart-bottom mt--20">
-                    <div class="view-cart-btn">
+                  <hr className="mb--0" />
+                  <div className="rbt-minicart-bottom mt--20">
+                    <div className="view-cart-btn">
                       <a
-                        class="rbt-btn btn-border icon-hover w-100 text-center"
+                        className="rbt-btn btn-border icon-hover w-100 text-center"
                         href="/cart"
                       >
-                        <span class="btn-text">View Cart</span>
-                        <span class="btn-icon">
-                          <i class="feather-arrow-right"></i>
+                        <span className="btn-text">View Cart</span>
+                        <span className="btn-icon">
+                          <i className="feather-arrow-right"></i>
                         </span>
                       </a>
                     </div>
-                    <div class="checkout-btn mt--20">
+                    <div className="checkout-btn mt--20">
                       <a
-                        class="rbt-btn btn-gradient icon-hover w-100 text-center"
+                        className="rbt-btn btn-gradient icon-hover w-100 text-center"
                         href="/checkout"
                       >
-                        <span class="btn-text">Checkout</span>
-                        <span class="btn-icon">
-                          <i class="feather-arrow-right"></i>
+                        <span className="btn-text">Checkout</span>
+                        <span className="btn-icon">
+                          <i className="feather-arrow-right"></i>
                         </span>
                       </a>
                     </div>
@@ -1110,7 +1118,7 @@ export default function App() {
               </div>
             </div>
             <a
-              class="close_side_menu"
+              className="close_side_menu"
               onClick={() => setCart(false)}
               href={"#"}
             ></a>

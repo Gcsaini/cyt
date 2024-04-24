@@ -37,14 +37,14 @@ export default function Banner() {
                   </span>{" "}
                   Discover mental wellness solutions.
                 </div>
-                <h4 class="title">
+                <h4 className="title">
                   Find your therapist <br />
                   and start&nbsp;
-                  <span class="header-caption ms-2">
-                    <span class="cd-headline rotate-1">
-                      <span class="cd-words-wrapper">
+                  <span className="header-caption ms-2">
+                    <span className="cd-headline rotate-1">
+                      <span className="cd-words-wrapper">
                         <b
-                          class={
+                          className={
                             hideShow
                               ? "is-visible theme-gradient"
                               : "is-hidden theme-gradient"
@@ -53,7 +53,7 @@ export default function Banner() {
                           Personalized
                         </b>
                         <b
-                          class={
+                          className={
                             hideShow
                               ? "is-hidden theme-gradient"
                               : "is-visible theme-gradient"

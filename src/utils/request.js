@@ -24,7 +24,7 @@ function formatQueryParams(params) {
     .join("&");
 }
 
-export default function request(url, options = {}, stringify = true) {
+export default async function request(url, options = {}, stringify = true) {
   // Set headers
   if (stringify) {
     options.headers = Object.assign(
@@ -57,5 +57,7 @@ export default function request(url, options = {}, stringify = true) {
     options.body = JSON.stringify(options.body);
   }
 
-  return fetch(url, options).then(checkStatus).then(parseJSON);
+  const response = await fetch(url, options);
+  const response_1 = await checkStatus(response);
+  return parseJSON(response_1);
 }

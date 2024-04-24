@@ -1,8 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
+// Utils
+import auth from "../utils/auth";
+import request from "../utils/request";
+import { isValidMail } from "../utils/validators";
+import { loginUrl } from "../utils/url";
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
+    if (email.length < 7 || !isValidMail(email)) {
+      setError("Please enter valid email address");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Please enter valid password");
+      return;
+    }
+    const value = {
+      email,
+      password,
+    };
+
+    setLoading(true);
+
+    request(loginUrl, { method: "POST", body: value })
+      .then((response) => {
+        if (!response.status) {
+          setError(response.message);
+        } else {
+          auth.setToken(response.data.token, true);
+          auth.setUserInfo(response.data, true);
+          redirectUser();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setLoading(false);
+  };
+
+  const redirectUser = () => {
+    navigate(`/home`);
+  };
+
+  useEffect(() => {
+    if (auth.getToken()) {
+      navigate(`/home`);
+    }
+  }, []);
+
   return (
     <div>
       <MyNavbar />
@@ -36,20 +92,23 @@ export default function Login() {
             <div className="col-lg-6">
               <div className="rbt-contact-form contact-form-style-1 max-width-auto">
                 <h3 className="title">Login</h3>
+                <p style={{ color: "#ff0000" }}> {error !== "" ? error : ""}</p>
                 <form className="max-width-auto">
                   <div className="form-group">
                     <input
-                      name="email"
                       type="text"
-                      placeholder="Username or email *"
+                      placeholder="Email *"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <span className="focus-border"></span>
                   </div>
                   <div className="form-group">
                     <input
-                      name="con_email"
                       type="password"
                       placeholder="Password *"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <span className="focus-border"></span>
                   </div>
@@ -74,11 +133,14 @@ export default function Login() {
                   </div>
                   <div className="form-submit-group">
                     <button
+                      onClick={handleSubmit}
                       type="submit"
                       className="rbt-btn btn-md btn-gradient hover-icon-reverse w-100"
                     >
                       <span className="icon-reverse-wrapper">
-                        <span className="btn-text">Log In</span>
+                        <span className="btn-text">
+                          {loading ? "Please wait" : "Log in"}
+                        </span>
                         <span className="btn-icon">
                           <i className="feather-arrow-right"></i>
                         </span>

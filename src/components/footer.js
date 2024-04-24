@@ -41,10 +41,10 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
-              <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
-                <div class="footer-widget">
-                  <h5 class="ft-title">For Client</h5>
-                  <ul class="ft-link">
+              <div className="offset-lg-1 col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
+                <div className="footer-widget">
+                  <h5 className="ft-title">For Client</h5>
+                  <ul className="ft-link">
                     <li>
                       <a href="12-marketplace">Dashboard</a>
                     </li>
@@ -63,10 +63,10 @@ export default function Footer() {
                   </ul>
                 </div>
               </div>
-              <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
-                <div class="footer-widget">
-                  <h5 class="ft-title">For Therapist</h5>
-                  <ul class="ft-link">
+              <div className="col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
+                <div className="footer-widget">
+                  <h5 className="ft-title">For Therapist</h5>
+                  <ul className="ft-link">
                     <li>
                       <a href="become-a-teacher">Join Platform</a>
                     </li>
@@ -82,10 +82,10 @@ export default function Footer() {
                   </ul>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
-                <div class="footer-widget">
-                  <h5 class="ft-title">Get Contact</h5>
-                  <ul class="ft-link">
+              <div className="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                <div className="footer-widget">
+                  <h5 className="ft-title">Get Contact</h5>
+                  <ul className="ft-link">
                     <li>
                       <span>Phone:</span>
                       <a href="index.html#">+91 80777 57951</a>
@@ -101,25 +101,25 @@ export default function Footer() {
                       Uttarakhand, India
                     </li>
                   </ul>
-                  <ul class="social-icon social-default icon-naked justify-content-start mt--20">
+                  <ul className="social-icon social-default icon-naked justify-content-start mt--20">
                     <li>
                       <a href="https://www.facebook.com/">
-                        <i class="feather-facebook"></i>
+                        <i className="feather-facebook"></i>
                       </a>
                     </li>
                     <li>
                       <a href="https://www.twitter.com/">
-                        <i class="feather-twitter"></i>
+                        <i className="feather-twitter"></i>
                       </a>
                     </li>
                     <li>
                       <a href="https://www.instagram.com/">
-                        <i class="feather-instagram"></i>
+                        <i className="feather-instagram"></i>
                       </a>
                     </li>
                     <li>
                       <a href="https://www.linkdin.com/">
-                        <i class="feather-linkedin"></i>
+                        <i className="feather-linkedin"></i>
                       </a>
                     </li>
                   </ul>
@@ -134,11 +134,11 @@ export default function Footer() {
           <hr className="rbt-separator m-0" />
         </div>
       </div>
-      <div class="copyright-area copyright-style-1 ptb--20">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
-              <p class="rbt-link-hover text-center text-lg-start">
+      <div className="copyright-area copyright-style-1 ptb--20">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+              <p className="rbt-link-hover text-center text-lg-start">
                 Copyright � 2024
                 <a href="https://chooseyourtherapist.in">
                   Choose Your Therapist LLP.
@@ -146,8 +146,8 @@ export default function Footer() {
                 All Rights Reserved
               </p>
             </div>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
-              <ul class="copyright-link rbt-link-hover justify-content-center justify-content-lg-end mt_sm--10 mt_md--10">
+            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
+              <ul className="copyright-link rbt-link-hover justify-content-center justify-content-lg-end mt_sm--10 mt_md--10">
                 <li>
                   <a href="index.html#">Terms of service</a>
                 </li>

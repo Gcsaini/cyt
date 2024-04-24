@@ -13,10 +13,10 @@ export default function TherapistCard() {
         <div className="rbt-card-body">
           <ul className="rbt-meta">
             <li>
-              <i class="feather-map-pin"></i>Deharadun
+              <i className="feather-map-pin"></i>Deharadun
             </li>
             <li>
-              <i class="feather-award"></i>3 Year Experience
+              <i className="feather-award"></i>3 Year Experience
             </li>
           </ul>
           <h4 className="rbt-card-title">
@@ -24,12 +24,12 @@ export default function TherapistCard() {
           </h4>
           <div style={{ marginTop: 7 }}>
             <span>
-              <i class="feather-map-pin"></i> Counseling Psychologist
+              <i className="feather-map-pin"></i> Counseling Psychologist
             </span>
           </div>
           <div style={{ marginTop: 7 }}>
             <span>
-              <i class="feather-map-pin"></i> Hindi, English
+              <i className="feather-map-pin"></i> Hindi, English
             </span>
           </div>
 
@@ -51,7 +51,7 @@ export default function TherapistCard() {
             }}
           >
             <a
-              class="rbt-btn btn-gradient btn-sm"
+              className="rbt-btn btn-gradient btn-sm"
               href="index.html#"
               style={{ paddingLeft: 50, paddingRight: 50 }}
             >

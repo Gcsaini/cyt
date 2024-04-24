@@ -31,7 +31,7 @@ export default function AllBlogs() {
                         <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLlinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -66,7 +66,7 @@ export default function AllBlogs() {
                         <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLlinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -103,7 +103,7 @@ export default function AllBlogs() {
                         <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLlinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -140,7 +140,7 @@ export default function AllBlogs() {
                         <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLlinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -177,7 +177,7 @@ export default function AllBlogs() {
                         <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLlinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -214,7 +214,7 @@ export default function AllBlogs() {
                         <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLlinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>

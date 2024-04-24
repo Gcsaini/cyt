@@ -13,6 +13,8 @@ import JoinUs from "./pages/join-us";
 import Plans from "./pages/plans";
 import FaqPage from "./pages/faqs";
 import Blogs from "./pages/blogs";
+import UserProfile from "./pages/user-profile";
+import UserDashboard from "./pages/user-dashboard";
 
 const theme = createTheme();
 
@@ -43,6 +45,8 @@ function App() {
               <Route path="/plans" element={<Plans />} />
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/blogs" element={<Blogs />} />
+              <Route path="/my-dashboard" element={<UserDashboard />} />
+              <Route path="/my-profile" element={<UserProfile />} />
 
               {/* <Route
                 path="/users"

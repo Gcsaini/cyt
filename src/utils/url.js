@@ -1,0 +1,8 @@
+const localhost = "http://localhost:4000/api";
+export const loginUrl = `${localhost}/auth/login`;
+export const registerUrl = `${localhost}/register`;
+export const sendOtpUrl = `${localhost}/send-otp`;
+export const sendForgotPasswordOtpUrl = `${localhost}/send-forgot-password-otp`;
+export const verifyOtpUrl = `${localhost}/verify-otp`;
+export const resetpasswordpUrl = `${localhost}/reset-password`;
+export const getUserUrl = `${localhost}/get-user`;
