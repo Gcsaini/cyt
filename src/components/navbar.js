@@ -16,6 +16,7 @@ import AssessmentImg from "../assets/img/assessments.png";
 import ProjectsImg from "../assets/img/projects.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import auth from "../utils/auth";
+import ImageTag from "../utils/image-tag";
 export default function App() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -43,12 +44,10 @@ export default function App() {
             <div className="content">
               <div className="logo">
                 <a href="index.html">
-                  <img
+                  <ImageTag
                     alt="Education Logo Images"
-                    loading="lazy"
                     width="137"
                     height="45"
-                    style={{ color: "transparent" }}
                     src={logo1}
                   />
                 </a>
@@ -109,15 +108,7 @@ export default function App() {
                       About us
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href={"#"}
-                      onClick={() => handleClick("/join-us")}
-                      style={{ cursor: "pointer" }}
-                    >
-                      Join us
-                    </a>
-                  </li>
+                
                   <li>
                     <a
                       href={"#"}
@@ -256,7 +247,15 @@ export default function App() {
                 >
                   Faqs
                 </a>
-              </li>
+              </li>  <li>
+                    <a
+                      href={"#"}
+                      onClick={() => handleClick("/join-us")}
+                      style={{ cursor: "pointer" }}
+                    >
+                      Join us
+                    </a>
+                  </li>
             </ul>
           </nav>
           <div className="mobile-menu-bottom">
@@ -330,7 +329,7 @@ export default function App() {
                       </a>
                     </li>
                     <li className="has-dropdown has-menu-child-item">
-                      <a className="" href="index.html#">
+                      <a className="" href="#">
                         About<i className="feather-chevron-down"></i>
                       </a>
                       <ul className="submenu">
@@ -345,15 +344,7 @@ export default function App() {
                             About us
                           </a>
                         </li>
-                        <li className="has-dropdown">
-                          <a
-                            href={"#"}
-                            onClick={() => handleClick("/join-us")}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Join us
-                          </a>
-                        </li>
+                      
                         <li className="has-dropdown">
                           <a
                             href={"#"}
@@ -499,6 +490,7 @@ export default function App() {
                       <button
                         className="service-menu-parent"
                         onClick={() => handleClick("/plans")}
+                        style={{ cursor: "pointer" }}
                       >
                         Plans
                       </button>
@@ -508,7 +500,8 @@ export default function App() {
                       <button
                         className="service-menu-parent"
                         onClick={() => handleClick("/blogs")}
-                      >
+                        style={{ cursor: "pointer" }}
+                     >
                         Blogs
                       </button>
                     </li>
@@ -516,8 +509,18 @@ export default function App() {
                       <button
                         className="service-menu-parent"
                         onClick={() => handleClick("/faqs")}
+                        style={{ cursor: "pointer" }}
                       >
                         Faqs
+                      </button>
+                    </li>
+                    <li className="position-static">
+                      <button
+                        className="service-menu-parent"
+                        href={"#"}
+                        onClick={() => handleClick("/join-us")}
+                      >
+                        Join us
                       </button>
                     </li>
                   </ul>

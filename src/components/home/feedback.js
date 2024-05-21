@@ -12,9 +12,9 @@ export default function Feedback() {
           <div className="col-lg-12 mb--60">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">
-                EDUCATION FOR EVERYONE
+                THERAPIST FOR EVERYONE
               </span>
-              <h2 className="title">Student's Feedback</h2>
+              <h2 className="title">Client's Success Story</h2>
             </div>
           </div>
         </div>
@@ -35,65 +35,193 @@ export default function Feedback() {
                 spaceBetween: 20,
               },
             }}
-            pagination={{
-              clickable: true,
-            }}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
             }}
-            modules={[Pagination, Autoplay]}
+            modules={[Autoplay]}
             className="mySwiper"
           >
-            {[1, 2, 3, 4, 5].map((item) => {
-              return (
-                <SwiperSlide key={item}>
-                  <div className="col-12">
-                    <div className="rbt-testimonial-box">
-                      <div className="inner">
-                        <div className="clint-info-wrapper">
-                          <div className="thumb">
-                            <LazyImage
-                              alt="Clint Images"
-                              dim={"494"}
-                              src={Client}
-                            />
-                          </div>
-                          <div className="client-info">
-                            <h5 className="title">Priya Patel</h5>
-                            <span>Client</span>
-                          </div>
-                        </div>
-                        <div className="description">
-                          <p className="subtitle-3">
-                            The platform connected me with a fantastic therapist
-                            who truly understood my needs. I feel supported and
-                            empowered to work through my challenges.
-                          </p>
-                          <div className="rating mt--20">
-                            <a href="/elements/testimonial#">
-                              <i className="fa fa-star"></i>
-                            </a>
-                            <a href="/elements/testimonial#">
-                              <i className="fa fa-star"></i>
-                            </a>
-                            <a href="/elements/testimonial#">
-                              <i className="fa fa-star"></i>
-                            </a>
-                            <a href="/elements/testimonial#">
-                              <i className="fa fa-star"></i>
-                            </a>
-                            <a href="/elements/testimonial#">
-                              <i className="fa fa-star"></i>
-                            </a>
-                          </div>
-                        </div>
+            <SwiperSlide key={1}>
+              <div className="col-12">
+                <div className="rbt-testimonial-box">
+                  <div className="inner">
+                    <div className="clint-info-wrapper">
+                      <div className="thumb">
+                        <LazyImage
+                          alt="Clint Images"
+                          dim={"494"}
+                          src={Client}
+                        />
+                      </div>
+                      <div className="client-info">
+                        <h5 className="title">Priya Patel</h5>
+                        <span>Client</span>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p className="subtitle-3">
+                        The platform connected me with a fantastic therapist who
+                        truly understood my needs. I feel supported and
+                        empowered to work through my challenges.
+                      </p>
+                      <div className="rating mt--20">
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
-                </SwiperSlide>
-              );
-            })}
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide key={2}>
+              <div className="col-12">
+                <div className="rbt-testimonial-box">
+                  <div className="inner">
+                    <div className="clint-info-wrapper">
+                      <div className="thumb">
+                        <LazyImage
+                          alt="Clint Images"
+                          dim={"494"}
+                          src={Client}
+                        />
+                      </div>
+                      <div className="client-info">
+                        <h5 className="title">Priya Patel</h5>
+                        <span>Client</span>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p className="subtitle-3">
+                        The platform connected me with a fantastic therapist who
+                        truly understood my needs. I feel supported and
+                        empowered to work through my challenges.
+                      </p>
+                      <div className="rating mt--20">
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide key={3}>
+              <div className="col-12">
+                <div className="rbt-testimonial-box">
+                  <div className="inner">
+                    <div className="clint-info-wrapper">
+                      <div className="thumb">
+                        <LazyImage
+                          alt="Clint Images"
+                          dim={"494"}
+                          src={Client}
+                        />
+                      </div>
+                      <div className="client-info">
+                        <h5 className="title">Priya Patel</h5>
+                        <span>Client</span>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p className="subtitle-3">
+                        The platform connected me with a fantastic therapist who
+                        truly understood my needs. I feel supported and
+                        empowered to work through my challenges.
+                      </p>
+                      <div className="rating mt--20">
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide key={4}>
+              <div className="col-12">
+                <div className="rbt-testimonial-box">
+                  <div className="inner">
+                    <div className="clint-info-wrapper">
+                      <div className="thumb">
+                        <LazyImage
+                          alt="Clint Images"
+                          dim={"494"}
+                          src={Client}
+                        />
+                      </div>
+                      <div className="client-info">
+                        <h5 className="title">Priya Patel</h5>
+                        <span>Client</span>
+                      </div>
+                    </div>
+                    <div className="description">
+                      <p className="subtitle-3">
+                        The platform connected me with a fantastic therapist who
+                        truly understood my needs. I feel supported and
+                        empowered to work through my challenges.
+                      </p>
+                      <div className="rating mt--20">
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                        <a href="/elements/testimonial#">
+                          <i className="fa fa-star"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
           </Swiper>
         </div>
       </div>

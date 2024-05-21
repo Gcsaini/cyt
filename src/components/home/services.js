@@ -18,7 +18,7 @@ export default function Services() {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">SERVICES</span>
-              <h2 className="title">Explore Affordable Solutions</h2>
+              <h2 className="title">What are you looking for</h2>
             </div>
           </div>
         </div>
@@ -37,26 +37,6 @@ export default function Services() {
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       3 Plans Active<i className="feather-arrow-right"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
-            <a
-              className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d-2"
-            >
-              <div className="inner">
-                <div className="icons">
-                  <LazyImage alt="Icons" dim={"80"} src={RelaxationImg} />
-                </div>
-                <div className="content">
-                  <h5 className="title">Relaxation Session</h5>
-                  <div className="read-more-btn">
-                    <span className="rbt-btn-link">
-                      2 Plans Active<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>

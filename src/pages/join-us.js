@@ -18,7 +18,6 @@ export default function JoinUs() {
           <Content />
         </div>
       </div>
-      <Subscriptions />
       <CallToAction />
       <FAQs />
       <Newsletter />

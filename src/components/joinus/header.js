@@ -12,8 +12,11 @@ export default function JoinHeader() {
         />
       </div>
       <div className="breadcrumb-content-top text-center">
-        <h1 className="title">Join US</h1>
-        <p className="mb--20">Short description Here.</p>
+        <h1 className="title">Make a Difference with Choose Your Therapist !</h1>
+        <p className="mb--20">At Choose Your Therapist LLP, we believe in empowering therapists to 
+        reach more clients and make a positive impact on mental health. Join us to 
+        provide accessible, inclusive, and effective mental health services to individuals, schools, 
+        hospitals, and corporations. Together, we can transform mental health care for the better. </p>
       </div>
     </div>
   );

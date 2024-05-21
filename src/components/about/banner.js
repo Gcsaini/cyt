@@ -9,8 +9,7 @@ export default function AboutUsBanner() {
             <div class="content">
               <div class="inner text-center">
                 <div class="rbt-new-badge rbt-new-badge-one">
-                  <span class="rbt-new-badge-icon">🏆</span> The Leader in
-                  Online Learning
+                  <span class="rbt-new-badge-icon">🏆</span> Discover Mental Health Experts. 
                 </div>
                 <h1 class="title">
                   Read About Our
@@ -22,7 +21,7 @@ export default function AboutUsBanner() {
                     </span>
                   </span> */}
                   <TypeAnimation
-                    sequence={[" Mission", 1500, " Vision", 1500]}
+                    sequence={ [" Background", 1500, " Vision", 1500]}
                     speed={10}
                     style={{ fontSize: "1em" }}
                     repeat={Infinity}
@@ -30,9 +29,9 @@ export default function AboutUsBanner() {
                     className="theme-gradient"
                   />
                 </h1>
-                <p class="description has-medium-font-size mt--20">
-                  Dive in and learn React.js from scratch! Learn Reactjs, Hooks,
-                  Redux, React Routing, Animations, Next.js and way more!
+                <p class="description has-medium-font-size mt--20" >
+                Choose Your Therapist LLP was founded in 2020 amidst the COVID-19 pandemic to address 
+                the growing need for accessible mental health care.
                 </p>
                 <div class="slider-btn rbt-button-group justify-content-center">
                   <a

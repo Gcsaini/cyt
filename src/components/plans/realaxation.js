@@ -25,7 +25,7 @@ export default function RelaxationCards() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Infant</a>
+                    <a href="/elements/service#">Personalized</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
@@ -82,7 +82,7 @@ export default function RelaxationCards() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Toddler/Twos</a>
+                    <a href="/elements/service#">Student Special</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
@@ -139,7 +139,7 @@ export default function RelaxationCards() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Preschool</a>
+                    <a href="/elements/service#">Couple Relaxation</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>

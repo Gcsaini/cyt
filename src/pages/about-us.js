@@ -8,7 +8,7 @@ import TeamBanner from "../components/about/team-banner";
 import Footer from "../components/footer";
 import Feedback from "../components/home/feedback";
 import MyNavbar from "../components/navbar";
-
+import NewsLetter from "../components/home/newsletter";
 export default function AboutUs() {
   return (
     <div id="__next">
@@ -21,6 +21,7 @@ export default function AboutUs() {
       <TeamAbout />
       <Feedback />
       <Brands />
+      <NewsLetter />
       <Footer />
     </div>
   );

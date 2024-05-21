@@ -10,8 +10,7 @@ export default function AboutCyt() {
                 data-sal="slide-up"
                 data-sal-duration="700"
               >
-                About the University we are creative preapre you for your career
-                supportive.
+                About the platform where we provide you a path for your mental wellness.
               </h2>
             </div>
           </div>
@@ -21,15 +20,14 @@ export default function AboutCyt() {
             data-sal-duration="700"
           >
             <p class="mb--40 mb_sm--20">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-              inventore praesentium alias incidunt! Veritatis, necessitatibus
-              fuga dolore tenetur, beatae suscipit fugit est ea perspiciatis quo
-              provident nisi dolor similique architecto nihil! Ipsa aspernatur
-              aperiam recusandae pariatur odit repudiandae assumenda architecto.
+            Choose Your Therapist LLP is a registered mental health platform operating under the 
+            legal frameworks of the MCA (Ministry of Corporate Affairs) and MSME 
+            (Micro, Small, and Medium Enterprises). Our platform serves as a 
+            bridge between individuals seeking mental health support and experienced counselors.
             </p>
             <div class="readmore-btn">
               <a class="rbt-moderbt-btn" href="/elements/about#">
-                <span class="moderbt-btn-text">University Overview</span>
+                <span class="moderbt-btn-text">Join us</span>
                 <i class="feather-arrow-right"></i>
               </a>
             </div>

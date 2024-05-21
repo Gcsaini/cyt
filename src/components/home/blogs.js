@@ -62,10 +62,10 @@ export default function Blogs() {
                         height="12"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g stroke="#27374D" fill="none" fill-rule="evenodd">
+                        <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -101,10 +101,10 @@ export default function Blogs() {
                         height="12"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g stroke="#27374D" fill="none" fill-rule="evenodd">
+                        <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -138,10 +138,10 @@ export default function Blogs() {
                         height="12"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g stroke="#27374D" fill="none" fill-rule="evenodd">
+                        <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>
@@ -175,10 +175,10 @@ export default function Blogs() {
                         height="12"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g stroke="#27374D" fill="none" fill-rule="evenodd">
+                        <g stroke="#27374D" fill="none" fillRule="evenodd">
                           <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
                           <path
-                            stroke-linecap="square"
+                            strokeLinecap="square"
                             d="M.663 5.572h14.594"
                           ></path>
                         </g>

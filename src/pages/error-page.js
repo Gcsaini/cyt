@@ -1,0 +1,29 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+export default function ErrorPage() {
+  const navigate = useNavigate();
+  return (
+    <div className="rbt-error-area bg-gradient-11 rbt-section-gap">
+      <div className="error-area">
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-10">
+              <h1 className="title">500!</h1>
+              <h3 className="sub-title">Something Went Wrong</h3>
+              <p>Error to get data from the server, please try again!</p>
+              <a
+                className="rbt-btn btn-gradient icon-hover"
+                onClick={() => navigate("/")}
+              >
+                <span className="btn-text">Back To Home</span>
+                <span className="btn-icon">
+                  <i className="feather-arrow-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

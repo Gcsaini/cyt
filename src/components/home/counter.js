@@ -1,11 +1,95 @@
+import { useEffect, useState } from "react";
 import CounterImg from "../../assets/img/counter-01.webp";
 import CounterImg2 from "../../assets/img/counter-02.webp";
 import CounterImg3 from "../../assets/img/counter-03.webp";
 import CounterImg4 from "../../assets/img/counter-04.webp";
 import LazyImage from "../../utils/lazy-image";
+import { useInView } from "react-intersection-observer";
 export default function Counter() {
+  const { ref, inView } = useInView({ threshold: 0 });
+  const initialValue = 0;
+  const [count, setCount] = useState(initialValue);
+  const [count1, setCount1] = useState(initialValue);
+  const [count2, setCount2] = useState(initialValue);
+  const [count3, setCount3] = useState(initialValue);
+  const duration = 2500;
+  const targetValue = 20;
+  const targetValue1 = 30;
+  const targetValue2 = 40;
+  const targetValue3 = 50;
+  useEffect(() => {
+    let startValue = initialValue;
+    const interval = Math.floor(duration / (targetValue - initialValue));
+
+    const counter = setInterval(() => {
+      startValue += 1;
+      setCount(startValue);
+      if (startValue >= targetValue) {
+        clearInterval(counter);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [targetValue, initialValue, inView]);
+
+  useEffect(() => {
+    let startValue = initialValue;
+    const interval = Math.floor(duration / (targetValue1 - initialValue));
+
+    const counter = setInterval(() => {
+      startValue += 1;
+      setCount1(startValue);
+      if (startValue >= targetValue1) {
+        clearInterval(counter);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [targetValue1, initialValue, inView]);
+
+  useEffect(() => {
+    let startValue = initialValue;
+    const interval = Math.floor(duration / (targetValue2 - initialValue));
+
+    const counter = setInterval(() => {
+      startValue += 1;
+      setCount2(startValue);
+      if (startValue >= targetValue2) {
+        clearInterval(counter);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [targetValue2, initialValue, inView]);
+
+  useEffect(() => {
+    let startValue = initialValue;
+    const interval = Math.floor(duration / (targetValue3 - initialValue));
+
+    const counter = setInterval(() => {
+      startValue += 1;
+      setCount3(startValue);
+      if (startValue >= targetValue3) {
+        clearInterval(counter);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [targetValue3, initialValue, inView]);
+
   return (
-    <div className="rbt-counterup-area bg-color-white rbt-section-gap">
+    <div
+      className="rbt-counterup-area bg-color-white rbt-section-gap"
+      ref={ref}
+    >
       <div className="conter-style-2">
         <div className="container">
           <div className="row g-5 align-items-center">
@@ -22,48 +106,7 @@ export default function Counter() {
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          5
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
+                                <span className="odometer-digit">{count}</span>
                               </div>
                             </div>
                           </span>
@@ -86,48 +129,7 @@ export default function Counter() {
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          8
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
+                                <span className="odometer-digit">{count1}</span>
                               </div>
                             </div>
                           </span>
@@ -148,65 +150,7 @@ export default function Counter() {
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          1
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-formatting-mark">
-                                  ,
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
+                                <span className="odometer-digit">{count2}</span>
                               </div>
                             </div>
                           </span>
@@ -227,48 +171,7 @@ export default function Counter() {
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          1
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
-                                <span className="odometer-digit">
-                                  <span className="odometer-digit-spacer">
-                                    8
-                                  </span>
-                                  <span className="odometer-digit-inner">
-                                    <span className="odometer-ribbon">
-                                      <span className="odometer-ribbon-inner">
-                                        <span className="odometer-value">
-                                          0
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </span>
+                                <span className="odometer-digit">{count3}</span>
                               </div>
                             </div>
                           </span>

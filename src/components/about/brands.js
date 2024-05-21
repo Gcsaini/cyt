@@ -1,5 +1,5 @@
 import LazyImage from "../../utils/lazy-image";
-import BrandImg from "../../assets/img/brand-018b2a.png";
+import BrandImg from "../../assets/img/hubs124e.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -12,8 +12,8 @@ export default function Brands() {
         <div class="row align-items-center">
           <div class="col-lg-12">
             <div class="section-title text-center mb--40">
-              <span class="small-title w-600">
-                The Best Trasted Client in This Education World
+              <span class="small-title w-800">
+                Partnership with
               </span>
             </div>
             <ul class="brand-list brand-style-3 justify-content-center justify-content-lg-between">
@@ -29,7 +29,7 @@ export default function Brands() {
                     spaceBetween: 20,
                   },
                   1024: {
-                    slidesPerView: 5,
+                    slidesPerView: 6,
                     spaceBetween: 20,
                   },
                 }}

@@ -18,7 +18,7 @@ export default function ServiceBenefits() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Infant</a>
+                    <a href="/elements/service#">Appointment Scheduling</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
@@ -132,32 +132,24 @@ export default function ServiceBenefits() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Preschool</a>
+                    <a href="/elements/service#">Time-Saving Features</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
-                      <i class="feather-heart"></i> Health and Wellness
+                      <i class="feather-heart"></i> Follow-Up Receipts
                     </li>
                     <li>
-                      <i class="feather-flag"></i> Literacy and Language
+                      <i class="feather-flag"></i> Create Case History
                     </li>
                     <li>
-                      <i class="feather-eye"></i> Social-Emotional Learning
+                      <i class="feather-eye"></i> Record Client's Invoices
                     </li>
                     <li>
-                      <i class="feather-edit-2"></i> Visual and Creative Arts
+                      <i class="feather-edit-2"></i> Share Feedback Form
                     </li>
-                    <li>
-                      <i class="feather-battery-charging"></i> Thinking and
-                      Learning
-                    </li>
+
                   </ul>
-                  <a
-                    class="rbt-btn-link stretched-link"
-                    href="/elements/service#"
-                  >
-                    Learn More<i class="feather-arrow-right"></i>
-                  </a>
+                  
                 </div>
               </div>
               <div class="rbt-flipbox-back rbt-flipbox-face inner">
@@ -166,16 +158,10 @@ export default function ServiceBenefits() {
                     <LazyImage alt="card-icon" dim={"300-490"} src={bgImg2} />
                   </div>
                   <p>
-                    Babies enjoy classrooms made for exploring with teachers who
-                    support today’s big milestones.
+                  Our dashboard saves you time so you can focus on what matters most—your clients.
                   </p>
                 </div>
-                <a
-                  class="rbt-btn rbt-switch-btn btn-white btn-sm"
-                  href="/elements/service#"
-                >
-                  <span data-text="Learn More">Learn More</span>
-                </a>
+              
               </div>
             </div>
           </div>

@@ -29449,13 +29449,8 @@ fieldset:disabled {
 .rbt-btn.btn-gradient {
   color: var(--color-white);
   background-size: 300% 100%;
-  background-image: linear-gradient(
-    to right,
-    var(--color-primary),
-    var(--color-secondary),
-    var(--color-secondary),
-    var(--color-primary)
-  );
+  background: rgb(42,93,49);
+  background: linear-gradient(104deg, rgba(42,93,49,1) 0%, rgba(92,190,105,1) 96%, rgba(185,185,185,1) 100%);
 }
 .rbt-btn.btn-gradient.btn-gradient-2 {
   background-image: linear-gradient(
@@ -40142,7 +40137,7 @@ blockquote.has-text-align-right cite {
   padding: 0 150px;
   position: relative;
   overflow: hidden;
-  background-image: url(media/bg-g1.97ff1754.webp);
+  background-image: url(assets/img/bg-image-10.webp);
   background-position: top;
   background-size: cover;
 }

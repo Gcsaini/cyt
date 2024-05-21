@@ -1,9 +1,104 @@
-import LazyImage from "../../utils/lazy-image";
-import TeamImg from "../../assets/img/team-01a1b3.jpg";
-
+import TeamImg from "../../assets/img/founder.png";
+import TeamImg3 from "../../assets/img/fab.png";
+import TeamImg4 from "../../assets/img/akt.png";
+import TeamImg5 from "../../assets/img/slazzer-edit-image(1).png";
+import TeamImg6 from "../../assets/img/sidhant.png";
+import vibhor from "../../assets/img/vibhor.png";
 import "swiper/css";
 import "swiper/css/pagination";
+import React from "react";
+import ImageTag from "../../utils/image-tag";
+
+const teamInfo = [
+  {
+    name: "Mr. Deepak Kumar",
+    deg: "Founder & Director | Counselling Psychologist   (B.A, M.A, Ph.D Research Scholar)",
+    address: " Uttarakhand, IN",
+    phone: "+91-8077757951",
+    email: "director@chooseyourtherapist.in",
+    instagra: "",
+    facebook: "",
+    linkdin: "",
+    profile: TeamImg,
+    content:
+      "I'm passionate about providing accessible and effective mental health services. At Choose Your Therapist LLP, we aim to provide comprehensive documentation of our platform’s features,  services, and commitment to making mental health care more approachable, convenient, and personalized for everyone",
+  },
+
+  {
+    name: "Mr. Ashish Kumar Thakran",
+    deg: "Co-Founder | Enterepreneur",
+    address: " Uttarakhand, IN",
+    phone: "1234567890",
+    email: "dummy3@gmail.com",
+    instagra: "",
+    facebook: "",
+    linkdin: "",
+    profile: TeamImg4,
+    content:
+      "As a passionate advocate for mental health and a co-founder dedicated to leveraging technology for societal good. My vision is to harness cutting-edge technological solutions to address mental health challenges, fostering a culture of wellness and resilience. ",
+  },
+
+  {
+    name: "Mr. Gopichand Saini",
+    deg: "Cheif Technology officer | Web-Developer",
+    address: " Noida, Uttarpradesh, IN",
+    phone: "1234567890",
+    email: "techsupport@chooseyourtherapist.in",
+    instagra: "",
+    facebook: "",
+    linkdin: "",
+    profile: TeamImg5,
+    content:
+      "I aim to create accessible, effective, and personalized mental health support systems that not only enhance employee well-being but also drive our mission forward. Together, we can build a future where mental health is prioritized, and technology acts as a catalyst for positive change.",
+  },
+  {
+    name: "Ms. Fabiha Sultana Shaik",
+    deg: "Cheif Advisor | Psychologist",
+    address: " Noida, Uttarpradesh, IN",
+    phone: "1234567890",
+    email: "advisor@chooseyourtherapist.in",
+    instagra: "",
+    facebook: "",
+    linkdin: "",
+    profile: TeamImg3,
+    content:
+      "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
+  },
+  {
+    name: "Mr. Vibhor Verma",
+    deg: "Legal Advisor | Advocate",
+    address: " Uttarakhand, IN",
+    phone: "1234567890",
+    email: "advisor@chooseyourtherapist.in",
+    instagra: "",
+    facebook: "",
+    linkdin: "",
+    profile: vibhor,
+    content:
+      "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
+  },
+  {
+    name: "Mr. Sidhant Kataria",
+    deg: "Head of Marketing and Communication | Counselling Psychologist",
+    address: " Uttarakhand, IN",
+    phone: "1234567890",
+    email: "advisor@chooseyourtherapist.in",
+    instagra: "",
+    facebook: "",
+    linkdin: "",
+    profile: TeamImg6,
+    content:
+      "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
+  },
+];
 export default function TeamBanner() {
+  const [team, setTeam] = React.useState(teamInfo[0]);
+
+  const handleClick = (id) => {
+    console.log("id", id);
+    setTeam(teamInfo[id]);
+  };
+  console.log("team", team);
   return (
     <div
       className="rbt-team-area bg-color-white rbt-section-gapBottom"
@@ -12,9 +107,12 @@ export default function TeamBanner() {
       <div className="container">
         <div className="row mb--60">
           <div className="col-lg-12">
-            <div className="section-title text-center">
-              <h5 className="title">Team</h5>
-              <p className="description mt--10">Our Awesome Team</p>
+            <div class="section-title text-center">
+              <h2 className="title">Meet the Innovative minds at CYT</h2>
+              <p className="description mt--10">
+                Choose Your Therapist LLP aims to create a network of therapists
+                to make mental health services accessible to everyone.
+              </p>
             </div>
           </div>
         </div>
@@ -22,7 +120,7 @@ export default function TeamBanner() {
           <div className="col-lg-7">
             <div className="rbt-team-tab-content tab-content" id="myTabContent">
               <div
-                className="tab-pane fade"
+                className="tab-pane fade active show"
                 id="team-tab0"
                 role="tabpanel"
                 aria-labelledby="team-tab0-tab"
@@ -30,641 +128,54 @@ export default function TeamBanner() {
                 <div className="inner">
                   <div className="rbt-team-thumbnail">
                     <div className="thumb">
-                      <LazyImage
+                      <ImageTag
                         alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
+                        height="555"
+                        width="415"
+                        src={team.profile}
                       />
                     </div>
                   </div>
                   <div className="rbt-team-details">
                     <div className="author-info">
-                      <h4 className="title">Mames Mary</h4>
+                      <h4 className="title">{team.name}</h4>
                       <span className="designation theme-gradient">
-                        English Teacher
+                        {team.deg}
                       </span>
                       <span className="team-form">
                         <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
+                        <span className="location">{team.address}</span>
                       </span>
                     </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
+                    <p>{team.content}</p>
                     <ul className="social-icon social-default mt--20 justify-content-start">
                       <li>
-                        <a href="https://www.facebook.com/">
+                        <a href={team.facebook} target="_blank">
                           <i className="feather-facebook"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
+                        <a href={team.linkdin} target="_blank">
+                          <i className="fab fa-linkedin-in"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.instagram.com/">
+                        <a href={team.instagra} target="_blank">
                           <i className="feather-instagram"></i>
                         </a>
                       </li>
                     </ul>
                     <ul className="rbt-information-list mt--25">
                       <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
+                        <a href="">
+                          <i className="feather-phone"></i>
+                          {team.phone}
                         </a>
                       </li>
                       <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="team-tab1"
-                role="tabpanel"
-                aria-labelledby="team-tab1-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Christopher</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="team-tab2"
-                role="tabpanel"
-                aria-labelledby="team-tab2-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Robert Song</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade active show"
-                id="team-tab3"
-                role="tabpanel"
-                aria-labelledby="team-tab3-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">William Susan</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="team-tab4"
-                role="tabpanel"
-                aria-labelledby="team-tab4-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Soseph Sara</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="team-tab5"
-                role="tabpanel"
-                aria-labelledby="team-tab5-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Thomas Dal</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade show"
-                id="team-tab6"
-                role="tabpanel"
-                aria-labelledby="team-tab6-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Irma J. Erwin</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade show"
-                id="team-tab7"
-                role="tabpanel"
-                aria-labelledby="team-tab7-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">John Due</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade show"
-                id="team-tab8"
-                role="tabpanel"
-                aria-labelledby="team-tab8-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Joo Bieden</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade show"
-                id="team-tab9"
-                role="tabpanel"
-                aria-labelledby="team-tab9-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">Alejandro</h4>
-                      <span className="designation theme-gradient">
-                        English Teacher
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">CO Miego, AD,USA</span>
-                      </span>
-                    </div>
-                    <p>
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
-                    </p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="feather-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com">
-                          <i className="feather-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="feather-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="/elements/team#">
-                          <i className="feather-phone"></i>+1-202-555-0174
-                        </a>
-                      </li>
-                      <li>
-                        <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
+                        <a href={"mailto:" + team.email}>
+                          <i className="feather-mail"></i>
+                          {team.email}
                         </a>
                       </li>
                     </ul>
@@ -680,143 +191,28 @@ export default function TeamBanner() {
               id="myTab"
               role="tablist"
             >
-              <li>
-                <a
-                  className=""
-                  id="team-tab0-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-tab0"
-                  role="tab"
-                  aria-controls="team-tab0"
-                  aria-selected="false"
-                  href="/elements/team#"
-                  tabindex="-1"
-                >
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  className=""
-                  id="team-tab1-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-tab1"
-                  role="tab"
-                  aria-controls="team-tab1"
-                  aria-selected="false"
-                  href="/elements/team#"
-                  tabindex="-1"
-                >
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  className=""
-                  id="team-tab2-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-tab2"
-                  role="tab"
-                  aria-controls="team-tab2"
-                  aria-selected="false"
-                  href="/elements/team#"
-                  tabindex="-1"
-                >
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  className="active"
-                  id="team-tab3-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-tab3"
-                  role="tab"
-                  aria-controls="team-tab3"
-                  aria-selected="true"
-                  href="/elements/team#"
-                >
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  className=""
-                  id="team-tab4-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-tab4"
-                  role="tab"
-                  aria-controls="team-tab4"
-                  aria-selected="false"
-                  href="/elements/team#"
-                  tabindex="-1"
-                >
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  className=""
-                  id="team-tab5-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#team-tab5"
-                  role="tab"
-                  aria-controls="team-tab5"
-                  aria-selected="false"
-                  href="/elements/team#"
-                  tabindex="-1"
-                >
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <LazyImage
-                        alt="Testimonial"
-                        dim={"555-415"}
-                        src={TeamImg}
-                      />
-                    </div>
-                  </div>
-                </a>
-              </li>
+              {teamInfo.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <a
+                      onClick={() => handleClick(index)}
+                      id="team-tab0-tab"
+                      role="tab"
+                    >
+                      <div className="rbt-team-thumbnail">
+                        <div className="thumb">
+                          <ImageTag
+                            alt="Testimonial"
+                            height="555"
+                            width="415"
+                            src={item.profile}
+                          />
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import TextImg from "../../assets/img/cta-text9c0f.png";
+import TextImg from "../../assets/img/Choos.png";
 import LazyImage from "../../utils/lazy-image";
 export default function CallToAction() {
   return (
@@ -18,10 +18,10 @@ export default function CallToAction() {
                     data-sal-duration="400"
                     data-sal-delay="200"
                   >
-                    Ready to start creating a standard website?
+                    Ready to choose your therapist?
                   </h3>
                   <h6 className="subtitle sal-animate">
-                    Finest choice for your home &amp; office
+                    Finest choice for your mental &amp; emotional well-being.
                   </h6>
                 </div>
               </div>
@@ -32,7 +32,7 @@ export default function CallToAction() {
                   className="rbt-btn rbt-switch-btn rbt-switch-y"
                   href="/elements/call-to-action#"
                 >
-                  <span data-text="Purchase Histudy">Purchase Histudy</span>
+                  <span data-text="Purchase Histudy">Get Started Now</span>
                 </a>
                 <div className="shape-text-image">
                   <LazyImage

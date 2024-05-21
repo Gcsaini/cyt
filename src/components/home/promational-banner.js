@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Banner from "../../assets/img/hi_15157.png";
+import Banner from "../../assets/img/join.png";
 import LazyImage from "../../utils/lazy-image";
 import useMediaQuery from "@mui/material/useMediaQuery";
 export default function PromationalBanner() {

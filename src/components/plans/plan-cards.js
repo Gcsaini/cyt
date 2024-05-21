@@ -1,6 +1,6 @@
-import Img from "../../assets/img/kindergarten-03-frontadc5.jpg";
-import Img2 from "../../assets/img/kindergarten-01-fronta3e4.jpg";
-import Img3 from "../../assets/img/kindergarten-02-front210a.jpg";
+import Img from "../../assets/img/Individual.png";
+import Img2 from "../../assets/img/couple.png";
+import Img3 from "../../assets/img/teen.png";
 import bgImg1 from "../../assets/img/kindergarten-01-back618d.jpg";
 import bgImg2 from "../../assets/img/kindergarten-03-back6149.jpg";
 import bgImg3 from "../../assets/img/kindergarten-04-backab08.jpg";
@@ -25,24 +25,23 @@ export default function PlansCards() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Infant</a>
+                    <a href="/elements/service#">Individual Counselling (For Myself)</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
-                      <i class="feather-heart"></i> Health and Wellness
+                      <i class="feather-heart"></i> Work-Related Stress
                     </li>
                     <li>
-                      <i class="feather-flag"></i> Literacy and Language
+                      <i class="feather-flag"></i>  Burnout Prevention
                     </li>
                     <li>
-                      <i class="feather-eye"></i> Social-Emotional Learning
+                      <i class="feather-eye"></i> Emotional Support
                     </li>
                     <li>
-                      <i class="feather-edit-2"></i> Visual and Creative Arts
+                      <i class="feather-edit-2"></i> Career Transitions
                     </li>
                     <li>
-                      <i class="feather-battery-charging"></i> Thinking and
-                      Learning
+                      <i class="feather-battery-charging"></i> Stress Management
                     </li>
                   </ul>
                   <a
@@ -59,8 +58,9 @@ export default function PlansCards() {
                     <LazyImage alt="card-icon" dim={"300-490"} src={bgImg1} />
                   </div>
                   <p>
-                    Babies enjoy classrooms made for exploring with teachers who
-                    support today’s big milestones.
+                  Individual counseling offers a unique opportunity to explore and resolve personal challenges. 
+                  With customized sessions and proven therapeutic techniques, 
+                  therapists work with you to foster a healthier, more fulfilling life.
                   </p>
                 </div>
                 <a
@@ -82,24 +82,23 @@ export default function PlansCards() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Toddler/Twos</a>
+                    <a href="/elements/service#">Couple Counselling (For Myself and My Partner)</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
-                      <i class="feather-heart"></i> Health and Wellness
+                      <i class="feather-heart"></i>Strengthened Emotional Bond
                     </li>
                     <li>
-                      <i class="feather-flag"></i> Literacy and Language
+                      <i class="feather-flag"></i> Conflict Resolution
                     </li>
                     <li>
-                      <i class="feather-eye"></i> Social-Emotional Learning
+                      <i class="feather-eye"></i> Rebuilding Trust
                     </li>
                     <li>
-                      <i class="feather-edit-2"></i> Visual and Creative Arts
+                      <i class="feather-edit-2"></i> Enhanced Mutual Respect and Appreciation
                     </li>
                     <li>
-                      <i class="feather-battery-charging"></i> Thinking and
-                      Learning
+                      <i class="feather-battery-charging"></i> Understanding Patterns and Dynamics
                     </li>
                   </ul>
                   <a
@@ -116,8 +115,10 @@ export default function PlansCards() {
                     <LazyImage alt="card-icon" dim={"300-490"} src={bgImg3} />
                   </div>
                   <p>
-                    Babies enjoy classrooms made for exploring with teachers who
-                    support today’s big milestones.
+                  Couple counseling is a collaborative process where we work together to understand and 
+                  address your relationship concerns. Through tailored sessions and proven therapeutic techniques, 
+                  Therapists aim to help you navigate challenges and
+                   build a stronger, healthier, and more fulfilling relationship.
                   </p>
                 </div>
                 <a
@@ -139,7 +140,7 @@ export default function PlansCards() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="/elements/service#">Preschool</a>
+                    <a href="/elements/service#">Teen Counseling (For My Child)</a>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>

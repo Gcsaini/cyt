@@ -2,74 +2,78 @@ export default function Content() {
   return (
     <div className="rbt-article-content-wrapper">
       <div className="content">
-        <h4>Welcome to Imroz Privacy Policy</h4>
+        
+        <h4>Why Join us</h4>
         <ol>
           <li>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur (the “Sites”).
+          <b>Profile Management Made Easy:</b> Access our intuitive therapist dashboard to effortlessly manage your profile, 
+          update information, and showcase your expertise.
           </li>
           <li>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo.
+          <b>Streamlined Booking Process:</b> Simplify appointment scheduling with clients through our platform, reducing administrative 
+          hassle and maximizing your time for what matters most-therapy.
           </li>
           <li>
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-            fugit, sed quia consequuntur magni dolores eos qui ratione
-            voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-            numquam eius modi tempora incidunt ut labore et dolore magnam
-            aliquam quaerat voluptatem.
+          <b>Marketing Support:</b> Benefit from our marketing initiatives to boost your visibility and attract more clients. 
+          We're committed to helping you grow your practice.
           </li>
+          <li>
+          <b>Professional Development:</b> Enjoy access to a wide range of events and workshops organized by Choose Your Therapist LLP. Stay updated with 
+          the latest trends and techniques in mental health therapy.
+          </li>
+          
         </ol>
-        <h4>The type of personal information we collect</h4>
+        <h4>Requirements</h4>
         <ol>
           <li>
-            We collect certain personal information about visitors and users of
-            our Sites.
-            <a href="http://rainbowit.net/themes/imroz">
-              http://rainbowit.net/themes/imroz
-            </a>
+          Therapists must have a valid license issued by a recognized regulatory body in India, such as: <br/>
+          Rehabilitation Council of India (RCI) certification for Clinical Psychologists.<br/>
+          License for Psychiatrists from the Medical Council of India (MCI) or relevant State Medical Council.
+<br/>Licensed Counselors with certification from recognized institutions.
+
           </li>
           <li>
-            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
-            autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-            nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-            voluptas nulla pariatur.
+          Therapists must possess a minimum of a Master's degree in Psychology, Counseling, Psychiatry,
+           or a related field from a recognized university.
           </li>
+          <li>
+          Membership with professional bodies such as the Indian Association of Clinical Psychologists (IACP), Indian Psychiatric Society 
+          (IPS), or similar organizations is preferred.
+          </li>
+          <li>
+          Therapists must have a minimum of 3 years of experience in providing therapy for adults, couples, and/or teens.
+          </li>
+          <li>
+          Experience in specific therapeutic areas such as Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), Family Therapy, or any other relevant modalities is preferred.
+
+          </li>
+          <li>
+          Therapists must have access to a desktop or laptop computer with a reliable internet connection and a functional webcam to conduct online therapy sessions.
+          </li>
+          <li>
+          Therapists must currently reside in India.
+          </li>
+          <li>
+          Proficiency in English and at least one regional language to cater to a diverse client base.
+          </li>
+          <li>
+          Willingness to offer flexible hours, including evenings and weekends, to accommodate clients' schedules.
+          </li>
+          <p><b>Note:</b>Interns or those requiring supervision to provide therapy services cannot join the Choose Your Therapist LLP platform at this time. Therapists on our platform are not employees of Choose Your Therapist LLP but act as independent providers.</p>
         </ol>
-        <h4>How we collect personal information</h4>
+        <h4>How to Join</h4>
         <ol>
           <li>
-            I must explain to you how all this mistaken idea of denouncing
-            pleasure and praising pain was born and I will give you Link
-            complete account of the system, and expound the actual teachings.
+          Submit Resume
           </li>
           <li>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti quos
-            dolores et quas molestias excepturi sint occaecati cupiditate non
-            provident similique sunt in culpa qui officia deserunt mollitia
-            animi, id est laborum et dolorum fuga.
+            Approval for Profile within 14 days  
           </li>
           <li>
-            On the other hand, we denounce with righteous indignation and
-            dislike men who are so beguiled and demoralized by the charms of
-            pleasure of the moment, so blinded by desire, that they cannot
-            foresee the pain and trouble that are bound to ensue; and equal
-            blame belongs to those who fail in their duty through weakness of
-            will, which is the same as saying through shrinking from toil and
-            pain. These cases are perfectly simple and easy to distinguish. In
-            Link free hour, when our power of choice is untrammelled and when
-            nothing prevents our being able to do what we like best, every
-            pleasure is to be welcomed and every pain avoided. But in certain
-            circumstances and owing to the claims of duty or the obligations
+            Create Profile
+          </li>
+          <li>
+            Activation 
           </li>
         </ol>
       </div>

@@ -1,5 +1,8 @@
 import DeepakImg from "../assets/img/dpk.jpeg";
+
 import LazyImage from "../utils/lazy-image";
+import BookBtn from "./global/book-btn";
+import ViewProfileBtn from "./global/view-profile-btn";
 
 export default function TherapistCard() {
   return (
@@ -13,7 +16,7 @@ export default function TherapistCard() {
         <div className="rbt-card-body">
           <ul className="rbt-meta">
             <li>
-              <i className="feather-map-pin"></i>Deharadun
+              <i className="feather-message-circle"></i>Hindi, English
             </li>
             <li>
               <i className="feather-award"></i>3 Year Experience
@@ -24,12 +27,14 @@ export default function TherapistCard() {
           </h4>
           <div style={{ marginTop: 7 }}>
             <span>
-              <i className="feather-map-pin"></i> Counseling Psychologist
+              <i className="feather-user"></i> Counseling Psychologist
             </span>
           </div>
+
           <div style={{ marginTop: 7 }}>
             <span>
-              <i className="feather-map-pin"></i> Hindi, English
+              <i className="feather-heart"></i> Individual Counselling, Couple
+              Counselling, Teen Counselling
             </span>
           </div>
 
@@ -47,16 +52,11 @@ export default function TherapistCard() {
             style={{
               marginTop: 17,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-between",
             }}
           >
-            <a
-              className="rbt-btn btn-gradient btn-sm"
-              href="index.html#"
-              style={{ paddingLeft: 50, paddingRight: 50 }}
-            >
-              <span data-text="Join Now">Book Now</span>
-            </a>
+            <BookBtn />
+            <ViewProfileBtn />
           </div>
         </div>
       </div>

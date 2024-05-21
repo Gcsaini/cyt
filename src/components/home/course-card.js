@@ -1,5 +1,5 @@
-import Course from "../../assets/img/course-018c85.jpg";
-import Avatar from "../../assets/img/avatar-027dc8.png";
+import Course from "../../assets/img/BUSSINESSS.png";
+
 import LazyImage from "../../utils/lazy-image";
 export default function CourseCard() {
   return (
@@ -50,11 +50,7 @@ export default function CourseCard() {
             science, automation, build websites, games and apps!
           </p>
           <div className="rbt-author-meta mb--10">
-            <div className="rbt-avater">
-              <a href="profile/%5bprofileId%5d">
-                <LazyImage alt="Sophia Jaymes" dim={"33"} src={Avatar} />
-              </a>
-            </div>
+            
             <div className="rbt-author-info">
               By
               <a href="profile/%5bprofileId%5d">Claudia Pruitt</a>

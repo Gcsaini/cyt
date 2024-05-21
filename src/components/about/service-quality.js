@@ -10,7 +10,7 @@ export default function ServiceQuality() {
         <div class="row mb--60">
           <div class="col-lg-12">
             <div class="section-title text-center">
-              <h2 class="title">Providing</h2>
+              <h2 class="title">We're committed to making your mental health our top priority.</h2>
             </div>
           </div>
         </div>
@@ -23,11 +23,11 @@ export default function ServiceQuality() {
                 </div>
                 <div class="content">
                   <h6 class="title">
-                    <a href="/pages/about-us-02#">Your Apply</a>
+                    <a href="/pages/about-us-02#">Holistic wellness</a>
                   </h6>
                   <p class="description">
-                    English Learning looking for random paragraphs, you've come
-                    to the right place. When a random.
+                  We take a holistic approach to mental health, considering all aspects 
+                  of your life and well-being to provide comprehensive care.
                   </p>
                 </div>
                 <span class="number-text">1</span>
@@ -42,11 +42,11 @@ export default function ServiceQuality() {
                 </div>
                 <div class="content">
                   <h6 class="title">
-                    <a href="/pages/about-us-02#">We Connect</a>
+                    <a href="/pages/about-us-02#">Easy to Access</a>
                   </h6>
                   <p class="description">
-                    Javascript Learning looking for random paragraphs, you've
-                    come to the right place. When a random.
+                  We offer convenient access to therapy through our online 
+                  platform, making it easier for you to get the help you need.
                   </p>
                 </div>
                 <span class="number-text">2</span>
@@ -61,11 +61,11 @@ export default function ServiceQuality() {
                 </div>
                 <div class="content">
                   <h6 class="title">
-                    <a href="/pages/about-us-02#">You Get Ready</a>
+                    <a href="/pages/about-us-02#">Personalized Care</a>
                   </h6>
                   <p class="description">
-                    Angular Learning looking for random paragraphs, you've come
-                    to the right place. When a random.
+                  We tailor our services to meet your individual needs, ensuring you 
+                  receive personalized care that addresses your specific concerns.
                   </p>
                 </div>
                 <span class="number-text">3</span>
@@ -80,11 +80,12 @@ export default function ServiceQuality() {
                 </div>
                 <div class="content">
                   <h6 class="title">
-                    <a href="/pages/about-us-02#">Completed</a>
+                    <a href="/pages/about-us-02#">Qualified Experts</a>
                   </h6>
                   <p class="description">
-                    Php Learning looking for random paragraphs, you've come to
-                    the right place. When a random.
+                  Our platform offers a diverse range of therapists with expertise 
+                  in various modalities and specialties,allowing you to find a therapist 
+                   that best fits your needs.
                   </p>
                 </div>
                 <span class="number-text">4</span>

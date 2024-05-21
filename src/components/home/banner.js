@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -19,7 +19,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <div className="rbt-banner-area rbt-banner-1 variation-2 height-750">
+    <div className="rbt-banner-area rbt-banner-1">
       <div className="container mt--60">
         <div className="row justify-content-between align-items-center">
           <div
@@ -35,41 +35,42 @@ export default function Banner() {
                   <span className="rbt-new-badge-icon">
                     <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                   </span>{" "}
-                  Discover mental wellness solutions.
+                  Discover mental health experts.
                 </div>
-                <h4 className="title">
-                  Find your therapist <br />
-                  and start&nbsp;
-                  <span className="header-caption ms-2">
-                    <span className="cd-headline rotate-1">
-                      <span className="cd-words-wrapper">
+                <h4 class="title">
+                  Find your therapist and start
+                  <br />
+                  journey to mental wellness.&nbsp;
+                  <span class="header-caption ms-2">
+                    <span class="cd-headline rotate-1">
+                      <span class="cd-words-wrapper">
                         <b
-                          className={
+                          class={
                             hideShow
                               ? "is-visible theme-gradient"
                               : "is-hidden theme-gradient"
                           }
                         >
-                          Personalized
+                          Personalized & Holistic
                         </b>
                         <b
-                          className={
+                          class={
                             hideShow
                               ? "is-hidden theme-gradient"
                               : "is-visible theme-gradient"
                           }
                         >
-                          Affordable
+                          Affordable & Supportive
                         </b>
                       </span>
                     </span>
                   </span>
                   <br />
-                  journey to mental wellness.
+                  mental health solutions.
                 </h4>
                 <p className="description">
                   we provide mental health experts every step of the way to your
-                  <strong>well-being.</strong>.
+                  <strong> well-being.</strong>
                 </p>
                 <div className="slider-btn">
                   <a
@@ -94,6 +95,7 @@ export default function Banner() {
             className="col-lg-4 col-md-12 col-sm-12 col-12"
             style={{
               marginTop: isMobile ? 10 : 60,
+              marginBottom: 100,
             }}
           >
             <div className="content">
@@ -102,7 +104,6 @@ export default function Banner() {
                   <div className="swiper-wrapper">
                     <Swiper
                       style={{
-                        "--swiper-pagination-bottom": 0,
                         height: isMobile ? 500 : isTablet ? 440 : 550,
                         width: "100%",
                       }}
@@ -126,10 +127,7 @@ export default function Banner() {
                         delay: 3000,
                         disableOnInteraction: false,
                       }}
-                      pagination={{
-                        clickable: true,
-                      }}
-                      modules={[Autoplay, Pagination]}
+                      modules={[Autoplay]}
                       className="mySwiper"
                     >
                       {[1, 2, 3, 4].map((item, index) => {

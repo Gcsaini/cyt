@@ -120,7 +120,7 @@ export default function Login() {
                           id="rememberme"
                           name="rememberme"
                         />
-                        <label for="rememberme">Remember me</label>
+                        <label htmlFor="rememberme">Remember me</label>
                       </div>
                     </div>
                     <div className="col-lg-6">
