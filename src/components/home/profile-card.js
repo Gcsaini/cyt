@@ -8,6 +8,7 @@ import ayushi from "../../assets/img/ayushi.png";
 import anjali from "../../assets/img/anjali.png";
 import LazyImage from "../../utils/lazy-image";
 import BookBtn from "../global/book-btn";
+import ViewProfileBtn from "../global/view-profile-btn";
 export default function ProfileCard() {
   return (
     <div className="rbt-rbt-card-area rbt-section-gap bg-color-extra2">
@@ -50,7 +51,7 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="/course-details">
+                    <a href="">
                       <LazyImage alt="Card" dim={"324-231"} src={Profile} />
                     </a>
                   </div>
@@ -67,17 +68,13 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a
-                          className="rbt-round-btn"
-                          title="Bookmark"
-                          href="/elements/card#"
-                        >
+                        <a className="rbt-round-btn" title="Bookmark" href="">
                           <i className="feather-bookmark"></i>
                         </a>
                       </div>
                     </div>
                     <h4 className="rbt-card-title">
-                      <a href="/course-details">Deepak Kumar</a>
+                      <a href="">Deepak Kumar</a>
                     </h4>
                     <ul className="rbt-meta">
                       <li>
@@ -96,8 +93,15 @@ export default function ProfileCard() {
                         Counselling, Couple Counselling, Teen Counselling
                       </li>
                     </ul>
-
-                    <BookBtn />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <BookBtn />
+                      <ViewProfileBtn />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -106,7 +110,7 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="/course-details">
+                    <a href="">
                       <LazyImage alt="Card" dim={"324-231"} src={fab} />
                     </a>
                   </div>
@@ -123,17 +127,13 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a
-                          className="rbt-round-btn"
-                          title="Bookmark"
-                          href="/elements/card#"
-                        >
+                        <a className="rbt-round-btn" title="Bookmark" href="">
                           <i className="feather-bookmark"></i>
                         </a>
                       </div>
                     </div>
                     <h4 className="rbt-card-title">
-                      <a href="/course-details">Fabiha Sultana Shaik</a>
+                      <a href="">Fabiha Sultana Shaik</a>
                     </h4>
                     <ul className="rbt-meta">
                       <li>
@@ -151,7 +151,15 @@ export default function ProfileCard() {
                         Counselling, Couple Counselling, Teen Counselling
                       </li>
                     </ul>
-                    <BookBtn />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <BookBtn />
+                      <ViewProfileBtn />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -160,7 +168,7 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="/course-details">
+                    <a href="">
                       <LazyImage alt="Card" dim={"324-231"} src={ayushi} />
                     </a>
                   </div>
@@ -177,11 +185,7 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a
-                          className="rbt-round-btn"
-                          title="Bookmark"
-                          href="/elements/card#"
-                        >
+                        <a className="rbt-round-btn" title="Bookmark" href="">
                           <i className="feather-bookmark"></i>
                         </a>
                       </div>
@@ -206,7 +210,15 @@ export default function ProfileCard() {
                       </li>
                     </ul>
 
-                    <BookBtn />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <BookBtn />
+                      <ViewProfileBtn />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -215,7 +227,7 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="/course-details">
+                    <a href="">
                       <LazyImage alt="Card" dim={"324-231"} src={anjali} />
                     </a>
                   </div>
@@ -232,11 +244,7 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a
-                          className="rbt-round-btn"
-                          title="Bookmark"
-                          href="/elements/card#"
-                        >
+                        <a className="rbt-round-btn" title="Bookmark" href="">
                           <i className="feather-bookmark"></i>
                         </a>
                       </div>
@@ -260,7 +268,15 @@ export default function ProfileCard() {
                         Counselling, Couple Counselling, Teen Counselling
                       </li>
                     </ul>
-                    <BookBtn />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <BookBtn />
+                      <ViewProfileBtn />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -272,7 +288,7 @@ export default function ProfileCard() {
             <div className="load-more-btn mt--60 text-center">
               <a
                 className="rbt-btn btn-gradient btn-lg hover-icon-reverse"
-                href="index.html#"
+                href=""
               >
                 <span className="icon-reverse-wrapper">
                   <span className="btn-text">Find More Experts</span>
