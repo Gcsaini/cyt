@@ -16,7 +16,7 @@ const teamInfo = [
     address: " Uttarakhand, IN",
     phone: "+91-8077757951",
     email: "director@chooseyourtherapist.in",
-    instagra: "",
+    instagram: "",
     facebook: "",
     linkdin: "",
     profile: TeamImg,
@@ -30,7 +30,7 @@ const teamInfo = [
     address: " Uttarakhand, IN",
     phone: "1234567890",
     email: "dummy3@gmail.com",
-    instagra: "",
+    instagram: "",
     facebook: "",
     linkdin: "",
     profile: TeamImg4,
@@ -40,16 +40,16 @@ const teamInfo = [
 
   {
     name: "Mr. Gopichand Saini",
-    deg: "Cheif Technology officer | Web-Developer",
+    deg: "Cheif Technology officer",
     address: " Noida, Uttarpradesh, IN",
-    phone: "1234567890",
+    phone: "+918755512976",
     email: "techsupport@chooseyourtherapist.in",
-    instagra: "",
-    facebook: "",
-    linkdin: "",
+    instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
+    facebook: "https://www.facebook.com/gopichand.saini.3?mibextid=ZbWKwL",
+    linkdin: "https://www.linkedin.com/in/gopichand-saini-0a979313b/",
     profile: TeamImg5,
     content:
-      "I aim to create accessible, effective, and personalized mental health support systems that not only enhance employee well-being but also drive our mission forward. Together, we can build a future where mental health is prioritized, and technology acts as a catalyst for positive change.",
+      "Welcome to CYT, where innovation meets excellence. As the Chief Technology Officer, I am proud to lead a dedicated team committed to delivering cutting-edge solutions that drive your success. Our passion for technology, combined with our customer-centric approach, empowers us to create impactful, sustainable, and scalable innovations. Join us on our journey to shape the future, one breakthrough at a time.",
   },
   {
     name: "Ms. Fabiha Sultana Shaik",
@@ -57,7 +57,7 @@ const teamInfo = [
     address: " Noida, Uttarpradesh, IN",
     phone: "1234567890",
     email: "advisor@chooseyourtherapist.in",
-    instagra: "",
+    instagram: "",
     facebook: "",
     linkdin: "",
     profile: TeamImg3,
@@ -70,7 +70,7 @@ const teamInfo = [
     address: " Uttarakhand, IN",
     phone: "1234567890",
     email: "advisor@chooseyourtherapist.in",
-    instagra: "",
+    instagram: "",
     facebook: "",
     linkdin: "",
     profile: vibhor,
@@ -83,7 +83,7 @@ const teamInfo = [
     address: " Uttarakhand, IN",
     phone: "1234567890",
     email: "advisor@chooseyourtherapist.in",
-    instagra: "",
+    instagram: "",
     facebook: "",
     linkdin: "",
     profile: TeamImg6,
@@ -93,12 +93,12 @@ const teamInfo = [
 ];
 export default function TeamBanner() {
   const [team, setTeam] = React.useState(teamInfo[0]);
+  const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
   const handleClick = (id) => {
-    console.log("id", id);
     setTeam(teamInfo[id]);
+    setSelectedIndex(id);
   };
-  console.log("team", team);
   return (
     <div
       className="rbt-team-area bg-color-white rbt-section-gapBottom"
@@ -160,7 +160,7 @@ export default function TeamBanner() {
                         </a>
                       </li>
                       <li>
-                        <a href={team.instagra} target="_blank">
+                        <a href={team.instagram} target="_blank">
                           <i className="feather-instagram"></i>
                         </a>
                       </li>
@@ -186,18 +186,15 @@ export default function TeamBanner() {
             </div>
           </div>
           <div className="col-lg-5">
-            <ul
-              className="rbt-team-tab-thumb nav nav-tabs"
-              id="myTab"
-              role="tablist"
-            >
+            <ul className="rbt-team-tab-thumb nav nav-tabs" id="myTab">
               {teamInfo.map((item, index) => {
                 return (
                   <li key={index}>
                     <a
                       onClick={() => handleClick(index)}
                       id="team-tab0-tab"
-                      role="tab"
+                      className={index == selectedIndex ? "active" : ""}
+                      aria-selected={index == selectedIndex ? "true" : "false"}
                     >
                       <div className="rbt-team-thumbnail">
                         <div className="thumb">

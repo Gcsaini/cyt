@@ -1,6 +1,54 @@
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 export default function NewsLetter() {
+  const { ref, inView } = useInView({ threshold: 0 });
+  const initialValue = 0;
+  const [count, setCount] = useState(initialValue);
+  const [count1, setCount1] = useState(initialValue);
+  const duration = 50;
+  const duration1 = 2500;
+  const targetValue = 1000;
+  const targetValue1 = 100;
+
+  useEffect(() => {
+    let startValue = initialValue;
+    const interval = Math.floor(duration / (targetValue - initialValue));
+
+    const counter = setInterval(() => {
+      startValue += 1;
+      setCount(startValue);
+      if (startValue >= targetValue) {
+        clearInterval(counter);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [targetValue, initialValue, inView]);
+
+  useEffect(() => {
+    let startValue = initialValue;
+    const interval = Math.floor(duration1 / (targetValue1 - initialValue));
+
+    const counter = setInterval(() => {
+      startValue += 1;
+      setCount1(startValue);
+      if (startValue >= targetValue1) {
+        clearInterval(counter);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [targetValue1, initialValue, inView]);
+
   return (
-    <div className="rbt-newsletter-area newsletter-style-2 bg-color-primary rbt-section-gap">
+    <div
+      className="rbt-newsletter-area newsletter-style-2 bg-color-primary rbt-section-gap"
+      ref={ref}
+    >
       <div className="container">
         <div className="row row--15 align-items-center">
           <div className="col-lg-12">
@@ -44,7 +92,7 @@ export default function NewsLetter() {
                     <div className="inner">
                       <div className="content">
                         <h3 className="counter color-white">
-                          <span className="odometer">1000</span>
+                          <span className="odometer">{count}</span>
                         </h3>
                         <h5 className="title color-white">
                           Successfull Sessions
@@ -61,7 +109,7 @@ export default function NewsLetter() {
                     <div className="inner">
                       <div className="content">
                         <h3 className="counter color-white">
-                          <span className="odometer">100</span>
+                          <span className="odometer">{count1}</span>
                         </h3>
                         <h5 className="title color-white">
                           Training & Wrokshops
