@@ -6,10 +6,12 @@ import Profile from "../../assets/img/founder.png";
 import fab from "../../assets/img/fab.png";
 import ayushi from "../../assets/img/ayushi.png";
 import anjali from "../../assets/img/anjali.png";
-import LazyImage from "../../utils/lazy-image";
 import BookBtn from "../global/book-btn";
-import ViewProfileBtn from "../global/view-profile-btn";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ImageTag from "../../utils/image-tag";
 export default function ProfileCard() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <div className="rbt-rbt-card-area rbt-section-gap bg-color-extra2">
       <div className="container">
@@ -23,7 +25,7 @@ export default function ProfileCard() {
             </div>
           </div>
         </div>
-        <div className="row row--15">
+        <div className="row row--15" style={{ margin: isMobile ? 5 : 0 }}>
           <Swiper
             spaceBetween={50}
             breakpoints={{
@@ -32,7 +34,7 @@ export default function ProfileCard() {
                 spaceBetween: 40,
               },
               768: {
-                slidesPerView: 1,
+                slidesPerView: 2,
                 spaceBetween: 30,
               },
               1024: {
@@ -40,6 +42,7 @@ export default function ProfileCard() {
                 spaceBetween: 40,
               },
             }}
+            loop={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -52,7 +55,12 @@ export default function ProfileCard() {
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
                     <a href="">
-                      <LazyImage alt="Card" dim={"324-231"} src={Profile} />
+                      <ImageTag
+                        alt="Card"
+                        height={"324"}
+                        width={"231"}
+                        src={Profile}
+                      />
                     </a>
                   </div>
                   <div className="rbt-card-body">
@@ -76,7 +84,7 @@ export default function ProfileCard() {
                     <h4 className="rbt-card-title">
                       <a href="">Deepak Kumar</a>
                     </h4>
-                    <ul className="rbt-meta">
+                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
                         <i className="feather-book"></i>Available
                       </li>
@@ -89,18 +97,28 @@ export default function ProfileCard() {
                         Hindi
                       </li>
                       <li>
-                        <i className="feather-heart"></i> Individual
-                        Counselling, Couple Counselling, Teen Counselling
+                        <div style={{ display: "flex" }}>
+                          <span>
+                            <i className="feather-heart"></i>
+                          </span>
+                          <span style={{ lineHeight: "18px" }}>
+                            Individual Counselling, Couple Counselling, Teen
+                            Counselling
+                          </span>
+                        </div>
                       </li>
                     </ul>
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                        marginTop: 5,
                       }}
                     >
+                      <a class="view-btn view-btn-border" href="">
+                        View Profile
+                      </a>
                       <BookBtn />
-                      <ViewProfileBtn />
                     </div>
                   </div>
                 </div>
@@ -111,7 +129,12 @@ export default function ProfileCard() {
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
                     <a href="">
-                      <LazyImage alt="Card" dim={"324-231"} src={fab} />
+                      <ImageTag
+                        alt="Card"
+                        height={"324"}
+                        width={"231"}
+                        src={fab}
+                      />
                     </a>
                   </div>
                   <div className="rbt-card-body">
@@ -135,7 +158,7 @@ export default function ProfileCard() {
                     <h4 className="rbt-card-title">
                       <a href="">Fabiha Sultana Shaik</a>
                     </h4>
-                    <ul className="rbt-meta">
+                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
                         <i className="feather-book"></i>Available
                       </li>
@@ -147,18 +170,28 @@ export default function ProfileCard() {
                         Hindi
                       </li>
                       <li>
-                        <i className="feather-heart"></i> Individual
-                        Counselling, Couple Counselling, Teen Counselling
+                        <div style={{ display: "flex" }}>
+                          <span>
+                            <i className="feather-heart"></i>
+                          </span>
+                          <span style={{ lineHeight: "18px" }}>
+                            Individual Counselling, Couple Counselling, Teen
+                            Counselling
+                          </span>
+                        </div>
                       </li>
                     </ul>
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                        marginTop: 5,
                       }}
                     >
+                      <a class="view-btn view-btn-border" href="">
+                        View Profile
+                      </a>
                       <BookBtn />
-                      <ViewProfileBtn />
                     </div>
                   </div>
                 </div>
@@ -169,7 +202,12 @@ export default function ProfileCard() {
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
                     <a href="">
-                      <LazyImage alt="Card" dim={"324-231"} src={ayushi} />
+                      <ImageTag
+                        alt="Card"
+                        height={"324"}
+                        width={"231"}
+                        src={ayushi}
+                      />
                     </a>
                   </div>
                   <div className="rbt-card-body">
@@ -193,7 +231,7 @@ export default function ProfileCard() {
                     <h4 className="rbt-card-title">
                       <a href="/course-details">Ayushi Pandwal</a>
                     </h4>
-                    <ul className="rbt-meta">
+                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
                         <i className="feather-book"></i>Available
                       </li>
@@ -205,8 +243,15 @@ export default function ProfileCard() {
                         Hindi
                       </li>
                       <li>
-                        <i className="feather-heart"></i> Individual
-                        Counselling, Couple Counselling, Teen Counselling
+                        <div style={{ display: "flex" }}>
+                          <span>
+                            <i className="feather-heart"></i>
+                          </span>
+                          <span style={{ lineHeight: "18px" }}>
+                            Individual Counselling, Couple Counselling, Teen
+                            Counselling
+                          </span>
+                        </div>
                       </li>
                     </ul>
 
@@ -214,10 +259,13 @@ export default function ProfileCard() {
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                        marginTop: 5,
                       }}
                     >
+                      <a class="view-btn view-btn-border" href="">
+                        View Profile
+                      </a>
                       <BookBtn />
-                      <ViewProfileBtn />
                     </div>
                   </div>
                 </div>
@@ -228,7 +276,12 @@ export default function ProfileCard() {
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
                     <a href="">
-                      <LazyImage alt="Card" dim={"324-231"} src={anjali} />
+                      <ImageTag
+                        alt="Card"
+                        height={"324"}
+                        width={"231"}
+                        src={anjali}
+                      />
                     </a>
                   </div>
                   <div className="rbt-card-body">
@@ -252,7 +305,7 @@ export default function ProfileCard() {
                     <h4 className="rbt-card-title">
                       <a href="/course-details">Anjali Suyal</a>
                     </h4>
-                    <ul className="rbt-meta">
+                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
                         <i className="feather-book"></i>Available
                       </li>
@@ -264,18 +317,28 @@ export default function ProfileCard() {
                         Hindi
                       </li>
                       <li>
-                        <i className="feather-heart"></i> Individual
-                        Counselling, Couple Counselling, Teen Counselling
+                        <div style={{ display: "flex" }}>
+                          <span>
+                            <i className="feather-heart"></i>
+                          </span>
+                          <span style={{ lineHeight: "18px" }}>
+                            Individual Counselling, Couple Counselling, Teen
+                            Counselling
+                          </span>
+                        </div>
                       </li>
                     </ul>
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                        marginTop: 5,
                       }}
                     >
+                      <a class="view-btn view-btn-border" href="">
+                        View Profile
+                      </a>
                       <BookBtn />
-                      <ViewProfileBtn />
                     </div>
                   </div>
                 </div>

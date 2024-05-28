@@ -29394,6 +29394,45 @@ fieldset:disabled {
   outline: none;
   text-decoration: none;
 }
+
+.out-btn {
+  padding: 0 26px;
+  background: var(--color-primary);
+  height: 45px;
+  line-height: 60px;
+  color: var(--color-white);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease-in-out;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+}
+
+.view-btn {
+  padding: 0 12px;
+  background: var(--color-primary);
+  height: 45px;
+  line-height: 60px;
+  color: var(--color-white);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease-in-out;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+}
+
 .rbt-btn.btn-secondary {
   background: var(--color-secondary);
 }
@@ -29433,11 +29472,35 @@ fieldset:disabled {
   color: var(--color-heading);
   line-height: 57px;
 }
+
+.out-btn.out-btn-border {
+  background: transparent;
+  border: 2px solid var(--color-success);
+  color: var(--color-heading);
+  line-height: 40px;
+}
+
+.view-btn.view-btn-border {
+  background: transparent;
+  border: 2px solid var(--color-success);
+  color: var(--color-heading);
+  line-height: 40px;
+}
+
 .rbt-btn.btn-border:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-white);
 }
+
+.out-btn.out-btn-border:hover {
+  border-color: #94aabd;
+}
+
+.view-btn.out-view-border:hover {
+  border-color: #94aabd;
+}
+
 .rbt-btn.btn-border.color-white-off {
   border-color: var(--color-border-2);
   color: var(--color-white-off);
@@ -29449,8 +29512,13 @@ fieldset:disabled {
 .rbt-btn.btn-gradient {
   color: var(--color-white);
   background-size: 300% 100%;
-  background: rgb(42,93,49);
-  background: linear-gradient(104deg, rgba(42,93,49,1) 0%, rgba(92,190,105,1) 96%, rgba(185,185,185,1) 100%);
+  background: rgb(42, 93, 49);
+  background: linear-gradient(
+    104deg,
+    rgba(42, 93, 49, 1) 0%,
+    rgba(92, 190, 105, 1) 96%,
+    rgba(185, 185, 185, 1) 100%
+  );
 }
 .rbt-btn.btn-gradient.btn-gradient-2 {
   background-image: linear-gradient(
@@ -29870,7 +29938,7 @@ fieldset:disabled {
   transition: 0.4s;
 }
 .rbt-btn.btn-border-gradient {
-  background: linear-gradient(90deg, #cfa2e8, #637fea);
+  background: linear-gradient(90deg, #2db95d, #4f5e97);
   border: none;
   outline: none;
   cursor: pointer;
@@ -30551,6 +30619,10 @@ span.transparent-button:hover i {
 .rbt-page-banner-wrapper .rbt-banner-content-top .title {
   font-size: 42px;
 }
+
+.banner-text-title {
+  font-size: 24px;
+}
 @media only screen and (max-width: 767px) {
   .rbt-page-banner-wrapper .rbt-banner-content-top .title {
     font-size: 32px;
@@ -30630,7 +30702,7 @@ span.transparent-button:hover i {
 .rbt-card {
   overflow: hidden;
   box-shadow: var(--shadow-1);
-  padding: 30px;
+  padding: 16px;
   border-radius: var(--radius);
   background: var(--color-white);
   position: relative;
@@ -30638,17 +30710,17 @@ span.transparent-button:hover i {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .rbt-card {
-    padding: 20px;
+    padding: 12px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .rbt-card {
-    padding: 20px;
+    padding: 12px;
   }
 }
 @media only screen and (max-width: 767px) {
   .rbt-card {
-    padding: 15px;
+    padding: 8px;
   }
 }
 .rbt-card .rbt-card-img {
@@ -30664,7 +30736,7 @@ span.transparent-button:hover i {
   border-radius: var(--radius);
 }
 .rbt-card .rbt-card-body {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .rbt-card .rbt-card-body {
@@ -30682,7 +30754,7 @@ span.transparent-button:hover i {
   }
 }
 .rbt-card .rbt-card-body .rbt-meta {
-  margin-bottom: 14px;
+  margin-bottom: 5px;
 }
 @media only screen and (max-width: 767px) {
   .rbt-card .rbt-card-body .rbt-meta {
@@ -30704,7 +30776,7 @@ span.transparent-button:hover i {
   }
 }
 .rbt-card .rbt-card-body .rbt-card-title {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .rbt-card .rbt-card-body .rbt-card-title a {
   color: var(--color-heading);
@@ -30713,7 +30785,7 @@ span.transparent-button:hover i {
   color: var(--color-primary);
 }
 .rbt-card .rbt-card-body .rbt-card-title {
-  font-size: 26px;
+  font-size: 24px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .rbt-card .rbt-card-body .rbt-card-title {
@@ -31072,7 +31144,7 @@ span.transparent-button:hover i {
   }
 }
 .rbt-card.card-list-2 .rbt-card-body .rbt-card-title {
-  font-size: 26px;
+  font-size: 24px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .rbt-card.card-list-2 .rbt-card-body .rbt-card-title {

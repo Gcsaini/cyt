@@ -31,21 +31,27 @@ export default function Banner() {
           >
             <div className="content">
               <div className="inner">
-                <div className="rbt-new-badge rbt-new-badge-one">
+                <div
+                  className="rbt-new-badge rbt-new-badge-one"
+                  style={{ marginTop: isMobile ? 20 : isTablet ? 25 : 0 }}
+                >
                   <span className="rbt-new-badge-icon">
                     <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                   </span>{" "}
                   Discover mental health experts.
                 </div>
-                <h4 class="title">
+                <h4
+                  className={isMobile ? "banner-text-title" : "title"}
+                  style={{ marginTop: isMobile ? 10 : 20 }}
+                >
                   Find your therapist and start
                   <br />
                   journey to mental wellness.&nbsp;
-                  <span class="header-caption ms-2">
-                    <span class="cd-headline rotate-1">
-                      <span class="cd-words-wrapper">
+                  <span className="header-caption ms-2">
+                    <span className="cd-headline rotate-1">
+                      <span className="cd-words-wrapper">
                         <b
-                          class={
+                          className={
                             hideShow
                               ? "is-visible theme-gradient"
                               : "is-hidden theme-gradient"
@@ -54,7 +60,7 @@ export default function Banner() {
                           Personalized & Holistic
                         </b>
                         <b
-                          class={
+                          className={
                             hideShow
                               ? "is-hidden theme-gradient"
                               : "is-visible theme-gradient"
@@ -104,7 +110,6 @@ export default function Banner() {
                   <div className="swiper-wrapper">
                     <Swiper
                       style={{
-                        height: isMobile ? 500 : isTablet ? 440 : 550,
                         width: "100%",
                       }}
                       breakpoints={{
@@ -127,6 +132,7 @@ export default function Banner() {
                         delay: 3000,
                         disableOnInteraction: false,
                       }}
+                      loop={true}
                       modules={[Autoplay]}
                       className="mySwiper"
                     >

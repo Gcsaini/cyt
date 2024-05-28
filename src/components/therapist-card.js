@@ -1,16 +1,15 @@
 import DeepakImg from "../assets/img/dpk.jpeg";
-
-import LazyImage from "../utils/lazy-image";
+import ImageTag from "../utils/image-tag";
 import BookBtn from "./global/book-btn";
-import ViewProfileBtn from "./global/view-profile-btn";
+import OutlineBtn from "./global/outline-btn";
 
 export default function TherapistCard() {
   return (
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
-      <div className="rbt-card variation-01 rbt-hover">
+      <div className="rbt-card variation-01">
         <div className="rbt-card-img">
-          <a href="/course-details/4">
-            <LazyImage alt="Card" dim={"488-710"} src={DeepakImg} />
+          <a href="">
+            <ImageTag alt="Card" height={"488"} width={"710"} src={DeepakImg} />
           </a>
         </div>
         <div className="rbt-card-body">
@@ -23,22 +22,27 @@ export default function TherapistCard() {
             </li>
           </ul>
           <h4 className="rbt-card-title">
-            <a href="/course-details/4">Deepak Kumar</a>
+            <a href="">Deepak Kumar</a>
           </h4>
-          <div style={{ marginTop: 7 }}>
+          <div style={{ marginTop: 7, display: "flex" }}>
             <span>
-              <i className="feather-user"></i> Counseling Psychologist
+              <i className="feather-user"></i>
+            </span>
+            <span style={{ fontSize: 16, marginLeft: 5 }}>
+              Counseling Psychologist
             </span>
           </div>
 
-          <div style={{ marginTop: 7 }}>
+          <div style={{ marginTop: 5, display: "flex" }}>
             <span>
-              <i className="feather-heart"></i> Individual Counselling, Couple
-              Counselling, Teen Counselling
+              <i className="feather-heart"></i>
+            </span>
+            <span style={{ fontSize: 16, marginLeft: 5 }}>
+              Individual Counselling, Couple Counselling, Teen Counselling
             </span>
           </div>
 
-          <div className="rbt-review" style={{ marginTop: 17 }}>
+          <div className="rbt-review" style={{ marginTop: 12 }}>
             <div className="rating">
               <i className="fas fa-star"></i>
               <i className="fas fa-star"></i>
@@ -50,13 +54,13 @@ export default function TherapistCard() {
           </div>
           <div
             style={{
-              marginTop: 17,
+              marginTop: 20,
               display: "flex",
               justifyContent: "space-between",
             }}
           >
+            <OutlineBtn title={"View Profile"} />
             <BookBtn />
-            <ViewProfileBtn />
           </div>
         </div>
       </div>
