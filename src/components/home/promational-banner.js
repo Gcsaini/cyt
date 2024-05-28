@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Banner from "../../assets/img/join.png";
@@ -19,39 +19,70 @@ export default function PromationalBanner() {
                 <Swiper
                   spaceBetween={50}
                   slidesPerView={1}
-                  pagination={{
-                    clickable: true,
-                  }}
                   autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
                   }}
-                  modules={[Pagination, Autoplay]}
+                  modules={[Autoplay]}
                   className="mySwiper"
                 >
-                  {[1, 2, 3].map((item) => {
-                    return (
-                      <SwiperSlide key={item}>
-                        <div
-                          className="swiper-slide"
-                          style={{
-                            width: isMobile ? 420 : isTablet ? 750 : 1125,
-                          }}
-                        >
-                          <div className="thumbnail">
-                            <a href="/13-university-classic#">
-                              <LazyImage
-                                alt="Banner"
-                                dim={"425-1305"}
-                                class={"rbt-radius w-100"}
-                                src={Banner}
-                              />
-                            </a>
-                          </div>
-                        </div>
-                      </SwiperSlide>
-                    );
-                  })}
+                  <SwiperSlide key={1}>
+                    <div
+                      className="swiper-slide"
+                      style={{
+                        width: isMobile ? 420 : isTablet ? 750 : 1125,
+                      }}
+                    >
+                      <div className="thumbnail">
+                        <a href="/13-university-classic#">
+                          <LazyImage
+                            alt="Banner"
+                            dim={"425-1305"}
+                            class={"rbt-radius w-100"}
+                            src={Banner}
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide key={2}>
+                    <div
+                      className="swiper-slide"
+                      style={{
+                        width: isMobile ? 420 : isTablet ? 750 : 1125,
+                      }}
+                    >
+                      <div className="thumbnail">
+                        <a href="/13-university-classic#">
+                          <LazyImage
+                            alt="Banner"
+                            dim={"425-1305"}
+                            class={"rbt-radius w-100"}
+                            src={Banner}
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide key={3}>
+                    <div
+                      className="swiper-slide"
+                      style={{
+                        width: isMobile ? 420 : isTablet ? 750 : 1125,
+                      }}
+                    >
+                      <div className="thumbnail">
+                        <a href="/13-university-classic#">
+                          <LazyImage
+                            alt="Banner"
+                            dim={"425-1305"}
+                            class={"rbt-radius w-100"}
+                            src={Banner}
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </SwiperSlide>
                 </Swiper>
               </div>
             </div>

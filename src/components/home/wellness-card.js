@@ -7,10 +7,6 @@ export default function WellNessCard() {
         <div className="rbt-card-img">
           <a href="">
             <ImageTag alt="Card image" width="355" height="244" src={img} />
-            <div className="rbt-badge-3 bg-white">
-              <span>-20%</span>
-              <span>Off</span>
-            </div>
           </a>
         </div>
         <div className="rbt-card-body">

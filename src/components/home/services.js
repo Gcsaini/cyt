@@ -23,7 +23,7 @@ export default function Services() {
           </div>
         </div>
         <div className="row g-5 mt--20">
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d"
@@ -43,7 +43,7 @@ export default function Services() {
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-3"
@@ -63,7 +63,7 @@ export default function Services() {
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-4"
@@ -83,7 +83,7 @@ export default function Services() {
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-2"
@@ -103,7 +103,7 @@ export default function Services() {
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-5"
@@ -123,7 +123,7 @@ export default function Services() {
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-6"
@@ -143,7 +143,7 @@ export default function Services() {
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle"
@@ -154,6 +154,26 @@ export default function Services() {
                 </div>
                 <div className="content">
                   <h5 className="title">CYT Projects</h5>
+                  <div className="read-more-btn">
+                    <span className="rbt-btn-link">
+                      Coming Soon<i className="feather-arrow-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+            <a
+              className="rbt-cat-box rbt-cat-box-1 text-center"
+              href="course-filter-one-toggle"
+            >
+              <div className="inner">
+                <div className="icons">
+                  <LazyImage alt="Icons" dim={"80"} src={ProjectsImg} />
+                </div>
+                <div className="content">
+                  <h5 className="title">Offers</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>

@@ -16,10 +16,10 @@ export default function TherapistCard() {
         </div>
         <div className="rbt-card-body">
           <ul className="rbt-meta">
-            <li>
+            <li style={{ fontSize: 16 }}>
               <i className="feather-message-circle"></i>Hindi, English
             </li>
-            <li>
+            <li style={{ fontSize: 16 }}>
               <i className="feather-award"></i>3 Year Experience
             </li>
           </ul>
@@ -63,7 +63,7 @@ export default function TherapistCard() {
             }}
           >
             <a
-              class="view-btn view-btn-border"
+              className="view-btn view-btn-border"
               href=""
               style={{ padding: isMobile ? "0 30px" : "0 22px" }}
             >

@@ -12,9 +12,7 @@ export default function Brands() {
         <div class="row align-items-center">
           <div class="col-lg-12">
             <div class="section-title text-center mb--40">
-              <span class="small-title w-800">
-                Partnership with
-              </span>
+              <span class="small-title w-800">Partnership with</span>
             </div>
             <ul class="brand-list brand-style-3 justify-content-center justify-content-lg-between">
               <Swiper
@@ -40,21 +38,55 @@ export default function Brands() {
                 modules={[Autoplay]}
                 className="mySwiper"
               >
-                {[1, 2, 3, 4, 5, 6, 7].map((item) => {
-                  return (
-                    <SwiperSlide key={item}>
-                      <li>
-                        <a href="/pages/about-us-02#">
-                          <LazyImage
-                            alt="Brand"
-                            dim={"35-103"}
-                            src={BrandImg}
-                          />
-                        </a>
-                      </li>
-                    </SwiperSlide>
-                  );
-                })}
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <li>
+                    <a href="">
+                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
+                    </a>
+                  </li>
+                </SwiperSlide>
               </Swiper>
             </ul>
           </div>

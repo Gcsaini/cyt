@@ -46,8 +46,9 @@ export default function NewsLetter() {
 
   return (
     <div
-      className="rbt-newsletter-area newsletter-style-2 bg-color-primary rbt-section-gap"
+      className="rbt-newsletter-area newsletter-style-2 rbt-section-gap"
       ref={ref}
+      style={{ background: "#134f2a" }}
     >
       <div className="container">
         <div className="row row--15 align-items-center">

@@ -108,7 +108,7 @@ export default function App() {
                       About us
                     </a>
                   </li>
-                
+
                   <li>
                     <a
                       href={"#"}
@@ -227,7 +227,6 @@ export default function App() {
                   Plans<i className="feather-chevron-down"></i>
                 </a>
               </li>
-
               <li className="position-static">
                 <a
                   href={"#"}
@@ -247,15 +246,16 @@ export default function App() {
                 >
                   Faqs
                 </a>
-              </li>  <li>
-                    <a
-                      href={"#"}
-                      onClick={() => handleClick("/join-us")}
-                      style={{ cursor: "pointer" }}
-                    >
-                      Join us
-                    </a>
-                  </li>
+              </li>{" "}
+              <li>
+                <a
+                  href={"#"}
+                  onClick={() => handleClick("/join-us")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Join us
+                </a>
+              </li>
             </ul>
           </nav>
           <div className="mobile-menu-bottom">
@@ -344,7 +344,7 @@ export default function App() {
                             About us
                           </a>
                         </li>
-                      
+
                         <li className="has-dropdown">
                           <a
                             href={"#"}
@@ -501,7 +501,7 @@ export default function App() {
                         className="service-menu-parent"
                         onClick={() => handleClick("/blogs")}
                         style={{ cursor: "pointer" }}
-                     >
+                      >
                         Blogs
                       </button>
                     </li>
@@ -540,7 +540,7 @@ export default function App() {
                       <i className="feather-search"></i>
                     </button>
                   </li>
-                  <li className="access-icon rbt-mini-cart">
+                  {/* <li className="access-icon rbt-mini-cart">
                     <button
                       className="rbt-cart-sidenav-activation rbt-round-btn"
                       onClick={() => setCart(true)}
@@ -548,7 +548,7 @@ export default function App() {
                       <i className="feather-shopping-cart"></i>
                       <span className="rbt-cart-count">1</span>
                     </button>
-                  </li>
+                  </li> */}
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
                     {user ? (
                       <button className="service-menu-parent">

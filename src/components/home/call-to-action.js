@@ -28,12 +28,22 @@ export default function CallToAction() {
             </div>
             <div className="col-lg-4">
               <div className="call-to-btn text-start text-lg-end position-relative sal-animate">
-                <a
-                  className="rbt-btn rbt-switch-btn rbt-switch-y"
-                  href="/elements/call-to-action#"
-                >
-                  <span data-text="Purchase Histudy">Get Started Now</span>
-                </a>
+                <div className="slider-btn">
+                  <a
+                    className="rbt-btn btn-gradient hover-icon-reverse"
+                    href="/05-classic-lms#"
+                  >
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">Get Started</span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
+                    </span>
+                  </a>
+                </div>
                 <div className="shape-text-image">
                   <LazyImage
                     alt="Education"

@@ -31332,8 +31332,8 @@ span.transparent-button:hover i {
   }
 }
 .rbt-meta li {
-  font-size: 14px;
-  line-height: 15px;
+  font-size: 15px;
+  line-height: 10px;
   color: var(--color-body);
   display: inline-block;
   margin: 7px;
@@ -40215,7 +40215,7 @@ blockquote.has-text-align-right cite {
   padding: 0 150px;
   position: relative;
   overflow: hidden;
-  background-image: url(assets/img/bg-image-10.webp);
+  background-image: url(assets/img/bg-image-10e53d.jpg);
   background-position: top;
   background-size: cover;
 }

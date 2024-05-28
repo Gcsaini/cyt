@@ -15,8 +15,8 @@ export default function TherapistProfile() {
         <div className="row mb--60">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle bg-secondary-opacity">Courses</span>
-              <h2 className="title">Histudy All Courses</h2>
+              <span className="subtitle bg-secondary-opacity">Therapists</span>
+              <h2 className="title">Chooseyourtherapist</h2>
             </div>
           </div>
         </div>

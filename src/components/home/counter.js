@@ -13,10 +13,13 @@ export default function Counter() {
   const [count2, setCount2] = useState(initialValue);
   const [count3, setCount3] = useState(initialValue);
   const duration = 2500;
-  const targetValue = 20;
-  const targetValue1 = 30;
-  const targetValue2 = 40;
-  const targetValue3 = 50;
+  const targetValue = 50;
+  const initialValue1 = 1800;
+  const targetValue1 = 2000;
+  const initialValue2 = 12750;
+  const targetValue2 = 13000;
+  const initialValue3 = 1000;
+  const targetValue3 = 1200;
   useEffect(() => {
     let startValue = initialValue;
     const interval = Math.floor(duration / (targetValue - initialValue));
@@ -35,8 +38,8 @@ export default function Counter() {
   }, [targetValue, initialValue, inView]);
 
   useEffect(() => {
-    let startValue = initialValue;
-    const interval = Math.floor(duration / (targetValue1 - initialValue));
+    let startValue = initialValue1;
+    const interval = Math.floor(duration / (targetValue1 - initialValue1));
 
     const counter = setInterval(() => {
       startValue += 1;
@@ -49,11 +52,11 @@ export default function Counter() {
     return () => {
       clearInterval(counter);
     };
-  }, [targetValue1, initialValue, inView]);
+  }, [targetValue1, initialValue1, inView]);
 
   useEffect(() => {
-    let startValue = initialValue;
-    const interval = Math.floor(duration / (targetValue2 - initialValue));
+    let startValue = initialValue2;
+    const interval = Math.floor(duration / (targetValue2 - initialValue2));
 
     const counter = setInterval(() => {
       startValue += 1;
@@ -66,11 +69,11 @@ export default function Counter() {
     return () => {
       clearInterval(counter);
     };
-  }, [targetValue2, initialValue, inView]);
+  }, [targetValue2, initialValue2, inView]);
 
   useEffect(() => {
-    let startValue = initialValue;
-    const interval = Math.floor(duration / (targetValue3 - initialValue));
+    let startValue = initialValue3;
+    const interval = Math.floor(duration / (targetValue3 - initialValue3));
 
     const counter = setInterval(() => {
       startValue += 1;
@@ -83,7 +86,7 @@ export default function Counter() {
     return () => {
       clearInterval(counter);
     };
-  }, [targetValue3, initialValue, inView]);
+  }, [targetValue3, initialValue3, inView]);
 
   return (
     <div
@@ -111,9 +114,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">
-                          Learners &amp; counting
-                        </span>
+                        <span className="subtitle">Mental Health Experts</span>
                       </div>
                     </div>
                   </div>
@@ -134,7 +135,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Courses &amp; Video</span>
+                        <span className="subtitle">Completed Sessions</span>
                       </div>
                     </div>
                   </div>
@@ -155,7 +156,9 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Certified Students</span>
+                        <span className="subtitle">
+                          Social Media Connections
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -176,7 +179,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Registered Enrolls</span>
+                        <span className="subtitle">Valueable Feedbacks</span>
                       </div>
                     </div>
                   </div>
@@ -202,7 +205,10 @@ export default function Counter() {
                 <div className="rbt-feature-wrapper mt--30">
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-primary-opacity">
-                      <i className="feather-heart"></i>
+                      <i
+                        className="feather-heart"
+                        style={{ color: "#1a8a16 " }}
+                      ></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">Affordable Sessions</h6>

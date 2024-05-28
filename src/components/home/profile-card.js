@@ -116,7 +116,7 @@ export default function ProfileCard() {
                       }}
                     >
                       <a
-                        class="view-btn view-btn-border"
+                        className="view-btn view-btn-border"
                         href=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
@@ -205,7 +205,7 @@ export default function ProfileCard() {
                       }}
                     >
                       <a
-                        class="view-btn view-btn-border"
+                        className="view-btn view-btn-border"
                         href=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
@@ -295,7 +295,7 @@ export default function ProfileCard() {
                       }}
                     >
                       <a
-                        class="view-btn view-btn-border"
+                        className="view-btn view-btn-border"
                         href=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
@@ -384,7 +384,7 @@ export default function ProfileCard() {
                       }}
                     >
                       <a
-                        class="view-btn view-btn-border"
+                        className="view-btn view-btn-border"
                         href=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
@@ -414,7 +414,7 @@ export default function ProfileCard() {
           <div className="col-lg-12">
             <div className="load-more-btn mt--60 text-center">
               <a
-                className="rbt-btn btn-gradient btn-lg hover-icon-reverse"
+                className="rbt-btn btn-gradient btn-sm hover-icon-reverse"
                 href=""
               >
                 <span className="icon-reverse-wrapper">
