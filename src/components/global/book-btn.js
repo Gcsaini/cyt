@@ -1,11 +1,11 @@
 export default function BookBtn() {
   return (
     <a
-      className="rbt-btn btn-gradient btn-sm"
+      className="rbt-btn btn-gradient book-btn"
       href=""
       style={{ display: "flex", justifyContent: "center" }}
     >
-      <span data-text="Join Now">&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
     </a>
   );
 }

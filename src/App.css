@@ -29415,7 +29415,6 @@ fieldset:disabled {
 }
 
 .view-btn {
-  padding: 0 12px;
   background: var(--color-primary);
   height: 45px;
   line-height: 60px;
@@ -29871,6 +29870,13 @@ fieldset:disabled {
   height: 45px;
   line-height: 43px;
 }
+
+.rbt-btn.book-btn {
+  font-size: var(--font-size-b3);
+  height: 45px;
+  line-height: 43px;
+}
+
 @media only screen and (max-width: 767px) {
   .rbt-btn.btn-sm {
     padding: 0 10px;
@@ -40230,7 +40236,7 @@ blockquote.has-text-align-right cite {
 }
 @media only screen and (max-width: 767px) {
   .rbt-banner-1 {
-    padding: 0 30px;
+    padding: 0 5px;
   }
 }
 .rbt-banner-1:after {

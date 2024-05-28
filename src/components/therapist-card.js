@@ -2,8 +2,10 @@ import DeepakImg from "../assets/img/dpk.jpeg";
 import ImageTag from "../utils/image-tag";
 import BookBtn from "./global/book-btn";
 import OutlineBtn from "./global/outline-btn";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 export default function TherapistCard() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
@@ -54,13 +56,30 @@ export default function TherapistCard() {
           </div>
           <div
             style={{
-              marginTop: 20,
+              marginTop: 24,
+              marginBottom: 10,
               display: "flex",
               justifyContent: "space-between",
             }}
           >
-            <OutlineBtn title={"View Profile"} />
-            <BookBtn />
+            <a
+              class="view-btn view-btn-border"
+              href=""
+              style={{ padding: isMobile ? "0 30px" : "0 22px" }}
+            >
+              View Profile
+            </a>
+            <a
+              className="rbt-btn btn-gradient book-btn"
+              href="#"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: isTablet ? "0 24px" : "0 30px",
+              }}
+            >
+              <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+            </a>
           </div>
         </div>
       </div>

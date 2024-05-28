@@ -115,10 +115,26 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a class="view-btn view-btn-border" href="">
+                      <a
+                        class="view-btn view-btn-border"
+                        href=""
+                        style={{
+                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
+                        }}
+                      >
                         View Profile
                       </a>
-                      <BookBtn />
+                      <a
+                        className="rbt-btn btn-gradient book-btn"
+                        href=""
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
+                        }}
+                      >
+                        <span>Book Now</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -188,10 +204,26 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a class="view-btn view-btn-border" href="">
+                      <a
+                        class="view-btn view-btn-border"
+                        href=""
+                        style={{
+                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
+                        }}
+                      >
                         View Profile
                       </a>
-                      <BookBtn />
+                      <a
+                        className="rbt-btn btn-gradient book-btn"
+                        href=""
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
+                        }}
+                      >
+                        <span>Book Now</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -262,10 +294,26 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a class="view-btn view-btn-border" href="">
+                      <a
+                        class="view-btn view-btn-border"
+                        href=""
+                        style={{
+                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
+                        }}
+                      >
                         View Profile
                       </a>
-                      <BookBtn />
+                      <a
+                        className="rbt-btn btn-gradient book-btn"
+                        href=""
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
+                        }}
+                      >
+                        <span>Book Now</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -335,10 +383,26 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a class="view-btn view-btn-border" href="">
+                      <a
+                        class="view-btn view-btn-border"
+                        href=""
+                        style={{
+                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
+                        }}
+                      >
                         View Profile
                       </a>
-                      <BookBtn />
+                      <a
+                        className="rbt-btn btn-gradient book-btn"
+                        href=""
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
+                        }}
+                      >
+                        <span>Book Now</span>
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -31,15 +31,21 @@ export default function Banner() {
           >
             <div className="content">
               <div className="inner">
-                <div
-                  className="rbt-new-badge rbt-new-badge-one"
-                  style={{ marginTop: isMobile ? 20 : isTablet ? 25 : 0 }}
-                >
-                  <span className="rbt-new-badge-icon">
-                    <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
-                  </span>{" "}
-                  Discover mental health experts.
-                </div>
+                {isMobile ? (
+                  <div style={{ marginTop: 15 }}></div>
+                ) : (
+                  <div
+                    className="rbt-new-badge rbt-new-badge-one"
+                    style={{ marginTop: isTablet ? 25 : 0 }}
+                  >
+                    <span className="rbt-new-badge-icon">
+                      <PersonSearchIcon
+                        sx={{ color: "#228756", fontSize: 30 }}
+                      />
+                    </span>{" "}
+                    Discover mental health experts.
+                  </div>
+                )}
                 <h4
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
