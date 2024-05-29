@@ -2,26 +2,27 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function AboutUsBanner() {
   return (
-    <div class="rbt-banner-area rbt-banner-8 variation-02 bg-color-extra2">
-      <div class="container">
-        <div class="row g-5 align-items-center">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="content">
-              <div class="inner text-center">
-                <div class="rbt-new-badge rbt-new-badge-one">
-                  <span class="rbt-new-badge-icon">🏆</span> Discover Mental Health Experts. 
+    <div className="rbt-banner-area rbt-banner-8 variation-02 bg-color-extra2">
+      <div className="container">
+        <div className="row g-5 align-items-center">
+          <div className="col-lg-10 offset-lg-1">
+            <div className="content">
+              <div className="inner text-center">
+                <div className="rbt-new-badge rbt-new-badge-one">
+                  <span className="rbt-new-badge-icon">🏆</span> Discover Mental
+                  Health Experts.
                 </div>
-                <h1 class="title">
+                <h1 className="title">
                   Read About Our
-                  {/* <span class="header-caption ms-2">
-                    <span class="cd-headline clip is-full-width">
-                      <span class="cd-words-wrapper">
-                        <b class="is-visible theme-gradient">Vission</b>
+                  {/* <span className="header-caption ms-2">
+                    <span className="cd-headline clip is-full-width">
+                      <span className="cd-words-wrapper">
+                        <b className="is-visible theme-gradient">Vission</b>
                       </span>
                     </span>
                   </span> */}
                   <TypeAnimation
-                    sequence={ [" Background", 1500, " Vision", 1500]}
+                    sequence={[" Background", 1500, " Vision", 1500]}
                     speed={10}
                     style={{ fontSize: "1em" }}
                     repeat={Infinity}
@@ -29,36 +30,37 @@ export default function AboutUsBanner() {
                     className="theme-gradient"
                   />
                 </h1>
-                <p class="description has-medium-font-size mt--20" >
-                Choose Your Therapist LLP was founded in 2020 amidst the COVID-19 pandemic to address 
-                the growing need for accessible mental health care.
+                <p className="description has-medium-font-size mt--20">
+                  Choose Your Therapist LLP was founded in 2020 amidst the
+                  COVID-19 pandemic to address the growing need for accessible
+                  mental health care.
                 </p>
-                <div class="slider-btn rbt-button-group justify-content-center">
+                <div className="slider-btn rbt-button-group justify-content-center">
                   <a
-                    class="rbt-btn btn-gradient hover-icon-reverse"
+                    className="rbt-btn btn-gradient hover-icon-reverse"
                     href="/pages/about-us-02#"
                   >
-                    <span class="icon-reverse-wrapper">
-                      <span class="btn-text">Log in to Start</span>
-                      <span class="btn-icon">
-                        <i class="feather-arrow-right"></i>
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">Log in to Start</span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
                       </span>
-                      <span class="btn-icon">
-                        <i class="feather-arrow-right"></i>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
                       </span>
                     </span>
                   </a>
                   <a
-                    class="rbt-btn hover-icon-reverse btn-white"
+                    className="rbt-btn hover-icon-reverse btn-white"
                     href="/pages/about-us-02#"
                   >
-                    <span class="icon-reverse-wrapper">
-                      <span class="btn-text">Contact US</span>
-                      <span class="btn-icon">
-                        <i class="feather-arrow-right"></i>
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">Contact US</span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
                       </span>
-                      <span class="btn-icon">
-                        <i class="feather-arrow-right"></i>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
                       </span>
                     </span>
                   </a>

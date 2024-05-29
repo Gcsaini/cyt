@@ -107,7 +107,7 @@ export default function TeamBanner() {
       <div className="container">
         <div className="row mb--60">
           <div className="col-lg-12">
-            <div class="section-title text-center">
+            <div className="section-title text-center">
               <h2 className="title">Meet the Innovative minds at CYT</h2>
               <p className="description mt--10">
                 Choose Your Therapist LLP aims to create a network of therapists

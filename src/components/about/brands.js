@@ -7,14 +7,14 @@ import "swiper/css/pagination";
 
 export default function Brands() {
   return (
-    <div class="rbt-brand-area bg-color-white rbt-section-gap">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12">
-            <div class="section-title text-center mb--40">
-              <span class="small-title w-800">Partnership with</span>
+    <div className="rbt-brand-area bg-color-white rbt-section-gap">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-12">
+            <div className="section-title text-center mb--40">
+              <span className="small-title w-800">Partnership with</span>
             </div>
-            <ul class="brand-list brand-style-3 justify-content-center justify-content-lg-between">
+            <ul className="brand-list brand-style-3 justify-content-center justify-content-lg-between">
               <Swiper
                 spaceBetween={50}
                 breakpoints={{
