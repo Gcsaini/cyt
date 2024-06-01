@@ -23,6 +23,16 @@ export default function TherapistCard() {
               <i className="feather-award"></i>3 Year Experience
             </li>
           </ul>
+          <div className="rbt-review" style={{ marginTop: 12 }}>
+            <div className="rating">
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+            </div>
+            <span className="rating-count">(15 Reviews)</span>
+          </div>
           <h4 className="rbt-card-title">
             <a href="">Deepak Kumar</a>
           </h4>
@@ -44,16 +54,7 @@ export default function TherapistCard() {
             </span>
           </div>
 
-          <div className="rbt-review" style={{ marginTop: 12 }}>
-            <div className="rating">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-            </div>
-            <span className="rating-count">(15 Reviews)</span>
-          </div>
+          
           <div
             style={{
               marginTop: 24,
