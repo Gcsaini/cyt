@@ -50,9 +50,9 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Start Wellness Journey with 
+                 Find Wellness Solutions here.
                   <br />
-                 #ChooseYourTherapist! We provide &nbsp; 
+                 We provide
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <span className="cd-words-wrapper">
@@ -78,7 +78,7 @@ export default function Banner() {
                     </span>
                   </span>
                   <br />
-                  Mental Health Solutions.
+                 with #ChooseYourTherapist !
                 </h4>
                 <p className="description">
                   we provide mental health experts every step of the way to your
