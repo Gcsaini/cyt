@@ -50,9 +50,9 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find your therapist and start
+                  Find a way and start journey 
                   <br />
-                  journey with #ChooseYourTherapist ! <br/> we provide &nbsp; 
+                  with #ChooseYourTherapist! We provide &nbsp; 
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <span className="cd-words-wrapper">
