@@ -53,7 +53,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={SupportImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Peer Support Groups</h5>
+                  <h5 className="title">Support Groups</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>
@@ -73,7 +73,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={StudentImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Student based Orientations</h5>
+                  <h5 className="title">Student Orientations</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>
@@ -93,7 +93,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={WorkplaceImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Workplace based Training</h5>
+                  <h5 className="title">Workplace Training</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>
@@ -173,7 +173,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={ProjectsImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Offers</h5>
+                  <h5 className="title">Special Offers</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>

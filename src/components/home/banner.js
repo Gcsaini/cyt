@@ -52,7 +52,7 @@ export default function Banner() {
                 >
                   Find your therapist and start
                   <br />
-                  journey to mental wellness.&nbsp;
+                  journey with #ChooseYourTherapist ! <br/> we provide &nbsp; 
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <span className="cd-words-wrapper">
