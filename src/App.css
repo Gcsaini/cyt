@@ -29512,10 +29512,9 @@ fieldset:disabled {
   color: var(--color-white);
   background-size: 300% 100%;
   background: rgb(42, 93, 49);
-  background: linear-gradient(
-    104deg,
-    rgba(42, 93, 49, 1) 0%,
-    rgba(92, 190, 105, 1) 96%,
+
+    
+  background: linear-gradient(104deg, #35c128, #4ca3c5 96%,
     rgba(185, 185, 185, 1) 100%
   );
 }
