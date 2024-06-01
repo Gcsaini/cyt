@@ -18510,9 +18510,9 @@ Copyright (c) 2015 Daniel Eden
   --success-opacity: #3eb75e10;
   --black-opacity: rgba(0, 0, 0, 0.04);
   --heading-opacity: #19233550;
-  --color-card-1: #fffccf;
-  --color-card-2: #ffedff;
-  --color-card-3: #ffe8eb;
+  --color-card-1: #d2ffc9;
+  --color-card-2: #daf6ee;
+  --color-card-3: #e4fab4;
   --color-card-4: #e9f6ff;
   --color-card-5: #5024d1;
   --color-card-6: #3b3b46;
@@ -19821,7 +19821,7 @@ ul.rbt-dropdown-menu li a .right-icon {
   background: var(--color-secondary);
 }
 .bg-color-secondary-alt {
-  background: var(--color-secondary-alt);
+  background: #d7f3ff;
 }
 .bg-color-light {
   background: var(--color-light);
