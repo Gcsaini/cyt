@@ -1,11 +1,12 @@
-import TherypyImg from "../../assets/img/therapy (1).png";
+import TherypyImg from "../../assets/img/therapysessioncyt.png";
 import RelaxationImg from "../../assets/img/relaxation-session.png";
-import SupportImg from "../../assets/img/support-groups.png";
-import StudentImg from "../../assets/img/students.png";
-import WorkplaceImg from "../../assets/img/workplace.png";
-import ActivitesImg from "../../assets/img/activites.png";
-import AssessmentImg from "../../assets/img/assessments.png";
-import ProjectsImg from "../../assets/img/projects.png";
+import SupportImg from "../../assets/img/support.png";
+import StudentImg from "../../assets/img/studentorientation.png";
+import WorkplaceImg from "../../assets/img/workplacetraining.png";
+import ActivitesImg from "../../assets/img/therapeutic.png";
+import AssessmentImg from "../../assets/img/assessmentss.png";
+import ProjectsImg from "../../assets/img/projectscyt.png";
+import specialoffer from "../../assets/img/special.png";
 import LazyImage from "../../utils/lazy-image";
 export default function Services() {
   return (
@@ -173,7 +174,7 @@ export default function Services() {
             >
               <div className="inner">
                 <div className="icons">
-                  <LazyImage alt="Icons" dim={"80"} src={ProjectsImg} />
+                  <LazyImage alt="Icons" dim={"80"} src={specialoffer} />
                 </div>
                 <div className="content">
                   <h5 className="title">Special Offers</h5>
