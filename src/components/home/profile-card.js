@@ -23,6 +23,48 @@ export default function ProfileCard() {
               </span>
               <h2 className="title">Therapist Directory</h2>
               <p>Looking for the right therapist? Our comprehensive profiles make it easy to find a therapist who meets your needs and preferences. Start your search here.</p>
+              <div className="row">
+          <div className="col-lg-12">
+            <ul
+              className="rbt-portfolio-filter filter-tab-button text-center nav nav-tabs"
+              id="rbt-myTab"
+              role="tablist"
+            >
+              <li className="nav-item" role="presentation">
+                <button className="active" type="button">
+                  <span className="filter-text">See all</span>
+                  <span className="course-number">12</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button className="" type="button">
+                  <span className="filter-text">Counselling Psychologist</span>
+                  <span className="course-number">4</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button className="" type="button">
+                  <span className="filter-text">Clinical Psychologist</span>
+                  <span className="course-number">3</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button className="" type="button">
+                  <span className="filter-text">Psychiatrist</span>
+                  <span className="course-number">3</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button className="" type="button">
+                  <span className="filter-text">Special Educator</span>
+                  <span className="course-number">3</span>
+                </button>
+              </li>
+             
+              
+            </ul>
+          </div>
+        </div>
             </div>
           </div>
         </div>

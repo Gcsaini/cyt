@@ -58,12 +58,7 @@ export default function TherapistProfile() {
                   <span className="course-number">3</span>
                 </button>
               </li>
-              <li className="nav-item" role="presentation">
-                <button className="" type="button">
-                  <span className="filter-text">CYT Projects</span>
-                  <span className="course-number">3</span>
-                </button>
-              </li>
+            
             </ul>
           </div>
         </div>
