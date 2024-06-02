@@ -15,8 +15,9 @@ export default function TherapistProfile() {
         <div className="row mb--60">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle bg-secondary-opacity">Therapists</span>
-              <h2 className="title">Chooseyourtherapist</h2>
+              <span className="subtitle bg-secondary-opacity">Mental Health Wrokshops/Activites</span>
+              <h2 className="title">Wellness Workshops by Professionals</h2>
+              <p>Join our workshops and activities designed to enhance your mental health and well-being. From stress management sessions to personal development workshops, explore a variety of opportunities to engage, learn, and grow.</p>
             </div>
           </div>
         </div>
@@ -29,25 +30,37 @@ export default function TherapistProfile() {
             >
               <li className="nav-item" role="presentation">
                 <button className="active" type="button">
-                  <span className="filter-text">All Course</span>
+                  <span className="filter-text">See all</span>
                   <span className="course-number">12</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
-                  <span className="filter-text">featured</span>
+                  <span className="filter-text">Suport Groups</span>
                   <span className="course-number">4</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
-                  <span className="filter-text">popular</span>
+                  <span className="filter-text">Student Orientations</span>
                   <span className="course-number">3</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
-                  <span className="filter-text">trending</span>
+                  <span className="filter-text">Workplace Training</span>
+                  <span className="course-number">3</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button className="" type="button">
+                  <span className="filter-text">Therapeutic Activites</span>
+                  <span className="course-number">3</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button className="" type="button">
+                  <span className="filter-text">CYT Projects</span>
                   <span className="course-number">3</span>
                 </button>
               </li>

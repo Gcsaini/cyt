@@ -1,5 +1,5 @@
 import ImageTag from "../../utils/image-tag";
-import img from "../../assets/img/course-01.webp";
+import img from "../../assets/img/meetup.png";
 export default function WellNessCard() {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
@@ -33,7 +33,7 @@ export default function WellNessCard() {
           </div>
           <h4 className="rbt-card-title">
             <a href="/course-details/1">
-              The Complete Histudy 2024: From Zero to Expert!
+              MeetUp with Founder at Noida 
             </a>
           </h4>
           <ul className="rbt-meta">
