@@ -33,24 +33,24 @@ export default function WellNessCard() {
           </div>
           <h4 className="rbt-card-title">
             <a href="/course-details/1">
-              MeetUp with Founder at Noida 
+             Pehchaan - self awareness 
             </a>
           </h4>
           <ul className="rbt-meta">
             <li>
-              <i className="feather-book"></i>12 Lessons
+              <i className="feather-book"></i>2 Hours
             </li>
             <li>
-              <i className="feather-users"></i>50 Students
+              <i className="feather-users"></i>50 Seats
             </li>
           </ul>
           <div className="rbt-card-bottom">
             <div className="rbt-price">
-              <span className="current-price">$70</span>
-              <span className="off-price">$20</span>
+              <span className="current-price">800 INR</span>
+              <span className="off-price">1000 INR</span>
             </div>
             <a className="rbt-btn-link" href="/course-details/1">
-              Learn More<i className="feather-arrow-right"></i>
+              Register Now<i className="feather-arrow-right"></i>
             </a>
           </div>
         </div>
