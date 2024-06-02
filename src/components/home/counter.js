@@ -189,7 +189,7 @@ export default function Counter() {
             <div className="col-lg-6 order-1 order-lg-2">
               <div className="inner pl--50 pl_sm--0 pl_md--0">
                 <div className="section-title text-start">
-                  <span className="subtitle bg-pink-opacity">
+                  <span className="subtitle bg-secondary-opacity">
                     WHY CHOOSE US
                   </span>
                   <h2 className="title">
@@ -216,19 +216,33 @@ export default function Counter() {
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-secondary-opacity">
-                      <i className="feather-book"></i>
+                      <i className="feather-user-check"
+                      style={{ color: "#1a8a16 " }}
+                     ></i>
                     </div>
                     <div className="feature-content">
-                      <h6 className="feature-title">Easy to Access</h6>
+                      <h6 className="feature-title">Supportive Experts</h6>
+                    </div>
+                  </div>
+                  <div className="rbt-feature feature-style-1 align-items-center">
+                    <div className="icon bg-secondary-opacity">
+                      <i className="feather-clipboard"
+                        style={{ color: "#1a8a16 " }}
+                        ></i>
+                    </div>
+                    <div className="feature-content">
+                      <h6 className="feature-title">Personalized Space</h6>
                     </div>
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-pink-opacity">
-                      <i className="feather-aperture"></i>
+                      <i className="feather-aperture"
+                      style={{ color: "#1a8a16 " }}
+                        ></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">
-                        Authentic Resources with Qualified Experts
+                       Holistic Wellness
                       </h6>
                     </div>
                   </div>

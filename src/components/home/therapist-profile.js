@@ -15,7 +15,7 @@ export default function TherapistProfile() {
         <div className="row mb--60">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle bg-secondary-opacity">Mental Health Wrokshops/Activites</span>
+              <span className="subtitle bg-primary-opacity">Mental Health Wrokshops/Activites</span>
               <h2 className="title">Wellness Workshops by Professionals</h2>
               <p>Join our workshops and activities designed to enhance your mental health and well-being. From stress management sessions to personal development workshops, explore a variety of opportunities to engage, learn, and grow.</p>
             </div>
