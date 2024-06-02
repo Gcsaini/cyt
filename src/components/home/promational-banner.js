@@ -2,8 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Banner from "../../assets/img/join.png";
-import Banner2 from "../../assets/img/join2.png";
+import Banner from "../../assets/img/Therapyforallll.png";
+import Banner2 from "../../assets/img/joinushere.png";
 import LazyImage from "../../utils/lazy-image";
 import useMediaQuery from "@mui/material/useMediaQuery";
 export default function PromationalBanner() {
