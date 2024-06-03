@@ -35996,6 +35996,8 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   padding: 3px;
   background: var(--color-white);
   border-radius: 100%;
+    -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
   overflow: hidden;
   min-width: 70px;
   border: 2px solid var(--primary-opacity);
@@ -36004,8 +36006,7 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   height: 100%;
   object-fit: cover;
   width: 100%;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+
   border-radius: 100%;
 }
 .rbt-testimonial-box .clint-info-wrapper .client-info {
