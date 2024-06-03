@@ -3,12 +3,18 @@ import Footer from "../components/footer";
 import Newsletter from "../components/home/newsletter";
 import Faqs from "../components/home/faqs";
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 export default function FaqPage() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const navigate = useNavigate();
   return (
     <div id="__next">
       <MyNavbar />
-      <div className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+      <div
+        className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1"
+        style={{ marginTop: isMobile || isTablet ? 70 : 50 }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

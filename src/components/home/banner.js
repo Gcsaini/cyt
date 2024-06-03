@@ -5,7 +5,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import React from "react";
 import TherapistCard from "../therapist-card";
+import DeepakImg from "../../assets/img/dpk.jpeg";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ImageTag from "../../utils/image-tag";
 export default function Banner() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -50,7 +52,8 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                 Find Wellness Solutions with #ChooseYourTherapist ! <span className="header-caption ms-2">
+                  Find Wellness Solutions with #ChooseYourTherapist !{" "}
+                  <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <span className="cd-words-wrapper">
                         <b
@@ -75,7 +78,6 @@ export default function Banner() {
                     </span>
                   </span>
                   <br />
-                
                 </h4>
                 <p className="description">
                   we provide mental health experts every step of the way to your
@@ -139,13 +141,193 @@ export default function Banner() {
                       modules={[Autoplay]}
                       className="mySwiper"
                     >
-                      {[1, 2, 3, 4].map((item, index) => {
-                        return (
-                          <SwiperSlide key={index}>
-                            <TherapistCard />
-                          </SwiperSlide>
-                        );
-                      })}
+                      <SwiperSlide key={1}>
+                        <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
+                          <div className="rbt-card variation-01">
+                            <div className="rbt-card-img">
+                              <a href="">
+                                <ImageTag
+                                  alt="Card"
+                                  height={"488"}
+                                  width={"710"}
+                                  src={DeepakImg}
+                                />
+                              </a>
+                            </div>
+                            <div className="rbt-card-body">
+                              <ul className="rbt-meta">
+                                <li style={{ fontSize: 16 }}>
+                                  <i className="feather-message-circle"></i>
+                                  Hindi, English
+                                </li>
+                                <li style={{ fontSize: 16 }}>
+                                  <i className="feather-award"></i>3 Year
+                                  Experience
+                                </li>
+                              </ul>
+                              <div
+                                className="rbt-review"
+                                style={{ marginTop: 12 }}
+                              >
+                                <div className="rating">
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                </div>
+                                <span className="rating-count">
+                                  (15 Reviews)
+                                </span>
+                              </div>
+                              <h4 className="rbt-card-title">
+                                <a href="">Deepak Kumar</a>
+                              </h4>
+                              <div style={{ marginTop: 7, display: "flex" }}>
+                                <span>
+                                  <i className="feather-user"></i>
+                                </span>
+                                <span style={{ fontSize: 16, marginLeft: 5 }}>
+                                  Counseling Psychologist
+                                </span>
+                              </div>
+
+                              <div style={{ marginTop: 5, display: "flex" }}>
+                                <span>
+                                  <i className="feather-heart"></i>
+                                </span>
+                                <span style={{ fontSize: 16, marginLeft: 5 }}>
+                                  Individual Counselling, Couple Counselling,
+                                  Teen Counselling
+                                </span>
+                              </div>
+
+                              <div
+                                style={{
+                                  marginTop: 24,
+                                  marginBottom: 10,
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <a
+                                  className="view-btn view-btn-border"
+                                  href=""
+                                  style={{
+                                    padding: isMobile ? "0 30px" : "0 22px",
+                                  }}
+                                >
+                                  View Profile
+                                </a>
+                                <a
+                                  className="rbt-btn btn-gradient book-btn"
+                                  href="#"
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    padding: isTablet ? "0 24px" : "0 30px",
+                                  }}
+                                >
+                                  <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide key={2}>
+                        <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
+                          <div className="rbt-card variation-01">
+                            <div className="rbt-card-img">
+                              <a href="">
+                                <ImageTag
+                                  alt="Card"
+                                  height={"488"}
+                                  width={"710"}
+                                  src={DeepakImg}
+                                />
+                              </a>
+                            </div>
+                            <div className="rbt-card-body">
+                              <ul className="rbt-meta">
+                                <li style={{ fontSize: 16 }}>
+                                  <i className="feather-message-circle"></i>
+                                  Hindi, English
+                                </li>
+                                <li style={{ fontSize: 16 }}>
+                                  <i className="feather-award"></i>3 Year
+                                  Experience
+                                </li>
+                              </ul>
+                              <div
+                                className="rbt-review"
+                                style={{ marginTop: 12 }}
+                              >
+                                <div className="rating">
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                  <i className="fas fa-star"></i>
+                                </div>
+                                <span className="rating-count">
+                                  (15 Reviews)
+                                </span>
+                              </div>
+                              <h4 className="rbt-card-title">
+                                <a href="">Deepak Kumar</a>
+                              </h4>
+                              <div style={{ marginTop: 7, display: "flex" }}>
+                                <span>
+                                  <i className="feather-user"></i>
+                                </span>
+                                <span style={{ fontSize: 16, marginLeft: 5 }}>
+                                  Counseling Psychologist
+                                </span>
+                              </div>
+
+                              <div style={{ marginTop: 5, display: "flex" }}>
+                                <span>
+                                  <i className="feather-heart"></i>
+                                </span>
+                                <span style={{ fontSize: 16, marginLeft: 5 }}>
+                                  Individual Counselling, Couple Counselling,
+                                  Teen Counselling
+                                </span>
+                              </div>
+                              <div
+                                style={{
+                                  marginTop: 24,
+                                  marginBottom: 10,
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <a
+                                  className="view-btn view-btn-border"
+                                  href=""
+                                  style={{
+                                    padding: isMobile ? "0 30px" : "0 22px",
+                                  }}
+                                >
+                                  View Profile
+                                </a>
+                                <a
+                                  className="rbt-btn btn-gradient book-btn"
+                                  href="#"
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    padding: isTablet ? "0 24px" : "0 30px",
+                                  }}
+                                >
+                                  <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </SwiperSlide>
                     </Swiper>
                   </div>
                 </div>

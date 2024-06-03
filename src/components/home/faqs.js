@@ -1,16 +1,16 @@
 import FAQ from "./faq";
 export default function Faqs() {
   return (
-    <div class="rbt-accordion-area accordion-style-1 bg-color-white rbt-section-gap">
-      <div class="container">
-        <div class="row g-5">
-          <div class="col-lg-6">
-            <div class="rbt-accordion-style accordion">
-              <div class="section-title text-start mb--60">
-                <h4 class="title">Purchases &amp; Refunds</h4>
+    <div className="rbt-accordion-area accordion-style-1 bg-color-white rbt-section-gap">
+      <div className="container">
+        <div className="row g-5">
+          <div className="col-lg-6">
+            <div className="rbt-accordion-style accordion">
+              <div className="section-title text-start mb--60">
+                <h4 className="title">Purchases &amp; Refunds</h4>
               </div>
-              <div class="rbt-accordion-style rbt-accordion-04 accordion">
-                <div class="accordion" id="accordionExamplec3">
+              <div className="rbt-accordion-style rbt-accordion-04 accordion">
+                <div className="accordion" id="accordionExamplec3">
                   <FAQ
                     q={"What is the role of a counseling psychologist?"}
                     a={
@@ -39,13 +39,13 @@ export default function Faqs() {
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="rbt-accordion-style accordion">
-              <div class="section-title text-start mb--60">
-                <h4 class="title">Making Courses</h4>
+          <div className="col-lg-6">
+            <div className="rbt-accordion-style accordion">
+              <div className="section-title text-start mb--60">
+                <h4 className="title">Making Courses</h4>
               </div>
-              <div class="rbt-accordion-style rbt-accordion-04 accordion">
-                <div class="accordion" id="faqs-accordionExamplec3">
+              <div className="rbt-accordion-style rbt-accordion-04 accordion">
+                <div className="accordion" id="faqs-accordionExamplec3">
                   <FAQ
                     q={"What is the role of a counseling psychologist?"}
                     a={
