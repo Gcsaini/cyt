@@ -2,7 +2,7 @@ import BlogCardImg from "../../assets/img/blog-card-01521f.jpg";
 import BlogCardImg2 from "../../assets/img/blog-card-02a829.jpg";
 import BlogCardImg3 from "../../assets/img/blog-card-03f718.jpg";
 import BlogCardImg4 from "../../assets/img/blog-card-048b22.jpg";
-import LazyImage from "../../utils/lazy-image";
+import ImageTag from "../../utils/image-tag";
 export default function Blogs() {
   return (
     <div className="rbt-rbt-blog-area rbt-section-gap bg-color-white">
@@ -38,17 +38,23 @@ export default function Blogs() {
             <div className="rbt-card variation-02 height-330 rbt-hover">
               <div className="rbt-card-img">
                 <a href="blog-details/%5bblogId%5d">
-                  <LazyImage alt="Card" dim={"300-580"} src={BlogCardImg} />
+                  <ImageTag
+                    alt="Card"
+                    height={"300"}
+                    width={"580"}
+                    src={BlogCardImg}
+                  />
                 </a>
               </div>
               <div className="rbt-card-body">
                 <h3 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d">
-                  Why We Choose the Partners We Do: The Psychology of Attraction
+                    Why We Choose the Partners We Do: The Psychology of
+                    Attraction
                   </a>
                 </h3>
                 <p className="rbt-card-text">
-                Understanding the Mysteries of Attraction and Compatibility.
+                  Understanding the Mysteries of Attraction and Compatibility.
                 </p>
                 <div className="rbt-card-bottom">
                   <a
@@ -80,13 +86,18 @@ export default function Blogs() {
             <div className="rbt-card card-list variation-02 rbt-hover">
               <div className="rbt-card-img">
                 <a href="blog-details/%5bblogId%5d-2">
-                  <LazyImage alt="Card" dim={"300-580"} src={BlogCardImg2} />
+                  <ImageTag
+                    alt="Card"
+                    height={"300"}
+                    width={"580"}
+                    src={BlogCardImg}
+                  />
                 </a>
               </div>
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-2">
-                  Self-Care Tips for Busy Professionals
+                    Self-Care Tips for Busy Professionals
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">
@@ -117,13 +128,18 @@ export default function Blogs() {
             <div className="rbt-card card-list variation-02 rbt-hover mt--30">
               <div className="rbt-card-img">
                 <a href="blog-details/%5bblogId%5d-3">
-                  <LazyImage alt="Card" dim={"300-580"} src={BlogCardImg3} />
+                  <ImageTag
+                    alt="Card"
+                    height={"300"}
+                    width={"580"}
+                    src={BlogCardImg3}
+                  />
                 </a>
               </div>
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-3">
-                  The Connection Between Physical and Mental Health.
+                    The Connection Between Physical and Mental Health.
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">
@@ -154,13 +170,18 @@ export default function Blogs() {
             <div className="rbt-card card-list variation-02 rbt-hover mt--30">
               <div className="rbt-card-img">
                 <a href="blog-details/%5bblogId%5d-4">
-                  <LazyImage alt="Card" dim={"300-580"} src={BlogCardImg4} />
+                  <ImageTag
+                    alt="Card"
+                    height={"300"}
+                    width={"580"}
+                    src={BlogCardImg4}
+                  />
                 </a>
               </div>
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-4">
-                  Effective Communication Strategies for Couples
+                    Effective Communication Strategies for Couples
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">

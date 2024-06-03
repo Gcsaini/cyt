@@ -5,7 +5,10 @@ import CounterImg3 from "../../assets/img/counter-03.png";
 import CounterImg4 from "../../assets/img/counter-04.png";
 import LazyImage from "../../utils/lazy-image";
 import { useInView } from "react-intersection-observer";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ImageTag from "../../utils/image-tag";
 export default function Counter() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { ref, inView } = useInView({ threshold: 0 });
   const initialValue = 0;
   const [count, setCount] = useState(initialValue);
@@ -87,7 +90,9 @@ export default function Counter() {
       clearInterval(counter);
     };
   }, [targetValue3, initialValue3, inView]);
-
+  const fontStyle = {
+    fontSize: isMobile ? 26 : 36,
+  };
   return (
     <div
       className="rbt-counterup-area bg-color-white rbt-section-gap"
@@ -98,18 +103,24 @@ export default function Counter() {
           <div className="row g-5 align-items-center">
             <div className="col-lg-6 order-2 order-lg-1">
               <div className="row row--30">
-                <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                   <div className="rbt-counterup rbt-hover-03">
                     <div className="inner">
                       <div className="icon">
-                        <LazyImage alt="Icons" dim={"100"} src={CounterImg} />
+                        <ImageTag alt="Icons" height={"100"} src={CounterImg} />
                       </div>
                       <div className="content">
                         <h3 className="counter">
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">{count}</span>
+                                <span
+                                  className="odometer-digit"
+                                  style={fontStyle}
+                                  style={fontStyle}
+                                >
+                                  {count}
+                                </span>
                               </div>
                             </div>
                           </span>
@@ -119,18 +130,27 @@ export default function Counter() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt--60">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-6 mt--60">
                   <div className="rbt-counterup rbt-hover-03">
                     <div className="inner">
                       <div className="icon">
-                        <LazyImage alt="Icons" dim={"100"} src={CounterImg2} />
+                        <ImageTag
+                          alt="Icons"
+                          height={"100"}
+                          src={CounterImg2}
+                        />
                       </div>
                       <div className="content">
                         <h3 className="counter">
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">{count1}</span>
+                                <span
+                                  className="odometer-digit"
+                                  style={fontStyle}
+                                >
+                                  {count1}
+                                </span>
                               </div>
                             </div>
                           </span>
@@ -140,18 +160,27 @@ export default function Counter() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt_mobile--40">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-6 mt_mobile--40">
                   <div className="rbt-counterup rbt-hover-03">
                     <div className="inner">
                       <div className="icon">
-                        <LazyImage alt="Icons" dim={"100"} src={CounterImg3} />
+                        <ImageTag
+                          alt="Icons"
+                          height={"100"}
+                          src={CounterImg3}
+                        />
                       </div>
                       <div className="content">
                         <h3 className="counter">
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">{count2}</span>
+                                <span
+                                  className="odometer-digit"
+                                  style={fontStyle}
+                                >
+                                  {count2}
+                                </span>
                               </div>
                             </div>
                           </span>
@@ -163,18 +192,27 @@ export default function Counter() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt--60 mt_mobile--40">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-6 mt--60 mt_mobile--40">
                   <div className="rbt-counterup rbt-hover-03">
                     <div className="inner">
                       <div className="icon">
-                        <LazyImage alt="Icons" dim={"100"} src={CounterImg4} />
+                        <ImageTag
+                          alt="Icons"
+                          height={"100"}
+                          src={CounterImg4}
+                        />
                       </div>
                       <div className="content">
                         <h3 className="counter">
                           <span className="odometer">
                             <div className="odometer odometer-auto-theme">
                               <div className="odometer-inside">
-                                <span className="odometer-digit">{count3}</span>
+                                <span
+                                  className="odometer-digit"
+                                  style={fontStyle}
+                                >
+                                  {count3}
+                                </span>
                               </div>
                             </div>
                           </span>
@@ -205,10 +243,7 @@ export default function Counter() {
                 <div className="rbt-feature-wrapper mt--30">
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-primary-opacity">
-                      <i
-                        className="feather-heart"
-                      
-                      ></i>
+                      <i className="feather-heart"></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">Affordable Sessions</h6>
@@ -216,9 +251,7 @@ export default function Counter() {
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-secondary-opacity">
-                      <i className="feather-user-check"
-               
-                     ></i>
+                      <i className="feather-user-check"></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">Supportive Experts</h6>
@@ -226,8 +259,7 @@ export default function Counter() {
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-secondary-opacity">
-                      <i className="feather-clipboard"
-                       ></i>
+                      <i className="feather-clipboard"></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">Personalized Space</h6>
@@ -235,13 +267,10 @@ export default function Counter() {
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-pink-opacity">
-                      <i className="feather-aperture"
-                     ></i>
+                      <i className="feather-aperture"></i>
                     </div>
                     <div className="feature-content">
-                      <h6 className="feature-title">
-                       Holistic Wellness
-                      </h6>
+                      <h6 className="feature-title">Holistic Wellness</h6>
                     </div>
                   </div>
                 </div>

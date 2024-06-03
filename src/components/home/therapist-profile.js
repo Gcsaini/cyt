@@ -15,9 +15,16 @@ export default function TherapistProfile() {
         <div className="row mb--60">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle bg-primary-opacity">Mental Health Wrokshops/Activites</span>
+              <span className="subtitle bg-primary-opacity">
+                Mental Health Wrokshops/Activites
+              </span>
               <h2 className="title">Wellness Workshops by Professionals</h2>
-              <p>Join our workshops and activities designed to enhance your mental health and well-being. From stress management sessions to personal development workshops, explore a variety of opportunities to engage, learn, and grow.</p>
+              <p>
+                Join our workshops and activities designed to enhance your
+                mental health and well-being. From stress management sessions to
+                personal development workshops, explore a variety of
+                opportunities to engage, learn, and grow.
+              </p>
             </div>
           </div>
         </div>
@@ -58,22 +65,56 @@ export default function TherapistProfile() {
                   <span className="course-number">0</span>
                 </button>
               </li>
-            
             </ul>
           </div>
         </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="tab-content mt--60" id="rbt-myTabContent">
-              <div className="row g-5">
-                <WellNessCard />
-                <WellNessCard />
-                <WellNessCard />
-                <WellNessCard />
+        {!isMobile && (
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="tab-content mt--60" id="rbt-myTabContent">
+                <div className="row g-5">
+                  <WellNessCard />
+                  <WellNessCard />
+                  <WellNessCard />
+                  <WellNessCard />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
+        {isMobile && (
+          <div className="row" style={{ marginTop: 20 }}>
+            <div className="col-12">
+              <div className="swiper swiper-initialized swiper-horizontal viral-banner-activation rbt-arrow-between swiper-backface-hidden">
+                <div className="swiper-wrapper">
+                  <Swiper
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    autoplay={{
+                      delay: 2500,
+                      disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay]}
+                    className="mySwiper"
+                  >
+                    <SwiperSlide key={1}>
+                      <WellNessCard />
+                    </SwiperSlide>
+                    <SwiperSlide key={2}>
+                      <WellNessCard />
+                    </SwiperSlide>
+                    <SwiperSlide key={3}>
+                      <WellNessCard />
+                    </SwiperSlide>
+                    <SwiperSlide key={4}>
+                      <WellNessCard />
+                    </SwiperSlide>
+                  </Swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

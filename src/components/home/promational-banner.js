@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Banner from "../../assets/img/Therapyforallll.png";
 import Banner2 from "../../assets/img/joinushere.png";
-import LazyImage from "../../utils/lazy-image";
+import ImageTag from "../../utils/image-tag";
 import useMediaQuery from "@mui/material/useMediaQuery";
 export default function PromationalBanner() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -31,12 +31,12 @@ export default function PromationalBanner() {
                     <div
                       className="swiper-slide"
                       style={{
-                        width: isMobile ? 420 : isTablet ? 750 : 1125,
+                        width: "100%",
                       }}
                     >
                       <div className="thumbnail">
-                        <a href="/13-university-classic#">
-                          <LazyImage
+                        <a href="">
+                          <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
                             class={"rbt-radius w-100"}
@@ -50,14 +50,15 @@ export default function PromationalBanner() {
                     <div
                       className="swiper-slide"
                       style={{
-                        width: isMobile ? 420 : isTablet ? 750 : 1125,
+                        width: "100%",
                       }}
                     >
                       <div className="thumbnail">
-                        <a href="/13-university-classic#">
-                          <LazyImage
+                        <a href="">
+                          <ImageTag
                             alt="Banner"
-                            dim={"425-1305"}
+                            heigth="425"
+                            width="1305"
                             class={"rbt-radius w-100"}
                             src={Banner2}
                           />
@@ -69,12 +70,12 @@ export default function PromationalBanner() {
                     <div
                       className="swiper-slide"
                       style={{
-                        width: isMobile ? 420 : isTablet ? 750 : 1125,
+                        width: "100%",
                       }}
                     >
                       <div className="thumbnail">
-                        <a href="/13-university-classic#">
-                          <LazyImage
+                        <a href="">
+                          <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
                             class={"rbt-radius w-100"}
