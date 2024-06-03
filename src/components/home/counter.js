@@ -3,7 +3,6 @@ import CounterImg from "../../assets/img/counter-01.png";
 import CounterImg2 from "../../assets/img/counter-02.png";
 import CounterImg3 from "../../assets/img/counter-03.png";
 import CounterImg4 from "../../assets/img/counter-04.png";
-import LazyImage from "../../utils/lazy-image";
 import { useInView } from "react-intersection-observer";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";

@@ -1,10 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Client from "../../assets/img/anime6.png";
 import ClientM from "../../assets/img/anime3.png";
-import LazyImage from "../../utils/lazy-image";
 import ImageTag from "../../utils/image-tag";
 export default function Feedback() {
   return (

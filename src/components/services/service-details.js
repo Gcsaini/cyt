@@ -1,10 +1,10 @@
 import LazyImage from "../../utils/lazy-image";
 export default function ServiceDetails(props) {
   return (
-    <div class="rbt-blog-details-area rbt-section-gapBottom breadcrumb-style-max-width">
-      <div class="blog-content-wrapper rbt-article-content-wrapper">
-        <div class="content">
-          <div class="post-thumbnail mb--30 position-relative wp-block-image alignwide">
+    <div className="rbt-blog-details-area rbt-section-gapBottom breadcrumb-style-max-width">
+      <div className="blog-content-wrapper rbt-article-content-wrapper">
+        <div className="content">
+          <div className="post-thumbnail mb--30 position-relative wp-block-image alignwide">
             <figure>
               <LazyImage
                 alt="Blog"
@@ -15,7 +15,7 @@ export default function ServiceDetails(props) {
             </figure>
           </div>
           <p>{props.data.long_desc}</p>
-          <blockquote class="wp-block-quote">
+          <blockquote className="wp-block-quote">
             <p>{props.data.quote}</p>
             <cite>
               <a href={"#"}>{props.data.author}</a>
@@ -38,7 +38,7 @@ export default function ServiceDetails(props) {
 
           {props.data.content.map((item, index) => {
             return (
-              <>
+              <div key={index}>
                 <h4>{item.heading}</h4>
                 <div
                   style={{ marginBottom: 20 }}
@@ -48,18 +48,18 @@ export default function ServiceDetails(props) {
                 ></div>
                 {props.data.content.length > 1 && index === 1 && (
                   <div
-                    class="wp-block-gallery columns-3 is-cropped"
+                    className="wp-block-gallery columns-3 is-cropped"
                     style={{ marginTop: 20 }}
                   >
-                    <ul class="blocks-gallery-grid">
-                      {props.data.images.map((img) => {
+                    <ul className="blocks-gallery-grid">
+                      {props.data.images.map((img, index) => {
                         return (
-                          <li class="blocks-gallery-item">
+                          <li className="blocks-gallery-item" key={index}>
                             <figure>
                               <LazyImage
                                 alt={props.data.img_caption}
                                 dim={"143-255"}
-                                class="radius-4"
+                                className="radius-4"
                                 src={`https://dev.chooseyourtherapist.in/images/${img}`}
                               />
                             </figure>
@@ -69,13 +69,17 @@ export default function ServiceDetails(props) {
                     </ul>
                   </div>
                 )}
-              </>
+              </div>
             );
           })}
 
-          <div class="tagcloud" style={{ marginTop: 20 }}>
-            {props.data.tags.map((tag) => {
-              return <a href="/">{tag}</a>;
+          <div className="tagcloud" style={{ marginTop: 20 }}>
+            {props.data.tags.map((tag, index) => {
+              return (
+                <a href="/" key={index}>
+                  {tag}
+                </a>
+              );
             })}
           </div>
         </div>

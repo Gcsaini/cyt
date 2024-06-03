@@ -5,11 +5,11 @@ import TherapistProfile from "../components/services/thrapist-profile";
 import NewsLetter from "../components/home/newsletter";
 import ServiceDetails from "../components/services/service-details";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import NotFoundPage from "./notfound";
 export default function Services() {
   const [data, setData] = React.useState();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { id } = useParams();
   const serviceContent = [
     {
       id: "cyt-tands",
@@ -62,15 +62,14 @@ export default function Services() {
   ];
 
   React.useEffect(() => {
-    setSearchParams(searchParams.get("id"));
-    const data = serviceContent.find((x) => x.id === searchParams);
+    const data = serviceContent.find((x) => x.id === id);
     setData(data);
-  }, []);
+  }, [id]);
 
   return data ? (
     <div id="__next">
       <MyNavbar />
-      <div class="rbt-overlay-page-wrapper">
+      <div className="rbt-overlay-page-wrapper">
         {data && (
           <>
             <ServicesHeader data={data} />

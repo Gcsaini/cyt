@@ -42,9 +42,9 @@ export default function TherapistProfile() {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {[1, 2, 3, 4, 5].map((item) => {
+          {[1, 2, 3, 4, 5].map((item, index) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <TherapistCard />
               </SwiperSlide>
             );

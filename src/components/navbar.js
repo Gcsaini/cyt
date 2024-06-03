@@ -156,7 +156,7 @@ export default function App() {
                           <li>
                             <button
                               onClick={() => {
-                                handleClick("/services?id=cyt-tands");
+                                handleClick("/services/cyt-tands");
                               }}
                               style={{ cursor: "pointer" }}
                             >
@@ -164,9 +164,14 @@ export default function App() {
                             </button>
                           </li>
                           <li>
-                            <a className="" href="/services?id=cyt-rs">
+                            <button
+                              onClick={() => {
+                                handleClick("/services/cyt-tands");
+                              }}
+                              style={{ cursor: "pointer" }}
+                            >
                               Therapeutic Activities
-                            </a>
+                            </button>
                           </li>
                           <li>
                             <a className="" href="course-filter-two-toggle">
@@ -383,7 +388,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
@@ -394,7 +399,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-rs");
                                     }}
                                   >
                                     Therapeutic Activities
@@ -404,7 +409,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
@@ -420,7 +425,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
@@ -431,7 +436,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
@@ -442,7 +447,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
@@ -459,7 +464,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >
@@ -471,7 +476,7 @@ export default function App() {
                                   <button
                                     className="service-menu"
                                     onClick={() => {
-                                      handleClick("/services?id=cyt-tands");
+                                      handleClick("/services/cyt-tands");
                                     }}
                                     style={{ cursor: "pointer" }}
                                   >

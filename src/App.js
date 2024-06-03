@@ -39,7 +39,8 @@ function App() {
                 }
               />
               <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/services" element={<Services />} />
+              <Route path="/services/:id" element={<Services />} />
+              {/* <Route path="/service/:id" element={<ServiceDetails />} /> */}
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/join-us" element={<JoinUs />} />
               <Route path="/plans" element={<Plans />} />
