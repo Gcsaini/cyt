@@ -1,4 +1,4 @@
-import TextImg from "../../assets/img/Choos.png";
+import TextImg from "../../assets/img/Choose.png";
 import LazyImage from "../../utils/lazy-image";
 export default function CallToAction() {
   return (
@@ -18,10 +18,10 @@ export default function CallToAction() {
                     data-sal-duration="400"
                     data-sal-delay="200"
                   >
-                    Ready to choose your therapist?
+                   Contact us today to learn more and express your interest!
                   </h3>
                   <h6 className="subtitle sal-animate">
-                    Finest choice for your mental &amp; emotional well-being.
+                  The best choice to serve with #ChooseYourTherapist
                   </h6>
                 </div>
               </div>
