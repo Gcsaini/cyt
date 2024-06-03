@@ -60,7 +60,6 @@ export default function Feedback() {
                           alt="Client Image"
                           height={"494"}
                           src={Client}
-                          style={{ BorderRadius: "100%" }}
                         />
                       </div>
                       <div className="client-info">
@@ -108,7 +107,6 @@ export default function Feedback() {
                           alt="Client Image"
                           height={"494"}
                           src={ClientM}
-                          style={{ BorderRadius: "100%" }}
                         />
                       </div>
                       <div className="client-info">
@@ -155,7 +153,6 @@ export default function Feedback() {
                           alt="Client Image"
                           height={"494"}
                           src={Client}
-                          style={{ BorderRadius: "100%" }}
                         />
                       </div>
                       <div className="client-info">
@@ -202,7 +199,6 @@ export default function Feedback() {
                           alt="Client Image"
                           height={"494"}
                           src={Client}
-                          style={{ BorderRadius: "100%" }}
                         />
                       </div>
                       <div className="client-info">
