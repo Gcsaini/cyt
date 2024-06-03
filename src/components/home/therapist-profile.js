@@ -31,31 +31,31 @@ export default function TherapistProfile() {
               <li className="nav-item" role="presentation">
                 <button className="active" type="button">
                   <span className="filter-text">See all</span>
-                  <span className="course-number">12</span>
+                  <span className="course-number">01</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
-                  <span className="filter-text">Suport Groups</span>
-                  <span className="course-number">4</span>
+                  <span className="filter-text">Support Groups</span>
+                  <span className="course-number">01</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
                   <span className="filter-text">Student Orientations</span>
-                  <span className="course-number">3</span>
+                  <span className="course-number">0</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
                   <span className="filter-text">Workplace Training</span>
-                  <span className="course-number">3</span>
+                  <span className="course-number">0</span>
                 </button>
               </li>
               <li className="nav-item" role="presentation">
                 <button className="" type="button">
                   <span className="filter-text">Therapeutic Activites</span>
-                  <span className="course-number">3</span>
+                  <span className="course-number">0</span>
                 </button>
               </li>
             

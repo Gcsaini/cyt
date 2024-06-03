@@ -2,7 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Client from "../../assets/img/client-01.webp";
+import Client from "../../assets/img/anime6.png";
+import ClientM from "../../assets/img/anime3.png";
 import LazyImage from "../../utils/lazy-image";
 export default function Feedback() {
   return (
@@ -12,9 +13,11 @@ export default function Feedback() {
           <div className="col-lg-12 mb--60">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">
-                THERAPIST FOR EVERYONE
+              CLIENT INSIGHTS
               </span>
-              <h2 className="title">Client's Success Story</h2>
+              <h2 className="title">Express How We’re Doing</h2>
+              <p>Your insights help us improve and ensure we are offering the best possible support for your mental health journey. Whether you have suggestions, 
+                comments, or success stories, please share them with us.</p>
             </div>
           </div>
         </div>
@@ -61,9 +64,8 @@ export default function Feedback() {
                     </div>
                     <div className="description">
                       <p className="subtitle-3">
-                        The platform connected me with a fantastic therapist who
-                        truly understood my needs. I feel supported and
-                        empowered to work through my challenges.
+                      The platform connected me with a fantastic therapist who truly understood my needs. I feel supported and empowered to work through my challenges. My therapist’s insight and guidance have 
+                      been invaluable in helping me manage my stress and improve my mental health.
                       </p>
                       <div className="rating mt--20">
                         <a href="/elements/testimonial#">
@@ -96,19 +98,18 @@ export default function Feedback() {
                         <LazyImage
                           alt="Clint Images"
                           dim={"494"}
-                          src={Client}
+                          src={ClientM}
                         />
                       </div>
                       <div className="client-info">
-                        <h5 className="title">Priya Patel</h5>
+                        <h5 className="title">Prakshit</h5>
                         <span>Client</span>
                       </div>
                     </div>
                     <div className="description">
                       <p className="subtitle-3">
-                        The platform connected me with a fantastic therapist who
-                        truly understood my needs. I feel supported and
-                        empowered to work through my challenges.
+                      I’ve had an incredible experience with my therapist through this platform. She’s helped me navigate some tough times and I’ve learned so much about myself. 
+                      I appreciate the convenience and quality of care provided.
                       </p>
                       <div className="rating mt--20">
                         <a href="/elements/testimonial#">
@@ -145,15 +146,14 @@ export default function Feedback() {
                         />
                       </div>
                       <div className="client-info">
-                        <h5 className="title">Priya Patel</h5>
+                        <h5 className="title">Nandini</h5>
                         <span>Client</span>
                       </div>
                     </div>
                     <div className="description">
                       <p className="subtitle-3">
-                        The platform connected me with a fantastic therapist who
-                        truly understood my needs. I feel supported and
-                        empowered to work through my challenges.
+                      This platform has been a lifesaver. My therapist is compassionate and skilled, providing the support I need to cope with my depression. 
+                      I feel heard and validated, and I’m making real progress thanks to her guidance.
                       </p>
                       <div className="rating mt--20">
                         <a href="/elements/testimonial#">
@@ -190,15 +190,14 @@ export default function Feedback() {
                         />
                       </div>
                       <div className="client-info">
-                        <h5 className="title">Priya Patel</h5>
+                        <h5 className="title">Shivani</h5>
                         <span>Client</span>
                       </div>
                     </div>
                     <div className="description">
                       <p className="subtitle-3">
-                        The platform connected me with a fantastic therapist who
-                        truly understood my needs. I feel supported and
-                        empowered to work through my challenges.
+                      Finding a therapist who really listens and understands me has made a world of difference. The platform made the process easy and stress-free. I now 
+                      feel more confident and equipped to handle my anxiety.
                       </p>
                       <div className="rating mt--20">
                         <a href="/elements/testimonial#">

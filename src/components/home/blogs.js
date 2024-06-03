@@ -11,7 +11,7 @@ export default function Blogs() {
           <div className="col-lg-6 col-md-6 col-12">
             <div className="section-title">
               <span className="subtitle bg-pink-opacity">Blog Post</span>
-              <h2 className="title">Post Popular Post.</h2>
+              <h2 className="title">Mental Health Chronicles</h2>
             </div>
           </div>
           <div className="col-lg-6 col-md-6 col-12">
@@ -44,11 +44,11 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h3 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d">
-                    How to Analyze Your Best Pages for SEO Performance
+                  Why We Choose the Partners We Do: The Psychology of Attraction
                   </a>
                 </h3>
                 <p className="rbt-card-text">
-                  It is a long established fact that a reader.
+                Understanding the Mysteries of Attraction and Compatibility.
                 </p>
                 <div className="rbt-card-bottom">
                   <a
@@ -86,7 +86,7 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-2">
-                    Why Is Education So Famous?
+                  Self-Care Tips for Busy Professionals
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">
@@ -123,7 +123,7 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-3">
-                    Difficult Things About Education.
+                  The Connection Between Physical and Mental Health.
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">
@@ -160,7 +160,7 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-4">
-                    Education Is So Famous, But Why?
+                  Effective Communication Strategies for Couples
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">

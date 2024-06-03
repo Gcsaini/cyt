@@ -207,7 +207,7 @@ export default function Counter() {
                     <div className="icon bg-primary-opacity">
                       <i
                         className="feather-heart"
-                        style={{ color: "#1a8a16 " }}
+                      
                       ></i>
                     </div>
                     <div className="feature-content">
@@ -217,7 +217,7 @@ export default function Counter() {
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-secondary-opacity">
                       <i className="feather-user-check"
-                      style={{ color: "#1a8a16 " }}
+               
                      ></i>
                     </div>
                     <div className="feature-content">
@@ -227,8 +227,7 @@ export default function Counter() {
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-secondary-opacity">
                       <i className="feather-clipboard"
-                        style={{ color: "#1a8a16 " }}
-                        ></i>
+                       ></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">Personalized Space</h6>
@@ -237,8 +236,7 @@ export default function Counter() {
                   <div className="rbt-feature feature-style-1 align-items-center">
                     <div className="icon bg-pink-opacity">
                       <i className="feather-aperture"
-                      style={{ color: "#1a8a16 " }}
-                        ></i>
+                     ></i>
                     </div>
                     <div className="feature-content">
                       <h6 className="feature-title">
