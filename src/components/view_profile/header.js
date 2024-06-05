@@ -23,39 +23,38 @@ export default function ProfileHeader() {
                     justifyContent: "space-between",
                   }}
                 >
-                  <div>
-                    <div className="rbt-tutor-information-left">
-                      <div className="thumbnail rbt-avatars size-lg">
-                        <ImageTag
-                          alt="Instructor"
-                          width="250"
-                          height="250"
-                          src={Avatar}
-                        />
-                      </div>
-                      <div className="tutor-content">
-                        <h5 className="title">Claudia Pr</h5>
-                        <div className="rbt-review">
-                          <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                          </div>
-                          <span className="rating-count"> (15 Reviews)</span>
+                  <div className="rbt-tutor-information-left">
+                    <div className="thumbnail rbt-avatars size-lg">
+                      <ImageTag
+                        alt="Instructor"
+                        width="250"
+                        height="250"
+                        src={Avatar}
+                      />
+                    </div>
+                    <div className="tutor-content">
+                      <h5 className="title">Claudia Pr</h5>
+                      <div className="rbt-review">
+                        <div className="rating">
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
                         </div>
-                        <ul className="rbt-meta rbt-meta-white mt--5">
-                          <li>
-                            <i className="feather-book"></i>15 Courses
-                          </li>
-                          <li>
-                            <i className="feather-users"></i>616,029 Students
-                          </li>
-                        </ul>
+                        <span className="rating-count"> (15 Reviews)</span>
                       </div>
+                      <ul className="rbt-meta rbt-meta-white mt--5">
+                        <li>
+                          <i className="feather-book"></i>15 Courses
+                        </li>
+                        <li>
+                          <i className="feather-users"></i>616,029 Students
+                        </li>
+                      </ul>
                     </div>
                   </div>
+
                   <ul
                     style={{
                       listStyle: "none",

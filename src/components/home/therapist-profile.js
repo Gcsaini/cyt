@@ -4,8 +4,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import WellNessCard from "./wellness-card";
+import React from "react";
 export default function TherapistProfile() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const [tab, setTab] = React.useState(1);
+  const handleClick = (id) => {
+    setTab(id);
+  };
   return (
     <div className="rbt-course-area bg-color-extra2 rbt-section-gap">
       <div className="container">
@@ -27,7 +32,7 @@ export default function TherapistProfile() {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            <ul
+            {/* <ul
               className="rbt-portfolio-filter filter-tab-button text-center nav nav-tabs"
               id="rbt-myTab"
               role="tablist"
@@ -62,7 +67,83 @@ export default function TherapistProfile() {
                   <span className="course-number">0</span>
                 </button>
               </li>
-            </ul>
+            </ul> */}
+            <div className="advance-tab-button">
+              <ul className="nav nav-tabs tab-button-style-2" id="myTab-4">
+                <li>
+                  <a
+                    className={tab === 1 ? "tab-button active" : "tab-button"}
+                    id="home-tab-4"
+                    aria-selected={tab === 1 ? "true" : "false"}
+                    onClick={() => handleClick(1)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      See All
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={tab === 2 ? "tab-button active" : "tab-button"}
+                    id="profile-tab-4"
+                    aria-selected={tab === 2 ? "true" : "false"}
+                    onClick={() => handleClick(2)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Support Groups
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={tab === 3 ? "tab-button active" : "tab-button"}
+                    id="contact-tab-4"
+                    aria-selected={tab === 3 ? "true" : "false"}
+                    onClick={() => handleClick(3)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Student Orientations
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={tab === 4 ? "tab-button active" : "tab-button"}
+                    id="business-tab-4"
+                    aria-selected={tab === 4 ? "true" : "false"}
+                    onClick={() => handleClick(4)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Student Orientations
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={tab === 5 ? "tab-button active" : "tab-button"}
+                    id="business-tab-4"
+                    aria-selected={tab === 5 ? "true" : "false"}
+                    onClick={() => handleClick(5)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Workplace Training
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={tab === 6 ? "tab-button active" : "tab-button"}
+                    id="business-tab-4"
+                    aria-selected={tab === 6 ? "true" : "false"}
+                    onClick={() => handleClick(6)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Therapeutic Activites
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         {!isMobile && (

@@ -9,9 +9,14 @@ import anjali from "../../assets/img/anjali.png";
 import BookBtn from "../global/book-btn";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
+import React from "react";
 export default function ProfileCard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const [tab, setTab] = React.useState(1);
+  const handleClick = (id) => {
+    setTab(id);
+  };
   return (
     <div className="rbt-rbt-card-area rbt-section-gap bg-color-extra2">
       <div className="container">
@@ -22,49 +27,132 @@ export default function ProfileCard() {
                 Mental Health Professional
               </span>
               <h2 className="title">Therapist Directory</h2>
-              <p>Looking for the right therapist? Our comprehensive profiles make it easy to find a therapist who meets your needs and preferences. Start your search here.</p>
+              <p>
+                Looking for the right therapist? Our comprehensive profiles make
+                it easy to find a therapist who meets your needs and
+                preferences. Start your search here.
+              </p>
               <div className="row">
-          <div className="col-lg-12">
-            <ul
-              className="rbt-portfolio-filter filter-tab-button text-center nav nav-tabs"
-              id="rbt-myTab"
-              role="tablist"
-            >
-              <li className="nav-item" role="presentation">
-                <button className="active" type="button">
-                  <span className="filter-text">See all</span>
-                  <span className="course-number">12</span>
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button className="" type="button">
-                  <span className="filter-text">Counselling Psychologist</span>
-                  <span className="course-number">4</span>
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button className="" type="button">
-                  <span className="filter-text">Clinical Psychologist</span>
-                  <span className="course-number">3</span>
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button className="" type="button">
-                  <span className="filter-text">Psychiatrist</span>
-                  <span className="course-number">3</span>
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button className="" type="button">
-                  <span className="filter-text">Special Educator</span>
-                  <span className="course-number">3</span>
-                </button>
-              </li>
-             
-              
-            </ul>
-          </div>
-        </div>
+                <div className="col-lg-12">
+                  {/* <ul
+                    className="rbt-portfolio-filter filter-tab-button text-center nav nav-tabs"
+                    id="rbt-myTab"
+                    role="tablist"
+                  >
+                    <li className="nav-item" role="presentation">
+                      <button className="active" type="button">
+                        <span className="filter-text">See all</span>
+                        <span className="course-number">12</span>
+                      </button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                      <button className="" type="button">
+                        <span className="filter-text">
+                          Counselling Psychologist
+                        </span>
+                        <span className="course-number">4</span>
+                      </button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                      <button className="" type="button">
+                        <span className="filter-text">
+                          Clinical Psychologist
+                        </span>
+                        <span className="course-number">3</span>
+                      </button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                      <button className="" type="button">
+                        <span className="filter-text">Psychiatrist</span>
+                        <span className="course-number">3</span>
+                      </button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                      <button className="" type="button">
+                        <span className="filter-text">Special Educator</span>
+                        <span className="course-number">3</span>
+                      </button>
+                    </li>
+                  </ul> */}
+                  <div className="advance-tab-button">
+                    <ul
+                      className="nav nav-tabs tab-button-style-2"
+                      id="myTab-4"
+                    >
+                      <li>
+                        <a
+                          className={
+                            tab === 1 ? "tab-button active" : "tab-button"
+                          }
+                          id="home-tab-4"
+                          aria-selected={tab === 1 ? "true" : "false"}
+                          onClick={() => handleClick(1)}
+                        >
+                          <span className="title" style={{ cursor: "pointer" }}>
+                            See All
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className={
+                            tab === 2 ? "tab-button active" : "tab-button"
+                          }
+                          id="profile-tab-4"
+                          aria-selected={tab === 2 ? "true" : "false"}
+                          onClick={() => handleClick(2)}
+                        >
+                          <span className="title" style={{ cursor: "pointer" }}>
+                            Counselling Psychologist
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className={
+                            tab === 3 ? "tab-button active" : "tab-button"
+                          }
+                          id="contact-tab-4"
+                          aria-selected={tab === 3 ? "true" : "false"}
+                          onClick={() => handleClick(3)}
+                        >
+                          <span className="title" style={{ cursor: "pointer" }}>
+                            Clinical Psychologist
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className={
+                            tab === 4 ? "tab-button active" : "tab-button"
+                          }
+                          id="business-tab-4"
+                          aria-selected={tab === 4 ? "true" : "false"}
+                          onClick={() => handleClick(4)}
+                        >
+                          <span className="title" style={{ cursor: "pointer" }}>
+                            Psychiatrist
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className={
+                            tab === 5 ? "tab-button active" : "tab-button"
+                          }
+                          id="business-tab-4"
+                          aria-selected={tab === 5 ? "true" : "false"}
+                          onClick={() => handleClick(5)}
+                        >
+                          <span className="title" style={{ cursor: "pointer" }}>
+                            Special Educator
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
