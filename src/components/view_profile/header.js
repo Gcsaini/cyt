@@ -91,25 +91,28 @@ export default function ProfileHeader() {
                 <div className="row g-5">
                   <div className="col-lg-8">
                     <p className="mt--10 mb--20">
-                      John is a brilliant educator, whose life was spent for
-                      computer science and love of nature.
+                    Hello, I'm a Counseling Psychologist committed to supporting your mental health and overall well-being. My approach to counseling is grounded in cognitive restructuring, a powerful technique that helps you identify and challenge negative thought patterns. 
+                    <b/>  <b/> By doing so, we can work together to replace these thoughts with healthier, more adaptive ways of thinking, leading to improved emotional and mental health.
+
+In addition to cognitive restructuring, I embrace a holistic wellness approach. <b/> <b/> I believe that true wellness involves balancing all aspects of your life, and I strive to integrate strategies that promote overall well-being. Whether it’s through mindfulness practices, stress management techniques, or lifestyle adjustments, I aim to provide comprehensive support tailored to your unique needs.
+
                     </p>
 
                     <ul className="rbt-information-list mt--15">
                       <li>
                         <a href="/profile/1#">
-                          <i className="feather-phone"></i>+1-202-555-0174
+                          <i className="feather-phone"></i>+918077757951
                         </a>
                       </li>
                       <li>
                         <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>example@gmail.com
+                          <i className="feather-mail"></i>deepak@chooseyourtherapist.in
                         </a>
                       </li>
                     </ul>
                   </div>
                   <div className="col-lg-2 offset-lg-2">
-                    <div className="feature-sin best-seller-badge text-end h-100">
+                    <div className="feature-sin best-seller-badge text-end h-50">
                       <span className="rbt-badge-2 w-100 text-center badge-full-height">
                         <span className="image">
                           <ImageTag
@@ -119,7 +122,7 @@ export default function ProfileHeader() {
                             src={BestSellerImg}
                           />
                         </span>
-                        Bestseller
+                        Approved
                       </span>
                     </div>
                   </div>
