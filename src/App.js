@@ -15,6 +15,7 @@ import FaqPage from "./pages/faqs";
 import Blogs from "./pages/blogs";
 import UserProfile from "./pages/user-profile";
 import UserDashboard from "./pages/user-dashboard";
+import ViewProfile from "./pages/view-profile";
 
 const theme = createTheme();
 
@@ -40,7 +41,7 @@ function App() {
               />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services/:id" element={<Services />} />
-              {/* <Route path="/service/:id" element={<ServiceDetails />} /> */}
+              <Route path="/view-profile/:id" element={<ViewProfile />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/join-us" element={<JoinUs />} />
               <Route path="/plans" element={<Plans />} />

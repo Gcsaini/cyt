@@ -3,28 +3,12 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import WellNessCard from "./wellness-card";
-export default function TherapistProfile() {
+import WellNessCard from "../home/wellness-card";
+export default function ProfileCourses() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
-    <div className="rbt-course-area bg-color-extra2 rbt-section-gap">
+    <div className="rbt-course-area bg-color-white rbt-section-gap">
       <div className="container">
-        <div className="row mb--60">
-          <div className="col-lg-12">
-            <div className="section-title text-center">
-              <span className="subtitle bg-primary-opacity">
-                Mental Health Wrokshops/Activites
-              </span>
-              <h2 className="title">Wellness Workshops by Professionals</h2>
-              <p>
-                Join our workshops and activities designed to enhance your
-                mental health and well-being. From stress management sessions to
-                personal development workshops, explore a variety of
-                opportunities to engage, learn, and grow.
-              </p>
-            </div>
-          </div>
-        </div>
         <div className="row">
           <div className="col-lg-12">
             <ul

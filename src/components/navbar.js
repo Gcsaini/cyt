@@ -83,7 +83,6 @@ export default function App() {
                     handleClick("/");
                   }}
                   style={{ cursor: "pointer" }}
-                  href={"#"}
                 >
                   Home<i className="feather-chevron-down"></i>
                 </a>

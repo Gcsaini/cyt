@@ -20,9 +20,11 @@ export default function Services() {
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">SERVICES</span>
               <h2 className="title">What are you looking for ?</h2>
-              <p><p>Are you looking for solutions to achieve holistic well-being? Our services are designed to support your mental, emotional, and spiritual health.</p>
-</p>
-
+              <p>
+                Are you looking for solutions to achieve holistic well-being?
+                Our services are designed to support your mental, emotional, and
+                spiritual health.
+              </p>
             </div>
           </div>
         </div>

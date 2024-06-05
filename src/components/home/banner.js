@@ -3,15 +3,20 @@ import { Autoplay } from "swiper/modules";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useNavigate } from "react-router-dom";
 import React from "react";
-import TherapistCard from "../therapist-card";
 import DeepakImg from "../../assets/img/dpk.jpeg";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 export default function Banner() {
+  const navigate = useNavigate();
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [hideShow, setHideShow] = React.useState(false);
+
+  function handleClick(nav) {
+    navigate(nav);
+  }
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -145,7 +150,12 @@ export default function Banner() {
                         <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
                           <div className="rbt-card variation-01">
                             <div className="rbt-card-img">
-                              <a href="">
+                              <a
+                                onClick={() => {
+                                  handleClick("/view-profile/1");
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
                                 <ImageTag
                                   alt="Card"
                                   height={"488"}
@@ -181,7 +191,14 @@ export default function Banner() {
                                 </span>
                               </div>
                               <h4 className="rbt-card-title">
-                                <a href="">Deepak Kumar</a>
+                                <a
+                                  onClick={() => {
+                                    handleClick("/view-profile/1");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  Deepak Kumar
+                                </a>
                               </h4>
                               <div style={{ marginTop: 7, display: "flex" }}>
                                 <span>
@@ -212,9 +229,12 @@ export default function Banner() {
                               >
                                 <a
                                   className="view-btn view-btn-border"
-                                  href=""
+                                  onClick={() => {
+                                    handleClick("/view-profile/1");
+                                  }}
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
+                                    cursor: "pointer",
                                   }}
                                 >
                                   View Profile
@@ -239,7 +259,12 @@ export default function Banner() {
                         <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
                           <div className="rbt-card variation-01">
                             <div className="rbt-card-img">
-                              <a href="">
+                              <a
+                                onClick={() => {
+                                  handleClick("/view-profile/2");
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
                                 <ImageTag
                                   alt="Card"
                                   height={"488"}
@@ -275,7 +300,14 @@ export default function Banner() {
                                 </span>
                               </div>
                               <h4 className="rbt-card-title">
-                                <a href="">Deepak Kumar</a>
+                                <a
+                                  onClick={() => {
+                                    handleClick("/view-profile/2");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  Deepak Kumar
+                                </a>
                               </h4>
                               <div style={{ marginTop: 7, display: "flex" }}>
                                 <span>
@@ -305,9 +337,12 @@ export default function Banner() {
                               >
                                 <a
                                   className="view-btn view-btn-border"
-                                  href=""
+                                  onClick={() => {
+                                    handleClick("/view-profile/2");
+                                  }}
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
+                                    cursor: "pointer",
                                   }}
                                 >
                                   View Profile
