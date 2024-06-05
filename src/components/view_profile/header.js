@@ -112,7 +112,7 @@ In addition to cognitive restructuring, I embrace a holistic wellness approach. 
                     </ul>
                   </div>
                   <div className="col-lg-2 offset-lg-2">
-                    <div className="feature-sin best-seller-badge text-end h-50">
+                    <div className="feature-sin best-seller-badge text-end h-100">
                       <span className="rbt-badge-2 w-100 text-center badge-full-height">
                         <span className="image">
                           <ImageTag
