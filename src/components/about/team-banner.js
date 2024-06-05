@@ -1,7 +1,7 @@
 import TeamImg from "../../assets/img/founder.png";
 import TeamImg3 from "../../assets/img/fab.png";
 import TeamImg4 from "../../assets/img/akt.png";
-import TeamImg5 from "../../assets/img/slazzer-edit-image(1).png";
+import TeamImg5 from "../../assets/img/gopichand.png";
 import TeamImg6 from "../../assets/img/sidhant.png";
 import vibhor from "../../assets/img/vibhor.png";
 import "swiper/css";
