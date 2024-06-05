@@ -33,7 +33,7 @@ export default function ProfileHeader() {
                       />
                     </div>
                     <div className="tutor-content">
-                      <h5 className="title">Claudia Pr</h5>
+                      <h5 className="title">Deepak Kumar</h5>
                       <div className="rbt-review">
                         <div className="rating">
                           <i className="fas fa-star"></i>
@@ -46,10 +46,10 @@ export default function ProfileHeader() {
                       </div>
                       <ul className="rbt-meta rbt-meta-white mt--5">
                         <li>
-                          <i className="feather-book"></i>15 Courses
+                          <i className="feather-book"></i>Counselling Psychologist
                         </li>
                         <li>
-                          <i className="feather-users"></i>616,029 Students
+                          <i className="feather-users"></i>540+ Session Completed 
                         </li>
                       </ul>
                     </div>
@@ -87,7 +87,7 @@ export default function ProfileHeader() {
             </div>
             <div className="col-lg-12 mt--30">
               <div className="profile-content rbt-shadow-box">
-                <h4 className="rbt-title-style-3">Biography</h4>
+                <h4 className="rbt-title-style-3">About Me</h4>
                 <div className="row g-5">
                   <div className="col-lg-8">
                     <p className="mt--10 mb--20">
