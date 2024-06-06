@@ -91,7 +91,7 @@ export default function Login() {
         <div className="wrapper">
           <div className="container">
             <div className="row g-5">
-              <div className="col-lg-7 order-2 order-lg-1">
+              <div className="col-lg-7">
                 <div className="banner-content">
                   <div className="inner">
                     <div className="section-title text-start">
@@ -175,7 +175,7 @@ export default function Login() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-5 order-1 order-lg-2">
+              <div className="col-lg-5">
                 <div className="rbt-contact-form contact-form-style-1">
                   <h3 className="title">Login</h3>
                   <p style={{ color: "#ff0000" }}>

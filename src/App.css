@@ -44786,10 +44786,3 @@ blockquote.has-text-align-right cite {
   cursor: "pointer";
 }
 
-.resume-upload::-webkit-file-upload-button {
-  visibility: hidden;
-}
-
-.resume-upload::before {
-  content: "Upload your resume";
-}
