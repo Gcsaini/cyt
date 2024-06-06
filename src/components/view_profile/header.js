@@ -14,7 +14,10 @@ export default function ProfileHeader() {
         <div className="container mt--60">
           <div className="row">
             <div className="col-lg-12">
-              <div className="rbt-dashboard-content-wrapper">
+              <div
+                className="rbt-dashboard-content-wrapper"
+                style={{ marginTop: isMobile ? 60 : 0 }}
+              >
                 <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
                 <div
                   className="rbt-tutor-information"
@@ -33,25 +36,29 @@ export default function ProfileHeader() {
                       />
                     </div>
                     <div className="tutor-content">
-                      <h5 className="title">Deepak Kumar</h5>
-                      <div className="rbt-review">
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                      <div>
+                        <h5 className="title">Deepak Kumar</h5>
+                        <div className="rbt-review">
+                          <div className="rating">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                          </div>
+                          <span className="rating-count"> (15 Reviews)</span>
                         </div>
-                        <span className="rating-count"> (15 Reviews)</span>
+                        <ul className="rbt-meta rbt-meta-white mt--5">
+                          <li>
+                            <i className="feather-book"></i>Counselling
+                            Psychologist
+                          </li>
+                          <li>
+                            <i className="feather-users"></i>540+ Session
+                            Completed
+                          </li>
+                        </ul>
                       </div>
-                      <ul className="rbt-meta rbt-meta-white mt--5">
-                        <li>
-                          <i className="feather-book"></i>Counselling Psychologist
-                        </li>
-                        <li>
-                          <i className="feather-users"></i>540+ Session Completed 
-                        </li>
-                      </ul>
                     </div>
                   </div>
 
@@ -91,11 +98,22 @@ export default function ProfileHeader() {
                 <div className="row g-5">
                   <div className="col-lg-8">
                     <p className="mt--10 mb--20">
-                    Hello, I'm a Counseling Psychologist committed to supporting your mental health and overall well-being. My approach to counseling is grounded in cognitive restructuring, a powerful technique that helps you identify and challenge negative thought patterns. 
-                    <b/>  <b/> By doing so, we can work together to replace these thoughts with healthier, more adaptive ways of thinking, leading to improved emotional and mental health.
-
-In addition to cognitive restructuring, I embrace a holistic wellness approach. <b/> <b/> I believe that true wellness involves balancing all aspects of your life, and I strive to integrate strategies that promote overall well-being. Whether it’s through mindfulness practices, stress management techniques, or lifestyle adjustments, I aim to provide comprehensive support tailored to your unique needs.
-
+                      Hello, I'm a Counseling Psychologist committed to
+                      supporting your mental health and overall well-being. My
+                      approach to counseling is grounded in cognitive
+                      restructuring, a powerful technique that helps you
+                      identify and challenge negative thought patterns.
+                      <b /> <b /> By doing so, we can work together to replace
+                      these thoughts with healthier, more adaptive ways of
+                      thinking, leading to improved emotional and mental health.
+                      In addition to cognitive restructuring, I embrace a
+                      holistic wellness approach. <b /> <b /> I believe that
+                      true wellness involves balancing all aspects of your life,
+                      and I strive to integrate strategies that promote overall
+                      well-being. Whether it’s through mindfulness practices,
+                      stress management techniques, or lifestyle adjustments, I
+                      aim to provide comprehensive support tailored to your
+                      unique needs.
                     </p>
 
                     <ul className="rbt-information-list mt--15">
@@ -106,7 +124,8 @@ In addition to cognitive restructuring, I embrace a holistic wellness approach. 
                       </li>
                       <li>
                         <a href="mailto:hello@example.com">
-                          <i className="feather-mail"></i>deepak@chooseyourtherapist.in
+                          <i className="feather-mail"></i>
+                          deepak@chooseyourtherapist.in
                         </a>
                       </li>
                     </ul>

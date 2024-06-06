@@ -29513,8 +29513,10 @@ fieldset:disabled {
   background-size: 300% 100%;
   background: rgb(42, 93, 49);
 
-    
-  background: linear-gradient(104deg, #35c128, #4ca3c5 96%,
+  background: linear-gradient(
+    104deg,
+    #35c128,
+    #4ca3c5 96%,
     rgba(185, 185, 185, 1) 100%
   );
 }
@@ -35996,7 +35998,7 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   padding: 3px;
   background: var(--color-white);
   border-radius: 100%;
-    -webkit-border-radius: 100%;
+  -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   overflow: hidden;
   min-width: 70px;
@@ -42606,7 +42608,9 @@ blockquote.has-text-align-right cite {
 @media only screen and (max-width: 575px) {
   .rbt-tutor-information .rbt-tutor-information-left .thumbnail {
     margin-right: 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 .rbt-tutor-information .rbt-tutor-information-left .tutor-content .title {
@@ -44780,4 +44784,12 @@ blockquote.has-text-align-right cite {
   line-height: 80px;
   transition: 0.3s;
   cursor: "pointer";
+}
+
+.resume-upload::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.resume-upload::before {
+  content: "Upload your resume";
 }

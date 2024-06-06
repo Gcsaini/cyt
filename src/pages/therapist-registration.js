@@ -1,75 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer";
-import NewsLetter from "../components/home/newsletter";
-import MyNavbar from "../components/navbar";
-import ClientImg from "../assets/img/client-01a92c.png";
 import ImageTag from "../utils/image-tag";
-// Utils
-import auth from "../utils/auth";
-import request from "../utils/request";
-import { isValidMail } from "../utils/validators";
-import { loginUrl } from "../utils/url";
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    if (email.length < 7 || !isValidMail(email)) {
-      setError("Please enter valid email address");
-      return;
-    }
-    if (password.length < 6) {
-      setError("Please enter valid password");
-      return;
-    }
-    const value = {
-      email,
-      password,
-    };
-
-    setLoading(true);
-
-    request(loginUrl, { method: "POST", body: value })
-      .then((response) => {
-        if (!response.status) {
-          setError(response.message);
-        } else {
-          auth.setToken(response.data.token, true);
-          auth.setUserInfo(response.data, true);
-          redirectUser();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setLoading(false);
-  };
-
-  const redirectUser = () => {
-    navigate(`/home`);
-  };
-
-  useEffect(() => {
-    if (auth.getToken()) {
-      navigate(`/home`);
-    }
-  }, []);
-
+import MyNavbar from "../components/navbar";
+import NewsLetter from "../components/home/newsletter";
+import Footer from "../components/footer";
+import ClientImg from "../assets/img/client-01a92c.png";
+export default function TherapistRegistration() {
   return (
-    <div>
+    <>
       <MyNavbar />
-      <div className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-        <div className="container mt--60">
+      <div className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1 mt--60">
+        <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Login</h2>
+                <h2 className="title">Become A Therapist</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
@@ -79,14 +22,15 @@ export default function Login() {
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">Login</li>
+                  <li className="rbt-breadcrumb-item active">
+                    Become a Teacher
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div className="rbt-banner-area rbt-banner-3 header-transperent-spacer">
         <div className="wrapper">
           <div className="container">
@@ -99,7 +43,10 @@ export default function Login() {
                         THE BEST THEME FOR
                       </span>
                     </div>
-                    <h1 className="title">Online Learning</h1>
+                    <h1 className="title">
+                      Online Learning <br />
+                      Managemnt System
+                    </h1>
                     <p className="description">
                       We are experienced in educationl platform and skilled
                       strategies for the success of our online learning.
@@ -177,36 +124,53 @@ export default function Login() {
               </div>
               <div className="col-lg-5 order-1 order-lg-2">
                 <div className="rbt-contact-form contact-form-style-1">
-                  <h3 className="title">Login</h3>
-                  <p style={{ color: "#ff0000" }}>
-                    {error !== "" ? error : ""}
-                  </p>
+                  <h3 className="title">Join Us</h3>
                   <form id="contact-form">
+                    <div className="form-group" style={{ marginBottom: 15 }}>
+                      <select
+                        style={{
+                          padding: 0,
+                          border: 0,
+                          borderBottom: "2px solid #e6e3f1",
+                          borderRadius: 0,
+                        }}
+                      >
+                        <option>Select profile type</option>
+                        <option>Counselling Psychologist</option>
+                        <option>Clinical Psychologist</option>
+                        <option>Psychiatrist</option>
+                        <option>Special educator</option>
+                      </select>
+                    </div>
                     <div className="form-group">
                       <input
+                        name="con_name"
+                        type="text"
+                        placeholder="Full Name"
+                      />
+                      <span className="focus-border"></span>
+                    </div>
+                    <div className="form-group">
+                      <input
+                        name="con_email"
                         placeholder="Email"
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
                       />
                       <span className="focus-border"></span>
                     </div>
                     <div className="form-group">
-                      <input
-                        type="text"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
+                      <input name="phone" placeholder="Phone" type="text" />
                       <span className="focus-border"></span>
                     </div>
-                    <div
-                      className="rbt-lost-password text-end"
-                      style={{ marginBottom: 15 }}
-                    >
-                      <a className="rbt-btn-link" href="/auth/register">
-                        Create Account?
-                      </a>
+                    <div className="form-group">
+                      <input
+                        class="resume-upload"
+                        type="file"
+                        accept=".pdf"
+                        placeholder="Upload resume"
+                        style={{ padding: "11px 0 0px" }}
+                      />
+                      <span className="focus-border"></span>
                     </div>
                     <div className="form-submit-group">
                       <button
@@ -214,9 +178,7 @@ export default function Login() {
                         className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
                       >
                         <span className="icon-reverse-wrapper">
-                          <span className="btn-text" onClick={handleSubmit}>
-                            Login
-                          </span>
+                          <span className="btn-text">Submit</span>
                           <span className="btn-icon">
                             <i className="feather-arrow-right"></i>
                           </span>
@@ -233,7 +195,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-
       <NewsLetter />
 
       <div className="rbt-progress-parent">
@@ -247,6 +208,6 @@ export default function Login() {
         </svg>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }

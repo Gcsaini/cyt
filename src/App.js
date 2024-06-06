@@ -16,6 +16,8 @@ import Blogs from "./pages/blogs";
 import UserProfile from "./pages/user-profile";
 import UserDashboard from "./pages/user-dashboard";
 import ViewProfile from "./pages/view-profile";
+import TherapistRegistration from "./pages/therapist-registration";
+import Register from "./pages/register";
 
 const theme = createTheme();
 
@@ -30,6 +32,12 @@ function App() {
             {/* <Nav /> */}
             <Routes>
               <Route exact path="/auth/login" element={<Login />} />
+              <Route exact path="/auth/register" element={<Register />} />
+              <Route
+                exact
+                path="/auth/therapist-registration"
+                element={<TherapistRegistration />}
+              />
 
               <Route
                 path="/home"
