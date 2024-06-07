@@ -3,7 +3,73 @@ import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";
 import ClientImg from "../assets/img/client-01a92c.png";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { threapistRegistrationUrl } from "../utils/url";
 export default function TherapistRegistration() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [profileType, setProfileType] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState("");
+  const navigate = useNavigate();
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleSubmit = async () => {
+    setError("");
+    if (phone.length !== 10) {
+      setError("Please enter valid phone number");
+      return;
+    } else if (!validateEmail(email)) {
+      setError("Please enter valid email id");
+      return;
+    } else if (!selectedFile) {
+      setError("Please upload your resume");
+      return;
+    } else if (profileType == "") {
+      setError("Please select profile type");
+      return;
+    } else {
+      setError("");
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("resume", selectedFile);
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("type", profileType);
+
+      try {
+        const response = await axios.post(threapistRegistrationUrl, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        if (response.data.status) {
+          setSuccess(response.data.message);
+        } else {
+          setError("Something went wrong");
+        }
+      } catch (error) {
+        console.log(error);
+        setError(error.response.data.message);
+      }
+    }
+  };
+
   return (
     <>
       <MyNavbar />
@@ -74,7 +140,7 @@ export default function TherapistRegistration() {
                           href="#"
                           className="avatar"
                           data-tooltip="Rafi Dev"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -87,7 +153,7 @@ export default function TherapistRegistration() {
                           href="#"
                           className="avatar"
                           data-tooltip="Mark"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -100,7 +166,7 @@ export default function TherapistRegistration() {
                           href="#"
                           className="avatar"
                           data-tooltip="Jordan"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -125,70 +191,81 @@ export default function TherapistRegistration() {
               <div className="col-lg-5">
                 <div className="rbt-contact-form contact-form-style-1">
                   <h3 className="title">Join Us</h3>
-                  <form id="contact-form">
-                    <div className="form-group" style={{ marginBottom: 15 }}>
-                      <select
-                        style={{
-                          padding: 0,
-                          border: 0,
-                          borderBottom: "2px solid #e6e3f1",
-                          borderRadius: 0,
-                        }}
-                      >
-                        <option>Select profile type</option>
-                        <option>Counselling Psychologist</option>
-                        <option>Clinical Psychologist</option>
-                        <option>Psychiatrist</option>
-                        <option>Special educator</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        name="con_name"
-                        type="text"
-                        placeholder="Full Name"
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        name="con_email"
-                        placeholder="Email"
-                        type="email"
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-group">
-                      <input name="phone" placeholder="Phone" type="text" />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        class="resume-upload"
-                        type="file"
-                        accept=".pdf"
-                        placeholder="Upload resume"
-                        style={{ padding: "11px 0 0px" }}
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-submit-group">
-                      <button
-                        type="submit"
-                        className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
-                      >
-                        <span className="icon-reverse-wrapper">
-                          <span className="btn-text">Submit</span>
-                          <span className="btn-icon">
-                            <i className="feather-arrow-right"></i>
-                          </span>
-                          <span className="btn-icon">
-                            <i className="feather-arrow-right"></i>
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </form>
+                  <p style={{ color: "#d50000" }}>{error}</p>
+                  <div className="form-group" style={{ marginBottom: 15 }}>
+                    <select
+                      style={{
+                        padding: 0,
+                        border: 0,
+                        borderBottom: "2px solid #e6e3f1",
+                        borderRadius: 0,
+                      }}
+                      value={profileType}
+                      onChange={(e) => setProfileType(e.target.value)}
+                    >
+                      <option value={""}>Select profile type</option>
+                      <option value={"Counselling Psychologist"}>
+                        Counselling Psychologist
+                      </option>
+                      <option value={"Clinical Psychologist"}>
+                        Clinical Psychologist
+                      </option>
+                      <option value={"Psychiatrist"}>Psychiatrist</option>
+                      <option value={"Special educator"}>
+                        Special educator
+                      </option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Full Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <span className="focus-border"></span>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      placeholder="Email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <span className="focus-border"></span>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      name="phone"
+                      placeholder="Phone"
+                      type="text"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                    <span className="focus-border"></span>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="resume-upload"
+                      type="file"
+                      accept=".pdf"
+                      placeholder="Upload resume"
+                      style={{ padding: "11px 0 0px" }}
+                      onChange={handleFileChange}
+                    />
+                    <span className="focus-border"></span>
+                  </div>
+                  <div className="form-submit-group">
+                    <p style={{ color: "#b9f6ca" }}>{success}</p>
+                    <button
+                      onClick={handleSubmit}
+                      className="rbt-btn btn-md btn-gradient radius-round w-100"
+                    >
+                      <span className="btn-text">
+                        {loading ? "Please wait..." : "Submit"}
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

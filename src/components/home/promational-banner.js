@@ -39,7 +39,7 @@ export default function PromationalBanner() {
                           <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
-                            class={"rbt-radius w-100"}
+                            className={"rbt-radius w-100"}
                             src={Banner}
                           />
                         </a>
@@ -59,7 +59,7 @@ export default function PromationalBanner() {
                             alt="Banner"
                             heigth="425"
                             width="1305"
-                            class={"rbt-radius w-100"}
+                            className={"rbt-radius w-100"}
                             src={Banner2}
                           />
                         </a>
@@ -78,7 +78,7 @@ export default function PromationalBanner() {
                           <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
-                            class={"rbt-radius w-100"}
+                            className={"rbt-radius w-100"}
                             src={Banner}
                           />
                         </a>

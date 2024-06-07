@@ -4,13 +4,12 @@ export default function ImageTag(props) {
       alt={props.alt}
       fetchpriority="high"
       loading="lazy"
-      width={props.width}
-      height={props.height}
       decoding="async"
       data-nimg="1"
-      style={{ color: "transparent" }}
+      style={props.style}
       src={props.src}
       className={props.class ? props.class : ""}
+      {...props}
     />
   );
 }

@@ -5,7 +5,6 @@ import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
 import ClientImg from "../assets/img/client-01a92c.png";
 import ImageTag from "../utils/image-tag";
-// Utils
 import auth from "../utils/auth";
 import request from "../utils/request";
 import { isValidMail } from "../utils/validators";
