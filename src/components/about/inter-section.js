@@ -7,36 +7,36 @@ import React from "react";
 const internInfo = [
   {
     name: "Shivangi Chandola",
-    deg: "Intern",
+    deg: "Graduate Psychology",
     profile: TeamImg,
     noOfStars: 4,
     content:
-      "I'm passionate about providing accessible and effective mental health services. At Choose Your Therapist LLP, we aim to provide comprehensive documentation of our platform’s features,  services, and commitment to making mental health care more approachable, convenient, and personalized for everyone",
+      "Mental health awareness starts with you. Be kind to your mind.",
   },
 
   {
     name: "Aparaajita Bhawaani",
-    deg: "Intern",
+    deg: "Graduate Psychology",
     profile: TeamImg2,
     noOfStars: 3,
     content:
-      "And commitment to making mental health care more approachable, convenient, and personalized for everyone",
+      "Don't suffer in silence. Reach out and get the support you deserve.",
   },
 
   {
     name: "Shivangi Rana",
-    deg: "Intern",
+    deg: "Graduation Student",
     profile: shivangirana,
     noOfStars: 5,
-    content: "Choose Your Therapist LLP, we aim to provide comprehensive",
+    content: "Your story is important. Share it and inspire others to seek help.",
   },
   {
     name: "Avika",
-    deg: "Intern",
+    deg: "Graduation Student",
     profile: avika,
     noOfStars: 2,
     content:
-      "At Choose Your Therapist LLP, we aim to provide comprehensive documentation of our platform’s features,  services, and commitment to making mental health care more approachable, convenient, and personalized for everyone",
+      "Every step towards mental wellness is a step towards a brighter future.",
   },
 ];
 export default function InterSection() {
@@ -55,11 +55,10 @@ export default function InterSection() {
             <div className="col-lg-12">
               <div className="section-title text-center">
                 <span className="subtitle bg-primary-opacity">
-                  EDUCATION FOR EVERYONE
+                  Learning from Everyone
                 </span>
                 <h2 className="title">
-                  People like histudy education. <br />
-                  No joking - Parents Review Here!
+                Voices of Our Interns
                 </h2>
               </div>
             </div>

@@ -2,7 +2,7 @@ import ImageTag from "../utils/image-tag";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";
-import ClientImg from "../assets/img/client-01a92c.png";
+import ClientImg from "../assets/img/avatar-027dc8.png";
 export default function TherapistRegistration() {
   return (
     <>
@@ -40,16 +40,14 @@ export default function TherapistRegistration() {
                   <div className="inner">
                     <div className="section-title text-start">
                       <span className="subtitle bg-pink-opacity">
-                        THE BEST THEME FOR
+                        Serve with #ChooseYourTherapist
                       </span>
                     </div>
-                    <h1 className="title">
-                      Online Learning <br />
-                      Managemnt System
-                    </h1>
+                    <h3 className="title">
+                    Essential Registration Information
+                    </h3>
                     <p className="description">
-                      We are experienced in educationl platform and skilled
-                      strategies for the success of our online learning.
+                    <p>Ensure a smooth registration by following our guidelines. For full details, see our <a href="#">terms and conditions here</a>.</p>
                     </p>
                     <div className="rating mb--20">
                       <a href="#">
