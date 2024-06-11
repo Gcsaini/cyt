@@ -1,12 +1,14 @@
 import React from "react";
-
 export default function ProfileInfoTab() {
   const [tab, setTab] = React.useState(1);
   const handleClick = (id) => {
     setTab(id);
   };
   return (
-    <div className="rbt-advance-tab-area rbt-section-gap bg-color-extra2">
+    <div
+      className="rbt-advance-tab-area bg-color-white"
+      style={{ paddingBottom: 50 }}
+    >
       <div className="container">
         <div className="row g-5">
           <div className="col-lg-10 offset-lg-1">
@@ -75,7 +77,7 @@ export default function ProfileInfoTab() {
               >
                 <div className="content">
                   <p>
-                    Educational technology ipsum dolor sit amet consectetur,
+                    Physical education ipsum dolor sit amet consectetur,
                     adipisicing elit. Tempora sequi doloremque dicta quia unde
                     odio nam minus reiciendis ullam aliquam, dolorum ab quisquam
                     cum numquam nemo iure cumque iste. Accusamus necessitatibus.

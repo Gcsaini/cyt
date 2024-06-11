@@ -10,6 +10,7 @@ import BookBtn from "../global/book-btn";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import React from "react";
+import { height } from "@mui/system";
 export default function ProfileCard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -34,46 +35,6 @@ export default function ProfileCard() {
               </p>
               <div className="row">
                 <div className="col-lg-12">
-                  {/* <ul
-                    className="rbt-portfolio-filter filter-tab-button text-center nav nav-tabs"
-                    id="rbt-myTab"
-                    role="tablist"
-                  >
-                    <li className="nav-item" role="presentation">
-                      <button className="active" type="button">
-                        <span className="filter-text">See all</span>
-                        <span className="course-number">12</span>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button className="" type="button">
-                        <span className="filter-text">
-                          Counselling Psychologist
-                        </span>
-                        <span className="course-number">4</span>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button className="" type="button">
-                        <span className="filter-text">
-                          Clinical Psychologist
-                        </span>
-                        <span className="course-number">3</span>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button className="" type="button">
-                        <span className="filter-text">Psychiatrist</span>
-                        <span className="course-number">3</span>
-                      </button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <button className="" type="button">
-                        <span className="filter-text">Special Educator</span>
-                        <span className="course-number">3</span>
-                      </button>
-                    </li>
-                  </ul> */}
                   <div className="advance-tab-button">
                     <ul
                       className="nav nav-tabs tab-button-style-2"
@@ -188,9 +149,8 @@ export default function ProfileCard() {
                     <a href="">
                       <ImageTag
                         alt="Card"
-                        height={"324"}
-                        width={"231"}
                         src={Profile}
+                        style={{ height: isMobile ? 255 : "auto" }}
                       />
                     </a>
                   </div>
@@ -278,8 +238,7 @@ export default function ProfileCard() {
                     <a href="">
                       <ImageTag
                         alt="Card"
-                        height={"324"}
-                        width={"231"}
+                        style={{ height: isMobile ? 255 : "auto" }}
                         src={fab}
                       />
                     </a>
@@ -367,8 +326,7 @@ export default function ProfileCard() {
                     <a href="">
                       <ImageTag
                         alt="Card"
-                        height={"324"}
-                        width={"231"}
+                        style={{ height: isMobile ? 255 : "auto" }}
                         src={ayushi}
                       />
                     </a>
@@ -457,8 +415,7 @@ export default function ProfileCard() {
                     <a href="">
                       <ImageTag
                         alt="Card"
-                        height={"324"}
-                        width={"231"}
+                        style={{ height: isMobile ? 255 : "auto" }}
                         src={anjali}
                       />
                     </a>
