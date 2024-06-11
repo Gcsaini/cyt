@@ -10,9 +10,6 @@ export default function Collaborator() {
       <div className="container">
         <div className="row mb--60">
           <div className="col-lg-12">
-            <div className="section-title text-center">
-              <h2 className="title">Our Collaborator</h2>
-            </div>
           </div>
         </div>
         <div className="rbt-instructor">
@@ -46,10 +43,8 @@ export default function Collaborator() {
                   </div>
                   <div className="content mt--20">
                     <p className="description color-white">
-                      You can run Histudy easily. Any School, University,
-                      College can be use this histudy education template for
-                      their educational purpose. A university can be success
-                      you.
+                    I look forward to contributing to an environment where professionals can thrive 
+                    and clients can receive the highest quality care.
                     </p>
                     <ul className="social-icon color-white social-default transparent-with-border justify-content-start mt--15">
                       <li>
@@ -73,41 +68,8 @@ export default function Collaborator() {
                         </a>
                       </li>
                     </ul>
-                    <ul
-                      className="course-feature-list"
-                      style={{ marginTop: 10 }}
-                    >
-                      <li>
-                        <div className="icon">
-                          <ImageTag
-                            alt="Icon Image"
-                            width="40"
-                            height="40"
-                            src={cardIcon}
-                          />
-                        </div>
-                        <div className="feature-content">
-                          <h4 className="featute-title">
-                            300K+ <span>Got Hired</span>
-                          </h4>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="icon">
-                          <ImageTag
-                            alt="Icon Image"
-                            width="40"
-                            height="40"
-                            src={cardIcon2}
-                          />
-                        </div>
-                        <div className="feature-content">
-                          <h4 className="featute-title">
-                            10K+ <span>Enrolled</span>
-                          </h4>
-                        </div>
-                      </li>
-                    </ul>
+                    
+                      
                   </div>
                 </div>
               </div>
