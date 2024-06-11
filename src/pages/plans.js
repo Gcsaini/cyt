@@ -12,7 +12,7 @@ export default function Plans() {
       <PlansHeader />
       <PlansCards />
       {/* <PromationalBanner /> */}
-      <RelaxationCards />
+     {/* RelaxationCards /> */}
       <CallToAction />
       <Newsletter />
       <Footer />

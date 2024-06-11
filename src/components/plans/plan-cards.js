@@ -1,9 +1,9 @@
 import Img from "../../assets/img/Individual.png";
 import Img2 from "../../assets/img/couple.png";
 import Img3 from "../../assets/img/teen.png";
-import bgImg1 from "../../assets/img/kindergarten-01-back618d.jpg";
-import bgImg2 from "../../assets/img/kindergarten-03-back6149.jpg";
-import bgImg3 from "../../assets/img/kindergarten-04-backab08.jpg";
+import bgImg1 from "../../assets/img/individualbg.png";
+import bgImg2 from "../../assets/img/couplebg.png";
+import bgImg3 from "../../assets/img/teenbg.png";
 import LazyImage from "../../utils/lazy-image";
 export default function PlansCards() {
   return (
@@ -11,7 +11,7 @@ export default function PlansCards() {
       <div class="row mb--60 mt--60">
         <div class="col-lg-12">
           <div class="section-title text-center">
-            <h2 class="title">Counselling & Therapy Plans</h2>
+            <h4 class="title">Counselling & Therapy Plans</h4>
           </div>
         </div>
       </div>

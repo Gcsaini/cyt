@@ -80,7 +80,7 @@ export default function TherapistRegistration() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Independent Practice with Collaborative Support, Join <span className="theme-gradient">#ChooseYourTherapist</span></h2>
+                <h2 className="title">Join <span className="theme-gradient">#ChooseYourTherapist</span> and serve professionaly with us!</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
