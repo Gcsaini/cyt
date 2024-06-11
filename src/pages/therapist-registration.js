@@ -2,9 +2,9 @@ import ImageTag from "../utils/image-tag";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";
-import ClientImg from "../assets/img/client-01a92c.png";
-import Deepak from "../assets/img/avatar-027dc8.png";
-import ClientImg3 from "../assets/img/client-026003.png";
+import ClientImg from "../assets/img/avatar-027dc8.png";
+import Deepak from "../assets/img/counselling.png";
+import ClientImg3 from "../assets/img/psychologist.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -80,7 +80,7 @@ export default function TherapistRegistration() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Become A Therapist</h2>
+                <h2 className="title">Independent Practice with Collaborative Support, Join <span className="theme-gradient">#ChooseYourTherapist</span></h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
@@ -91,7 +91,7 @@ export default function TherapistRegistration() {
                     </div>
                   </li>
                   <li className="rbt-breadcrumb-item active">
-                    Become a Teacher
+                    Join as Mental Health Expert
                   </li>
                 </ul>
               </div>
@@ -133,13 +133,19 @@ export default function TherapistRegistration() {
                       <a href="#">
                         <i className="fa fa-star"></i>
                       </a>
+                       <a className="px-1" href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
                     </div>
                     <div className="rbt-like-total">
                       <div className="profile-share">
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Psychiatrist"
+                          data-tooltip="Psychologist"
                           tabIndex="0"
                         >
                           <ImageTag
@@ -179,10 +185,10 @@ export default function TherapistRegistration() {
                         </a>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                            Join Over 3000+ Students
+                            Join Over 1000+ Experts
                           </h5>
                           <p className="subtitle">
-                            Have a new ideas every week.
+                          Keep your practice dynamic with client's need.
                           </p>
                         </div>
                       </div>
@@ -192,7 +198,7 @@ export default function TherapistRegistration() {
               </div>
               <div className="col-lg-5">
                 <div className="rbt-contact-form contact-form-style-1">
-                  <h3 className="title">Join Us</h3>
+                  <h4 className="title">Submit Resume here !</h4>
                   <p style={{ color: "#d50000" }}>{error}</p>
                   <div className="form-group" style={{ marginBottom: 15 }}>
                     <select

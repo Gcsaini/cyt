@@ -8,7 +8,7 @@ export default function Collaborator() {
   return (
     <div className="rbt-author-area bg-gradient-8 rbt-section-gap">
       <div className="container">
-        <div className="row g-5 mb--60">
+        <div className="row mb--60">
           <div className="col-lg-12">
             <div className="section-title text-center">
               <h2 className="title">Our Collaborator</h2>
@@ -41,8 +41,8 @@ export default function Collaborator() {
               <div className="col-lg-5">
                 <div className="media-body ml--15">
                   <div className="author-info text-left">
-                    <h2 className="title color-white mb--0">Mames Mary</h2>
-                    <span className="b3 color-white">English Teacher</span>
+                    <h2 className="title color-white mb--0">Neha Sharma</h2>
+                    <span className="b3 color-white">Space Provider (Noida)</span>
                   </div>
                   <div className="content mt--20">
                     <p className="description color-white">
