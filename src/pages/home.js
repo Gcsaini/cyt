@@ -20,9 +20,10 @@ export default function HomePage() {
           <Banner />
           <Services />
           <ProfileCard />
+          <Counter />
           <PromationalBanner />
           <TherapistProfile />
-          <Counter />
+          
           <Feedback />
           <Blogs />
           <CallToAction />
