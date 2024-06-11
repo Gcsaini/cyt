@@ -88,6 +88,29 @@ export default function Banner() {
                   we provide mental health experts every step of the way to your
                   <strong> well-being.</strong>
                 </p>
+                <div className="rating mb--20">
+                      <a href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                      <a className="px-1" href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                      <a className="px-1" href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                       <a className="px-1" href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa fa-star"></i>
+                      </a>
+                    </div>
                 <div className="slider-btn">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
