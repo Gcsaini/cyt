@@ -1,5 +1,5 @@
 import ImageTag from "../../utils/image-tag";
-import TeamImg from "../../assets/img/team-01a1b3.jpg";
+import TeamImg from "../../assets/img/neha.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import cardIcon from "../../assets/img/card-icon-14dbf.png";
 import cardIcon2 from "../../assets/img/card-icon-2bee4.png";
@@ -41,8 +41,8 @@ export default function Collaborator() {
               <div className="col-lg-5">
                 <div className="media-body ml--15">
                   <div className="author-info text-left">
-                    <h2 className="title color-white mb--0">Neha Sharma</h2>
-                    <span className="b3 color-white">Space Provider (Noida)</span>
+                    <h2 className="title color-white mb--0">Ms. Neha Sharma</h2>
+                    <span className="b3 color-white">Office Space Collaborator, Noida</span>
                   </div>
                   <div className="content mt--20">
                     <p className="description color-white">
