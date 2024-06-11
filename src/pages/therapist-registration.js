@@ -139,7 +139,7 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Rafi Dev"
+                          data-tooltip="Psychiatrist"
                           tabIndex="0"
                         >
                           <ImageTag
@@ -152,7 +152,7 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Mark"
+                          data-tooltip="Psychologist"
                           tabIndex="0"
                         >
                           <ImageTag
@@ -167,7 +167,7 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Jordan"
+                          data-tooltip="Counselling Psychologist"
                           tabIndex="0"
                         >
                           <ImageTag
