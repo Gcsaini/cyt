@@ -31639,7 +31639,7 @@ span.transparent-button:hover i {
   top: 0;
   left: 0;
   transform: rotateY(180deg) translateZ(1px);
-  background: linear-gradient(1turn, #e9dcfa, #d05aff);
+  background:linear-gradient(0deg, #22b164 48%, #d8ffb5) !important;
   width: 100%;
   display: flex;
   flex-direction: column;

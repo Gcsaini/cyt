@@ -172,8 +172,7 @@ export default function PlansCards() {
                     <LazyImage alt="card-icon" dim={"300-490"} src={bgImg2} />
                   </div>
                   <p>
-                  Teen counseling provides a safe and supportive space for adolescents to explore and resolve their unique challenges. Our therapists work with teens to improve emotional well-being, develop coping skills, and foster a 
-                  healthier, more fulfilling life during this critical developmental stage.
+                  Teen counseling provides a safe and supportive space for adolescents to explore and resolve their unique challenges. Our therapists work with teens to improve emotional well-being, and develop coping skills.
                   </p>
                 </div>
                 <a
