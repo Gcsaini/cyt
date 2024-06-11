@@ -11,7 +11,8 @@ export default function PlansCards() {
       <div class="row mb--60 mt--60">
         <div class="col-lg-12">
           <div class="section-title text-center">
-            <h4 class="title">Counselling & Therapy Plans</h4>
+            <h4 class="title"><span className="theme-gradient">Counselling & Therapy Plans </span></h4>
+            <p>Our counseling and therapy plans offer tailored support to meet your unique needs. Whether you are seeking individual, couple, or teen counseling, our experienced therapists use proven therapeutic techniques to help you navigate personal challenges, improve emotional well-being, and foster healthier relationships. With a focus on customized sessions, we work collaboratively to guide you toward a more fulfilling and balanced life.</p>
           </div>
         </div>
       </div>

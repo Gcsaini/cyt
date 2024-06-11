@@ -27,7 +27,7 @@ export default function ProfileCard() {
               <span className="subtitle bg-secondary-opacity">
                 Mental Health Professional
               </span>
-              <h2 className="title">Therapist Directory</h2>
+              <h2 className="title"><span className="theme-gradient">Therapist Directory </span></h2>
               <p>
                 Looking for the right therapist? Our comprehensive profiles make
                 it easy to find a therapist who meets your needs and

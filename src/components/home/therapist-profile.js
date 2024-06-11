@@ -20,7 +20,7 @@ export default function TherapistProfile() {
               <span className="subtitle bg-primary-opacity">
                 Mental Health Wrokshops/Activites
               </span>
-              <h2 className="title">Wellness Workshops by Professionals</h2>
+              <h2 className="title"> <span className="theme-gradient">Wellness Workshops by Professionals</span></h2>
               <p>
                 Join our workshops and activities designed to enhance your
                 mental health and well-being. From stress management sessions to
