@@ -3,6 +3,8 @@ import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";
 import ClientImg from "../assets/img/client-01a92c.png";
+import Deepak from "../assets/img/avatar-027dc8.png";
+import ClientImg3 from "../assets/img/client-026003.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -157,7 +159,9 @@ export default function TherapistRegistration() {
                             alt="education"
                             width="55"
                             height="55"
-                            src={ClientImg}
+                            src={ClientImg3
+
+                            }
                           />
                         </a>
                         <a
@@ -170,7 +174,7 @@ export default function TherapistRegistration() {
                             alt="education"
                             width="55"
                             height="55"
-                            src={ClientImg}
+                            src={Deepak}
                           />
                         </a>
                         <div className="more-author-text">
