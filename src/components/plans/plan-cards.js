@@ -48,7 +48,7 @@ export default function PlansCards() {
                     class="rbt-btn-link stretched-link"
                     href="/elements/service#"
                   >
-                    Learn More<i class="feather-arrow-right"></i>
+                    Select Now<i class="feather-arrow-right"></i>
                   </a>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function PlansCards() {
                   class="rbt-btn rbt-switch-btn btn-white btn-sm"
                   href="/elements/service#"
                 >
-                  <span data-text="Learn More">Learn More</span>
+                  <span data-text="Select Now">Select Now</span>
                 </a>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function PlansCards() {
                     class="rbt-btn-link stretched-link"
                     href="/elements/service#"
                   >
-                    Learn More<i class="feather-arrow-right"></i>
+                    Select Now<i class="feather-arrow-right"></i>
                   </a>
                 </div>
               </div>
@@ -115,17 +115,15 @@ export default function PlansCards() {
                     <LazyImage alt="card-icon" dim={"300-490"} src={bgImg3} />
                   </div>
                   <p>
-                  Couple counseling is a collaborative process where we work together to understand and 
-                  address your relationship concerns. Through tailored sessions and proven therapeutic techniques, 
-                  Therapists aim to help you navigate challenges and
-                   build a stronger, healthier, and more fulfilling relationship.
+                  Couple counseling offers a unique opportunity to strengthen your relationship by addressing and resolving conflicts. Our therapists work with you and your partner to enhance communication, 
+                  rebuild trust, and foster a healthier, more fulfilling partnership.
                   </p>
                 </div>
                 <a
                   class="rbt-btn rbt-switch-btn btn-white btn-sm"
                   href="/elements/service#"
                 >
-                  <span data-text="Learn More">Learn More</span>
+                  <span data-text="Select Now">Select Now</span>
                 </a>
               </div>
             </div>
@@ -164,7 +162,7 @@ export default function PlansCards() {
                     class="rbt-btn-link stretched-link"
                     href="/elements/service#"
                   >
-                    Learn More<i class="feather-arrow-right"></i>
+                    Select Now<i class="feather-arrow-right"></i>
                   </a>
                 </div>
               </div>
@@ -174,15 +172,15 @@ export default function PlansCards() {
                     <LazyImage alt="card-icon" dim={"300-490"} src={bgImg2} />
                   </div>
                   <p>
-                    Babies enjoy classrooms made for exploring with teachers who
-                    support today’s big milestones.
+                  Teen counseling provides a safe and supportive space for adolescents to explore and resolve their unique challenges. Our therapists work with teens to improve emotional well-being, develop coping skills, and foster a 
+                  healthier, more fulfilling life during this critical developmental stage.
                   </p>
                 </div>
                 <a
                   class="rbt-btn rbt-switch-btn btn-white btn-sm"
                   href="/elements/service#"
                 >
-                  <span data-text="Learn More">Learn More</span>
+                  <span data-text="Select Now">Select Now</span>
                 </a>
               </div>
             </div>
