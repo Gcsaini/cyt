@@ -1,6 +1,7 @@
 import { TypeAnimation } from "react-type-animation";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 export default function AboutUsBanner() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <div className="rbt-banner-area rbt-banner-8 variation-02 bg-color-extra2">
       <div className="container">
@@ -14,13 +15,7 @@ export default function AboutUsBanner() {
                 </div>
                 <h1 className="title">
                   Read About Our
-                  {/* <span className="header-caption ms-2">
-                    <span className="cd-headline clip is-full-width">
-                      <span className="cd-words-wrapper">
-                        <b className="is-visible theme-gradient">Vission</b>
-                      </span>
-                    </span>
-                  </span> */}
+                  {isMobile ? <br /> : ""}
                   <TypeAnimation
                     sequence={[" Background", 1500, " Vision", 1500]}
                     speed={10}

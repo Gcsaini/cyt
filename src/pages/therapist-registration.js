@@ -8,12 +8,16 @@ import ClientImg3 from "../assets/img/psychologist.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import { threapistRegistrationUrl } from "../utils/url";
 export default function TherapistRegistration() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [profileType, setProfileType] = useState("");
+  const [mode, setMode] = useState("");
+  const [checkedValues, setCheckedValues] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const [error, setError] = useState("");
@@ -32,17 +36,26 @@ export default function TherapistRegistration() {
 
   const handleSubmit = async () => {
     setError("");
-    if (phone.length !== 10) {
-      setError("Please enter valid phone number");
+    if (profileType == "") {
+      setError("Please select profile type");
+      return;
+    } else if (mode == "") {
+      setError("Please select service mode");
+      return;
+    } else if (name.length < 5) {
+      setError("Please enter full name");
       return;
     } else if (!validateEmail(email)) {
       setError("Please enter valid email id");
       return;
+    } else if (phone.length !== 10) {
+      setError("Please enter valid phone number");
+      return;
+    } else if (checkedValues.length == 0) {
+      setError("Please check any 'Interested to serve'");
+      return;
     } else if (!selectedFile) {
       setError("Please upload your resume");
-      return;
-    } else if (profileType == "") {
-      setError("Please select profile type");
       return;
     } else {
       setError("");
@@ -53,6 +66,8 @@ export default function TherapistRegistration() {
       formData.append("phone", phone);
       formData.append("email", email);
       formData.append("type", profileType);
+      formData.append("mode", mode);
+      formData.append("serve", checkedValues);
 
       try {
         const response = await axios.post(threapistRegistrationUrl, formData, {
@@ -66,10 +81,20 @@ export default function TherapistRegistration() {
           setError("Something went wrong");
         }
       } catch (error) {
-        console.log(error);
         setError(error.response.data.message);
       }
     }
+  };
+
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    setCheckedValues((prevCheckedValues) => {
+      if (checked) {
+        return [...prevCheckedValues, value];
+      } else {
+        return prevCheckedValues.filter((v) => v !== value);
+      }
+    });
   };
 
   return (
@@ -80,7 +105,11 @@ export default function TherapistRegistration() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Join <span className="theme-gradient">#ChooseYourTherapist</span> and serve professionaly with us!</h2>
+                <h2 className="title">
+                  Join{" "}
+                  <span className="theme-gradient">#ChooseYourTherapist</span>{" "}
+                  and serve professionaly with us!
+                </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
@@ -112,33 +141,23 @@ export default function TherapistRegistration() {
                       </span>
                     </div>
                     <h3 className="title">
-                    Essential Registration Information
+                      Essential Registration Information
                     </h3>
                     <p className="description">
-                    <p>Ensure a smooth registration by following our guidelines. For full details, see our <a href="#">terms and conditions here</a>.</p>
+                      <p>
+                        Ensure a smooth registration by following our
+                        guidelines. For full details, see our{" "}
+                        <a href="#">terms and conditions here</a>.
+                      </p>
                     </p>
                     <div className="rating mb--20">
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a className="px-1" href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a className="px-1" href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                       <a className="px-1" href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
+                      <i className="fa fa-star"></i>
                     </div>
                     <div className="rbt-like-total">
                       <div className="profile-share">
@@ -165,9 +184,7 @@ export default function TherapistRegistration() {
                             alt="education"
                             width="55"
                             height="55"
-                            src={ClientImg3
-
-                            }
+                            src={ClientImg3}
                           />
                         </a>
                         <a
@@ -188,7 +205,7 @@ export default function TherapistRegistration() {
                             Join Over 1000+ Experts
                           </h5>
                           <p className="subtitle">
-                          Keep your practice dynamic with client's need.
+                            Keep your practice dynamic with client's need.
                           </p>
                         </div>
                       </div>
@@ -224,6 +241,24 @@ export default function TherapistRegistration() {
                       </option>
                     </select>
                   </div>
+
+                  <div className="form-group" style={{ marginBottom: 15 }}>
+                    <select
+                      style={{
+                        padding: 0,
+                        border: 0,
+                        borderBottom: "2px solid #e6e3f1",
+                        borderRadius: 0,
+                      }}
+                      value={mode}
+                      onChange={(e) => setMode(e.target.value)}
+                    >
+                      <option value={""}>What is your Service mode</option>
+                      <option value={1}>Online</option>
+                      <option value={2}>Offline</option>
+                      <option value={3}>Both</option>
+                    </select>
+                  </div>
                   <div className="form-group">
                     <input
                       type="text"
@@ -252,6 +287,41 @@ export default function TherapistRegistration() {
                     />
                     <span className="focus-border"></span>
                   </div>
+                  <div className="form-group" style={{ margin: "20px 0" }}>
+                    <span>Interested to serve-</span>
+                    <p class="rbt-checkbox-wrapper mb--5">
+                      <input
+                        type="checkbox"
+                        value="Individual counselling"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label for="rbt-checkbox-1">Individual counselling</label>
+                    </p>
+                    <p class="rbt-checkbox-wrapper mb--5">
+                      <input
+                        type="checkbox"
+                        value="Couple counselling"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label for="rbt-checkbox-2">Couple counselling</label>
+                    </p>
+                    <p class="rbt-checkbox-wrapper mb--5">
+                      <input
+                        type="checkbox"
+                        value="Teen counselling"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label for="rbt-checkbox-3">Teen counselling</label>
+                    </p>
+                    <p class="rbt-checkbox-wrapper mb--5">
+                      <input
+                        type="checkbox"
+                        value=" Workshops conducting"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label for="rbt-checkbox-4"> Workshops conducting</label>
+                    </p>
+                  </div>
                   <div className="form-group">
                     <input
                       className="resume-upload"
@@ -265,14 +335,20 @@ export default function TherapistRegistration() {
                   </div>
                   <div className="form-submit-group">
                     <p style={{ color: "#b9f6ca" }}>{success}</p>
-                    <button
-                      onClick={handleSubmit}
-                      className="rbt-btn btn-md btn-gradient radius-round w-100"
-                    >
-                      <span className="btn-text">
-                        {loading ? "Please wait..." : "Submit"}
-                      </span>
-                    </button>
+                    {loading ? (
+                      <Box sx={{ display: "flex", justifyContent: "center" }}>
+                        <CircularProgress />
+                      </Box>
+                    ) : (
+                      <button
+                        onClick={handleSubmit}
+                        className="rbt-btn btn-md btn-gradient radius-round w-100"
+                      >
+                        <span className="btn-text">
+                          {loading ? "Please wait..." : "Submit"}
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

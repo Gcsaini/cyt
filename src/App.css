@@ -18604,7 +18604,11 @@ Copyright (c) 2015 Daniel Eden
     var(--color-secondary) 0%,
     var(--color-primary) 100%
   );
-  --gradient-8: linear-gradient(0deg, rgba(34,177,100,1) 48%, rgba(216,255,181,1) 100%);
+  --gradient-8: linear-gradient(
+    0deg,
+    rgba(34, 177, 100, 1) 48%,
+    rgba(216, 255, 181, 1) 100%
+  );
   --gradient-9: linear-gradient(180deg, #6827ff, #e3f0ff);
 }
 article,
@@ -25467,7 +25471,7 @@ input {
 }
 select {
   transition: 0.3s;
-  height: 60px;
+  height: 40px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -25834,7 +25838,7 @@ input[type="radio"] ~ label:after {
   display: none;
 }
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 .form-group input {
@@ -31639,7 +31643,7 @@ span.transparent-button:hover i {
   top: 0;
   left: 0;
   transform: rotateY(180deg) translateZ(1px);
-  background:linear-gradient(0deg, #22b164 48%, #d8ffb5) !important;
+  background: linear-gradient(0deg, #22b164 48%, #d8ffb5) !important;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32432,6 +32436,13 @@ span.transparent-button:hover i {
   height: auto;
   top: -220%;
   right: -73%;
+}
+
+@media only screen and (min-width: 410px) and (max-width: 768px) {
+.rbt-cta-default.style-2 .shape-text-image img {
+  width: 92%;
+  top: -300%;
+}
 }
 .rbt-cta-default.style-3 .content-wrapper {
   background-color: var(--color-primary);
@@ -35514,7 +35525,7 @@ span.transparent-button:hover i {
 .form-group {
   position: relative;
   z-index: 2;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   display: block;
 }
 .form-group label {
@@ -44785,4 +44796,3 @@ blockquote.has-text-align-right cite {
   transition: 0.3s;
   cursor: "pointer";
 }
-

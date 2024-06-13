@@ -1,10 +1,16 @@
 import TextImg from "../../assets/img/Choose.png";
+import ImageTag from "../../utils/image-tag";
 import LazyImage from "../../utils/lazy-image";
 export default function CallToAction() {
   return (
     <div
       className="rbt-callto-action-area bg-color-extra2"
-      style={{ paddingBottom: 50, paddingTop: 50 }}
+      style={{
+        paddingBottom: 50,
+        paddingTop: 50,
+        paddingLeft: 15,
+        paddingRight: 15,
+      }}
     >
       <div className="rbt-callto-action rbt-cta-default style-2">
         <div className="container content-wrapper overflow-hidden">
@@ -18,10 +24,10 @@ export default function CallToAction() {
                     data-sal-duration="400"
                     data-sal-delay="200"
                   >
-                   Contact us today to learn more and express your interest!
+                    Contact us today to learn more and express your interest!
                   </h3>
                   <h6 className="subtitle sal-animate">
-                  The best choice to serve with #ChooseYourTherapist
+                    The best choice to serve with #ChooseYourTherapist
                   </h6>
                 </div>
               </div>
@@ -45,10 +51,11 @@ export default function CallToAction() {
                   </a>
                 </div>
                 <div className="shape-text-image">
-                  <LazyImage
+                  <ImageTag
                     alt="Education"
-                    dim={"397"}
-                    class="rbt-rotatation-round"
+                    height={"397"}
+                    width={"397"}
+                    className="rbt-rotatation-round"
                     src={TextImg}
                   />
                 </div>

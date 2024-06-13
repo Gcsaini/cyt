@@ -18,6 +18,7 @@ import UserDashboard from "./pages/user-dashboard";
 import ViewProfile from "./pages/view-profile";
 import TherapistRegistration from "./pages/therapist-registration";
 import Register from "./pages/register";
+import Success from "./pages/success";
 
 const theme = createTheme();
 
@@ -38,6 +39,7 @@ function App() {
                 path="/auth/therapist-registration"
                 element={<TherapistRegistration />}
               />
+              <Route exact path="/auth/success" element={<Success />} />
 
               <Route
                 path="/home"

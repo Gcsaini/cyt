@@ -1,16 +1,13 @@
 import ImageTag from "../../utils/image-tag";
 import TeamImg from "../../assets/img/neha.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import cardIcon from "../../assets/img/card-icon-14dbf.png";
-import cardIcon2 from "../../assets/img/card-icon-2bee4.png";
 export default function Collaborator() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <div className="rbt-author-area bg-gradient-8 rbt-section-gap">
       <div className="container">
         <div className="row mb--60">
-          <div className="col-lg-12">
-          </div>
+          <div className="col-lg-12"></div>
         </div>
         <div className="rbt-instructor">
           <div className="single-course-author">
@@ -29,6 +26,7 @@ export default function Collaborator() {
                       style={{
                         width: isMobile ? "90%" : "100%",
                         height: isMobile ? 350 : "auto",
+                        borderRadius: "20px",
                       }}
                       src={TeamImg}
                     />
@@ -39,12 +37,15 @@ export default function Collaborator() {
                 <div className="media-body ml--15">
                   <div className="author-info text-left">
                     <h2 className="title color-white mb--0">Ms. Neha Sharma</h2>
-                    <span className="b3 color-white">Office Space Collaborator, Noida</span>
+                    <span className="b3 color-white">
+                      Office Space Collaborator, Noida
+                    </span>
                   </div>
                   <div className="content mt--20">
                     <p className="description color-white">
-                    I look forward to contributing to an environment where professionals can thrive 
-                    and clients can receive the highest quality care.
+                      I look forward to contributing to an environment where
+                      professionals can thrive and clients can receive the
+                      highest quality care.
                     </p>
                     <ul className="social-icon color-white social-default transparent-with-border justify-content-start mt--15">
                       <li>
@@ -68,8 +69,6 @@ export default function Collaborator() {
                         </a>
                       </li>
                     </ul>
-                    
-                      
                   </div>
                 </div>
               </div>

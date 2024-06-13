@@ -1,9 +1,9 @@
-import LazyImage from "../../utils/lazy-image";
 import BrandImg from "../../assets/img/hubs124e.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import ImageTag from "../../utils/image-tag";
 
 export default function Brands() {
   return (
@@ -18,6 +18,14 @@ export default function Brands() {
               <Swiper
                 spaceBetween={50}
                 breakpoints={{
+                  380: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
+                  480: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
                   640: {
                     slidesPerView: 2,
                     spaceBetween: 10,
@@ -40,51 +48,72 @@ export default function Brands() {
               >
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
                 <SwiperSlide>
                   <li>
-                    <a href="">
-                      <LazyImage alt="Brand" dim={"35-103"} src={BrandImg} />
-                    </a>
+                    <ImageTag
+                      alt="Brand"
+                      height={"35"}
+                      width={"103"}
+                      src={BrandImg}
+                    />
                   </li>
                 </SwiperSlide>
               </Swiper>

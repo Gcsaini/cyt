@@ -23,7 +23,6 @@ export default function HomePage() {
           <Counter />
           <PromationalBanner />
           <TherapistProfile />
-          
           <Feedback />
           <Blogs />
           <CallToAction />
