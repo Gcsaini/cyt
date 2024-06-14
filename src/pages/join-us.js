@@ -7,6 +7,7 @@ import Subscriptions from "../components/joinus/subscription";
 import CallToAction from "../components/home/call-to-action";
 import FAQs from "../components/home/faqs";
 import Newsletter from "../components/home/newsletter";
+import ServiceQuality from "../components/about/service-quality";
 export default function JoinUs() {
   return (
     <div id="__next">
@@ -16,6 +17,7 @@ export default function JoinUs() {
         <div className="rbt-putchase-guide-area breadcrumb-style-max-width rbt-section-gapBottom">
           <ServiceBenefits />
           <Content />
+          <ServiceQuality />
         </div>
       </div>
       <CallToAction />

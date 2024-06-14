@@ -19,7 +19,7 @@ export default function FaqPage() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">FAQ</h2>
+                <h2 className="title">Frequently <span className="theme-gradient">Asked Questions</span> (FAQs)</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a
@@ -35,7 +35,7 @@ export default function FaqPage() {
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">Faqs</li>
+                  <li className="rbt-breadcrumb-item active">Help and Support for Clients</li>
                 </ul>
               </div>
             </div>
@@ -51,12 +51,11 @@ export default function FaqPage() {
               <div className="content">
                 <div className="section-title text-start">
                   <h2 className="title">
-                    Want to stay informed about new courses &amp; histudy?
+                  Want to Stay Informed About New Services &amp; Mental Health Resources?
                   </h2>
                   <p className="description mt--20">
-                    Histudy educational platform ipsum dolor sit amet
-                    consectetur adipisicing elit. Nam inventore praesentium
-                    alias incidunt! Veritatis.
+                  Stay connected with Choose Your Therapist to receive updates on
+                   our latest services, mental health resources, and special offers. 
                   </p>
                   <div className="social-share-wrapper mt--30">
                     <h5>You can also follow us on:</h5>
