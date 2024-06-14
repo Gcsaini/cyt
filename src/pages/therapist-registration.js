@@ -136,9 +136,9 @@ export default function TherapistRegistration() {
                         Serve Professionally with us.
                       </span>
                     </div>
-                    <h3 className="title">
+                    <h4 className="title">
                       Essential Registration Information
-                    </h3>
+                    </h4>
                     <p className="description">
                       <p>
                         Ensure a smooth registration by following our
@@ -160,7 +160,7 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Rafi Dev"
+                          data-tooltip="Counselling Psychologist"
                           tabindex="0"
                         >
                           <ImageTag
@@ -173,7 +173,7 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Mark"
+                          data-tooltip="Psychologist"
                           tabindex="0"
                         >
                           <ImageTag
@@ -186,7 +186,7 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Jordan"
+                          data-tooltip="Counselling Psychologist"
                           tabindex="0"
                         >
                           <ImageTag
@@ -325,6 +325,14 @@ export default function TherapistRegistration() {
                         onChange={handleCheckboxChange}
                       />
                       <label for="rbt-checkbox-4"> Mental Health Workshops/Events conducting</label>
+                    </p>
+                    <p class="rbt-checkbox-wrapper mb--5">
+                      <input
+                        type="checkbox"
+                        value=" Internship/Training"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label for="rbt-checkbox-4"> Internship/Training</label>
                     </p>
                   </div>
                   <div className="form-group">
