@@ -57,7 +57,7 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find Wellness Solutions with #ChooseYourTherapist !{" "}
+                  Find Wellness Solutions with #<span className="theme-gradient">C</span>hoose<span className="theme-gradient">Y</span>our<span className="theme-gradient">T</span>herapist !{" "}
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <span className="cd-words-wrapper">
