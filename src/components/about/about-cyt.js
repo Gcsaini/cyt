@@ -21,7 +21,9 @@ export default function AboutCyt() {
             data-sal-duration="700"
           >
             <p className="mb--40 mb_sm--20">
-              Choose Your Therapist LLP is a registered mental health platform
+            Choose Your Therapist LLP was founded in 2020 amidst the
+                  COVID-19 pandemic to address the growing need for accessible
+                  mental health care. CYT is a registered mental health platform
               operating under the legal frameworks of the MCA (Ministry of
               Corporate Affairs) and MSME (Micro, Small, and Medium
               Enterprises). Our platform serves as a bridge between individuals

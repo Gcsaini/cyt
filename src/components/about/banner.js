@@ -1,5 +1,6 @@
 import { TypeAnimation } from "react-type-animation";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 export default function AboutUsBanner() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
@@ -9,10 +10,17 @@ export default function AboutUsBanner() {
           <div className="col-lg-10 offset-lg-1">
             <div className="content">
               <div className="inner text-center">
-                <div className="rbt-new-badge rbt-new-badge-one">
-                  <span className="rbt-new-badge-icon">🏆</span> Discover Mental
-                  Health Experts.
-                </div>
+              <div
+                    className="rbt-new-badge rbt-new-badge-one"
+                    
+                  >
+                    <span className="rbt-new-badge-icon">
+                      <PersonSearchIcon
+                        sx={{ color: "#228756", fontSize: 30 }}
+                      />
+                    </span>{" "}
+                    Discover mental health experts.
+                  </div>
                 <h1 className="title">
                   Read About Our
                   {isMobile ? <br /> : ""}
@@ -26,9 +34,7 @@ export default function AboutUsBanner() {
                   />
                 </h1>
                 <p className="description has-medium-font-size mt--20">
-                  Choose Your Therapist LLP was founded in 2020 amidst the
-                  COVID-19 pandemic to address the growing need for accessible
-                  mental health care.
+                 
                 </p>
                 <div className="slider-btn rbt-button-group justify-content-center">
                   <a

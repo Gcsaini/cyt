@@ -137,7 +137,7 @@ export default function TherapistRegistration() {
                       </span>
                     </div>
                     <h3 className="title">
-                     Are you a Therapist?
+                     Are you a therapist?
                     </h3>
                     <p className="description">
                       <p>
