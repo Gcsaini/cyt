@@ -136,14 +136,14 @@ export default function TherapistRegistration() {
                         Serve Professionally with us.
                       </span>
                     </div>
-                    <h4 className="title">
-                      Essential Registration Information
-                    </h4>
+                    <h3 className="title">
+                     Are you a Therapist?
+                    </h3>
                     <p className="description">
                       <p>
                         Ensure a smooth registration by following our
-                        guidelines. For full details, see our{" "}
-                        <a href="#">terms and conditions here</a>.
+                        guidelines. For full details, check-{" "}
+                        <a href="#">how to join us?</a>.
                       </p>
                     </p>
                     <div className="rating mb--20">
@@ -211,7 +211,7 @@ export default function TherapistRegistration() {
               </div>
               <div className="col-lg-5">
                 <div className="rbt-contact-form contact-form-style-1">
-                  <h4 className="title">Tell Us About You</h4>
+                  <h4 className="title">Tell Us About You !</h4>
                   <p style={{ color: "#d50000" }}>{error}</p>
                   <div className="form-group" style={{ marginBottom: 15 }}>
                     <select
@@ -321,10 +321,10 @@ export default function TherapistRegistration() {
                     <p class="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
-                        value=" Workshops conducting"
+                        value=" Workshops/Events conducting"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-4"> Mental Health Workshops/Events conducting</label>
+                      <label for="rbt-checkbox-4"> Workshops/Events conducting</label>
                     </p>
                     <p class="rbt-checkbox-wrapper mb--5">
                       <input
