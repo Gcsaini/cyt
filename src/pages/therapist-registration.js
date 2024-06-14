@@ -3,8 +3,8 @@ import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";
 import ClientImg from "../assets/img/avatar-027dc8.png";
-import Deepak from "../assets/img/counselling.png";
-import ClientImg3 from "../assets/img/psychologist.png";
+import Fabiha from "../assets/img/psychologist.png";
+import ClientImg3 from "../assets/img/counselling.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -105,7 +105,7 @@ export default function TherapistRegistration() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Become A Therapist</h2>
+                <h2 className="title">Become a part of <span className="theme-gradient">#ChooseYourTherapist</span> and provide professional services with us.</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
@@ -116,7 +116,7 @@ export default function TherapistRegistration() {
                     </div>
                   </li>
                   <li className="rbt-breadcrumb-item active">
-                    Become a Teacher
+                   Join as Mental Health Expert
                   </li>
                 </ul>
               </div>
@@ -133,7 +133,7 @@ export default function TherapistRegistration() {
                   <div className="inner">
                     <div className="section-title text-start">
                       <span className="subtitle bg-pink-opacity">
-                        Serve with #ChooseYourTherapist
+                        Serve Professionally with us.
                       </span>
                     </div>
                     <h3 className="title">
@@ -180,7 +180,7 @@ export default function TherapistRegistration() {
                             alt="education"
                             width="55"
                             height="55"
-                            src={ClientImg}
+                            src={Fabiha}
                           />
                         </a>
                         <a
@@ -193,15 +193,15 @@ export default function TherapistRegistration() {
                             alt="education"
                             width="55"
                             height="55"
-                            src={ClientImg}
+                            src={ClientImg3}
                           />
                         </a>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                            Join Over 3000+ Students
+                            Join Over 50+ Experts
                           </h5>
                           <p className="subtitle">
-                            Have a new ideas every week.
+                            Keep your practice dynamic with client's need.
                           </p>
                         </div>
                       </div>
@@ -211,7 +211,7 @@ export default function TherapistRegistration() {
               </div>
               <div className="col-lg-5">
                 <div className="rbt-contact-form contact-form-style-1">
-                  <h4 className="title">Submit Resume here !</h4>
+                  <h4 className="title">Tell Us About You</h4>
                   <p style={{ color: "#d50000" }}>{error}</p>
                   <div className="form-group" style={{ marginBottom: 15 }}>
                     <select
@@ -249,9 +249,9 @@ export default function TherapistRegistration() {
                       value={mode}
                       onChange={(e) => setMode(e.target.value)}
                     >
-                      <option value={""}>What is your Service mode</option>
-                      <option value={1}>Online</option>
-                      <option value={2}>Offline</option>
+                      <option value={""}>What is your service mode</option>
+                      <option value={1}>Online Only</option>
+                      <option value={2}>Offline Only</option>
                       <option value={3}>Both</option>
                     </select>
                   </div>
@@ -288,11 +288,20 @@ export default function TherapistRegistration() {
                     <p class="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
+                        value="Prescribe Medication(Only for Psychiatrist)"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label for="rbt-checkbox-2">Prescribe Medication(Only for Psychiatrist)</label>
+                    </p>
+                    <p class="rbt-checkbox-wrapper mb--5">
+                      <input
+                        type="checkbox"
                         value="Individual counselling"
                         onChange={handleCheckboxChange}
                       />
                       <label for="rbt-checkbox-1">Individual counselling</label>
                     </p>
+
                     <p class="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
@@ -315,7 +324,7 @@ export default function TherapistRegistration() {
                         value=" Workshops conducting"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-4"> Workshops conducting</label>
+                      <label for="rbt-checkbox-4"> Mental Health Workshops/Events conducting</label>
                     </p>
                   </div>
                   <div className="form-group">
