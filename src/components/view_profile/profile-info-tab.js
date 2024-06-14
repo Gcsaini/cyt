@@ -74,14 +74,29 @@ export default function ProfileInfoTab() {
                 id="home-4"
                 role="tabpanel"
                 aria-labelledby="home-tab-4"
-              >
+              ><h4 className="rbt-title-style-3">About me</h4>
                 <div className="content">
                   <p>
-                    Physical education ipsum dolor sit amet consectetur,
-                    adipisicing elit. Tempora sequi doloremque dicta quia unde
-                    odio nam minus reiciendis ullam aliquam, dolorum ab quisquam
-                    cum numquam nemo iure cumque iste. Accusamus necessitatibus.
+                  Hello, I'm a Counseling Psychologist committed to supporting
+                    your mental health and overall well-being. My approach to
+                    counseling is grounded in cognitive restructuring, a
+                    powerful technique that helps you identify and challenge
+                    negative thought patterns.
+                    <b /> <b /> By doing so, we can work together to replace
+                    these thoughts with healthier, more adaptive ways of
+                    thinking, leading to improved emotional and mental health.
+                    In addition to cognitive restructuring, I embrace a holistic
+                    wellness approach. <b /> <b /> I believe that true wellness
+                    involves balancing all aspects of your life, and I strive to
+                    integrate strategies that promote overall well-being.
+                    Whether it’s through mindfulness practices, stress
+                    management techniques, or lifestyle adjustments, I aim to
+                    provide comprehensive support tailored to your unique needs.
                   </p>
+                  <h4 className="rbt-title-style-3">Services</h4>
+                <div className="content"></div>
+                <h4 className="rbt-title-style-3">Expertise</h4>
+                <div className="content"></div>
                 </div>
               </div>
               <div

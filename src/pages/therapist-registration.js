@@ -105,11 +105,7 @@ export default function TherapistRegistration() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">
-                  Join{" "}
-                  <span className="theme-gradient">#ChooseYourTherapist</span>{" "}
-                  and serve professionaly with us!
-                </h2>
+                <h2 className="title">Become A Therapist</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
@@ -120,7 +116,7 @@ export default function TherapistRegistration() {
                     </div>
                   </li>
                   <li className="rbt-breadcrumb-item active">
-                    Join as Mental Health Expert
+                    Become a Teacher
                   </li>
                 </ul>
               </div>
@@ -164,8 +160,8 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Psychologist"
-                          tabIndex="0"
+                          data-tooltip="Rafi Dev"
+                          tabindex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -177,35 +173,35 @@ export default function TherapistRegistration() {
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Psychologist"
-                          tabIndex="0"
+                          data-tooltip="Mark"
+                          tabindex="0"
                         >
                           <ImageTag
                             alt="education"
                             width="55"
                             height="55"
-                            src={ClientImg3}
+                            src={ClientImg}
                           />
                         </a>
                         <a
                           href="#"
                           className="avatar"
-                          data-tooltip="Counselling Psychologist"
-                          tabIndex="0"
+                          data-tooltip="Jordan"
+                          tabindex="0"
                         >
                           <ImageTag
                             alt="education"
                             width="55"
                             height="55"
-                            src={Deepak}
+                            src={ClientImg}
                           />
                         </a>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                            Join Over 1000+ Experts
+                            Join Over 3000+ Students
                           </h5>
                           <p className="subtitle">
-                            Keep your practice dynamic with client's need.
+                            Have a new ideas every week.
                           </p>
                         </div>
                       </div>
