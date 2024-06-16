@@ -19,7 +19,6 @@ export default function TherapistRegistration() {
   const [mode, setMode] = useState("");
   const [checkedValues, setCheckedValues] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
-
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState("");
@@ -67,7 +66,7 @@ export default function TherapistRegistration() {
       formData.append("email", email);
       formData.append("type", profileType);
       formData.append("mode", mode);
-      formData.append("serve", checkedValues);
+      formData.append("serve", checkedValues.join(", "));
 
       try {
         const response = await axios.post(threapistRegistrationUrl, formData, {
@@ -77,12 +76,17 @@ export default function TherapistRegistration() {
         });
         if (response.data.status) {
           setSuccess(response.data.message);
+          setError("");
+          setName("");
+          setEmail("");
+          setPhone("");
         } else {
           setError("Something went wrong");
         }
       } catch (error) {
         setError(error.response.data.message);
       }
+      setLoading(false);
     }
   };
 
@@ -105,7 +109,11 @@ export default function TherapistRegistration() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Become a part of <span className="theme-gradient">#ChooseYourTherapist</span> and provide professional services with us.</h2>
+                <h2 className="title">
+                  Become a part of{" "}
+                  <span className="theme-gradient">#ChooseYourTherapist</span>{" "}
+                  and provide professional services with us.
+                </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <a href="/">Home</a>
@@ -116,7 +124,7 @@ export default function TherapistRegistration() {
                     </div>
                   </li>
                   <li className="rbt-breadcrumb-item active">
-                   Join as Mental Health Expert
+                    Join as Mental Health Expert
                   </li>
                 </ul>
               </div>
@@ -136,9 +144,7 @@ export default function TherapistRegistration() {
                         Serve Professionally with us.
                       </span>
                     </div>
-                    <h3 className="title">
-                     Are you a therapist?
-                    </h3>
+                    <h3 className="title">Are you a therapist?</h3>
                     <p className="description">
                       <p>
                         Ensure a smooth registration by following our
@@ -291,7 +297,9 @@ export default function TherapistRegistration() {
                         value="Prescribe Medication(Only for Psychiatrist)"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-2">Prescribe Medication(Only for Psychiatrist)</label>
+                      <label for="rbt-checkbox-2">
+                        Prescribe Medication(Only for Psychiatrist)
+                      </label>
                     </p>
                     <p class="rbt-checkbox-wrapper mb--5">
                       <input
@@ -324,7 +332,10 @@ export default function TherapistRegistration() {
                         value=" Workshops/Events conducting"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-4"> Workshops/Events conducting</label>
+                      <label for="rbt-checkbox-4">
+                        {" "}
+                        Workshops/Events conducting
+                      </label>
                     </p>
                     <p class="rbt-checkbox-wrapper mb--5">
                       <input
@@ -347,7 +358,7 @@ export default function TherapistRegistration() {
                     <span className="focus-border"></span>
                   </div>
                   <div className="form-submit-group">
-                    <p style={{ color: "#b9f6ca" }}>{success}</p>
+                    <p style={{ color: "#22bb33" }}>{success}</p>
                     {loading ? (
                       <Box sx={{ display: "flex", justifyContent: "center" }}>
                         <CircularProgress />
