@@ -8,3 +8,4 @@ export const sendForgotPasswordOtpUrl = `${localhost}/send-forgot-password-otp`;
 export const verifyOtpUrl = `${localhost}/verify-otp`;
 export const resetpasswordpUrl = `${localhost}/reset-password`;
 export const getUserUrl = `${localhost}/get-user`;
+export const getTherapists = `${localhost}/get-therapists`;
