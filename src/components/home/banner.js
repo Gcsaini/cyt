@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import DeepakImg from "../../assets/img/dpk.jpeg";
+import fabiha from "../../assets/img/fabbanner.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { TypeAnimation } from "react-type-animation";
@@ -54,11 +55,11 @@ export default function Banner() {
                     Discover mental health experts.
                   </div>
                 )}
-                <h4
+                <h3
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find Holistic Wellness Solutions with{" "}
+                  Find Therapist Solutions with{" "}
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       {/* <span className="cd-words-wrapper">
@@ -86,12 +87,11 @@ export default function Banner() {
                         sequence={[
                           "ChooseYourTherapist.in",
                           1500,
-                          "Book Therapist Online/In-Person",
+                          "Online/In-Person Mode",
                           1500,
-                          "We are Availble in Noida/Dehradun",
+                          "Affordable & Holistic Services.",
                           1500,
-                          "Personalized and Affordable Services.",
-                          1500,
+                      
                          
                         ]}
                         speed={10}
@@ -103,7 +103,7 @@ export default function Banner() {
                     </span>
                   </span>
                   <br />
-                </h4>
+                </h3>
                 <p className="description">
                   we provide mental health experts every step of the way to your
                   <strong> well-being.</strong>
@@ -124,7 +124,7 @@ export default function Banner() {
                     style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
-                      <span className="btn-text">Get Started</span>
+                      <span className="btn-text">Therapist Registration</span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
                       </span>
@@ -201,8 +201,7 @@ export default function Banner() {
                                   Hindi, English
                                 </li>
                                 <li style={{ fontSize: 16 }}>
-                                  <i className="feather-award"></i>3 Year
-                                  Experience
+                                  <i className="feather-award"></i>Uttarakhand
                                 </li>
                               </ul>
                               <div
@@ -244,8 +243,8 @@ export default function Banner() {
                                   <i className="feather-heart"></i>
                                 </span>
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
-                                  Individual Counselling, Couple Counselling,
-                                  Teen Counselling
+                                  Individual Counselling, Couple Counselling
+                          
                                 </span>
                               </div>
 
@@ -301,7 +300,7 @@ export default function Banner() {
                                   alt="Card"
                                   height={"488"}
                                   width={"710"}
-                                  src={DeepakImg}
+                                  src={fabiha}
                                 />
                               </a>
                             </div>
@@ -312,8 +311,7 @@ export default function Banner() {
                                   Hindi, English
                                 </li>
                                 <li style={{ fontSize: 16 }}>
-                                  <i className="feather-award"></i>3 Year
-                                  Experience
+                                  <i className="feather-award"></i>Uttar Pradesh
                                 </li>
                               </ul>
                               <div
@@ -338,7 +336,7 @@ export default function Banner() {
                                   }}
                                   style={{ cursor: "pointer" }}
                                 >
-                                  Deepak Kumar
+                                 Fabiha Sultana Shaik
                                 </a>
                               </h4>
                               <div style={{ marginTop: 7, display: "flex" }}>
@@ -346,7 +344,7 @@ export default function Banner() {
                                   <i className="feather-user"></i>
                                 </span>
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
-                                  Counseling Psychologist
+                                  Psychologist
                                 </span>
                               </div>
 
