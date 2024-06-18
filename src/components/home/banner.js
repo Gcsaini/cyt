@@ -58,7 +58,7 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find Wellness Solutions with #ChooseYourTherapist !{" "}
+                  Find Holistic Wellness Solutions with{" "}
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       {/* <span className="cd-words-wrapper">
@@ -84,16 +84,15 @@ export default function Banner() {
                       <br />
                       <TypeAnimation
                         sequence={[
-                          " Background",
+                          "ChooseYourTherapist.in",
                           1500,
-                          " Vision",
+                          "Book Therapist Online/In-Person",
                           1500,
-                          " Background",
+                          "We are Availble in Noida/Dehradun",
                           1500,
-                          " GCS",
+                          "Personalized and Affordable Services.",
                           1500,
-                          " Deepak",
-                          1500,
+                         
                         ]}
                         speed={10}
                         style={{ fontSize: "1em" }}
