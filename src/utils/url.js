@@ -1,5 +1,5 @@
 const localhost = "http://localhost:4000/api";
-const apiUrl = "http://cytapi.ap-south-1.elasticbeanstalk.com/api";
+const apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
 export const loginUrl = `${localhost}/auth/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
 export const registerUrl = `${localhost}/register`;
