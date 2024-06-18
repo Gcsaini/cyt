@@ -20,7 +20,12 @@ export default function TherapistProfile() {
               <span className="subtitle bg-primary-opacity">
                 Mental Health Wrokshops/Activites
               </span>
-              <h2 className="title"> <span className="theme-gradient">Wellness Workshops by Professionals</span></h2>
+              <h2 className="title">
+                {" "}
+                <span className="theme-gradient">
+                  Wellness Workshops by Professionals
+                </span>
+              </h2>
               <p>
                 Join our workshops and activities designed to enhance your
                 mental health and well-being. From stress management sessions to
@@ -152,9 +157,9 @@ export default function TherapistProfile() {
               <div className="tab-content mt--60" id="rbt-myTabContent">
                 <div className="row g-5">
                   <WellNessCard />
+                  {/* <WellNessCard />
                   <WellNessCard />
-                  <WellNessCard />
-                  <WellNessCard />
+                  <WellNessCard /> */}
                 </div>
               </div>
             </div>
@@ -178,7 +183,7 @@ export default function TherapistProfile() {
                     <SwiperSlide key={1}>
                       <WellNessCard />
                     </SwiperSlide>
-                    <SwiperSlide key={2}>
+                    {/* <SwiperSlide key={2}>
                       <WellNessCard />
                     </SwiperSlide>
                     <SwiperSlide key={3}>
@@ -186,7 +191,7 @@ export default function TherapistProfile() {
                     </SwiperSlide>
                     <SwiperSlide key={4}>
                       <WellNessCard />
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                   </Swiper>
                 </div>
               </div>

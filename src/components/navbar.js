@@ -560,10 +560,10 @@ export default function App() {
                       </button>
                     ) : (
                       <button
-                        onClick={() => handleClick("/auth/login")}
+                        onClick={() => handleClick("/therapist-registration")}
                         className="service-menu-parent"
                       >
-                        <i className="feather-user"></i>&nbsp;Login
+                        <i className="feather-user"></i>&nbsp;Register
                       </button>
                     )}{" "}
                     {user && (

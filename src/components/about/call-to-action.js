@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function CallToActionAbout() {
+  const navigate = useNavigate();
   return (
     <div className="rbt-call-to-action-area rbt-section-gap bg-gradient-8">
       <div className="rbt-callto-action rbt-cta-default style-6">
@@ -25,8 +28,9 @@ export default function CallToActionAbout() {
             <div className="col-xxl-3 col-xl-3 col-lg-6">
               <div className="call-to-btn text-start text-xl-end">
                 <a
+                  style={{ cursor: "pointer" }}
                   className="rbt-btn btn-white hover-icon-reverse"
-                  href="/pages/about-us-02#"
+                  onClick={() => navigate("/therapist-registration")}
                 >
                   <span className="icon-reverse-wrapper">
                     <span className="btn-text">Subscribe CYT</span>

@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function AboutCyt() {
+  const navigate = useNavigate();
   return (
     <div className="rbt-about-area about-style-1 bg-color-extra2 rbt-section-gap">
       <div className="container">
@@ -21,16 +24,20 @@ export default function AboutCyt() {
             data-sal-duration="700"
           >
             <p className="mb--40 mb_sm--20">
-            Choose Your Therapist LLP was founded in 2020 amidst the
-                  COVID-19 pandemic to address the growing need for accessible
-                  mental health care. CYT is a registered mental health platform
-              operating under the legal frameworks of the MCA (Ministry of
-              Corporate Affairs) and MSME (Micro, Small, and Medium
-              Enterprises). Our platform serves as a bridge between individuals
-              seeking mental health support and experienced counselors.
+              Choose Your Therapist LLP was founded in 2020 amidst the COVID-19
+              pandemic to address the growing need for accessible mental health
+              care. CYT is a registered mental health platform operating under
+              the legal frameworks of the MCA (Ministry of Corporate Affairs)
+              and MSME (Micro, Small, and Medium Enterprises). Our platform
+              serves as a bridge between individuals seeking mental health
+              support and experienced counselors.
             </p>
             <div className="readmore-btn">
-              <a className="rbt-moderbt-btn" href="/elements/about#">
+              <a
+                style={{ cursor: "pointer" }}
+                className="rbt-moderbt-btn"
+                onClick={() => navigate("/therapist-registration")}
+              >
                 <span className="moderbt-btn-text">Join us</span>
                 <i className="feather-arrow-right"></i>
               </a>

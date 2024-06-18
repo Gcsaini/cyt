@@ -6,7 +6,9 @@ import Banner from "../../assets/img/Therapyforallll.png";
 import Banner2 from "../../assets/img/joinushere.png";
 import ImageTag from "../../utils/image-tag";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Navigate, useNavigate } from "react-router-dom";
 export default function PromationalBanner() {
+  const navigate = useNavigate();
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
@@ -34,8 +36,8 @@ export default function PromationalBanner() {
                         width: "100%",
                       }}
                     >
-                      <div className="thumbnail">
-                        <a href="">
+                      <div className="thumbnail" style={{ cursor: "pointer" }}>
+                        <a onClick={() => navigate("/therapist-registration")}>
                           <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
@@ -53,8 +55,8 @@ export default function PromationalBanner() {
                         width: "100%",
                       }}
                     >
-                      <div className="thumbnail">
-                        <a href="">
+                      <div className="thumbnail" style={{ cursor: "pointer" }}>
+                        <a onClick={() => navigate("/therapist-registration")}>
                           <ImageTag
                             alt="Banner"
                             heigth="425"
@@ -73,8 +75,8 @@ export default function PromationalBanner() {
                         width: "100%",
                       }}
                     >
-                      <div className="thumbnail">
-                        <a href="">
+                      <div className="thumbnail" style={{ cursor: "pointer" }}>
+                        <a onClick={() => navigate("/therapist-registration")}>
                           <ImageTag
                             alt="Banner"
                             dim={"425-1305"}

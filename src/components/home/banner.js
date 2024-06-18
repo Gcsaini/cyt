@@ -8,6 +8,7 @@ import React from "react";
 import DeepakImg from "../../assets/img/dpk.jpeg";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
+import { TypeAnimation } from "react-type-animation";
 export default function Banner() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -60,7 +61,7 @@ export default function Banner() {
                   Find Wellness Solutions with #ChooseYourTherapist !{" "}
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
-                      <span className="cd-words-wrapper">
+                      {/* <span className="cd-words-wrapper">
                         <b
                           className={
                             hideShow
@@ -79,7 +80,27 @@ export default function Banner() {
                         >
                           Affordable & Supportive
                         </b>
-                      </span>
+                      </span> */}
+                      <br />
+                      <TypeAnimation
+                        sequence={[
+                          " Background",
+                          1500,
+                          " Vision",
+                          1500,
+                          " Background",
+                          1500,
+                          " GCS",
+                          1500,
+                          " Deepak",
+                          1500,
+                        ]}
+                        speed={10}
+                        style={{ fontSize: "1em" }}
+                        repeat={Infinity}
+                        deletionSpeed={20}
+                        className="theme-gradient"
+                      />
                     </span>
                   </span>
                   <br />
@@ -89,32 +110,19 @@ export default function Banner() {
                   <strong> well-being.</strong>
                 </p>
                 <div className="rating mb--20">
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a className="px-1" href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a className="px-1" href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                       <a className="px-1" href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
-                        <i className="fa fa-star"></i>
-                      </a>
-                    </div>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                </div>
                 <div className="slider-btn">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
-                    href="/05-classic-lms#"
+                    onClick={() => navigate("/therapist-registration")}
+                    style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Get Started</span>
@@ -175,7 +183,7 @@ export default function Banner() {
                             <div className="rbt-card-img">
                               <a
                                 onClick={() => {
-                                  handleClick("/view-profile/1");
+                                  handleClick("/notfound");
                                 }}
                                 style={{ cursor: "pointer" }}
                               >
@@ -216,7 +224,7 @@ export default function Banner() {
                               <h4 className="rbt-card-title">
                                 <a
                                   onClick={() => {
-                                    handleClick("/view-profile/1");
+                                    handleClick("/notfound");
                                   }}
                                   style={{ cursor: "pointer" }}
                                 >
@@ -253,7 +261,7 @@ export default function Banner() {
                                 <a
                                   className="view-btn view-btn-border"
                                   onClick={() => {
-                                    handleClick("/view-profile/1");
+                                    handleClick("/notfound");
                                   }}
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
@@ -264,7 +272,9 @@ export default function Banner() {
                                 </a>
                                 <a
                                   className="rbt-btn btn-gradient book-btn"
-                                  href="#"
+                                  onClick={() => {
+                                    handleClick("/notfound");
+                                  }}
                                   style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -284,7 +294,7 @@ export default function Banner() {
                             <div className="rbt-card-img">
                               <a
                                 onClick={() => {
-                                  handleClick("/view-profile/2");
+                                  handleClick("/notfound");
                                 }}
                                 style={{ cursor: "pointer" }}
                               >
@@ -325,7 +335,7 @@ export default function Banner() {
                               <h4 className="rbt-card-title">
                                 <a
                                   onClick={() => {
-                                    handleClick("/view-profile/2");
+                                    handleClick("/notfound");
                                   }}
                                   style={{ cursor: "pointer" }}
                                 >
@@ -361,7 +371,7 @@ export default function Banner() {
                                 <a
                                   className="view-btn view-btn-border"
                                   onClick={() => {
-                                    handleClick("/view-profile/2");
+                                    handleClick("/notfound");
                                   }}
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
@@ -372,7 +382,9 @@ export default function Banner() {
                                 </a>
                                 <a
                                   className="rbt-btn btn-gradient book-btn"
-                                  href="#"
+                                  onClick={() => {
+                                    handleClick("/notfound");
+                                  }}
                                   style={{
                                     display: "flex",
                                     justifyContent: "center",
