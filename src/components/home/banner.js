@@ -5,6 +5,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import ClientImg from "../../assets/img/avatar-027dc8.png";
+import Fabiha from "../../assets/img/psychologist.png";
+import ClientImg3 from "../../assets/img/counselling.png";
 import DeepakImg from "../../assets/img/dpk.jpeg";
 import fabiha from "../../assets/img/fabbanner.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -108,15 +111,58 @@ export default function Banner() {
                   we provide mental health experts every step of the way to your
                   <strong> well-being.</strong>
                 </p>
-                <div className="rating mb--20">
-                  <i className="fa fa-star"></i>
-                  <i className="fa fa-star"></i>
-                  <i className="fa fa-star"></i>
-                  <i className="fa fa-star"></i>
-                  <i className="fa fa-star"></i>
-                  <i className="fa fa-star"></i>
-                  <i className="fa fa-star"></i>
-                </div>
+                <div className="rbt-like-total">
+                      <div className="profile-share">
+                        <a
+                          href="#"
+                          className="avatar"
+                          data-tooltip="Counselling Psychologist"
+                          tabindex="0"
+                        >
+                          <ImageTag
+                            alt="education"
+                            width="55"
+                            height="55"
+                            src={ClientImg}
+                          />
+                        </a>
+                        <a
+                          href="#"
+                          className="avatar"
+                          data-tooltip="Psychologist"
+                          tabindex="0"
+                        >
+                          <ImageTag
+                            alt="education"
+                            width="55"
+                            height="55"
+                            src={Fabiha}
+                          />
+                        </a>
+                        <a
+                          href="#"
+                          className="avatar"
+                          data-tooltip="Counselling Psychologist"
+                          tabindex="0"
+                        >
+                          <ImageTag
+                            alt="education"
+                            width="55"
+                            height="55"
+                            src={ClientImg3}
+                          />
+                        </a>
+                        <div className="more-author-text">
+                          <h5 className="total-join-students">
+                            Join Over 50+ Experts
+                          </h5>
+                          <p className="subtitle">
+                           We are Listening You!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+               <br/>
                 <div className="slider-btn">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
