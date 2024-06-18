@@ -89,7 +89,7 @@ export default function Banner() {
                           1500,
                           "Online/In-Person Mode",
                           1500,
-                          "Affordable & Holistic Services.",
+                          "Holistic Approach.",
                           1500,
                       
                          
@@ -201,24 +201,10 @@ export default function Banner() {
                                   Hindi, English
                                 </li>
                                 <li style={{ fontSize: 16 }}>
-                                  <i className="feather-award"></i>Uttarakhand
+                                  <i className="feather-map-pin"></i>Uttarakhand
                                 </li>
                               </ul>
-                              <div
-                                className="rbt-review"
-                                style={{ marginTop: 12 }}
-                              >
-                                <div className="rating">
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                </div>
-                                <span className="rating-count">
-                                  (15 Reviews)
-                                </span>
-                              </div>
+                              
                               <h4 className="rbt-card-title">
                                 <a
                                   onClick={() => {
@@ -311,24 +297,10 @@ export default function Banner() {
                                   Hindi, English
                                 </li>
                                 <li style={{ fontSize: 16 }}>
-                                  <i className="feather-award"></i>Uttar Pradesh
+                                  <i className="feather-map-pin"></i>Uttar Pradesh
                                 </li>
                               </ul>
-                              <div
-                                className="rbt-review"
-                                style={{ marginTop: 12 }}
-                              >
-                                <div className="rating">
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                  <i className="fas fa-star"></i>
-                                </div>
-                                <span className="rating-count">
-                                  (15 Reviews)
-                                </span>
-                              </div>
+                             
                               <h4 className="rbt-card-title">
                                 <a
                                   onClick={() => {
