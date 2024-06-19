@@ -20,8 +20,7 @@ export default function Footer() {
                     </a>
                   </div>
                   <p className="description mt--20">
-                    Show your care with the gift of therapy "a profound way to
-                    support the mental health and happiness of those you love".
+                  Your well-being is our priority. Discover your best self with us.
                   </p>
                   <div className="contact-btn mt--30">
                     <a
@@ -87,18 +86,22 @@ export default function Footer() {
                   <h5 className="ft-title">Get Contact</h5>
                   <ul className="ft-link">
                     <li>
-                      <span>Phone:</span>
+                      <span>Phone: </span>
                       <a href="index.html#">+91 80777 57951</a>
                     </li>
                     <li>
-                      <span>E-mail:</span>
+                      <span>E-mail: </span>
                       <a href="info@chooseyourtherapist.in">
                         info@chooseyourtherapist.in
                       </a>
                     </li>
                     <li>
-                      <span>Location:</span>
-                      Uttarakhand, India
+                      <span>Reg. Add. </span>
+                      Laksar, Haridwar, Uttarakhand, India
+                    </li>
+                    <li>
+                      <span>Service at: </span>
+                     Sec. 27 Noida, Uttar Pradesh
                     </li>
                   </ul>
                   <ul className="social-icon social-default icon-naked justify-content-start mt--20">
@@ -139,11 +142,11 @@ export default function Footer() {
           <div className="row align-items-center">
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
               <p className="rbt-link-hover text-center text-lg-start">
-                Copyright � 2024
-                <a href="https://chooseyourtherapist.in">
-                  Choose Your Therapist LLP.
-                </a>
-                All Rights Reserved
+              © 2024 <a href="https://chooseyourtherapist.in">
+                     Choose Your Therapist LLP.   
+                   
+                   </a>   
+                      All Rights Reserved
               </p>
             </div>
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">

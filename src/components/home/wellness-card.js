@@ -1,5 +1,5 @@
 import ImageTag from "../../utils/image-tag";
-import img from "../../assets/img/pehchaan.png";
+import img from "../../assets/img/wellness.jpeg
 export default function WellNessCard() {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
@@ -50,7 +50,7 @@ export default function WellNessCard() {
               <span className="off-price">1000 INR</span>
             </div>
             <a className="rbt-btn-link" href="/course-details/1">
-              Register Now<i className="feather-arrow-right"></i>
+              Registration Soon<i className="feather-arrow-right"></i>
             </a>
           </div>
         </div>

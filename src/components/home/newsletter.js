@@ -49,7 +49,7 @@ export default function NewsLetter() {
       className="rbt-newsletter-area newsletter-style-2 rbt-section-gap"
       ref={ref}
       style={{
-        background: "#3EB75E"
+        background: "#115B37"
       }}
     >
       <div className="container">
@@ -101,7 +101,7 @@ export default function NewsLetter() {
                           Successfull Sessions
                         </h5>
                         <span className="subtitle color-white">
-                          Therapy & counselling
+                          Therapy & Counselling
                         </span>
                       </div>
                     </div>
@@ -115,10 +115,10 @@ export default function NewsLetter() {
                           <span className="odometer">{count1}</span>
                         </h3>
                         <h5 className="title color-white">
-                          Training & Wrokshops
+                          Valuable Feedback
                         </h5>
                         <span className="subtitle color-white">
-                          Students & workplace
+                          Counselling and Workshops
                         </span>
                       </div>
                     </div>
