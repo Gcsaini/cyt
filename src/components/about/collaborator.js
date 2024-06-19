@@ -38,7 +38,7 @@ export default function Collaborator() {
                   <div className="author-info text-left">
                     <h2 className="title color-white mb--0">Ms. Neha Sharma</h2>
                     <span className="b3 color-white">
-                      Office Space Collaborator, Noida
+                      Collaboration Team Member, Noida
                     </span>
                   </div>
                   <div className="content mt--20">

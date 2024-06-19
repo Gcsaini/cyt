@@ -213,7 +213,7 @@ export default function TherapistRegistration() {
                           <p className="subtitle">
   <input type="checkbox" id="criteriaCheckbox" />
   <label htmlFor="criteriaCheckbox">
-    Keep your practice dynamic with client's needs. For more information, please refer to our criteria <a href="link">here</a>.
+   For more information, please refer to our criteria <a href="link">here</a>.
   </label>
 </p>
 
