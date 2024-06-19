@@ -8,8 +8,9 @@ import React from "react";
 import ClientImg from "../../assets/img/avatar-027dc8.png";
 import Fabiha from "../../assets/img/psychologist.png";
 import ClientImg3 from "../../assets/img/counselling.png";
-import DeepakImg from "../../assets/img/dpk.jpeg";
+import DeepakImg from "../../assets/img/deepbanner.png";
 import fabiha from "../../assets/img/fabbanner.png";
+import sid from "../../assets/img/sidbanner.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { TypeAnimation } from "react-type-animation";
@@ -373,6 +374,100 @@ export default function Banner() {
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
                                   Individual Counselling, Couple Counselling,
                                   Teen Counselling
+                                </span>
+                              </div>
+                              <div
+                                style={{
+                                  marginTop: 24,
+                                  marginBottom: 10,
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <a
+                                  className="view-btn view-btn-border"
+                                  onClick={() => {
+                                    handleClick("/notfound");
+                                  }}
+                                  style={{
+                                    padding: isMobile ? "0 30px" : "0 22px",
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  View Profile
+                                </a>
+                                <a
+                                  className="rbt-btn btn-gradient book-btn"
+                                  onClick={() => {
+                                    handleClick("/notfound");
+                                  }}
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    padding: isTablet ? "0 24px" : "0 30px",
+                                  }}
+                                >
+                                  <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide key={2}>
+                        <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
+                          <div className="rbt-card variation-01">
+                            <div className="rbt-card-img">
+                              <a
+                                onClick={() => {
+                                  handleClick("/notfound");
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
+                                <ImageTag
+                                  alt="Card"
+                                  height={"488"}
+                                  width={"710"}
+                                  src={sid}
+                                />
+                              </a>
+                            </div>
+                            <div className="rbt-card-body">
+                              <ul className="rbt-meta">
+                                <li style={{ fontSize: 16 }}>
+                                  <i className="feather-message-circle"></i>
+                                  Hindi, English
+                                </li>
+                                <li style={{ fontSize: 16 }}>
+                                  <i className="feather-map-pin"></i>Uttarakhand
+                                </li>
+                              </ul>
+                             
+                              <h4 className="rbt-card-title">
+                                <a
+                                  onClick={() => {
+                                    handleClick("/notfound");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                 Siddhant Kataria
+                                </a>
+                              </h4>
+                              <div style={{ marginTop: 7, display: "flex" }}>
+                                <span>
+                                  <i className="feather-user"></i>
+                                </span>
+                                <span style={{ fontSize: 16, marginLeft: 5 }}>
+                                  Counselling Psychologist
+                                </span>
+                              </div>
+
+                              <div style={{ marginTop: 5, display: "flex" }}>
+                                <span>
+                                  <i className="feather-heart"></i>
+                                </span>
+                                <span style={{ fontSize: 16, marginLeft: 5 }}>
+                                  Individual Counselling
                                 </span>
                               </div>
                               <div

@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Profile from "../../assets/img/2.png";
+import Profile from "../../assets/img/deepd.png";
 import fab from "../../assets/img/fabdd.png";
 import ayushi from "../../assets/img/ayushid.png";
 import anjali from "../../assets/img/anjalid.png";
