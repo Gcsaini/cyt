@@ -141,12 +141,11 @@ export default function TherapistRegistration() {
                   <div className="inner">
                     <div className="section-title text-start">
                       <span className="subtitle bg-pink-opacity">
-                        Serve Professionally with us.
+                        Why Join Us?
                       </span>
                     </div>
                     <h3 className="title">Are you a therapist?</h3>
           
-<p>Why Join Us?</p>
 <ul class="check-box-points">
   <li>Expand Your Reach: Connect with a broad client base seeking professional mental health support.</li>
   <li>Flexible Work Environment: Choose your hours and work location, whether online or in-person.</li>
