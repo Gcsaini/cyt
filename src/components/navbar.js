@@ -59,17 +59,17 @@ export default function App() {
               </div>
             </div>
             <p className="description">
-              Histudy is a education website template. You can customize all.
+            Your well-being is our priority. Discover your best self with us.
             </p>
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
                 <a href="mailto:hello@example.com">
-                  <i className="feather-mail"></i>example@gmail.com
+                  <i className="feather-mail"></i>info@chooseyourtherapist.in
                 </a>
               </li>
               <li>
                 <a href="index.html#">
-                  <i className="feather-phone"></i>(302) 555-0107
+                  <i className="feather-phone"></i>+91 8077757951
                 </a>
               </li>
             </ul>
@@ -139,10 +139,9 @@ export default function App() {
                       <div className="col-lg-12">
                         <div className="mega-top-banner">
                           <div className="content">
-                            <h4 className="title">Developer hub</h4>
+                            <h4 className="title">Therapy for You</h4>
                             <p className="description">
-                              Start building fast, with code samples, key
-                              resources and more.
+                             Find Your Therapist, wtih online/In-perspn mode.
                             </p>
                           </div>
                         </div>
