@@ -108,8 +108,8 @@ export default function Banner() {
                   <br />
                 </h3>
                 <p className="description">
-                  we provide mental health experts every step of the way to your
-                  <strong> well-being.</strong>
+                 A healthy mind is the key to a fulfilled life
+                  <strong>-let mental health experts lead you to well-being.</strong>
                 </p>
                 <div className="rbt-like-total">
                       <div className="profile-share">
