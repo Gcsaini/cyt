@@ -2,10 +2,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Profile from "../../assets/img/deepdirec.png";
-import fab from "../../assets/img/fabdirectory.png";
-import ayushi from "../../assets/img/ayushi.png";
-import anjali from "../../assets/img/anjali.png";
+import Profile from "../../assets/img/2.png";
+import fab from "../../assets/img/fabdd.png";
+import ayushi from "../../assets/img/ayushid.png";
+import anjali from "../../assets/img/anjalid.png";
 import BookBtn from "../global/book-btn";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
@@ -268,7 +268,7 @@ export default function ProfileCard() {
                         <i className="feather-book"></i>Available
                       </li>
                       <li>
-                        <i className="feather-user"></i>Psychologist
+                        <i className="feather-user"></i>Counselling Psychologist
                       </li>
                       <li>
                         <i className="feather-message-circle"></i> English,
