@@ -147,6 +147,18 @@ export default function TherapistProfile() {
                     </span>
                   </a>
                 </li>
+                <li>
+                  <a
+                    className={tab === 7 ? "tab-button active" : "tab-button"}
+                    id="business-tab-4"
+                    aria-selected={tab === 7 ? "true" : "false"}
+                    onClick={() => handleClick(7)}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                     CYT Projects
+                    </span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

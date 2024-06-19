@@ -1,7 +1,7 @@
-import BlogCardImg from "../../assets/img/blog-card-01521f.jpg";
-import BlogCardImg2 from "../../assets/img/blog-card-02a829.jpg";
-import BlogCardImg3 from "../../assets/img/blog-card-03f718.jpg";
-import BlogCardImg4 from "../../assets/img/blog-card-048b22.jpg";
+import BlogCardImg from "../../assets/img/blog1.png";
+import BlogCardImg2 from "../../assets/img/blog2.png";
+import BlogCardImg3 from "../../assets/img/blog3.png";
+import BlogCardImg4 from "../../assets/img/blog5.png";
 import ImageTag from "../../utils/image-tag";
 export default function Blogs() {
   return (
@@ -90,7 +90,7 @@ export default function Blogs() {
                     alt="Card"
                     height={"300"}
                     width={"580"}
-                    src={BlogCardImg}
+                    src={BlogCardImg2}
                   />
                 </a>
               </div>
