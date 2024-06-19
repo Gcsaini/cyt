@@ -456,7 +456,7 @@ export default function ProfileCard() {
                             <i className="feather-heart"></i>
                           </span>
                           <span style={{ lineHeight: "18px" }}>
-                            Individual Counselling
+                            Individual Counselling, Couple Counselling 
                           </span>
                         </div>
                       </li>
