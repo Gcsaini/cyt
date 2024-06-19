@@ -155,7 +155,7 @@ export default function TherapistRegistration() {
    <li>Professional Growth: Participate in workshops, seminars, and training programs to enhance your skills and knowledge.</li>
   <li>Supportive Administration: Benefit from our administrative support, including booking management and client inquiries.</li>
 </ul>
-
+<p class="note">Please note: Therapists are not employees of Choose Your Therapist LLP. They provide their services independently. We approve them based on their qualifications and experience criteria.</p>
                     <div className="rating mb--20">
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
@@ -216,6 +216,7 @@ export default function TherapistRegistration() {
    For more information, please refer to our criteria <a href="link">here</a>.
   </label>
 </p>
+
 
                         </div>
                       </div>
