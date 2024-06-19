@@ -7,8 +7,8 @@ export default function Header() {
             <div className="section-title text-center mb--60">
               <span className="subtitle bg-secondary-opacity">Contact Us</span>
               <h2 className="title">
-                Histudy Course Contact <br />
-                can join with us.
+              Get in Touch with <br />
+              <span className="theme-gradient"> #ChooseYourTherapist</span>
               </h2>
             </div>
           </div>
@@ -27,17 +27,9 @@ export default function Header() {
               <div className="inner">
                 <h4 className="title">Contact Phone Number</h4>
                 <p>
-                  <a href="/+444%20555%20666%20777">+444 555 666 777</a>
+                  <a href="/+444%20555%20666%20777">+918077757951</a>
                 </p>
-                <p>
-                  <a href="/+222%20222%20222%20333">+222 222 222 333</a>
-                </p>
-                <p>
-                  <a href="mailto:undefined">Mail</a>
-                </p>
-                <p>
-                  <a href="mailto:undefined">Mail</a>
-                </p>
+               
               </div>
             </div>
           </div>
@@ -54,10 +46,10 @@ export default function Header() {
               <div className="inner">
                 <h4 className="title">Our Email Address</h4>
                 <p>
-                  <a href="mailto:admin@gmail.com">admin@gmail.com</a>
+                  <a href="mailto:admin@gmail.com">director@chooseyourtherapist.in</a>
                 </p>
                 <p>
-                  <a href="mailto:example@gmail.com">example@gmail.com</a>
+                  <a href="mailto:admin@gmail.com">info@chooseyourtherapist.in</a>
                 </p>
               </div>
             </div>
@@ -75,12 +67,15 @@ export default function Header() {
               <div className="inner">
                 <h4 className="title">Our Location</h4>
                 <p>
-                  <a href="mailto:undefined">Location</a>
+                  <a href="mailto:undefined"><span>Reg. Add. </span>
+                  Laksar, Haridwar, Uttarakhand, India</a>
                 </p>
+                <br/>
                 <p>
-                  <a href="mailto:undefined">Location</a>
+                  <a href="mailto:undefined"><span>Service at: </span>
+                  Sec. 27 Noida, Uttar Pradesh</a>
                 </p>
-                <p>5678 Bangla Main Road, cities 580 GBnagla, example 54786</p>
+               
               </div>
             </div>
           </div>

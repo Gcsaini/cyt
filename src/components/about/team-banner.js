@@ -14,8 +14,6 @@ const teamInfo = [
     name: "Mr. Deepak Kumar",
     deg: "Founder & Director | Counselling Psychologist   (B.A, M.A, Ph.D Research Scholar)",
     address: " Uttarakhand, IN",
-    phone: "+91-8077757951",
-    email: "director@chooseyourtherapist.in",
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -28,8 +26,7 @@ const teamInfo = [
     name: "Mr. Ashish Kumar Thakran",
     deg: "Co-Founder | Enterepreneur",
     address: " Uttarakhand, IN",
-    phone: "1234567890",
-    email: "dummy3@gmail.com",
+  
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -42,8 +39,7 @@ const teamInfo = [
     name: "Mr. Gopichand Saini",
     deg: "Cheif Technology officer",
     address: " Noida, Uttarpradesh, IN",
-    phone: "+918755512976",
-    email: "techsupport@chooseyourtherapist.in",
+   
     instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
     facebook: "https://www.facebook.com/gopichand.saini.3?mibextid=ZbWKwL",
     linkdin: "https://www.linkedin.com/in/gopichand-saini-0a979313b/",
@@ -55,8 +51,7 @@ const teamInfo = [
     name: "Ms. Fabiha Sultana Shaik",
     deg: "Cheif Advisor | Psychologist",
     address: " Noida, Uttarpradesh, IN",
-    phone: "1234567890",
-    email: "advisor@chooseyourtherapist.in",
+  
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -68,8 +63,7 @@ const teamInfo = [
     name: "Mr. Vibhor Verma",
     deg: "Legal Advisor | Advocate",
     address: " Uttarakhand, IN",
-    phone: "1234567890",
-    email: "advisor@chooseyourtherapist.in",
+   
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -81,8 +75,7 @@ const teamInfo = [
     name: "Mr. Sidhant Kataria",
     deg: "Head of Marketing and Communication | Counselling Psychologist",
     address: " Uttarakhand, IN",
-    phone: "1234567890",
-    email: "advisor@chooseyourtherapist.in",
+    
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -165,20 +158,7 @@ export default function TeamBanner() {
                         </a>
                       </li>
                     </ul>
-                    <ul className="rbt-information-list mt--25">
-                      <li>
-                        <a href="">
-                          <i className="feather-phone"></i>
-                          {team.phone}
-                        </a>
-                      </li>
-                      <li>
-                        <a href={"mailto:" + team.email}>
-                          <i className="feather-mail"></i>
-                          {team.email}
-                        </a>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>

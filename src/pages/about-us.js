@@ -22,7 +22,7 @@ export default function AboutUs() {
       <CallToActionAbout />
       <InterSection />
       <Feedback />
-      <Brands />
+     
       <NewsLetter />
       <Footer />
     </div>

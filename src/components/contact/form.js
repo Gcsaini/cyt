@@ -12,7 +12,7 @@ export default function ContactForm() {
           </div>
           <div className="col-lg-6">
             <div className="rbt-contact-form contact-form-style-1 max-width-auto">
-              <h3 className="title">Get a Free Course</h3>
+              <h3 className="title">We’re Here to Help</h3>
               <form
                 id="contact-form"
                 method="POST"
