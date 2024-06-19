@@ -112,7 +112,7 @@ export default function TherapistRegistration() {
                 <h2 className="title">
                   Become a part of{" "}
                   <span className="theme-gradient">#ChooseYourTherapist</span>{" "}
-                  and provide professional services with us.
+                  and serve professionally.
                 </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
@@ -145,13 +145,18 @@ export default function TherapistRegistration() {
                       </span>
                     </div>
                     <h3 className="title">Are you a therapist?</h3>
-                    <p className="description">
-                      <p>
-                        Ensure a smooth registration by following our
-                        guidelines. For full details, check-{" "}
-                        <a href="#">how to join us?</a>.
-                      </p>
-                    </p>
+          
+<p>Why Join Us?</p>
+<ul class="check-box-points">
+  <li>Expand Your Reach: Connect with a broad client base seeking professional mental health support.</li>
+  <li>Flexible Work Environment: Choose your hours and work location, whether online or in-person.</li>
+  <li>Comprehensive Support: Access our extensive resources, including continuous professional development and peer support groups.</li>
+  <li>Collaborative Community: Join a network of dedicated mental health professionals and benefit from collaborative opportunities.</li>
+  <li>Marketing and Promotion: Leverage our marketing efforts to increase your visibility and attract more clients.</li>
+   <li>Professional Growth: Participate in workshops, seminars, and training programs to enhance your skills and knowledge.</li>
+  <li>Supportive Administration: Benefit from our administrative support, including booking management and client inquiries.</li>
+</ul>
+
                     <div className="rating mb--20">
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
