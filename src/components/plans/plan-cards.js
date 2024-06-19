@@ -12,7 +12,7 @@ export default function PlansCards() {
         <div class="col-lg-12">
           <div class="section-title text-center">
             <h4 class="title"><span className="theme-gradient">Counselling & Therapy Plans </span></h4>
-            <p>Our counseling and therapy plans offer tailored support to meet your unique needs. Whether you are seeking individual, couple, or teen counseling, our experienced therapists use proven therapeutic techniques to help you navigate personal challenges, improve emotional well-being, and foster healthier relationships.</p>
+            <p>Our counseling and therapy plans offer tailored support to meet your unique needs.</p>
           </div>
         </div>
       </div>
@@ -29,21 +29,36 @@ export default function PlansCards() {
                     <a href="/elements/service#">Individual Counselling (For Myself)</a>
                   </h5>
                   <ul class="rbt-list-style-3">
-                    <li>
-                      <i class="feather-heart"></i> Work-Related Stress
-                    </li>
-                    <li>
-                      <i class="feather-flag"></i>  Burnout Prevention
-                    </li>
-                    <li>
-                      <i class="feather-eye"></i> Emotional Support
-                    </li>
-                    <li>
-                      <i class="feather-edit-2"></i> Career Transitions
-                    </li>
-                    <li>
-                      <i class="feather-battery-charging"></i> Stress Management
-                    </li>
+                  <li>
+    <i class="feather-check"></i> Work-Related Stress
+  </li>
+  <li>
+    <i class="feather-check"></i> Burnout Prevention
+  </li>
+  <li>
+    <i class="feather-check"></i> Emotional Support
+  </li>
+  <li>
+    <i class="feather-check"></i> Career Transitions
+  </li>
+  <li>
+    <i class="feather-check"></i> Stress Management
+  </li>
+  <li>
+    <i class="feather-check"></i> Anxiety and Depression
+  </li>
+  <li>
+    <i class="feather-check"></i> Relationship Issues
+  </li>
+  <li>
+    <i class="feather-check"></i> Self-Esteem Building
+  </li>
+  <li>
+    <i class="feather-check"></i> Coping with Loss and Grief
+  </li>
+  <li>
+    <i class="feather-check"></i> Personal Growth and Development
+  </li>
                   </ul>
                   <a
                     class="rbt-btn-link stretched-link"
@@ -86,21 +101,39 @@ export default function PlansCards() {
                     <a href="/elements/service#">Couple Counselling (For Myself and My Partner)</a>
                   </h5>
                   <ul class="rbt-list-style-3">
-                    <li>
-                      <i class="feather-heart"></i>Strengthened Emotional Bond
-                    </li>
-                    <li>
-                      <i class="feather-flag"></i> Conflict Resolution
-                    </li>
-                    <li>
-                      <i class="feather-eye"></i> Rebuilding Trust
-                    </li>
-                    <li>
-                      <i class="feather-edit-2"></i> Enhanced Mutual Respect and Appreciation
-                    </li>
-                    <li>
-                      <i class="feather-battery-charging"></i> Understanding Patterns and Dynamics
-                    </li>
+                  <ul>
+  <li>
+    <i class="feather-check"></i> Strengthened Emotional Bond
+  </li>
+  <li>
+    <i class="feather-check"></i> Conflict Resolution
+  </li>
+  <li>
+    <i class="feather-check"></i> Rebuilding Trust
+  </li>
+  <li>
+    <i class="feather-check"></i> Enhanced Mutual Respect and Appreciation
+  </li>
+  <li>
+    <i class="feather-check"></i> Understanding Patterns and Dynamics
+  </li>
+  <li>
+    <i class="feather-check"></i> Improving Communication Skills
+  </li>
+  <li>
+    <i class="feather-check"></i> Strengthening Partnership and Teamwork
+  </li>
+  <li>
+    <i class="feather-check"></i> Navigating Life Transitions Together
+  </li>
+  <li>
+    <i class="feather-check"></i> Managing Stress as a Couple
+  </li>
+  <li>
+    <i class="feather-check"></i> Setting and Achieving Shared Goals
+  </li>
+</ul>
+
                   </ul>
                   <a
                     class="rbt-btn-link stretched-link"
@@ -142,22 +175,36 @@ export default function PlansCards() {
                     <a href="/elements/service#">Teen Counseling (For My Child)</a>
                   </h5>
                   <ul class="rbt-list-style-3">
-                    <li>
-                      <i class="feather-heart"></i> Health and Wellness
-                    </li>
-                    <li>
-                      <i class="feather-flag"></i> Literacy and Language
-                    </li>
-                    <li>
-                      <i class="feather-eye"></i> Social-Emotional Learning
-                    </li>
-                    <li>
-                      <i class="feather-edit-2"></i> Visual and Creative Arts
-                    </li>
-                    <li>
-                      <i class="feather-battery-charging"></i> Thinking and
-                      Learning
-                    </li>
+                  <li>
+    <i class="feather-check"></i> Managing Academic Stress
+  </li>
+  <li>
+    <i class="feather-check"></i> Coping with Peer Pressure
+  </li>
+  <li>
+    <i class="feather-check"></i> Building Self-Esteem and Confidence
+  </li>
+  <li>
+    <i class="feather-check"></i> Navigating Social Relationships
+  </li>
+  <li>
+    <i class="feather-check"></i> Addressing Anxiety and Depression
+  </li>
+  <li>
+    <i class="feather-check"></i> Developing Healthy Coping Mechanisms
+  </li>
+  <li>
+    <i class="feather-check"></i> Understanding and Managing Emotions
+  </li>
+  <li>
+    <i class="feather-check"></i> Enhancing Communication Skills
+  </li>
+  <li>
+    <i class="feather-check"></i> Support for Family Issues
+  </li>
+  <li>
+    <i class="feather-check"></i> Goal Setting and Future Planning
+  </li>
                   </ul>
                   <a
                     class="rbt-btn-link stretched-link"
