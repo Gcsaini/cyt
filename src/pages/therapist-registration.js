@@ -153,8 +153,7 @@ export default function TherapistRegistration() {
   <li>Collaborative Community: Join a network of dedicated mental health professionals and benefit from collaborative opportunities.</li>
   <li>Marketing and Promotion: Leverage our marketing efforts to increase your visibility and attract more clients.</li>
    <li>Professional Growth: Participate in workshops, seminars, and training programs to enhance your skills and knowledge.</li>
-  <li>Supportive Administration: Benefit from our administrative support, including booking management and client inquiries.</li>
-</ul>
+  </ul>
 <p class="note">Please note: Therapists are not employees of Choose Your Therapist LLP. They provide their services independently. We approve them based on their qualifications and experience criteria.</p>
                     <div className="rating mb--20">
                       <i className="fa fa-star"></i>
