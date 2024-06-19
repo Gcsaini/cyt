@@ -212,8 +212,12 @@ export default function TherapistRegistration() {
                             Join Over 50+ Experts
                           </h5>
                           <p className="subtitle">
-                            Keep your practice dynamic with client's need.
-                          </p>
+  <input type="checkbox" id="criteriaCheckbox" />
+  <label htmlFor="criteriaCheckbox">
+    Keep your practice dynamic with client's needs. For more information, please refer to our criteria <a href="link">here</a>.
+  </label>
+</p>
+
                         </div>
                       </div>
                     </div>
