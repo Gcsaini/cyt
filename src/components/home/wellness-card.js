@@ -1,5 +1,5 @@
 import ImageTag from "../../utils/image-tag";
-import img from "../../assets/img/wellness.jpeg
+import img from "../../assets/img/wellness.jpeg";
 export default function WellNessCard() {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
