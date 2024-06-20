@@ -305,7 +305,7 @@ export default function App() {
               <div className="header-left rbt-header-content">
                 <div className="header-info">
                   <div className="logo">
-                    <a href="index.html">
+                    <a onClick={() => handleClick("/")}>
                       <LazyImage
                         alt="Education Logo Images"
                         dim={"50-152"}
