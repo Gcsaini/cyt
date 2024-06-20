@@ -35,6 +35,8 @@ export default function TherapistRegistration() {
 
   const handleSubmit = async () => {
     setError("");
+    setSuccess("");
+
     if (profileType == "") {
       setError("Please select profile type");
       return;
@@ -80,6 +82,8 @@ export default function TherapistRegistration() {
           setName("");
           setEmail("");
           setPhone("");
+          setSelectedFile(null);
+          setCheckedValues([]);
         } else {
           setError("Something went wrong");
         }
