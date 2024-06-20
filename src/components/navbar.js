@@ -4,8 +4,6 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import logo1 from "../assets/img/logo.png";
-import Avatar from "../assets/img/avatar77be.jpg";
-import LazyImage from "../utils/lazy-image";
 import { useNavigate } from "react-router-dom";
 import TherypyImg from "../assets/img/therapy (1).png";
 import SupportImg from "../assets/img/support-groups.png";
@@ -43,7 +41,10 @@ export default function App() {
           <div className="inner-top">
             <div className="content">
               <div className="logo">
-                <a onClick={() => handleClick("/")}>
+                <a
+                  onClick={() => handleClick("/")}
+                  style={{ cursor: "pointer" }}
+                >
                   <ImageTag
                     alt="Education Logo Images"
                     width="137"
@@ -305,10 +306,14 @@ export default function App() {
               <div className="header-left rbt-header-content">
                 <div className="header-info">
                   <div className="logo">
-                    <a onClick={() => handleClick("/")}>
-                      <LazyImage
+                    <a
+                      onClick={() => handleClick("/")}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <ImageTag
                         alt="Education Logo Images"
-                        dim={"50-152"}
+                        height={"50"}
+                        width={"152"}
                         src={logo1}
                       />
                     </a>
@@ -570,9 +575,9 @@ export default function App() {
                         <div className="inner">
                           <div className="rbt-admin-profile">
                             <div className="admin-thumbnail">
-                              <LazyImage
+                              <ImageTag
                                 alt="User"
-                                dim={"43"}
+                                height={"43"}
                                 src={user.profile}
                               />
                             </div>
@@ -657,7 +662,7 @@ export default function App() {
                       <div className="inner">
                         <div className="rbt-admin-profile">
                           <div className="admin-thumbnail">
-                            <LazyImage alt="User" dim={"43"} src={Avatar} />
+                            <ImageTag alt="User" height={"43"} src={Avatar} />
                           </div>
                           <div className="admin-info">
                             <span className="name">Rafi Dev</span>
@@ -839,9 +844,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={TherypyImg}
                                 />
                               </div>
@@ -867,9 +872,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={SupportImg}
                                 />
                               </div>
@@ -894,9 +899,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={StudentImg}
                                 />
                               </div>
@@ -923,9 +928,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={StudentImg}
                                 />
                               </div>
@@ -952,9 +957,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={WorkplaceImg}
                                 />
                               </div>
@@ -981,9 +986,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={ActivitesImg}
                                 />
                               </div>
@@ -1008,9 +1013,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={AssessmentImg}
                                 />
                               </div>
@@ -1035,9 +1040,9 @@ export default function App() {
                           >
                             <div className="inner">
                               <div className="icons">
-                                <LazyImage
+                                <ImageTag
                                   alt="Icons"
-                                  dim={"80"}
+                                  height={"80"}
                                   src={ProjectsImg}
                                 />
                               </div>
