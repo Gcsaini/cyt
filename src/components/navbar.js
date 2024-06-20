@@ -43,7 +43,7 @@ export default function App() {
           <div className="inner-top">
             <div className="content">
               <div className="logo">
-                <a href="index.html">
+                <a onClick={() => handleClick("/")}>
                   <ImageTag
                     alt="Education Logo Images"
                     width="137"
@@ -653,7 +653,7 @@ export default function App() {
                     >
                       <i className="feather-user"></i>
                     </a>
-                    <div className="rbt-user-menu-list-wrapper">
+                    {/* <div className="rbt-user-menu-list-wrapper">
                       <div className="inner">
                         <div className="rbt-admin-profile">
                           <div className="admin-thumbnail">
@@ -750,7 +750,7 @@ export default function App() {
                           </li>
                         </ul>
                       </div>
-                    </div>
+                    </div> */}
                   </li>
                 </ul>
                 <div className="rbt-btn-wrapper d-none d-xl-block">
