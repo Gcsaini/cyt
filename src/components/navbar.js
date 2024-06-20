@@ -59,7 +59,7 @@ export default function App() {
               </div>
             </div>
             <p className="description">
-            Your well-being is our priority. Discover your best self with us.
+              Your well-being is our priority. Discover your best self with us.
             </p>
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
@@ -119,7 +119,7 @@ export default function App() {
                   </li>
                 </ul>
               </li>
-              <li className="with-megamenu has-menu-child-item">
+              {/* <li className="with-megamenu has-menu-child-item">
                 <a
                   href={"#"}
                   className={service ? "open" : ""}
@@ -219,7 +219,7 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> */}
               <li className="position-static">
                 <a
                   href={"#"}
@@ -230,7 +230,7 @@ export default function App() {
                   Plans<i className="feather-chevron-down"></i>
                 </a>
               </li>
-              <li className="position-static">
+              {/* <li className="position-static">
                 <a
                   href={"#"}
                   className=""
@@ -239,7 +239,7 @@ export default function App() {
                 >
                   Blogs
                 </a>
-              </li>
+              </li> */}
               <li className="position-static">
                 <a
                   href={"#"}
@@ -250,7 +250,7 @@ export default function App() {
                   Faqs
                 </a>
               </li>{" "}
-              <li>
+              {/* <li>
                 <a
                   href={"#"}
                   onClick={() => handleClick("/join-us")}
@@ -258,7 +258,7 @@ export default function App() {
                 >
                   Join us
                 </a>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <div className="mobile-menu-bottom">
@@ -359,7 +359,7 @@ export default function App() {
                         </li>
                       </ul>
                     </li>
-                    <li className="with-megamenu has-menu-child-item">
+                    {/* <li className="with-megamenu has-menu-child-item">
                       <a className="" href="index.html#">
                         Services<i className="feather-chevron-down"></i>
                       </a>
@@ -488,7 +488,7 @@ export default function App() {
                           </div>
                         </div>
                       </div>
-                    </li>
+                    </li> */}
                     <li className="position-static">
                       <button
                         className="service-menu-parent"
@@ -499,7 +499,7 @@ export default function App() {
                       </button>
                     </li>
 
-                    <li className="position-static">
+                    {/* <li className="position-static">
                       <button
                         className="service-menu-parent"
                         onClick={() => handleClick("/blogs")}
@@ -507,7 +507,7 @@ export default function App() {
                       >
                         Blogs
                       </button>
-                    </li>
+                    </li> */}
                     <li className="position-static">
                       <button
                         className="service-menu-parent"
@@ -517,7 +517,7 @@ export default function App() {
                         Faqs
                       </button>
                     </li>
-                    <li className="position-static">
+                    {/* <li className="position-static">
                       <button
                         className="service-menu-parent"
                         href={"#"}
@@ -525,7 +525,7 @@ export default function App() {
                       >
                         Join us
                       </button>
-                    </li>
+                    </li> */}
                   </ul>
                 </nav>
               </div>
@@ -646,7 +646,11 @@ export default function App() {
                     )}
                   </li>
                   <li className="access-icon rbt-user-wrapper d-block d-xl-none">
-                    <a className="rbt-round-btn" href="index.html#">
+                    <a
+                      style={{ cursor: "pointer" }}
+                      className="rbt-round-btn"
+                      onClick={() => handleClick("/therapist-registration")}
+                    >
                       <i className="feather-user"></i>
                     </a>
                     <div className="rbt-user-menu-list-wrapper">

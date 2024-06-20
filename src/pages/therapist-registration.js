@@ -145,16 +145,42 @@ export default function TherapistRegistration() {
                       </span>
                     </div>
                     <h3 className="title">Are you a therapist?</h3>
-          
-<ul class="check-box-points">
-  <li>Expand Your Reach: Connect with a broad client base seeking professional mental health support.</li>
-  <li>Flexible Work Environment: Choose your hours and work location, whether online or in-person.</li>
-  <li>Comprehensive Support: Access our extensive resources, including continuous professional development and peer support groups.</li>
-  <li>Collaborative Community: Join a network of dedicated mental health professionals and benefit from collaborative opportunities.</li>
-  <li>Marketing and Promotion: Leverage our marketing efforts to increase your visibility and attract more clients.</li>
-   <li>Professional Growth: Participate in workshops, seminars, and training programs to enhance your skills and knowledge.</li>
-  </ul>
-<p class="note">Please note: Therapists are not employees of Choose Your Therapist LLP. They provide their services independently. We approve them based on their qualifications and experience criteria.</p>
+
+                    <ul class="check-box-points">
+                      <li>
+                        Expand Your Reach: Connect with a broad client base
+                        seeking professional mental health support.
+                      </li>
+                      <li>
+                        Flexible Work Environment: Choose your hours and work
+                        location, whether online or in-person.
+                      </li>
+                      <li>
+                        Comprehensive Support: Access our extensive resources,
+                        including continuous professional development and peer
+                        support groups.
+                      </li>
+                      <li>
+                        Collaborative Community: Join a network of dedicated
+                        mental health professionals and benefit from
+                        collaborative opportunities.
+                      </li>
+                      <li>
+                        Marketing and Promotion: Leverage our marketing efforts
+                        to increase your visibility and attract more clients.
+                      </li>
+                      <li>
+                        Professional Growth: Participate in workshops, seminars,
+                        and training programs to enhance your skills and
+                        knowledge.
+                      </li>
+                    </ul>
+                    <p class="note">
+                      Please note: Therapists are not employees of Choose Your
+                      Therapist LLP. They provide their services independently.
+                      We approve them based on their qualifications and
+                      experience criteria.
+                    </p>
                     <div className="rating mb--20">
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
@@ -170,7 +196,7 @@ export default function TherapistRegistration() {
                           href="#"
                           className="avatar"
                           data-tooltip="Counselling Psychologist"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -183,7 +209,7 @@ export default function TherapistRegistration() {
                           href="#"
                           className="avatar"
                           data-tooltip="Psychologist"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -196,7 +222,7 @@ export default function TherapistRegistration() {
                           href="#"
                           className="avatar"
                           data-tooltip="Counselling Psychologist"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -210,13 +236,12 @@ export default function TherapistRegistration() {
                             Join Over 50+ Experts
                           </h5>
                           <p className="subtitle">
-  <input type="checkbox" id="criteriaCheckbox" />
-  <label htmlFor="criteriaCheckbox">
-   For more information, please refer to our criteria <a href="link">here</a>.
-  </label>
-</p>
-
-
+                            <input type="checkbox" id="criteriaCheckbox" />
+                            <label htmlFor="criteriaCheckbox">
+                              For more information, please refer to our criteria{" "}
+                              <a href="link">here</a>.
+                            </label>
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -299,59 +324,64 @@ export default function TherapistRegistration() {
                   </div>
                   <div className="form-group" style={{ margin: "20px 0" }}>
                     <span>Interested to serve-</span>
-                    <p class="rbt-checkbox-wrapper mb--5">
+                    <p className="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
                         value="Prescribe Medication(Only for Psychiatrist)"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-2">
+                      <label htmlFor="rbt-checkbox-2">
                         Prescribe Medication(Only for Psychiatrist)
                       </label>
                     </p>
-                    <p class="rbt-checkbox-wrapper mb--5">
+                    <p className="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
                         value="Individual counselling"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-1">Individual counselling</label>
+                      <label htmlFor="rbt-checkbox-1">
+                        Individual counselling
+                      </label>
                     </p>
 
-                    <p class="rbt-checkbox-wrapper mb--5">
+                    <p className="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
                         value="Couple counselling"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-2">Couple counselling</label>
+                      <label htmlFor="rbt-checkbox-2">Couple counselling</label>
                     </p>
-                    <p class="rbt-checkbox-wrapper mb--5">
+                    <p className="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
                         value="Teen counselling"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-3">Teen counselling</label>
+                      <label htmlFor="rbt-checkbox-3">Teen counselling</label>
                     </p>
-                    <p class="rbt-checkbox-wrapper mb--5">
+                    <p className="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
                         value=" Workshops/Events conducting"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-4">
+                      <label htmlFor="rbt-checkbox-4">
                         {" "}
                         Workshops/Events conducting
                       </label>
                     </p>
-                    <p class="rbt-checkbox-wrapper mb--5">
+                    <p className="rbt-checkbox-wrapper mb--5">
                       <input
                         type="checkbox"
                         value=" Internship/Training"
                         onChange={handleCheckboxChange}
                       />
-                      <label for="rbt-checkbox-4"> Internship/Training</label>
+                      <label htmlFor="rbt-checkbox-4">
+                        {" "}
+                        Internship/Training
+                      </label>
                     </p>
                   </div>
                   <div className="form-group">
