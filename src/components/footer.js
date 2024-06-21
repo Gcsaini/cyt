@@ -106,22 +106,22 @@ export default function Footer() {
                   </ul>
                   <ul className="social-icon social-default icon-naked justify-content-start mt--20">
                     <li>
-                      <a href="https://www.facebook.com/">
+                      <a href="https://www.facebook.com/cyt8113">
                         <i className="feather-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.twitter.com/">
+                      <a href="https://x.com/ChooseTherapist">
                         <i className="feather-twitter"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/">
+                      <a href="https://www.instagram.com/chooseyourtherapist/">
                         <i className="feather-instagram"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.linkdin.com/">
+                      <a href="https://www.linkedin.com/company/69243224">
                         <i className="feather-linkedin"></i>
                       </a>
                     </li>
