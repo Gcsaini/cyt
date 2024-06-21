@@ -14,7 +14,7 @@ export default function ProfileSettings() {
       <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div className="content">
           <div className="section-title">
-            <h4 className="rbt-title-style-3">Settings</h4>
+            <h4 className="rbt-title-style-3">Profile Set</h4>
           </div>
           <div className="advance-tab-button mb--30">
             <ul
