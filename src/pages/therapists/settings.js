@@ -14,7 +14,7 @@ export default function ProfileSettings() {
       <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div className="content">
           <div className="section-title">
-            <h4 className="rbt-title-style-3">Profile Set</h4>
+            <h4 className="rbt-title-style-3">Edit Profile</h4>
           </div>
           <div className="advance-tab-button mb--30">
             <ul
@@ -52,12 +52,33 @@ export default function ProfileSettings() {
                   <span className="title">Social Share</span>
                 </a>
               </li>
+              <li role="presentation">
+                <a
+                  className={tab === 3 ? "tab-button active" : "tab-button"}
+                  aria-selected={tab === 3 ? "true" : "false"}
+                  onClick={() => setTab(3)}
+                  style={style}
+                >
+                  <span className="title">Set Appointment</span>
+                </a>
+              </li>
+              <li role="presentation">
+                <a
+                  className={tab === 4 ? "tab-button active" : "tab-button"}
+                  aria-selected={tab === 4 ? "true" : "false"}
+                  onClick={() => setTab(4)}
+                  style={style}
+                >
+                  <span className="title">Set Charges</span>
+                </a>
+              </li>
             </ul>
           </div>
           <div className="tab-content">
             {tab === 0 && <Profile />}
             {tab === 1 && <Password />}
             {tab === 2 && <SocialShare />}
+         
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ export default function MainLayout(props) {
                     <div className="tutor-btn">
                       <a className="rbt-btn btn-md hover-icon-reverse" href="#">
                         <span className="icon-reverse-wrapper">
-                          <span className="btn-text">Create a New Course</span>
+                          <span className="btn-text">Create a New Workshop</span>
                           <span className="btn-icon">
                             <i className="feather-arrow-right"></i>
                           </span>
@@ -101,49 +101,24 @@ export default function MainLayout(props) {
                                   href="/instructor/instructor-enrolled-course"
                                 >
                                   <i className="feather-book-open"></i>
-                                  <span>Enrolled Courses</span>
+                                  <span>Save Payment Method</span>
                                 </a>
                               </li>
-                              <li className="nav-item" role="presentation">
-                                <a
-                                  className=""
-                                  href="/instructor/instructor-wishlist"
-                                >
-                                  <i className="feather-bookmark"></i>
-                                  <span>Wishlist</span>
-                                </a>
-                              </li>
+                          
                               <li className="nav-item" role="presentation">
                                 <a
                                   className=""
                                   href="/instructor/instructor-reviews"
                                 >
                                   <i className="feather-star"></i>
-                                  <span>Reviews</span>
+                                  <span>My Reviews</span>
                                 </a>
                               </li>
-                              <li className="nav-item" role="presentation">
-                                <a
-                                  className=""
-                                  href="/instructor/instructor-quiz-attempts"
-                                >
-                                  <i className="feather-help-circle"></i>
-                                  <span>My Quiz Attempts</span>
-                                </a>
-                              </li>
-                              <li className="nav-item" role="presentation">
-                                <a
-                                  className=""
-                                  href="/instructor/instructor-order-history"
-                                >
-                                  <i className="feather-shopping-bag"></i>
-                                  <span>Order History</span>
-                                </a>
-                              </li>
+                             
                             </ul>
                           </nav>
                           <div className="section-title mt--40 mb--20">
-                            <h6 className="rbt-title-style-2">Instructor</h6>
+                            <h6 className="rbt-title-style-2">Additional</h6>
                           </div>
                           <nav className="mainmenu-nav">
                             <ul className="dashboard-mainmenu rbt-default-sidebar-list">
@@ -153,7 +128,7 @@ export default function MainLayout(props) {
                                   href="/instructor/instructor-personal-courses"
                                 >
                                   <i className="feather-monitor"></i>
-                                  <span>My Courses</span>
+                                  <span>Wellness Workshops</span>
                                 </a>
                               </li>
                               <li>
@@ -162,27 +137,10 @@ export default function MainLayout(props) {
                                   href="/instructor/instructor-announcements"
                                 >
                                   <i className="feather-volume-2"></i>
-                                  <span>Announcements</span>
+                                  <span>Write Blog</span>
                                 </a>
                               </li>
-                              <li>
-                                <a
-                                  className=""
-                                  href="/instructor/instructor-quiz-attempts"
-                                >
-                                  <i className="feather-message-square"></i>
-                                  <span>Quiz Attempts</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  className=""
-                                  href="/instructor/instructor-assignments"
-                                >
-                                  <i className="feather-list"></i>
-                                  <span>Assignments</span>
-                                </a>
-                              </li>
+                             
                             </ul>
                           </nav>
                           <div className="section-title mt--40 mb--20">
@@ -198,7 +156,7 @@ export default function MainLayout(props) {
                                   to="/settings"
                                 >
                                   <i className="feather-settings"></i>
-                                  <span>Settings</span>
+                                  <span>Edit Profile</span>
                                 </Link>
                               </li>
                               <li>
