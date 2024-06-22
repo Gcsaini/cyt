@@ -1,6 +1,5 @@
 import AboutCyt from "../components/about/about-cyt";
 import AboutUsBanner from "../components/about/banner";
-import Brands from "../components/about/brands";
 import CallToActionAbout from "../components/about/call-to-action";
 import ServiceQuality from "../components/about/service-quality";
 import TeamBanner from "../components/about/team-banner";
@@ -22,7 +21,7 @@ export default function AboutUs() {
       <CallToActionAbout />
       <InterSection />
       <Feedback />
-     
+
       <NewsLetter />
       <Footer />
     </div>

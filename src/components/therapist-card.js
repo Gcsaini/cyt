@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import DeepakImg from "../assets/img/dpk.jpeg";
 import ImageTag from "../utils/image-tag";
-import BookBtn from "./global/book-btn";
-import OutlineBtn from "./global/outline-btn";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
 export default function TherapistCard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -10,9 +10,9 @@ export default function TherapistCard() {
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
         <div className="rbt-card-img">
-          <a href="">
+          <Link to="">
             <ImageTag alt="Card" height={"488"} width={"710"} src={DeepakImg} />
-          </a>
+          </Link>
         </div>
         <div className="rbt-card-body">
           <ul className="rbt-meta">
@@ -34,7 +34,7 @@ export default function TherapistCard() {
             <span className="rating-count">(15 Reviews)</span>
           </div>
           <h4 className="rbt-card-title">
-            <a href="">Deepak Kumar</a>
+            <Link to="">Deepak Kumar</Link>
           </h4>
           <div style={{ marginTop: 7, display: "flex" }}>
             <span>
@@ -54,7 +54,6 @@ export default function TherapistCard() {
             </span>
           </div>
 
-          
           <div
             style={{
               marginTop: 24,
@@ -63,16 +62,16 @@ export default function TherapistCard() {
               justifyContent: "space-between",
             }}
           >
-            <a
+            <Link
               className="view-btn view-btn-border"
-              href=""
+              to=""
               style={{ padding: isMobile ? "0 30px" : "0 22px" }}
             >
               View Profile
-            </a>
-            <a
+            </Link>
+            <Link
               className="rbt-btn btn-gradient book-btn"
-              href="#"
+              to="#"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -80,7 +79,7 @@ export default function TherapistCard() {
               }}
             >
               <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

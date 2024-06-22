@@ -4,7 +4,7 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import logo1 from "../assets/img/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TherypyImg from "../assets/img/therapy (1).png";
 import SupportImg from "../assets/img/support-groups.png";
 import StudentImg from "../assets/img/students.png";
@@ -25,9 +25,7 @@ export default function App() {
   const [service, setService] = React.useState();
   const [search, setSearch] = React.useState();
   const [cart, setCart] = React.useState();
-  function handleClick(nav) {
-    navigate(nav);
-  }
+
   React.useEffect(() => {
     const user = auth.getUserInfo();
     if (user) {
@@ -41,17 +39,14 @@ export default function App() {
           <div className="inner-top">
             <div className="content">
               <div className="logo">
-                <a
-                  onClick={() => handleClick("/")}
-                  style={{ cursor: "pointer" }}
-                >
+                <Link to="/" style={{ cursor: "pointer" }}>
                   <ImageTag
                     alt="Education Logo Images"
                     width="137"
                     height="45"
                     src={logo1}
                   />
-                </a>
+                </Link>
               </div>
               <div className="rbt-btn-close" onClick={() => setShow(false)}>
                 <button className="close-button rbt-round-btn">
@@ -64,70 +59,53 @@ export default function App() {
             </p>
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
-                <a href="mailto:hello@example.com">
+                <Link to="mailto:hello@example.com">
                   <i className="feather-mail"></i>info@chooseyourtherapist.in
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="index.html#">
+                <Link to="index.html#">
                   <i className="feather-phone"></i>+91 8077757951
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <nav className="mainmenu-nav">
             <ul className="mainmenu">
               <li className="position-static">
-                <a
-                  className=""
-                  onClick={() => {
-                    handleClick("/");
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
+                <Link className="" to="/" style={{ cursor: "pointer" }}>
                   Home<i className="feather-chevron-down"></i>
-                </a>
+                </Link>
               </li>
               <li className="has-dropdown has-menu-child-item">
-                <a
-                  href={"#"}
+                <Link
                   className={about ? "open" : ""}
                   onClick={() => setAbout(about !== true)}
                 >
                   About<i className="feather-chevron-down"></i>
-                </a>
+                </Link>
                 <ul className={about ? "submenu active d-block" : "submenu"}>
                   <li>
-                    <a
-                      href={"#"}
-                      onClick={() => {
-                        handleClick("/about-us");
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
+                    <Link to={"/about-us"} style={{ cursor: "pointer" }}>
                       About us
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href={"#"}
-                      onClick={() => handleClick("/contact-us")}
-                      style={{ cursor: "pointer" }}
-                    >
+                    <Link to={"/contact-us"} style={{ cursor: "pointer" }}>
                       Contact us
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
               {/* <li className="with-megamenu has-menu-child-item">
-                <a
-                  href={"#"}
+                <Link
+                  to={"#"}
                   className={service ? "open" : ""}
                   onClick={() => setService(service !== true)}
                 >
                   Services<i className="feather-chevron-down"></i>
-                </a>
+                </Link>
                 <div
                   className={
                     service
@@ -173,9 +151,9 @@ export default function App() {
                             </button>
                           </li>
                           <li>
-                            <a className="" href="course-filter-two-toggle">
+                            <Link className="" to="course-filter-two-toggle">
                               Peer Support Groups
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -183,19 +161,19 @@ export default function App() {
                         <h3 className="rbt-short-title">Our Solutions</h3>
                         <ul className="mega-menu-item">
                           <li>
-                            <a className="" href="course-card-3">
+                            <Link className="" to="course-card-3">
                               Student Based Orientations
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a className="" href="course-masonry">
+                            <Link className="" to="course-masonry">
                               Workplace Based Training
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a className="" href="course-with-sidebar">
+                            <Link className="" to="course-with-sidebar">
                               Assessments
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -204,16 +182,16 @@ export default function App() {
                       <div className="col-lg-12">
                         <ul className="nav-quick-access">
                           <li>
-                            <a href="index.html#">
+                            <Link to="index.html#">
                               <i className="feather-folder-minus"></i>
                               Terms of services
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="index.html#">
+                            <Link to="index.html#">
                               <i className="feather-folder-minus"></i>
                               Privecy policies
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -222,77 +200,67 @@ export default function App() {
                 </div>
               </li> */}
               <li className="position-static">
-                <a
-                  href={"#"}
-                  className=""
-                  onClick={() => handleClick("/plans")}
-                  style={{ cursor: "pointer" }}
-                >
+                <Link to={"/plans"} className="" style={{ cursor: "pointer" }}>
                   Plans<i className="feather-chevron-down"></i>
-                </a>
+                </Link>
               </li>
               {/* <li className="position-static">
-                <a
-                  href={"#"}
+                <Link
+                  to={"#"}
                   className=""
                   onClick={() => handleClick("/blogs")}
                   style={{ cursor: "pointer" }}
                 >
                   Blogs
-                </a>
+                </Link>
               </li> */}
               <li className="position-static">
-                <a
-                  href={"#"}
-                  className=""
-                  onClick={() => handleClick("/faqs")}
-                  style={{ cursor: "pointer" }}
-                >
+                <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
                   Faqs
-                </a>
+                </Link>
               </li>{" "}
               {/* <li>
-                <a
-                  href={"#"}
+                <Link
+                  to={"#"}
                   onClick={() => handleClick("/join-us")}
                   style={{ cursor: "pointer" }}
                 >
                   Join us
-                </a>
+                </Link>
               </li> */}
             </ul>
           </nav>
           <div className="mobile-menu-bottom">
             <div className="rbt-btn-wrapper mb--20">
-              <a
+              <Link
                 className="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center"
-                href="index.html#"
+                to="index.html"
               >
                 <span>Enroll Now</span>
-              </a>
+              </Link>
             </div>
             <div className="social-share-wrapper">
               <span className="rbt-short-title d-block">Find With Us</span>
               <ul className="social-icon social-default transparent-with-border justify-content-start mt--20">
                 <li>
-                  <a href="https://www.facebook.com/">
+                  <Link to="https://www.facebook.com/">
                     <i className="feather-facebook"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://www.twitter.com/">
+                  <Link to="https://www.twitter.com/">
                     <i className="feather-twitter"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/">
+                  <Link to="https://www.instagram.com/">
                     <i className="feather-instagram"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://www.linkdin.com/">
+                  <Link to="https://www.linkdin.com/">
                     <i className="feather-linkedin"></i>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -306,17 +274,14 @@ export default function App() {
               <div className="header-left rbt-header-content">
                 <div className="header-info">
                   <div className="logo">
-                    <a
-                      onClick={() => handleClick("/")}
-                      style={{ cursor: "pointer" }}
-                    >
+                    <Link to="/" style={{ cursor: "pointer" }}>
                       <ImageTag
                         alt="Education Logo Images"
                         height={"50"}
                         width={"152"}
                         src={logo1}
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="header-info d-none d-lg-block"></div>
@@ -325,49 +290,35 @@ export default function App() {
                 <nav className="mainmenu-nav">
                   <ul className="mainmenu">
                     <li className="position-static">
-                      <a
-                        href={"#"}
-                        className=""
-                        onClick={() => {
-                          handleClick("/");
-                        }}
-                        style={{ cursor: "pointer" }}
-                      >
+                      <Link to={"/"} className="" style={{ cursor: "pointer" }}>
                         Home
-                      </a>
+                      </Link>
                     </li>
                     <li className="has-dropdown has-menu-child-item">
-                      <a className="" href="#">
+                      <Link className="" to="#">
                         About<i className="feather-chevron-down"></i>
-                      </a>
+                      </Link>
                       <ul className="submenu">
                         <li className="has-dropdown">
-                          <a
-                            href={"#"}
-                            style={{ cursor: "pointer" }}
-                            onClick={() => {
-                              handleClick("/about-us");
-                            }}
-                          >
+                          <Link to={"/about-us"} style={{ cursor: "pointer" }}>
                             About us
-                          </a>
+                          </Link>
                         </li>
 
                         <li className="has-dropdown">
-                          <a
-                            href={"#"}
-                            onClick={() => handleClick("/contact-us")}
+                          <Link
+                            to={"/contact-us"}
                             style={{ cursor: "pointer" }}
                           >
                             Contact us
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </li>
                     {/* <li className="with-megamenu has-menu-child-item">
-                      <a className="" href="index.html#">
+                      <Link className="" to="index.html#">
                         Services<i className="feather-chevron-down"></i>
-                      </a>
+                      </Link>
                       <div className="rbt-megamenu grid-item-2">
                         <div className="wrapper">
                           <div className="row">
@@ -495,13 +446,13 @@ export default function App() {
                       </div>
                     </li> */}
                     <li className="position-static">
-                      <button
+                      <Link
                         className="service-menu-parent"
-                        onClick={() => handleClick("/plans")}
+                        to="/plans"
                         style={{ cursor: "pointer" }}
                       >
                         Plans
-                      </button>
+                      </Link>
                     </li>
 
                     {/* <li className="position-static">
@@ -514,18 +465,18 @@ export default function App() {
                       </button>
                     </li> */}
                     <li className="position-static">
-                      <button
+                      <Link
                         className="service-menu-parent"
-                        onClick={() => handleClick("/faqs")}
+                        to="/faqs"
                         style={{ cursor: "pointer" }}
                       >
                         Faqs
-                      </button>
+                      </Link>
                     </li>
                     {/* <li className="position-static">
                       <button
                         className="service-menu-parent"
-                        href={"#"}
+                        to={"#"}
                         onClick={() => handleClick("/join-us")}
                       >
                         Join us
@@ -563,12 +514,12 @@ export default function App() {
                         <i className="feather-user"></i> &nbsp;Profile
                       </button>
                     ) : (
-                      <button
-                        onClick={() => handleClick("/therapist-registration")}
+                      <Link
+                        to="/therapist-registration"
                         className="service-menu-parent"
                       >
                         <i className="feather-user"></i>&nbsp;Register
-                      </button>
+                      </Link>
                     )}{" "}
                     {user && (
                       <div className="rbt-user-menu-list-wrapper">
@@ -583,59 +534,58 @@ export default function App() {
                             </div>
                             <div className="admin-info">
                               <span className="name">{user.name}</span>
-                              <a
+                              <Link
                                 className="rbt-btn-link color-primary"
-                                href="instructor/instructor-profile"
+                                to="instructor/instructor-profile"
                               >
                                 View Profile
-                              </a>
+                              </Link>
                             </div>
                           </div>
                           <ul className="user-list-wrapper">
                             <li>
-                              <a href="instructor/instructor-dashboard">
+                              <Link to="instructor/instructor-dashboard">
                                 <i className="feather-home"></i>
                                 <span>My Dashboard</span>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a href="index.html#">
+                              <Link to="index.html#">
                                 <i className="feather-bookmark"></i>
                                 <span>Bookmark</span>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a href="instructor/instructor-enrolled-course">
+                              <Link to="instructor/instructor-enrolled-course">
                                 <i className="feather-shopping-bag"></i>
                                 <span>Enrolled Courses</span>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a href="instructor/instructor-wishlist">
+                              <Link to="instructor/instructor-wishlist">
                                 <i className="feather-heart"></i>
                                 <span>Wishlist</span>
-                              </a>
+                              </Link>
                             </li>
 
                             <li>
-                              <a href="instructor/instructor-order-history">
+                              <Link to="instructor/instructor-order-history">
                                 <i className="feather-clock"></i>
                                 <span>Order History</span>
-                              </a>
+                              </Link>
                             </li>
                           </ul>
 
                           <hr className="mt--10 mb--10" />
                           <ul className="user-list-wrapper">
                             <li>
-                              <a href="instructor/instructor-settings">
+                              <Link to="instructor/instructor-settings">
                                 <i className="feather-settings"></i>
                                 <span>Settings</span>
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a
-                                href="#"
+                              <Link
                                 onClick={() => {
                                   auth.clearAppStorage();
                                   navigate("/auth/login");
@@ -643,7 +593,7 @@ export default function App() {
                               >
                                 <i className="feather-log-out"></i>
                                 <span>Logout</span>
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -651,13 +601,13 @@ export default function App() {
                     )}
                   </li>
                   <li className="access-icon rbt-user-wrapper d-block d-xl-none">
-                    <a
+                    <Link
                       style={{ cursor: "pointer" }}
                       className="rbt-round-btn"
-                      onClick={() => handleClick("/therapist-registration")}
+                      to="/therapist-registration"
                     >
                       <i className="feather-user"></i>
-                    </a>
+                    </Link>
                     {/* <div className="rbt-user-menu-list-wrapper">
                       <div className="inner">
                         <div className="rbt-admin-profile">
@@ -666,84 +616,84 @@ export default function App() {
                           </div>
                           <div className="admin-info">
                             <span className="name">Rafi Dev</span>
-                            <a
+                            <Link
                               className="rbt-btn-link color-primary"
-                              href="instructor/instructor-profile"
+                              to="instructor/instructor-profile"
                             >
                               View Profile
-                            </a>
+                            </Link>
                           </div>
                         </div>
                         <ul className="user-list-wrapper">
                           <li>
-                            <a href="instructor/instructor-dashboard">
+                            <Link to="instructor/instructor-dashboard">
                               <i className="feather-home"></i>
                               <span>My Dashboard</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="index.html#">
+                            <Link to="index.html#">
                               <i className="feather-bookmark"></i>
                               <span>Bookmark</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="instructor/instructor-enrolled-course">
+                            <Link to="instructor/instructor-enrolled-course">
                               <i className="feather-shopping-bag"></i>
                               <span>Enrolled Courses</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="instructor/instructor-wishlist">
+                            <Link to="instructor/instructor-wishlist">
                               <i className="feather-heart"></i>
                               <span>Wishlist</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="instructor/instructor-reviews">
+                            <Link to="instructor/instructor-reviews">
                               <i className="feather-star"></i>
                               <span>Reviews</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="instructor/404">
+                            <Link to="instructor/404">
                               <i className="feather-list"></i>
                               <span>My Quiz Attempts</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="instructor/instructor-order-history">
+                            <Link to="instructor/instructor-order-history">
                               <i className="feather-clock"></i>
                               <span>Order History</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a href="instructor/instructor-quiz-attempts">
+                            <Link to="instructor/instructor-quiz-attempts">
                               <i className="feather-message-square"></i>
                               <span>Question &amp; Answer</span>
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                         <hr className="mt--10 mb--10" />
                         <ul className="user-list-wrapper">
                           <li>
-                            <a href="index.html#">
+                            <Link to="index.html#">
                               <i className="feather-book-open"></i>
                               <span>Getting Started</span>
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                         <hr className="mt--10 mb--10" />
                         <ul className="user-list-wrapper">
                           <li>
-                            <a href="instructor/instructor-settings">
+                            <Link to="instructor/instructor-settings">
                               <i className="feather-settings"></i>
                               <span>Settings</span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
-                              href="#"
+                            <Link
+                              to="#"
                               onClick={() => {
                                 auth.clearAppStorage();
                                 navigate("/auth/login");
@@ -751,7 +701,7 @@ export default function App() {
                             >
                               <i className="feather-log-out"></i>
                               <span>Logout</span>
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -759,12 +709,12 @@ export default function App() {
                   </li>
                 </ul>
                 <div className="rbt-btn-wrapper d-none d-xl-block">
-                  <a
+                  <Link
                     className="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none"
-                    href="index.html#"
+                    to="index.html#"
                   >
                     <span data-text="Enroll Now">Enroll Now</span>
-                  </a>
+                  </Link>
                 </div>
                 <div
                   className="mobile-menu-bar d-block d-xl-none"
@@ -793,12 +743,12 @@ export default function App() {
                       placeholder="What are you looking for?"
                     />
                     <div className="submit-btn">
-                      <a
+                      <Link
                         className="rbt-btn btn-gradient btn-md"
-                        href="index.html"
+                        to="index.html"
                       >
                         Search
-                      </a>
+                      </Link>
                     </div>
                   </form>
                 </div>
@@ -838,9 +788,9 @@ export default function App() {
                     >
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d"
+                            to="course-filter-one-toggle/%5bcourseId%5d"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -860,15 +810,15 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
 
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d-3"
+                            to="course-filter-one-toggle/%5bcourseId%5d-3"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -888,14 +838,14 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d-4"
+                            to="course-filter-one-toggle/%5bcourseId%5d-4"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -917,14 +867,14 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d-4"
+                            to="course-filter-one-toggle/%5bcourseId%5d-4"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -946,14 +896,14 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d-2"
+                            to="course-filter-one-toggle/%5bcourseId%5d-2"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -975,14 +925,14 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d-5"
+                            to="course-filter-one-toggle/%5bcourseId%5d-5"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -1002,14 +952,14 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle/%5bcourseId%5d-6"
+                            to="course-filter-one-toggle/%5bcourseId%5d-6"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -1029,14 +979,14 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                       <SwiperSlide>
                         <div className="col-12">
-                          <a
+                          <Link
                             className="rbt-cat-box rbt-cat-box-1 text-center"
-                            href="course-filter-one-toggle"
+                            to="course-filter-one-toggle"
                           >
                             <div className="inner">
                               <div className="icons">
@@ -1056,7 +1006,7 @@ export default function App() {
                                 </div>
                               </div>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </SwiperSlide>
                     </Swiper>
@@ -1107,36 +1057,35 @@ export default function App() {
                   <hr className="mb--0" />
                   <div className="rbt-minicart-bottom mt--20">
                     <div className="view-cart-btn">
-                      <a
+                      <Link
                         className="rbt-btn btn-border icon-hover w-100 text-center"
-                        href="/cart"
+                        to="/cart"
                       >
                         <span className="btn-text">View Cart</span>
                         <span className="btn-icon">
                           <i className="feather-arrow-right"></i>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                     <div className="checkout-btn mt--20">
-                      <a
+                      <Link
                         className="rbt-btn btn-gradient icon-hover w-100 text-center"
-                        href="/checkout"
+                        to="/checkout"
                       >
                         <span className="btn-text">Checkout</span>
                         <span className="btn-icon">
                           <i className="feather-arrow-right"></i>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <a
+            <Link
               className="close_side_menu"
               onClick={() => setCart(false)}
-              href={"#"}
-            ></a>
+            ></Link>
           </div>
         </div>
       </header>

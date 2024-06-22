@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AboutCyt() {
   const navigate = useNavigate();
@@ -33,14 +33,14 @@ export default function AboutCyt() {
               support and experienced counselors.
             </p>
             <div className="readmore-btn">
-              <a
+              <Link
                 style={{ cursor: "pointer" }}
                 className="rbt-moderbt-btn"
-                onClick={() => navigate("/therapist-registration")}
+                to={"/therapist-registration"}
               >
                 <span className="moderbt-btn-text">Join us</span>
                 <i className="feather-arrow-right"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

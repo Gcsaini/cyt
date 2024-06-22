@@ -1,5 +1,6 @@
 import DashboardSideMenu from "./side-menu";
 import HeaderProfile from "./header-profile";
+import { Link } from "react-router-dom";
 export default function MyDashboard(props) {
   const user = props.user;
   return (
@@ -34,7 +35,7 @@ export default function MyDashboard(props) {
                             <tbody>
                               <tr>
                                 <th>
-                                  <a href="#">Accounting</a>
+                                  <Link to="#">Accounting</Link>
                                 </th>
                                 <td>50</td>
                                 <td>
@@ -49,7 +50,7 @@ export default function MyDashboard(props) {
                               </tr>
                               <tr>
                                 <th>
-                                  <a href="#">Marketing</a>
+                                  <Link to="#">Marketing</Link>
                                 </th>
                                 <td>40</td>
                                 <td>
@@ -64,7 +65,7 @@ export default function MyDashboard(props) {
                               </tr>
                               <tr>
                                 <th>
-                                  <a href="#">Web Design</a>
+                                  <Link to="#">Web Design</Link>
                                 </th>
                                 <td>75</td>
                                 <td>
@@ -79,7 +80,7 @@ export default function MyDashboard(props) {
                               </tr>
                               <tr>
                                 <th>
-                                  <a href="#">Graphic</a>
+                                  <Link to="#">Graphic</Link>
                                 </th>
                                 <td>20</td>
                                 <td>
@@ -96,10 +97,10 @@ export default function MyDashboard(props) {
                           </table>
                         </div>
                         <div className="load-more-btn text-center">
-                          <a className="rbt-btn-link" href="#">
+                          <Link className="rbt-btn-link" to="#">
                             Browse All Course
                             <i className="feather-arrow-right"></i>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

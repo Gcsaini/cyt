@@ -1,10 +1,10 @@
 import ImageTag from "../../utils/image-tag";
 import profileImg from "../../assets/img/avatar-027dc8.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MyNavbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Banner from "./banner";
-import { useLocation } from "react-router-dom";
+
 export default function MainLayout(props) {
   const location = useLocation();
   const currentPath = location.pathname;
@@ -45,9 +45,14 @@ export default function MainLayout(props) {
                   </div>
                   <div className="rbt-tutor-information-right">
                     <div className="tutor-btn">
-                      <a className="rbt-btn btn-md hover-icon-reverse" href="#">
+                      <Link
+                        className="rbt-btn btn-md hover-icon-reverse"
+                        to="#"
+                      >
                         <span className="icon-reverse-wrapper">
-                          <span className="btn-text">Create a New Workshop</span>
+                          <span className="btn-text">
+                            Create a New Workshop
+                          </span>
                           <span className="btn-icon">
                             <i className="feather-arrow-right"></i>
                           </span>
@@ -55,7 +60,7 @@ export default function MainLayout(props) {
                             <i className="feather-arrow-right"></i>
                           </span>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -77,7 +82,7 @@ export default function MainLayout(props) {
                                 <Link
                                   to={"/therapist-dashboard"}
                                   className={
-                                    currentPath == "/therapist-dashboard"
+                                    currentPath === "/therapist-dashboard"
                                       ? "active"
                                       : ""
                                   }
@@ -87,34 +92,33 @@ export default function MainLayout(props) {
                                 </Link>
                               </li>
                               <li className="nav-item" role="presentation">
-                                <a
+                                <Link
                                   className=""
-                                  href="/instructor/instructor-profile"
+                                  to="/instructor/instructor-profile"
                                 >
                                   <i className="feather-user"></i>
                                   <span>My Profile</span>
-                                </a>
+                                </Link>
                               </li>
                               <li className="nav-item" role="presentation">
-                                <a
+                                <Link
                                   className=""
-                                  href="/instructor/instructor-enrolled-course"
+                                  to="/instructor/instructor-enrolled-course"
                                 >
                                   <i className="feather-book-open"></i>
                                   <span>Save Payment Method</span>
-                                </a>
+                                </Link>
                               </li>
-                          
+
                               <li className="nav-item" role="presentation">
-                                <a
+                                <Link
                                   className=""
-                                  href="/instructor/instructor-reviews"
+                                  to="/instructor/instructor-reviews"
                                 >
                                   <i className="feather-star"></i>
                                   <span>My Reviews</span>
-                                </a>
+                                </Link>
                               </li>
-                             
                             </ul>
                           </nav>
                           <div className="section-title mt--40 mb--20">
@@ -123,24 +127,23 @@ export default function MainLayout(props) {
                           <nav className="mainmenu-nav">
                             <ul className="dashboard-mainmenu rbt-default-sidebar-list">
                               <li>
-                                <a
+                                <Link
                                   className=""
-                                  href="/instructor/instructor-personal-courses"
+                                  to="/instructor/instructor-personal-courses"
                                 >
                                   <i className="feather-monitor"></i>
                                   <span>Wellness Workshops</span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className=""
-                                  href="/instructor/instructor-announcements"
+                                  to="/instructor/instructor-announcements"
                                 >
                                   <i className="feather-volume-2"></i>
                                   <span>Write Blog</span>
-                                </a>
+                                </Link>
                               </li>
-                             
                             </ul>
                           </nav>
                           <div className="section-title mt--40 mb--20">
@@ -151,7 +154,7 @@ export default function MainLayout(props) {
                               <li>
                                 <Link
                                   className={
-                                    currentPath == "/settings" ? "active" : ""
+                                    currentPath === "/settings" ? "active" : ""
                                   }
                                   to="/settings"
                                 >
@@ -160,10 +163,10 @@ export default function MainLayout(props) {
                                 </Link>
                               </li>
                               <li>
-                                <a className="" href="/">
+                                <Link className="" to="/">
                                   <i className="feather-log-out"></i>
                                   <span>Logout</span>
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </nav>

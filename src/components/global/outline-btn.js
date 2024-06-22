@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function OutlineBtn(props) {
   return (
-    <a class="out-btn out-btn-border" href="">
+    <Link class="out-btn out-btn-border" to="">
       {props.title}
-    </a>
+    </Link>
   );
 }

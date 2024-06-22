@@ -5,12 +5,13 @@ import Footer from "../components/footer";
 import ClientImg from "../assets/img/avatar-027dc8.png";
 import Fabiha from "../assets/img/psychologist.png";
 import ClientImg3 from "../assets/img/counselling.png";
-import { useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { threapistRegistrationUrl } from "../utils/url";
+import { Link } from "react-router-dom";
 export default function TherapistRegistration() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -22,7 +23,6 @@ export default function TherapistRegistration() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState("");
-  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -120,7 +120,7 @@ export default function TherapistRegistration() {
                 </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
-                    <a href="/">Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
                     <div className="icon-right">
@@ -196,8 +196,8 @@ export default function TherapistRegistration() {
                     </div>
                     <div className="rbt-like-total">
                       <div className="profile-share">
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="avatar"
                           data-tooltip="Counselling Psychologist"
                           tabIndex="0"
@@ -208,9 +208,9 @@ export default function TherapistRegistration() {
                             height="55"
                             src={ClientImg}
                           />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="avatar"
                           data-tooltip="Psychologist"
                           tabIndex="0"
@@ -221,9 +221,9 @@ export default function TherapistRegistration() {
                             height="55"
                             src={Fabiha}
                           />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="avatar"
                           data-tooltip="Counselling Psychologist"
                           tabIndex="0"
@@ -234,7 +234,7 @@ export default function TherapistRegistration() {
                             height="55"
                             src={ClientImg3}
                           />
-                        </a>
+                        </Link>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
                             Join Over 50+ Experts
@@ -243,7 +243,7 @@ export default function TherapistRegistration() {
                             <input type="checkbox" id="criteriaCheckbox" />
                             <label htmlFor="criteriaCheckbox">
                               For more information, please refer to our criteria{" "}
-                              <a href="link">here</a>.
+                              <Link to="link">here</Link>.
                             </label>
                           </p>
                         </div>

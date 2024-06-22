@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LazyImage from "../../utils/lazy-image";
 export default function ServiceDetails(props) {
   return (
@@ -18,7 +19,7 @@ export default function ServiceDetails(props) {
           <blockquote className="wp-block-quote">
             <p>{props.data.quote}</p>
             <cite>
-              <a href={"#"}>{props.data.author}</a>
+              <Link to={"#"}>{props.data.author}</Link>
             </cite>
           </blockquote>
           <div
@@ -76,9 +77,9 @@ export default function ServiceDetails(props) {
           <div className="tagcloud" style={{ marginTop: 20 }}>
             {props.data.tags.map((tag, index) => {
               return (
-                <a href="/" key={index}>
+                <Link to="/" key={index}>
                   {tag}
-                </a>
+                </Link>
               );
             })}
           </div>

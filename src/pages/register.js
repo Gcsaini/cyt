@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../utils/auth";
 import request from "../utils/request";
 import { isValidMail } from "../utils/validators";
@@ -112,7 +112,7 @@ export default function Register() {
                 <h2 className="title">Register</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
-                    <a href="/">Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
                     <div className="icon-right">
@@ -144,26 +144,26 @@ export default function Register() {
                       strategies for the success of our online learning.
                     </p>
                     <div className="rating mb--20">
-                      <a href="#">
+                      <Link to="#">
                         <i className="fa fa-star"></i>
-                      </a>
-                      <a className="px-1" href="#">
+                      </Link>
+                      <Link className="px-1" to="#">
                         <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
+                      </Link>
+                      <Link to="#">
                         <i className="fa fa-star"></i>
-                      </a>
-                      <a className="px-1" href="#">
+                      </Link>
+                      <Link className="px-1" to="#">
                         <i className="fa fa-star"></i>
-                      </a>
-                      <a href="#">
+                      </Link>
+                      <Link to="#">
                         <i className="fa fa-star"></i>
-                      </a>
+                      </Link>
                     </div>
                     <div className="rbt-like-total">
                       <div className="profile-share">
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="avatar"
                           data-tooltip="Rafi Dev"
                           tabindex="0"
@@ -174,9 +174,9 @@ export default function Register() {
                             height="55"
                             src={ClientImg}
                           />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="avatar"
                           data-tooltip="Mark"
                           tabindex="0"
@@ -187,9 +187,9 @@ export default function Register() {
                             height="55"
                             src={ClientImg}
                           />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="avatar"
                           data-tooltip="Jordan"
                           tabindex="0"
@@ -200,7 +200,7 @@ export default function Register() {
                             height="55"
                             src={ClientImg}
                           />
-                        </a>
+                        </Link>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
                             Join Over 3000+ Students
@@ -261,9 +261,9 @@ export default function Register() {
                       className="rbt-lost-password text-end"
                       style={{ marginBottom: 15 }}
                     >
-                      <a className="rbt-btn-link" href="/auth/login">
+                      <Link className="rbt-btn-link" to="/auth/login">
                         Login?
-                      </a>
+                      </Link>
                     </div>
                     <div className="form-submit-group">
                       <button

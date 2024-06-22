@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function ErrorPage() {
   const navigate = useNavigate();
   return (
@@ -11,15 +11,12 @@ export default function ErrorPage() {
               <h1 className="title">500!</h1>
               <h3 className="sub-title">Something Went Wrong</h3>
               <p>Error to get data from the server, please try again!</p>
-              <a
-                className="rbt-btn btn-gradient icon-hover"
-                onClick={() => navigate("/")}
-              >
+              <Link className="rbt-btn btn-gradient icon-hover" to="/">
                 <span className="btn-text">Back To Home</span>
                 <span className="btn-icon">
                   <i className="feather-arrow-right"></i>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

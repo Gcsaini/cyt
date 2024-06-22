@@ -5,7 +5,7 @@ import bgImg1 from "../../assets/img/kindergarten-01-back618d.jpg";
 import bgImg2 from "../../assets/img/kindergarten-03-back6149.jpg";
 import bgImg3 from "../../assets/img/kindergarten-04-backab08.jpg";
 import LazyImage from "../../utils/lazy-image";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function ServiceBenefits() {
   const navigate = useNavigate();
   return (
@@ -20,7 +20,7 @@ export default function ServiceBenefits() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="#">Appointment Scheduling</a>
+                    <Link to="#">Appointment Scheduling</Link>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
@@ -40,13 +40,13 @@ export default function ServiceBenefits() {
                       Learning
                     </li>
                   </ul>
-                  <a
+                  <Link
                     style={{ cursor: "pointer" }}
                     class="rbt-btn-link stretched-link"
                     onClick={() => navigate("/therapist-registration")}
                   >
                     Learn More<i class="feather-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="rbt-flipbox-back rbt-flipbox-face inner">
@@ -59,13 +59,13 @@ export default function ServiceBenefits() {
                     support today’s big milestones.
                   </p>
                 </div>
-                <a
+                <Link
                   class="rbt-btn rbt-switch-btn btn-white btn-sm"
                   style={{ cursor: "pointer" }}
                   onClick={() => navigate("/therapist-registration")}
                 >
                   <span data-text="Learn More">Learn More</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function ServiceBenefits() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="#">Toddler/Twos</a>
+                    <Link to="#">Toddler/Twos</Link>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>
@@ -99,13 +99,13 @@ export default function ServiceBenefits() {
                       Learning
                     </li>
                   </ul>
-                  <a
+                  <Link
                     class="rbt-btn-link stretched-link"
                     onClick={() => navigate("/therapist-registration")}
                     style={{ cursor: "pointer" }}
                   >
                     Learn More<i class="feather-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="rbt-flipbox-back rbt-flipbox-face inner">
@@ -118,13 +118,13 @@ export default function ServiceBenefits() {
                     support today’s big milestones.
                   </p>
                 </div>
-                <a
+                <Link
                   class="rbt-btn rbt-switch-btn btn-white btn-sm"
                   style={{ cursor: "pointer" }}
                   onClick={() => navigate("/therapist-registration")}
                 >
                   <span data-text="Learn More">Learn More</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function ServiceBenefits() {
                 </div>
                 <div class="content">
                   <h5 class="title">
-                    <a href="#">Time-Saving Features</a>
+                    <Link to="#">Time-Saving Features</Link>
                   </h5>
                   <ul class="rbt-list-style-3">
                     <li>

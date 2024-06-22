@@ -6,12 +6,9 @@ import Banner from "../../assets/img/Therapyforallll.png";
 import Banner2 from "../../assets/img/joinushere.png";
 import ImageTag from "../../utils/image-tag";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function PromationalBanner() {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
-
   return (
     <div className="rbt-banner-area">
       <div className="container mt--60">
@@ -37,14 +34,16 @@ export default function PromationalBanner() {
                       }}
                     >
                       <div className="thumbnail" style={{ cursor: "pointer" }}>
-                        <a onClick={() => navigate("/therapist-registration")}>
+                        <Link
+                          onClick={() => navigate("/therapist-registration")}
+                        >
                           <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
                             className={"rbt-radius w-100"}
                             src={Banner}
                           />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -56,7 +55,9 @@ export default function PromationalBanner() {
                       }}
                     >
                       <div className="thumbnail" style={{ cursor: "pointer" }}>
-                        <a onClick={() => navigate("/therapist-registration")}>
+                        <Link
+                          onClick={() => navigate("/therapist-registration")}
+                        >
                           <ImageTag
                             alt="Banner"
                             heigth="425"
@@ -64,7 +65,7 @@ export default function PromationalBanner() {
                             className={"rbt-radius w-100"}
                             src={Banner2}
                           />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -76,14 +77,16 @@ export default function PromationalBanner() {
                       }}
                     >
                       <div className="thumbnail" style={{ cursor: "pointer" }}>
-                        <a onClick={() => navigate("/therapist-registration")}>
+                        <Link
+                          onClick={() => navigate("/therapist-registration")}
+                        >
                           <ImageTag
                             alt="Banner"
                             dim={"425-1305"}
                             className={"rbt-radius w-100"}
                             src={Banner}
                           />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </SwiperSlide>

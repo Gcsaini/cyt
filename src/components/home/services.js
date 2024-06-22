@@ -1,5 +1,4 @@
 import TherypyImg from "../../assets/img/therapysessioncyt.png";
-import RelaxationImg from "../../assets/img/relaxation-session.png";
 import SupportImg from "../../assets/img/support.png";
 import StudentImg from "../../assets/img/studentorientation.png";
 import WorkplaceImg from "../../assets/img/workplacetraining.png";
@@ -19,7 +18,12 @@ export default function Services() {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">SERVICES</span>
-              <h2 className="title"> <span className="theme-gradient">What are you looking for ?</span></h2>
+              <h2 className="title">
+                {" "}
+                <span className="theme-gradient">
+                  What are you looking for ?
+                </span>
+              </h2>
               <p>
                 Are you looking for solutions to achieve holistic well-being?
                 Our services are designed to support your mental, emotional, and

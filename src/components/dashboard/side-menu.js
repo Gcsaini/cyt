@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../utils/auth";
 export default function DashboardSideMenu(props) {
   const location = useLocation();
@@ -22,40 +22,43 @@ export default function DashboardSideMenu(props) {
               <nav className="mainmenu-nav">
                 <ul className="dashboard-mainmenu rbt-default-sidebar-list nav-tabs">
                   <li className="nav-item">
-                    <a
-                      className={url == "/my-dashboard" ? "active" : ""}
-                      href=""
+                    <Link
+                      className={url == -"/my-dashboard" ? "active" : ""}
+                      to=""
                       onClick={() => handleClick("/my-dashboard")}
                     >
                       <i className="feather-home"></i>
                       <span>Da</span>
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className={url == "/my-profile" ? "active" : ""}
-                      href=""
+                    <Link
+                      className={url === "/my-profile" ? "active" : ""}
+                      to=""
                       onClick={() => handleClick("/my-profile")}
                     >
                       <i className="feather-user"></i>
                       <span>My Profile</span>
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
+                    <Link
                       className=""
                       href="/instructor/instructor-enrolled-course"
                     >
                       <i className="feather-book-open"></i>
                       <span>Set Appointment</span>
-                    </a>
+                    </Link>
                   </li>
 
                   <li className="nav-item">
-                    <a className="" href="/instructor/instructor-order-history">
+                    <Link
+                      className=""
+                      to="/instructor/instructor-order-history"
+                    >
                       <i className="feather-shopping-bag"></i>
                       <span>Order History</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -66,15 +69,15 @@ export default function DashboardSideMenu(props) {
               <nav className="mainmenu-nav">
                 <ul className="dashboard-mainmenu rbt-default-sidebar-list">
                   <li>
-                    <a className="" href="/instructor/instructor-settings">
+                    <Link className="" to="/instructor/instructor-settings">
                       <i className="feather-settings"></i>
                       <span>Settings</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className=""
-                      href="/"
+                      to="/"
                       onClick={() => {
                         auth.clearAppStorage();
                         navigate("/auth/login");
@@ -82,7 +85,7 @@ export default function DashboardSideMenu(props) {
                     >
                       <i className="feather-log-out"></i>
                       <span>Logout</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

@@ -1,7 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function NotFoundPage() {
-  const navigate = useNavigate();
   return (
     <div className="rbt-error-area bg-gradient-11 rbt-section-gap">
       <div className="error-area">
@@ -11,16 +10,16 @@ export default function NotFoundPage() {
               <h1 className="title">404!</h1>
               <h3 className="sub-title">Page not found</h3>
               <p>The page you were looking for could not be found.</p>
-              <a
+              <Link
                 className="rbt-btn btn-gradient icon-hover"
-                onClick={() => navigate("/")}
+                to="/"
                 style={{ cursor: "pointer" }}
               >
                 <span className="btn-text">Back To Home</span>
                 <span className="btn-icon">
                   <i className="feather-arrow-right"></i>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

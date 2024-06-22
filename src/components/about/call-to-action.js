@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CallToActionAbout() {
   const navigate = useNavigate();
@@ -27,10 +27,10 @@ export default function CallToActionAbout() {
             </div>
             <div className="col-xxl-3 col-xl-3 col-lg-6">
               <div className="call-to-btn text-start text-xl-end">
-                <a
+                <Link
                   style={{ cursor: "pointer" }}
                   className="rbt-btn btn-white hover-icon-reverse"
-                  onClick={() => navigate("/therapist-registration")}
+                  ti={"/therapist-registration"}
                 >
                   <span className="icon-reverse-wrapper">
                     <span className="btn-text">Subscribe CYT</span>
@@ -41,7 +41,7 @@ export default function CallToActionAbout() {
                       <i className="feather-arrow-right"></i>
                     </span>
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

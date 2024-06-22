@@ -4,14 +4,14 @@ import shivangirana from "../../assets/img/shivangirana.png";
 import avika from "../../assets/img/avika.png";
 import ImageTag from "../../utils/image-tag";
 import React from "react";
+import { Link } from "react-router-dom";
 const internInfo = [
   {
     name: "Shivangi Chandola",
     deg: "Graduate Psychology",
     profile: TeamImg,
     noOfStars: 4,
-    content:
-      "Mental health awareness starts with you. Be kind to your mind.",
+    content: "Mental health awareness starts with you. Be kind to your mind.",
   },
 
   {
@@ -28,7 +28,8 @@ const internInfo = [
     deg: "Graduation Student",
     profile: shivangirana,
     noOfStars: 5,
-    content: "Your story is important. Share it and inspire others to seek help.",
+    content:
+      "Your story is important. Share it and inspire others to seek help.",
   },
   {
     name: "Avika",
@@ -57,9 +58,7 @@ export default function InterSection() {
                 <span className="subtitle bg-primary-opacity">
                   Learning from Everyone
                 </span>
-                <h2 className="title">
-                Voices of Our Interns
-                </h2>
+                <h2 className="title">Voices of Our Interns</h2>
               </div>
             </div>
           </div>
@@ -99,8 +98,8 @@ export default function InterSection() {
               {internInfo.map((item, index) => {
                 return (
                   <li key={index}>
-                    <a
-                      className={index == selectedIndex ? "active" : ""}
+                    <Link
+                      className={index === selectedIndex ? "active" : ""}
                       id="testimonial-tab1-tab"
                       aria-selected={index == selectedIndex ? "true" : "false"}
                       onClick={() => handleClick(index)}
@@ -115,7 +114,7 @@ export default function InterSection() {
                           />
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </li>
                 );
               })}

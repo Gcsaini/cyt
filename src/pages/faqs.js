@@ -2,7 +2,7 @@ import MyNavbar from "../components/navbar";
 import Footer from "../components/footer";
 import Newsletter from "../components/home/newsletter";
 import Faqs from "../components/home/faqs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 export default function FaqPage() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -19,23 +19,24 @@ export default function FaqPage() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Frequently <span className="theme-gradient">Asked Questions</span> (FAQs)</h2>
+                <h2 className="title">
+                  Frequently{" "}
+                  <span className="theme-gradient">Asked Questions</span> (FAQs)
+                </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
-                    <a
-                      href={"#"}
-                      onClick={() => navigate("/")}
-                      style={{ cursor: "pointer" }}
-                    >
+                    <Link to={"/"} style={{ cursor: "pointer" }}>
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <div className="icon-right">
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">Help and Support for Clients</li>
+                  <li className="rbt-breadcrumb-item active">
+                    Help and Support for Clients
+                  </li>
                 </ul>
               </div>
             </div>
@@ -51,11 +52,13 @@ export default function FaqPage() {
               <div className="content">
                 <div className="section-title text-start">
                   <h2 className="title">
-                  Want to Stay Informed About New Services &amp; Mental Health Resources?
+                    Want to Stay Informed About New Services &amp; Mental Health
+                    Resources?
                   </h2>
                   <p className="description mt--20">
-                  Stay connected with Choose Your Therapist to receive updates on
-                   our latest services, mental health resources, and special offers. 
+                    Stay connected with Choose Your Therapist to receive updates
+                    on our latest services, mental health resources, and special
+                    offers.
                   </p>
                   <div className="social-share-wrapper mt--30">
                     <h5>You can also follow us on:</h5>

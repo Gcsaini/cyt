@@ -1,6 +1,5 @@
 import TextImg from "../../assets/img/Choose.png";
 import ImageTag from "../../utils/image-tag";
-import LazyImage from "../../utils/lazy-image";
 export default function CallToAction() {
   return (
     <div

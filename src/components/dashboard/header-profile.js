@@ -1,5 +1,5 @@
 import ImageTag from "../../utils/image-tag";
-import Avatar from "../../assets/img/avatar77be.jpg";
+
 export default function HeaderProfile(props) {
   const user = props.user;
   return (

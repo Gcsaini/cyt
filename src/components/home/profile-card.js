@@ -6,11 +6,10 @@ import Profile from "../../assets/img/deepd.png";
 import fab from "../../assets/img/fabdd.png";
 import ayushi from "../../assets/img/ayushid.png";
 import anjali from "../../assets/img/anjalid.png";
-import BookBtn from "../global/book-btn";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import React from "react";
-import { height } from "@mui/system";
+import { Link } from "react-router-dom";
 export default function ProfileCard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -27,7 +26,9 @@ export default function ProfileCard() {
               <span className="subtitle bg-secondary-opacity">
                 Mental Health Professional
               </span>
-              <h2 className="title"><span className="theme-gradient">Therapist Directory </span></h2>
+              <h2 className="title">
+                <span className="theme-gradient">Therapist Directory </span>
+              </h2>
               <p>
                 Looking for the right therapist? Our comprehensive profiles make
                 it easy to find a therapist who meets your needs and
@@ -41,21 +42,20 @@ export default function ProfileCard() {
                       id="myTab-4"
                     >
                       <li>
-                        <a
+                        <Link
                           className={
                             tab === 1 ? "tab-button active" : "tab-button"
                           }
-                          id="home-tab-4"
                           aria-selected={tab === 1 ? "true" : "false"}
                           onClick={() => handleClick(1)}
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
                             See All
                           </span>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className={
                             tab === 2 ? "tab-button active" : "tab-button"
                           }
@@ -66,10 +66,10 @@ export default function ProfileCard() {
                           <span className="title" style={{ cursor: "pointer" }}>
                             Counselling Psychologist
                           </span>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className={
                             tab === 3 ? "tab-button active" : "tab-button"
                           }
@@ -80,10 +80,10 @@ export default function ProfileCard() {
                           <span className="title" style={{ cursor: "pointer" }}>
                             Clinical Psychologist
                           </span>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className={
                             tab === 4 ? "tab-button active" : "tab-button"
                           }
@@ -94,10 +94,10 @@ export default function ProfileCard() {
                           <span className="title" style={{ cursor: "pointer" }}>
                             Psychiatrist
                           </span>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className={
                             tab === 5 ? "tab-button active" : "tab-button"
                           }
@@ -108,7 +108,7 @@ export default function ProfileCard() {
                           <span className="title" style={{ cursor: "pointer" }}>
                             Special Educator
                           </span>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -146,13 +146,13 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="">
+                    <Link to="">
                       <ImageTag
                         alt="Card"
                         src={Profile}
                         style={{ height: isMobile ? 255 : "auto" }}
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="rbt-card-body">
                     <div className="rbt-card-top">
@@ -167,13 +167,13 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a className="rbt-round-btn" title="Bookmark" href="">
+                        <Link className="rbt-round-btn" title="Bookmark" to="">
                           <i className="feather-bookmark"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <h4 className="rbt-card-title">
-                      <a href="">Deepak Kumar</a>
+                      <Link to="">Deepak Kumar</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
@@ -205,18 +205,18 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a
+                      <Link
                         className="view-btn view-btn-border"
-                        href=""
+                        to=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
                         }}
                       >
                         View Profile
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="rbt-btn btn-gradient book-btn"
-                        href=""
+                        to=""
                         style={{
                           display: "flex",
                           justifyContent: "center",
@@ -224,7 +224,7 @@ export default function ProfileCard() {
                         }}
                       >
                         <span>Book Now</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -234,13 +234,13 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="">
+                    <Link to="">
                       <ImageTag
                         alt="Card"
                         style={{ height: isMobile ? 255 : "auto" }}
                         src={fab}
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="rbt-card-body">
                     <div className="rbt-card-top">
@@ -255,13 +255,13 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a className="rbt-round-btn" title="Bookmark" href="">
+                        <Link className="rbt-round-btn" title="Bookmark" to="">
                           <i className="feather-bookmark"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <h4 className="rbt-card-title">
-                      <a href="">Fabiha Sultana Shaik</a>
+                      <Link to="">Fabiha Sultana Shaik</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
@@ -293,18 +293,18 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a
+                      <Link
                         className="view-btn view-btn-border"
-                        href=""
+                        to=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
                         }}
                       >
                         View Profile
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="rbt-btn btn-gradient book-btn"
-                        href=""
+                        to=""
                         style={{
                           display: "flex",
                           justifyContent: "center",
@@ -312,7 +312,7 @@ export default function ProfileCard() {
                         }}
                       >
                         <span>Book Now</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -322,13 +322,13 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="">
+                    <Link to="">
                       <ImageTag
                         alt="Card"
                         style={{ height: isMobile ? 255 : "auto" }}
                         src={ayushi}
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="rbt-card-body">
                     <div className="rbt-card-top">
@@ -343,13 +343,13 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a className="rbt-round-btn" title="Bookmark" href="">
+                        <Link className="rbt-round-btn" title="Bookmark" to="">
                           <i className="feather-bookmark"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <h4 className="rbt-card-title">
-                      <a href="/course-details">Ayushi Pandwal</a>
+                      <Link to="/course-details">Ayushi Pandwal</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
@@ -381,18 +381,18 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a
+                      <Link
                         className="view-btn view-btn-border"
-                        href=""
+                        to=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
                         }}
                       >
                         View Profile
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="rbt-btn btn-gradient book-btn"
-                        href=""
+                        to=""
                         style={{
                           display: "flex",
                           justifyContent: "center",
@@ -400,7 +400,7 @@ export default function ProfileCard() {
                         }}
                       >
                         <span>Book Now</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -410,13 +410,13 @@ export default function ProfileCard() {
               <div className="col-12 mt--30 sal-animate">
                 <div className="rbt-card variation-01 rbt-hover card-list-2">
                   <div className="rbt-card-img">
-                    <a href="">
+                    <Link to="">
                       <ImageTag
                         alt="Card"
                         style={{ height: isMobile ? 255 : "auto" }}
                         src={anjali}
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="rbt-card-body">
                     <div className="rbt-card-top">
@@ -431,13 +431,13 @@ export default function ProfileCard() {
                         <span className="rating-count">(15 Reviews)</span>
                       </div>
                       <div className="rbt-bookmark-btn">
-                        <a className="rbt-round-btn" title="Bookmark" href="">
+                        <Link className="rbt-round-btn" title="Bookmark" to="">
                           <i className="feather-bookmark"></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <h4 className="rbt-card-title">
-                      <a href="/course-details">Anjali Suyal</a>
+                      <Link to="/course-details">Anjali Suyal</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
@@ -456,7 +456,7 @@ export default function ProfileCard() {
                             <i className="feather-heart"></i>
                           </span>
                           <span style={{ lineHeight: "18px" }}>
-                            Individual Counselling, Couple Counselling 
+                            Individual Counselling, Couple Counselling
                           </span>
                         </div>
                       </li>
@@ -468,18 +468,18 @@ export default function ProfileCard() {
                         marginTop: 5,
                       }}
                     >
-                      <a
+                      <Link
                         className="view-btn view-btn-border"
-                        href=""
+                        to=""
                         style={{
                           padding: isMobile || isTablet ? "0 24px" : "0 16px",
                         }}
                       >
                         View Profile
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="rbt-btn btn-gradient book-btn"
-                        href=""
+                        to=""
                         style={{
                           display: "flex",
                           justifyContent: "center",
@@ -487,7 +487,7 @@ export default function ProfileCard() {
                         }}
                       >
                         <span>Book Now</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -498,9 +498,9 @@ export default function ProfileCard() {
         <div className="row">
           <div className="col-lg-12">
             <div className="load-more-btn mt--60 text-center">
-              <a
+              <Link
                 className="rbt-btn btn-gradient btn-sm hover-icon-reverse"
-                href=""
+                to=""
               >
                 <span className="icon-reverse-wrapper">
                   <span className="btn-text">Find More Experts</span>
@@ -511,7 +511,7 @@ export default function ProfileCard() {
                     <i className="feather-arrow-right"></i>
                   </span>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

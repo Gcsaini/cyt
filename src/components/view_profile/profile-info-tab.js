@@ -15,7 +15,7 @@ export default function ProfileInfoTab() {
             <div className="advance-tab-button">
               <ul className="nav nav-tabs tab-button-style-2" id="myTab-4">
                 <li>
-                  <a
+                  <Link
                     className={tab === 1 ? "tab-button active" : "tab-button"}
                     id="home-tab-4"
                     aria-selected={tab === 1 ? "true" : "false"}
@@ -24,10 +24,10 @@ export default function ProfileInfoTab() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Overview
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 2 ? "tab-button active" : "tab-button"}
                     id="profile-tab-4"
                     aria-selected={tab === 2 ? "true" : "false"}
@@ -36,10 +36,10 @@ export default function ProfileInfoTab() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Location
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 3 ? "tab-button active" : "tab-button"}
                     id="contact-tab-4"
                     aria-selected={tab === 3 ? "true" : "false"}
@@ -48,10 +48,10 @@ export default function ProfileInfoTab() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Reviews
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 4 ? "tab-button active" : "tab-button"}
                     id="business-tab-4"
                     aria-selected={tab === 4 ? "true" : "false"}
@@ -60,7 +60,7 @@ export default function ProfileInfoTab() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Business hours
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -74,10 +74,11 @@ export default function ProfileInfoTab() {
                 id="home-4"
                 role="tabpanel"
                 aria-labelledby="home-tab-4"
-              ><h4 className="rbt-title-style-3">About me</h4>
+              >
+                <h4 className="rbt-title-style-3">About me</h4>
                 <div className="content">
                   <p>
-                  Hello, I'm a Counseling Psychologist committed to supporting
+                    Hello, I'm a Counseling Psychologist committed to supporting
                     your mental health and overall well-being. My approach to
                     counseling is grounded in cognitive restructuring, a
                     powerful technique that helps you identify and challenge
@@ -94,9 +95,9 @@ export default function ProfileInfoTab() {
                     provide comprehensive support tailored to your unique needs.
                   </p>
                   <h4 className="rbt-title-style-3">Services</h4>
-                <div className="content"></div>
-                <h4 className="rbt-title-style-3">Expertise</h4>
-                <div className="content"></div>
+                  <div className="content"></div>
+                  <h4 className="rbt-title-style-3">Expertise</h4>
+                  <div className="content"></div>
                 </div>
               </div>
               <div

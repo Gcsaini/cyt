@@ -3,7 +3,7 @@ import { Autoplay } from "swiper/modules";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import ClientImg from "../../assets/img/avatar-027dc8.png";
 import Fabiha from "../../assets/img/psychologist.png";
@@ -15,21 +15,16 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { TypeAnimation } from "react-type-animation";
 export default function Banner() {
-  const navigate = useNavigate();
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
-  const [hideShow, setHideShow] = React.useState(false);
+  // const [hideShow, setHideShow] = React.useState(false);
 
-  function handleClick(nav) {
-    navigate(nav);
-  }
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setHideShow((prev) => !prev);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setHideShow((prev) => !prev);
+  //   }, 2000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="rbt-banner-area rbt-banner-1">
@@ -95,8 +90,6 @@ export default function Banner() {
                           1500,
                           "Holistic Approach.",
                           1500,
-                      
-                         
                         ]}
                         speed={10}
                         style={{ fontSize: "1em" }}
@@ -109,65 +102,65 @@ export default function Banner() {
                   <br />
                 </h3>
                 <p className="description">
-                 A healthy mind is the key to a fulfilled life
-                  <strong>-let mental health experts lead you to well-being.</strong>
+                  A healthy mind is the key to a fulfilled life
+                  <strong>
+                    -let mental health experts lead you to well-being.
+                  </strong>
                 </p>
                 <div className="rbt-like-total">
-                      <div className="profile-share">
-                        <a
-                          href="#"
-                          className="avatar"
-                          data-tooltip="Counselling Psychologist"
-                          tabindex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </a>
-                        <a
-                          href="#"
-                          className="avatar"
-                          data-tooltip="Psychologist"
-                          tabindex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={Fabiha}
-                          />
-                        </a>
-                        <a
-                          href="#"
-                          className="avatar"
-                          data-tooltip="Counselling Psychologist"
-                          tabindex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg3}
-                          />
-                        </a>
-                        <div className="more-author-text">
-                          <h5 className="total-join-students">
-                            Join Over 50+ Experts
-                          </h5>
-                          <p className="subtitle">
-                           We are Listening You!
-                          </p>
-                        </div>
-                      </div>
+                  <div className="profile-share">
+                    <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Counselling Psychologist"
+                      tabindex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={ClientImg}
+                      />
+                    </Link>
+                    <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Psychologist"
+                      tabindex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={Fabiha}
+                      />
+                    </Link>
+                    <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Counselling Psychologist"
+                      tabindex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={ClientImg3}
+                      />
+                    </Link>
+                    <div className="more-author-text">
+                      <h5 className="total-join-students">
+                        Join Over 50+ Experts
+                      </h5>
+                      <p className="subtitle">We are Listening You!</p>
                     </div>
-               <br/>
+                  </div>
+                </div>
+                <br />
                 <div className="slider-btn">
-                  <a
+                  <Link
                     className="rbt-btn btn-gradient hover-icon-reverse"
-                    onClick={() => navigate("/therapist-registration")}
+                    to="/therapist-registration"
                     style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
@@ -179,7 +172,7 @@ export default function Banner() {
                         <i className="feather-arrow-right"></i>
                       </span>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -227,10 +220,8 @@ export default function Banner() {
                         <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
                           <div className="rbt-card variation-01">
                             <div className="rbt-card-img">
-                              <a
-                                onClick={() => {
-                                  handleClick("/notfound");
-                                }}
+                              <Link
+                                to="/notfound"
                                 style={{ cursor: "pointer" }}
                               >
                                 <ImageTag
@@ -239,7 +230,7 @@ export default function Banner() {
                                   width={"710"}
                                   src={DeepakImg}
                                 />
-                              </a>
+                              </Link>
                             </div>
                             <div className="rbt-card-body">
                               <ul className="rbt-meta">
@@ -251,16 +242,14 @@ export default function Banner() {
                                   <i className="feather-map-pin"></i>Uttarakhand
                                 </li>
                               </ul>
-                              
+
                               <h4 className="rbt-card-title">
-                                <a
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                <Link
+                                  to="/notfound"
                                   style={{ cursor: "pointer" }}
                                 >
                                   Deepak Kumar
-                                </a>
+                                </Link>
                               </h4>
                               <div style={{ marginTop: 7, display: "flex" }}>
                                 <span>
@@ -277,7 +266,6 @@ export default function Banner() {
                                 </span>
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
                                   Individual Counselling, Couple Counselling
-                          
                                 </span>
                               </div>
 
@@ -289,23 +277,19 @@ export default function Banner() {
                                   justifyContent: "space-between",
                                 }}
                               >
-                                <a
+                                <Link
                                   className="view-btn view-btn-border"
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                  to="/notfound"
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
                                     cursor: "pointer",
                                   }}
                                 >
                                   View Profile
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                   className="rbt-btn btn-gradient book-btn"
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                  to="/notfound"
                                   style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -313,7 +297,7 @@ export default function Banner() {
                                   }}
                                 >
                                   <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -323,10 +307,8 @@ export default function Banner() {
                         <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
                           <div className="rbt-card variation-01">
                             <div className="rbt-card-img">
-                              <a
-                                onClick={() => {
-                                  handleClick("/notfound");
-                                }}
+                              <Link
+                                to="/notfound"
                                 style={{ cursor: "pointer" }}
                               >
                                 <ImageTag
@@ -335,7 +317,7 @@ export default function Banner() {
                                   width={"710"}
                                   src={fabiha}
                                 />
-                              </a>
+                              </Link>
                             </div>
                             <div className="rbt-card-body">
                               <ul className="rbt-meta">
@@ -344,19 +326,18 @@ export default function Banner() {
                                   Hindi, English
                                 </li>
                                 <li style={{ fontSize: 16 }}>
-                                  <i className="feather-map-pin"></i>Uttar Pradesh
+                                  <i className="feather-map-pin"></i>Uttar
+                                  Pradesh
                                 </li>
                               </ul>
-                             
+
                               <h4 className="rbt-card-title">
-                                <a
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                <Link
+                                  to="/notfound"
                                   style={{ cursor: "pointer" }}
                                 >
-                                 Fabiha Sultana Shaik
-                                </a>
+                                  Fabiha Sultana Shaik
+                                </Link>
                               </h4>
                               <div style={{ marginTop: 7, display: "flex" }}>
                                 <span>
@@ -384,23 +365,19 @@ export default function Banner() {
                                   justifyContent: "space-between",
                                 }}
                               >
-                                <a
+                                <Link
                                   className="view-btn view-btn-border"
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                  to="/notfound"
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
                                     cursor: "pointer",
                                   }}
                                 >
                                   View Profile
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                   className="rbt-btn btn-gradient book-btn"
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                  to="/notfound"
                                   style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -408,7 +385,7 @@ export default function Banner() {
                                   }}
                                 >
                                   <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -418,10 +395,8 @@ export default function Banner() {
                         <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
                           <div className="rbt-card variation-01">
                             <div className="rbt-card-img">
-                              <a
-                                onClick={() => {
-                                  handleClick("/notfound");
-                                }}
+                              <Link
+                                to="/notfound"
                                 style={{ cursor: "pointer" }}
                               >
                                 <ImageTag
@@ -430,7 +405,7 @@ export default function Banner() {
                                   width={"710"}
                                   src={sid}
                                 />
-                              </a>
+                              </Link>
                             </div>
                             <div className="rbt-card-body">
                               <ul className="rbt-meta">
@@ -442,16 +417,14 @@ export default function Banner() {
                                   <i className="feather-map-pin"></i>Uttarakhand
                                 </li>
                               </ul>
-                             
+
                               <h4 className="rbt-card-title">
-                                <a
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                <Link
+                                  to="/notfound"
                                   style={{ cursor: "pointer" }}
                                 >
-                                 Siddhant Kataria
-                                </a>
+                                  Siddhant Kataria
+                                </Link>
                               </h4>
                               <div style={{ marginTop: 7, display: "flex" }}>
                                 <span>
@@ -478,23 +451,19 @@ export default function Banner() {
                                   justifyContent: "space-between",
                                 }}
                               >
-                                <a
+                                <Link
                                   className="view-btn view-btn-border"
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                  to="/notfound"
                                   style={{
                                     padding: isMobile ? "0 30px" : "0 22px",
                                     cursor: "pointer",
                                   }}
                                 >
                                   View Profile
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                   className="rbt-btn btn-gradient book-btn"
-                                  onClick={() => {
-                                    handleClick("/notfound");
-                                  }}
+                                  to="/notfound"
                                   style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -502,7 +471,7 @@ export default function Banner() {
                                   }}
                                 >
                                   <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>

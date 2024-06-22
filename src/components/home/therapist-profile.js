@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import WellNessCard from "./wellness-card";
 import React from "react";
+import { Link } from "react-router-dom";
 export default function TherapistProfile() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [tab, setTab] = React.useState(1);
@@ -76,7 +77,7 @@ export default function TherapistProfile() {
             <div className="advance-tab-button">
               <ul className="nav nav-tabs tab-button-style-2" id="myTab-4">
                 <li>
-                  <a
+                  <Link
                     className={tab === 1 ? "tab-button active" : "tab-button"}
                     id="home-tab-4"
                     aria-selected={tab === 1 ? "true" : "false"}
@@ -85,10 +86,10 @@ export default function TherapistProfile() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       See All
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 2 ? "tab-button active" : "tab-button"}
                     id="profile-tab-4"
                     aria-selected={tab === 2 ? "true" : "false"}
@@ -97,10 +98,10 @@ export default function TherapistProfile() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Support Groups
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 3 ? "tab-button active" : "tab-button"}
                     id="contact-tab-4"
                     aria-selected={tab === 3 ? "true" : "false"}
@@ -109,10 +110,10 @@ export default function TherapistProfile() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Student Orientations
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 4 ? "tab-button active" : "tab-button"}
                     id="business-tab-4"
                     aria-selected={tab === 4 ? "true" : "false"}
@@ -121,10 +122,10 @@ export default function TherapistProfile() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Student Orientations
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 5 ? "tab-button active" : "tab-button"}
                     id="business-tab-4"
                     aria-selected={tab === 5 ? "true" : "false"}
@@ -133,10 +134,10 @@ export default function TherapistProfile() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Workplace Training
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 6 ? "tab-button active" : "tab-button"}
                     id="business-tab-4"
                     aria-selected={tab === 6 ? "true" : "false"}
@@ -145,19 +146,19 @@ export default function TherapistProfile() {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Therapeutic Activites
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className={tab === 7 ? "tab-button active" : "tab-button"}
                     id="business-tab-4"
                     aria-selected={tab === 7 ? "true" : "false"}
                     onClick={() => handleClick(7)}
                   >
                     <span className="title" style={{ cursor: "pointer" }}>
-                     CYT Projects
+                      CYT Projects
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

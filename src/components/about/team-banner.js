@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import React from "react";
 import ImageTag from "../../utils/image-tag";
+import { Link } from "react-router-dom";
 
 const teamInfo = [
   {
@@ -26,7 +27,7 @@ const teamInfo = [
     name: "Mr. Ashish Kumar Thakran",
     deg: "Co-Founder | Enterepreneur",
     address: " Uttarakhand, IN",
-  
+
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -39,7 +40,7 @@ const teamInfo = [
     name: "Mr. Gopichand Saini",
     deg: "Cheif Technology officer",
     address: " Noida, Uttarpradesh, IN",
-   
+
     instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
     facebook: "https://www.facebook.com/gopichand.saini.3?mibextid=ZbWKwL",
     linkdin: "https://www.linkedin.com/in/gopichand-saini-0a979313b/",
@@ -51,7 +52,7 @@ const teamInfo = [
     name: "Ms. Fabiha Sultana Shaik",
     deg: "Cheif Advisor | Psychologist",
     address: " Noida, Uttarpradesh, IN",
-  
+
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -63,7 +64,7 @@ const teamInfo = [
     name: "Mr. Vibhor Verma",
     deg: "Legal Advisor | Advocate",
     address: " Uttarakhand, IN",
-   
+
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -75,7 +76,7 @@ const teamInfo = [
     name: "Mr. Sidhant Kataria",
     deg: "Head of Marketing and Communication | Counselling Psychologist",
     address: " Uttarakhand, IN",
-    
+
     instagram: "",
     facebook: "",
     linkdin: "",
@@ -143,22 +144,21 @@ export default function TeamBanner() {
                     <p>{team.content}</p>
                     <ul className="social-icon social-default mt--20 justify-content-start">
                       <li>
-                        <a href={team.facebook} target="_blank">
+                        <Link to={team.facebook} target="_blank">
                           <i className="feather-facebook"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href={team.linkdin} target="_blank">
+                        <Link to={team.linkdin} target="_blank">
                           <i className="fab fa-linkedin-in"></i>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href={team.instagram} target="_blank">
+                        <Link to={team.instagram} target="_blank">
                           <i className="feather-instagram"></i>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
-                   
                   </div>
                 </div>
               </div>
@@ -170,11 +170,11 @@ export default function TeamBanner() {
               {teamInfo.map((item, index) => {
                 return (
                   <li key={index}>
-                    <a
+                    <Link
                       onClick={() => handleClick(index)}
                       id="team-tab0-tab"
-                      className={index == selectedIndex ? "active" : ""}
-                      aria-selected={index == selectedIndex ? "true" : "false"}
+                      className={index === selectedIndex ? "active" : ""}
+                      aria-selected={index === selectedIndex ? "true" : "false"}
                     >
                       <div className="rbt-team-thumbnail">
                         <div className="thumb">
@@ -186,7 +186,7 @@ export default function TeamBanner() {
                           />
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
