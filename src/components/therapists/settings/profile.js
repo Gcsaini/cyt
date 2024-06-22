@@ -39,71 +39,124 @@ export default function Profile() {
         </div>
       </div>
       <form action="#" className="rbt-profile-row rbt-default-form row row--15">
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-          <div className="rbt-form-group">
-            <label html="firstname">First Name</label>
-            <input id="firstname" type="text" value="John" />
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-          <div className="rbt-form-group">
-            <label html="lastname">Last Name</label>
-            <input id="lastname" type="text" value="Due" />
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-          <div className="rbt-form-group">
-            <label html="username">User Name</label>
-            <input id="username" type="text" value="johndue" />
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-          <div className="rbt-form-group">
-            <label html="phonenumber">Phone Number</label>
-            <input id="phonenumber" type="tel" value="+1-202-555-0174" />
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-          <div className="rbt-form-group">
-            <label html="skill">Skill/Occupation</label>
-            <input id="skill" type="text" value="Full Stack Developer" />
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-          <div className="filter-select rbt-modern-select">
-            <label html="displayname" className="">
-              Display name publicly as
-            </label>
-            <select id="displayname" className="w-100">
-              <option>John Due</option>
-              <option>John</option>
-              <option>Due</option>
-              <option>Due John</option>
-              <option>johndue</option>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="profiletype">Profile Type</label>
+            <select id="profiletype">
+                <option value="Counselling Psychologist">Counselling Psychologist</option>
+                <option value="Clinical Psychologist">Clinical Psychologist</option>
+                <option value="Psychiatrist">Psychiatrist</option>
+                <option value="Special Educator">Special Educator</option>
             </select>
-          </div>
         </div>
-        <div className="col-12">
-          <div className="rbt-form-group">
-            <label html="bio">Bio</label>
-            <textarea id="bio" cols="20" rows="5">
-              I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I
-              have serious passion for UI effects, animations and creating
-              intuitive, dynamic user experiences.
-            </textarea>
-          </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="licensenumber">License Number (if applicable)</label>
+            <input id="licensenumber" type="text" value="12345" />
         </div>
-        <div className="col-12 mt--20">
-          <div className="rbt-form-group">
-            <a
-              className="rbt-btn btn-gradient"
-              href="/instructor/instructor-settings#"
-            >
-              Update Info
-            </a>
-          </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="profilename">Profile Code</label>
+            <input id="profilename" type="text" value="Sam-cyt1203" />
         </div>
-      </form>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="fullname">Full Name</label>
+            <input id="fullname" type="text" value="Samiksha Seth" />
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="gender">Gender</label>
+            <select id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="emailaddress">Email Address</label>
+            <input id="emailaddress" type="email" value="sam@gmail.com" />
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="phonenumber">Phone Number</label>
+            <input id="phonenumber" type="tel" value="+91-202-555-0174" />
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="state">State</label>
+            <select id="state">
+                <option value="Uttarakhand">Uttarakhand</option>
+                {/* Add other state options */}
+            </select>
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="city">City</label>
+            <select id="city">
+                <option value="Dehradun">Dehradun</option>
+                {/* Add other city options */}
+            </select>
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="office">Office Address (if Any)</label>
+            <input id="office" type="text" value="123, XYZ Street, Dehradun" />
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="experience">Years of Experience</label>
+            <select id="experience">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                {/* Add more options if needed */}
+            </select>
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="services">Services Offered</label>
+            <textarea id="services" cols="20" rows="2"></textarea>
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="expertise">Areas of Expertise</label>
+            <textarea id="expertise" cols="20" rows="2"></textarea>
+        </div>
+    </div>
+    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="qualification">Higher Qualifications</label>
+            <textarea id="qualification" cols="20" rows="2"></textarea>
+        </div>
+    </div>
+    <div className="col-12">
+        <div className="rbt-form-group">
+            <label htmlFor="bio">About Me</label>
+            <textarea id="bio" cols="20" rows="5">I am a dedicated Psychologist with a profound passion for mental health and well-being. With a background in psychological assessments and client progress monitoring, I specialize in providing empathetic and personalized care. My strong critical thinking skills and effective communication enable me to create a supportive environment that fosters personal growth and positive change.</textarea>
+        </div>
+    </div>
+    <div className="col-12 mt--20">
+        <div className="rbt-form-group">
+            <button className="rbt-btn btn-gradient" type="submit">Update Info</button>
+        </div>
+    </div>
+</form>
+
     </div>
   );
 }

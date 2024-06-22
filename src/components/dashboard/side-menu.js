@@ -28,7 +28,7 @@ export default function DashboardSideMenu(props) {
                       onClick={() => handleClick("/my-dashboard")}
                     >
                       <i className="feather-home"></i>
-                      <span>Dashboard</span>
+                      <span>Da</span>
                     </a>
                   </li>
                   <li className="nav-item">
@@ -47,7 +47,7 @@ export default function DashboardSideMenu(props) {
                       href="/instructor/instructor-enrolled-course"
                     >
                       <i className="feather-book-open"></i>
-                      <span>Enrolled Courses</span>
+                      <span>Set Appointment</span>
                     </a>
                   </li>
 

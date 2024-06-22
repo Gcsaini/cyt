@@ -16,7 +16,7 @@ export default function MyDashboard(props) {
                     <div className="row">
                       <div className="col-lg-12">
                         <div className="section-title">
-                          <h4 className="rbt-title-style-3">My Courses</h4>
+                          <h4 className="rbt-title-style-3">My Review</h4>
                         </div>
                       </div>
                     </div>
