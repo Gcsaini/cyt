@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 export default function ProfileInfoTab() {
   const [tab, setTab] = React.useState(1);
   const handleClick = (id) => {
