@@ -98,9 +98,8 @@ export default function App() {
                   </li>
                 </ul>
               </li>
-              {/* <li className="with-megamenu has-menu-child-item">
+              <li className="with-megamenu has-menu-child-item">
                 <Link
-                  to={"#"}
                   className={service ? "open" : ""}
                   onClick={() => setService(service !== true)}
                 >
@@ -120,7 +119,7 @@ export default function App() {
                           <div className="content">
                             <h4 className="title">Therapy for You</h4>
                             <p className="description">
-                             Find Your Therapist, wtih online/In-perspn mode.
+                              Find Your Therapist, wtih online/In-perspn mode.
                             </p>
                           </div>
                         </div>
@@ -131,24 +130,14 @@ export default function App() {
                         <h3 className="rbt-short-title">Our Solutions</h3>
                         <ul className="mega-menu-item">
                           <li>
-                            <button
-                              onClick={() => {
-                                handleClick("/services/cyt-tands");
-                              }}
-                              style={{ cursor: "pointer" }}
-                            >
+                            <Link to="/services/cyt-tands">
                               Therapy & Counselling
-                            </button>
+                            </Link>
                           </li>
                           <li>
-                            <button
-                              onClick={() => {
-                                handleClick("/services/cyt-tands");
-                              }}
-                              style={{ cursor: "pointer" }}
-                            >
+                            <Link to={"/services/cyt-tands"}>
                               Therapeutic Activities
-                            </button>
+                            </Link>
                           </li>
                           <li>
                             <Link className="" to="course-filter-two-toggle">
@@ -198,22 +187,17 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li> */}
+              </li>
               <li className="position-static">
                 <Link to={"/plans"} className="" style={{ cursor: "pointer" }}>
                   Plans<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              {/* <li className="position-static">
-                <Link
-                  to={"#"}
-                  className=""
-                  onClick={() => handleClick("/blogs")}
-                  style={{ cursor: "pointer" }}
-                >
+              <li className="position-static">
+                <Link to={"/blogs"} className="" style={{ cursor: "pointer" }}>
                   Blogs
                 </Link>
-              </li> */}
+              </li>
               <li className="position-static">
                 <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
                   Faqs

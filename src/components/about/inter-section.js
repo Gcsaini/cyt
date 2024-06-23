@@ -101,7 +101,7 @@ export default function InterSection() {
                     <Link
                       className={index === selectedIndex ? "active" : ""}
                       id="testimonial-tab1-tab"
-                      aria-selected={index == selectedIndex ? "true" : "false"}
+                      aria-selected={index === selectedIndex ? "true" : "false"}
                       onClick={() => handleClick(index)}
                     >
                       <div className="testimonial-thumbnai">

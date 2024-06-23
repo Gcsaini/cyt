@@ -116,7 +116,6 @@ export default function Counter() {
                                 <span
                                   className="odometer-digit"
                                   style={fontStyle}
-                                  style={fontStyle}
                                 >
                                   {count}
                                 </span>

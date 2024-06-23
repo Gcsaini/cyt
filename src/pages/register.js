@@ -29,7 +29,7 @@ export default function Register() {
       return;
     }
 
-    if (phone.length != 10) {
+    if (phone.length !== 10) {
       setError("Please enter valid phone number");
       return;
     }
@@ -65,7 +65,7 @@ export default function Register() {
     e.preventDefault();
     setError("");
 
-    if (otp.length != 6) {
+    if (otp.length !== 6) {
       setError("Please enter valid OTP");
       return;
     }
@@ -93,12 +93,12 @@ export default function Register() {
   };
 
   const redirectUser = () => {
-    navigate(`/home`);
+    redirectUser();
   };
 
   useEffect(() => {
     if (auth.getToken()) {
-      navigate(`/home`);
+      redirectUser();
     }
   }, []);
   return (

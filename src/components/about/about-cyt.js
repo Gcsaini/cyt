@@ -1,7 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AboutCyt() {
-  const navigate = useNavigate();
   return (
     <div className="rbt-about-area about-style-1 bg-color-extra2 rbt-section-gap">
       <div className="container">

@@ -3,6 +3,7 @@ import Password from "../../components/therapists/settings/password";
 import SocialShare from "../../components/therapists/settings/social-share";
 import Profile from "../../components/therapists/settings/profile";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
@@ -23,54 +24,54 @@ export default function ProfileSettings() {
               role="tablist"
             >
               <li role="presentation">
-                <a
+                <Link
                   className={tab === 0 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 0 ? "true" : "false"}
                   onClick={() => setTab(0)}
                   style={style}
                 >
                   <span className="title">Profile</span>
-                </a>
+                </Link>
               </li>
               <li role="presentation">
-                <a
+                <Link
                   className={tab === 1 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 1 ? "true" : "false"}
                   onClick={() => setTab(1)}
                   style={style}
                 >
                   <span className="title">Password</span>
-                </a>
+                </Link>
               </li>
               <li role="presentation">
-                <a
+                <Link
                   className={tab === 2 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 2 ? "true" : "false"}
                   onClick={() => setTab(2)}
                   style={style}
                 >
                   <span className="title">Social Share</span>
-                </a>
+                </Link>
               </li>
               <li role="presentation">
-                <a
+                <Link
                   className={tab === 3 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 3 ? "true" : "false"}
                   onClick={() => setTab(3)}
                   style={style}
                 >
                   <span className="title">Set Appointment</span>
-                </a>
+                </Link>
               </li>
               <li role="presentation">
-                <a
+                <Link
                   className={tab === 4 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 4 ? "true" : "false"}
                   onClick={() => setTab(4)}
                   style={style}
                 >
                   <span className="title">Set Charges</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -78,7 +79,6 @@ export default function ProfileSettings() {
             {tab === 0 && <Profile />}
             {tab === 1 && <Password />}
             {tab === 2 && <SocialShare />}
-         
           </div>
         </div>
       </div>

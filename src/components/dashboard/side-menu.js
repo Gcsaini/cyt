@@ -4,10 +4,6 @@ export default function DashboardSideMenu(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const url = location.pathname;
-
-  function handleClick(nav) {
-    navigate(nav);
-  }
   return (
     <div className="col-lg-3">
       <div className="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
@@ -23,9 +19,8 @@ export default function DashboardSideMenu(props) {
                 <ul className="dashboard-mainmenu rbt-default-sidebar-list nav-tabs">
                   <li className="nav-item">
                     <Link
-                      className={url == -"/my-dashboard" ? "active" : ""}
-                      to=""
-                      onClick={() => handleClick("/my-dashboard")}
+                      className={url === -"/my-dashboard" ? "active" : ""}
+                      to="/my-dashboard"
                     >
                       <i className="feather-home"></i>
                       <span>Da</span>
@@ -34,8 +29,7 @@ export default function DashboardSideMenu(props) {
                   <li className="nav-item">
                     <Link
                       className={url === "/my-profile" ? "active" : ""}
-                      to=""
-                      onClick={() => handleClick("/my-profile")}
+                      to="/my-profile"
                     >
                       <i className="feather-user"></i>
                       <span>My Profile</span>
@@ -77,7 +71,6 @@ export default function DashboardSideMenu(props) {
                   <li>
                     <Link
                       className=""
-                      to="/"
                       onClick={() => {
                         auth.clearAppStorage();
                         navigate("/auth/login");

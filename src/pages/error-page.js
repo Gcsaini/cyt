@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function ErrorPage() {
-  const navigate = useNavigate();
   return (
     <div className="rbt-error-area bg-gradient-11 rbt-section-gap">
       <div className="error-area">

@@ -37,10 +37,10 @@ export default function TherapistRegistration() {
     setError("");
     setSuccess("");
 
-    if (profileType == "") {
+    if (profileType === "") {
       setError("Please select profile type");
       return;
-    } else if (mode == "") {
+    } else if (mode === "") {
       setError("Please select service mode");
       return;
     } else if (name.length < 5) {
@@ -52,7 +52,7 @@ export default function TherapistRegistration() {
     } else if (phone.length !== 10) {
       setError("Please enter valid phone number");
       return;
-    } else if (checkedValues.length == 0) {
+    } else if (checkedValues.length === 0) {
       setError("Please check any 'Interested to serve'");
       return;
     } else if (!selectedFile) {

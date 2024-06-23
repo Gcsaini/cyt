@@ -1,7 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CallToActionAbout() {
-  const navigate = useNavigate();
   return (
     <div className="rbt-call-to-action-area rbt-section-gap bg-gradient-8">
       <div className="rbt-callto-action rbt-cta-default style-6">
