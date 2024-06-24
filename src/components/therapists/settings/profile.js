@@ -1,6 +1,38 @@
 import ImageTag from "../../../utils/image-tag";
-import AvatarImg from "../../../assets/img/avatar-0332e4.png";
+import { EducationList, ExpList, stateList } from "../../../utils/static-lists";
+import React, { useState, useRef } from "react";
+import { defaultProfile } from "../../../utils/url";
 export default function Profile() {
+  const fileInputRef = useRef(null);
+  const [education, setEducation] = useState();
+  const [othEducation, setOthEducation] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleEducation = (e) => {
+    console.log("e", e.target.value);
+    if (e.target.value === "Other (Please specify)") {
+      setOthEducation(true);
+    } else {
+      setOthEducation(false);
+      setEducation(e.target.value);
+    }
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const handleImageUpload = () => {
+    fileInputRef.current.click();
+  };
+
+  const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <div
       className="tab-pane fade active show"
@@ -9,189 +41,160 @@ export default function Profile() {
       aria-labelledby="profile-tab"
     >
       <div className="rbt-dashboard-content-wrapper">
-        <div className="tutor-bg-photo bg_image bg_image--22 height-245"></div>
+        <div className="" style={{ height: 150 }}></div>
         <div className="rbt-tutor-information">
           <div className="rbt-tutor-information-left">
             <div className="thumbnail rbt-avatars size-lg position-relative">
               <ImageTag
                 alt="Instructor"
-                width="300"
-                height="300"
-                src={AvatarImg}
+                style={{ height: 120, width: 120 }}
+                src={selectedImage ? selectedImage : defaultProfile}
               />
               <div className="rbt-edit-photo-inner">
-                <button className="rbt-edit-photo" title="Upload Photo">
+                <button
+                  className="rbt-edit-photo"
+                  title="Upload Photo"
+                  onClick={handleImageUpload}
+                >
                   <i className="feather-camera"></i>
                 </button>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleImageChange}
+                />
               </div>
-            </div>
-          </div>
-          <div className="rbt-tutor-information-right">
-            <div className="tutor-btn">
-              <a
-                className="rbt-btn btn-sm btn-border color-white radius-round-10"
-                href="/instructor/instructor-settings#"
-              >
-                Edit Cover Photo
-              </a>
             </div>
           </div>
         </div>
       </div>
-      <form action="#" className="rbt-profile-row rbt-default-form row row--15">
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="filter-select rbt-modern-select">
+      <div action="#" className="rbt-profile-row rbt-default-form row row--15">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="profiletype">Profile Type</label>
-            <select id="profiletype">
-                <option value="Counselling Psychologist">Counselling Psychologist</option>
-                <option value="Clinical Psychologist">Clinical Psychologist</option>
-                <option value="Psychiatrist">Psychiatrist</option>
-                <option value="Special Educator">Special Educator</option>
+            <select id="profiletype" style={selectStyle} disabled>
+              <option value="Counselling Psychologist">
+                Counselling Psychologist
+              </option>
             </select>
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
-            <label htmlFor="licensenumber">License Number (if applicable)</label>
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="licensenumber">
+              License Number (if applicable)
+            </label>
             <input id="licensenumber" type="text" value="12345" />
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
-            <label htmlFor="profilename">Profile Code</label>
-            <input id="profilename" type="text" value="Sam-cyt1203" />
-        </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="fullname">Full Name</label>
             <input id="fullname" type="text" value="Samiksha Seth" />
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="filter-select rbt-modern-select">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="gender">Gender</label>
-            <select id="gender">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Non-binary">Non-binary</option>
-                <option value="Other">Other</option>
+            <select id="gender" style={selectStyle}>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+              <option value="Other">Other</option>
             </select>
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
-            <label htmlFor="emailaddress">Email Address</label>
-            <input id="emailaddress" type="email" value="sam@gmail.com" />
-        </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
+
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="phonenumber">Phone Number</label>
             <input id="phonenumber" type="tel" value="+91-202-555-0174" />
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-    <div className="filter-select rbt-modern-select">
-        <label For="displayname">State</label>
-        <select id="state">
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chhattisgarh">Chhattisgarh</option>
-            <option value="Goa">Goa</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Meghalaya">Meghalaya</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Nagaland">Nagaland</option>
-            <option value="Odisha">Odisha</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Sikkim">Sikkim</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Telangana">Telangana</option>
-            <option value="Tripura">Tripura</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="West Bengal">West Bengal</option>
-            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-            <option value="Lakshadweep">Lakshadweep</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Puducherry">Puducherry</option>
-            <option value="Ladakh">Ladakh</option>
-            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-        </select>
-    </div>
-</div>
-
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
-            <label htmlFor="city">City</label>
-            <select id="city">
-                <option value="Dehradun">Dehradun</option>
-                {/* Add other city options */}
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="state">State</label>
+            <select id="state" style={selectStyle}>
+              {stateList.map((item) => {
+                return (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
             </select>
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="office">Office Address (if Any)</label>
             <input id="office" type="text" value="123, XYZ Street, Dehradun" />
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="filter-select rbt-modern-select">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="experience">Years of Experience</label>
-            <select id="experience">
-                <option value="1">1</option>
-                <option value="2" selected>2</option>
-                <option value="3">3</option>
-                {/* Add more options if needed */}
+            <select id="experience" style={selectStyle}>
+              {ExpList.map((item) => {
+                return (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                );
+              })}
             </select>
+          </div>
         </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
-            <label htmlFor="services">Services Offered</label>
-            <textarea id="services" cols="20" rows="2"></textarea>
-        </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
-            <label htmlFor="expertise">Areas of Expertise</label>
-            <textarea id="expertise" cols="20" rows="2"></textarea>
-        </div>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-        <div className="rbt-form-group">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
             <label htmlFor="qualification">Higher Qualifications</label>
-            <textarea id="qualification" cols="20" rows="2"></textarea>
+            <select
+              id="qualification"
+              style={selectStyle}
+              onChange={(e) => handleEducation(e)}
+            >
+              {EducationList.map((item) => {
+                return (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
-    </div>
-    <div className="col-12">
-        <div className="rbt-form-group">
+        {othEducation && (
+          <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+            <div className="rbt-form-group">
+              <label htmlFor="licensenumber">Education</label>
+              <input id="Education" type="text" value="" />
+            </div>
+          </div>
+        )}
+        <div className="col-12">
+          <div className="rbt-form-group">
             <label htmlFor="bio">About Me</label>
-            <textarea id="bio" cols="20" rows="5">I am a dedicated Psychologist with a profound passion for mental health and well-being. With a background in psychological assessments and client progress monitoring, I specialize in providing empathetic and personalized care. My strong critical thinking skills and effective communication enable me to create a supportive environment that fosters personal growth and positive change.</textarea>
+            <textarea id="bio" cols="20" rows="5">
+              I am a dedicated Psychologist with a profound passion for mental
+              health and well-being. With a background in psychological
+              assessments and client progress monitoring, I specialize in
+              providing empathetic and personalized care. My strong critical
+              thinking skills and effective communication enable me to create a
+              supportive environment that fosters personal growth and positive
+              change.
+            </textarea>
+          </div>
         </div>
-    </div>
-    <div className="col-12 mt--20">
-        <div className="rbt-form-group">
-            <button className="rbt-btn btn-gradient" type="submit">Update Info</button>
+        <div className="col-12 mt--20">
+          <div className="rbt-form-group">
+            <button className="rbt-btn btn-gradient" type="submit">
+              Update Info
+            </button>
+          </div>
         </div>
-    </div>
-</form>
-
+      </div>
     </div>
   );
 }
