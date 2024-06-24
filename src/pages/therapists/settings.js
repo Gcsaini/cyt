@@ -23,7 +23,7 @@ export default function ProfileSettings() {
               id="settinsTab-4"
               role="tablist"
             >
-              <li role="presentation">
+              <li>
                 <Link
                   className={tab === 0 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 0 ? "true" : "false"}
@@ -33,7 +33,7 @@ export default function ProfileSettings() {
                   <span className="title">Profile</span>
                 </Link>
               </li>
-              <li role="presentation">
+              <li>
                 <Link
                   className={tab === 1 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 1 ? "true" : "false"}
@@ -43,7 +43,7 @@ export default function ProfileSettings() {
                   <span className="title">Password</span>
                 </Link>
               </li>
-              <li role="presentation">
+              <li>
                 <Link
                   className={tab === 2 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 2 ? "true" : "false"}
@@ -53,7 +53,7 @@ export default function ProfileSettings() {
                   <span className="title">Social Share</span>
                 </Link>
               </li>
-              <li role="presentation">
+              <li>
                 <Link
                   className={tab === 3 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 3 ? "true" : "false"}
@@ -63,7 +63,7 @@ export default function ProfileSettings() {
                   <span className="title">Set Appointment</span>
                 </Link>
               </li>
-              <li role="presentation">
+              <li>
                 <Link
                   className={tab === 4 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 4 ? "true" : "false"}

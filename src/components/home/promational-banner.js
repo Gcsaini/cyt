@@ -5,7 +5,6 @@ import "swiper/css/pagination";
 import Banner from "../../assets/img/Therapyforallll.png";
 import Banner2 from "../../assets/img/joinushere.png";
 import ImageTag from "../../utils/image-tag";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link, useNavigate } from "react-router-dom";
 export default function PromationalBanner() {
   const navigate = useNavigate();

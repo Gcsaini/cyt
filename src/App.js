@@ -34,8 +34,8 @@ function App() {
           <div className="main-wrapper">
             {/* <Nav /> */}
             <Routes>
-              {/* <Route exact path="/login" element={<Login />} /> */}
-              {/* <Route exact path="/register" element={<Register />} /> */}
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
               <Route
                 exact
                 path="/therapist-registration"

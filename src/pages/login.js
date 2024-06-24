@@ -56,7 +56,7 @@ export default function Login() {
 
   useEffect(() => {
     if (auth.getToken()) {
-      navigate(`/home`);
+      redirectUser();
     }
   }, []);
 
@@ -208,22 +208,27 @@ export default function Login() {
                       </Link>
                     </div>
                     <div className="form-submit-group">
-                      <button
-                        type="submit"
-                        className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
-                      >
+                      {loading ? (
                         <span className="icon-reverse-wrapper">
-                          <span className="btn-text" onClick={handleSubmit}>
-                            Login
-                          </span>
-                          <span className="btn-icon">
-                            <i className="feather-arrow-right"></i>
-                          </span>
-                          <span className="btn-icon">
-                            <i className="feather-arrow-right"></i>
-                          </span>
+                          <span className="btn-text">Please wait</span>
                         </span>
-                      </button>
+                      ) : (
+                        <button
+                          onClick={handleSubmit}
+                          type="submit"
+                          className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
+                        >
+                          <span className="icon-reverse-wrapper">
+                            <span className="btn-text">{Login}</span>
+                            <span className="btn-icon">
+                              <i className="feather-arrow-right"></i>
+                            </span>
+                            <span className="btn-icon">
+                              <i className="feather-arrow-right"></i>
+                            </span>
+                          </span>
+                        </button>
+                      )}
                     </div>
                   </form>
                 </div>
@@ -234,17 +239,6 @@ export default function Login() {
       </div>
 
       <NewsLetter />
-
-      <div className="rbt-progress-parent">
-        <svg
-          className="rbt-back-circle svg-inner"
-          width="100%"
-          height="100%"
-          viewBox="-1 -1 102 102"
-        >
-          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-        </svg>
-      </div>
       <Footer />
     </div>
   );

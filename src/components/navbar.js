@@ -48,8 +48,11 @@ export default function App() {
                   />
                 </Link>
               </div>
-              <div className="rbt-btn-close" onClick={() => setShow(false)}>
-                <button className="close-button rbt-round-btn">
+              <div className="rbt-btn-close">
+                <button
+                  className="close-button rbt-round-btn"
+                  onClick={() => setShow(false)}
+                >
                   <i className="feather-x"></i>
                 </button>
               </div>

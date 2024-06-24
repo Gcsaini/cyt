@@ -19,7 +19,7 @@ export default function DashboardSideMenu(props) {
                 <ul className="dashboard-mainmenu rbt-default-sidebar-list nav-tabs">
                   <li className="nav-item">
                     <Link
-                      className={url === -"/my-dashboard" ? "active" : ""}
+                      className={url === "/my-dashboard" ? "active" : ""}
                       to="/my-dashboard"
                     >
                       <i className="feather-home"></i>

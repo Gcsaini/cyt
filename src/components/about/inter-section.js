@@ -97,7 +97,7 @@ export default function InterSection() {
             <ul className="testimonial-thumb-wrapper nav nav-tabs" id="myTab">
               {internInfo.map((item, index) => {
                 return (
-                  <li key={index}>
+                  <li key={item.name}>
                     <Link
                       className={index === selectedIndex ? "active" : ""}
                       id="testimonial-tab1-tab"
