@@ -50,7 +50,7 @@ export default function ProfileSettings() {
                   onClick={() => setTab(2)}
                   style={style}
                 >
-                  <span className="title">Social Share</span>
+                  <span className="title">Offerings</span>
                 </Link>
               </li>
               <li>
