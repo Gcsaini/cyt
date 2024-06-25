@@ -3,7 +3,6 @@ import {
   EducationList,
   ExpList,
   languageSpoken,
-  sessionFormats,
   sessionFormatsList,
   stateList,
 } from "../../../utils/static-lists";
