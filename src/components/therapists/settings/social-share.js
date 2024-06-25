@@ -1,4 +1,71 @@
+import React, { useState } from "react";
+
 export default function SocialShare() {
+  const [services, setServices] = useState({
+    individualCounselling: false,
+    relationshipCounselling: false,
+    teenCounselling: false,
+    diagnosis: false,
+    workshopsTraining: false
+  });
+
+  const [expertise, setExpertise] = useState({
+    stressManagement: false,
+    anxiety: false,
+    depression: false,
+    selfEsteem: false,
+    timeManagement: false,
+    careerCounselling: false,
+    workLifeBalance: false,
+    burnout: false,
+    lifeTransitions: false,
+    griefAndLoss: false,
+    angerManagement: false,
+    motivation: false,
+    cbt: false,
+    dbt: false,
+    psychodynamicTherapy: false,
+    humanisticTherapy: false,
+    mindfulnessBasedTherapy: false,
+    sfbt: false,
+    act: false,
+    emdr: false,
+    artTherapy: false,
+    playTherapy: false,
+    groupTherapy: false,
+    familyTherapy: false,
+    narrativeTherapy: false,
+    ipt: false,
+    gad: false,
+    mdd: false,
+    bipolarDisorder: false,
+    ocd: false,
+    ptsd: false,
+    adhd: false,
+    asd: false,
+    schizophrenia: false,
+    personalityDisorders: false,
+    eatingDisorders: false,
+    maritalCounselling: false,
+    familyTherapy: false,
+    parentChildRelationship: false,
+    couplesCounselling: false,
+    divorceSeparation: false,
+    conflictResolution: false,
+    communicationIssues: false,
+    trustIssues: false,
+    intimacyIssues: false,
+    preMaritalCounselling: false
+  });
+
+  const handleChange = (e, setState) => {
+    const { name, checked } = e.target;
+    setState((prev) => ({
+      ...prev,
+      [name]: checked
+    }));
+  };
+
   return (
     <div
       className="tab-pane fade active show"
@@ -9,52 +76,146 @@ export default function SocialShare() {
       <form action="#" className="rbt-profile-row rbt-default-form row row--15">
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="facebook">
-              <i className="feather-facebook"></i> Facebook
-            </label>
-            <input
-              id="facebook"
-              type="text"
-              placeholder="https://facebook.com/"
-            />
+            <h3>Services</h3>
+            {Object.keys(services).map((service) => (
+              <div key={service}>
+                <input
+                  type="checkbox"
+                  id={service}
+                  name={service}
+                  checked={services[service]}
+                  onChange={(e) => handleChange(e, setServices)}
+                />
+                <label htmlFor={service}>
+                  {service.split(/(?=[A-Z])/).join(" ")}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
+
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="facebook">
-              <i className="feather-facebook"></i> Instagram
-            </label>
-            <input
-              id="facebook"
-              type="text"
-              placeholder="https://facebook.com/"
-            />
+            <br />
+            <h3>Expertise</h3>
+            <h4>Daily Life Issues</h4>
+            {[
+              "stressManagement",
+              "anxiety",
+              "depression",
+              "selfEsteem",
+              "timeManagement",
+              "careerCounselling",
+              "workLifeBalance",
+              "burnout",
+              "lifeTransitions",
+              "griefAndLoss",
+              "angerManagement",
+              "motivation"
+            ].map((issue) => (
+              <div key={issue}>
+                <input
+                  type="checkbox"
+                  id={issue}
+                  name={issue}
+                  checked={expertise[issue]}
+                  onChange={(e) => handleChange(e, setExpertise)}
+                />
+                <label htmlFor={issue}>
+                  {issue.split(/(?=[A-Z])/).join(" ")}
+                </label>
+              </div>
+            ))}
+
+            <h4>Therapy Options</h4>
+            {[
+              "cbt",
+              "dbt",
+              "psychodynamicTherapy",
+              "humanisticTherapy",
+              "mindfulnessBasedTherapy",
+              "sfbt",
+              "act",
+              "emdr",
+              "artTherapy",
+              "playTherapy",
+              "groupTherapy",
+              "familyTherapy",
+              "narrativeTherapy",
+              "ipt"
+            ].map((therapy) => (
+              <div key={therapy}>
+                <input
+                  type="checkbox"
+                  id={therapy}
+                  name={therapy}
+                  checked={expertise[therapy]}
+                  onChange={(e) => handleChange(e, setExpertise)}
+                />
+                <label htmlFor={therapy}>
+                  {therapy.split(/(?=[A-Z])/).join(" ")}
+                </label>
+              </div>
+            ))}
+
+            <h4>
+              Diagnoses (only for Psychiatrists and Clinical Psychologists)
+            </h4>
+            {[
+              "gad",
+              "mdd",
+              "bipolarDisorder",
+              "ocd",
+              "ptsd",
+              "adhd",
+              "asd",
+              "schizophrenia",
+              "personalityDisorders",
+              "eatingDisorders"
+            ].map((diagnosis) => (
+              <div key={diagnosis}>
+                <input
+                  type="checkbox"
+                  id={diagnosis}
+                  name={diagnosis}
+                  checked={expertise[diagnosis]}
+                  onChange={(e) => handleChange(e, setExpertise)}
+                />
+                <label htmlFor={diagnosis}>
+                  {diagnosis.split(/(?=[A-Z])/).join(" ")}
+                </label>
+              </div>
+            ))}
+
+            <h4>Relationship Issues</h4>
+            {[
+              "maritalCounselling",
+              "familyTherapy",
+              "parentChildRelationship",
+              "couplesCounselling",
+              "divorceSeparation",
+              "conflictResolution",
+              "communicationIssues",
+              "trustIssues",
+              "intimacyIssues",
+              "preMaritalCounselling"
+            ].map((relationship) => (
+              <div key={relationship}>
+                <input
+                  type="checkbox"
+                  id={relationship}
+                  name={relationship}
+                  checked={expertise[relationship]}
+                  onChange={(e) => handleChange(e, setExpertise)}
+                />
+                <label htmlFor={relationship}>
+                  {relationship.split(/(?=[A-Z])/).join(" ")}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="col-12">
-          <div className="rbt-form-group">
-            <label for="twitter">
-              <i className="feather-twitter"></i> Twitter
-            </label>
-            <input
-              id="twitter"
-              type="text"
-              placeholder="https://twitter.com/"
-            />
-          </div>
-        </div>
-        <div className="col-12">
-          <div className="rbt-form-group">
-            <label for="linkedin">
-              <i className="feather-linkedin"></i> Linkedin
-            </label>
-            <input
-              id="linkedin"
-              type="text"
-              placeholder="https://linkedin.com/"
-            />
-          </div>
-        </div>
+
         <div className="col-12 mt--10">
           <div className="rbt-form-group">
             <a
