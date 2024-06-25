@@ -1,13 +1,34 @@
 import React, { useState } from "react";
+import {
+  dailyLiftIssuesList,
+  relationshipIssuesList,
+  services,
+} from "../../../utils/static-lists";
 
 export default function SocialShare() {
-  const [services, setServices] = useState({
-    individualCounselling: false,
-    relationshipCounselling: false,
-    teenCounselling: false,
-    diagnosis: false,
-    workshopsTraining: false
-  });
+  const [checkedServices, setCheckedServices] = useState([]);
+  const [checkedExperties, setCheckedExperties] = useState([]);
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    setCheckedServices((prevCheckedValues) => {
+      if (checked) {
+        return [...prevCheckedValues, value];
+      } else {
+        return prevCheckedValues.filter((v) => v !== value);
+      }
+    });
+  };
+
+  const handleExperties = (event) => {
+    const { value, checked } = event.target;
+    setCheckedExperties((prevCheckedValues) => {
+      if (checked) {
+        return [...prevCheckedValues, value];
+      } else {
+        return prevCheckedValues.filter((v) => v !== value);
+      }
+    });
+  };
 
   const [expertise, setExpertise] = useState({
     stressManagement: false,
@@ -55,14 +76,14 @@ export default function SocialShare() {
     communicationIssues: false,
     trustIssues: false,
     intimacyIssues: false,
-    preMaritalCounselling: false
+    preMaritalCounselling: false,
   });
 
   const handleChange = (e, setState) => {
     const { name, checked } = e.target;
     setState((prev) => ({
       ...prev,
-      [name]: checked
+      [name]: checked,
     }));
   };
 
@@ -73,28 +94,62 @@ export default function SocialShare() {
       role="tabpanel"
       aria-labelledby="social-tab"
     >
-      <form action="#" className="rbt-profile-row rbt-default-form row row--15">
-        <div className="col-12">
-          <div className="rbt-form-group">
-            <h3>Services</h3>
-            {Object.keys(services).map((service) => (
-              <div key={service}>
-                <input
-                  type="checkbox"
-                  id={service}
-                  name={service}
-                  checked={services[service]}
-                  onChange={(e) => handleChange(e, setServices)}
-                />
-                <label htmlFor={service}>
-                  {service.split(/(?=[A-Z])/).join(" ")}
-                </label>
+      <div className="rbt-profile-row rbt-default-form row row--15">
+        <h3>Services</h3>
+        {services.map((item) => {
+          return (
+            <div className="col-lg-4 col-md-4 col-sm-6 col-12" key={item}>
+              <div className="rbt-form-group">
+                <p className="rbt-checkbox-wrapper mb--5">
+                  <input
+                    type="checkbox"
+                    value={item}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label htmlFor={item}>{item}</label>
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          );
+        })}
+        <br />
+        <h3>Experties</h3>
+        <h6>Daily Life Issues</h6>
+        {dailyLiftIssuesList.map((item) => {
+          return (
+            <div className="col-lg-4 col-md-4 col-sm-6 col-12" key={item}>
+              <div className="rbt-form-group">
+                <p className="rbt-checkbox-wrapper mb--5">
+                  <input
+                    type="checkbox"
+                    value={item}
+                    onChange={handleExperties}
+                  />
+                  <label htmlFor={item}>{item}</label>
+                </p>
+              </div>
+            </div>
+          );
+        })}
+        <h6>Relationship Issues</h6>
+        {relationshipIssuesList.map((item) => {
+          return (
+            <div className="col-lg-4 col-md-4 col-sm-6 col-12" key={item}>
+              <div className="rbt-form-group">
+                <p className="rbt-checkbox-wrapper mb--5">
+                  <input
+                    type="checkbox"
+                    value={item}
+                    onChange={handleExperties}
+                  />
+                  <label htmlFor={item}>{item}</label>
+                </p>
+              </div>
+            </div>
+          );
+        })}
 
-        <div className="col-12">
+        {/* <div className="col-12">
           <div className="rbt-form-group">
             <br />
             <h3>Expertise</h3>
@@ -111,7 +166,7 @@ export default function SocialShare() {
               "lifeTransitions",
               "griefAndLoss",
               "angerManagement",
-              "motivation"
+              "motivation",
             ].map((issue) => (
               <div key={issue}>
                 <input
@@ -142,7 +197,7 @@ export default function SocialShare() {
               "groupTherapy",
               "familyTherapy",
               "narrativeTherapy",
-              "ipt"
+              "ipt",
             ].map((therapy) => (
               <div key={therapy}>
                 <input
@@ -171,7 +226,7 @@ export default function SocialShare() {
               "asd",
               "schizophrenia",
               "personalityDisorders",
-              "eatingDisorders"
+              "eatingDisorders",
             ].map((diagnosis) => (
               <div key={diagnosis}>
                 <input
@@ -198,7 +253,7 @@ export default function SocialShare() {
               "communicationIssues",
               "trustIssues",
               "intimacyIssues",
-              "preMaritalCounselling"
+              "preMaritalCounselling",
             ].map((relationship) => (
               <div key={relationship}>
                 <input
@@ -214,7 +269,7 @@ export default function SocialShare() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="col-12 mt--10">
           <div className="rbt-form-group">
@@ -222,11 +277,11 @@ export default function SocialShare() {
               className="rbt-btn btn-gradient"
               href="/instructor/instructor-settings#"
             >
-              Update Profile
+              Update
             </a>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

@@ -114,8 +114,8 @@ export default function TherapistRegistration() {
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
                 <h2 className="title">
-                  Become a part of{" "}
-                  <span className="theme-gradient">#ChooseYourTherapist</span>{" "}
+                  Become a part of
+                  <span className="theme-gradient">#ChooseYourTherapist</span>
                   and serve professionally.
                 </h2>
                 <ul className="page-list">
@@ -242,7 +242,7 @@ export default function TherapistRegistration() {
                           <p className="subtitle">
                             <input type="checkbox" id="criteriaCheckbox" />
                             <label htmlFor="criteriaCheckbox">
-                              For more information, please refer to our criteria{" "}
+                              For more information, please refer to our criteria
                               <Link to="link">here</Link>.
                             </label>
                           </p>
@@ -372,7 +372,6 @@ export default function TherapistRegistration() {
                         onChange={handleCheckboxChange}
                       />
                       <label htmlFor="rbt-checkbox-4">
-                        {" "}
                         Workshops/Events conducting
                       </label>
                     </p>
@@ -383,7 +382,6 @@ export default function TherapistRegistration() {
                         onChange={handleCheckboxChange}
                       />
                       <label htmlFor="rbt-checkbox-4">
-                        {" "}
                         Internship/Training
                       </label>
                     </p>

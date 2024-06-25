@@ -43,7 +43,7 @@ export const services = [
   "Individual Counseling ",
   "Relationship Counseling",
   "Teen Counseling",
-  "Diagnosis (only for Psychiatrist/Clinical Psychologist)",
+  "Diagnosis",
   "Workshops/Training",
 ];
 
@@ -60,4 +60,32 @@ export const EducationList = [
   "Postgraduate Diploma in Counseling/Psychology",
   "Postgraduate Diploma in Special Education",
   "Other (Please specify)",
+];
+
+export const relationshipIssuesList = [
+  "maritalCounselling",
+  "familyTherapy",
+  "parentChildRelationship",
+  "couplesCounselling",
+  "divorceSeparation",
+  "conflictResolution",
+  "communicationIssues",
+  "trustIssues",
+  "intimacyIssues",
+  "preMaritalCounselling",
+];
+
+export const dailyLiftIssuesList = [
+  "stressManagement",
+  "anxiety",
+  "depression",
+  "selfEsteem",
+  "timeManagement",
+  "careerCounselling",
+  "workLifeBalance",
+  "burnout",
+  "lifeTransitions",
+  "griefAndLoss",
+  "angerManagement",
+  "motivation",
 ];
