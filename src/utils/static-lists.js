@@ -89,3 +89,7 @@ export const dailyLiftIssuesList = [
   "angerManagement",
   "motivation",
 ];
+
+export const languageSpoken = ["English", "Hindi", "Marathi"];
+
+export const sessionFormatsList = ["In-Person", "Audio call", "Video Call"];

@@ -1,5 +1,12 @@
 import ImageTag from "../../../utils/image-tag";
-import { EducationList, ExpList, stateList } from "../../../utils/static-lists";
+import {
+  EducationList,
+  ExpList,
+  languageSpoken,
+  sessionFormats,
+  sessionFormatsList,
+  stateList,
+} from "../../../utils/static-lists";
 import React, { useState, useRef } from "react";
 import { defaultProfile } from "../../../utils/url";
 export default function Profile() {
@@ -7,9 +14,32 @@ export default function Profile() {
   const [education, setEducation] = useState();
   const [othEducation, setOthEducation] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [languages, setLanguages] = useState([]);
+  const [sessionFormats, setSessionFormats] = useState([]);
+
+  const handleLanguages = (event) => {
+    const { value, checked } = event.target;
+    setLanguages((prevCheckedValues) => {
+      if (checked) {
+        return [...prevCheckedValues, value];
+      } else {
+        return prevCheckedValues.filter((v) => v !== value);
+      }
+    });
+  };
+
+  const handleSessionFormats = (event) => {
+    const { value, checked } = event.target;
+    setSessionFormats((prevCheckedValues) => {
+      if (checked) {
+        return [...prevCheckedValues, value];
+      } else {
+        return prevCheckedValues.filter((v) => v !== value);
+      }
+    });
+  };
 
   const handleEducation = (e) => {
-    console.log("e", e.target.value);
     if (e.target.value === "Other (Please specify)") {
       setOthEducation(true);
     } else {
@@ -173,6 +203,54 @@ export default function Profile() {
             </div>
           </div>
         )}
+        <div className="col-lg-12 col-md-12 col-sm-12 col-12 mt--15 mb--15">
+          <div className="rbt-form-group">
+            <label htmlFor="Language">Language Spoken</label>
+            <div className="row">
+              {languageSpoken.map((item) => {
+                return (
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <p className="rbt-checkbox-wrapper mb--5">
+                      <input
+                        id={`language-checkbox-${item}`}
+                        type="checkbox"
+                        value={item}
+                        checked={languages.includes(item)}
+                        onChange={handleLanguages}
+                      />
+                      <label htmlFor={`language-checkbox-${item}`}>
+                        {item}
+                      </label>
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-12 col-md-12 col-sm-12 col-12 mt--6 mb--15">
+          <div className="rbt-form-group">
+            <label htmlFor="session">Session Formats</label>
+            <div className="row">
+              {sessionFormatsList.map((item) => {
+                return (
+                  <div className="col-lg-3 col-md-3 col-sm-6 col-12" key={item}>
+                    <p className="rbt-checkbox-wrapper mb--5">
+                      <input
+                        id={`session-checkbox-${item}`}
+                        type="checkbox"
+                        value={item}
+                        checked={sessionFormats.includes(item)}
+                        onChange={handleSessionFormats}
+                      />
+                      <label htmlFor={`session-checkbox-${item}`}>{item}</label>
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
         <div className="col-12">
           <div className="rbt-form-group">
             <label htmlFor="bio">About Me</label>

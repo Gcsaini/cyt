@@ -7,21 +7,10 @@ import {
 
 export default function SocialShare() {
   const [checkedServices, setCheckedServices] = useState([]);
-  const [checkedExperties, setCheckedExperties] = useState([]);
+
   const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
     setCheckedServices((prevCheckedValues) => {
-      if (checked) {
-        return [...prevCheckedValues, value];
-      } else {
-        return prevCheckedValues.filter((v) => v !== value);
-      }
-    });
-  };
-
-  const handleExperties = (event) => {
-    const { value, checked } = event.target;
-    setCheckedExperties((prevCheckedValues) => {
       if (checked) {
         return [...prevCheckedValues, value];
       } else {
@@ -94,29 +83,31 @@ export default function SocialShare() {
       aria-labelledby="social-tab"
     >
       <form action="#" className="rbt-profile-row rbt-default-form row row--15">
-        <div className="col-12">
-          <div className="rbt-form-group">
-            <h4>Services</h4>
-            {Object.keys(services).map((service) => (
-              <div key={service}>
-                <input
-                  type="checkbox"
-                  id={service}
-                  name={service}
-                  checked={services[service]}
-                  onChange={(e) => handleChange(e, setServices)}
-                />
-                <label htmlFor={service}>
-                  {service.split(/(?=[A-Z])/).join(" ")}
-                </label>
+        <h5>Services</h5>
+        {services.map((service) => {
+          return (
+            <div className="col-lg-4 col-md-4 col-sm-6 col-12" key={service}>
+              <div className="rbt-form-group">
+                <p className="rbt-checkbox-wrapper mb--5">
+                  <input
+                    id={`service-checkbox-${service}`}
+                    type="checkbox"
+                    value={service}
+                    checked={checkedServices.includes(service)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label htmlFor={`service-checkbox-${service}`}>
+                    {service}
+                  </label>
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          );
+        })}
 
         <hr style={{ borderTop: "1px solid #ccc", margin: "20px 0" }} />
 
-        {/* <div className="col-12">
+        <div className="col-12">
           <div className="rbt-form-group">
             <br />
             <h4>Expertise</h4>
@@ -135,7 +126,7 @@ export default function SocialShare() {
                   "lifeTransitions",
                   "griefAndLoss",
                   "angerManagement",
-                  "motivation"
+                  "motivation",
                 ].map((issue) => (
                   <div key={issue}>
                     <input
@@ -143,7 +134,7 @@ export default function SocialShare() {
                       id={issue}
                       name={issue}
                       checked={expertise[issue]}
-                      onChange={(e) => handleChange(e, setExpertise)}
+                      onChange={(e) => handleChange(e)}
                     />
                     <label htmlFor={issue}>
                       {issue.split(/(?=[A-Z])/).join(" ")}
@@ -166,7 +157,7 @@ export default function SocialShare() {
                   "groupTherapy",
                   "familyTherapy",
                   "narrativeTherapy",
-                  "Interpersonal Therapy (IPT)"
+                  "Interpersonal Therapy (IPT)",
                 ].map((therapy) => (
                   <div key={therapy}>
                     <input
@@ -174,7 +165,7 @@ export default function SocialShare() {
                       id={therapy}
                       name={therapy}
                       checked={expertise[therapy]}
-                      onChange={(e) => handleChange(e, setExpertise)}
+                      onChange={(e) => handleChange(e)}
                     />
                     <label htmlFor={therapy}>
                       {therapy.split(/(?=[A-Z])/).join(" ")}
@@ -197,7 +188,7 @@ export default function SocialShare() {
                   "Autism Spectrum Disorder (ASD)",
                   "schizophrenia",
                   "personalityDisorders",
-                  "eatingDisorders"
+                  "eatingDisorders",
                 ].map((diagnosis) => (
                   <div key={diagnosis}>
                     <input
@@ -223,7 +214,7 @@ export default function SocialShare() {
                   "communicationIssues",
                   "trustIssues",
                   "intimacyIssues",
-                  "preMaritalCounselling"
+                  "preMaritalCounselling",
                 ].map((relationship) => (
                   <div key={relationship}>
                     <input
