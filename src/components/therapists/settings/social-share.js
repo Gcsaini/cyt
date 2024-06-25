@@ -129,20 +129,20 @@ export default function SocialShare() {
 
             <h4>Therapy Options</h4>
             {[
-              "cbt",
-              "dbt",
+              "Cognitive Behavioural Therapy (CBT)",
+              "Dialectical Behavioural Therapy (DBT)",
               "psychodynamicTherapy",
               "humanisticTherapy",
               "mindfulnessBasedTherapy",
-              "sfbt",
-              "act",
-              "emdr",
+              "Solution-Focused Brief Therapy (SFBT)",
+              "Acceptance and Commitment Therapy (ACT)",
+              "Eye Movement Desensitization and Reprocessing (EMDR)",
               "artTherapy",
               "playTherapy",
               "groupTherapy",
               "familyTherapy",
               "narrativeTherapy",
-              "ipt"
+              "Interpersonal Therapy (IPT)"
             ].map((therapy) => (
               <div key={therapy}>
                 <input
@@ -162,13 +162,13 @@ export default function SocialShare() {
               Diagnoses (only for Psychiatrists and Clinical Psychologists)
             </h4>
             {[
-              "gad",
-              "mdd",
+              "Generalized Anxiety Disorder (GAD)",
+              "Major Depressive Disorder (MDD)",
               "bipolarDisorder",
-              "ocd",
-              "ptsd",
-              "adhd",
-              "asd",
+              "Obsessive-Compulsive Disorder (OCD)",
+              "Post-Traumatic Stress Disorder (PTSD)",
+              "Attention Deficit Hyperactivity Disorder (ADHD)",
+              "Autism Spectrum Disorder (ASD)",
               "schizophrenia",
               "personalityDisorders",
               "eatingDisorders"
