@@ -60,7 +60,7 @@ export default function ProfileSettings() {
                   onClick={() => setTab(3)}
                   style={style}
                 >
-                  <span className="title">Set Appointment</span>
+                  <span className="title">Availability</span>
                 </Link>
               </li>
               <li>
