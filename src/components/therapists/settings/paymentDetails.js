@@ -11,11 +11,38 @@ export default function PaymentDetails() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value
-    }));
+
+    if (
+      (name === "accountNumber" || name === "retypeAccountNumber") &&
+      (value === "" || /^\d+$/.test(value))
+    ) {
+      setDetails((prevDetails) => ({
+        ...prevDetails,
+        [name]: value
+      }));
+    }
+
+    // Ensure valid characters for UPI field
+    else if (name === "upiId" && /^[\w@.]*$/.test(value)) {
+      setDetails((prevDetails) => ({
+        ...prevDetails,
+        [name]: value
+      }));
+    }
+
+    // For other fields, allow any value
+    else if (
+      name !== "accountNumber" &&
+      name !== "retypeAccountNumber" &&
+      name !== "upiId"
+    ) {
+      setDetails((prevDetails) => ({
+        ...prevDetails,
+        [name]: value
+      }));
+    }
   };
+
   console.log(details);
 
   return (
@@ -28,9 +55,9 @@ export default function PaymentDetails() {
       <form action="#" className="rbt-profile-row rbt-default-form row row--15">
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="currentpassword">Bank Account Name</label>
+            <label htmlFor="accountName">Bank Account Name</label>
             <input
-              id="currentpassword"
+              id="accountName"
               type="text"
               name="accountName"
               value={details.accountName}
@@ -41,9 +68,9 @@ export default function PaymentDetails() {
         </div>
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="newpassword">Account Number</label>
+            <label htmlFor="accountNumber">Account Number</label>
             <input
-              id="newpassword"
+              id="accountNumber"
               type="text"
               name="accountNumber"
               value={details.accountNumber}
@@ -54,9 +81,9 @@ export default function PaymentDetails() {
         </div>
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="retypenewpassword">Re-type Account Number</label>
+            <label htmlFor="retypeAccountNumber">Re-type Account Number</label>
             <input
-              id="retypenewpassword"
+              id="retypeAccountNumber"
               type="text"
               name="retypeAccountNumber"
               value={details.retypeAccountNumber}
@@ -67,9 +94,9 @@ export default function PaymentDetails() {
         </div>
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="retypenewpassword">IFSC</label>
+            <label htmlFor="ifsc">IFSC</label>
             <input
-              id="retypenewpassword"
+              id="ifsc"
               type="text"
               name="ifsc"
               value={details.ifsc}
@@ -83,9 +110,9 @@ export default function PaymentDetails() {
         </div>
         <div className="col-12">
           <div className="rbt-form-group">
-            <label for="retypenewpassword">UPI</label>
+            <label htmlFor="upiId">UPI</label>
             <input
-              id="retypenewpassword"
+              id="upiId"
               type="text"
               name="upiId"
               value={details.upiId}

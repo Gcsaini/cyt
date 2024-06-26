@@ -17,14 +17,17 @@ const Sees = () => {
   );
 
   const handleChange = (type, field, value) => {
-    setPrices((prevPrices) => ({
-      ...prevPrices,
-      [type]: {
-        ...prevPrices[type],
-        [field]: value
-      }
-    }));
+    if (value === "" || /^\d*\.?\d*$/.test(value)) {
+      setPrices((prevPrices) => ({
+        ...prevPrices,
+        [type]: {
+          ...prevPrices[type],
+          [field]: value
+        }
+      }));
+    }
   };
+  // console.log(prices); 
 
   return (
     <>
@@ -57,43 +60,31 @@ const Sees = () => {
                   </td>
                   <td>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="Price"
                       value={prices[type].audio}
                       onChange={(e) =>
-                        handleChange(
-                          type,
-                          "audio",
-                          parseFloat(e.target.value) || ""
-                        )
+                        handleChange(type, "audio", e.target.value)
                       }
                     />
                   </td>
                   <td>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="Price"
                       value={prices[type].video}
                       onChange={(e) =>
-                        handleChange(
-                          type,
-                          "video",
-                          parseFloat(e.target.value) || ""
-                        )
+                        handleChange(type, "video", e.target.value)
                       }
                     />
                   </td>
                   <td>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="Price"
                       value={prices[type].inPerson}
                       onChange={(e) =>
-                        handleChange(
-                          type,
-                          "inPerson",
-                          parseFloat(e.target.value) || ""
-                        )
+                        handleChange(type, "inPerson", e.target.value)
                       }
                     />
                   </td>
