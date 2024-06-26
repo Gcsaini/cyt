@@ -2,6 +2,7 @@ import MainLayout from "../../components/therapists/main-layout";
 import Password from "../../components/therapists/settings/password";
 import SocialShare from "../../components/therapists/settings/social-share";
 import Profile from "../../components/therapists/settings/profile";
+import Availability from "../../components/therapists/settings/availability";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -70,7 +71,7 @@ export default function ProfileSettings() {
                   onClick={() => setTab(4)}
                   style={style}
                 >
-                  <span className="title">Set Charges</span>
+                  <span className="title">Sees</span>
                 </Link>
               </li>
             </ul>
@@ -79,6 +80,7 @@ export default function ProfileSettings() {
             {tab === 0 && <Profile />}
             {tab === 1 && <Password />}
             {tab === 2 && <SocialShare />}
+            {tab === 3 && <Availability/>}
           </div>
         </div>
       </div>
