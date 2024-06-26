@@ -4,6 +4,7 @@
 }
 
 .table-wrapper {
+  width: 100%;
   overflow-x: auto;
 }
 
@@ -40,8 +41,9 @@
   margin-left: 5px;
 }
 
-@media (min-width: 1200px) {
-  .table-wrapper {
-    overflow-x: auto;
+@media (max-width: 1200px) {
+  .sees-table th,
+  .sees-table td {
+    white-space: nowrap;
   }
 }
