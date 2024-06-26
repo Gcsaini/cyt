@@ -76,92 +76,105 @@ const Availability = () => {
   };
 
   return (
-    <div>
-      <h4>Availability Schedule</h4>
-      <div className="table-container">
-        <table className="availability-table">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Date</th>
-              <th>Open Time</th>
-              <th>Close Time</th>
-              <th>Overtime</th>
-            </tr>
-          </thead>
-          <tbody>
-            {schedule.map((daySchedule, index) => (
-              <tr key={daySchedule.day}>
-                <td>{daySchedule.day}</td>
-                <td>
-                  <input
-                    type="date"
-                    value={daySchedule.date}
-                    onChange={(e) =>
-                      handleChange(index, "date", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="time"
-                    value={daySchedule.open}
-                    onChange={(e) =>
-                      handleChange(index, "open", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="time"
-                    value={daySchedule.close}
-                    onChange={(e) =>
-                      handleChange(index, "close", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  {daySchedule.overtime.map((overtime, overtimeIndex) => (
-                    <div key={overtimeIndex} className="overtime-row">
-                      <input
-                        type="time"
-                        value={overtime.open}
-                        onChange={(e) =>
-                          handleOvertimeChange(
-                            index,
-                            overtimeIndex,
-                            "open",
-                            e.target.value
-                          )
-                        }
-                      />
-                      <input
-                        type="time"
-                        value={overtime.close}
-                        onChange={(e) =>
-                          handleOvertimeChange(
-                            index,
-                            overtimeIndex,
-                            "close",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </div>
-                  ))}
-                  {daySchedule.overtime.length < 5 && (
-                    <FaPlus
-                      onClick={() => handleAddOvertime(index)}
-                      style={{ cursor: "pointer" }}
-                    />
-                  )}
-                </td>
+    <>
+      <div>
+        <h4>Availability Schedule</h4>
+        <div className="table-container">
+          <table className="availability-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Date</th>
+                <th>Open Time</th>
+                <th>Close Time</th>
+                <th>Overtime</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {schedule.map((daySchedule, index) => (
+                <tr key={daySchedule.day}>
+                  <td>{daySchedule.day}</td>
+                  <td>
+                    <input
+                      type="date"
+                      value={daySchedule.date}
+                      onChange={(e) =>
+                        handleChange(index, "date", e.target.value)
+                      }
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="time"
+                      value={daySchedule.open}
+                      onChange={(e) =>
+                        handleChange(index, "open", e.target.value)
+                      }
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="time"
+                      value={daySchedule.close}
+                      onChange={(e) =>
+                        handleChange(index, "close", e.target.value)
+                      }
+                    />
+                  </td>
+                  <td>
+                    {daySchedule.overtime.map((overtime, overtimeIndex) => (
+                      <div key={overtimeIndex} className="overtime-row">
+                        <input
+                          type="time"
+                          value={overtime.open}
+                          onChange={(e) =>
+                            handleOvertimeChange(
+                              index,
+                              overtimeIndex,
+                              "open",
+                              e.target.value
+                            )
+                          }
+                        />
+                        <input
+                          type="time"
+                          value={overtime.close}
+                          onChange={(e) =>
+                            handleOvertimeChange(
+                              index,
+                              overtimeIndex,
+                              "close",
+                              e.target.value
+                            )
+                          }
+                        />
+                      </div>
+                    ))}
+                    {daySchedule.overtime.length < 5 && (
+                      <FaPlus
+                        onClick={() => handleAddOvertime(index)}
+                        style={{ cursor: "pointer" }}
+                      />
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+
+      <div className="col-12 mt--10">
+        <div className="rbt-form-group">
+          <a
+            className="rbt-btn btn-gradient"
+            href="/instructor/instructor-settings#"
+          >
+            Save & Next
+          </a>
+        </div>
+      </div>
+    </>
   );
 };
 
