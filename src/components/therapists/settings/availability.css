@@ -1,0 +1,31 @@
+/* Availability.css */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 500px) {
+  th,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+  }
+}

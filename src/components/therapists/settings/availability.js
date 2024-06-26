@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa"; // Importing a plus icon
+import "./availability.css";
 
 const Availability = () => {
   const [schedule, setSchedule] = useState([
