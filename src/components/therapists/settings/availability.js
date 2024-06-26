@@ -66,6 +66,7 @@ const Availability = () => {
     newSchedule[index][field] = value;
     setSchedule(newSchedule);
   };
+  console.log(schedule);
 
   const handleCheckboxChange = (index) => {
     const newSchedule = [...schedule];
