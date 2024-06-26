@@ -1,0 +1,15 @@
+.expertise-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1200px) {
+  .expertise-container {
+    flex-direction: row;
+  }
+}
+
+.expertise-column {
+  flex: 1;
+  margin: 10px;
+}

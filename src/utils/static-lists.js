@@ -34,7 +34,7 @@ export const stateList = [
   "Delhi",
   "Puducherry",
   "Jammu and Kashmir",
-  "Ladakh",
+  "Ladakh"
 ];
 
 export const ExpList = ["1-2", "3-5", "6-10", "11-15", "16-20", "21+"];
@@ -44,7 +44,7 @@ export const services = [
   "Relationship Counseling",
   "Teen Counseling",
   "Diagnosis",
-  "Workshops/Training",
+  "Workshops/Training"
 ];
 
 export const EducationList = [
@@ -59,20 +59,7 @@ export const EducationList = [
   "Doctor of Psychology (Psy.D.)",
   "Postgraduate Diploma in Counseling/Psychology",
   "Postgraduate Diploma in Special Education",
-  "Other (Please specify)",
-];
-
-export const relationshipIssuesList = [
-  "maritalCounselling",
-  "familyTherapy",
-  "parentChildRelationship",
-  "couplesCounselling",
-  "divorceSeparation",
-  "conflictResolution",
-  "communicationIssues",
-  "trustIssues",
-  "intimacyIssues",
-  "preMaritalCounselling",
+  "Other (Please specify)"
 ];
 
 export const dailyLiftIssuesList = [
@@ -87,7 +74,50 @@ export const dailyLiftIssuesList = [
   "lifeTransitions",
   "griefAndLoss",
   "angerManagement",
-  "motivation",
+  "motivation"
+];
+
+export const therapyoptionlist = [
+  "Cognitive Behavioural Therapy (CBT)",
+  "Dialectical Behavioural Therapy (DBT)",
+  "Psychodynamic Therapy",
+  "Humanistic Therapy",
+  "Mindfulness-Based Therapy",
+  "Solution-Focused Brief Therapy (SFBT)",
+  "Acceptance and Commitment Therapy (ACT)",
+  "Eye Movement Desensitization and Reprocessing (EMDR)",
+  "Art Therapy",
+  "Play Therapy",
+  "Group Therapy",
+  "Family Therapy",
+  "Narrative Therapy",
+  "Interpersonal Therapy (IPT)"
+];
+
+export const diagnoseslist = [
+  "Generalized Anxiety Disorder (GAD)",
+  "Major Depressive Disorder (MDD)",
+  "Bipolar Disorder",
+  "Obsessive-Compulsive Disorder (OCD)",
+  "Post-Traumatic Stress Disorder (PTSD)",
+  "Attention Deficit Hyperactivity Disorder (ADHD)",
+  "Autism Spectrum Disorder (ASD)",
+  "Schizophrenia",
+  "Personality Disorders",
+  "Eating Disorders"
+];
+
+export const relationshipIssuesList = [
+  "Marital Counselling",
+  "Family Therapy",
+  "Parent-Child Relationship",
+  "Couples Counselling",
+  "Divorce and Separation",
+  "Conflict Resolution",
+  "Communication Issues",
+  "Trust Issues",
+  "Intimacy Issues",
+  "Pre-Marital Counselling"
 ];
 
 export const languageSpoken = ["English", "Hindi", "Marathi"];
