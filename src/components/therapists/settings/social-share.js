@@ -65,8 +65,8 @@ export default function SocialShare() {
           <div className="col-12">
             <div className="rbt-form-group">
               <h4>Expertise</h4>
-              <div className="expertise-container" id="expertise-container">
-                <div className="expertise-column" id="expertise-column">
+              <div className="expertise-container">
+                <div className="expertise-column">
                   <h5>Daily Life Issues</h5>
                   {dailyLiftIssuesList.map((issue) => (
                     <div key={issue}>
