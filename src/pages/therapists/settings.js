@@ -73,6 +73,7 @@ export default function ProfileSettings() {
                   style={style}
                 >
                   <span className="title">Fees</span>
+                  {/* fees section present in sees file  */}
                 </Link>
               </li>
               <li>
