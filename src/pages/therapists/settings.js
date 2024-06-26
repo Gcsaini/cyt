@@ -5,9 +5,10 @@ import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
 import React from "react";
 import { Link } from "react-router-dom";
-import Fees from "../../components/therapists/settings/Fees";
+import Fees from "../../components/therapists/settings/fees";
 import { fetchById } from "../../utils/actions";
 import { getTherapist } from "../../utils/url";
+import PaymentDetails from "../../components/therapists/settings/paymentDetails";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
@@ -49,7 +50,7 @@ export default function ProfileSettings() {
                   <span className="title">Profile</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   className={tab === 1 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 1 ? "true" : "false"}
@@ -58,7 +59,7 @@ export default function ProfileSettings() {
                 >
                   <span className="title">Password</span>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   className={tab === 2 ? "tab-button active" : "tab-button"}
@@ -118,6 +119,7 @@ export default function ProfileSettings() {
             {tab === 2 && <SocialShare />}
             {tab === 3 && <Availability />}
             {tab === 4 && <Fees />}
+            {tab === 5 && <PaymentDetails />}
           </div>
         </div>
       </div>

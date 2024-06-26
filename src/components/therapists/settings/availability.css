@@ -28,6 +28,6 @@
 
 @media (min-width: 1200px) {
   .table-container {
-    overflow-x: auto;
+    overflow-x: auto; 
   }
 }
