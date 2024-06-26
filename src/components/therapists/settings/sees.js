@@ -110,7 +110,7 @@ const Sees = () => {
             className="rbt-btn btn-gradient"
             href="/instructor/instructor-settings#"
           >
-            Save
+            Save & Next
           </a>
         </div>
       </div>
