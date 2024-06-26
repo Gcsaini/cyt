@@ -6,59 +6,52 @@ const Availability = () => {
   const [schedule, setSchedule] = useState([
     {
       day: "Monday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     },
     {
       day: "Tuesday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     },
     {
       day: "Wednesday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     },
     {
       day: "Thursday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     },
     {
       day: "Friday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     },
     {
       day: "Saturday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     },
     {
       day: "Sunday",
+      date: "",
       open: "",
       close: "",
-      overtime: false,
-      overtimeOpen: "",
-      overtimeClose: ""
+      overtime: []
     }
   ]);
 
@@ -67,81 +60,107 @@ const Availability = () => {
     newSchedule[index][field] = value;
     setSchedule(newSchedule);
   };
-  console.log(schedule);
 
-  const handleCheckboxChange = (index) => {
+  const handleOvertimeChange = (dayIndex, overtimeIndex, field, value) => {
     const newSchedule = [...schedule];
-    newSchedule[index].overtime = !newSchedule[index].overtime;
+    newSchedule[dayIndex].overtime[overtimeIndex][field] = value;
     setSchedule(newSchedule);
   };
 
-  const handleOvertimeClick = (index) => {
+  const handleAddOvertime = (index) => {
     const newSchedule = [...schedule];
-    newSchedule[index].overtime = true;
-    setSchedule(newSchedule);
+    if (newSchedule[index].overtime.length < 5) {
+      newSchedule[index].overtime.push({ open: "", close: "" });
+      setSchedule(newSchedule);
+    }
   };
 
   return (
     <div>
       <h4>Availability Schedule</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Open Time</th>
-            <th>Close Time</th>
-            <th>Overtime</th>
-          </tr>
-        </thead>
-        <tbody>
-          {schedule.map((daySchedule, index) => (
-            <tr key={daySchedule.day}>
-              <td>{daySchedule.day}</td>
-              <td>
-                <input
-                  type="time"
-                  value={daySchedule.open}
-                  onChange={(e) => handleChange(index, "open", e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="time"
-                  value={daySchedule.close}
-                  onChange={(e) => handleChange(index, "close", e.target.value)}
-                />
-              </td>
-              <td>
-                {daySchedule.overtime ? (
-                  <>
-                    <input
-                      type="time"
-                      value={daySchedule.overtimeOpen}
-                      onChange={(e) =>
-                        handleChange(index, "overtimeOpen", e.target.value)
-                      }
-                      placeholder="Open"
-                    />
-                    <input
-                      type="time"
-                      value={daySchedule.overtimeClose}
-                      onChange={(e) =>
-                        handleChange(index, "overtimeClose", e.target.value)
-                      }
-                      placeholder="Close"
-                    />
-                  </>
-                ) : (
-                  <FaPlus
-                    onClick={() => handleOvertimeClick(index)}
-                    style={{ cursor: "pointer" }}
-                  />
-                )}
-              </td>
+      <div className="table-container">
+        <table className="availability-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Date</th>
+              <th>Open Time</th>
+              <th>Close Time</th>
+              <th>Overtime</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {schedule.map((daySchedule, index) => (
+              <tr key={daySchedule.day}>
+                <td>{daySchedule.day}</td>
+                <td>
+                  <input
+                    type="date"
+                    value={daySchedule.date}
+                    onChange={(e) =>
+                      handleChange(index, "date", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <input
+                    type="time"
+                    value={daySchedule.open}
+                    onChange={(e) =>
+                      handleChange(index, "open", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <input
+                    type="time"
+                    value={daySchedule.close}
+                    onChange={(e) =>
+                      handleChange(index, "close", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  {daySchedule.overtime.map((overtime, overtimeIndex) => (
+                    <div key={overtimeIndex} className="overtime-row">
+                      <input
+                        type="time"
+                        value={overtime.open}
+                        onChange={(e) =>
+                          handleOvertimeChange(
+                            index,
+                            overtimeIndex,
+                            "open",
+                            e.target.value
+                          )
+                        }
+                      />
+                      <input
+                        type="time"
+                        value={overtime.close}
+                        onChange={(e) =>
+                          handleOvertimeChange(
+                            index,
+                            overtimeIndex,
+                            "close",
+                            e.target.value
+                          )
+                        }
+                      />
+                    </div>
+                  ))}
+                  {daySchedule.overtime.length < 5 && (
+                    <FaPlus
+                      onClick={() => handleAddOvertime(index)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

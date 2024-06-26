@@ -1,31 +1,33 @@
-/* Availability.css */
-table {
+.availability-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th,
-td {
-  padding: 8px;
-  text-align: left;
+.availability-table th,
+.availability-table td {
   border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
 }
 
-@media (max-width: 500px) {
-  th,
-  td {
-    display: block;
-    width: 100%;
-  }
+.availability-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
 
-  tr {
-    display: block;
-    margin-bottom: 10px;
-  }
+.overtime-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
 
-  th,
-  td {
-    padding: 10px;
-    text-align: center;
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (min-width: 1200px) {
+  .table-container {
+    overflow-x: auto;
   }
 }
