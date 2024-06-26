@@ -3,14 +3,14 @@ import Password from "../../components/therapists/settings/password";
 import SocialShare from "../../components/therapists/settings/social-share";
 import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
-import Sees from "../../components/therapists/settings/sees";
 import React from "react";
 import { Link } from "react-router-dom";
+import Fees from "../../components/therapists/settings/Fees";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
   const style = {
-    cursor: "pointer"
+    cursor: "pointer",
   };
   return (
     <MainLayout>
@@ -92,7 +92,7 @@ export default function ProfileSettings() {
             {tab === 1 && <Password />}
             {tab === 2 && <SocialShare />}
             {tab === 3 && <Availability />}
-            {tab === 4 && <Sees />}
+            {tab === 4 && <Fees />}
           </div>
         </div>
       </div>
