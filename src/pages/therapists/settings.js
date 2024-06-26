@@ -72,7 +72,7 @@ export default function ProfileSettings() {
                   onClick={() => setTab(4)}
                   style={style}
                 >
-                  <span className="title">Sees</span>
+                  <span className="title">Fees</span>
                 </Link>
               </li>
               <li>
