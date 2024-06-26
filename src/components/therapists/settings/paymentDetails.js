@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PaymentDetails = () => {
+export default function PaymentDetails() {
   const [details, setDetails] = useState({
     accountName: "",
     accountNumber: "",
@@ -107,6 +107,4 @@ const PaymentDetails = () => {
       </form>
     </div>
   );
-};
-
-export default PaymentDetails;
+}
