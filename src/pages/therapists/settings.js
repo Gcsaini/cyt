@@ -6,12 +6,27 @@ import Availability from "../../components/therapists/settings/availability";
 import React from "react";
 import { Link } from "react-router-dom";
 import Fees from "../../components/therapists/settings/Fees";
+import { fetchById } from "../../utils/actions";
+import { getTherapist } from "../../utils/url";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
+  const [pageData, setPageData] = React.useState();
   const style = {
     cursor: "pointer",
   };
+
+  const getData = async () => {
+    const res = await fetchById(`${getTherapist}/66745e8460951ac197255942`);
+    console.log("res", res);
+    if (res && res.status) {
+      setPageData(res.data);
+    }
+  };
+  React.useEffect(() => {
+    getData();
+  }, []);
+  console.log("p", pageData);
   return (
     <MainLayout>
       <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
@@ -23,7 +38,6 @@ export default function ProfileSettings() {
             <ul
               className="nav nav-tabs tab-button-style-2 justify-content-start"
               id="settinsTab-4"
-              role="tablist"
             >
               <li>
                 <Link
@@ -99,7 +113,7 @@ export default function ProfileSettings() {
             </ul>
           </div>
           <div className="tab-content">
-            {tab === 0 && <Profile />}
+            {tab === 0 && pageData && <Profile data={pageData} />}
             {tab === 1 && <Password />}
             {tab === 2 && <SocialShare />}
             {tab === 3 && <Availability />}

@@ -78,7 +78,7 @@ export default function MainLayout(props) {
                           </div>
                           <nav className="mainmenu-nav">
                             <ul className="dashboard-mainmenu rbt-default-sidebar-list nav-tabs">
-                              <li className="nav-item" role="presentation">
+                              <li className="nav-item">
                                 <Link
                                   to={"/therapist-dashboard"}
                                   className={
@@ -91,7 +91,7 @@ export default function MainLayout(props) {
                                   <span>Dashboard</span>
                                 </Link>
                               </li>
-                              <li className="nav-item" role="presentation">
+                              <li className="nav-item">
                                 <Link
                                   className=""
                                   to="/instructor/instructor-profile"
@@ -100,7 +100,7 @@ export default function MainLayout(props) {
                                   <span>My Profile</span>
                                 </Link>
                               </li>
-                              <li className="nav-item" role="presentation">
+                              <li className="nav-item">
                                 <Link
                                   className=""
                                   to="/instructor/instructor-enrolled-course"
@@ -110,7 +110,7 @@ export default function MainLayout(props) {
                                 </Link>
                               </li>
 
-                              <li className="nav-item" role="presentation">
+                              <li className="nav-item">
                                 <Link
                                   className=""
                                   to="/instructor/instructor-reviews"

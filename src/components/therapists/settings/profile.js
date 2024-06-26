@@ -10,11 +10,11 @@ import React, { useState, useRef } from "react";
 import { defaultProfile, updateProfile } from "../../../utils/url";
 import axios from "axios";
 import { errorColor, successColor } from "../../../utils/colors";
-export default function Profile() {
+export default function Profile(props) {
   const fileInputRef = useRef(null);
   const [education, setEducation] = useState();
   const [license, setLicense] = useState();
-  const [name, setName] = useState();
+  const [name, setName] = useState(props.data && props.data.name);
   const [phone, setPhone] = useState();
   const [bio, setBio] = useState();
   const [state, setState] = useState();
@@ -217,7 +217,7 @@ export default function Profile() {
               id="phonenumber"
               type="tel"
               value={phone}
-              setPhone={(e) => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
         </div>
