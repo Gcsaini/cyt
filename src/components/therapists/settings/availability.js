@@ -78,7 +78,6 @@ const Availability = () => {
   return (
     <>
       <div>
-        <h4>Availability Schedule</h4>
         <div className="table-container">
           <table className="availability-table">
             <thead>
