@@ -72,7 +72,8 @@ export default function ProfileSettings() {
                   onClick={() => setTab(4)}
                   style={style}
                 >
-                  <span className="title">Sees</span>
+                  <span className="title">Fees</span>
+                  {/* fees section present in sees file  */}
                 </Link>
               </li>
               <li>
@@ -80,6 +81,16 @@ export default function ProfileSettings() {
                   className={tab === 5 ? "tab-button active" : "tab-button"}
                   aria-selected={tab === 5 ? "true" : "false"}
                   onClick={() => setTab(5)}
+                  style={style}
+                >
+                  <span className="title">Payment Details</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={tab === 6 ? "tab-button active" : "tab-button"}
+                  aria-selected={tab === 6 ? "true" : "false"}
+                  onClick={() => setTab(6)}
                   style={style}
                 >
                   <span className="title">More</span>

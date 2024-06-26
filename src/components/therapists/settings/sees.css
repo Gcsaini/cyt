@@ -1,0 +1,49 @@
+.sees-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.sees-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sees-table th,
+.sees-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.sees-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.sees-table input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.info-icon {
+  color: #555;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.icon {
+  margin-left: 5px;
+}
+
+@media (max-width: 1200px) {
+  .sees-table th,
+  .sees-table td {
+    white-space: nowrap;
+  }
+}
