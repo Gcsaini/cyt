@@ -45,18 +45,20 @@ export default function SocialShare() {
           <div className="col-12">
             <div className="rbt-form-group">
               <h4>Services</h4>
-              {services.map((service) => (
-                <div key={service}>
-                  <input
-                    type="checkbox"
-                    id={service}
-                    name={service}
-                    checked={selectedServices.includes(service)}
-                    onChange={() => handleServiceChange(service)}
-                  />
-                  <label htmlFor={service}>{service}</label>
-                </div>
-              ))}
+              <div className="row">
+                {services.map((service) => (
+                  <div key={service} className="col-md-4">
+                    <input
+                      type="checkbox"
+                      id={service}
+                      name={service}
+                      checked={selectedServices.includes(service)}
+                      onChange={() => handleServiceChange(service)}
+                    />
+                    <label htmlFor={service}>{service}</label>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
