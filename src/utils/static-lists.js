@@ -120,6 +120,14 @@ export const relationshipIssuesList = [
   "Pre-Marital Counselling"
 ];
 
-export const languageSpoken = ["English", "Hindi", "Marathi"];
+export const languageSpoken = [
+  "English",
+  "Spanish",
+  "French",
+  "German",
+  "Mandarin",
+  "Hindi",
+  "Arabic"
+];
 
 export const sessionFormatsList = ["In-Person", "Audio call", "Video Call"];
