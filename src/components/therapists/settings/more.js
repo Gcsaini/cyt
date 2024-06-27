@@ -12,16 +12,17 @@ export default function More() {
       setSelectedLanguages([...selectedLanguages, value]);
     }
   };
+  // console.log(selectedLanguages);
 
   return (
     <div className="container mt-3">
       <h4>Select Languages</h4>
       <select
-        className="form-select custom-select"
+        className="form-select"
         multiple
         value={selectedLanguages}
         onChange={handleLanguageChange}
-        size="5" // Adjust the size attribute to increase the height
+        style={{ height: "150px", overflowY: "auto", fontSize: "15px" }} // Inline styles for height and scrolling
       >
         {languageSpoken.map((language) => (
           <option key={language} value={language}>
@@ -32,9 +33,11 @@ export default function More() {
       <div className="mt-3">
         <h5>Selected Languages:</h5>
         {selectedLanguages.length > 0 ? (
-          <ul>
+          <ul className="list-group">
             {selectedLanguages.map((language) => (
-              <li key={language}>{language}</li>
+              <li key={language} className="list-group-item">
+                {language}
+              </li>
             ))}
           </ul>
         ) : (
