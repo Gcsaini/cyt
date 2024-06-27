@@ -3,6 +3,7 @@ import SocialShare from "../../components/therapists/settings/social-share";
 import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
 import PaymentDetails from "../../components/therapists/settings/paymentDetails";
+// import More from "../../components/therapists/settings/more";
 import React from "react";
 import { Link } from "react-router-dom";
 import { fetchById } from "../../utils/actions";
@@ -13,7 +14,7 @@ export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
   const [pageData, setPageData] = React.useState();
   const style = {
-    cursor: "pointer",
+    cursor: "pointer"
   };
 
   const getData = async () => {
@@ -107,6 +108,7 @@ export default function ProfileSettings() {
             {tab === 3 && <Availability />}
             {tab === 4 && <TherapistFees />}
             {tab === 5 && <PaymentDetails />}
+            {/* {tab === 6 && <More />} */}
           </div>
         </div>
       </div>
