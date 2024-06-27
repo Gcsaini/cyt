@@ -1,14 +1,13 @@
 import MainLayout from "../../components/therapists/main-layout";
-import Password from "../../components/therapists/settings/password";
 import SocialShare from "../../components/therapists/settings/social-share";
 import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
+import PaymentDetails from "../../components/therapists/settings/paymentDetails";
 import React from "react";
 import { Link } from "react-router-dom";
-import Fees from "../../components/therapists/settings/fees";
 import { fetchById } from "../../utils/actions";
 import { getTherapist } from "../../utils/url";
-import PaymentDetails from "../../components/therapists/settings/paymentDetails";
+import TherapistFees from "../../components/therapists/settings/therapist-fees";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
@@ -50,16 +49,6 @@ export default function ProfileSettings() {
                   <span className="title">Profile</span>
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  className={tab === 1 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 1 ? "true" : "false"}
-                  onClick={() => setTab(1)}
-                  style={style}
-                >
-                  <span className="title">Password</span>
-                </Link>
-              </li> */}
               <li>
                 <Link
                   className={tab === 2 ? "tab-button active" : "tab-button"}
@@ -88,7 +77,6 @@ export default function ProfileSettings() {
                   style={style}
                 >
                   <span className="title">Fees</span>
-                  {/* fees section present in sees file  */}
                 </Link>
               </li>
               <li>
@@ -115,10 +103,9 @@ export default function ProfileSettings() {
           </div>
           <div className="tab-content">
             {tab === 0 && pageData && <Profile data={pageData} />}
-            {tab === 1 && <Password />}
             {tab === 2 && <SocialShare />}
             {tab === 3 && <Availability />}
-            {tab === 4 && <Fees />}
+            {tab === 4 && <TherapistFees />}
             {tab === 5 && <PaymentDetails />}
           </div>
         </div>

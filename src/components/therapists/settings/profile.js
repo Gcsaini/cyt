@@ -369,7 +369,7 @@ export default function Profile(props) {
         <div className="col-12 mt--20">
           <div className="rbt-form-group">
             <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
-              Update Info
+              {loading ? "Please wait..." : "Update Info"}
             </button>
           </div>
         </div>

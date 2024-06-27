@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { FaInfoCircle, FaMicrophone, FaVideo, FaUser } from "react-icons/fa";
 import "./fees.css";
 
-const Sees = () => {
+export default function TherapistFees() {
   const counsellingTypes = [
     "Individual Counselling",
     "Couple Counselling",
-    "Teen Counselling"
+    "Teen Counselling",
   ];
 
   const [prices, setPrices] = useState(
@@ -22,12 +22,12 @@ const Sees = () => {
         ...prevPrices,
         [type]: {
           ...prevPrices[type],
-          [field]: value
-        }
+          [field]: value,
+        },
       }));
     }
   };
-  // console.log(prices); 
+  // console.log(prices);
 
   return (
     <>
@@ -107,6 +107,4 @@ const Sees = () => {
       </div>
     </>
   );
-};
-
-export default Sees;
+}
