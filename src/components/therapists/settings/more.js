@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function more() {
+export default function More() {
   return (
     <>
         djhskdj
