@@ -20,7 +20,6 @@ export default function More() {
 
   return (
     <div className="container mt-3">
-      <h4>Select Languages</h4>
       <div className="dropdown">
         <button
           className="btn btn-secondary dropdown-toggle"
