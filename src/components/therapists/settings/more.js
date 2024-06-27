@@ -32,7 +32,12 @@ export default function More() {
         </button>
         <ul
           className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}
-          style={{ maxHeight: "150px", overflowY: "auto", fontSize: "15px" }}
+          style={{
+            maxHeight: "150px",
+            width: "200px",
+            overflowY: "auto",
+            fontSize: "15px"
+          }}
         >
           {languageSpoken.map((language) => (
             <li key={language}>
@@ -51,7 +56,7 @@ export default function More() {
         </ul>
       </div>
       <div className="mt-3">
-        <h5>Selected Languages:</h5>
+        {/* <h5>Selected Languages:</h5> */}
         {selectedLanguages.length > 0 ? (
           <ul className="list-group">
             {selectedLanguages.map((language) => (
