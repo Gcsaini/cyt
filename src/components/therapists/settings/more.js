@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { languageSpoken } from "../../../utils/static-lists";
+import "./more.css";
 
 export default function More() {
   const [selectedLanguages, setSelectedLanguages] = useState([]);
@@ -20,42 +21,37 @@ export default function More() {
 
   return (
     <>
-      <div className="container mt-3">
-        <div className="dropdown">
-          <button
-            className="btn btn-secondary dropdown-toggle"
-            type="button"
-            onClick={toggleDropdown}
-          >
-            {selectedLanguages.length > 0
-              ? selectedLanguages.join(", ")
-              : "Select languages"}
-          </button>
-          <ul
-            className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}
-            style={{
-              width: "200px",
-              overflowY: "auto",
-              fontSize: "15px"
-            }}
-          >
-            {languageSpoken.map((language) => (
-              <li key={language}>
-                <input
-                  type="checkbox"
-                  id={language}
-                  value={language}
-                  onChange={handleLanguageChange}
-                  checked={selectedLanguages.includes(language)}
-                />
-                <label htmlFor={language} className="ml-2">
-                  {language}
-                </label>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+          <div className="container mt-3">
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                onClick={toggleDropdown}
+              >
+                {selectedLanguages.length > 0
+                  ? selectedLanguages.join(", ")
+                  : "Select languages"}
+              </button>
+              <div>
+                <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+                  {languageSpoken.map((language) => (
+                    <li key={language}>
+                      <input
+                        type="checkbox"
+                        id={language}
+                        value={language}
+                        onChange={handleLanguageChange}
+                        checked={selectedLanguages.includes(language)}
+                      />
+                      <label htmlFor={language} className="ml-2">
+                        {language}
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
     </>
   );
 }

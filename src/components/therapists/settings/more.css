@@ -1,0 +1,12 @@
+.container .dropdown button {
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 15px;
+  width: 250px;
+}
+
+.container .dropdown .dropdown-menu{
+    height: 400px;
+    width: 250px;
+    overflow-y: auto;
+}
