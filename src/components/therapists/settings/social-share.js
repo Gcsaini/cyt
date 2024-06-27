@@ -139,7 +139,7 @@ export default function SocialShare() {
                 className="rbt-btn btn-gradient"
                 href="/instructor/instructor-settings#"
               >
-                Update Profile
+                Save & Next
               </a>
             </div>
           </div>
