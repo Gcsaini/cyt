@@ -28,13 +28,13 @@
 
 input[type="date"],
 input[type="time"] {
-  min-width: 120px;
+  min-width: 150px;
 }
 
 @media (max-width: 767px) {
   input[type="date"],
   input[type="time"] {
-    width: 100%;
+    width: 150px;
     box-sizing: border-box;
   }
 
