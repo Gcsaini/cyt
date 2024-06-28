@@ -9,8 +9,8 @@ export default function TotalCounts() {
           <h4 className="rbt-title-style-3">
             Performance{" "}
             <FaInfoCircle title="Short information about performance" />
+            <h6>Last 28 days</h6>
           </h4>
-          <h6>Last 28 days</h6>
         </div>
         <div className="row g-5">
           <div className="performance-conatiner">
