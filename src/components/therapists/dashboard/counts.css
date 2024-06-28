@@ -1,5 +1,6 @@
 .rbt-dashboard-content .content .row {
-  flex-wrap: wrap;
+  display: -moz-grid;
+  /* flex-wrap: wrap; */
 }
 
 .rbt-dashboard-content .content .row .performance-conatiner {
