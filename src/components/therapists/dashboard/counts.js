@@ -24,7 +24,7 @@ export default function TotalCounts() {
           <div className="performance-conatiner">
             <h6>3-second video vie...</h6>
             <div className="performance-two-part">
-              <h4>428</h4>
+              <h4>32</h4>
               <span>-87%</span>
             </div>
             <p>from previous 28 days</p>
