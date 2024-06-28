@@ -29,14 +29,20 @@
   color: red;
 }
 
-
-
 @media (max-width: 400px) {
   .rbt-dashboard-content .content .row .performance-conatiner {
-  border: 1px solid grey;
-  box-shadow: 0 0 10px;
-  border-radius: 10px;
-  padding: 10px;
-  width: 140px;
-}
+    border: 1px solid grey;
+    box-shadow: 0 0 10px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 140px;
+  }
+  .rbt-dashboard-content
+    .content
+    .row
+    .performance-conatiner
+    .performance-two-part
+    h4 {
+    font-size: 30px;
+  }
 }
