@@ -92,8 +92,8 @@ const Availability = () => {
             <tbody>
               {schedule.map((daySchedule, index) => (
                 <tr key={daySchedule.day}>
-                  <td>{daySchedule.day}</td>
-                  <td>
+                  <td data-label="Day">{daySchedule.day}</td>
+                  <td data-label="Date">
                     <input
                       type="date"
                       value={daySchedule.date}
@@ -102,7 +102,7 @@ const Availability = () => {
                       }
                     />
                   </td>
-                  <td>
+                  <td data-label="Open Time">
                     <input
                       type="time"
                       value={daySchedule.open}
@@ -111,7 +111,7 @@ const Availability = () => {
                       }
                     />
                   </td>
-                  <td>
+                  <td data-label="Close Time">
                     <input
                       type="time"
                       value={daySchedule.close}
@@ -120,7 +120,7 @@ const Availability = () => {
                       }
                     />
                   </td>
-                  <td>
+                  <td data-label="Overtime">
                     {daySchedule.overtime.map((overtime, overtimeIndex) => (
                       <div key={overtimeIndex} className="overtime-row">
                         <input

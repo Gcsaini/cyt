@@ -55,3 +55,42 @@ input[type="time"] {
     margin-bottom: 4px; /* Add margin for better spacing */
   }
 }
+
+@media (max-width: 576px) {
+  .availability-table th,
+  .availability-table td {
+    font-size: 12px; /* Further adjust font size for extra small screens */
+    padding: 2px;
+  }
+
+  .availability-table th {
+    display: none; /* Hide table headers on extra small screens */
+  }
+
+  .availability-table tr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  .availability-table td {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .availability-table td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    width: 40%;
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    width: 60%;
+  }
+}
