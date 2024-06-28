@@ -3,7 +3,7 @@ import { FaInfoCircle } from "react-icons/fa";
 
 export default function TotalCounts() {
   return (
-    <div className="rbt-dashboard-content bg-color-grey rbt-shadow-box mb--60">
+    <div className="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">
       <div className="content">
         <div className="section-title">
           <h4 className="rbt-title-style-3">
@@ -16,32 +16,32 @@ export default function TotalCounts() {
           <div className="performance-conatiner">
             <h6>Reach</h6>
             <div className="performance-two-part">
-              <h5>428</h5>
+              <h4>428</h4>
               <span>-36%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
           <div className="performance-conatiner">
-            <h6>Reach</h6>
+            <h6>3-second video vie...</h6>
             <div className="performance-two-part">
-              <h5>428</h5>
-              <span>-36%</span>
+              <h4>428</h4>
+              <span>-87%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
           <div className="performance-conatiner">
-            <h6>Reach</h6>
+            <h6>Stars</h6>
             <div className="performance-two-part">
-              <h5>428</h5>
-              <span>-36%</span>
+              <h4>$0.00</h4>
+              <span>+0%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
           <div className="performance-conatiner">
-            <h6>Reach</h6>
+            <h6>Net followers</h6>
             <div className="performance-two-part">
-              <h5>428</h5>
-              <span>-36%</span>
+              <h4>0</h4>
+              <span>+0%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
