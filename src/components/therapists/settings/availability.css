@@ -28,12 +28,30 @@
 
 input[type="date"],
 input[type="time"] {
-  width: 150px;
+  width: 100%; /* Adjusted width to be responsive */
 }
 
 @media (max-width: 1200px) {
   input[type="date"],
   input[type="time"] {
-    width: 150px;
+    width: 100%; /* Ensuring full width on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .availability-table th,
+  .availability-table td {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 4px;
+  }
+
+  .overtime-row {
+    flex-direction: column; /* Stack inputs vertically on smaller screens */
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    width: 100%; /* Ensuring full width on small screens */
+    margin-bottom: 4px; /* Add margin for better spacing */
   }
 }
