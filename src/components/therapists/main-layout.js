@@ -96,8 +96,8 @@ export default function MainLayout(props) {
                                   className=""
                                   to="/instructor/instructor-profile"
                                 >
-                                  <i className="feather-user"></i>
-                                  <span>My Profile</span>
+                                  <i className="fa-regular fa-calendar-check"></i>
+                                  <span>Appointment</span>
                                 </Link>
                               </li>
                               <li className="nav-item">
@@ -105,8 +105,8 @@ export default function MainLayout(props) {
                                   className=""
                                   to="/instructor/instructor-enrolled-course"
                                 >
-                                  <i className="feather-book-open"></i>
-                                  <span>Save Payment Method</span>
+                                  <i className="fa-solid fa-file-invoice"></i>
+                                  <span>Invoices</span>
                                 </Link>
                               </li>
 
@@ -116,7 +116,7 @@ export default function MainLayout(props) {
                                   to="/instructor/instructor-reviews"
                                 >
                                   <i className="feather-star"></i>
-                                  <span>My Reviews</span>
+                                  <span>Reviews</span>
                                 </Link>
                               </li>
                             </ul>
@@ -132,7 +132,7 @@ export default function MainLayout(props) {
                                   to="/instructor/instructor-personal-courses"
                                 >
                                   <i className="feather-monitor"></i>
-                                  <span>Wellness Workshops</span>
+                                  <span>Case history</span>
                                 </Link>
                               </li>
                               <li>
@@ -141,7 +141,16 @@ export default function MainLayout(props) {
                                   to="/instructor/instructor-announcements"
                                 >
                                   <i className="feather-volume-2"></i>
-                                  <span>Write Blog</span>
+                                  <span>Workshop/Event</span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className=""
+                                  to="/instructor/instructor-announcements"
+                                >
+                                  <i className="fa-solid fa-blog"></i>
+                                  <span>Blog</span>
                                 </Link>
                               </li>
                             </ul>
@@ -154,6 +163,17 @@ export default function MainLayout(props) {
                               <li>
                                 <Link
                                   className={
+                                    currentPath === "/settings" ? "active" : ""
+                                  }
+                                  to="/settings"
+                                >
+                                  <i className="feather-settings"></i>
+                                  <span>Edit Profile</span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className={
                                     currentPath === "/change-password"
                                       ? "active"
                                       : ""
@@ -162,17 +182,6 @@ export default function MainLayout(props) {
                                 >
                                   <i className="feather-settings"></i>
                                   <span>Change Password</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className={
-                                    currentPath === "/settings" ? "active" : ""
-                                  }
-                                  to="/settings"
-                                >
-                                  <i className="feather-settings"></i>
-                                  <span>Edit Profile</span>
                                 </Link>
                               </li>
                               <li>
