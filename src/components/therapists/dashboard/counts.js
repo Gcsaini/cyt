@@ -1,12 +1,47 @@
+import "./counts.css";
+
 export default function TotalCounts() {
   return (
     <div className="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">
       <div className="content">
         <div className="section-title">
-          <h4 className="rbt-title-style-3">Dashboard</h4>
+          <h4 className="rbt-title-style-3">Performance </h4>
+          <h6>Last 28 days</h6>
         </div>
         <div className="row g-5">
-          <div className="col-lg-4 col-md-4 col-sm-6 col-12">
+          <div className="performance-conatiner">
+            <h6>Reach</h6>
+            <div className="performance-two-part">
+              <h5>428</h5>
+              <span>-36%</span>
+            </div>
+            <p>from previous 28 days</p>
+          </div>
+          <div className="performance-conatiner">
+            <h6>Reach</h6>
+            <div className="performance-two-part">
+              <h5>428</h5>
+              <span>-36%</span>
+            </div>
+            <p>from previous 28 days</p>
+          </div>
+          <div className="performance-conatiner">
+            <h6>Reach</h6>
+            <div className="performance-two-part">
+              <h5>428</h5>
+              <span>-36%</span>
+            </div>
+            <p>from previous 28 days</p>
+          </div>
+          <div className="performance-conatiner">
+            <h6>Reach</h6>
+            <div className="performance-two-part">
+              <h5>428</h5>
+              <span>-36%</span>
+            </div>
+            <p>from previous 28 days</p>
+          </div>
+          {/* <div className="col-lg-4 col-md-4 col-sm-6 col-12">
             <div className="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
               <div className="inner">
                 <div className="rbt-round-icon bg-primary-opacity">
@@ -205,7 +240,7 @@ export default function TotalCounts() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
