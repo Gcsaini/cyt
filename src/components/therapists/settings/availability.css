@@ -34,6 +34,6 @@ input[type="time"] {
 @media (max-width: 1200px) {
   input[type="date"],
   input[type="time"] {
-    width: 100%;
+    width: 150px;
   }
 }
