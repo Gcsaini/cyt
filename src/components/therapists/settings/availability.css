@@ -31,66 +31,50 @@ input[type="time"] {
   width: 100%; /* Adjusted width to be responsive */
 }
 
-@media (max-width: 1200px) {
-  input[type="date"],
-  input[type="time"] {
-    width: 100%; /* Ensuring full width on medium screens */
-  }
-}
-
 @media (max-width: 768px) {
-  .availability-table th,
-  .availability-table td {
-    font-size: 14px; /* Adjust font size for smaller screens */
-    padding: 4px;
-  }
-
-  .overtime-row {
-    flex-direction: column; /* Stack inputs vertically on smaller screens */
-  }
-
-  input[type="date"],
-  input[type="time"] {
-    width: 100%; /* Ensuring full width on small screens */
-    margin-bottom: 4px; /* Add margin for better spacing */
-  }
-}
-
-@media (max-width: 576px) {
-  .availability-table th,
-  .availability-table td {
-    font-size: 12px; /* Further adjust font size for extra small screens */
-    padding: 2px;
+  .availability-table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .availability-table th {
-    display: none; /* Hide table headers on extra small screens */
+    display: none; /* Hide headers on small screens */
   }
 
   .availability-table tr {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
     padding: 10px;
   }
 
   .availability-table td {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 10px;
   }
 
   .availability-table td:before {
     content: attr(data-label);
     font-weight: bold;
-    width: 40%;
+    margin-bottom: 5px;
   }
 
   input[type="date"],
   input[type="time"] {
-    width: 60%;
+    width: 100%; /* Ensuring full width on small screens */
+  }
+
+  .overtime-row {
+    flex-direction: column; /* Stack inputs vertically on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .availability-table td {
+    font-size: 14px; /* Adjust font size for extra small screens */
   }
 }
