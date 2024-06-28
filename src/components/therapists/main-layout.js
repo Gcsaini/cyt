@@ -123,6 +123,7 @@ export default function MainLayout(props) {
                           </nav>
                           <div className="section-title mt--40 mb--20">
                             <h6 className="rbt-title-style-2">Additional</h6>
+                            
                           </div>
                           <nav className="mainmenu-nav">
                             <ul className="dashboard-mainmenu rbt-default-sidebar-list">
@@ -131,7 +132,7 @@ export default function MainLayout(props) {
                                   className=""
                                   to="/instructor/instructor-personal-courses"
                                 >
-                                  <i className="feather-monitor"></i>
+                                  <i className="fa-solid fa-file-medical"></i>
                                   <span>Case history</span>
                                 </Link>
                               </li>
@@ -140,7 +141,7 @@ export default function MainLayout(props) {
                                   className=""
                                   to="/instructor/instructor-announcements"
                                 >
-                                  <i className="feather-volume-2"></i>
+                                  <i className="fa-solid fa-place-of-worship"></i>
                                   <span>Workshop/Event</span>
                                 </Link>
                               </li>
