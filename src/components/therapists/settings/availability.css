@@ -31,11 +31,11 @@ input[type="time"] {
   min-width: 150px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
   input[type="date"],
   input[type="time"] {
-    width: 170px;
-    box-sizing: border-box;
+    width: 100%;
+    /* box-sizing: border-box; */
   }
 
   .overtime-row {
