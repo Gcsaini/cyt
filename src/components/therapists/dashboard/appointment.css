@@ -151,5 +151,15 @@
 @media (max-width: 500px) {
   .table-responsive {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .patient-info-profile {
+    display: block;
+    white-space: nowrap;
+  }
+  .table-avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15%;
   }
 }
