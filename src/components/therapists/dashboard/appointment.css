@@ -58,8 +58,8 @@
 .table-avatar img {
   width: 45px;
   height: 45px;
-  border-radius: 15%;
-  /* object-fit: cover; */
+  border-radius: 10px;
+  position: relative;
 }
 
 .patient-info-profile {
@@ -155,12 +155,6 @@
   outline: none;
 }
 
-/* Hover Effect for Table Rows */
-.table tbody tr:hover {
-  background-color: #f0f0f0;
-}
-
-/* Media Query for Horizontal Scrolling on Small Screens */
 @media (max-width: 500px) {
   .table-responsive {
     overflow-x: auto;
@@ -168,11 +162,10 @@
   }
   .patient-info-profile {
     display: block;
-    white-space: nowrap;
   }
   .table-avatar img {
     width: 30px;
     height: 30px;
-    border-radius: 15%;
+    border-radius: 10px;
   }
 }
