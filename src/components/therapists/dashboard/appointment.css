@@ -1,0 +1,143 @@
+.dashboard-card {
+  width: 100%;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 7.5px 17.5px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.dashboard-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title h5 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.header-dropdown .dropdown-toggle {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.header-dropdown .dropdown-menu {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-dropdown .dropdown-item {
+  color: #6b7280;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dashboard-card-body {
+  padding: 20px 0;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #6b7280;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.patient-info-profile {
+  display: flex;
+  align-items: center;
+}
+
+.patient-name-info {
+  margin-left: 10px;
+  color: #92d6ff;
+  font-size: 15px;
+}
+
+.patient-name-info h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.appointment-date-created h6 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.badge.table-badge {
+  background-color: var(--bs-primary);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #a4d2c5;
+  font-size: 13px;
+}
+
+.apponiment-actions a {
+  font-size: 18px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.text-success-icon {
+  color: var(--bs-success);
+  border: 1px solid var(--bs-success);
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.text-danger-icon {
+  color: var(--bs-danger);
+  border: 1px solid var(--bs-danger);
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.dropdown-menu-end {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item:focus {
+  outline: none;
+}
