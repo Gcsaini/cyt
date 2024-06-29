@@ -1,5 +1,7 @@
 import React from "react";
 import "./appointment.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 export default function Apointment() {
   return (
