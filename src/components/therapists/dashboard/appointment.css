@@ -141,3 +141,10 @@
 .dropdown-item:focus {
   outline: none;
 }
+
+@media (max-width: 576px) {
+  .table-avatar img {
+    width: 40px;
+    height: 40px;
+  }
+}
