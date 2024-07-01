@@ -70,7 +70,6 @@
 
 .patient-name-info-invoices {
   margin-left: 12px;
-  /* justify-content: space-between; */
 }
 
 .patient-name-info-invoices h5 {
@@ -124,14 +123,6 @@
     scrollbar-width: none; 
     white-space: nowrap;
   }
-  /* .invoice-list-invoices .invoice-item-invoices {
-    flex: 0 0 auto; 
-    min-width: 200px; 
-    padding: 16px; 
-    border-top: 1px solid var(--bs-gray-200);
-    display: inline-block; 
-    vertical-align: top; 
-  } */
   .appointment-date-created-invoices {
     margin-top: 20px;
     margin-bottom: 10px;
