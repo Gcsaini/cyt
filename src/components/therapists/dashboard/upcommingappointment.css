@@ -109,4 +109,11 @@
   .date-details {
     margin-right: 20px;
   }
+  .appointment-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-appointments .btn {
+    margin-top: 10px;
+  }
 }
