@@ -84,9 +84,9 @@ export default function Appointment() {
                 </a>
                 <div className="patient-name-info">
                   <span>#{appointment.id}</span>
-                  <h5>
+                  <p>
                     <a href="appointments.html">{appointment.name}</a>
-                  </h5>
+                  </p>
                 </div>
               </div>
               <div className="appointment-date-created">

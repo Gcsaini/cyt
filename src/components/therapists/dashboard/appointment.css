@@ -32,6 +32,10 @@
   align-items: center;
 }
 
+.dashboard-card .dashboard-card-body .appointment-list .appointment-item {
+  color: #327edf;
+}
+
 .table-avatar img {
   border-radius: 50%;
   width: 40px;
@@ -46,6 +50,7 @@
 
 .patient-name-info h5 {
   margin: 0;
+  font-size: 15px;
 }
 
 .appointment-date-created {
@@ -54,6 +59,7 @@
 
 .appointment-date-created h6 {
   margin: 0;
+  font-size: 15px;
 }
 
 .badge {
