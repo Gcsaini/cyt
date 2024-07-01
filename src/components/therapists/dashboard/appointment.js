@@ -90,7 +90,7 @@ export default function Appointment() {
                 </div>
               </div>
               <div className="appointment-date-created">
-                <h6>{appointment.date}</h6>
+                <p className="date-part">{appointment.date}</p>
                 <span className="badge table-badge">{appointment.badge}</span>
               </div>
               <div className="apponiment-actions d-flex align-items-center">

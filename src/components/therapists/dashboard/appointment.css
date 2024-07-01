@@ -48,36 +48,38 @@
   flex-direction: column;
 }
 
-.patient-name-info h5 {
+.patient-name-info p {
   margin: 0;
   font-size: 15px;
 }
 
 .appointment-date-created {
-  text-align: right;
+  text-align: left;
 }
 
-.appointment-date-created h6 {
+.appointment-date-created .date-part {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
+  color: black;
 }
 
 .badge {
   /* border-radius: 0.25rem; */
   background-color: #14b8a6;
   /* margin-left: 0px; */
+  font-size: 11px;
 }
 
 .apponiment-actions a {
-  font-size: 1.15em;
+  font-size: 15px;
   cursor: pointer;
 }
 
 .text-success-icon {
   color: var(--bs-success);
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   padding: 3px;
   padding-left: 5px;
   border: 1px solid var(--bs-success);
@@ -90,8 +92,8 @@
 .text-danger-icon {
   color: var(--bs-danger);
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   padding: 3px;
   padding-left: 5px;
   border: 1px solid var(--bs-danger);
