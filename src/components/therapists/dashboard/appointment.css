@@ -1,65 +1,30 @@
 .dashboard-card {
-  width: 100%;
-  padding: 24px;
   border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0px 7.5px 17.5px 0px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
-  box-shadow: 0 7.5px 17.5px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 24px;
+  width: 100% !important;
 }
 
 .dashboard-card-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-card .dashboard-card-body .appointment-list .appointment-item:hover {
+  background-color: rgb(247, 242, 242);
+  border-radius: 10px;
 }
 
 .header-title h5 {
   margin: 0;
-  font-size: 18px;
-  font-weight: 600;
 }
 
-.header-dropdown .dropdown-toggle {
-  color: #6b7280;
-  text-decoration: none;
-}
-
-.header-dropdown .dropdown-menu {
-  background-color: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.header-dropdown .dropdown-item {
-  color: #6b7280;
-  padding: 10px 15px;
-  text-decoration: none;
-  display: block;
-}
-
-.dashboard-card-body {
-  padding: 20px 0;
-}
-
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #6b7280;
-}
-
-.table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.table-avatar img {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  position: relative;
+.header-dropdown .nav-tog {
+  cursor: pointer;
 }
 
 .patient-info-profile {
@@ -67,48 +32,49 @@
   align-items: center;
 }
 
+.table-avatar img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
 .patient-name-info {
-  margin-left: 10px;
-  color: #92d6ff;
-  font-size: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .patient-name-info h5 {
   margin: 0;
-  font-size: 16px;
-  font-weight: 500;
+}
+
+.appointment-date-created {
+  text-align: right;
 }
 
 .appointment-date-created h6 {
   margin: 0;
-  font-size: 14px;
-  font-weight: 400;
-  color: #6b7280;
 }
 
-.badge.table-badge {
-  background-color: var(--bs-primary);
-  color: white;
-  border-radius: 5px;
-  padding: 5px 10px;
-  background-color: #a4d2c5;
-  font-size: 13px;
+.badge {
+  /* border-radius: 0.25rem; */
+  background-color: #14b8a6;
+  /* margin-left: 0px; */
 }
 
 .apponiment-actions a {
-  font-size: 18px;
-  text-decoration: none;
-  color: inherit;
+  font-size: 1.15em;
+  cursor: pointer;
 }
 
 .text-success-icon {
   color: var(--bs-success);
-  border: 1px solid var(--bs-success);
-  width: 30px;
-  height: 30px;
   border-radius: 50%;
-  text-align: center;
-  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+  padding-left: 5px;
+  border: 1px solid var(--bs-success);
 }
 .text-success-icon:hover {
   background-color: var(--bs-success);
@@ -117,55 +83,41 @@
 
 .text-danger-icon {
   color: var(--bs-danger);
-  border: 1px solid var(--bs-danger);
-  width: 30px;
-  height: 30px;
   border-radius: 50%;
-  text-align: center;
-  margin-left: 10px;
-  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+  padding-left: 5px;
+  border: 1px solid var(--bs-danger);
 }
+
 .text-danger-icon:hover {
   background-color: var(--bs-danger);
   color: #fff;
 }
 
-.me-2 {
-  margin-right: 0.5rem;
-}
-
-.d-flex {
+.appointment-list {
   display: flex;
+  flex-direction: column;
 }
 
-.align-items-center {
+.appointment-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.dropdown-menu-end {
-  right: 0;
-  left: auto;
-}
-
-.dropdown-item:hover {
-  background-color: #f8f9fa;
-}
-
-.dropdown-item:focus {
-  outline: none;
+.appointment-item:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 500px) {
-  .table-responsive {
+  .dashboard-card .dashboard-card-body .appointment-list {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .patient-info-profile {
-    display: block;
   }
   .table-avatar img {
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
+    margin-right: 35px;
   }
 }
