@@ -1,0 +1,112 @@
+.upcoming-appointment-card {
+  font-family: "Inter", sans-serif;
+  color: var(--bs-gray-700);
+  line-height: 1.5;
+  font-size: 14px;
+  cursor: default;
+  background: #0e82fd; /* Use your preferred background color */
+  padding: 24px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  box-shadow: 0px 7.5px 17.5px 0px rgba(0, 0, 0, 0.05);
+}
+
+.upcoming-appointment-card .title-card span {
+  margin: 0;
+  color: var(--bs-white);
+  font-size: 20px;
+}
+
+.upcoming-patient-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.info-details {
+  display: flex;
+  align-items: center;
+}
+
+.img-avatar img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.name-info span {
+  color: #fff;
+}
+
+.name-info h6 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-size: 15px;
+}
+
+.date-details {
+  text-align: left;
+  color: #fff;
+  font-size: 15px;
+  margin-right: 100px;
+}
+
+.date-details h6 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-size: 15px;
+}
+
+.circle-bg {
+  margin-top: 20px;
+  border: 0.00001px solid #fff;
+  width: 100%;
+}
+
+.appointment-card-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.appointment-card-footer h5 {
+  margin: 0;
+  font-size: 15px;
+  color: var(--bs-white);
+  display: flex;
+  align-items: center;
+}
+
+.appointment-card-footer h5 i {
+  margin-right: 5px;
+}
+
+.btn-appointments {
+  margin-top: 10px;
+}
+
+.btn-appointments .btn {
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 500px;
+  /* background-color: var(--bs-primary); */
+  background-color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.btn-appointments .btn:hover {
+  background-color: var(--bs-primary-rgb);
+  color: var(--bs-white);
+}
+
+@media (max-width: 500px) {
+  .date-details {
+    margin-right: 20px;
+  }
+}
