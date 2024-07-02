@@ -40,7 +40,7 @@
 .invoice-list-invoices .invoice-item-invoices {
   display: flex;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 16px 10px;
   border-top: 1px solid var(--bs-gray-200);
 }
 
@@ -122,16 +122,15 @@
 }
 
 @media (max-width: 500px) {
-  /* .invoice-list-invoices {
-    overflow-x: auto;
-    /* white-space: nowrap; */
-  } */
-  .invoice-item-invoices {
-    width: 500px;
+  .invoice-list-invoices {
     overflow-x: auto;
   }
+  .invoice-item-invoices {
+    width: 500px;
+  }
   .appointment-date-created-invoices {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    text-align: center;
+    /* margin-top: 20px;
+    margin-bottom: 10px; */
   }
 }
