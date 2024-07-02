@@ -1,0 +1,124 @@
+.col-xl-15 .dashboard-card .dashboard-card-body .table-responsive {
+  width: 100%;
+  border-top: 1px solid rgb(228, 225, 225);
+}
+
+.col-xl-15 .dashboard-card .dashboard-card-body .table-responsive .table td {
+  border: none;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info {
+  display: flex;
+  padding: 10px;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info:hover {
+  background-color: rgb(243, 238, 238);
+  border-radius: 10px;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .table-noti-icon {
+  background-color: rgb(219, 207, 207);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .table-noti-icon
+  i {
+  padding-top: 12px;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .table-noti-icon
+  + .table-noti-message {
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .table-noti-icon
+  + .table-noti-message
+  h6 {
+  font-size: 16px;
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .color-violet {
+  color: rgb(138, 43, 226);
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .color-blue {
+  color: rgb(0, 0, 255);
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .color-red {
+  color: rgb(255, 0, 0);
+}
+
+.col-xl-15
+  .dashboard-card
+  .dashboard-card-body
+  .table-responsive
+  .table
+  .table-noti-info
+  .color-yellow {
+  color: rgb(255, 255, 0);
+}
+
+@media (max-width: 500px) {
+  .col-xl-15 .dashboard-card .dashboard-card-body .table-responsive .table {
+    overflow-x: auto;
+    width: 500px;
+  }
+}

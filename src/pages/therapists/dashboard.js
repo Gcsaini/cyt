@@ -3,6 +3,7 @@ import TotalCounts from "../../components/therapists/dashboard/counts";
 import Appointment from "../../components/therapists/dashboard/appointment";
 import Upcomingappointment from "../../components/therapists/dashboard/upcommingappointment";
 import RecentInvoices from "../../components/therapists/dashboard/recentInvoices";
+import Notification from "../../components/therapists/dashboard/notifications";
 export default function TherapistDashboard() {
   return (
     <MainLayout>
@@ -10,6 +11,7 @@ export default function TherapistDashboard() {
       <Appointment />
       <Upcomingappointment />
       <RecentInvoices />
+      <Notification />
     </MainLayout>
   );
 }
