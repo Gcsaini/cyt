@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { fetchById } from "../../utils/actions";
 import { getTherapist } from "../../utils/url";
 import TherapistFees from "../../components/therapists/settings/therapist-fees";
+import auth from "../../utils/auth";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
@@ -19,11 +20,11 @@ export default function ProfileSettings() {
 
   const getData = async () => {
     const res = await fetchById(`${getTherapist}/66745e8460951ac197255942`);
-    console.log("res", res);
     if (res && res.status) {
       setPageData(res.data);
     }
   };
+  console.log("id", auth.getUserInfo());
   React.useEffect(() => {
     getData();
   }, []);

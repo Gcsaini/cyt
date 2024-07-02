@@ -57,6 +57,12 @@ const auth = {
     return auth.get(userInfo);
   },
 
+  getUserId(userInfo = USER_INFO) {
+    const user = auth.get(userInfo);
+    console.log(user);
+    return user._id;
+  },
+
   set(value, key, isLocalStorage) {
     if (isEmpty(value)) {
       return null;

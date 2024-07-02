@@ -9,11 +9,13 @@ import auth from "../utils/auth";
 import request from "../utils/request";
 import { isValidMail } from "../utils/validators";
 import { loginUrl } from "../utils/url";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/material";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -41,7 +43,11 @@ export default function Login() {
         } else {
           auth.setToken(response.data.token, true);
           auth.setUserInfo(response.data, true);
-          redirectUser();
+          if (response.data.role === 1) {
+            navigate("/therapist-dashboard");
+          } else {
+            redirectUser();
+          }
         }
       })
       .catch((err) => {
@@ -126,7 +132,7 @@ export default function Login() {
                           to="#"
                           className="avatar"
                           data-tooltip="Rafi Dev"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -139,7 +145,7 @@ export default function Login() {
                           to="#"
                           className="avatar"
                           data-tooltip="Mark"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -152,7 +158,7 @@ export default function Login() {
                           to="#"
                           className="avatar"
                           data-tooltip="Jordan"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -180,7 +186,7 @@ export default function Login() {
                   <p style={{ color: "#ff0000" }}>
                     {error !== "" ? error : ""}
                   </p>
-                  <form id="contact-form">
+                  <div id="contact-form">
                     <div className="form-group">
                       <input
                         placeholder="Email"
@@ -203,15 +209,15 @@ export default function Login() {
                       className="rbt-lost-password text-end"
                       style={{ marginBottom: 15 }}
                     >
-                      <Link className="rbt-btn-link" to="/auth/register">
+                      <Link className="rbt-btn-link" to="/register">
                         Create Account?
                       </Link>
                     </div>
                     <div className="form-submit-group">
                       {loading ? (
-                        <span className="icon-reverse-wrapper">
-                          <span className="btn-text">Please wait</span>
-                        </span>
+                        <Box sx={{ display: "flex", justifyContent: "center" }}>
+                          <CircularProgress />
+                        </Box>
                       ) : (
                         <button
                           onClick={handleSubmit}
@@ -219,7 +225,7 @@ export default function Login() {
                           className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
                         >
                           <span className="icon-reverse-wrapper">
-                            <span className="btn-text">{Login}</span>
+                            <span className="btn-text">Login</span>
                             <span className="btn-icon">
                               <i className="feather-arrow-right"></i>
                             </span>
@@ -230,7 +236,7 @@ export default function Login() {
                         </button>
                       )}
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>

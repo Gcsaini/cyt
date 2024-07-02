@@ -1,4 +1,5 @@
 export const stateList = [
+  "Select",
   "Andhra Pradesh",
   "Arunachal Pradesh",
   "Assam",
@@ -34,20 +35,29 @@ export const stateList = [
   "Delhi",
   "Puducherry",
   "Jammu and Kashmir",
-  "Ladakh"
+  "Ladakh",
 ];
 
-export const ExpList = ["1-2", "3-5", "6-10", "11-15", "16-20", "21+"];
+export const ExpList = [
+  "Select",
+  "1-2",
+  "3-5",
+  "6-10",
+  "11-15",
+  "16-20",
+  "21+",
+];
 
 export const services = [
   "Individual Counseling ",
   "Relationship Counseling",
   "Teen Counseling",
   "Diagnosis",
-  "Workshops/Training"
+  "Workshops/Training",
 ];
 
 export const EducationList = [
+  "Select",
   "Diploma in Counseling/Psychology",
   "Bachelor's Degree (B.A/B.Sc in Psychology)",
   "Bachelor's Degree (B.Ed in Special Education)",
@@ -59,7 +69,7 @@ export const EducationList = [
   "Doctor of Psychology (Psy.D.)",
   "Postgraduate Diploma in Counseling/Psychology",
   "Postgraduate Diploma in Special Education",
-  "Other (Please specify)"
+  "Other (Please specify)",
 ];
 
 export const dailyLiftIssuesList = [
@@ -74,7 +84,7 @@ export const dailyLiftIssuesList = [
   "lifeTransitions",
   "griefAndLoss",
   "angerManagement",
-  "motivation"
+  "motivation",
 ];
 
 export const therapyoptionlist = [
@@ -91,7 +101,7 @@ export const therapyoptionlist = [
   "Group Therapy",
   "Family Therapy",
   "Narrative Therapy",
-  "Interpersonal Therapy (IPT)"
+  "Interpersonal Therapy (IPT)",
 ];
 
 export const diagnoseslist = [
@@ -104,7 +114,7 @@ export const diagnoseslist = [
   "Autism Spectrum Disorder (ASD)",
   "Schizophrenia",
   "Personality Disorders",
-  "Eating Disorders"
+  "Eating Disorders",
 ];
 
 export const relationshipIssuesList = [
@@ -117,7 +127,7 @@ export const relationshipIssuesList = [
   "Communication Issues",
   "Trust Issues",
   "Intimacy Issues",
-  "Pre-Marital Counselling"
+  "Pre-Marital Counselling",
 ];
 
 export const languageSpoken = [
@@ -127,7 +137,7 @@ export const languageSpoken = [
   "German",
   "Mandarin",
   "Hindi",
-  "Arabic"
+  "Arabic",
 ];
 
 export const sessionFormatsList = ["In-Person", "Audio call", "Video Call"];

@@ -1,12 +1,14 @@
 import ImageTag from "../../utils/image-tag";
 import profileImg from "../../assets/img/avatar-027dc8.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MyNavbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Banner from "./banner";
+import auth from "../../utils/auth";
 
 export default function MainLayout(props) {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
 
   return (
@@ -129,7 +131,7 @@ export default function MainLayout(props) {
                                   backgroundColor: "rgb(250, 10, 10)",
                                   padding: "5px",
                                   borderRadius: "5px",
-                                  color: "#fff"
+                                  color: "#fff",
                                 }}
                               >
                                 Coming soon
@@ -197,7 +199,23 @@ export default function MainLayout(props) {
                                 </Link>
                               </li>
                               <li>
-                                <Link className="" to="/">
+                                <Link
+                                  className={
+                                    currentPath === "/settings" ? "active" : ""
+                                  }
+                                  to="/settings"
+                                >
+                                  <i className="feather-settings"></i>
+                                  <span>Edit Profile</span>
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  onClick={() => {
+                                    auth.clearAppStorage();
+                                    navigate("/login");
+                                  }}
+                                >
                                   <i className="feather-log-out"></i>
                                   <span>Logout</span>
                                 </Link>

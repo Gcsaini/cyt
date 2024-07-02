@@ -397,6 +397,14 @@ export default function TherapistRegistration() {
                     />
                     <span className="focus-border"></span>
                   </div>
+                  <div
+                    className="rbt-lost-password text-end"
+                    style={{ marginBottom: 15 }}
+                  >
+                    <Link className="rbt-btn-link" to="/login">
+                      Already have an account Login?
+                    </Link>
+                  </div>
                   <div className="form-submit-group">
                     <p style={{ color: "#22bb33" }}>{success}</p>
                     {loading ? (

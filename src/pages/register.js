@@ -93,7 +93,7 @@ export default function Register() {
   };
 
   const redirectUser = () => {
-    redirectUser();
+    navigate("/home");
   };
 
   useEffect(() => {
@@ -261,7 +261,7 @@ export default function Register() {
                       className="rbt-lost-password text-end"
                       style={{ marginBottom: 15 }}
                     >
-                      <Link className="rbt-btn-link" to="/auth/login">
+                      <Link className="rbt-btn-link" to="/login">
                         Login?
                       </Link>
                     </div>
@@ -282,6 +282,17 @@ export default function Register() {
                           </span>
                         </span>
                       </button>
+                    </div>
+                    <div
+                      className="rbt-lost-password text-end"
+                      style={{ marginBottom: 15 }}
+                    >
+                      <Link
+                        className="rbt-btn-link"
+                        to="/therapist-registration"
+                      >
+                        Are you an therapist?
+                      </Link>
                     </div>
                   </form>
                 </div>

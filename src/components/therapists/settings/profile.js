@@ -11,23 +11,34 @@ import { defaultProfile, updateProfile } from "../../../utils/url";
 import axios from "axios";
 import { errorColor, successColor } from "../../../utils/colors";
 export default function Profile(props) {
+  const { data } = props;
   const fileInputRef = useRef(null);
-  const [education, setEducation] = useState();
-  const [license, setLicense] = useState();
-  const [name, setName] = useState(props.data && props.data.name);
-  const [phone, setPhone] = useState();
-  const [bio, setBio] = useState();
-  const [state, setState] = useState();
-  const [gender, setGender] = useState();
-  const [ofc, setOfc] = useState();
-  const [exp, setExp] = useState();
-  const [othEducation, setOthEducation] = useState(false);
+  const [education, setEducation] = useState(data.qualification || "");
+  const [license, setLicense] = useState(data.license_number || "");
+  const [name, setName] = useState(data.name || "");
+  const [phone, setPhone] = useState(data.phone || "");
+  const [bio, setBio] = useState(data.bio || "");
+  const [state, setState] = useState(data.state || "Select");
+  const [gender, setGender] = useState(data.gender || "Select");
+  const [ofc, setOfc] = useState(data.office_address || "");
+  const [exp, setExp] = useState(data.year_of_exp || "Select");
+  const [othEducation, setOthEducation] = useState(
+    !!(data.qualification && !data.qualification.includes(EducationList))
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [languages, setLanguages] = useState([]);
-  const [sessionFormats, setSessionFormats] = useState([]);
+  const [languages, setLanguages] = useState(
+    data.language_spoken
+      ? data.language_spoken.split(",").map((item) => item.trim())
+      : []
+  );
+  const [sessionFormats, setSessionFormats] = useState(
+    data.session_formats
+      ? data.session_formats.split(",").map((item) => item.trim())
+      : []
+  );
 
   const handleLanguages = (event) => {
     const { value, checked } = event.target;
@@ -53,6 +64,7 @@ export default function Profile(props) {
 
   const handleEducation = (e) => {
     if (e.target.value === "Other (Please specify)") {
+      setEducation(e.target.value);
       setOthEducation(true);
     } else {
       setOthEducation(false);
@@ -89,18 +101,19 @@ export default function Profile(props) {
       setError("");
       setLoading(true);
       const formData = new FormData();
+      formData.append("userId", data._id);
       formData.append("file", selectedImage);
       formData.append("name", name);
       formData.append("phone", phone);
-      formData.append("education", education);
-      formData.append("license", license);
+      formData.append("qualification", education);
+      formData.append("license_number", license);
       formData.append("bio", bio);
       formData.append("state", state);
       formData.append("gender", gender);
-      formData.append("ofc", ofc);
-      formData.append("exp", exp);
-      formData.append("languages", languages.join(", "));
-      formData.append("sessionFormats", sessionFormats.join(", "));
+      formData.append("office_address", ofc);
+      formData.append("year_of_exp", exp);
+      formData.append("language_spoken", languages.join(", "));
+      formData.append("session_formats", sessionFormats.join(", "));
 
       try {
         setLoading(true);
@@ -121,6 +134,7 @@ export default function Profile(props) {
       setLoading(false);
     }
   };
+  console.log("session", sessionFormats);
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <div
@@ -203,6 +217,7 @@ export default function Profile(props) {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
+              <option value="">Select</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Non-binary">Non-binary</option>
@@ -232,7 +247,7 @@ export default function Profile(props) {
             >
               {stateList.map((item) => {
                 return (
-                  <option key={item} value={item}>
+                  <option key={item == "Select" ? "" : item} value={item}>
                     {item}
                   </option>
                 );
@@ -262,7 +277,7 @@ export default function Profile(props) {
             >
               {ExpList.map((item) => {
                 return (
-                  <option value={item} key={item}>
+                  <option value={item == "Select" ? "" : item} key={item}>
                     {item}
                   </option>
                 );
@@ -276,11 +291,12 @@ export default function Profile(props) {
             <select
               id="qualification"
               style={selectStyle}
+              value={education}
               onChange={(e) => handleEducation(e)}
             >
               {EducationList.map((item) => {
                 return (
-                  <option value={item} key={item}>
+                  <option value={item == "Select" ? "" : item} key={item}>
                     {item}
                   </option>
                 );
@@ -356,10 +372,9 @@ export default function Profile(props) {
               id="bio"
               cols="20"
               rows="5"
+              value={bio}
               onChange={(e) => setBio(e.target.value)}
-            >
-              {bio}
-            </textarea>
+            ></textarea>
           </div>
         </div>
         <div className="col-12">
