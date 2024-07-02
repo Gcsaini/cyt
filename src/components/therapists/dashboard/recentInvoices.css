@@ -80,6 +80,11 @@
 
 .patient-name-info-invoices span {
   color: #1da1e6;
+  font-size: 12px;
+}
+
+.patient-name-info-invoices h5 {
+  font-size: 15px;
 }
 
 .appointment-date-created-invoices {
@@ -122,6 +127,10 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     white-space: nowrap;
+  }
+  .invoice-item-invoices {
+    width: 500px;
+    background-color: red;
   }
   .appointment-date-created-invoices {
     margin-top: 20px;

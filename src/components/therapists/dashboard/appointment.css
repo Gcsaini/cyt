@@ -64,9 +64,6 @@
 
 .appointment-date-created {
   text-align: left;
-  /* text-align: center; */
-  /* margin-left: 100px; */
-  /* margin-right: 100px; */
 }
 
 .appointment-date-created .date-part {
@@ -76,9 +73,7 @@
 }
 
 .badge {
-  /* border-radius: 0.25rem; */
   background-color: #14b8a6;
-  /* margin-left: 0px; */
   font-size: 11px;
 }
 
@@ -93,7 +88,7 @@
   width: 30px;
   height: 30px;
   padding: 3px;
-  padding-left: 7px;
+  text-align: center;
   border: 1px solid var(--bs-success);
 }
 .text-success-icon:hover {
@@ -102,12 +97,13 @@
 }
 
 .text-danger-icon {
+  margin-left: 10px;
   color: var(--bs-danger);
   border-radius: 50%;
   width: 30px;
   height: 30px;
   padding: 3px;
-  padding-left: 7px;
+  text-align: center;
   border: 1px solid var(--bs-danger);
 }
 
@@ -125,7 +121,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem 10px;
   border-bottom: 1px solid #e2e8f0;
 }
 
@@ -136,6 +132,9 @@
 @media (max-width: 500px) {
   .dashboard-card .dashboard-card-body .appointment-list {
     overflow-x: auto;
+  }
+  .appointment-list .appointment-item {
+    width: 500px;
   }
   .table-avatar img {
     margin-right: 40px;
