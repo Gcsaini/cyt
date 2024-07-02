@@ -122,15 +122,13 @@
 }
 
 @media (max-width: 500px) {
-  .invoice-list-invoices {
+  /* .invoice-list-invoices {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    white-space: nowrap;
-  }
+    /* white-space: nowrap; */
+  } */
   .invoice-item-invoices {
     width: 500px;
-    background-color: red;
+    overflow-x: auto;
   }
   .appointment-date-created-invoices {
     margin-top: 20px;
