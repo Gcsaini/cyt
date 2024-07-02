@@ -85,9 +85,9 @@
 .text-success-icon {
   color: var(--bs-success);
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  padding: 3px;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
   text-align: center;
   border: 1px solid var(--bs-success);
 }
@@ -100,9 +100,9 @@
   margin-left: 10px;
   color: var(--bs-danger);
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  padding: 3px;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
   text-align: center;
   border: 1px solid var(--bs-danger);
 }
