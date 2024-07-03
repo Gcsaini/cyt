@@ -1,0 +1,184 @@
+.appointment-tab-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: var(--bs-white);
+  box-shadow: var(--bs-box-shadow);
+  border-radius: var(--bs-border-radius);
+}
+
+.appointment-tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inner-tab {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  color: var(--bs-body-color);
+  background-color: var(--bs-light);
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.nav-link.active {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+.nav-link:hover {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+.nav-link span {
+  margin-left: 0.5rem;
+  background-color: var(--bs-secondary-bg);
+  border-radius: var(--bs-border-radius-pill);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.filter-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.daterange-wraper {
+  position: relative;
+}
+
+.calender-input {
+  display: flex;
+  align-items: center;
+}
+
+.date-range {
+  width: 100%;
+  padding: 0.5rem;
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+}
+
+.fa-calendar-days {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--bs-body-color);
+}
+
+.form-sorts .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  color: var(--bs-body-color);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.filter-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: 1rem;
+  background-color: var(--bs-white);
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  box-shadow: var(--bs-box-shadow);
+}
+
+.form-sorts:hover .filter-dropdown-menu {
+  display: block;
+}
+
+.filter-set-view {
+  max-width: 300px;
+}
+
+.filter-set-content-head a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  color: var(--bs-body-color);
+  background-color: var(--bs-light);
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.filter-set-content-head a:hover {
+  background-color: var(--bs-secondary-bg);
+}
+
+.filter-set-contents {
+  padding: 1rem;
+}
+
+.filter-checks {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkboxs {
+  display: flex;
+  align-items: center;
+}
+
+.checkmarks {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  background-color: var(--bs-light);
+}
+
+.checkmarks:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.check-title {
+  color: var(--bs-body-color);
+}
+
+.filter-reset-btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-light {
+  background-color: var(--bs-light);
+  color: var(--bs-body-color);
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--bs-border-radius);
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--bs-border-radius);
+}
