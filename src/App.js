@@ -22,6 +22,7 @@ import Success from "./pages/success";
 import TherapistDashboard from "./pages/therapists/dashboard";
 import ProfileSettings from "./pages/therapists/settings";
 import ChangePassword from "./pages/therapists/change-password";
+import AppointmentPageSidebar from "./components/therapists/appointment-sidebar/appointmentpagesidebar";
 
 const theme = createTheme();
 
@@ -47,6 +48,12 @@ function App() {
                 path="/therapist-dashboard"
                 element={<TherapistDashboard />}
               />
+              {/* my file */}
+              {/* <Route
+                exact
+                path="/instructor/instructor-profile"
+                element={}
+              /> */}
               <Route exact path="/settings" element={<ProfileSettings />} />
               <Route
                 exact

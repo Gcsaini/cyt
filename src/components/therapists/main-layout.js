@@ -93,15 +93,23 @@ export default function MainLayout(props) {
                                   <span>Dashboard</span>
                                 </Link>
                               </li>
+
+                              {/* my file  */}
                               <li className="nav-item">
                                 <Link
-                                  className=""
+                                  className={
+                                    currentPath ===
+                                    "/instructor/instructor-profile"
+                                      ? "active"
+                                      : ""
+                                  }
                                   to="/instructor/instructor-profile"
                                 >
                                   <i className="fa-regular fa-calendar-check"></i>
                                   <span>Appointment</span>
                                 </Link>
                               </li>
+
                               <li className="nav-item">
                                 <Link
                                   className=""
@@ -131,7 +139,7 @@ export default function MainLayout(props) {
                                   backgroundColor: "rgb(250, 10, 10)",
                                   padding: "5px",
                                   borderRadius: "5px",
-                                  color: "#fff",
+                                  color: "#fff"
                                 }}
                               >
                                 Coming soon
