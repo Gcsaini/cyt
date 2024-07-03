@@ -5,11 +5,71 @@ import MyNavbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Banner from "./banner";
 import auth from "../../utils/auth";
-
+import { defaultProfile, getUserUrl, updateUserUrl } from "../../utils/url";
+import React, { useState, useRef, useEffect } from "react";
+import { fetchById } from "../../utils/actions";
+import axios from "axios";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 export default function MainLayout(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
+  const [pageData, setPageData] = React.useState();
+  const fileInputRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      setPreviewImage(URL.createObjectURL(file));
+    }
+  };
+
+  const handleImageUpload = () => {
+    fileInputRef.current.click();
+  };
+
+  const getData = async () => {
+    const res = await fetchById(`${getUserUrl}/667d355860951ac197255a39`);
+    if (res && res.status) {
+      setPageData(res.data);
+    }
+  };
+
+  const updateProfile = async () => {
+    if (selectedImage) {
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("userId", pageData._id);
+      formData.append("file", selectedImage);
+      try {
+        setLoading(true);
+        const response = await axios.post(updateUserUrl, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        if (response.data.status) {
+          getData();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    getData();
+  }, []);
+  useEffect(() => {
+    if (selectedImage) {
+      updateProfile(); // Call updateProfile when selectedImage changes
+    }
+  }, [selectedImage]);
 
   return (
     <>
@@ -23,16 +83,49 @@ export default function MainLayout(props) {
                 <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
                 <div className="rbt-tutor-information">
                   <div className="rbt-tutor-information-left">
-                    <div className="thumbnail rbt-avatars size-lg">
-                      <ImageTag
-                        alt="Instructor"
-                        width="300"
-                        height="300"
-                        src={profileImg}
-                      />
+                    <div className="thumbnail rbt-avatars size-lg position-relative">
+                      {pageData ? (
+                        <ImageTag
+                          alt="User profile"
+                          style={{ height: 120, width: 120 }}
+                          src={
+                            previewImage != null
+                              ? previewImage
+                              : pageData.profile
+                          }
+                        />
+                      ) : (
+                        <ImageTag
+                          alt="User profile"
+                          style={{ height: 120, width: 120 }}
+                          src={defaultProfile}
+                        />
+                      )}
+                      <div className="rbt-edit-photo-inner">
+                        <button
+                          className="rbt-edit-photo"
+                          title="Upload Photo"
+                          onClick={handleImageUpload}
+                        >
+                          {loading ? (
+                            <Box sx={{ display: "flex" }}>
+                              <CircularProgress />
+                            </Box>
+                          ) : (
+                            <i className="feather-camera"></i>
+                          )}
+                        </button>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          ref={fileInputRef}
+                          style={{ display: "none" }}
+                          onChange={handleImageChange}
+                        />
+                      </div>
                     </div>
                     <div className="tutor-content">
-                      <h5 className="title">John Due</h5>
+                      <h5 className="title">{pageData ? pageData.name : ""}</h5>
                       <div className="rbt-review">
                         <div className="rating">
                           <i className="fas fa-star"></i>
@@ -75,7 +168,7 @@ export default function MainLayout(props) {
                         <div className="rbt-default-sidebar-wrapper">
                           <div className="section-title mb--20">
                             <h6 className="rbt-title-style-2">
-                              Welcome, Jone Due
+                              Welcome, {pageData ? pageData.name : ""}
                             </h6>
                           </div>
                           <nav className="mainmenu-nav">
@@ -205,17 +298,7 @@ export default function MainLayout(props) {
                                   <span>Change Password</span>
                                 </Link>
                               </li>
-                              <li>
-                                <Link
-                                  className={
-                                    currentPath === "/settings" ? "active" : ""
-                                  }
-                                  to="/settings"
-                                >
-                                  <i className="feather-settings"></i>
-                                  <span>Edit Profile</span>
-                                </Link>
-                              </li>
+
                               <li>
                                 <Link
                                   onClick={() => {

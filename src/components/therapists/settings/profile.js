@@ -1,4 +1,3 @@
-import ImageTag from "../../../utils/image-tag";
 import {
   EducationList,
   ExpList,
@@ -6,13 +5,12 @@ import {
   sessionFormatsList,
   stateList,
 } from "../../../utils/static-lists";
-import React, { useState, useRef } from "react";
-import { defaultProfile, updateProfile } from "../../../utils/url";
+import React, { useState } from "react";
+import { updateProfile } from "../../../utils/url";
 import axios from "axios";
 import { errorColor, successColor } from "../../../utils/colors";
 export default function Profile(props) {
   const { data } = props;
-  const fileInputRef = useRef(null);
   const [education, setEducation] = useState(data.qualification || "");
   const [license, setLicense] = useState(data.license_number || "");
   const [name, setName] = useState(data.name || "");
@@ -23,12 +21,12 @@ export default function Profile(props) {
   const [ofc, setOfc] = useState(data.office_address || "");
   const [exp, setExp] = useState(data.year_of_exp || "Select");
   const [othEducation, setOthEducation] = useState(
-    !!(data.qualification && !data.qualification.includes(EducationList))
+    !EducationList.some((qualification) => data.qualification === qualification)
   );
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [languages, setLanguages] = useState(
     data.language_spoken
       ? data.language_spoken.split(",").map((item) => item.trim())
@@ -72,25 +70,9 @@ export default function Profile(props) {
     }
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleImageUpload = () => {
-    fileInputRef.current.click();
-  };
-
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
-    console.log("name", name);
     if (name === "") {
       setError("Name can not be empty");
       return;
@@ -102,7 +84,6 @@ export default function Profile(props) {
       setLoading(true);
       const formData = new FormData();
       formData.append("userId", data._id);
-      formData.append("file", selectedImage);
       formData.append("name", name);
       formData.append("phone", phone);
       formData.append("qualification", education);
@@ -134,7 +115,7 @@ export default function Profile(props) {
       setLoading(false);
     }
   };
-  console.log("session", sessionFormats);
+
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <div
@@ -143,36 +124,6 @@ export default function Profile(props) {
       role="tabpanel"
       aria-labelledby="profile-tab"
     >
-      <div className="rbt-dashboard-content-wrapper">
-        <div className="" style={{ height: 150 }}></div>
-        <div className="rbt-tutor-information">
-          <div className="rbt-tutor-information-left">
-            <div className="thumbnail rbt-avatars size-lg position-relative">
-              <ImageTag
-                alt="Instructor"
-                style={{ height: 120, width: 120 }}
-                src={selectedImage || defaultProfile}
-              />
-              <div className="rbt-edit-photo-inner">
-                <button
-                  className="rbt-edit-photo"
-                  title="Upload Photo"
-                  onClick={handleImageUpload}
-                >
-                  <i className="feather-camera"></i>
-                </button>
-                <input
-                  type="file"
-                  accept="image/*"
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                  onChange={handleImageChange}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="rbt-profile-row rbt-default-form row row--15">
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">

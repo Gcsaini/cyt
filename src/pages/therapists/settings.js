@@ -1,5 +1,4 @@
 import MainLayout from "../../components/therapists/main-layout";
-import SocialShare from "../../components/therapists/settings/social-share";
 import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
 import PaymentDetails from "../../components/therapists/settings/paymentDetails";
@@ -10,16 +9,17 @@ import { fetchById } from "../../utils/actions";
 import { getTherapist } from "../../utils/url";
 import TherapistFees from "../../components/therapists/settings/therapist-fees";
 import auth from "../../utils/auth";
+import ServicesAndExperties from "../../components/therapists/settings/services-and-experties";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
   const [pageData, setPageData] = React.useState();
   const style = {
-    cursor: "pointer"
+    cursor: "pointer",
   };
 
   const getData = async () => {
-    const res = await fetchById(`${getTherapist}/66745e8460951ac197255942`);
+    const res = await fetchById(`${getTherapist}/667d355860951ac197255a39`);
     if (res && res.status) {
       setPageData(res.data);
     }
@@ -105,7 +105,7 @@ export default function ProfileSettings() {
           </div>
           <div className="tab-content">
             {tab === 0 && pageData && <Profile data={pageData} />}
-            {tab === 2 && <SocialShare />}
+            {tab === 2 && pageData && <ServicesAndExperties data={pageData} />}
             {tab === 3 && <Availability />}
             {tab === 4 && <TherapistFees />}
             {tab === 5 && <PaymentDetails />}

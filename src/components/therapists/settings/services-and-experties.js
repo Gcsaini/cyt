@@ -4,13 +4,22 @@ import {
   dailyLiftIssuesList,
   therapyoptionlist,
   diagnoseslist,
-  relationshipIssuesList
+  relationshipIssuesList,
 } from "../../../utils/static-lists";
 import "./social-share.css";
-
-export default function SocialShare() {
-  const [selectedServices, setSelectedServices] = useState([]);
-  const [selectedExpertise, setSelectedExpertise] = useState([]);
+import axios from "axios";
+import { updateServiceExperties } from "../../../utils/url";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+export default function ServicesAndExperties(props) {
+  const { data } = props;
+  const [loading, setLoading] = useState(false);
+  const [selectedServices, setSelectedServices] = useState(
+    data.services ? data.services.split(",").map((item) => item.trim()) : []
+  );
+  const [selectedExpertise, setSelectedExpertise] = useState(
+    data.experties ? data.experties.split(",").map((item) => item.trim()) : []
+  );
 
   const handleServiceChange = (service) => {
     setSelectedServices((prev) =>
@@ -19,7 +28,6 @@ export default function SocialShare() {
         : [...prev, service]
     );
   };
-  // console.log(selectedServices);
 
   const handleExpertiseChange = (expertise) => {
     setSelectedExpertise((prev) =>
@@ -28,7 +36,24 @@ export default function SocialShare() {
         : [...prev, expertise]
     );
   };
-  // console.log(selectedExpertise);
+  const handleSubmit = async () => {
+    const reqData = {
+      userId: data._id,
+      services: selectedServices.join(", "),
+      experties: selectedExpertise.join(", "),
+    };
+
+    try {
+      setLoading(true);
+      const response = await axios.post(updateServiceExperties, reqData);
+      if (response.data.status) {
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
 
   return (
     <div>
@@ -38,10 +63,7 @@ export default function SocialShare() {
         role="tabpanel"
         aria-labelledby="social-tab"
       >
-        <form
-          action="#"
-          className="rbt-profile-row rbt-default-form row row--15"
-        >
+        <div className="rbt-profile-row rbt-default-form row row--15">
           <div className="col-12">
             <div className="rbt-form-group">
               <h4>Services</h4>
@@ -135,15 +157,18 @@ export default function SocialShare() {
 
           <div className="col-12 mt--10">
             <div className="rbt-form-group">
-              <a
-                className="rbt-btn btn-gradient"
-                href="/instructor/instructor-settings#"
-              >
-                Save & Next
-              </a>
+              {loading ? (
+                <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
+                  Save
+                </button>
+              ) : (
+                <Box sx={{ display: "flex" }}>
+                  <CircularProgress />
+                </Box>
+              )}
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
