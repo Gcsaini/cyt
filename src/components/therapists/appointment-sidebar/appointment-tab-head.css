@@ -4,103 +4,78 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem;
-  background-color: var(--bs-white);
-  box-shadow: var(--bs-box-shadow);
-  border-radius: var(--bs-border-radius);
+  background-color: var(--bs-light-bg-subtle);
+  border-radius: var(--bs-border-radius-lg);
+  box-shadow: var(--bs-box-shadow-sm);
 }
 
 .appointment-tabs {
-  display: flex;
-  flex-wrap: wrap;
+  flex: 1;
 }
 
-.inner-tab {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+.nav-pills .nav-link {
   color: var(--bs-body-color);
   background-color: var(--bs-light);
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
   border-radius: var(--bs-border-radius);
-  transition: background-color 0.2s ease-in-out;
+  padding: 0.9rem 1rem;
+  margin: 0 0.5rem;
 }
 
-.nav-link.active {
-  background-color: var(--bs-primary);
+.nav-pills .nav-link.active {
   color: var(--bs-white);
-}
-
-.nav-link:hover {
   background-color: var(--bs-primary);
-  color: var(--bs-white);
 }
 
-.nav-link span {
+.nav-pills .nav-link span {
   margin-left: 0.5rem;
-  background-color: var(--bs-secondary-bg);
-  border-radius: var(--bs-border-radius-pill);
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 .filter-head {
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
 .daterange-wraper {
   position: relative;
 }
 
-.calender-input {
-  display: flex;
-  align-items: center;
-}
-
-.date-range {
-  width: 100%;
-  padding: 0.5rem;
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
-}
-
-.fa-calendar-days {
+.daterange-wraper .fa-calendar-days {
   position: absolute;
-  right: 1rem;
   top: 50%;
+  right: 1rem;
   transform: translateY(-50%);
-  color: var(--bs-body-color);
+  color: var(--bs-gray-500);
+}
+
+.calender-input input {
+  padding-right: 2.5rem;
+}
+
+.form-sorts {
+  position: relative;
 }
 
 .form-sorts .dropdown-toggle {
   display: flex;
   align-items: center;
   color: var(--bs-body-color);
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.form-sorts .dropdown-toggle .fa-filter {
+  margin-right: 0.5rem;
 }
 
 .filter-dropdown-menu {
+  display: none;
   position: absolute;
   top: 100%;
-  right: 0;
-  z-index: 1000;
-  display: none;
-  min-width: 10rem;
-  padding: 1rem;
+  left: 0;
   background-color: var(--bs-white);
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  box-shadow: var(--bs-box-shadow-sm);
   border-radius: var(--bs-border-radius);
-  box-shadow: var(--bs-box-shadow);
+  z-index: 1000;
 }
 
 .form-sorts:hover .filter-dropdown-menu {
@@ -108,28 +83,28 @@
 }
 
 .filter-set-view {
-  max-width: 300px;
+  padding: 1rem;
+}
+
+.filter-set-content {
+  margin-bottom: 1rem;
 }
 
 .filter-set-content-head a {
+  color: var(--bs-body-color);
+  text-decoration: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
-  color: var(--bs-body-color);
-  background-color: var(--bs-light);
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
+  font-weight: bold;
 }
 
 .filter-set-content-head a:hover {
-  background-color: var(--bs-secondary-bg);
+  color: var(--bs-primary);
 }
 
 .filter-set-contents {
-  padding: 1rem;
+  margin-top: 0.5rem;
 }
 
 .filter-checks {
@@ -138,47 +113,81 @@
   margin-bottom: 0.5rem;
 }
 
-.checkboxs {
-  display: flex;
-  align-items: center;
-}
-
-.checkmarks {
+.filter-checks .checkboxs {
+  position: relative;
   display: inline-block;
-  width: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.filter-checks .checkboxs input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.filter-checks .checkboxs .checkmarks {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 1rem;
-  margin-right: 0.5rem;
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
+  width: 1rem;
   background-color: var(--bs-light);
+  border: 1px solid var(--bs-gray-300);
+  border-radius: 0.25rem;
 }
 
-.checkmarks:checked {
+.filter-checks .checkboxs input:checked ~ .checkmarks {
   background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
 }
 
-.check-title {
-  color: var(--bs-body-color);
+.filter-checks .checkboxs .check-title {
+  margin-left: 1.5rem;
 }
 
 .filter-reset-btns {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
-.btn-light {
-  background-color: var(--bs-light);
-  color: var(--bs-body-color);
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+.filter-reset-btns .btn {
   padding: 0.5rem 1rem;
   border-radius: var(--bs-border-radius);
 }
 
-.btn-primary {
-  background-color: var(--bs-primary);
-  color: var(--bs-white);
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
-  padding: 0.5rem 1rem;
-  border-radius: var(--bs-border-radius);
+@media (max-width: 768px) {
+  .appointment-tab-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .appointment-tabs {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .nav-pills .nav-link {
+    margin: 0.25rem 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .filter-head {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .daterange-wraper {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .form-sorts {
+    width: 100%;
+  }
+
+  .filter-dropdown-menu {
+    width: 100%;
+  }
 }
