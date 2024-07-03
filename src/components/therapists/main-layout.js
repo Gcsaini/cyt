@@ -94,7 +94,6 @@ export default function MainLayout(props) {
                                 </Link>
                               </li>
 
-                              {/* my file  */}
                               <li className="nav-item">
                                 <Link
                                   className={
