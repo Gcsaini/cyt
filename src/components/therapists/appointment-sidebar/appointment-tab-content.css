@@ -76,6 +76,7 @@
   margin-bottom: var(--bs-spacing-unit);
   padding: var(--bs-spacing-unit);
   box-shadow: var(--bs-box-shadow);
+  padding-bottom: 0px;
 }
 
 .appointment-wrap ul {
@@ -120,8 +121,7 @@
 }
 
 .appointment-info {
-  align-items: center;
-  margin-bottom: var(--bs-spacing-unit);
+  margin-bottom: 0px;
 }
 
 .appointment-info p {
@@ -138,6 +138,11 @@
   list-style-type: none;
   color: var(--bs-gray);
   margin-right: var(--bs-spacing-unit-quarter);
+}
+
+.mail-info-patient{
+    padding: 0 0;
+    background-color: red;
 }
 
 .mail-info-patient ul {
