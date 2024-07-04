@@ -1,10 +1,406 @@
 export default function AppointmentTabContent(){
     return(
         <>
-            <div>dkj</div>
+            <div className="tab-pane fade show active" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
+
+<div className="appointment-wrap">
+<ul>
+<li>
+<div className="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-01.jpg" alt="User Image">
+</a>
+<div className="patient-info">
+<p>#Apt0001</p>
+<h6><a href="doctor-upcoming-appointment.html">Adrian</a></h6>
+</div>
+</div>
+</li>
+<li className="appointment-info">
+<p><i className="fa-solid fa-clock"></i>11 Nov 2024 10.45 AM</p>
+<ul className="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Video Call</li>
+</ul>
+</li>
+<li className="mail-info-patient">
+<ul>
+<li><i className="fa-solid fa-envelope"></i>adran@example.com</li>
+<li><i className="fa-solid fa-phone"></i>+1 504 368 6874</li>
+</ul>
+</li>
+<li className="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i className="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i className="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i className="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li className="appointment-start">
+<a href="doctor-appointment-start.html" className="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div className="appointment-wrap">
+<ul>
+<li>
+<div className="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-02.jpg" alt="User Image">
+</a>
+<div className="patient-info">
+<p>#Apt0002</p>
+<h6><a href="doctor-upcoming-appointment.html">Kelly</a><span className="badge new-tag">New</span></h6>
+</div>
+</div>
+</li>
+<li className="appointment-info">
+<p><i className="fa-solid fa-clock"></i>05 Nov 2024 11.50 AM</p>
+<ul className="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Audio Call</li>
+</ul>
+</li>
+<li className="mail-info-patient">
+<ul>
+<li><i className="fa-solid fa-envelope"></i>kelly@example.com</li>
+<li><i class="fa-solid fa-phone"></i>&nbsp;+1 832 891 8403</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="appointment-wrap">
+<ul>
+<li>
+<div class="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-03.jpg" alt="User Image">
+</a>
+<div class="patient-info">
+<p>#Apt0003</p>
+<h6><a href="doctor-upcoming-appointment.html">Samuel</a></h6>
+</div>
+</div>
+</li>
+<li class="appointment-info">
+<p><i class="fa-solid fa-clock"></i>27 Oct 2024 09.30 AM</p>
+<ul class="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Video Call</li>
+</ul>
+</li>
+<li class="mail-info-patient">
+<ul>
+<li><i class="fa-solid fa-envelope"></i>samuel@example.com</li>
+<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;+1 749 104 6291</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="appointment-wrap">
+<ul>
+<li>
+<div class="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-04.jpg" alt="User Image">
+</a>
+<div class="patient-info">
+<p>#Apt0004</p>
+<h6><a href="doctor-upcoming-appointment.html">Catherine</a></h6>
+</div>
+</div>
+</li>
+<li class="appointment-info">
+<p><i class="fa-solid fa-clock"></i>18 Oct 2024 12.20 PM</p>
+<ul class="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Direct Visit</li>
+</ul>
+</li>
+<li class="mail-info-patient">
+<ul>
+<li><i class="fa-solid fa-envelope"></i>catherine@example.com</li>
+<li><i class="fa-solid fa-phone"></i>+1 584 920 7183</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="appointment-wrap">
+<ul>
+<li>
+<div class="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-05.jpg" alt="User Image">
+</a>
+<div class="patient-info">
+<p>#Apt0005</p>
+<h6><a href="doctor-upcoming-appointment.html">Robert</a></h6>
+</div>
+</div>
+</li>
+<li class="appointment-info">
+<p><i class="fa-solid fa-clock"></i>10 Oct 2024 11.30 AM</p>
+<ul class="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Chat</li>
+</ul>
+</li>
+<li class="mail-info-patient">
+<ul>
+<li><i class="fa-solid fa-envelope"></i>robert@example.com</li>
+<li><i class="fa-solid fa-phone"></i>&nbsp;+1 059 327 6729</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="appointment-wrap">
+<ul>
+<li>
+<div class="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-06.jpg" alt="User Image">
+</a>
+<div class="patient-info">
+<p>#Apt0006</p>
+<h6><a href="doctor-upcoming-appointment.html">Anderea</a></h6>
+</div>
+</div>
+</li>
+<li class="appointment-info">
+<p><i class="fa-solid fa-clock"></i>26 Sep 2024 10.20 AM</p>
+<ul class="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Chat</li>
+</ul>
+</li>
+<li class="mail-info-patient">
+<ul>
+<li><i class="fa-solid fa-envelope"></i>anderea@example.com</li>
+<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;+1 278 402 7103</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="appointment-wrap">
+<ul>
+<li>
+<div class="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-07.jpg" alt="User Image">
+</a>
+<div class="patient-info">
+<p>#Apt0007</p>
+<h6><a href="doctor-upcoming-appointment.html">Peter</a></h6>
+</div>
+</div>
+</li>
+<li class="appointment-info">
+<p><i class="fa-solid fa-clock"></i>14 Sep 2024 08.10 AM</p>
+<ul class="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Chat</li>
+</ul>
+</li>
+<li class="mail-info-patient">
+<ul>
+<li><i class="fa-solid fa-envelope"></i>peter@example.com</li>
+<li><i class="fa-solid fa-phone"></i>&nbsp;+1 638 278 0249</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="appointment-wrap">
+<ul>
+<li>
+<div class="patinet-information">
+<a href="doctor-upcoming-appointment.html">
+<img src="assets/img/doctors-dashboard/profile-08.jpg" alt="User Image">
+</a>
+<div class="patient-info">
+<p>#Apt0008</p>
+<h6><a href="doctor-upcoming-appointment.html">Emily</a></h6>
+</div>
+</div>
+</li>
+<li class="appointment-info">
+<p><i class="fa-solid fa-clock"></i>03 Sep 2024 06.00 PM</p>
+<ul class="d-flex apponitment-types">
+<li>General Visit</li>
+<li>Video Call</li>
+</ul>
+</li>
+<li class="mail-info-patient">
+<ul>
+<li><i class="fa-solid fa-envelope"></i>emily@example.com</li>
+<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;+1 261 039 1873</li>
+</ul>
+</li>
+<li class="appointment-action">
+<ul>
+<li>
+<a href="doctor-upcoming-appointment.html"><i class="fa-solid fa-eye"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-comments"></i></a>
+</li>
+<li>
+<a href="#"><i class="fa-solid fa-xmark"></i></a>
+</li>
+</ul>
+</li>
+<li class="appointment-start">
+<a href="doctor-appointment-start.html" class="start-link">Start Now</a>
+</li>
+</ul>
+</div>
+
+
+<div class="pagination dashboard-pagination">
+<ul>
+<li>
+<a href="#" class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
+</li>
+<li>
+<a href="#" class="page-link">1</a>
+</li>
+<li>
+<a href="#" class="page-link active">2</a>
+</li>
+<li>
+<a href="#" class="page-link">3</a>
+</li>
+<li>
+<a href="#" class="page-link">4</a>
+</li>
+<li>
+<a href="#" class="page-link">...</a>
+</li>
+<li>
+<a href="#" class="page-link"><i class="fa-solid fa-chevron-right"></i></a>
+</li>
+</ul>
+</div>
+
+</div>
         </>
     )
-}
+}   
 
 // import React from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
