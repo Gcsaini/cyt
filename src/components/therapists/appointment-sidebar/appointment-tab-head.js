@@ -195,7 +195,7 @@ export default function AppointmentTabHead() {
                       <li>
                         <div className="filter-checks">
                           <label className="checkboxs">
-                            <input type="checkbox" checked="" />
+                            <input type="checkbox" />
                             <span className="checkmarks"></span>
                             <span className="check-title">All Visit</span>
                           </label>
