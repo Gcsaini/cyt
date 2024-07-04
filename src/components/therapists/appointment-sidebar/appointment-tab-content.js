@@ -63,41 +63,28 @@ const AppointmentTabContent = () => {
               <li className="appointment-info">
                 <p>
                   <i className="fa-solid fa-clock"></i> {appointment.date}
+                  <ul className="d-flex apponitment-types">
+                    {appointment.types.map((type, idx) => (
+                      <li key={idx}>{type}</li>
+                    ))}
+                  </ul>
                 </p>
-                <ul className="d-flex apponitment-types">
-                  {appointment.types.map((type, idx) => (
-                    <li key={idx}>{type}</li>
-                  ))}
-                </ul>
               </li>
               <li className="mail-info-patient">
-                <ul>
-                  <li>
-                    <i className="fa-solid fa-envelope"></i> {appointment.email}
-                  </li>
-                  <li>
-                    <i className="fa-solid fa-phone"></i> {appointment.phone}
-                  </li>
-                </ul>
+                <i className="fa-solid fa-envelope"></i> {appointment.email}
+                <br />
+                <i className="fa-solid fa-phone"></i> {appointment.phone}
               </li>
               <li className="appointment-action">
-                <ul>
-                  <li>
-                    <a href="doctor-upcoming-appointment.html">
-                      <i className="fa-solid fa-eye"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fa-solid fa-comments"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fa-solid fa-xmark"></i>
-                    </a>
-                  </li>
-                </ul>
+                <a href="doctor-upcoming-appointment.html">
+                  <i className="fa-solid fa-eye"></i>
+                </a>
+                <a href="#">
+                  <i className="fa-solid fa-comments"></i>
+                </a>
+                <a href="#">
+                  <i className="fa-solid fa-xmark"></i>
+                </a>
               </li>
               <li className="appointment-start">
                 <a href="doctor-appointment-start.html" className="start-link">
