@@ -24,6 +24,7 @@ import ProfileSettings from "./pages/therapists/settings";
 import ChangePassword from "./pages/therapists/change-password";
 import Appointment from "./pages/therapists/appointment";
 import AppointmentCancelled from "./components/therapists/appointment-sidebar/appointment-cancelled";
+import Invoices from "./pages/therapists/invoices";
 
 const theme = createTheme();
 
@@ -55,7 +56,12 @@ function App() {
                 path="/instructor/instructor-profile"
                 element={<Appointment />}
               />
-              
+
+              <Route
+                path="/instructor/instructor-enrolled-course"
+                element={<Invoices />}
+              />
+
               <Route exact path="/settings" element={<ProfileSettings />} />
               <Route
                 exact

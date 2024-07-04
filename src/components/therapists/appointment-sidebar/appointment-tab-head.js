@@ -8,7 +8,7 @@ export default function AppointmentTabHead({ setActiveTab }) {
         <ul className="nav nav-pills inner-tab" id="pills-tab" role="tablist">
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link active"
+              className="nav-link"
               id="pills-upcoming-tab"
               data-bs-toggle="pill"
               data-bs-target="#pills-upcoming"
