@@ -1,7 +1,7 @@
 import React from "react";
 import "./appointment-tab-head.css";
 
-export default function AppointmentTabHead() {
+export default function AppointmentTabHead({ setActiveTab }) {
   return (
     <div className="appointment-tab-head">
       <div className="appointment-tabs">
@@ -16,6 +16,7 @@ export default function AppointmentTabHead() {
               role="tab"
               aria-controls="pills-upcoming"
               aria-selected="true"
+              onClick={() => setActiveTab("upcoming")}
             >
               Upcoming<span>21</span>
             </button>
@@ -31,6 +32,7 @@ export default function AppointmentTabHead() {
               aria-controls="pills-cancel"
               aria-selected="false"
               tabIndex="-1"
+              onClick={() => setActiveTab("cancelled")}
             >
               Cancelled<span>16</span>
             </button>
@@ -46,6 +48,7 @@ export default function AppointmentTabHead() {
               aria-controls="pills-complete"
               aria-selected="false"
               tabIndex="-1"
+              onClick={() => setActiveTab("completed")}
             >
               Completed<span>214</span>
             </button>
