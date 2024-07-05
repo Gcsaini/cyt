@@ -51,16 +51,9 @@ function App() {
                 element={<TherapistDashboard />}
               />
 
-              <Route
-                exact
-                path="/instructor/instructor-profile"
-                element={<Appointment />}
-              />
+              <Route exact path="/appointment" element={<Appointment />} />
 
-              <Route
-                path="/instructor/instructor-enrolled-course"
-                element={<Invoices />}
-              />
+              <Route path="/invoices" element={<Invoices />} />
 
               <Route exact path="/settings" element={<ProfileSettings />} />
               <Route

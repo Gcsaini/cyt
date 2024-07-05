@@ -3,12 +3,22 @@
   justify-content: space-between;
 }
 
+.rbt-dashboard-content .content .section-title h4 h6:hover {
+  color: #3eb75e;
+}
+
 .rbt-dashboard-content .content .row .performance-conatiner {
-  border: 1px solid grey;
+  border: 1px solid #3eb75e;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 10px;
   width: 180px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.rbt-dashboard-content .content .row .performance-conatiner:hover {
+  transform: translateY(-5px);
 }
 
 .rbt-dashboard-content

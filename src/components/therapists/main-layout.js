@@ -49,8 +49,8 @@ export default function MainLayout(props) {
         setLoading(true);
         const response = await axios.post(updateUserUrl, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
-          },
+            "Content-Type": "multipart/form-data"
+          }
         });
         if (response.data.status) {
           getData();
@@ -195,7 +195,7 @@ export default function MainLayout(props) {
                                       ? "active"
                                       : ""
                                   }
-                                  to="/instructor/instructor-profile"
+                                  to="/appointment"
                                 >
                                   <i className="fa-regular fa-calendar-check"></i>
                                   <span>Appointment</span>
@@ -203,10 +203,7 @@ export default function MainLayout(props) {
                               </li>
 
                               <li className="nav-item">
-                                <Link
-                                  className=""
-                                  to="/instructor/instructor-enrolled-course"
-                                >
+                                <Link className="" to="/invoices">
                                   <i className="fa-solid fa-file-invoice"></i>
                                   <span>Invoices</span>
                                 </Link>

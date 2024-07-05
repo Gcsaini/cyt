@@ -75,15 +75,9 @@ const AppointmentTabContent = () => {
                 <br />
                 <i className="fa-solid fa-phone"></i> {appointment.phone}
               </li>
-              <li className="appointment-action">
-                <a href="doctor-upcoming-appointment.html">
-                  <i className="fa-solid fa-eye"></i>
-                </a>
-                <a href="#">
-                  <i className="fa-solid fa-comments"></i>
-                </a>
-                <a href="#">
-                  <i className="fa-solid fa-xmark"></i>
+              <li className="appointment-start">
+                <a href="doctor-appointment-start.html" className="start-link">
+                  View
                 </a>
               </li>
               <li className="appointment-start">

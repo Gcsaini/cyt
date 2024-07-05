@@ -54,13 +54,14 @@
 .view-icons {
   height: 36px;
   width: 36px;
-  border: 1px solid grey;
+  border: 1px solid #3eb75e;
   border-radius: 10px;
   text-align: center;
 }
+
 .view-icons:hover {
   color: #fff;
-  background-color: var(--bs-primary);
+  background-color: #3eb75e;
 }
 
 .view-icons:hover a {

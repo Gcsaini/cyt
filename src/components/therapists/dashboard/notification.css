@@ -1,3 +1,7 @@
+.col-xl-15 .dashboard-card .dashboard-card-head .card-view-link a {
+  color: #3eb75e;
+}
+
 .col-xl-15 .dashboard-card .dashboard-card-body .table-responsive {
   width: 100%;
   border-top: 1px solid rgb(228, 225, 225);
@@ -15,6 +19,7 @@
   .table-noti-info {
   display: flex;
   padding: 10px;
+  transition: 0.3s ease;
 }
 
 .col-xl-15
@@ -25,6 +30,7 @@
   .table-noti-info:hover {
   background-color: rgb(243, 238, 238);
   border-radius: 10px;
+  transform: translateY(-5px);
 }
 
 .col-xl-15

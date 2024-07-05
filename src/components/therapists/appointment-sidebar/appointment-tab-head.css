@@ -13,26 +13,20 @@
 }
 
 .nav-pills .nav-link {
-  color: var(--bs-body-color);
-  background-color: var(--bs-light);
-  border-radius: var(--bs-border-radius);
-  padding: 0.9rem 1rem;
+  border: 1px solid #3eb75e;
   margin: 0 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--bs-border-radius);
 }
-
-/* .nav-pills .nav-link .active {
-  color: var(--bs-white);
-  background-color: var(--bs-primary);
-} */
 
 .nav-pills .nav-link:hover {
   color: var(--bs-white);
-  background-color: var(--bs-primary);
+  background-color: #3eb75e;
 }
 
-.nav-pills .nav-link:focus{
+.nav-pills .nav-link:focus {
   color: var(--bs-white);
-  background-color: var(--bs-primary);
+  background-color: #3eb75e;
 }
 
 .nav-pills .nav-link span {
