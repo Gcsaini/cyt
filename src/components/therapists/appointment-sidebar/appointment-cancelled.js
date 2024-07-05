@@ -70,26 +70,8 @@ export default function AppointmentCancelled() {
                   </ul>
                 </p>
               </li>
-              {/* <li className="mail-info-patient">
-                <i className="fa-solid fa-envelope"></i> {appointment.email}
-                <br />
-                <i className="fa-solid fa-phone"></i> {appointment.phone}
-              </li> */}
-              {/* <li className="appointment-action">
-                <a href="doctor-upcoming-appointment.html">
-                  <i className="fa-solid fa-eye"></i>
-                </a>
-                <a href="#">
-                  <i className="fa-solid fa-comments"></i>
-                </a>
-                <a href="#">
-                  <i className="fa-solid fa-xmark"></i>
-                </a>
-              </li> */}
               <li className="appointment-start">
-                <a href="doctor-appointment-start.html" className="start-link">
-                  View Details
-                </a>
+                <button className="start-link">View Details</button>
               </li>
             </ul>
           </div>

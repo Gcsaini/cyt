@@ -76,14 +76,10 @@ const AppointmentTabContent = () => {
                 <i className="fa-solid fa-phone"></i> {appointment.phone}
               </li>
               <li className="appointment-start">
-                <a href="doctor-appointment-start.html" className="start-link">
-                  View
-                </a>
+                <button className="start-link">View</button>
               </li>
               <li className="appointment-start">
-                <a href="doctor-appointment-start.html" className="start-link">
-                  Start Now
-                </a>
+                <button className="start-link">Start Now</button>
               </li>
             </ul>
           </div>
