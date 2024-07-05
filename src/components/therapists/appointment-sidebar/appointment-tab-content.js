@@ -33,6 +33,10 @@ const AppointmentTabContent = () => {
     history("/view-upcoming");
   };
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
       <div
@@ -80,9 +84,11 @@ const AppointmentTabContent = () => {
                 <i className="fa-solid fa-phone"></i> {appointment.phone}
               </li>
               <li className="appointment-start">
-                <button className="start-link" onClick={handleViewUpcoming}>
+              {/* view part */}
+                <button className="start-link" onClick={handleOpen}>
                   View
                 </button>
+                
               </li>
               <li className="appointment-start">
                 <button className="start-link">Start Now</button>
