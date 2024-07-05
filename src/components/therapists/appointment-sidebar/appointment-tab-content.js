@@ -2,7 +2,6 @@ import React from "react";
 import "./appointment-tab-content.css";
 import { useNavigate } from "react-router-dom";
 
-// Define an array of appointment data
 const appointments = [
   {
     id: "#Apt0001",
@@ -26,7 +25,6 @@ const appointments = [
     email: "kelly@example.com",
     phone: "+1 832 891 8403"
   }
-  // Add more appointments as needed
 ];
 
 const AppointmentTabContent = () => {
