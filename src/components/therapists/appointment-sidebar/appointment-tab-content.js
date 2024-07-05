@@ -1,5 +1,6 @@
 import React from "react";
 import "./appointment-tab-content.css";
+import { useNavigate } from "react-router-dom";
 
 // Define an array of appointment data
 const appointments = [
@@ -29,6 +30,11 @@ const appointments = [
 ];
 
 const AppointmentTabContent = () => {
+  const history = useNavigate();
+  const handleViewUpcoming = () => {
+    history("/view-upcoming");
+  };
+
   return (
     <>
       <div
@@ -76,7 +82,9 @@ const AppointmentTabContent = () => {
                 <i className="fa-solid fa-phone"></i> {appointment.phone}
               </li>
               <li className="appointment-start">
-                <button className="start-link">View</button>
+                <button className="start-link" onClick={handleViewUpcoming}>
+                  View
+                </button>
               </li>
               <li className="appointment-start">
                 <button className="start-link">Start Now</button>
