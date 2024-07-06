@@ -10,17 +10,12 @@ export default function AboutUsBanner() {
           <div className="col-lg-10 offset-lg-1">
             <div className="content">
               <div className="inner text-center">
-              <div
-                    className="rbt-new-badge rbt-new-badge-one"
-                    
-                  >
-                    <span className="rbt-new-badge-icon">
-                      <PersonSearchIcon
-                        sx={{ color: "#228756", fontSize: 30 }}
-                      />
-                    </span>{" "}
-                    Discover mental health experts.
-                  </div>
+                <div className="rbt-new-badge rbt-new-badge-one">
+                  <span className="rbt-new-badge-icon">
+                    <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
+                  </span>{" "}
+                  Discover mental health experts.
+                </div>
                 <h1 className="title">
                   Read About Our
                   {isMobile ? <br /> : ""}
@@ -33,9 +28,7 @@ export default function AboutUsBanner() {
                     className="theme-gradient"
                   />
                 </h1>
-                <p className="description has-medium-font-size mt--20">
-                 
-                </p>
+                <p className="description has-medium-font-size mt--20"></p>
                 <div className="slider-btn rbt-button-group justify-content-center">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
