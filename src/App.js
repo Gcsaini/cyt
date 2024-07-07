@@ -23,13 +23,28 @@ import TherapistDashboard from "./pages/therapists/dashboard";
 import ProfileSettings from "./pages/therapists/settings";
 import ChangePassword from "./pages/therapists/change-password";
 import Appointment from "./pages/therapists/appointment";
+<<<<<<< Updated upstream
 import AppointmentCancelled from "./components/therapists/appointment-sidebar/appointment-cancelled";
 import Invoices from "./pages/therapists/invoices";
 import Reviews from "./pages/therapists/reviews";
+=======
+import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
+
+import { useEffect } from "react";
+import useTherapistStore from "./store/therapistStore";
+import { getDecodedToken, getToken } from "./utils/jwt";
+>>>>>>> Stashed changes
 
 const theme = createTheme();
 
 function App() {
+  const { fetchUserInfo } = useTherapistStore();
+  useEffect(() => {
+    const data = getToken();
+    if (data) {
+      fetchUserInfo();
+    }
+  }, [fetchUserInfo]);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -46,6 +61,7 @@ function App() {
                 path="/therapist-registration"
                 element={<TherapistRegistration />}
               />
+<<<<<<< Updated upstream
               <Route
                 exact
                 path="/therapist-dashboard"
@@ -59,6 +75,15 @@ function App() {
               <Route path="/reviews" element={<Reviews />} />
 
               <Route exact path="/settings" element={<ProfileSettings />} />
+=======
+
+              <Route
+                exact
+                path="/instructor/instructor-profile"
+                element={<Appointment />}
+              />
+
+>>>>>>> Stashed changes
               <Route
                 exact
                 path="/change-password"
@@ -84,18 +109,28 @@ function App() {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/my-dashboard" element={<UserDashboard />} />
               <Route path="/my-profile" element={<UserProfile />} />
-
-              {/* <Route
-                path="/users"
-                element={
-                  <ProtectedRoute>
-                    <UserPage />
-                  </ProtectedRoute>
-                }
-              /> */}
               <Route path="/" element={<HomePage />} />
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
+              {/* therapist related routes */}
+              <Route
+                exact
+                path="/therapist-dashboard"
+                element={
+                  <TherapistProtectedRoute>
+                    <TherapistDashboard />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/settings"
+                element={
+                  <TherapistProtectedRoute>
+                    <ProfileSettings />
+                  </TherapistProtectedRoute>
+                }
+              />
             </Routes>
           </div>
         </div>

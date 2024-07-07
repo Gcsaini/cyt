@@ -25378,6 +25378,10 @@ hr {
 .bg_image--9 {
   background-position: bottom 44% center;
 }
+
+.bg_image_dash {
+  background-image: url(media/dash-bg.jpg);
+}
 .rbt-alert-success.alert-success {
   color: var(--color-body);
   background-color: var(--color-grey);

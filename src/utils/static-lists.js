@@ -38,6 +38,12 @@ export const stateList = [
   "Ladakh",
 ];
 
+export const counsellingTypes = [
+  "Individual Counselling",
+  "Couple Counselling",
+  "Teen Counselling",
+];
+
 export const ExpList = [
   "Select",
   "1-2",
@@ -49,7 +55,7 @@ export const ExpList = [
 ];
 
 export const services = [
-  "Individual Counseling ",
+  "Individual Counseling",
   "Relationship Counseling",
   "Teen Counseling",
   "Diagnosis",

@@ -1,118 +1,135 @@
 import MainLayout from "../../components/therapists/main-layout";
 import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
-import PaymentDetails from "../../components/therapists/settings/paymentDetails";
+import PaymentDetails from "../../components/therapists/settings/payment-details";
 import More from "../../components/therapists/settings/more";
 import React from "react";
 import { Link } from "react-router-dom";
 import { fetchById } from "../../utils/actions";
 import { getTherapist } from "../../utils/url";
 import TherapistFees from "../../components/therapists/settings/therapist-fees";
-import auth from "../../utils/auth";
 import ServicesAndExperties from "../../components/therapists/settings/services-and-experties";
+import { errorColor } from "../../utils/colors";
 
 export default function ProfileSettings() {
   const [tab, setTab] = React.useState(0);
   const [pageData, setPageData] = React.useState();
+  const [error, setError] = React.useState(null);
   const style = {
     cursor: "pointer",
   };
 
   const getData = async () => {
-    const res = await fetchById(`${getTherapist}/667d355860951ac197255a39`);
-    if (res && res.status) {
-      setPageData(res.data);
+    try {
+      const res = await fetchById(getTherapist);
+      if (res.status) {
+        setPageData(res.data);
+      } else {
+        setError(res.message);
+      }
+    } catch (err) {
+      console.log("err.message", err.message);
+      setError(err.message);
     }
   };
-  console.log("id", auth.getUserInfo());
+
   React.useEffect(() => {
     getData();
   }, []);
-  console.log("p", pageData);
+
   return (
     <MainLayout>
-      <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
-        <div className="content">
-          <div className="section-title">
-            <h4 className="rbt-title-style-3">Edit Profile</h4>
-          </div>
-          <div className="advance-tab-button mb--30">
-            <ul
-              className="nav nav-tabs tab-button-style-2 justify-content-start"
-              id="settinsTab-4"
-            >
-              <li>
-                <Link
-                  className={tab === 0 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 0 ? "true" : "false"}
-                  onClick={() => setTab(0)}
-                  style={style}
-                >
-                  <span className="title">Profile</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={tab === 2 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 2 ? "true" : "false"}
-                  onClick={() => setTab(2)}
-                  style={style}
-                >
-                  <span className="title">Offerings</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={tab === 3 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 3 ? "true" : "false"}
-                  onClick={() => setTab(3)}
-                  style={style}
-                >
-                  <span className="title">Availability</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={tab === 4 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 4 ? "true" : "false"}
-                  onClick={() => setTab(4)}
-                  style={style}
-                >
-                  <span className="title">Fees</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={tab === 5 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 5 ? "true" : "false"}
-                  onClick={() => setTab(5)}
-                  style={style}
-                >
-                  <span className="title">Payment Details</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={tab === 6 ? "tab-button active" : "tab-button"}
-                  aria-selected={tab === 6 ? "true" : "false"}
-                  onClick={() => setTab(6)}
-                  style={style}
-                >
-                  <span className="title">More</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="tab-content">
-            {tab === 0 && pageData && <Profile data={pageData} />}
-            {tab === 2 && pageData && <ServicesAndExperties data={pageData} />}
-            {tab === 3 && <Availability />}
-            {tab === 4 && <TherapistFees />}
-            {tab === 5 && <PaymentDetails />}
-            {tab === 6 && <More />}
+      {error && (
+        <div>
+          <p style={{ color: errorColor }}>{error}</p>
+        </div>
+      )}
+      {pageData && (
+        <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
+          <div className="content">
+            <div className="section-title">
+              <h4 className="rbt-title-style-3">Edit Profile</h4>
+            </div>
+            <div className="advance-tab-button mb--30">
+              <ul
+                className="nav nav-tabs tab-button-style-2 justify-content-start"
+                id="settinsTab-4"
+              >
+                <li>
+                  <Link
+                    className={tab === 0 ? "tab-button active" : "tab-button"}
+                    aria-selected={tab === 0 ? "true" : "false"}
+                    onClick={() => setTab(0)}
+                    style={style}
+                  >
+                    <span className="title">Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={tab === 2 ? "tab-button active" : "tab-button"}
+                    aria-selected={tab === 2 ? "true" : "false"}
+                    onClick={() => setTab(2)}
+                    style={style}
+                  >
+                    <span className="title">Offerings</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={tab === 3 ? "tab-button active" : "tab-button"}
+                    aria-selected={tab === 3 ? "true" : "false"}
+                    onClick={() => setTab(3)}
+                    style={style}
+                  >
+                    <span className="title">Availability</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={tab === 4 ? "tab-button active" : "tab-button"}
+                    aria-selected={tab === 4 ? "true" : "false"}
+                    onClick={() => setTab(4)}
+                    style={style}
+                  >
+                    <span className="title">Fees</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={tab === 5 ? "tab-button active" : "tab-button"}
+                    aria-selected={tab === 5 ? "true" : "false"}
+                    onClick={() => setTab(5)}
+                    style={style}
+                  >
+                    <span className="title">Payments</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={tab === 6 ? "tab-button active" : "tab-button"}
+                    aria-selected={tab === 6 ? "true" : "false"}
+                    onClick={() => setTab(6)}
+                    style={style}
+                  >
+                    <span className="title">More</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="tab-content">
+              {tab === 0 && pageData && <Profile data={pageData} />}
+              {tab === 2 && pageData && (
+                <ServicesAndExperties data={pageData} />
+              )}
+              {tab === 3 && <Availability />}
+              {tab === 4 && <TherapistFees />}
+              {tab === 5 && <PaymentDetails />}
+              {tab === 6 && <More />}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </MainLayout>
   );
 }

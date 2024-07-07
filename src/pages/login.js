@@ -11,6 +11,8 @@ import { isValidMail } from "../utils/validators";
 import { loginUrl } from "../utils/url";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/material";
+import { getDecodedToken, getToken, removeToken, setToken } from "../utils/jwt";
+// import jwt from "jsonwebtoken";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,15 +40,16 @@ export default function Login() {
 
     request(loginUrl, { method: "POST", body: value })
       .then((response) => {
+        console.log(response);
         if (!response.status) {
           setError(response.message);
         } else {
-          auth.setToken(response.data.token, true);
-          auth.setUserInfo(response.data, true);
-          if (response.data.role === 1) {
+          setToken(response.token, true);
+          const data = getDecodedToken(response.token);
+          if (data.role === 1) {
             navigate("/therapist-dashboard");
           } else {
-            redirectUser();
+            navigate("/home");
           }
         }
       })
@@ -56,13 +59,14 @@ export default function Login() {
     setLoading(false);
   };
 
-  const redirectUser = () => {
-    navigate(`/home`);
-  };
-
   useEffect(() => {
-    if (auth.getToken()) {
-      redirectUser();
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role === 1) {
+        navigate("/therapist-dashboard");
+      } else {
+        navigate(`/home`);
+      }
     }
   }, []);
 

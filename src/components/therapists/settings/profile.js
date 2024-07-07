@@ -5,12 +5,19 @@ import {
   sessionFormatsList,
   stateList,
 } from "../../../utils/static-lists";
-import React, { useState } from "react";
-import { updateProfile } from "../../../utils/url";
-import axios from "axios";
-import { errorColor, successColor } from "../../../utils/colors";
+import React, { useState, useRef, useEffect } from "react";
+import { updateProfileUrl, updateUserUrl } from "../../../utils/url";
+import ImageTag from "../../../utils/image-tag";
+import { postData, postFormData } from "../../../utils/actions";
+import FormMessage from "../../global/form-message";
+import FormProgressBar from "../../global/form-progressbar";
+import useTherapistStore from "../../../store/therapistStore";
 export default function Profile(props) {
+  const { userInfo, fetchUserInfo } = useTherapistStore();
   const { data } = props;
+  const fileInputRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const [education, setEducation] = useState(data.qualification || "");
   const [license, setLicense] = useState(data.license_number || "");
   const [name, setName] = useState(data.name || "");
@@ -82,29 +89,25 @@ export default function Profile(props) {
     } else {
       setError("");
       setLoading(true);
-      const formData = new FormData();
-      formData.append("userId", data._id);
-      formData.append("name", name);
-      formData.append("phone", phone);
-      formData.append("qualification", education);
-      formData.append("license_number", license);
-      formData.append("bio", bio);
-      formData.append("state", state);
-      formData.append("gender", gender);
-      formData.append("office_address", ofc);
-      formData.append("year_of_exp", exp);
-      formData.append("language_spoken", languages.join(", "));
-      formData.append("session_formats", sessionFormats.join(", "));
+      const data = {
+        name: name,
+        phone: phone,
+        qualification: education,
+        license_number: license,
+        bio: bio,
+        state: state,
+        gender: gender,
+        office_address: ofc,
+        year_of_exp: exp,
+        language_spoken: languages.join(", "),
+        session_formats: sessionFormats.join(", "),
+      };
 
       try {
         setLoading(true);
-        const response = await axios.post(updateProfile, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        if (response.data.status) {
-          setSuccess(response.data.message);
+        const response = await postData(updateProfileUrl, data);
+        if (response.status) {
+          setSuccess(response.message);
           setError("");
         } else {
           setError("Something went wrong");
@@ -116,6 +119,42 @@ export default function Profile(props) {
     }
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      setPreviewImage(URL.createObjectURL(file));
+    }
+  };
+
+  const handleImageUpload = () => {
+    fileInputRef.current.click();
+  };
+
+  const updateProfile = async () => {
+    if (selectedImage) {
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("file", selectedImage);
+      try {
+        setLoading(true);
+        const response = await postFormData(updateUserUrl, formData);
+        if (response.status) {
+          fetchUserInfo();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedImage) {
+      updateProfile(); // Call updateProfile when selectedImage changes
+    }
+  }, [selectedImage]);
+
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <div
@@ -124,6 +163,49 @@ export default function Profile(props) {
       role="tabpanel"
       aria-labelledby="profile-tab"
     >
+      <div className="rbt-dashboard-content-wrapper">
+        <div
+          className="tutor-bg-photo bg_image bg_image_dash"
+          style={{ height: 200 }}
+        ></div>
+        <div className="rbt-tutor-information">
+          <div className="rbt-tutor-information-left">
+            <div className="thumbnail rbt-avatars size-lg position-relative">
+              <ImageTag
+                alt="User profile"
+                style={{ height: 120, width: 120 }}
+                src={previewImage != null ? previewImage : userInfo.profile}
+              />
+              <div className="rbt-edit-photo-inner">
+                <button
+                  className="rbt-edit-photo"
+                  title="Upload Photo"
+                  onClick={handleImageUpload}
+                >
+                  {loading ? (
+                    <FormProgressBar />
+                  ) : (
+                    <i className="feather-camera"></i>
+                  )}
+                </button>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleImageChange}
+                />
+              </div>
+            </div>
+            <div className="tutor-content">
+              <h5 className="title">{userInfo.name}</h5>
+              <div className="rbt-review">
+                <h6 className="title">{userInfo.email}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="rbt-profile-row rbt-default-form row row--15">
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
@@ -328,15 +410,16 @@ export default function Profile(props) {
             ></textarea>
           </div>
         </div>
-        <div className="col-12">
-          <span style={{ color: successColor }}>{success}</span>
-          <span style={{ color: errorColor }}>{error}</span>
-        </div>
+        <FormMessage error={error} success={success} />
         <div className="col-12 mt--20">
           <div className="rbt-form-group">
-            <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
-              {loading ? "Please wait..." : "Update Info"}
-            </button>
+            {loading ? (
+              <FormProgressBar />
+            ) : (
+              <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
+                Update
+              </button>
+            )}
           </div>
         </div>
       </div>

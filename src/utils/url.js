@@ -11,7 +11,12 @@ export const getUserUrl = `${localhost}/get-user`;
 export const updateUserUrl = `${localhost}/update-user`;
 export const getTherapists = `${localhost}/get-therapists`;
 export const getTherapist = `${localhost}/get-therapist`;
-export const updateProfile = `${localhost}/update-profile`;
-export const updateServiceExperties = `${localhost}/update-service-experties`;
+export const updateProfileUrl = `${localhost}/update-profile`;
+export const updateServiceExpertiesUrl = `${localhost}/update-service-experties`;
+export const updateAccountDetailsUrl = `${localhost}/update-account-details`;
+export const updateFeeDetailsUrl = `${localhost}/update-fee-details`;
+export const getAccountDetailsUrl = `${localhost}/get-bank-details`;
+export const getFeeDetailsUrl = `${localhost}/get-fee-details`;
+export const changePasswordUrl = `${localhost}/change-passowrd`;
 export const defaultProfile =
   "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";

@@ -1,21 +1,15 @@
-import ImageTag from "../../utils/image-tag";
-import profileImg from "../../assets/img/avatar-027dc8.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import MyNavbar from "../../components/navbar";
-import Footer from "../../components/footer";
-import Banner from "./banner";
-import auth from "../../utils/auth";
-import { defaultProfile, getUserUrl, updateUserUrl } from "../../utils/url";
+import { updateUserUrl } from "../../utils/url";
 import React, { useState, useRef, useEffect } from "react";
-import { fetchById } from "../../utils/actions";
-import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
+import useTherapistStore from "../../store/therapistStore";
+import { postFormData } from "../../utils/actions";
+import { removeToken } from "../../utils/jwt";
+import DashboardTopNav from "./top-nav";
 export default function MainLayout(props) {
+  const { userInfo, fetchUserInfo } = useTherapistStore();
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
-  const [pageData, setPageData] = React.useState();
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
@@ -32,28 +26,16 @@ export default function MainLayout(props) {
     fileInputRef.current.click();
   };
 
-  const getData = async () => {
-    const res = await fetchById(`${getUserUrl}/667d355860951ac197255a39`);
-    if (res && res.status) {
-      setPageData(res.data);
-    }
-  };
-
   const updateProfile = async () => {
     if (selectedImage) {
       setLoading(true);
       const formData = new FormData();
-      formData.append("userId", pageData._id);
       formData.append("file", selectedImage);
       try {
         setLoading(true);
-        const response = await axios.post(updateUserUrl, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        });
-        if (response.data.status) {
-          getData();
+        const response = await postFormData(updateUserUrl, formData);
+        if (response.status) {
+          fetchUserInfo();
         }
       } catch (error) {
         console.log(error);
@@ -62,9 +44,12 @@ export default function MainLayout(props) {
     }
   };
 
-  React.useEffect(() => {
-    getData();
-  }, []);
+  const handleLogout = () => {
+    console.log("clicked");
+    removeToken();
+    navigate("/login");
+  };
+
   useEffect(() => {
     if (selectedImage) {
       updateProfile();
@@ -73,34 +58,26 @@ export default function MainLayout(props) {
 
   return (
     <>
-      <MyNavbar />
-      <Banner />
-      <div className="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom">
-        <div className="container">
+      <DashboardTopNav />
+      <div className="rbt-dashboard-area">
+        <div
+          className="container"
+          style={{ marginTop: 100, marginBottom: 100, maxWidth: "98%" }}
+        >
           <div className="row">
             <div className="col-lg-12">
-              <div className="rbt-dashboard-content-wrapper">
+              {/* <div className="rbt-dashboard-content-wrapper">
                 <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
                 <div className="rbt-tutor-information">
                   <div className="rbt-tutor-information-left">
                     <div className="thumbnail rbt-avatars size-lg position-relative">
-                      {pageData ? (
-                        <ImageTag
-                          alt="User profile"
-                          style={{ height: 120, width: 120 }}
-                          src={
-                            previewImage != null
-                              ? previewImage
-                              : pageData.profile
-                          }
-                        />
-                      ) : (
-                        <ImageTag
-                          alt="User profile"
-                          style={{ height: 120, width: 120 }}
-                          src={defaultProfile}
-                        />
-                      )}
+                      <ImageTag
+                        alt="User profile"
+                        style={{ height: 120, width: 120 }}
+                        src={
+                          previewImage != null ? previewImage : userInfo.profile
+                        }
+                      />
                       <div className="rbt-edit-photo-inner">
                         <button
                           className="rbt-edit-photo"
@@ -125,7 +102,7 @@ export default function MainLayout(props) {
                       </div>
                     </div>
                     <div className="tutor-content">
-                      <h5 className="title">{pageData ? pageData.name : ""}</h5>
+                      <h5 className="title">{userInfo.name}</h5>
                       <div className="rbt-review">
                         <div className="rating">
                           <i className="fas fa-star"></i>
@@ -159,8 +136,8 @@ export default function MainLayout(props) {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="row g-5">
+              </div> */}
+              <div className="row">
                 <div className="col-lg-3">
                   <div className="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
                     <div className="inner">
@@ -168,7 +145,7 @@ export default function MainLayout(props) {
                         <div className="rbt-default-sidebar-wrapper">
                           <div className="section-title mb--20">
                             <h6 className="rbt-title-style-2">
-                              Welcome, {pageData ? pageData.name : ""}
+                              Welcome, {userInfo.name}
                             </h6>
                           </div>
                           <nav className="mainmenu-nav">
@@ -225,7 +202,7 @@ export default function MainLayout(props) {
                                   backgroundColor: "rgb(250, 10, 10)",
                                   padding: "5px",
                                   borderRadius: "5px",
-                                  color: "#fff"
+                                  color: "#fff",
                                 }}
                               >
                                 Coming soon
@@ -294,12 +271,7 @@ export default function MainLayout(props) {
                               </li>
 
                               <li>
-                                <Link
-                                  onClick={() => {
-                                    auth.clearAppStorage();
-                                    navigate("/login");
-                                  }}
-                                >
+                                <Link to={"#"} onClick={handleLogout}>
                                   <i className="feather-log-out"></i>
                                   <span>Logout</span>
                                 </Link>
@@ -317,7 +289,6 @@ export default function MainLayout(props) {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

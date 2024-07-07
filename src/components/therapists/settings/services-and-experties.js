@@ -7,13 +7,15 @@ import {
   relationshipIssuesList,
 } from "../../../utils/static-lists";
 import "./social-share.css";
-import axios from "axios";
-import { updateServiceExperties } from "../../../utils/url";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
+import { updateServiceExpertiesUrl } from "../../../utils/url";
+import { postData } from "../../../utils/actions";
+import FormMessage from "../../global/form-message";
+import FormProgressBar from "../../global/form-progressbar";
 export default function ServicesAndExperties(props) {
   const { data } = props;
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [selectedServices, setSelectedServices] = useState(
     data.services ? data.services.split(",").map((item) => item.trim()) : []
   );
@@ -38,19 +40,23 @@ export default function ServicesAndExperties(props) {
   };
   const handleSubmit = async () => {
     const reqData = {
-      userId: data._id,
       services: selectedServices.join(", "),
       experties: selectedExpertise.join(", "),
     };
 
     try {
+      setError("");
+      setSuccess("");
       setLoading(true);
-      const response = await axios.post(updateServiceExperties, reqData);
-      if (response.data.status) {
-        setLoading(false);
+      const response = await postData(updateServiceExpertiesUrl, reqData);
+      if (response.status) {
+        setSuccess(response.message);
+        setError("");
+      } else {
+        setError("Something went wrong");
       }
     } catch (error) {
-      console.log(error);
+      setError(error.response.data.message);
     }
     setLoading(false);
   };
@@ -154,17 +160,15 @@ export default function ServicesAndExperties(props) {
               </div>
             </div>
           </div>
-
+          <FormMessage error={error} success={success} />
           <div className="col-12 mt--10">
             <div className="rbt-form-group">
               {loading ? (
-                <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
-                  Save
-                </button>
+                <FormProgressBar />
               ) : (
-                <Box sx={{ display: "flex" }}>
-                  <CircularProgress />
-                </Box>
+                <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
+                  Update
+                </button>
               )}
             </div>
           </div>

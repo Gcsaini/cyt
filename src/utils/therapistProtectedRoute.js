@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { getDecodedToken } from "../utils/jwt";
+import { getDecodedToken } from "./jwt";
 
-const ProtectedRoute = ({ children }) => {
+const TherapistProtectedRoute = ({ children }) => {
   const data = getDecodedToken();
-  if (data && data.role === 0) {
+  if (data && data.role === 1) {
     return children;
   }
   return <Navigate to="/login" />;
 };
 
-export default ProtectedRoute;
+export default TherapistProtectedRoute;
