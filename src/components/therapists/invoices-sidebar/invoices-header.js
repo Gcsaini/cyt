@@ -35,9 +35,17 @@ export default function InvoicesHeader() {
       <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div class="content">
           <div class="section-title">
-            <h4 class="rbt-title-style-3">Order History</h4>
+            <h4 class="rbt-title-style-3">Invoices</h4>
           </div>
           <div class="rbt-dashboard-table table-responsive mobile-table-750">
+            <div class="col-lg-6" style={{ marginBottom: "20px" }}>
+              <form action="#" class="rbt-search-style-1">
+                <input type="text" placeholder="Search" />
+                <button class="search-btn">
+                  <i class="feather-search"></i>
+                </button>
+              </form>
+            </div>
             <table class="rbt-table table table-borderless">
               <thead>
                 <tr>
