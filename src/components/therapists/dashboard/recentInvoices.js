@@ -11,8 +11,8 @@ export default function InvoicesHeader() {
           <div class="rbt-dashboard-table table-responsive mobile-table-750">
             <table class="rbt-table table table-borderless">
               <thead>
-                <tr>
-                  <th>Booking ID</th>
+              <tr>
+                  <th>Invoices ID</th>
                   <th>Client Name</th>
                   <th>Booking Date</th>
                   <th>Payment</th>
@@ -21,7 +21,7 @@ export default function InvoicesHeader() {
               </thead>
               <tbody>
                 <tr>
-                <th>#CYT-10/2024</th>
+                <th>#INV-24-490</th>
                   <td>Suresh Sharma</td>
                   <td>January 27, 2022</td>
                   <td>1000 INR</td>
@@ -31,7 +31,7 @@ export default function InvoicesHeader() {
                 </tr>
                 
                 <tr>
-                <th>#CYT-11/2024</th>
+                <th>#INV-24-491</th>
                   <td>Priyanka Tiwari</td>
                   <td>January 27, 2022</td>
                   <td>2000 INR</td>
@@ -40,7 +40,7 @@ export default function InvoicesHeader() {
                   </td>
                 </tr>
                 <tr>
-                <th>#CYT-12/2024</th>
+                <th>#INV-24-492</th>
                   <td>Ravikant</td>
                   <td>January 27, 2022</td>
                   <td>2000 INR</td>
@@ -49,7 +49,7 @@ export default function InvoicesHeader() {
                   </td>
                 </tr>
                 <tr>
-                <th>#CYT-13/2024</th>
+                <th>#INV-24-493</th>
                   <td>Lavnya Singh</td>
                   <td>January 27, 2022</td>
                   <td>2000 INR</td>

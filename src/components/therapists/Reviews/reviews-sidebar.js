@@ -4,7 +4,7 @@ export default function ReviewsSidebar() {
       <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div class="content">
           <div class="section-title">
-            <h4 class="rbt-title-style-3">Reviews</h4>
+            <h4 class="rbt-title-style-3">All Reviews</h4>
           </div>
           <div class="advance-tab-button mb--30">
             <ul
@@ -53,20 +53,20 @@ export default function ReviewsSidebar() {
                 <table class="rbt-table table table-borderless">
                   <thead>
                     <tr>
-                      <th>Student</th>
+                      <th>Client ID</th>
                       <th>Date</th>
                       <th>Feedback</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th>John Due</th>
+                      <th>CYT12456</th>
                       <td>January 30, 2021</td>
                       <td>
                         <span class="b3">
-                          Course:{" "}
+                          Session:{" "}
                           <a href="/instructor/instructor-reviews#">
-                            Speaking Korean for Beginners
+                           Individual Counselling 
                           </a>
                         </span>
                         <div class="rbt-review">
@@ -83,13 +83,13 @@ export default function ReviewsSidebar() {
                       </td>
                     </tr>
                     <tr>
-                      <th>John Due</th>
+                      <th>CYT12456</th>
                       <td>June 30, 2022</td>
                       <td>
                         <span class="b3">
-                          Course:{" "}
+                          Session:{" "}
                           <a href="/instructor/instructor-reviews#">
-                            PHP for Beginners
+                            Couple Counselling
                           </a>
                         </span>
                         <div class="rbt-review">
@@ -105,167 +105,8 @@ export default function ReviewsSidebar() {
                         <p class="b3">Awesome</p>
                       </td>
                     </tr>
-                    <tr>
-                      <th>John Due</th>
-                      <td>April 30, 2022</td>
-                      <td>
-                        <span class="b3">
-                          Course:{" "}
-                          <a href="/instructor/instructor-reviews#">
-                            WordPress for Beginners
-                          </a>
-                        </span>
-                        <div class="rbt-review">
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                          </div>
-                          <span class="rating-count"> (10 Reviews)</span>
-                        </div>
-                        <p class="b3">Nice Course</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>John Due</th>
-                      <td>March 30, 2022</td>
-                      <td>
-                        <span class="b3">
-                          Course:{" "}
-                          <a href="/instructor/instructor-reviews#">
-                            Design for Beginners
-                          </a>
-                        </span>
-                        <div class="rbt-review">
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                          </div>
-                          <span class="rating-count"> (15 Reviews)</span>
-                        </div>
-                        <p class="b3">-</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="given"
-              role="tabpanel"
-              aria-labelledby="given-tab"
-            >
-              <div class="rbt-dashboard-table table-responsive mobile-table-750">
-                <table class="rbt-table table table-borderless">
-                  <thead>
-                    <tr>
-                      <th>Course Title</th>
-                      <th>Review</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th>Course: How to Write Your First Novel</th>
-                      <td>
-                        <div class="rbt-review">
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                          </div>
-                          <span class="rating-count"> (9 Reviews)</span>
-                        </div>
-                        <p class="b3">Good</p>
-                      </td>
-                      <td>
-                        <div class="rbt-button-group">
-                          <a
-                            class="rbt-btn-link left-icon"
-                            href="/instructor/instructor-reviews#"
-                          >
-                            <i class="feather-edit"></i> Edit
-                          </a>
-                          <a
-                            class="rbt-btn-link left-icon"
-                            href="/instructor/instructor-reviews#"
-                          >
-                            <i class="feather-trash-2"></i> Delete
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Course: How to Web Design</th>
-                      <td>
-                        <div class="rbt-review">
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                          </div>
-                          <span class="rating-count"> (9 Reviews)</span>
-                        </div>
-                        <p class="b3">Awesome Course</p>
-                      </td>
-                      <td>
-                        <div class="rbt-button-group">
-                          <a
-                            class="rbt-btn-link left-icon"
-                            href="/instructor/instructor-reviews#"
-                          >
-                            <i class="feather-edit"></i> Edit
-                          </a>
-                          <a
-                            class="rbt-btn-link left-icon"
-                            href="/instructor/instructor-reviews#"
-                          >
-                            <i class="feather-trash-2"></i> Delete
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Course: English</th>
-                      <td>
-                        <div class="rbt-review">
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                            <i class="off fas fa-star"></i>
-                          </div>
-                          <span class="rating-count"> (9 Reviews)</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="rbt-button-group">
-                          <a
-                            class="rbt-btn-link left-icon"
-                            href="/instructor/instructor-reviews#"
-                          >
-                            <i class="feather-edit"></i> Edit
-                          </a>
-                          <a
-                            class="rbt-btn-link left-icon"
-                            href="/instructor/instructor-reviews#"
-                          >
-                            <i class="feather-trash-2"></i> Delete
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                   
+                   
                   </tbody>
                 </table>
               </div>
