@@ -67,7 +67,7 @@ export default function MainLayout(props) {
   }, []);
   useEffect(() => {
     if (selectedImage) {
-      updateProfile(); 
+      updateProfile();
     }
   }, [selectedImage]);
 
