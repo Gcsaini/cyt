@@ -23,17 +23,12 @@ import TherapistDashboard from "./pages/therapists/dashboard";
 import ProfileSettings from "./pages/therapists/settings";
 import ChangePassword from "./pages/therapists/change-password";
 import Appointment from "./pages/therapists/appointment";
-<<<<<<< Updated upstream
-import AppointmentCancelled from "./components/therapists/appointment-sidebar/appointment-cancelled";
 import Invoices from "./pages/therapists/invoices";
 import Reviews from "./pages/therapists/reviews";
-=======
 import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
-
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";
-import { getDecodedToken, getToken } from "./utils/jwt";
->>>>>>> Stashed changes
+import { getToken } from "./utils/jwt";
 
 const theme = createTheme();
 
@@ -61,21 +56,6 @@ function App() {
                 path="/therapist-registration"
                 element={<TherapistRegistration />}
               />
-<<<<<<< Updated upstream
-              <Route
-                exact
-                path="/therapist-dashboard"
-                element={<TherapistDashboard />}
-              />
-
-              <Route exact path="/appointment" element={<Appointment />} />
-
-              <Route path="/invoices" element={<Invoices />} />
-
-              <Route path="/reviews" element={<Reviews />} />
-
-              <Route exact path="/settings" element={<ProfileSettings />} />
-=======
 
               <Route
                 exact
@@ -83,12 +63,6 @@ function App() {
                 element={<Appointment />}
               />
 
->>>>>>> Stashed changes
-              <Route
-                exact
-                path="/change-password"
-                element={<ChangePassword />}
-              />
               <Route exact path="/auth/success" element={<Success />} />
 
               <Route
@@ -128,6 +102,44 @@ function App() {
                 element={
                   <TherapistProtectedRoute>
                     <ProfileSettings />
+                  </TherapistProtectedRoute>
+                }
+              />
+
+              <Route
+                exact
+                path="/appointment"
+                element={
+                  <TherapistProtectedRoute>
+                    <Appointment />
+                  </TherapistProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/invoices"
+                element={
+                  <TherapistProtectedRoute>
+                    <Invoices />
+                  </TherapistProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/reviews"
+                element={
+                  <TherapistProtectedRoute>
+                    <Reviews />
+                  </TherapistProtectedRoute>
+                }
+              />
+
+              <Route
+                exact
+                path="/change-password"
+                element={
+                  <TherapistProtectedRoute>
+                    <ChangePassword />
                   </TherapistProtectedRoute>
                 }
               />
