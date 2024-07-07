@@ -5,70 +5,29 @@ import "./appointment.css";
 export default function Appointment() {
   const appointments = [
     {
-      id: "Apt0001",
-      name: "Adrian Marshall",
+      id: "CYT-Apt001",
+      name: "Suresh Sharma",
       date: "11 Nov 2024 10.45 AM",
-      badge: "General",
-      imgSrc: "assets/img/doctors-dashboard/profile-01.jpg"
+      badge: "Individual Counselling",
+      imgSrc: "assets/img/2.png"
     },
     {
-      id: "Apt0002",
-      name: "Kelly Stevens",
+      id: "CYT-Apt002",
+      name: "Preeti",
       date: "10 Nov 2024 11.00 AM",
-      badge: "Clinic Consulting",
+      badge: "Couple Counselling",
       imgSrc: "assets/img/doctors-dashboard/profile-02.jpg"
     },
-    {
-      id: "Apt0003",
-      name: "Samuel Anderson",
-      date: "03 Nov 2024 02.00 PM",
-      badge: "General",
-      imgSrc: "assets/img/doctors-dashboard/profile-03.jpg"
-    },
-    {
-      id: "Apt0004",
-      name: "Catherine Griffin",
-      date: "01 Nov 2024 04.15 PM",
-      badge: "Clinic Consulting",
-      imgSrc: "assets/img/doctors-dashboard/profile-04.jpg"
-    },
-    {
-      id: "Apt0005",
-      name: "Sarah Jones",
-      date: "30 Oct 2024 01.15 PM",
-      badge: "General",
-      imgSrc: "assets/img/doctors-dashboard/profile-05.jpg"
-    }
+    
   ];
 
   return (
     <div className="dashboard-card w-100">
       <div className="dashboard-card-head">
         <div className="header-title">
-          <h5>Appointment</h5>
+          <h5>Today Appointments</h5>
         </div>
-        <div className="dropdown header-dropdown">
-          <a
-            className="dropdown-toggle nav-tog"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Last 7 Days
-          </a>
-          <div className="dropdown-menu dropdown-menu-end">
-            <a href="#" className="dropdown-item">
-              Today
-            </a>
-            <a href="#" className="dropdown-item">
-              This Month
-            </a>
-            <a href="#" className="dropdown-item">
-              Last 7 Days
-            </a>
-          </div>
-        </div>
+      
       </div>
       <div className="dashboard-card-body">
         <div className="appointment-list">

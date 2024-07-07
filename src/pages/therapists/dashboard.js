@@ -9,9 +9,11 @@ export default function TherapistDashboard() {
   return (
     <MainLayout>
       <TotalCounts />
-      <Notification />
-      <Appointment />
+     
+      {/*  <Notification />*/}
       <Upcomingappointment />
+      <Appointment />
+     
       <RecentInvoices />
     </MainLayout>
   );

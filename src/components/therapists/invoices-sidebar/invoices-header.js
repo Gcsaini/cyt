@@ -6,7 +6,7 @@ export default function InvoicesHeader() {
       <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div class="content">
           <div class="section-title">
-            <h4 class="rbt-title-style-3">Invoices</h4>
+            <h4 class="rbt-title-style-3">All Invoices</h4>
           </div>
           <div class="rbt-dashboard-table table-responsive mobile-table-750">
             <div class="col-lg-6" style={{ marginBottom: "20px" }}>
@@ -20,188 +20,49 @@ export default function InvoicesHeader() {
             <table class="rbt-table table table-borderless">
               <thead>
                 <tr>
-                  <th>Order ID</th>
-                  <th>Course Name</th>
-                  <th>Date</th>
-                  <th>Price</th>
-                  <th>Status</th>
+                  <th>Booking ID</th>
+                  <th>Client Name</th>
+                  <th>Booking Date</th>
+                  <th>Payment</th>
+                  <th>Invoices</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th>#5478</th>
-                  <td>App Development</td>
+                <th>#CYT-10/2024</th>
+                  <td>Suresh Sharma</td>
                   <td>January 27, 2022</td>
-                  <td>$100.99</td>
+                  <td>1000 INR</td>
                   <td>
-                    <span class="rbt-badge-5 bg-color-success-opacity color-success">
-                      Success
-                    </span>
+                  <a class="rbt-btn btn-gradient btn-sm" href="/my-account#">Download</a>
                   </td>
                 </tr>
+                
                 <tr>
-                  <th>#4585</th>
-                  <td>Graphic</td>
-                  <td>May 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-primary-opacity">
-                      Processing
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#9656</th>
-                  <td>Graphic</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-warning-opacity color-warning">
-                      On Hold
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#2045</th>
-                  <td>Application</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-danger-opacity color-danger">
-                      Canceled
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#5478</th>
-                  <td>App Development</td>
+                <th>#CYT-11/2024</th>
+                  <td>Priyanka Tiwari</td>
                   <td>January 27, 2022</td>
-                  <td>$100.99</td>
+                  <td>2000 INR</td>
                   <td>
-                    <span class="rbt-badge-5 bg-color-success-opacity color-success">
-                      Success
-                    </span>
+                  <a class="rbt-btn btn-gradient btn-sm" href="/my-account#">Download</a>
                   </td>
                 </tr>
                 <tr>
-                  <th>#4585</th>
-                  <td>Graphic</td>
-                  <td>May 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-primary-opacity">
-                      Processing
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#9656</th>
-                  <td>Graphic</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-warning-opacity color-warning">
-                      On Hold
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#2045</th>
-                  <td>Application</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-danger-opacity color-danger">
-                      Canceled
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#5478</th>
-                  <td>App Development</td>
+                <th>#CYT-12/2024</th>
+                  <td>Ravikant</td>
                   <td>January 27, 2022</td>
-                  <td>$100.99</td>
+                  <td>2000 INR</td>
                   <td>
-                    <span class="rbt-badge-5 bg-color-success-opacity color-success">
-                      Success
-                    </span>
+                  <a class="rbt-btn btn-gradient btn-sm" href="/my-account#">Download</a>
                   </td>
                 </tr>
                 <tr>
-                  <th>#4585</th>
-                  <td>Graphic</td>
-                  <td>May 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-primary-opacity">
-                      Processing
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#9656</th>
-                  <td>Graphic</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-warning-opacity color-warning">
-                      On Hold
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#2045</th>
-                  <td>Application</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-danger-opacity color-danger">
-                      Canceled
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#5478</th>
-                  <td>App Development</td>
+                <th>#CYT-13/2024</th>
+                  <td>Lavnya Singh</td>
                   <td>January 27, 2022</td>
-                  <td>$100.99</td>
+                  <td>2000 INR</td>
                   <td>
-                    <span class="rbt-badge-5 bg-color-success-opacity color-success">
-                      Success
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#4585</th>
-                  <td>Graphic</td>
-                  <td>May 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-primary-opacity">
-                      Processing
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#9656</th>
-                  <td>Graphic</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-warning-opacity color-warning">
-                      On Hold
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>#2045</th>
-                  <td>Application</td>
-                  <td>March 27, 2022</td>
-                  <td>$200.99</td>
-                  <td>
-                    <span class="rbt-badge-5 bg-color-danger-opacity color-danger">
-                      Canceled
-                    </span>
+                  <a class="rbt-btn btn-gradient btn-sm" href="/my-account#">Download</a>
                   </td>
                 </tr>
               </tbody>

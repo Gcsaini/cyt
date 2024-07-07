@@ -14,31 +14,31 @@ export default function TotalCounts() {
         </div>
         <div className="row g-5">
           <div className="performance-conatiner">
-            <h6>Reach</h6>
+            <h6>Today Appointment</h6>
             <div className="performance-two-part">
-              <h4>428</h4>
-              <span>-36%</span>
+              <h4>0</h4>
+              <span>-0%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
           <div className="performance-conatiner">
-            <h6>3-second video vie...</h6>
+            <h6>Total Client</h6>
             <div className="performance-two-part">
-              <h4>32</h4>
-              <span>-87%</span>
+              <h4>0</h4>
+              <span>-0%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
           <div className="performance-conatiner">
-            <h6>Stars</h6>
+            <h6>Total Session</h6>
             <div className="performance-two-part">
-              <h4>$0.00</h4>
+              <h4>0</h4>
               <span>+0%</span>
             </div>
             <p>from previous 28 days</p>
           </div>
           <div className="performance-conatiner">
-            <h6>Net followers</h6>
+            <h6>Total Revenue</h6>
             <div className="performance-two-part">
               <h4>0</h4>
               <span>+0%</span>

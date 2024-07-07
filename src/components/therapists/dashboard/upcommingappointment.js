@@ -5,7 +5,7 @@ export default function UpcomingAppointment() {
   return (
     <div className="upcoming-appointment-card">
       <div className="title-card">
-        <span>Upcoming Appointment</span>
+        <span>Upcoming Appointments</span>
       </div>
       <div className="upcoming-patient-info">
         <div className="info-details">
@@ -22,7 +22,7 @@ export default function UpcomingAppointment() {
           </div>
         </div>
         <div className="date-details">
-          <span>General visit</span>
+          <span>Individual Counslling</span>
           <h6>Today, 10:45 AM</h6>
         </div>
       </div>
@@ -33,10 +33,10 @@ export default function UpcomingAppointment() {
         </h5>
         <div className="btn-appointments">
           <a href="chat-doctor.html" className="btn">
-            Chat Now
+           Accept
           </a>
           <a href="doctor-appointment-start.html" className="btn">
-            Start Appointment
+            Cancel
           </a>
         </div>
       </div>
