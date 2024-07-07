@@ -1,14 +1,3 @@
-:root {
-  --bs-primary: #0d6efd;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-}
-
 .appointment-wrap {
   border: 0.5px solid rgb(236, 230, 230);
   border-radius: var(--bs-border-radius);
@@ -143,30 +132,17 @@
   text-decoration: none;
 }
 
-/* modal part */
-.modal-box {
-  background-color: var(--bs-white);
-  padding: 20px;
-  border-radius: var(--bs-border-radius-lg);
-  box-shadow: var(--bs-box-shadow-lg);
-  margin: auto;
-  width: 70%;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  overflow: auto;
-  /* background-color: red; */
-}
-
 /* Appointment Wrap */
-.modal-box .appointment-wrap {
+.appointment-wrap {
   list-style: none;
-  padding: 0;
+  padding: 1rem;
   margin: 0;
-  border: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
-/* Patient Information Section */
+/* Patient Information Section
 .patinet-information {
   display: flex;
   align-items: center;
@@ -175,9 +151,9 @@
 
 .patinet-information a {
   margin-right: 1rem;
-}
+} */
 
-.patinet-information img {
+.patinet-information .modal-img {
   border-radius: 10px;
   width: 70px;
   height: 70px;
@@ -205,7 +181,7 @@
 
 .mail-info-patient li {
   margin: 0.25rem 0;
-  /* display: flex; */
+  display: flex;
   align-items: center;
 }
 
@@ -221,23 +197,25 @@
 .person-info p {
   margin: 0 0 0.5rem;
   font-size: 14px;
-  color: var(--bs-gray);
+  color: #333;
 }
 
 .apponitment-types {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .apponitment-types li {
   display: flex;
   align-items: center;
   font-size: 14px;
+  color: var(--bs-success);
 }
 
 .apponitment-types i {
-  color: #059669;
   margin-right: 0.5rem;
 }
 
@@ -245,55 +223,42 @@
 .appointment-action {
   justify-content: space-between;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .detail-badge-info {
   display: flex;
-  align-items: center;
+  gap: 0.5rem;
 }
 
-.detail-badge-info .badge-modal {
-  margin-right: 0.5rem;
+.badge-modal {
+  padding: 0.5rem 1rem;
   font-size: 12px;
-  padding: 10px;
   border-radius: 10px;
-  border: 1px solid #059669;
+  border: 1px solid #198754;
   cursor: pointer;
 }
 
-.detail-badge-info .badge-modal:hover {
-  background-color: #059669;
+.badge-modal:hover {
   color: #fff;
+  background-color: #3eb75e;
 }
 
 .consult-fees h6 {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
+  color: #333;
 }
 
-.appointment-action ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.appointment-action li {
-  margin-left: 0.5rem;
-}
-
-.appointment-action a {
-  color: var(--bs-primary);
-}
-
-.appointment-action i {
-  font-size: 1.25rem;
+/* Modal Line */
+.modal-line {
+  border-top: 1px solid #ddd;
+  margin: 1rem 0;
 }
 
 /* Detail Card Bottom Info */
 .detail-card-bottom-info {
   list-style: none;
-  width: 100%;
   padding: 0;
   margin: 0;
 }
@@ -304,44 +269,30 @@
 
 .detail-card-bottom-info h6 {
   margin: 0;
-  color: var(--bs-gray-dark);
   font-size: 14px;
+  color: #333;
 }
 
 .detail-card-bottom-info span {
   display: block;
-  color: var(--bs-gray);
-  margin-top: 0.25rem;
-  font-size: 15px;
+  font-size: 14px;
+  color: #666;
 }
 
 /* Start Button */
+.start-btn {
+  text-align: center;
+}
+
 .start-btn .btn {
   border: 1px solid #3eb75e;
-  text-align: center;
-  display: inline-block;
-  padding: 0.375rem 0.75rem;
+  padding: 0.5rem 1rem;
   font-size: 14px;
-  border-radius: var(--bs-border-radius);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .start-btn .btn:hover {
   background-color: #3eb75e;
   color: #fff;
-}
-
-/* Modal Close Button */
-.modal-close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--bs-gray);
-  cursor: pointer;
-}
-
-.modal-close-button:hover {
-  color: var(--bs-black);
 }
