@@ -210,10 +210,7 @@ export default function MainLayout(props) {
                               </li>
 
                               <li className="nav-item">
-                                <Link
-                                  className=""
-                                  to="/instructor/instructor-reviews"
-                                >
+                                <Link className="" to="/reviews">
                                   <i className="feather-star"></i>
                                   <span>Reviews</span>
                                 </Link>
