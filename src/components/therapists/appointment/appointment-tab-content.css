@@ -103,35 +103,6 @@
   text-decoration: none;
 }
 
-/* Style for pagination */
-.dashboard-pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.dashboard-pagination ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-.dashboard-pagination li {
-  margin-right: 0.5rem;
-}
-
-.dashboard-pagination a {
-  color: var(--bs-primary);
-  text-decoration: none;
-  font-size: 1.25rem;
-}
-
-.dashboard-pagination a:hover {
-  color: var(--bs-primary);
-  text-decoration: none;
-}
-
 /* Appointment Wrap */
 .appointment-wrap {
   list-style: none;
@@ -141,17 +112,6 @@
   border-radius: 8px;
   background-color: #fff;
 }
-
-/* Patient Information Section
-.patinet-information {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.patinet-information a {
-  margin-right: 1rem;
-} */
 
 .patinet-information .modal-img {
   border-radius: 10px;
