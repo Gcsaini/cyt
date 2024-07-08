@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./availability.css";
 
 const Availability = () => {
   const initialTimes = {
@@ -82,88 +83,90 @@ const Availability = () => {
 
   return (
     <>
-      <table className="rbt-table table table-borderless">
-        <thead>
-          <tr>
-            <th>Days</th>
-            <th>Opens at</th>
-            <th>Closes at</th>
-            <th>Add More</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(times).map((day) => (
-            <React.Fragment key={day}>
-              {times[day].map((time, index) => (
-                <tr key={`${day}-${index}`}>
-                  <th>{index === 0 ? day : ""}</th>
-                  <td>
-                    <div className="col-lg-6">
-                      <div className="rbt-modern-select bg-transparent height-45">
-                        <select
-                          className="form-select"
-                          value={time.open}
-                          onChange={(event) =>
-                            handleTimeChange(day, index, "open", event)
-                          }
-                          style={{ padding: "10px" }}
-                        >
-                          <option value="">Select Time</option>
-                          {allTimes.map((timeOption) => (
-                            <option key={timeOption} value={timeOption}>
-                              {timeOption}
-                            </option>
-                          ))}
-                        </select>
+      <div className="rbt-table-wrapper">
+        <table className="rbt-table table table-borderless">
+          <thead>
+            <tr>
+              <th>Days</th>
+              <th>Opens at</th>
+              <th>Closes at</th>
+              <th>Add More</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(times).map((day) => (
+              <React.Fragment key={day}>
+                {times[day].map((time, index) => (
+                  <tr key={`${day}-${index}`}>
+                    <th>{index === 0 ? day : ""}</th>
+                    <td>
+                      <div className="col-lg-6">
+                        <div className="rbt-modern-select bg-transparent height-45">
+                          <select
+                            className="form-select"
+                            value={time.open}
+                            onChange={(event) =>
+                              handleTimeChange(day, index, "open", event)
+                            }
+                            style={{ padding: "10px" }}
+                          >
+                            <option value="">Select Time</option>
+                            {allTimes.map((timeOption) => (
+                              <option key={timeOption} value={timeOption}>
+                                {timeOption}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="col-lg-6">
-                      <div className="rbt-modern-select bg-transparent height-45">
-                        <select
-                          className="form-select"
-                          value={time.close}
-                          onChange={(event) =>
-                            handleTimeChange(day, index, "close", event)
-                          }
-                          style={{ padding: "10px" }}
-                        >
-                          <option value="">Select Time</option>
-                          {allTimes.map((timeOption) => (
-                            <option key={timeOption} value={timeOption}>
-                              {timeOption}
-                            </option>
-                          ))}
-                        </select>
+                    </td>
+                    <td>
+                      <div className="col-lg-6">
+                        <div className="rbt-modern-select bg-transparent height-45">
+                          <select
+                            className="form-select"
+                            value={time.close}
+                            onChange={(event) =>
+                              handleTimeChange(day, index, "close", event)
+                            }
+                            style={{ padding: "10px" }}
+                          >
+                            <option value="">Select Time</option>
+                            {allTimes.map((timeOption) => (
+                              <option key={timeOption} value={timeOption}>
+                                {timeOption}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    {index === 0 ? (
-                      <a
-                        className="rbt-btn btn-gradient btn-sm"
-                        href="#"
-                        onClick={() => addOvertime(day)}
-                      >
-                        <i className="fa-solid fa-plus"></i>
-                      </a>
-                    ) : (
-                      <a
-                        className="rbt-btn btn-gradient btn-sm"
-                        href="#"
-                        onClick={() => deleteOvertime(day, index)}
-                      >
-                        <i className="fa-solid fa-minus"></i>
-                      </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
+                    </td>
+                    <td>
+                      {index === 0 ? (
+                        <a
+                          className="rbt-btn btn-gradient btn-sm"
+                          href="#"
+                          onClick={() => addOvertime(day)}
+                        >
+                          <i className="fa-solid fa-plus"></i>
+                        </a>
+                      ) : (
+                        <a
+                          className="rbt-btn btn-gradient btn-sm"
+                          href="#"
+                          onClick={() => deleteOvertime(day, index)}
+                        >
+                          <i className="fa-solid fa-minus"></i>
+                        </a>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div className="col-12 mt--10">
         <div className="rbt-form-group">

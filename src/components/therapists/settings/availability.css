@@ -1,80 +1,14 @@
-.availability-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.availability-table th,
-.availability-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.availability-table th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-.overtime-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.table-container {
-  width: 100%;
+.rbt-table-wrapper {
   overflow-x: auto;
 }
 
-input[type="date"],
-input[type="time"] {
-  width: 100%; /* Adjusted width to be responsive */
-}
-
-@media (max-width: 768px) {
-  .availability-table {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .availability-table th {
-    display: none; /* Hide headers on small screens */
-  }
-
-  .availability-table tr {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-
-  .availability-table td {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 5px 10px;
-  }
-
-  .availability-table td:before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="date"],
-  input[type="time"] {
-    width: 100%; /* Ensuring full width on small screens */
-  }
-
-  .overtime-row {
-    flex-direction: column; /* Stack inputs vertically on smaller screens */
-  }
-}
-
 @media (max-width: 576px) {
-  .availability-table td {
-    font-size: 14px; /* Adjust font size for extra small screens */
+  .rbt-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .rbt-table {
+    min-width: 700px; /* Ensuring the table is wider than the container to trigger scrolling */
   }
 }
