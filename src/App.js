@@ -57,12 +57,6 @@ function App() {
                 element={<TherapistRegistration />}
               />
 
-              <Route
-                exact
-                path="/instructor/instructor-profile"
-                element={<Appointment />}
-              />
-
               <Route exact path="/auth/success" element={<Success />} />
 
               <Route
@@ -108,7 +102,7 @@ function App() {
 
               <Route
                 exact
-                path="/appointment"
+                path="/appointments"
                 element={
                   <TherapistProtectedRoute>
                     <Appointment />
@@ -140,6 +134,25 @@ function App() {
                 element={
                   <TherapistProtectedRoute>
                     <ChangePassword />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/notifications"
+                element={
+                  <TherapistProtectedRoute>
+                    <ChangePassword />
+                  </TherapistProtectedRoute>
+                }
+              />
+
+              <Route
+                exact
+                path="/appointments"
+                element={
+                  <TherapistProtectedRoute>
+                    <Appointment />
                   </TherapistProtectedRoute>
                 }
               />

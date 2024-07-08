@@ -1,5 +1,5 @@
-// const apiUrl = "http://localhost:4000/api";
-const apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
+const apiUrl = "http://localhost:4000/api";
+// const apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
 export const loginUrl = `${apiUrl}/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
 export const registerUrl = `${apiUrl}/register`;
@@ -18,5 +18,7 @@ export const updateFeeDetailsUrl = `${apiUrl}/update-fee-details`;
 export const getAccountDetailsUrl = `${apiUrl}/get-bank-details`;
 export const getFeeDetailsUrl = `${apiUrl}/get-fee-details`;
 export const changePasswordUrl = `${apiUrl}/change-passowrd`;
+export const updateAvailabilitiesUrl = `${apiUrl}/update-availability-details`;
+export const getAvailabilitiesUrl = `${apiUrl}/get-availability-details`;
 export const defaultProfile =
   "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";

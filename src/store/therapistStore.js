@@ -1,7 +1,15 @@
 import { create } from "zustand";
 import { fetchById } from "../utils/actions";
 import { getUserUrl } from "../utils/url";
-
+const initialTimes = {
+  Monday: [{ open: "", close: "" }],
+  Tuesday: [{ open: "", close: "" }],
+  Wednesday: [{ open: "", close: "" }],
+  Thursday: [{ open: "", close: "" }],
+  Friday: [{ open: "", close: "" }],
+  Saturday: [{ open: "", close: "" }],
+  Sunday: [{ open: "", close: "" }],
+};
 const useTherapistStore = create((set) => ({
   paymentStore: {
     ac_name: "",
@@ -27,6 +35,27 @@ const useTherapistStore = create((set) => ({
     tcv: "",
     tcip: "",
   },
+  times: initialTimes,
+  setTimes: (day, index, type, value) =>
+    set((state) => {
+      const updatedTimes = { ...state.times };
+      updatedTimes[day][index][type] = value;
+      return { times: updatedTimes };
+    }),
+  setTimesAll: (newTimes) => set(() => ({ times: newTimes })),
+  addOvertime: (day) =>
+    set((state) => {
+      const updatedTimes = { ...state.times };
+      updatedTimes[day].push({ open: "", close: "" });
+      return { times: updatedTimes };
+    }),
+  deleteOvertime: (day, index) =>
+    set((state) => {
+      const updatedTimes = { ...state.times };
+      updatedTimes[day].splice(index, 1);
+      return { times: updatedTimes };
+    }),
+
   setUserInfo: (data) =>
     set((state) => ({ userInfo: { ...state.userInfo, ...data } })),
   fetchUserInfo: async () => {
@@ -39,6 +68,7 @@ const useTherapistStore = create((set) => ({
       console.error("Error fetching data:", error);
     }
   },
+
   setPaymentStore: (key, value) =>
     set((state) => ({ paymentStore: { ...state.paymentStore, [key]: value } })),
   setMultiplePaymentStore: (data) =>
@@ -55,7 +85,7 @@ const useTherapistStore = create((set) => ({
  */
 
 useTherapistStore.subscribe((state) => {
-  console.log("state", state.feeDetails);
+  console.log("state", state.times);
 });
 
 export default useTherapistStore;

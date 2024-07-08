@@ -1,86 +1,124 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./availability.css";
+import { allTimes } from "../../../utils/static-lists";
+import useTherapistStore from "../../../store/therapistStore";
+import FormProgressBar from "../../global/form-progressbar";
+import FormMessage from "../../global/form-message";
+import { fetchById, postData } from "../../../utils/actions";
+import {
+  getAvailabilitiesUrl,
+  updateAvailabilitiesUrl,
+} from "../../../utils/url";
 
 const Availability = () => {
-  const initialTimes = {
-    Monday: [{ open: "", close: "" }],
-    Tuesday: [{ open: "", close: "" }],
-    Wednesday: [{ open: "", close: "" }],
-    Thursday: [{ open: "", close: "" }],
-    Friday: [{ open: "", close: "" }],
-    Saturday: [{ open: "", close: "" }],
-    Sunday: [{ open: "", close: "" }]
+  const { times, setTimes, setTimesAll, addOvertime, deleteOvertime } =
+    useTherapistStore();
+  const [loading, setLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleTimeChange = (day, index, type, value) => {
+    setTimes(day, index, type, value);
   };
 
-  const [times, setTimes] = useState(initialTimes);
+  const validateTimes = () => {
+    const allEmpty = Object.values(times).every((dayTimes) =>
+      dayTimes.every((timeSlot) => !timeSlot.open && !timeSlot.close)
+    );
 
-  const allTimes = [
-    "12:00am",
-    "01:00am",
-    "01:30am",
-    "02:00am",
-    "02:30am",
-    "03:00am",
-    "03:30am",
-    "04:00am",
-    "04:30am",
-    "05:00am",
-    "05:30am",
-    "06:00am",
-    "06:30am",
-    "07:00am",
-    "07:30am",
-    "08:00am",
-    "08:30am",
-    "09:00am",
-    "09:30am",
-    "10:00am",
-    "10:30am",
-    "11:00am",
-    "11:30am",
-    "12:00pm",
-    "01:00pm",
-    "01:30pm",
-    "02:00pm",
-    "02:30pm",
-    "03:00pm",
-    "03:30pm",
-    "04:00pm",
-    "04:30pm",
-    "05:00pm",
-    "05:30pm",
-    "06:00pm",
-    "06:30pm",
-    "07:00pm",
-    "07:30pm",
-    "08:00pm",
-    "08:30pm",
-    "09:00pm",
-    "09:30pm",
-    "10:00pm",
-    "10:30pm",
-    "11:00pm",
-    "11:30pm"
-  ];
+    if (allEmpty) {
+      return false;
+    }
 
-  const handleTimeChange = (day, index, type, event) => {
-    const newTimes = { ...times };
-    newTimes[day][index][type] = event.target.value;
-    setTimes(newTimes);
+    return true;
   };
 
-  const addOvertime = (day) => {
-    const newTimes = { ...times };
-    newTimes[day].push({ open: "", close: "" });
-    setTimes(newTimes);
+  const handleSubmit = async () => {
+    if (validateTimes()) {
+      setError("");
+      const schedule = transformTimesToSchedule(times);
+      const data = {
+        schedule: schedule,
+      };
+      try {
+        setLoading(true);
+        const response = await postData(updateAvailabilitiesUrl, data);
+        if (response.status) {
+          setSuccess(response.message);
+          setError("");
+        } else {
+          setError("Something went wrong");
+        }
+      } catch (error) {
+        setError(error.response.data.message);
+      }
+      setLoading(false);
+    } else {
+      setError("Please select fill times");
+    }
   };
 
-  const deleteOvertime = (day, index) => {
-    const newTimes = { ...times };
-    newTimes[day].splice(index, 1);
-    setTimes(newTimes);
+  const transformTimesToSchedule = (times) => {
+    return Object.entries(times).reduce((schedule, [day, times]) => {
+      const validTimes = times.filter(
+        (time) => time.open !== "" && time.close !== ""
+      );
+      if (validTimes.length > 0) {
+        schedule.push({ day, times: validTimes });
+      }
+      return schedule;
+    }, []);
   };
 
+  const transformScheduleToTimes = (schedule) => {
+    const initialTimes = {
+      Monday: [{ open: "", close: "" }],
+      Tuesday: [{ open: "", close: "" }],
+      Wednesday: [{ open: "", close: "" }],
+      Thursday: [{ open: "", close: "" }],
+      Friday: [{ open: "", close: "" }],
+      Saturday: [{ open: "", close: "" }],
+      Sunday: [{ open: "", close: "" }],
+    };
+
+    schedule.forEach(({ day, times }) => {
+      if (!initialTimes[day]) {
+        initialTimes[day] = []; // Initialize with an empty array if day is not present
+      }
+      initialTimes[day] = times.map((time) => ({
+        open: time.open,
+        close: time.close,
+      }));
+    });
+
+    return initialTimes;
+  };
+
+  const getData = async () => {
+    try {
+      setPageLoading(true);
+      const res = await fetchById(getAvailabilitiesUrl);
+
+      if (Object.keys(res.data).length > 0) {
+        const transformedTimes = transformScheduleToTimes(res.data);
+        console.log("ressss", transformedTimes);
+        setTimesAll(transformedTimes);
+      } else {
+        throw new Error("Failed to fetch data");
+      }
+    } catch (err) {
+      console.log("eerr", err.message);
+      setError(err.message);
+    }
+    setPageLoading(false);
+  };
+  useEffect(() => {
+    if (!validateTimes()) {
+      getData();
+    }
+  }, [setTimes]);
+  const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <>
       <div className="rbt-table-wrapper">
@@ -100,20 +138,21 @@ const Availability = () => {
                   <tr key={`${day}-${index}`}>
                     <th>{index === 0 ? day : ""}</th>
                     <td>
-                      <div className="col-lg-6 col-md-6 col-sm-6 col-12">
-                        {/* changes */}
+                      <div className="col-lg-6">
                         <div className="rbt-form-group">
                           <select
-                            style={{
-                              lineHeight: "20px",
-                              width: "210px"
-                            }}
+                            style={selectStyle}
                             value={time.open}
-                            onChange={(event) =>
-                              handleTimeChange(day, index, "open", event)
+                            onChange={(e) =>
+                              handleTimeChange(
+                                day,
+                                index,
+                                "open",
+                                e.target.value
+                              )
                             }
                           >
-                            <option value="">Select Time</option>
+                            <option value="">Select Time &nbsp;&nbsp;</option>
                             {allTimes.map((timeOption) => (
                               <option key={timeOption} value={timeOption}>
                                 {timeOption}
@@ -124,19 +163,23 @@ const Availability = () => {
                       </div>
                     </td>
                     <td>
-                      <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div className="col-lg-6">
                         <div className="rbt-form-group">
                           <select
-                            style={{
-                              lineHeight: "20px",
-                              width: "210px"
-                            }}
+                            style={selectStyle}
                             value={time.close}
-                            onChange={(event) =>
-                              handleTimeChange(day, index, "close", event)
+                            onChange={(e) =>
+                              handleTimeChange(
+                                day,
+                                index,
+                                "close",
+                                e.target.value
+                              )
                             }
                           >
-                            <option value="">Select Time</option>
+                            <option value="">
+                              Select Time&nbsp;&nbsp;&nbsp;&nbsp;
+                            </option>
                             {allTimes.map((timeOption) => (
                               <option key={timeOption} value={timeOption}>
                                 {timeOption}
@@ -172,15 +215,16 @@ const Availability = () => {
           </tbody>
         </table>
       </div>
-
+      <FormMessage error={error} success={success} />
       <div className="col-12 mt--10">
         <div className="rbt-form-group">
-          <a
-            className="rbt-btn btn-gradient"
-            href="/instructor/instructor-settings#"
-          >
-            Save & Next
-          </a>
+          {loading ? (
+            <FormProgressBar />
+          ) : (
+            <button className="rbt-btn btn-gradient" onClick={handleSubmit}>
+              Save & Next
+            </button>
+          )}
         </div>
       </div>
     </>

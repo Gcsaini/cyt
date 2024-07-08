@@ -3,7 +3,7 @@ import {
   ExpList,
   languageSpoken,
   sessionFormatsList,
-  stateList
+  stateList,
 } from "../../../utils/static-lists";
 import React, { useState, useRef, useEffect } from "react";
 import { updateProfileUrl, updateUserUrl } from "../../../utils/url";
@@ -12,6 +12,7 @@ import { postData, postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
 import useTherapistStore from "../../../store/therapistStore";
+import Select from "react-select";
 export default function Profile(props) {
   const { userInfo, fetchUserInfo } = useTherapistStore();
   const { data } = props;
@@ -27,6 +28,15 @@ export default function Profile(props) {
   const [gender, setGender] = useState(data.gender || "Select");
   const [ofc, setOfc] = useState(data.office_address || "");
   const [exp, setExp] = useState(data.year_of_exp || "Select");
+  const [selectedOptions, setSelectedOptions] = useState(
+    data.language_spoken
+      ? data.language_spoken.split(",").map((value) => ({
+          value: value.trim(),
+          label: value.trim(),
+        }))
+      : []
+  );
+
   const [othEducation, setOthEducation] = useState(
     !EducationList.some((qualification) => data.qualification === qualification)
   );
@@ -34,26 +44,18 @@ export default function Profile(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [languages, setLanguages] = useState(
-    data.language_spoken
-      ? data.language_spoken.split(",").map((item) => item.trim())
-      : []
-  );
+
   const [sessionFormats, setSessionFormats] = useState(
     data.session_formats
       ? data.session_formats.split(",").map((item) => item.trim())
       : []
   );
 
-  const handleLanguages = (event) => {
-    const { value, checked } = event.target;
-    setLanguages((prevCheckedValues) => {
-      if (checked) {
-        return [...prevCheckedValues, value];
-      } else {
-        return prevCheckedValues.filter((v) => v !== value);
-      }
-    });
+  const handleLanguageSelect = (selectedOptions) => {
+    if (selectedOptions.length > 2) {
+      selectedOptions = selectedOptions.slice(0, 2);
+    }
+    setSelectedOptions(selectedOptions);
   };
 
   const handleSessionFormats = (event) => {
@@ -99,8 +101,10 @@ export default function Profile(props) {
         gender: gender,
         office_address: ofc,
         year_of_exp: exp,
-        language_spoken: languages.join(", "),
-        session_formats: sessionFormats.join(", ")
+        language_spoken: selectedOptions
+          .map((option) => option.value)
+          .join(", "),
+        session_formats: sessionFormats.join(", "),
       };
 
       try {
@@ -147,6 +151,51 @@ export default function Profile(props) {
       }
       setLoading(false);
     }
+  };
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderColor: "#e1deee",
+      boxShadow: "none",
+      borderRadius: "7px", // Add border radius
+      height: "50px", // Set height
+      minHeight: "50px", // Ensure the minimum height is also 50px
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      height: "50px", // Set the height of the value container
+      padding: "0 6px",
+    }),
+    input: (provided) => ({
+      ...provided,
+      margin: "0", // Remove any margins
+      padding: "0", // Remove any paddings
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+      height: "50px", // Set the height of the indicators container
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      backgroundColor: "#e0e0e0",
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      color: "black",
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      color: "red",
+      ":hover": {
+        backgroundColor: "darkred",
+        color: "white",
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      zIndex: 9999, // Ensure dropdown menu is on top
+    }),
   };
 
   useEffect(() => {
@@ -351,21 +400,18 @@ export default function Profile(props) {
           </div>
         )}
 
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="col-lg-6 col-md-6 col-sm-12 col-12  mb--15">
           <div className="rbt-form-group">
-            <label htmlFor="language">Language Spoken</label>
-            <select
-              id="language"
-              style={selectStyle}
-              value={languages}
-              onChange={(e) => setLanguages(e.target.value)}
-            >
-              {languageSpoken.map((language) => (
-                <option key={language} value={language}>
-                  {language}
-                </option>
-              ))}
-            </select>
+            <label htmlFor="licensenumber">Language Spoken(Select any 2)</label>
+            <Select
+              defaultValue={[languageSpoken[1]]}
+              isMulti
+              value={selectedOptions}
+              onChange={handleLanguageSelect}
+              options={languageSpoken}
+              classNamePrefix="select"
+              styles={customStyles}
+            />
           </div>
         </div>
 

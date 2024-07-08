@@ -1,19 +1,12 @@
 import React from "react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
 import logo1 from "../../assets/img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import useTherapistStore from "../../store/therapistStore";
 import { removeToken } from "../../utils/jwt";
 import { defaultProfile } from "../../utils/url";
 export default function DashboardTopNav() {
-  const { userInfo, fetchUserInfo } = useTherapistStore();
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const { userInfo } = useTherapistStore();
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
   const [about, setAbout] = React.useState();
@@ -24,7 +17,7 @@ export default function DashboardTopNav() {
           <div className="inner-top">
             <div className="content">
               <div className="logo">
-                <Link to="/" style={{ cursor: "pointer" }}>
+                <Link to="/therapist-dashboard" style={{ cursor: "pointer" }}>
                   <ImageTag
                     alt="Education Logo Images"
                     width="137"
@@ -46,41 +39,56 @@ export default function DashboardTopNav() {
           <nav className="mainmenu-nav">
             <ul className="mainmenu">
               <li className="position-static">
-                <Link className="" to="/" style={{ cursor: "pointer" }}>
-                  Home<i className="feather-chevron-down"></i>
+                <Link to="/therapist-dashboard" style={{ cursor: "pointer" }}>
+                  Dashboard<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              <li className="has-dropdown has-menu-child-item">
-                <Link
-                  className={about ? "open" : ""}
-                  onClick={() => setAbout(about !== true)}
-                >
-                  About<i className="feather-chevron-down"></i>
+              <li className="position-static">
+                <Link to="/appointments" style={{ cursor: "pointer" }}>
+                  Appointments<i className="feather-chevron-down"></i>
                 </Link>
-                <ul className={about ? "submenu active d-block" : "submenu"}>
-                  <li>
-                    <Link to={"/about-us"} style={{ cursor: "pointer" }}>
-                      About us
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link to={"/contact-us"} style={{ cursor: "pointer" }}>
-                      Contact us
-                    </Link>
-                  </li>
-                </ul>
               </li>
 
-              {/* <li>
-                <Link
-                  to={"#"}
-                  onClick={() => handleClick("/join-us")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Join us
+              <li className="position-static">
+                <Link to="/reviews" style={{ cursor: "pointer" }}>
+                  Rewiews<i className="feather-chevron-down"></i>
                 </Link>
-              </li> */}
+              </li>
+              <li className="position-static">
+                <Link to="/invoices" style={{ cursor: "pointer" }}>
+                  Invoices<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/case-history" style={{ cursor: "pointer" }}>
+                  Case History<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/workshop-events" style={{ cursor: "pointer" }}>
+                  Workshop/Events<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/blogs-settings" style={{ cursor: "pointer" }}>
+                  Blog<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/settings" style={{ cursor: "pointer" }}>
+                  Edit Profile<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/settings" style={{ cursor: "pointer" }}>
+                  Change Password<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/change-password" style={{ cursor: "pointer" }}>
+                  Logout<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -107,18 +115,18 @@ export default function DashboardTopNav() {
               <div className="rbt-main-navigation d-none d-xl-block"></div>
               <div className="header-right">
                 <ul className="quick-access">
-                  <li class="access-icon">
+                  <li className="access-icon">
                     <a
-                      class="search-trigger-active rbt-round-btn"
+                      className="search-trigger-active rbt-round-btn"
                       href="https://chooseyourtherapist.in"
                       target="_blank"
                     >
-                      <i class="fa-solid fa-globe"></i>
+                      <i className="fa-solid fa-globe"></i>
                     </a>
                   </li>
                   <li>
                     <Link className="service-menu-parent" to={"/notifications"}>
-                      <i class="fa-solid fa-bell"></i> &nbsp;
+                      <i className="fa-solid fa-bell"></i> &nbsp;
                     </Link>
                   </li>
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
