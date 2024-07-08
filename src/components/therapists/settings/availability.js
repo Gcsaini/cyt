@@ -83,7 +83,7 @@ const Availability = () => {
             <thead>
               <tr>
                 <th>Day</th>
-                <th>Date</th>
+
                 <th>Open Time</th>
                 <th>Close Time</th>
                 <th>Overtime</th>
@@ -93,15 +93,7 @@ const Availability = () => {
               {schedule.map((daySchedule, index) => (
                 <tr key={daySchedule.day}>
                   <td data-label="Day">{daySchedule.day}</td>
-                  <td data-label="Date">
-                    <input
-                      type="date"
-                      value={daySchedule.date}
-                      onChange={(e) =>
-                        handleChange(index, "date", e.target.value)
-                      }
-                    />
-                  </td>
+
                   <td data-label="Open Time">
                     <input
                       type="time"
