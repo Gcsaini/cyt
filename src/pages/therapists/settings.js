@@ -2,7 +2,6 @@ import MainLayout from "../../components/therapists/main-layout";
 import Profile from "../../components/therapists/settings/profile";
 import Availability from "../../components/therapists/settings/availability";
 import PaymentDetails from "../../components/therapists/settings/payment-details";
-import More from "../../components/therapists/settings/more";
 import React from "react";
 import { Link } from "react-router-dom";
 import { fetchById } from "../../utils/actions";
@@ -105,16 +104,6 @@ export default function ProfileSettings() {
                     <span className="title">Payments</span>
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    className={tab === 6 ? "tab-button active" : "tab-button"}
-                    aria-selected={tab === 6 ? "true" : "false"}
-                    onClick={() => setTab(6)}
-                    style={style}
-                  >
-                    <span className="title">More</span>
-                  </Link>
-                </li>
               </ul>
             </div>
             <div className="tab-content">
@@ -125,7 +114,6 @@ export default function ProfileSettings() {
               {tab === 3 && <Availability />}
               {tab === 4 && <TherapistFees />}
               {tab === 5 && <PaymentDetails />}
-              {tab === 6 && <More />}
             </div>
           </div>
         </div>

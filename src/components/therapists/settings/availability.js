@@ -100,15 +100,18 @@ const Availability = () => {
                   <tr key={`${day}-${index}`}>
                     <th>{index === 0 ? day : ""}</th>
                     <td>
-                      <div className="col-lg-6">
-                        <div className="rbt-modern-select bg-transparent height-45">
+                      <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+                        {/* changes */}
+                        <div className="rbt-form-group">
                           <select
-                            className="form-select"
+                            style={{
+                              lineHeight: "20px",
+                              width: "210px"
+                            }}
                             value={time.open}
                             onChange={(event) =>
                               handleTimeChange(day, index, "open", event)
                             }
-                            style={{ padding: "10px" }}
                           >
                             <option value="">Select Time</option>
                             {allTimes.map((timeOption) => (
@@ -121,15 +124,17 @@ const Availability = () => {
                       </div>
                     </td>
                     <td>
-                      <div className="col-lg-6">
-                        <div className="rbt-modern-select bg-transparent height-45">
+                      <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div className="rbt-form-group">
                           <select
-                            className="form-select"
+                            style={{
+                              lineHeight: "20px",
+                              width: "210px"
+                            }}
                             value={time.close}
                             onChange={(event) =>
                               handleTimeChange(day, index, "close", event)
                             }
-                            style={{ padding: "10px" }}
                           >
                             <option value="">Select Time</option>
                             {allTimes.map((timeOption) => (

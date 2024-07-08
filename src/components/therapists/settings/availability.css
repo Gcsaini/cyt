@@ -9,6 +9,6 @@
   }
 
   .rbt-table {
-    min-width: 700px; /* Ensuring the table is wider than the container to trigger scrolling */
+    min-width: 700px; 
   }
 }
