@@ -76,44 +76,30 @@ export default function AppointmentCancelled() {
             </ul>
           </div>
         ))}
-        <div className="pagination dashboard-pagination">
-          <ul>
-            <li>
-              <a href="#" className="page-link">
-                <i className="fa-solid fa-chevron-left"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-link">
-                1
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-link active">
-                2
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-link">
-                3
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-link">
-                4
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-link">
-                ...
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-link">
-                <i className="fa-solid fa-chevron-right"></i>
-              </a>
-            </li>
-          </ul>
+        <div class="col-lg-12" style={{ marginTop: "20px" }}>
+          <nav>
+            <ul class="rbt-pagination justify-content-center">
+              <li>
+                <a aria-label="Previous" href="/elements/style-guide#">
+                  <i class="feather-chevron-left"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/elements/style-guide#">1</a>
+              </li>
+              <li class="active">
+                <a href="/elements/style-guide#">2</a>
+              </li>
+              <li>
+                <a href="/elements/style-guide#">3</a>
+              </li>
+              <li>
+                <a aria-label="Next" href="/elements/style-guide#">
+                  <i class="feather-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </>
