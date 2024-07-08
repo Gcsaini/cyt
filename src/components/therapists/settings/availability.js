@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa"; // Importing a plus icon
+import { FaPlus } from "react-icons/fa";
 import "./availability.css";
 
 const Availability = () => {
@@ -83,9 +83,8 @@ const Availability = () => {
             <thead>
               <tr>
                 <th>Day</th>
-
-                <th>Open Time</th>
-                <th>Close Time</th>
+                <th>From</th>
+                <th>To</th>
                 <th>Overtime</th>
               </tr>
             </thead>
@@ -93,7 +92,6 @@ const Availability = () => {
               {schedule.map((daySchedule, index) => (
                 <tr key={daySchedule.day}>
                   <td data-label="Day">{daySchedule.day}</td>
-
                   <td data-label="Open Time">
                     <input
                       type="time"
