@@ -351,7 +351,6 @@ export default function Profile(props) {
           </div>
         )}
 
-        {/* language  part*/}
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
             <label htmlFor="language">Language Spoken</label>
