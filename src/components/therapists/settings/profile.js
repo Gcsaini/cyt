@@ -3,7 +3,7 @@ import {
   ExpList,
   languageSpoken,
   sessionFormatsList,
-  stateList,
+  stateList
 } from "../../../utils/static-lists";
 import React, { useState, useRef, useEffect } from "react";
 import { updateProfileUrl, updateUserUrl } from "../../../utils/url";
@@ -100,7 +100,7 @@ export default function Profile(props) {
         office_address: ofc,
         year_of_exp: exp,
         language_spoken: languages.join(", "),
-        session_formats: sessionFormats.join(", "),
+        session_formats: sessionFormats.join(", ")
       };
 
       try {
@@ -356,20 +356,105 @@ export default function Profile(props) {
             <div className="row">
               {languageSpoken.map((item) => {
                 return (
-                  <div className="col-lg-3 col-md-3 col-sm-6 col-12" key={item}>
-                    <p className="rbt-checkbox-wrapper mb--5">
-                      <input
-                        id={`language-checkbox-${item}`}
-                        type="checkbox"
-                        value={item}
-                        checked={languages.includes(item)}
-                        onChange={handleLanguages}
-                      />
-                      <label htmlFor={`language-checkbox-${item}`}>
-                        {item}
-                      </label>
-                    </p>
-                  </div>
+                  <>
+                    <div
+                      className="col-lg-3 col-md-3 col-sm-6 col-12"
+                      key={item}
+                    >
+                      <p className="rbt-checkbox-wrapper mb--5">
+                        <input
+                          id={`language-checkbox-${item}`}
+                          type="checkbox"
+                          value={item}
+                          checked={languages.includes(item)}
+                          onChange={handleLanguages}
+                        />
+                        <label htmlFor={`language-checkbox-${item}`}>
+                          {item}
+                        </label>
+                      </p>
+                    </div>
+
+                    {/* second */}
+                    {/* <div className="react-select css-b62m3t-container">
+                      <span
+                        id="react-select-sortByAuthor-live-region"
+                        className="css-7pg0cj-a11yText"
+                      ></span>
+                      <span
+                        aria-live="polite"
+                        aria-atomic="false"
+                        aria-relevant="additions text"
+                        role="log"
+                        className="css-7pg0cj-a11yText"
+                      ></span>
+                      <div className="react-select__control css-13cymwt-control">
+                        <div className="react-select__value-container react-select__value-container--is-multi css-hlgwow">
+                          <div
+                            className="react-select__placeholder css-1jqq78o-placeholder"
+                            id="react-select-sortByAuthor-placeholder"
+                          >
+                            Select...
+                          </div>
+                          <div
+                            className="react-select__input-container css-19bb58m"
+                            data-value=""
+                          >
+                            <input
+                              className="react-select__input"
+                              autocapitalize="none"
+                              autocomplete="off"
+                              autocorrect="off"
+                              id="react-select-sortByAuthor-input"
+                              spellcheck="false"
+                              tabindex="0"
+                              type="text"
+                              aria-autocomplete="list"
+                              aria-expanded="false"
+                              aria-haspopup="true"
+                              role="combobox"
+                              aria-activedescendant=""
+                              aria-describedby="react-select-sortByAuthor-placeholder"
+                              value=""
+                              style={{
+                                color: "inherit",
+                                background: "0px center",
+                                opacity: 1,
+                                width: "100%",
+                                gridArea: "1 / 2",
+                                font: "inherit",
+                                minWidth: "2px",
+                                border: "0px",
+                                margin: "0px",
+                                outline: "0px",
+                                padding: "0px"
+                              }}
+                            />
+                          </div>
+                        </div>
+                        <div className="react-select__indicators css-1wy0on6">
+                          <span className="react-select__indicator-separator css-1u9des2-indicatorSeparator"></span>
+                          <div
+                            className="react-select__indicator react-select__dropdown-indicator css-1xc3v61-indicatorContainer"
+                            aria-hidden="true"
+                          >
+                            <svg
+                              height="20"
+                              width="20"
+                              viewBox="0 0 20 20"
+                              aria-hidden="true"
+                              focusable="false"
+                              className="css-8mmkcg"
+                            >
+                              <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div> */}
+
+                    <div className="rbt-dashboard-filter-wrapper mt--60"><div className="row g-5"><div className="col-lg-6"><div className="filter-select rbt-modern-select"><span className="select-label d-block">Courses</span><div className="react-select css-b62m3t-container"><span id="react-select-sortByAuthor-live-region" className="css-7pg0cj-a11yText"></span><span aria-live="polite" aria-atomic="false" aria-relevant="additions text" role="log" className="css-7pg0cj-a11yText"></span><div className="react-select__control css-13cymwt-control"><div className="react-select__value-container react-select__value-container--is-multi css-hlgwow"><div className="react-select__placeholder css-1jqq78o-placeholder" id="react-select-sortByAuthor-placeholder">Select...</div><div className="react-select__input-container css-19bb58m" data-value=""><input className="react-select__input" autocapitalize="none" autocomplete="off" autocorrect="off" id="react-select-sortByAuthor-input" spellcheck="false" tabindex="0" type="text" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" role="combobox" aria-activedescendant="" aria-describedby="react-select-sortByAuthor-placeholder" value="" style="color: inherit; background: 0px center; opacity: 1; width: 100%; grid-area: 1 / 2; font: inherit; min-width: 2px; border: 0px; margin: 0px; outline: 0px; padding: 0px;"/></div></div><div className="react-select__indicators css-1wy0on6"><span className="react-select__indicator-separator css-1u9des2-indicatorSeparator"></span><div className="react-select__indicator react-select__dropdown-indicator css-1xc3v61-indicatorContainer" aria-hidden="true"><svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" className="css-8mmkcg"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg></div></div></div></div></div></div><div className="col-lg-3"><div className="filter-select rbt-modern-select"><span className="select-label d-block">Short By</span><div className="react-select css-b62m3t-container"><span id="react-select-sortBySelect-live-region" className="css-7pg0cj-a11yText"></span><span aria-live="polite" aria-atomic="false" aria-relevant="additions text" role="log" className="css-7pg0cj-a11yText"></span><div className="react-select__control css-13cymwt-control"><div className="react-select__value-container react-select__value-container--has-value css-hlgwow"><div className="react-select__single-value css-1dimb5e-singleValue">Default</div><div className="react-select__input-container css-19bb58m" data-value=""><input className="react-select__input" style="label:input;color:inherit;background:0;opacity:1;width:100%;grid-area:1 / 2;font:inherit;min-width:2px;border:0;margin:0;outline:0;padding:0" autocapitalize="none" autocomplete="off" autocorrect="off" id="react-select-sortBySelect-input" spellcheck="false" tabindex="0" type="text" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" role="combobox" aria-activedescendant="" value=""/></div></div><div className="react-select__indicators css-1wy0on6"><span className="react-select__indicator-separator css-1u9des2-indicatorSeparator"></span><div className="react-select__indicator react-select__dropdown-indicator css-1xc3v61-indicatorContainer" aria-hidden="true"><svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" className="css-8mmkcg"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg></div></div></div></div></div></div><div className="col-lg-3"><div className="filter-select rbt-modern-select"><span className="select-label d-block">Short By Offer</span><div className="react-select css-b62m3t-container"><span id="react-select-sortBySelect-live-region" className="css-7pg0cj-a11yText"></span><span aria-live="polite" aria-atomic="false" aria-relevant="additions text" role="log" className="css-7pg0cj-a11yText"></span><div className="react-select__control css-13cymwt-control"><div className="react-select__value-container react-select__value-container--has-value css-hlgwow"><div className="react-select__single-value css-1dimb5e-singleValue">Free</div><div className="react-select__input-container css-19bb58m" data-value=""><input className="react-select__input" style="label:input;color:inherit;background:0;opacity:1;width:100%;grid-area:1 / 2;font:inherit;min-width:2px;border:0;margin:0;outline:0;padding:0" autocapitalize="none" autocomplete="off" autocorrect="off" id="react-select-sortBySelect-input" spellcheck="false" tabindex="0" type="text" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" role="combobox" aria-activedescendant="" value=""/></div></div><div className="react-select__indicators css-1wy0on6"><span className="react-select__indicator-separator css-1u9des2-indicatorSeparator"></span><div className="react-select__indicator react-select__dropdown-indicator css-1xc3v61-indicatorContainer" aria-hidden="true"><svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" className="css-8mmkcg"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg></div></div></div></div></div></div></div></div>
+                  </>
                 );
               })}
             </div>
