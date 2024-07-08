@@ -114,20 +114,6 @@ export default function MainLayout(props) {
                                 </li>
 
                                 <li className="nav-item">
-                                  <Link
-                                    className={
-                                      currentPath === "/notifications"
-                                        ? "active"
-                                        : ""
-                                    }
-                                    to="/notifications"
-                                  >
-                                    <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Notification</span>
-                                  </Link>
-                                </li>
-
-                                <li className="nav-item">
                                   <Link className="" to="/invoices">
                                     <i className="fa-solid fa-file-invoice"></i>
                                     <span>Invoices</span>

@@ -156,22 +156,17 @@ export default function DashboardTopNav() {
                               <span>My Dashboard</span>
                             </Link>
                           </li>
+
                           <li>
-                            <Link to="index.html#">
-                              <i className="feather-bookmark"></i>
-                              <span>Bookmark</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="instructor/instructor-enrolled-course">
+                            <Link to="/settings">
                               <i className="feather-shopping-bag"></i>
-                              <span>Enrolled Courses</span>
+                              <span>Edit Profile</span>
                             </Link>
                           </li>
                           <li>
-                            <Link to="instructor/instructor-wishlist">
+                            <Link to="/change-password">
                               <i className="feather-heart"></i>
-                              <span>Wishlist</span>
+                              <span>Change Password</span>
                             </Link>
                           </li>
 

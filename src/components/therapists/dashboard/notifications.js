@@ -9,9 +9,6 @@ export default function Notification() {
           <div className="header-title">
             <h5>Notifications</h5>
           </div>
-          <div className="card-view-link">
-            <a href="#">View All</a>
-          </div>
         </div>
         <div className="dashboard-card-body">
           <div className="table-responsive">
