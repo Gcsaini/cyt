@@ -120,7 +120,7 @@ export default function MainLayout(props) {
                                         ? "active"
                                         : ""
                                     }
-                                    to="/appointments"
+                                    to="/notifications"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
                                     <span>Notification</span>

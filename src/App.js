@@ -23,6 +23,7 @@ import TherapistDashboard from "./pages/therapists/dashboard";
 import ProfileSettings from "./pages/therapists/settings";
 import ChangePassword from "./pages/therapists/change-password";
 import Appointment from "./pages/therapists/appointment";
+import Notification from "./pages/therapists/notifications";
 import Invoices from "./pages/therapists/invoices";
 import Reviews from "./pages/therapists/reviews";
 import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
@@ -142,7 +143,7 @@ function App() {
                 path="/notifications"
                 element={
                   <TherapistProtectedRoute>
-                    <ChangePassword />
+                    <Notification />
                   </TherapistProtectedRoute>
                 }
               />
