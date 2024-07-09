@@ -1,5 +1,12 @@
-const apiUrl = "http://localhost:4000/api";
-// const apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
+let apiUrl;
+const currentDomain = window.location.hostname;
+
+if (currentDomain === "localhost") {
+  apiUrl = "http://localhost:4000/api";
+} else {
+  apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
+}
+console.log("cur", apiUrl);
 export const loginUrl = `${apiUrl}/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
 export const registerUrl = `${apiUrl}/register`;
