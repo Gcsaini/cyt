@@ -2,9 +2,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import useTherapistStore from "../../store/therapistStore";
 import { removeToken } from "../../utils/jwt";
-import DashboardTopNav from "./top-nav";
 import useMediaQuery from "@mui/material/useMediaQuery";
-export default function MainLayout(props) {
+import UserDashboardTopNav from "./user-top-nav";
+export default function UserLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { userInfo } = useTherapistStore();
   const location = useLocation();
@@ -12,14 +12,13 @@ export default function MainLayout(props) {
   const currentPath = location.pathname;
 
   const handleLogout = () => {
-    console.log("clicked");
     removeToken();
     navigate("/login");
   };
 
   return (
     <>
-      <DashboardTopNav />
+      <UserDashboardTopNav />
       <div className="rbt-dashboard-area">
         <div
           className="container"
@@ -45,9 +44,9 @@ export default function MainLayout(props) {
                               <ul className="dashboard-mainmenu rbt-default-sidebar-list nav-tabs">
                                 <li className="nav-item">
                                   <Link
-                                    to={"/therapist-dashboard"}
+                                    to={"/my-dashboard"}
                                     className={
-                                      currentPath === "/therapist-dashboard"
+                                      currentPath === "/my-dashboard"
                                         ? "active"
                                         : ""
                                     }
@@ -60,8 +59,7 @@ export default function MainLayout(props) {
                                 <li className="nav-item">
                                   <Link
                                     className={
-                                      currentPath ===
-                                      "/instructor/instructor-profile"
+                                      currentPath === "/my-appointments"
                                         ? "active"
                                         : ""
                                     }
@@ -73,23 +71,29 @@ export default function MainLayout(props) {
                                 </li>
 
                                 <li className="nav-item">
-                                  <Link className="" to="/invoices">
+                                  <Link className="" to="/my-invoices">
                                     <i className="fa-solid fa-file-invoice"></i>
                                     <span>Invoices</span>
                                   </Link>
                                 </li>
 
                                 <li className="nav-item">
-                                  <Link className="" to="/reviews">
+                                  <Link className="" to="/my-reviews">
                                     <i className="feather-star"></i>
                                     <span>Reviews</span>
+                                  </Link>
+                                </li>
+                                <li className="nav-item">
+                                  <Link className="" to="/my-bookings">
+                                    <i className="feather-star"></i>
+                                    <span>Booking History</span>
                                   </Link>
                                 </li>
                               </ul>
                             </nav>
                             <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">
-                                Additional{" "}
+                                Additional
                                 <span
                                   style={{
                                     backgroundColor: "rgb(250, 10, 10)",
@@ -105,30 +109,15 @@ export default function MainLayout(props) {
                             <nav className="mainmenu-nav">
                               <ul className="dashboard-mainmenu rbt-default-sidebar-list">
                                 <li>
-                                  <Link
-                                    className=""
-                                    to="/instructor/instructor-personal-courses"
-                                  >
+                                  <Link className="" to="/my-courses">
                                     <i className="fa-solid fa-file-medical"></i>
-                                    <span>Case history</span>
+                                    <span>Enrolled Courses/workshops</span>
                                   </Link>
                                 </li>
                                 <li>
-                                  <Link
-                                    className=""
-                                    to="/instructor/instructor-announcements"
-                                  >
+                                  <Link className="" to="my-reports">
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Workshop/Event</span>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className=""
-                                    to="/instructor/instructor-announcements"
-                                  >
-                                    <i className="fa-solid fa-blog"></i>
-                                    <span>Blog</span>
+                                    <span>Reports </span>
                                   </Link>
                                 </li>
                               </ul>
@@ -141,11 +130,11 @@ export default function MainLayout(props) {
                                 <li>
                                   <Link
                                     className={
-                                      currentPath === "/settings"
+                                      currentPath === "/my-settings"
                                         ? "active"
                                         : ""
                                     }
-                                    to="/settings"
+                                    to="/my-settings"
                                   >
                                     <i className="feather-settings"></i>
                                     <span>Edit Profile</span>
@@ -154,17 +143,16 @@ export default function MainLayout(props) {
                                 <li>
                                   <Link
                                     className={
-                                      currentPath === "/change-password"
+                                      currentPath === "/change-my-password"
                                         ? "active"
                                         : ""
                                     }
-                                    to="/change-password"
+                                    to="/change-my-password"
                                   >
                                     <i className="feather-settings"></i>
                                     <span>Change Password</span>
                                   </Link>
                                 </li>
-
                                 <li>
                                   <Link to={"#"} onClick={handleLogout}>
                                     <i className="feather-log-out"></i>

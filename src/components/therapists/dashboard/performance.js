@@ -24,7 +24,6 @@ export default function PerformanceComponent() {
                   decoding="async"
                   data-nimg="1"
                   style={{ color: "transparent" }}
-                  srcset="/_next/image?url=%2Fimages%2Ficons%2Fcounter-01.png&amp;w=64&amp;q=75 1x, /_next/image?url=%2Fimages%2Ficons%2Fcounter-01.png&amp;w=128&amp;q=75 2x"
                   src="/_next/image?url=%2Fimages%2Ficons%2Fcounter-01.png&amp;w=128&amp;q=75"
                 />
               </div>
@@ -85,7 +84,6 @@ export default function PerformanceComponent() {
                   decoding="async"
                   data-nimg="1"
                   style={{ color: "transparent" }}
-                  srcset="/_next/image?url=%2Fimages%2Ficons%2Fcounter-02.png&amp;w=64&amp;q=75 1x, /_next/image?url=%2Fimages%2Ficons%2Fcounter-02.png&amp;w=128&amp;q=75 2x"
                   src="/_next/image?url=%2Fimages%2Ficons%2Fcounter-02.png&amp;w=128&amp;q=75"
                 />
               </div>
@@ -146,7 +144,6 @@ export default function PerformanceComponent() {
                   decoding="async"
                   data-nimg="1"
                   style={{ color: "transparent" }}
-                  srcset="/_next/image?url=%2Fimages%2Ficons%2Fcounter-03.png&amp;w=64&amp;q=75 1x, /_next/image?url=%2Fimages%2Ficons%2Fcounter-03.png&amp;w=128&amp;q=75 2x"
                   src="/_next/image?url=%2Fimages%2Ficons%2Fcounter-03.png&amp;w=128&amp;q=75"
                 />
               </div>
@@ -218,7 +215,6 @@ export default function PerformanceComponent() {
                   decoding="async"
                   data-nimg="1"
                   style={{ color: "transparent" }}
-                  srcset="/_next/image?url=%2Fimages%2Ficons%2Fcounter-04.png&amp;w=64&amp;q=75 1x, /_next/image?url=%2Fimages%2Ficons%2Fcounter-04.png&amp;w=128&amp;q=75 2x"
                   src="/_next/image?url=%2Fimages%2Ficons%2Fcounter-04.png&amp;w=128&amp;q=75"
                 />
               </div>

@@ -85,7 +85,7 @@ const useTherapistStore = create((set) => ({
  */
 
 useTherapistStore.subscribe((state) => {
-  console.log("state", state.times);
+  console.log("state", state.userInfo);
 });
 
 export default useTherapistStore;

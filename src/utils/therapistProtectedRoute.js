@@ -1,13 +1,13 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
 import { getDecodedToken } from "./jwt";
+import NotAuthorizedPage from "../pages/not-authorized";
 
 const TherapistProtectedRoute = ({ children }) => {
   const data = getDecodedToken();
   if (data && data.role === 1) {
     return children;
   }
-  return <Navigate to="/login" />;
+  return <NotAuthorizedPage />;
 };
 
 export default TherapistProtectedRoute;

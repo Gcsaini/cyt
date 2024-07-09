@@ -138,21 +138,15 @@ export const relationshipIssuesList = [
 
 export const languageSpoken = [
   { value: "Hindi", label: "Hindi" },
+  { value: "Tamil", label: "Tamil" },
+  { value: "Telugu", label: "Telugu" },
+  { value: "Marathi", label: "Marathi" },
+  { value: "Bengali", label: "Bengali" },
+  { value: "Kannada", label: "Kannada" },
+  { value: "Malayalam", label: "Malayalam" },
+  { value: "Gujarati", label: "Gujarati" },
+  { value: "Punjabi", label: "Punjabi" },
   { value: "English", label: "English" },
-  { value: "Spanish", label: "Spanish" },
-  { value: "French", label: "French" },
-  { value: "Arabic", label: "Arabic" },
-  { value: "French", label: "French" },
-  { value: "French", label: "French" },
-];
-
-const options = [
-  { value: "php", label: "PHP" },
-  { value: "javascript", label: "JavaScript" },
-  { value: "java", label: "Java" },
-  { value: "sql", label: "SQL" },
-  { value: "jquery", label: "Jquery" },
-  { value: ".net", label: ".Net" },
 ];
 
 export const sessionFormatsList = ["In-Person", "Audio call", "Video Call"];

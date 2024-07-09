@@ -13,8 +13,7 @@ import JoinUs from "./pages/join-us";
 import Plans from "./pages/plans";
 import FaqPage from "./pages/faqs";
 import Blogs from "./pages/blogs";
-import UserProfile from "./pages/user-profile";
-import UserDashboard from "./pages/user-dashboard";
+import UserDashboard from "./pages/client/user-dashboard";
 import ViewProfile from "./pages/view-profile";
 import TherapistRegistration from "./pages/therapist-registration";
 import Register from "./pages/register";
@@ -30,6 +29,8 @@ import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";
 import { getToken } from "./utils/jwt";
+import ClientSettings from "./pages/client/settings";
+import ChangeMyPassword from "./pages/client/change-password";
 
 const theme = createTheme();
 
@@ -57,17 +58,7 @@ function App() {
                 path="/therapist-registration"
                 element={<TherapistRegistration />}
               />
-
               <Route exact path="/auth/success" element={<Success />} />
-
-              <Route
-                path="/home"
-                element={
-                  <ProtectedRoute>
-                    <HomePage />
-                  </ProtectedRoute>
-                }
-              />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services/:id" element={<Services />} />
               <Route path="/view-profile/:id" element={<ViewProfile />} />
@@ -76,11 +67,38 @@ function App() {
               <Route path="/plans" element={<Plans />} />
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/blogs" element={<Blogs />} />
-              <Route path="/my-dashboard" element={<UserDashboard />} />
-              <Route path="/my-profile" element={<UserProfile />} />
+
               <Route path="/" element={<HomePage />} />
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
+              {/* client routes */}
+              <Route
+                path="/my-dashboard"
+                element={
+                  <ProtectedRoute>
+                    <UserDashboard />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/my-settings"
+                element={
+                  <ProtectedRoute>
+                    <ClientSettings />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/change-my-password"
+                element={
+                  <ProtectedRoute>
+                    <ChangeMyPassword />
+                  </ProtectedRoute>
+                }
+              />
+
               {/* therapist related routes */}
               <Route
                 exact
