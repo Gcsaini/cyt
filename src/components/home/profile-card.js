@@ -177,10 +177,6 @@ export default function ProfileCard() {
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
                       <li>
-                        <i className="feather-book"></i>Available
-                      </li>
-
-                      <li>
                         <i className="feather-user"></i>Counselling Psychologist
                       </li>
                       <li>
@@ -193,7 +189,7 @@ export default function ProfileCard() {
                             <i className="feather-heart"></i>
                           </span>
                           <span style={{ lineHeight: "18px" }}>
-                            Individual Counselling, Couple Counselling
+                           500-1200 INR
                           </span>
                         </div>
                       </li>
@@ -264,9 +260,7 @@ export default function ProfileCard() {
                       <Link to="">Fabiha Sultana Shaik</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      <li>
-                        <i className="feather-book"></i>Available
-                      </li>
+                      
                       <li>
                         <i className="feather-user"></i>Counselling Psychologist
                       </li>
@@ -280,8 +274,7 @@ export default function ProfileCard() {
                             <i className="feather-heart"></i>
                           </span>
                           <span style={{ lineHeight: "18px" }}>
-                            Individual Counselling, Couple Counselling, Teen
-                            Counselling
+                           500-1200 INR
                           </span>
                         </div>
                       </li>
@@ -352,9 +345,7 @@ export default function ProfileCard() {
                       <Link to="/course-details">Ayushi Pandwal</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      <li>
-                        <i className="feather-book"></i>Available
-                      </li>
+                      
                       <li>
                         <i className="feather-user"></i>Counselling Psychologist
                       </li>
@@ -368,7 +359,7 @@ export default function ProfileCard() {
                             <i className="feather-heart"></i>
                           </span>
                           <span style={{ lineHeight: "18px" }}>
-                            Individual Counselling, Couple Counselling
+                           500-1200 INR
                           </span>
                         </div>
                       </li>
@@ -440,9 +431,7 @@ export default function ProfileCard() {
                       <Link to="/course-details">Anjali Suyal</Link>
                     </h4>
                     <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      <li>
-                        <i className="feather-book"></i>Available
-                      </li>
+                      
                       <li>
                         <i className="feather-user"></i>Counselling Psychologist
                       </li>
@@ -456,7 +445,7 @@ export default function ProfileCard() {
                             <i className="feather-heart"></i>
                           </span>
                           <span style={{ lineHeight: "18px" }}>
-                            Individual Counselling, Couple Counselling
+                           500-1200 INR
                           </span>
                         </div>
                       </li>

@@ -6,7 +6,7 @@ import {
   stateList,
 } from "../../../utils/static-lists";
 import React, { useState, useRef, useEffect } from "react";
-import { updateProfileUrl, updateUserUrl } from "../../../utils/url";
+import { updateTherapistProfileUrl, updateUserUrl } from "../../../utils/url";
 import ImageTag from "../../../utils/image-tag";
 import { postData, postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
@@ -109,7 +109,7 @@ export default function Profile(props) {
 
       try {
         setLoading(true);
-        const response = await postData(updateProfileUrl, data);
+        const response = await postData(updateTherapistProfileUrl, data);
         if (response.status) {
           setSuccess(response.message);
           setError("");
@@ -221,8 +221,8 @@ export default function Profile(props) {
           <div className="rbt-tutor-information-left">
             <div className="thumbnail rbt-avatars size-lg position-relative">
               <ImageTag
-                alt="User profile"
-                style={{ height: 120, width: 120 }}
+                alt={userInfo.name}
+                style={{ height: 120, width: 120, borderRadius: "50%" }}
                 src={previewImage != null ? previewImage : userInfo.profile}
               />
               <div className="rbt-edit-photo-inner">
@@ -247,23 +247,35 @@ export default function Profile(props) {
               </div>
             </div>
             <div className="tutor-content">
-              <h5 className="title">{userInfo.name}</h5>
+              <h5 className="title">
+                {name} &nbsp;
+                <span style={{ fontSize: 15 }}>
+                  ({data.profile_code || "#CYT1234"})
+                </span>
+              </h5>
               <div className="rbt-review">
                 <h6 className="title">{userInfo.email}</h6>
+              </div>
+              <div className="rbt-review">
+                <h6 className="title">{data.profile_type}</h6>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="rbt-profile-row rbt-default-form row row--15">
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="col-lg-6 col-md-6 col-sm-12 col-12  mb--15">
           <div className="rbt-form-group">
-            <label htmlFor="profiletype">Profile Type</label>
-            <select id="profiletype" style={selectStyle} disabled>
-              <option value="Counselling Psychologist">
-                Counselling Psychologist
-              </option>
-            </select>
+            <label htmlFor="licensenumber">Language Spoken(Select any 2)</label>
+            <Select
+              defaultValue={[languageSpoken[1]]}
+              isMulti
+              value={selectedOptions}
+              onChange={handleLanguageSelect}
+              options={languageSpoken}
+              classNamePrefix="select"
+              styles={customStyles}
+            />
           </div>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
@@ -399,21 +411,6 @@ export default function Profile(props) {
             </div>
           </div>
         )}
-
-        <div className="col-lg-6 col-md-6 col-sm-12 col-12  mb--15">
-          <div className="rbt-form-group">
-            <label htmlFor="licensenumber">Language Spoken(Select any 2)</label>
-            <Select
-              defaultValue={[languageSpoken[1]]}
-              isMulti
-              value={selectedOptions}
-              onChange={handleLanguageSelect}
-              options={languageSpoken}
-              classNamePrefix="select"
-              styles={customStyles}
-            />
-          </div>
-        </div>
 
         <div className="col-lg-12 col-md-12 col-sm-12 col-12 mt--6 mb--15">
           <div className="rbt-form-group">

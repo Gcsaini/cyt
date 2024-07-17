@@ -1,5 +1,12 @@
-// const apiUrl = "http://localhost:4000/api";
-const apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
+let apiUrl;
+const currentDomain = window.location.hostname;
+
+if (currentDomain === "localhost") {
+  apiUrl = "http://localhost:4000/api";
+} else {
+  apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";
+}
+console.log("cur", apiUrl);
 export const loginUrl = `${apiUrl}/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
 export const registerUrl = `${apiUrl}/register`;
@@ -12,12 +19,14 @@ export const updateUserUrl = `${apiUrl}/update-user`;
 export const getTherapists = `${apiUrl}/get-therapists`;
 export const getTherapist = `${apiUrl}/get-therapist`;
 export const updateProfileUrl = `${apiUrl}/update-profile`;
+export const updateTherapistProfileUrl = `${apiUrl}/update-therapist-profile`;
 export const updateServiceExpertiesUrl = `${apiUrl}/update-service-experties`;
 export const updateAccountDetailsUrl = `${apiUrl}/update-account-details`;
 export const updateFeeDetailsUrl = `${apiUrl}/update-fee-details`;
 export const getAccountDetailsUrl = `${apiUrl}/get-bank-details`;
 export const getFeeDetailsUrl = `${apiUrl}/get-fee-details`;
 export const changePasswordUrl = `${apiUrl}/change-passowrd`;
+export const changeClientPasswordUrl = `${apiUrl}/change-client-passowrd`;
 export const updateAvailabilitiesUrl = `${apiUrl}/update-availability-details`;
 export const getAvailabilitiesUrl = `${apiUrl}/get-availability-details`;
 export const defaultProfile =

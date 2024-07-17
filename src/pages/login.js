@@ -11,8 +11,7 @@ import { isValidMail } from "../utils/validators";
 import { loginUrl } from "../utils/url";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/material";
-import { getDecodedToken, getToken, removeToken, setToken } from "../utils/jwt";
-// import jwt from "jsonwebtoken";
+import { getDecodedToken, setToken } from "../utils/jwt";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +39,6 @@ export default function Login() {
 
     request(loginUrl, { method: "POST", body: value })
       .then((response) => {
-        console.log(response);
         if (!response.status) {
           setError(response.message);
         } else {
@@ -49,7 +47,7 @@ export default function Login() {
           if (data.role === 1) {
             navigate("/therapist-dashboard");
           } else {
-            navigate("/home");
+            navigate("/my-dashboard");
           }
         }
       })
@@ -65,7 +63,7 @@ export default function Login() {
       if (data.role === 1) {
         navigate("/therapist-dashboard");
       } else {
-        navigate(`/home`);
+        navigate(`/my-dashboard`);
       }
     }
   }, []);

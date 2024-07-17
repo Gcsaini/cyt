@@ -15,6 +15,13 @@ export default function Fees() {
   const [success, setSuccess] = useState("");
   const handleChange = (field, value) => {
     if (value === "" || /^\d*\.?\d*$/.test(value)) {
+      setSuccess("");
+      const numericValue = parseFloat(value);
+      if (!isNaN(numericValue) && (numericValue < 500 || numericValue > 2500)) {
+        setError("Price must be between 500 and 2500");
+      } else {
+        setError("");
+      }
       setFeeDetails(field, value);
     }
   };
@@ -22,11 +29,17 @@ export default function Fees() {
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
-    const allFieldsFilled = Object.values(feeDetails).every(
-      (value) => value !== ""
+    const allFieldsEmpty = Object.values(feeDetails).every(
+      (value) => value === ""
     );
-    if (allFieldsFilled) {
+    const anyFieldOutOfRange = Object.values(feeDetails).some((value) => {
+      const numericValue = parseFloat(value);
+      return numericValue < 500 || numericValue > 2500;
+    });
+    if (allFieldsEmpty) {
       setError("Please enter your price details");
+    } else if (anyFieldOutOfRange) {
+      setError("Price must be between 500 and 2500");
     } else {
       setError("");
       setLoading(true);
@@ -73,6 +86,9 @@ export default function Fees() {
   ) : (
     <>
       <div className="sees-container">
+        <div>
+          <h6>* Price range can be 500-2500</h6>
+        </div>
         <div className="table-wrapper">
           <table className="sees-table">
             <thead>
@@ -102,7 +118,7 @@ export default function Fees() {
                   <input
                     type="text"
                     placeholder="Price"
-                    value={feeDetails.icv}
+                    value={feeDetails.ica}
                     onChange={(e) => handleChange("ica", e.target.value)}
                   />
                 </td>
@@ -110,7 +126,7 @@ export default function Fees() {
                   <input
                     type="text"
                     placeholder="Price"
-                    value={feeDetails.ica}
+                    value={feeDetails.icv}
                     onChange={(e) => handleChange("icv", e.target.value)}
                   />
                 </td>

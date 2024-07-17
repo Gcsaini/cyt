@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import auth from "../utils/auth";
-import request from "../utils/request";
 import { isValidMail } from "../utils/validators";
-import { registerUrl, sendOtpUrl } from "../utils/url";
+import { registerUrl, sendOtpUrl, verifyOtpUrl } from "../utils/url";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
 import ClientImg from "../assets/img/client-01a92c.png";
 import ImageTag from "../utils/image-tag";
+import FormProgressBar from "../components/global/form-progressbar";
+import FormMessage from "../components/global/form-message";
+import { getDecodedToken, setToken } from "../utils/jwt";
+import { postData } from "../utils/actions";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -18,12 +20,12 @@ export default function Register() {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [otpView, setOtpView] = useState(false);
-  const [msg, setMsg] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setError("");
+    setSuccess("");
     if (name.length < 3 || name.length > 30) {
       setError("Please enter valid name");
       return;
@@ -45,24 +47,26 @@ export default function Register() {
     const value = {
       email,
       name,
+      phone,
+      password,
     };
-    setLoading(true);
-    request(sendOtpUrl, { method: "POST", body: value })
-      .then((response) => {
-        if (!response.status) {
-          setError(response.message);
-        } else {
-          setOtpView(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      setLoading(true);
+      const response = await postData(registerUrl, value);
+      if (response.status) {
+        setSuccess("An Otp has been sent to your mail id");
+        setOtpView(true);
+        setError("");
+      } else {
+        setError("Something went wrong");
+      }
+    } catch (error) {
+      setError(error.response.data.message);
+    }
     setLoading(false);
   };
 
-  const handleOtp = (e) => {
-    e.preventDefault();
+  const handleOtp = async () => {
     setError("");
 
     if (otp.length !== 6) {
@@ -71,34 +75,36 @@ export default function Register() {
     }
     const value = {
       email,
-      name,
-      phone,
-      password,
       otp,
     };
-    setLoading(true);
-    request(registerUrl, { method: "POST", body: value })
-      .then((response) => {
-        if (!response.status) {
-          setError(response.message);
-        } else {
-          redirectUser();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        // setError(err.response.payload.error.message);
-      });
+    try {
+      setLoading(true);
+      const response = await postData(verifyOtpUrl, value);
+      if (response.status) {
+        setSuccess(response.message);
+        setError("");
+        setOtp("");
+        setToken(response.data.token);
+        navigate("/my-dashboard");
+      } else {
+        setError("Something went wrong");
+      }
+    } catch (error) {
+      setSuccess("");
+      setError(error.response.data.message);
+    }
+
     setLoading(false);
   };
 
-  const redirectUser = () => {
-    navigate("/home");
-  };
-
   useEffect(() => {
-    if (auth.getToken()) {
-      redirectUser();
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role === 1) {
+        navigate("/therapist-dashboard");
+      } else {
+        navigate(`/my-dashboard`);
+      }
     }
   }, []);
   return (
@@ -166,7 +172,7 @@ export default function Register() {
                           to="#"
                           className="avatar"
                           data-tooltip="Rafi Dev"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -179,7 +185,7 @@ export default function Register() {
                           to="#"
                           className="avatar"
                           data-tooltip="Mark"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -192,7 +198,7 @@ export default function Register() {
                           to="#"
                           className="avatar"
                           data-tooltip="Jordan"
-                          tabindex="0"
+                          tabIndex="0"
                         >
                           <ImageTag
                             alt="education"
@@ -215,87 +221,128 @@ export default function Register() {
                 </div>
               </div>
               <div className="col-lg-5">
-                <div className="rbt-contact-form contact-form-style-1">
-                  <h3 className="title">Register</h3>
-                  <p style={{ color: "#ff0000" }}>
-                    {error !== "" ? error : ""}
-                  </p>
-                  <form id="contact-form">
-                    <div className="form-group">
-                      <input
-                        placeholder="Full Name"
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                      <span className="focus-border"></span>
+                {otpView ? (
+                  <div className="rbt-contact-form contact-form-style-1">
+                    <h3 className="title">Verify Account</h3>
+                    <FormMessage error={error} success={success} />
+                    <div id="contact-form">
+                      <div className="form-group">
+                        <input
+                          placeholder="Enter OTP"
+                          type="text"
+                          value={otp}
+                          onChange={(e) => setOtp(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+
+                      <div className="form-submit-group">
+                        {loading ? (
+                          <FormProgressBar />
+                        ) : (
+                          <button
+                            onClick={handleOtp}
+                            type="submit"
+                            className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100 mt--15"
+                          >
+                            <span className="icon-reverse-wrapper">
+                              <span className="btn-text">Verify OTP</span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
+                            </span>
+                          </button>
+                        )}
+                      </div>
                     </div>
-                    <div className="form-group">
-                      <input
-                        placeholder="Email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        placeholder="Phone"
-                        type="text"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div
-                      className="rbt-lost-password text-end"
-                      style={{ marginBottom: 15 }}
-                    >
-                      <Link className="rbt-btn-link" to="/login">
-                        Login?
-                      </Link>
-                    </div>
-                    <div className="form-submit-group">
-                      <button
-                        type="submit"
-                        className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
+                  </div>
+                ) : (
+                  <div className="rbt-contact-form contact-form-style-1">
+                    <h3 className="title">Register</h3>
+                    <FormMessage error={error} success={success} />
+                    <div id="contact-form">
+                      <div className="form-group">
+                        <input
+                          placeholder="Full Name"
+                          type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+                      <div className="form-group">
+                        <input
+                          placeholder="Email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+                      <div className="form-group">
+                        <input
+                          placeholder="Phone"
+                          type="text"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+                      <div
+                        className="rbt-lost-password text-end"
+                        style={{ marginBottom: 15 }}
                       >
-                        <span className="icon-reverse-wrapper">
-                          <span className="btn-text" onClick={handleSubmit}>
-                            Login
-                          </span>
-                          <span className="btn-icon">
-                            <i className="feather-arrow-right"></i>
-                          </span>
-                          <span className="btn-icon">
-                            <i className="feather-arrow-right"></i>
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                    <div
-                      className="rbt-lost-password text-end"
-                      style={{ marginBottom: 15 }}
-                    >
-                      <Link
-                        className="rbt-btn-link"
-                        to="/therapist-registration"
+                        <Link className="rbt-btn-link" to="/login">
+                          Login?
+                        </Link>
+                      </div>
+                      <div className="form-submit-group">
+                        {loading ? (
+                          <FormProgressBar />
+                        ) : (
+                          <button
+                            onClick={handleSubmit}
+                            type="submit"
+                            className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
+                          >
+                            <span className="icon-reverse-wrapper">
+                              <span className="btn-text">Login</span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
+                            </span>
+                          </button>
+                        )}
+                      </div>
+                      <div
+                        className="rbt-lost-password text-end"
+                        style={{ marginBottom: 15 }}
                       >
-                        Are you an therapist?
-                      </Link>
+                        <Link
+                          className="rbt-btn-link"
+                          to="/therapist-registration"
+                        >
+                          Are you an therapist?
+                        </Link>
+                      </div>
                     </div>
-                  </form>
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

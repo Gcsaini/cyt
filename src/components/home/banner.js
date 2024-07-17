@@ -265,7 +265,7 @@ export default function Banner() {
                                   <i className="feather-heart"></i>
                                 </span>
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
-                                  Individual Counselling, Couple Counselling
+                                  500-1200 INR
                                 </span>
                               </div>
 
@@ -353,8 +353,7 @@ export default function Banner() {
                                   <i className="feather-heart"></i>
                                 </span>
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
-                                  Individual Counselling, Couple Counselling,
-                                  Teen Counselling
+                                  500-1200 INR
                                 </span>
                               </div>
                               <div
@@ -440,7 +439,7 @@ export default function Banner() {
                                   <i className="feather-heart"></i>
                                 </span>
                                 <span style={{ fontSize: 16, marginLeft: 5 }}>
-                                  Individual Counselling
+                                  500-1200 INR
                                 </span>
                               </div>
                               <div
