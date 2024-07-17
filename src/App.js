@@ -30,6 +30,8 @@ import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";
 import { getToken } from "./utils/jwt";
+import AllWorkshop from "./pages/allworksho";
+import NewWorkshops from "./pages/newworkshops";
 
 const theme = createTheme();
 
@@ -79,6 +81,8 @@ function App() {
               <Route path="/my-dashboard" element={<UserDashboard />} />
               <Route path="/my-profile" element={<UserProfile />} />
               <Route path="/" element={<HomePage />} />
+              <Route path="/all-workshop" element={<AllWorkshop />} />
+              <Route path="/new-workshop" element={<NewWorkshops />} />
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
               {/* therapist related routes */}

@@ -5,13 +5,19 @@ import "swiper/css/pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import WellNessCard from "./wellness-card";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function TherapistProfile() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [tab, setTab] = React.useState(1);
   const handleClick = (id) => {
     setTab(id);
   };
+
+  const navigate = useNavigate();
+  const handleworkshop = () => {
+    navigate("/all-workshop");
+  };
+
   return (
     <div className="rbt-course-area bg-color-extra2 rbt-section-gap">
       <div className="container">
@@ -188,7 +194,7 @@ export default function TherapistProfile() {
                     slidesPerView={1}
                     autoplay={{
                       delay: 2500,
-                      disableOnInteraction: false,
+                      disableOnInteraction: false
                     }}
                     modules={[Autoplay]}
                     className="mySwiper"
@@ -211,6 +217,29 @@ export default function TherapistProfile() {
             </div>
           </div>
         )}
+
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="load-more-btn mt--60 text-center">
+              <Link
+                className="rbt-btn btn-gradient btn-sm hover-icon-reverse"
+                to=""
+              >
+                <span className="icon-reverse-wrapper">
+                  <span onClick={handleworkshop()} className="btn-text">
+                    Find All Workshop
+                  </span>
+                  <span className="btn-icon">
+                    <i className="feather-arrow-right"></i>
+                  </span>
+                  <span className="btn-icon">
+                    <i className="feather-arrow-right"></i>
+                  </span>
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

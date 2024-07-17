@@ -6,6 +6,7 @@ import { postFormData } from "../../utils/actions";
 import { removeToken } from "../../utils/jwt";
 import DashboardTopNav from "./top-nav";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
 export default function MainLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { userInfo, fetchUserInfo } = useTherapistStore();
