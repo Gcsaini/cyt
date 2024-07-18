@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import demoPhoto from "../../../assets/img/2.png";
+import demoPhoto from "../../assets/img/2.png";
 export default function AllWorkshops() {
   return (
     <>

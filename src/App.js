@@ -32,6 +32,8 @@ import useUserStore from "./store/userStore";
 import { getDecodedToken, getToken } from "./utils/jwt";
 import ClientSettings from "./pages/client/settings";
 import ChangeMyPassword from "./pages/client/change-password";
+import AllWorkshop from "./pages/allworkshop";
+import NewWorkshops from "./pages/newworkshops";
 const theme = createTheme();
 
 function App() {
