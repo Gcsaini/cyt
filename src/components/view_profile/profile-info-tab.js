@@ -1,9 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function ProfileInfoTab() {
+import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import { successColor } from "../../utils/colors";
+export default function ProfileInfoTab({ pageData }) {
   const [tab, setTab] = React.useState(1);
   const handleClick = (id) => {
     setTab(id);
+  };
+
+  const listStyle = {
+    fontSize: 34,
+    color: successColor,
+  };
+
+  const listStyleTime = {
+    fontSize: 28,
+    color: successColor,
   };
   return (
     <div
@@ -47,7 +60,7 @@ export default function ProfileInfoTab() {
                     onClick={() => handleClick(3)}
                   >
                     <span className="title" style={{ cursor: "pointer" }}>
-                      Reviews
+                      Fees
                     </span>
                   </Link>
                 </li>
@@ -78,27 +91,31 @@ export default function ProfileInfoTab() {
               >
                 <h4 className="rbt-title-style-3">About me</h4>
                 <div className="content">
-                  <p>
-                    Hello, I'm a Counseling Psychologist committed to supporting
-                    your mental health and overall well-being. My approach to
-                    counseling is grounded in cognitive restructuring, a
-                    powerful technique that helps you identify and challenge
-                    negative thought patterns.
-                    <b /> <b /> By doing so, we can work together to replace
-                    these thoughts with healthier, more adaptive ways of
-                    thinking, leading to improved emotional and mental health.
-                    In addition to cognitive restructuring, I embrace a holistic
-                    wellness approach. <b /> <b /> I believe that true wellness
-                    involves balancing all aspects of your life, and I strive to
-                    integrate strategies that promote overall well-being.
-                    Whether it’s through mindfulness practices, stress
-                    management techniques, or lifestyle adjustments, I aim to
-                    provide comprehensive support tailored to your unique needs.
-                  </p>
+                  <p>{pageData.bio}</p>
                   <h4 className="rbt-title-style-3">Services</h4>
-                  <div className="content"></div>
-                  <h4 className="rbt-title-style-3">Expertise</h4>
-                  <div className="content"></div>
+                  <div className="content">
+                    {pageData.services.split(",").map((item, index) => {
+                      return (
+                        <span style={{ marginRight: 40 }} key={item}>
+                          <TrendingFlatIcon style={listStyle} />
+                          &nbsp;{item}
+                        </span>
+                      );
+                    })}
+                  </div>
+                  <h4 className="rbt-title-style-3" style={{ marginTop: 20 }}>
+                    Expertise
+                  </h4>
+                  <div className="content">
+                    {pageData.experties.split(",").map((item, index) => {
+                      return (
+                        <span style={{ marginRight: 40 }} key={item}>
+                          <TrendingFlatIcon style={listStyle} />
+                          &nbsp;{item}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
               <div
@@ -127,12 +144,99 @@ export default function ProfileInfoTab() {
                 aria-labelledby="contact-tab-4"
               >
                 <div className="content">
-                  <p>
-                    Experiencing music ipsum dolor sit amet consectetur,
-                    adipisicing elit. Tempora sequi doloremque dicta quia unde
-                    odio nam minus reiciendis ullam aliquam, dolorum ab quisquam
-                    cum numquam nemo iure cumque iste. Accusamus necessitatibus.
-                  </p>
+                  {(pageData.ica != "" ||
+                    pageData.icip != "" ||
+                    pageData.icv != "") && (
+                    <>
+                      <h4 className="rbt-title-style-3">
+                        Individual Counselling
+                      </h4>
+                      <div className="col-lg-6 col-md-12 col-12">
+                        <ul className="rbt-list-style-2">
+                          {pageData.ica != "" && (
+                            <li>
+                              <i className="feather-check"></i>Audio : ₹
+                              {pageData.ica}
+                            </li>
+                          )}
+                          {pageData.icip != "" && (
+                            <li>
+                              <i className="feather-check"></i> In-Person Call :
+                              ₹{pageData.icip}
+                            </li>
+                          )}
+                          {pageData.icv != "" && (
+                            <li>
+                              <i className="feather-check"></i> Video : ₹
+                              {pageData.icv}
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="content">
+                  {(pageData.tca != "" ||
+                    pageData.tcip != "" ||
+                    pageData.tcv != "") && (
+                    <>
+                      <h4 className="rbt-title-style-3">Teen Counselling</h4>
+                      <div className="col-lg-6 col-md-12 col-12">
+                        <ul className="rbt-list-style-2">
+                          {pageData.tca != "" && (
+                            <li>
+                              <i className="feather-check"></i>Audio : ₹
+                              {pageData.tca}
+                            </li>
+                          )}
+                          {pageData.tcip != "" && (
+                            <li>
+                              <i className="feather-check"></i> In-Person Call :
+                              ₹{pageData.tcip}
+                            </li>
+                          )}
+                          {pageData.tcv != "" && (
+                            <li>
+                              <i className="feather-check"></i> Video : ₹
+                              {pageData.tcv}
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="content">
+                  {(pageData.cca != "" ||
+                    pageData.ccip != "" ||
+                    pageData.ccv != "") && (
+                    <>
+                      <h4 className="rbt-title-style-3">Couple Counselling</h4>
+                      <div className="col-lg-6 col-md-12 col-12">
+                        <ul className="rbt-list-style-2">
+                          {pageData.cca != "" && (
+                            <li>
+                              <i className="feather-check"></i>Audio : ₹
+                              {pageData.cca}
+                            </li>
+                          )}
+                          {pageData.ccip != "" && (
+                            <li>
+                              <i className="feather-check"></i> In-Person Call :
+                              ₹{pageData.ccip}
+                            </li>
+                          )}
+                          {pageData.ccv != "" && (
+                            <li>
+                              <i className="feather-check"></i> Video : ₹
+                              {pageData.ccv}
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
               <div
@@ -144,12 +248,24 @@ export default function ProfileInfoTab() {
                 aria-labelledby="business-tab-4"
               >
                 <div className="content">
-                  <p>
-                    Business Housrs music ipsum dolor sit amet consectetur,
-                    adipisicing elit. Tempora sequi doloremque dicta quia unde
-                    odio nam minus reiciendis ullam aliquam, dolorum ab quisquam
-                    cum numquam nemo iure cumque iste. Accusamus necessitatibus.
-                  </p>
+                  {pageData.schedule &&
+                    pageData.schedule.map((item) => {
+                      return (
+                        <div key={item.day}>
+                          <h4 className="rbt-title-style-3">{item.day}</h4>
+                          <div className="content">
+                            {item.times.map((time) => {
+                              return (
+                                <span style={{ marginRight: 40 }} key={time}>
+                                  <WatchLaterIcon style={listStyleTime} />
+                                  &nbsp;{time.open}-{time.close}
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </div>

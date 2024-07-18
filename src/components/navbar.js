@@ -18,7 +18,7 @@ import ImageTag from "../utils/image-tag";
 export default function App() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
-  const [user, setUser] = React.useState();
+
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
   const [about, setAbout] = React.useState();
@@ -26,12 +26,6 @@ export default function App() {
   const [search, setSearch] = React.useState();
   const [cart, setCart] = React.useState();
 
-  React.useEffect(() => {
-    const user = auth.getUserInfo();
-    if (user) {
-      setUser(user);
-    }
-  }, []);
   return (
     <>
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>

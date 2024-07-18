@@ -79,18 +79,18 @@ export const EducationList = [
 ];
 
 export const dailyLiftIssuesList = [
-  "stressManagement",
-  "anxiety",
-  "depression",
-  "selfEsteem",
-  "timeManagement",
-  "careerCounselling",
-  "workLifeBalance",
-  "burnout",
-  "lifeTransitions",
-  "griefAndLoss",
-  "angerManagement",
-  "motivation",
+  "Stress Management",
+  "Anxiety",
+  "Depression",
+  "Self Esteem",
+  "Time Management",
+  "Career Counselling",
+  "Work Life Balance",
+  "Burnout",
+  "Life Transitions",
+  "Grief And Loss",
+  "Anger Management",
+  "Motivation",
 ];
 
 export const therapyoptionlist = [

@@ -1,6 +1,6 @@
 import BestSellerImg from "../../assets/img/card-icon-11b092.png";
 import ImageTag from "../../utils/image-tag";
-export default function ProfileContent() {
+export default function ProfileContent({ pageData }) {
   return (
     <div className="rbt-advance-tab-area rbt-section-gap bg-color-extra2">
       <div className="container">
@@ -10,20 +10,19 @@ export default function ProfileContent() {
               <h4 className="rbt-title-style-3">Contact info</h4>
               <div className="row g-5">
                 <div className="col-lg-8">
-                  <p className="mt--10 mb--20">
-                   
-                  </p>
+                  <p className="mt--10 mb--20"></p>
 
                   <ul className="rbt-information-list mt--15">
                     <li>
-                      <a href="/profile/1#">
-                        <i className="feather-phone"></i>+918077757951
+                      <a href={`tel:+91${pageData.phone}`}>
+                        <i className="feather-phone"></i>
+                        +91{pageData.phone}
                       </a>
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com">
+                      <a href={`mailto:${pageData.email}`}>
                         <i className="feather-mail"></i>
-                        deepak@chooseyourtherapist.in
+                        {pageData.email}
                       </a>
                     </li>
                   </ul>

@@ -28,23 +28,26 @@ import Reviews from "./pages/therapists/reviews";
 import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";
-import { getToken } from "./utils/jwt";
-<<<<<<< HEAD
-import AllWorkshop from "./pages/allworksho";
-import NewWorkshops from "./pages/newworkshops";
-=======
+import useUserStore from "./store/userStore";
+import { getDecodedToken, getToken } from "./utils/jwt";
 import ClientSettings from "./pages/client/settings";
 import ChangeMyPassword from "./pages/client/change-password";
->>>>>>> 54681e21cd81471d8fcd98e3ecc6a6c63cc56e65
-
 const theme = createTheme();
 
 function App() {
-  const { fetchUserInfo } = useTherapistStore();
+  const { fetchTherapistInfo } = useTherapistStore();
+  const { fetchUserInfo } = useUserStore();
   useEffect(() => {
     const data = getToken();
+
     if (data) {
-      fetchUserInfo();
+      const userData = getDecodedToken();
+
+      if (userData.role === 1) {
+        fetchTherapistInfo();
+      } else {
+        fetchUserInfo();
+      }
     }
   }, [fetchUserInfo]);
   return (

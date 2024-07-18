@@ -5,114 +5,109 @@ import {
   sessionFormatsList,
   stateList,
 } from "../../../utils/static-lists";
-import React, { useState, useRef, useEffect } from "react";
-import { updateTherapistProfileUrl, updateUserUrl } from "../../../utils/url";
+import React, { useState, useRef } from "react";
+import { defaultProfile, updateTherapistProfileUrl } from "../../../utils/url";
 import ImageTag from "../../../utils/image-tag";
-import { postData, postFormData } from "../../../utils/actions";
+import { postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
 import useTherapistStore from "../../../store/therapistStore";
 import Select from "react-select";
-export default function Profile(props) {
-  const { userInfo, fetchUserInfo } = useTherapistStore();
-  const { data } = props;
+export default function Profile() {
+  const { therapistInfo, setInfo, setSessionFormats } = useTherapistStore();
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
-  const [education, setEducation] = useState(data.qualification || "");
-  const [license, setLicense] = useState(data.license_number || "");
-  const [name, setName] = useState(data.name || "");
-  const [phone, setPhone] = useState(data.phone || "");
-  const [bio, setBio] = useState(data.bio || "");
-  const [state, setState] = useState(data.state || "Select");
-  const [gender, setGender] = useState(data.gender || "Select");
-  const [ofc, setOfc] = useState(data.office_address || "");
-  const [exp, setExp] = useState(data.year_of_exp || "Select");
-  const [selectedOptions, setSelectedOptions] = useState(
-    data.language_spoken
-      ? data.language_spoken.split(",").map((value) => ({
-          value: value.trim(),
-          label: value.trim(),
-        }))
-      : []
-  );
-
-  const [othEducation, setOthEducation] = useState(
-    !EducationList.some((qualification) => data.qualification === qualification)
-  );
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  const [sessionFormats, setSessionFormats] = useState(
-    data.session_formats
-      ? data.session_formats.split(",").map((item) => item.trim())
-      : []
-  );
 
   const handleLanguageSelect = (selectedOptions) => {
     if (selectedOptions.length > 2) {
       selectedOptions = selectedOptions.slice(0, 2);
     }
-    setSelectedOptions(selectedOptions);
-  };
+    const formattedOptions = selectedOptions.map((option) => {
+      // Check if the option is an object with value and label properties
+      if (typeof option === "object" && option !== null) {
+        return {
+          value: option.value.trim(),
+          label: option.label.trim(),
+        };
+      }
+      // If the option is a string
+      return {
+        value: option.trim(),
+        label: option.trim(),
+      };
+    });
 
+    setInfo("language_spoken", formattedOptions);
+  };
   const handleSessionFormats = (event) => {
     const { value, checked } = event.target;
-    setSessionFormats((prevCheckedValues) => {
-      if (checked) {
-        return [...prevCheckedValues, value];
-      } else {
-        return prevCheckedValues.filter((v) => v !== value);
-      }
-    });
+
+    const currentSessionFormats = therapistInfo.session_formats;
+    let updatedSessionFormats;
+    if (checked) {
+      updatedSessionFormats = [...currentSessionFormats, value];
+    } else {
+      updatedSessionFormats = currentSessionFormats.filter((v) => v !== value);
+    }
+
+    setSessionFormats(updatedSessionFormats.join(","));
   };
 
   const handleEducation = (e) => {
     if (e.target.value === "Other (Please specify)") {
-      setEducation(e.target.value);
-      setOthEducation(true);
+      setInfo("qualification", e.target.value);
+      setInfo("othEducation", true);
     } else {
-      setOthEducation(false);
-      setEducation(e.target.value);
+      setInfo("othEducation", false);
+      setInfo("qualification", e.target.value);
     }
   };
 
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
-    if (name === "") {
+    if (therapistInfo.name === "") {
       setError("Name can not be empty");
       return;
-    } else if (phone === "") {
+    } else if (therapistInfo.phone === "") {
       setError("Phone Number can not be empty");
       return;
     } else {
       setError("");
       setLoading(true);
-      const data = {
-        name: name,
-        phone: phone,
-        qualification: education,
-        license_number: license,
-        bio: bio,
-        state: state,
-        gender: gender,
-        office_address: ofc,
-        year_of_exp: exp,
-        language_spoken: selectedOptions
-          .map((option) => option.value)
-          .join(", "),
-        session_formats: sessionFormats.join(", "),
-      };
-
+      const formData = new FormData();
+      formData.append("name", therapistInfo.name);
+      formData.append("phone", therapistInfo.phone);
+      formData.append("qualification", therapistInfo.qualification);
+      formData.append("license_number", therapistInfo.license_number);
+      formData.append("bio", therapistInfo.bio);
+      formData.append("state", therapistInfo.state);
+      formData.append("gender", therapistInfo.gender);
+      formData.append("office_address", therapistInfo.office_address);
+      formData.append("year_of_exp", therapistInfo.year_of_exp);
+      formData.append("file", selectedImage);
+      formData.append(
+        "language_spoken",
+        therapistInfo.language_spoken.map((option) => option.value).join(", ")
+      );
+      formData.append(
+        "session_formats",
+        therapistInfo.session_formats.join(", ")
+      );
       try {
         setLoading(true);
-        const response = await postData(updateTherapistProfileUrl, data);
+        const response = await postFormData(
+          updateTherapistProfileUrl,
+          formData
+        );
         if (response.status) {
           setSuccess(response.message);
           setError("");
+          setInfo("profile", response.data.profile);
         } else {
           setError("Something went wrong");
         }
@@ -133,24 +128,6 @@ export default function Profile(props) {
 
   const handleImageUpload = () => {
     fileInputRef.current.click();
-  };
-
-  const updateProfile = async () => {
-    if (selectedImage) {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("file", selectedImage);
-      try {
-        setLoading(true);
-        const response = await postFormData(updateUserUrl, formData);
-        if (response.status) {
-          fetchUserInfo();
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
-    }
   };
 
   const customStyles = {
@@ -198,12 +175,6 @@ export default function Profile(props) {
     }),
   };
 
-  useEffect(() => {
-    if (selectedImage) {
-      updateProfile(); // Call updateProfile when selectedImage changes
-    }
-  }, [selectedImage]);
-
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <div
@@ -221,9 +192,15 @@ export default function Profile(props) {
           <div className="rbt-tutor-information-left">
             <div className="thumbnail rbt-avatars size-lg position-relative">
               <ImageTag
-                alt={userInfo.name}
+                alt={therapistInfo.name}
                 style={{ height: 120, width: 120, borderRadius: "50%" }}
-                src={previewImage != null ? previewImage : userInfo.profile}
+                src={
+                  previewImage != null
+                    ? previewImage
+                    : therapistInfo.profile != null
+                    ? therapistInfo.profile
+                    : defaultProfile
+                }
               />
               <div className="rbt-edit-photo-inner">
                 <button
@@ -231,11 +208,7 @@ export default function Profile(props) {
                   title="Upload Photo"
                   onClick={handleImageUpload}
                 >
-                  {loading ? (
-                    <FormProgressBar />
-                  ) : (
-                    <i className="feather-camera"></i>
-                  )}
+                  <i className="feather-camera"></i>
                 </button>
                 <input
                   type="file"
@@ -248,16 +221,16 @@ export default function Profile(props) {
             </div>
             <div className="tutor-content">
               <h5 className="title">
-                {name} &nbsp;
+                {therapistInfo.name} &nbsp;
                 <span style={{ fontSize: 15 }}>
-                  ({data.profile_code || "#CYT1234"})
+                  ({therapistInfo.profile_code || "#CYT1234"})
                 </span>
               </h5>
               <div className="rbt-review">
-                <h6 className="title">{userInfo.email}</h6>
+                <h6 className="title">{therapistInfo.email}</h6>
               </div>
               <div className="rbt-review">
-                <h6 className="title">{data.profile_type}</h6>
+                <h6 className="title">{therapistInfo.profile_type}</h6>
               </div>
             </div>
           </div>
@@ -270,7 +243,7 @@ export default function Profile(props) {
             <Select
               defaultValue={[languageSpoken[1]]}
               isMulti
-              value={selectedOptions}
+              value={therapistInfo.language_spoken}
               onChange={handleLanguageSelect}
               options={languageSpoken}
               classNamePrefix="select"
@@ -286,8 +259,8 @@ export default function Profile(props) {
             <input
               id="licensenumber"
               type="text"
-              value={license}
-              onChange={(e) => setLicense(e.target.value)}
+              value={therapistInfo.license_number}
+              onChange={(e) => setInfo("license_number", e.target.value)}
             />
           </div>
         </div>
@@ -297,8 +270,8 @@ export default function Profile(props) {
             <input
               id="fullname"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={therapistInfo.name}
+              onChange={(e) => setInfo("name", e.target.value)}
             />
           </div>
         </div>
@@ -308,8 +281,8 @@ export default function Profile(props) {
             <select
               id="gender"
               style={selectStyle}
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
+              value={therapistInfo.gender}
+              onChange={(e) => setInfo("gender", e.target.value)}
             >
               <option value="">Select</option>
               <option value="Male">Male</option>
@@ -325,8 +298,8 @@ export default function Profile(props) {
             <input
               id="phonenumber"
               type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              value={therapistInfo.phone}
+              onChange={(e) => setInfo("phone", e.target.value)}
             />
           </div>
         </div>
@@ -336,8 +309,8 @@ export default function Profile(props) {
             <select
               id="state"
               style={selectStyle}
-              value={state}
-              onChange={(e) => setState(e.target.value)}
+              value={therapistInfo.state}
+              onChange={(e) => setInfo("state", e.target.value)}
             >
               {stateList.map((item) => {
                 return (
@@ -355,8 +328,8 @@ export default function Profile(props) {
             <input
               id="office"
               type="text"
-              value={ofc}
-              onChange={(e) => setOfc(e.target.value)}
+              value={therapistInfo.office_address}
+              onChange={(e) => setInfo("office_address", e.target.value)}
             />
           </div>
         </div>
@@ -366,8 +339,8 @@ export default function Profile(props) {
             <select
               id="experience"
               style={selectStyle}
-              value={exp}
-              onChange={(e) => setExp(e.target.value)}
+              value={therapistInfo.year_of_exp}
+              onChange={(e) => setInfo("year_of_exp", e.target.value)}
             >
               {ExpList.map((item) => {
                 return (
@@ -385,7 +358,7 @@ export default function Profile(props) {
             <select
               id="qualification"
               style={selectStyle}
-              value={education}
+              value={therapistInfo.qualification}
               onChange={(e) => handleEducation(e)}
             >
               {EducationList.map((item) => {
@@ -398,15 +371,15 @@ export default function Profile(props) {
             </select>
           </div>
         </div>
-        {othEducation && (
+        {therapistInfo.othEducation && (
           <div className="col-lg-6 col-md-6 col-sm-6 col-12">
             <div className="rbt-form-group">
               <label htmlFor="licensenumber">Education</label>
               <input
                 id="Education"
                 type="text"
-                value={education}
-                onChange={(e) => setEducation(e.target.value)}
+                value={therapistInfo.qualification}
+                onChange={(e) => setInfo("qualification", e.target.value)}
               />
             </div>
           </div>
@@ -424,7 +397,7 @@ export default function Profile(props) {
                         id={`session-checkbox-${item}`}
                         type="checkbox"
                         value={item}
-                        checked={sessionFormats.includes(item)}
+                        checked={therapistInfo.session_formats.includes(item)}
                         onChange={handleSessionFormats}
                       />
                       <label htmlFor={`session-checkbox-${item}`}>{item}</label>
@@ -442,8 +415,8 @@ export default function Profile(props) {
               id="bio"
               cols="20"
               rows="5"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
+              value={therapistInfo.bio}
+              onChange={(e) => setInfo("bio", e.target.value)}
             ></textarea>
           </div>
         </div>
