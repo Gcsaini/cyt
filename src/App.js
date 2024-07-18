@@ -61,6 +61,7 @@ function App() {
           <div className="main-wrapper">
             {/* <Nav /> */}
             <Routes>
+              <Route path="/" element={<HomePage />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/register" element={<Register />} />
               <Route
@@ -77,8 +78,6 @@ function App() {
               <Route path="/plans" element={<Plans />} />
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/blogs" element={<Blogs />} />
-
-              <Route path="/" element={<HomePage />} />
               <Route path="/all-workshop" element={<AllWorkshop />} />
               <Route path="/new-workshop" element={<NewWorkshops />} />
               <Route path="/notfound" element={<NotFoundPage />} />

@@ -32,7 +32,6 @@ export default function Banner() {
       return <ErrorPage />;
     }
   };
-  console.log("pagedata", data);
   React.useEffect(() => {
     getData();
   }, []);

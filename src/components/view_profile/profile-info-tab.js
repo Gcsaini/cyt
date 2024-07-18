@@ -144,28 +144,28 @@ export default function ProfileInfoTab({ pageData }) {
                 aria-labelledby="contact-tab-4"
               >
                 <div className="content">
-                  {(pageData.ica != "" ||
-                    pageData.icip != "" ||
-                    pageData.icv != "") && (
+                  {(pageData.ica !== "" ||
+                    pageData.icip !== "" ||
+                    pageData.icv !== "") && (
                     <>
                       <h4 className="rbt-title-style-3">
                         Individual Counselling
                       </h4>
                       <div className="col-lg-6 col-md-12 col-12">
                         <ul className="rbt-list-style-2">
-                          {pageData.ica != "" && (
+                          {pageData.ica !== "" && (
                             <li>
                               <i className="feather-check"></i>Audio : ₹
                               {pageData.ica}
                             </li>
                           )}
-                          {pageData.icip != "" && (
+                          {pageData.icip !== "" && (
                             <li>
                               <i className="feather-check"></i> In-Person Call :
                               ₹{pageData.icip}
                             </li>
                           )}
-                          {pageData.icv != "" && (
+                          {pageData.icv !== "" && (
                             <li>
                               <i className="feather-check"></i> Video : ₹
                               {pageData.icv}
@@ -177,26 +177,26 @@ export default function ProfileInfoTab({ pageData }) {
                   )}
                 </div>
                 <div className="content">
-                  {(pageData.tca != "" ||
-                    pageData.tcip != "" ||
-                    pageData.tcv != "") && (
+                  {(pageData.tca !== "" ||
+                    pageData.tcip !== "" ||
+                    pageData.tcv !== "") && (
                     <>
                       <h4 className="rbt-title-style-3">Teen Counselling</h4>
                       <div className="col-lg-6 col-md-12 col-12">
                         <ul className="rbt-list-style-2">
-                          {pageData.tca != "" && (
+                          {pageData.tca !== "" && (
                             <li>
                               <i className="feather-check"></i>Audio : ₹
                               {pageData.tca}
                             </li>
                           )}
-                          {pageData.tcip != "" && (
+                          {pageData.tcip !== "" && (
                             <li>
                               <i className="feather-check"></i> In-Person Call :
                               ₹{pageData.tcip}
                             </li>
                           )}
-                          {pageData.tcv != "" && (
+                          {pageData.tcv !== "" && (
                             <li>
                               <i className="feather-check"></i> Video : ₹
                               {pageData.tcv}
@@ -208,26 +208,26 @@ export default function ProfileInfoTab({ pageData }) {
                   )}
                 </div>
                 <div className="content">
-                  {(pageData.cca != "" ||
-                    pageData.ccip != "" ||
-                    pageData.ccv != "") && (
+                  {(pageData.cca !== "" ||
+                    pageData.ccip !== "" ||
+                    pageData.ccv !== "") && (
                     <>
                       <h4 className="rbt-title-style-3">Couple Counselling</h4>
                       <div className="col-lg-6 col-md-12 col-12">
                         <ul className="rbt-list-style-2">
-                          {pageData.cca != "" && (
+                          {pageData.cca !== "" && (
                             <li>
                               <i className="feather-check"></i>Audio : ₹
                               {pageData.cca}
                             </li>
                           )}
-                          {pageData.ccip != "" && (
+                          {pageData.ccip !== "" && (
                             <li>
                               <i className="feather-check"></i> In-Person Call :
                               ₹{pageData.ccip}
                             </li>
                           )}
-                          {pageData.ccv != "" && (
+                          {pageData.ccv !== "" && (
                             <li>
                               <i className="feather-check"></i> Video : ₹
                               {pageData.ccv}
@@ -251,18 +251,16 @@ export default function ProfileInfoTab({ pageData }) {
                   {pageData.schedule &&
                     pageData.schedule.map((item) => {
                       return (
-                        <div key={item.day}>
-                          <h4 className="rbt-title-style-3">{item.day}</h4>
-                          <div className="content">
-                            {item.times.map((time) => {
-                              return (
-                                <span style={{ marginRight: 40 }} key={time}>
-                                  <WatchLaterIcon style={listStyleTime} />
-                                  &nbsp;{time.open}-{time.close}
-                                </span>
-                              );
-                            })}
-                          </div>
+                        <div key={item.day} className="rbt-title-style-3">
+                          <h4>{item.day}</h4>
+                          {item.times.map((time) => {
+                            return (
+                              <span style={{ marginRight: 40 }} key={time}>
+                                <WatchLaterIcon style={listStyleTime} />
+                                &nbsp;{time.open}-{time.close}
+                              </span>
+                            );
+                          })}
                         </div>
                       );
                     })}

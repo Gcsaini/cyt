@@ -1,4 +1,3 @@
-import DeepakImg from "../../assets/img/deepbanner.png";
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
