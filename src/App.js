@@ -29,13 +29,14 @@ import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";
 import { getToken } from "./utils/jwt";
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import AllWorkshop from "./pages/allworksho";
 import NewWorkshops from "./pages/newworkshops";
-=======
+// =======
 import ClientSettings from "./pages/client/settings";
 import ChangeMyPassword from "./pages/client/change-password";
->>>>>>> 54681e21cd81471d8fcd98e3ecc6a6c63cc56e65
+import AllCourses from "./pages/allCourses";
+// >>>>>>> 54681e21cd81471d8fcd98e3ecc6a6c63cc56e65
 
 const theme = createTheme();
 
@@ -74,11 +75,35 @@ function App() {
               <Route path="/blogs" element={<Blogs />} />
 
               <Route path="/" element={<HomePage />} />
-              <Route path="/all-workshop" element={<AllWorkshop />} />
-              <Route path="/new-workshop" element={<NewWorkshops />} />
+              {/* <Route path="/all-workshop" element={<AllWorkshop />} /> */}
+              {/* <Route path="/new-workshop" element={<NewWorkshops />} /> */}
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
               {/* client routes */}
+              <Route
+                path="/all-workshop"
+                element={
+                  // <ProtectedRoute>
+                  <AllWorkshop />
+                  // </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/new-workshop"
+                element={
+                  // <ProtectedRoute>
+                  <NewWorkshops />
+                  // </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/allcourses-filter"
+                element={
+                  // <ProtectedRoute>
+                  <AllCourses/>
+                  // </ProtectedRoute>
+                }
+              />
               <Route
                 path="/my-dashboard"
                 element={
