@@ -8,7 +8,6 @@ const useUserStore = create((set) => ({
     phone: "",
     profile: "",
     email: "",
-    bio: "",
   },
 
   setUserInfo: (data) =>

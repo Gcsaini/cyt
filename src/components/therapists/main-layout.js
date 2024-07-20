@@ -7,13 +7,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function MainLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const { userInfo } = useTherapistStore();
+  const { therapistInfo } = useTherapistStore();
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
 
   const handleLogout = () => {
-    console.log("clicked");
     removeToken();
     navigate("/login");
   };
@@ -39,7 +38,7 @@ export default function MainLayout(props) {
                           <div className="rbt-default-sidebar-wrapper">
                             <div className="section-title mb--20">
                               <h6 className="rbt-title-style-2">
-                                Welcome, {userInfo.name}
+                                Welcome, {therapistInfo.name}
                               </h6>
                             </div>
                             <nav className="mainmenu-nav">

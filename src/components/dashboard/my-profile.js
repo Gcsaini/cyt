@@ -1,14 +1,14 @@
 import { stateList } from "../../utils/static-lists";
 import React, { useState, useRef, useEffect } from "react";
-import { updateProfileUrl, updateUserUrl } from "../../utils/url";
+import { updateUserUrl } from "../../utils/url";
 import ImageTag from "../../utils/image-tag";
-import { postData, postFormData } from "../../utils/actions";
+import { postFormData } from "../../utils/actions";
 import FormMessage from "../global/form-message";
 import FormProgressBar from "../global/form-progressbar";
-import useTherapistStore from "../../store/therapistStore";
+import useUserStore from "../../store/userStore";
 import { getAge } from "../../utils/time";
 export default function MyProfile(props) {
-  const { userInfo, fetchUserInfo } = useTherapistStore();
+  const { userInfo, fetchUserInfo } = useUserStore();
   const { data } = props;
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -74,30 +74,6 @@ export default function MyProfile(props) {
   const handleImageUpload = () => {
     fileInputRef.current.click();
   };
-
-  const updateProfile = async () => {
-    if (selectedImage) {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("file", selectedImage);
-      try {
-        setLoading(true);
-        const response = await postFormData(updateUserUrl, formData);
-        if (response.status) {
-          fetchUserInfo();
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (selectedImage) {
-      updateProfile(); // Call updateProfile when selectedImage changes
-    }
-  }, [selectedImage]);
 
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (

@@ -4,7 +4,7 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import logo1 from "../assets/img/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TherypyImg from "../assets/img/therapy (1).png";
 import SupportImg from "../assets/img/support-groups.png";
 import StudentImg from "../assets/img/students.png";
@@ -13,25 +13,16 @@ import ActivitesImg from "../assets/img/activites.png";
 import AssessmentImg from "../assets/img/assessments.png";
 import ProjectsImg from "../assets/img/projects.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import auth from "../utils/auth";
 import ImageTag from "../utils/image-tag";
 export default function App() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
-  const [user, setUser] = React.useState();
-  const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
   const [about, setAbout] = React.useState();
   const [service, setService] = React.useState();
   const [search, setSearch] = React.useState();
   const [cart, setCart] = React.useState();
 
-  React.useEffect(() => {
-    const user = auth.getUserInfo();
-    if (user) {
-      setUser(user);
-    }
-  }, []);
   return (
     <>
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>

@@ -19,6 +19,20 @@ export const fetchById = (url) => {
   });
 };
 
+export const fetchData = (url, params = {}) => {
+  console.log("proo", params);
+  return new Promise((resolve, reject) => {
+    axios
+      .get(url, { params })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
 export const postFormData = (url, formData) => {
   return new Promise((resolve, reject) => {
     const token = getToken();

@@ -6,10 +6,9 @@ import useTherapistStore from "../../store/therapistStore";
 import { removeToken } from "../../utils/jwt";
 import { defaultProfile } from "../../utils/url";
 export default function DashboardTopNav() {
-  const { userInfo } = useTherapistStore();
+  const { therapistInfo } = useTherapistStore();
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
-  const [about, setAbout] = React.useState();
   return (
     <>
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>
@@ -142,11 +141,11 @@ export default function DashboardTopNav() {
                           <ImageTag
                             alt="User"
                             height={"43"}
-                            src={userInfo.profile || defaultProfile}
+                            src={therapistInfo.profile || defaultProfile}
                           />
                         </div>
                         <div className="admin-info">
-                          <span className="name">{userInfo.name}</span>
+                          <span className="name">{therapistInfo.name}</span>
                         </div>
                       </div>
                     </div>

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { fetchById } from "../utils/actions";
-import { getUserUrl } from "../utils/url";
+import { getTherapist, getUserUrl } from "../utils/url";
+import { EducationList } from "../utils/static-lists";
 const initialTimes = {
   Monday: [{ open: "", close: "" }],
   Tuesday: [{ open: "", close: "" }],
@@ -17,12 +18,29 @@ const useTherapistStore = create((set) => ({
     ifsc: "",
     upi: "",
   },
-  userInfo: {
+  therapistInfo: {
     name: "",
     phone: "",
     profile: "",
     email: "",
+    serve_type: "",
+    profile_type: "",
+    mode: "",
+    profile_code: "",
+    license_number: "",
+    gender: "",
+    state: "",
+    office_address: "",
+    year_of_exp: "",
+    qualification: "",
+    language_spoken: [],
+    session_formats: [],
+    services: "",
+    experties: "",
     bio: "",
+    createdAt: "",
+    updatedAt: "",
+    othEducation: false,
   },
   feeDetails: {
     icv: "",
@@ -56,13 +74,42 @@ const useTherapistStore = create((set) => ({
       return { times: updatedTimes };
     }),
 
-  setUserInfo: (data) =>
-    set((state) => ({ userInfo: { ...state.userInfo, ...data } })),
-  fetchUserInfo: async () => {
+  setTherapistInfo: (data) =>
+    set((state) => ({ therapistInfo: { ...state.therapistInfo, ...data } })),
+  setInfo: (key, value) =>
+    set((state) => ({
+      therapistInfo: { ...state.therapistInfo, [key]: value },
+    })),
+  setSessionFormats: (formats) =>
+    set((state) => ({
+      therapistInfo: {
+        ...state.therapistInfo,
+        session_formats: formats.split(",").map((item) => item.trim()),
+      },
+    })),
+  fetchTherapistInfo: async () => {
     try {
-      const response = await fetchById(getUserUrl);
+      const response = await fetchById(getTherapist);
       if (response.status) {
-        set((state) => ({ userInfo: { ...state.userInfo, ...response.data } }));
+        const fetchedData = response.data;
+
+        // Transform session_formats
+        fetchedData.session_formats = fetchedData.session_formats
+          ? fetchedData.session_formats.split(",").map((item) => item.trim())
+          : [];
+        fetchedData.othEducation = !EducationList.some(
+          (qualification) => fetchedData.qualification === qualification
+        );
+
+        fetchedData.language_spoken = fetchedData.language_spoken
+          ? fetchedData.language_spoken.split(",").map((value) => ({
+              value: value.trim(),
+              label: value.trim(),
+            }))
+          : [];
+        set((state) => ({
+          therapistInfo: { ...state.therapistInfo, ...fetchedData },
+        }));
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -85,7 +132,7 @@ const useTherapistStore = create((set) => ({
  */
 
 useTherapistStore.subscribe((state) => {
-  console.log("state", state.userInfo);
+  console.log("state", state.therapistInfo);
 });
 
 export default useTherapistStore;

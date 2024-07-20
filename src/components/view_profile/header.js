@@ -2,7 +2,8 @@ import ImageTag from "../../utils/image-tag";
 import Avatar from "../../assets/img/avatar-027dc8.png";
 import { whiteColor } from "../../utils/colors";
 import useMediaQuery from "@mui/material/useMediaQuery";
-export default function ProfileHeader() {
+export default function ProfileHeader(props) {
+  const { pageData } = props;
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <>
@@ -34,30 +35,37 @@ export default function ProfileHeader() {
                         alt="Instructor"
                         width="250"
                         height="250"
-                        src={Avatar}
+                        src={pageData.profile}
                       />
                     </div>
                     <div className="tutor-content">
                       <div>
-                        <h5 className="title">Deepak Kumar</h5>
+                        <h5 className="title">
+                          {pageData.name}{" "}
+                          {/* <span style={{ fontSize: 14 }}>
+                            ({pageData.profile_code})
+                          </span> */}
+                        </h5>
                         <div className="rbt-review">
-                          <div className="rating">
+                          {/* <div className="rating">
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
-                          </div>
-                          <span className="rating-count"> (15 Reviews)</span>
+                          </div> */}
+                          <span className="rating-count">
+                            {pageData.qualification}
+                          </span>
                         </div>
                         <ul className="rbt-meta rbt-meta-white mt--5">
                           <li>
-                            <i className="feather-book"></i>Counselling
-                            Psychologist
+                            <i className="feather-book"></i>
+                            {pageData.profile_type}
                           </li>
                           <li>
-                            <i className="feather-users"></i>540+ Session
-                            Completed
+                            <i className="feather-users"></i>
+                            {pageData.language_spoken}
                           </li>
                         </ul>
                       </div>
@@ -73,19 +81,19 @@ export default function ProfileHeader() {
                     }}
                   >
                     <li style={{ color: "#ffffff" }}>
-                      <i className="feather-book"></i> 50%
+                      <i className="feather-map-pin"></i> {pageData.state}
                     </li>
                     <li style={{ color: whiteColor }}>
-                      <i className="feather-users"></i> 30+ Feedback
+                      <i className="feather-users"></i> {pageData.gender}
                     </li>
                     <ul className="social-icon social-default justify-content-start">
                       <li>
-                        <a href="https://www.facebook.com">
+                        <a href={`tel:${pageData.phone}`}>
                           <i className="feather-phone"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.facebook.com">
+                        <a href={`mailto:${pageData.email}`}>
                           <i className="feather-mail"></i>
                         </a>
                       </li>

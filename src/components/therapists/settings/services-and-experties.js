@@ -11,16 +11,21 @@ import { updateServiceExpertiesUrl } from "../../../utils/url";
 import { postData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
+import useTherapistStore from "../../../store/therapistStore";
 export default function ServicesAndExperties(props) {
-  const { data } = props;
+  const { therapistInfo } = useTherapistStore();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [selectedServices, setSelectedServices] = useState(
-    data.services ? data.services.split(",").map((item) => item.trim()) : []
+    therapistInfo.services
+      ? therapistInfo.services.split(",").map((item) => item.trim())
+      : []
   );
   const [selectedExpertise, setSelectedExpertise] = useState(
-    data.experties ? data.experties.split(",").map((item) => item.trim()) : []
+    therapistInfo.experties
+      ? therapistInfo.experties.split(",").map((item) => item.trim())
+      : []
   );
 
   const handleServiceChange = (service) => {
@@ -56,7 +61,7 @@ export default function ServicesAndExperties(props) {
         setError("Something went wrong");
       }
     } catch (error) {
-      setError(error.response.data.message);
+      setError(error.response.therapistInfo.message);
     }
     setLoading(false);
   };

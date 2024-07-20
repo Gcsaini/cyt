@@ -1,5 +1,5 @@
 import Footer from "../components/footer";
-import NewWorkshop from "../components/home/allworkshop/new-workshop/newworkshop";
+import NewWorkshop from "../components/home/newworkshop";
 import MyNavbar from "../components/navbar";
 
 export default function NewWorkshops() {

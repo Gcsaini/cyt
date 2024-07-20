@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
-import useTherapistStore from "../../store/therapistStore";
+import useUserStore from "../../store/userStore";
 import { removeToken } from "../../utils/jwt";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import UserDashboardTopNav from "./user-top-nav";
 export default function UserLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const { userInfo } = useTherapistStore();
+  const { userInfo } = useUserStore();
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;

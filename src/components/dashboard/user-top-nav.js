@@ -2,11 +2,11 @@ import React from "react";
 import logo1 from "../../assets/img/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import ImageTag from "../../utils/image-tag";
-import useTherapistStore from "../../store/therapistStore";
+import useUserStore from "../../store/userStore";
 import { removeToken } from "../../utils/jwt";
 import { defaultProfile } from "../../utils/url";
 export default function UserDashboardTopNav() {
-  const { userInfo } = useTherapistStore();
+  const { userInfo } = useUserStore();
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
   return (

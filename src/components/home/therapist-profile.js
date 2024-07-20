@@ -15,7 +15,7 @@ export default function TherapistProfile() {
 
   const navigate = useNavigate();
   const handleworkshop = () => {
-    navigate("/all-workshop");
+    // navigate("/all-workshop");
   };
 
   return (
@@ -194,7 +194,7 @@ export default function TherapistProfile() {
                     slidesPerView={1}
                     autoplay={{
                       delay: 2500,
-                      disableOnInteraction: false
+                      disableOnInteraction: false,
                     }}
                     modules={[Autoplay]}
                     className="mySwiper"
