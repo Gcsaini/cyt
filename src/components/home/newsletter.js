@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 export default function NewsLetter() {
   const { ref, inView } = useInView({ threshold: 0 });
-  const initialValue = 0;
+  const initialValue = 50;
+  const initialValue2 = 900;
   const [count, setCount] = useState(initialValue);
   const [count1, setCount1] = useState(initialValue);
+  const [otpView, setOtpView] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState();
+  const [otp, setOtp] = useState();
   const duration = 50;
   const duration1 = 2500;
   const targetValue = 1000;
   const targetValue1 = 100;
 
   useEffect(() => {
-    let startValue = initialValue;
-    const interval = Math.floor(duration / (targetValue - initialValue));
+    let startValue = initialValue2;
+    const interval = Math.floor(duration / (targetValue - initialValue2));
 
     const counter = setInterval(() => {
       startValue += 1;
@@ -49,7 +54,7 @@ export default function NewsLetter() {
       className="rbt-newsletter-area newsletter-style-2 rbt-section-gap"
       ref={ref}
       style={{
-        background: "#115B37"
+        background: "#115B37",
       }}
     >
       <div className="container">
@@ -69,23 +74,45 @@ export default function NewsLetter() {
                   updates.
                 </p>
               </div>
-              <form action="#" className="newsletter-form-1 mt--40">
-                <input type="email" placeholder="Enter Your E-Email" />
-                <button
-                  type="submit"
-                  className="rbt-btn btn-md btn-gradient hover-icon-reverse"
-                >
-                  <span className="icon-reverse-wrapper">
-                    <span className="btn-text">Subscribe Our Newsletter </span>
-                    <span className="btn-icon">
-                      <i className="feather-arrow-right"></i>
+              {otpView ? (
+                <div className="newsletter-form-1 mt--40">
+                  <input type="email" placeholder="Enter OTP" />
+                  <button
+                    type="submit"
+                    className="rbt-btn btn-md btn-gradient hover-icon-reverse"
+                  >
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">Verify Otp</span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
                     </span>
-                    <span className="btn-icon">
-                      <i className="feather-arrow-right"></i>
+                  </button>
+                </div>
+              ) : (
+                <div className="newsletter-form-1 mt--40">
+                  <input type="email" placeholder="Enter Your E-Email" />
+                  <button
+                    type="submit"
+                    className="rbt-btn btn-md btn-gradient hover-icon-reverse"
+                  >
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">
+                        Subscribe Our Newsletter{" "}
+                      </span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
                     </span>
-                  </span>
-                </button>
-              </form>
+                  </button>
+                </div>
+              )}
               <span className="note-text color-white mt--20">
                 Experience mental health support without the hassle.
               </span>
@@ -114,9 +141,7 @@ export default function NewsLetter() {
                         <h3 className="counter color-white">
                           <span className="odometer">{count1}</span>
                         </h3>
-                        <h5 className="title color-white">
-                          Valuable Feedback
-                        </h5>
+                        <h5 className="title color-white">Valuable Feedback</h5>
                         <span className="subtitle color-white">
                           Counselling and Workshops
                         </span>

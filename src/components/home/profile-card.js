@@ -2,21 +2,41 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Profile from "../../assets/img/deepd.png";
-import fab from "../../assets/img/fabdd.png";
-import ayushi from "../../assets/img/ayushid.png";
-import anjali from "../../assets/img/anjalid.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ImageTag from "../../utils/image-tag";
 import React from "react";
 import { Link } from "react-router-dom";
+import ErrorPage from "../../pages/error-page";
+import { fetchData } from "../../utils/actions";
+import { getTherapistProfiles } from "../../utils/url";
+import ProfileCardHor from "./profile-card-hor";
 export default function ProfileCard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
-  const [tab, setTab] = React.useState(1);
+  const [tab, setTab] = React.useState("");
+  const [data, setData] = React.useState([]);
+
+  const getData = async (tab) => {
+    try {
+      const res = await fetchData(getTherapistProfiles, {
+        priority: 1,
+        profile_type: tab,
+      });
+      if (res.status) {
+        setData(res.data);
+      } else {
+        return <ErrorPage />;
+      }
+    } catch (err) {
+      return <ErrorPage />;
+    }
+  };
+
   const handleClick = (id) => {
     setTab(id);
+    getData(id);
   };
+  React.useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="rbt-rbt-card-area rbt-section-gap bg-color-extra2">
       <div className="container">
@@ -44,10 +64,10 @@ export default function ProfileCard() {
                       <li>
                         <Link
                           className={
-                            tab === 1 ? "tab-button active" : "tab-button"
+                            tab === "" ? "tab-button active" : "tab-button"
                           }
-                          aria-selected={tab === 1 ? "true" : "false"}
-                          onClick={() => handleClick(1)}
+                          aria-selected={tab === "" ? "true" : "false"}
+                          onClick={() => handleClick("")}
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
                             See All
@@ -57,11 +77,19 @@ export default function ProfileCard() {
                       <li>
                         <Link
                           className={
-                            tab === 2 ? "tab-button active" : "tab-button"
+                            tab === "Counselling Psychologist"
+                              ? "tab-button active"
+                              : "tab-button"
                           }
                           id="profile-tab-4"
-                          aria-selected={tab === 2 ? "true" : "false"}
-                          onClick={() => handleClick(2)}
+                          aria-selected={
+                            tab === "Counselling Psychologist"
+                              ? "true"
+                              : "false"
+                          }
+                          onClick={() =>
+                            handleClick("Counselling Psychologist")
+                          }
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
                             Counselling Psychologist
@@ -71,11 +99,15 @@ export default function ProfileCard() {
                       <li>
                         <Link
                           className={
-                            tab === 3 ? "tab-button active" : "tab-button"
+                            tab === "Clinical Psychologist"
+                              ? "tab-button active"
+                              : "tab-button"
                           }
                           id="contact-tab-4"
-                          aria-selected={tab === 3 ? "true" : "false"}
-                          onClick={() => handleClick(3)}
+                          aria-selected={
+                            tab === "Clinical Psychologist" ? "true" : "false"
+                          }
+                          onClick={() => handleClick("Clinical Psychologist")}
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
                             Clinical Psychologist
@@ -85,11 +117,15 @@ export default function ProfileCard() {
                       <li>
                         <Link
                           className={
-                            tab === 4 ? "tab-button active" : "tab-button"
+                            tab === "Psychiatrist"
+                              ? "tab-button active"
+                              : "tab-button"
                           }
                           id="business-tab-4"
-                          aria-selected={tab === 4 ? "true" : "false"}
-                          onClick={() => handleClick(4)}
+                          aria-selected={
+                            tab === "Psychiatrist" ? "true" : "false"
+                          }
+                          onClick={() => handleClick("Psychiatrist")}
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
                             Psychiatrist
@@ -99,11 +135,15 @@ export default function ProfileCard() {
                       <li>
                         <Link
                           className={
-                            tab === 5 ? "tab-button active" : "tab-button"
+                            tab === "Special Educator"
+                              ? "tab-button active"
+                              : "tab-button"
                           }
                           id="business-tab-4"
-                          aria-selected={tab === 5 ? "true" : "false"}
-                          onClick={() => handleClick(5)}
+                          aria-selected={
+                            tab === "Special Educator" ? "true" : "false"
+                          }
+                          onClick={() => handleClick("Special Educator")}
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
                             Special Educator
@@ -143,344 +183,10 @@ export default function ProfileCard() {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div className="col-12 mt--30 sal-animate">
-                <div className="rbt-card variation-01 rbt-hover card-list-2">
-                  <div className="rbt-card-img">
-                    <Link to="">
-                      <ImageTag
-                        alt="Card"
-                        src={Profile}
-                        style={{ height: isMobile ? 255 : "auto" }}
-                      />
-                    </Link>
-                  </div>
-                  <div className="rbt-card-body">
-                    <div className="rbt-card-top">
-                      <div className="rbt-review">
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                        </div>
-                        <span className="rating-count">(15 Reviews)</span>
-                      </div>
-                      <div className="rbt-bookmark-btn">
-                        <Link className="rbt-round-btn" title="Bookmark" to="">
-                          <i className="feather-bookmark"></i>
-                        </Link>
-                      </div>
-                    </div>
-                    <h4 className="rbt-card-title">
-                      <Link to="">Deepak Kumar</Link>
-                    </h4>
-                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      <li>
-                        <i className="feather-user"></i>Counselling Psychologist
-                      </li>
-                      <li>
-                        <i className="feather-message-circle"></i> English,
-                        Hindi
-                      </li>
-                      <li>
-                        <div style={{ display: "flex" }}>
-                          <span>
-                            <i className="feather-heart"></i>
-                          </span>
-                          <span style={{ lineHeight: "18px" }}>
-                           500-1200 INR
-                          </span>
-                        </div>
-                      </li>
-                    </ul>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginTop: 5,
-                      }}
-                    >
-                      <Link
-                        className="view-btn view-btn-border"
-                        to=""
-                        style={{
-                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
-                        }}
-                      >
-                        View Profile
-                      </Link>
-                      <Link
-                        className="rbt-btn btn-gradient book-btn"
-                        to=""
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
-                        }}
-                      >
-                        <span>Book Now</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="col-12 mt--30 sal-animate">
-                <div className="rbt-card variation-01 rbt-hover card-list-2">
-                  <div className="rbt-card-img">
-                    <Link to="">
-                      <ImageTag
-                        alt="Card"
-                        style={{ height: isMobile ? 255 : "auto" }}
-                        src={fab}
-                      />
-                    </Link>
-                  </div>
-                  <div className="rbt-card-body">
-                    <div className="rbt-card-top">
-                      <div className="rbt-review">
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                        </div>
-                        <span className="rating-count">(15 Reviews)</span>
-                      </div>
-                      <div className="rbt-bookmark-btn">
-                        <Link className="rbt-round-btn" title="Bookmark" to="">
-                          <i className="feather-bookmark"></i>
-                        </Link>
-                      </div>
-                    </div>
-                    <h4 className="rbt-card-title">
-                      <Link to="">Fabiha Sultana Shaik</Link>
-                    </h4>
-                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      
-                      <li>
-                        <i className="feather-user"></i>Counselling Psychologist
-                      </li>
-                      <li>
-                        <i className="feather-message-circle"></i> English,
-                        Hindi
-                      </li>
-                      <li>
-                        <div style={{ display: "flex" }}>
-                          <span>
-                            <i className="feather-heart"></i>
-                          </span>
-                          <span style={{ lineHeight: "18px" }}>
-                           500-1200 INR
-                          </span>
-                        </div>
-                      </li>
-                    </ul>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginTop: 5,
-                      }}
-                    >
-                      <Link
-                        className="view-btn view-btn-border"
-                        to=""
-                        style={{
-                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
-                        }}
-                      >
-                        View Profile
-                      </Link>
-                      <Link
-                        className="rbt-btn btn-gradient book-btn"
-                        to=""
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
-                        }}
-                      >
-                        <span>Book Now</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="col-12 mt--30 sal-animate">
-                <div className="rbt-card variation-01 rbt-hover card-list-2">
-                  <div className="rbt-card-img">
-                    <Link to="">
-                      <ImageTag
-                        alt="Card"
-                        style={{ height: isMobile ? 255 : "auto" }}
-                        src={ayushi}
-                      />
-                    </Link>
-                  </div>
-                  <div className="rbt-card-body">
-                    <div className="rbt-card-top">
-                      <div className="rbt-review">
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                        </div>
-                        <span className="rating-count">(15 Reviews)</span>
-                      </div>
-                      <div className="rbt-bookmark-btn">
-                        <Link className="rbt-round-btn" title="Bookmark" to="">
-                          <i className="feather-bookmark"></i>
-                        </Link>
-                      </div>
-                    </div>
-                    <h4 className="rbt-card-title">
-                      <Link to="/course-details">Ayushi Pandwal</Link>
-                    </h4>
-                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      
-                      <li>
-                        <i className="feather-user"></i>Counselling Psychologist
-                      </li>
-                      <li>
-                        <i className="feather-message-circle"></i> English,
-                        Hindi
-                      </li>
-                      <li>
-                        <div style={{ display: "flex" }}>
-                          <span>
-                            <i className="feather-heart"></i>
-                          </span>
-                          <span style={{ lineHeight: "18px" }}>
-                           500-1200 INR
-                          </span>
-                        </div>
-                      </li>
-                    </ul>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginTop: 5,
-                      }}
-                    >
-                      <Link
-                        className="view-btn view-btn-border"
-                        to=""
-                        style={{
-                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
-                        }}
-                      >
-                        View Profile
-                      </Link>
-                      <Link
-                        className="rbt-btn btn-gradient book-btn"
-                        to=""
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
-                        }}
-                      >
-                        <span>Book Now</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="col-12 mt--30 sal-animate">
-                <div className="rbt-card variation-01 rbt-hover card-list-2">
-                  <div className="rbt-card-img">
-                    <Link to="">
-                      <ImageTag
-                        alt="Card"
-                        style={{ height: isMobile ? 255 : "auto" }}
-                        src={anjali}
-                      />
-                    </Link>
-                  </div>
-                  <div className="rbt-card-body">
-                    <div className="rbt-card-top">
-                      <div className="rbt-review">
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                        </div>
-                        <span className="rating-count">(15 Reviews)</span>
-                      </div>
-                      <div className="rbt-bookmark-btn">
-                        <Link className="rbt-round-btn" title="Bookmark" to="">
-                          <i className="feather-bookmark"></i>
-                        </Link>
-                      </div>
-                    </div>
-                    <h4 className="rbt-card-title">
-                      <Link to="/course-details">Anjali Suyal</Link>
-                    </h4>
-                    <ul className="rbt-meta" style={{ marginTop: 1 }}>
-                      
-                      <li>
-                        <i className="feather-user"></i>Counselling Psychologist
-                      </li>
-                      <li>
-                        <i className="feather-message-circle"></i> English,
-                        Hindi
-                      </li>
-                      <li>
-                        <div style={{ display: "flex" }}>
-                          <span>
-                            <i className="feather-heart"></i>
-                          </span>
-                          <span style={{ lineHeight: "18px" }}>
-                           500-1200 INR
-                          </span>
-                        </div>
-                      </li>
-                    </ul>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginTop: 5,
-                      }}
-                    >
-                      <Link
-                        className="view-btn view-btn-border"
-                        to=""
-                        style={{
-                          padding: isMobile || isTablet ? "0 24px" : "0 16px",
-                        }}
-                      >
-                        View Profile
-                      </Link>
-                      <Link
-                        className="rbt-btn btn-gradient book-btn"
-                        to=""
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          padding: isMobile || isTablet ? "0 26px" : "0 20px",
-                        }}
-                      >
-                        <span>Book Now</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {data &&
+                data.map((item) => {
+                  return <ProfileCardHor pageData={item} key={item._id} />;
+                })}
             </SwiperSlide>
           </Swiper>
         </div>

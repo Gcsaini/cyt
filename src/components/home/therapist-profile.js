@@ -5,17 +5,12 @@ import "swiper/css/pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import WellNessCard from "./wellness-card";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function TherapistProfile() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [tab, setTab] = React.useState(1);
   const handleClick = (id) => {
     setTab(id);
-  };
-
-  const navigate = useNavigate();
-  const handleworkshop = () => {
-    // navigate("/all-workshop");
   };
 
   return (
@@ -226,9 +221,9 @@ export default function TherapistProfile() {
                 to=""
               >
                 <span className="icon-reverse-wrapper">
-                  <span onClick={handleworkshop()} className="btn-text">
+                  <Link to={"/all-workshop"} className="btn-text">
                     Find All Workshop
-                  </span>
+                  </Link>
                   <span className="btn-icon">
                     <i className="feather-arrow-right"></i>
                   </span>

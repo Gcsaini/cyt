@@ -166,10 +166,13 @@ export default function MainLayout(props) {
                                 </li>
 
                                 <li>
-                                  <Link to={"#"} onClick={handleLogout}>
+                                  <a
+                                    onClick={handleLogout}
+                                    style={{ cursor: "pointer" }}
+                                  >
                                     <i className="feather-log-out"></i>
                                     <span>Logout</span>
-                                  </Link>
+                                  </a>
                                 </li>
                               </ul>
                             </nav>

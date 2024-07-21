@@ -13,7 +13,7 @@ export default function ProfileCardVert(props) {
         <div className="rbt-card-img">
           <Link to="/notfound" style={{ cursor: "pointer" }}>
             <ImageTag
-              alt="Card"
+              alt="Profile-photo"
               height={"488"}
               width={"710"}
               src={data.profile}

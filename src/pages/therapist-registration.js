@@ -275,8 +275,8 @@ export default function TherapistRegistration() {
                         Clinical Psychologist
                       </option>
                       <option value={"Psychiatrist"}>Psychiatrist</option>
-                      <option value={"Special educator"}>
-                        Special educator
+                      <option value={"Special Educator"}>
+                        Special Educator
                       </option>
                     </select>
                   </div>

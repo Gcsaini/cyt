@@ -15,7 +15,7 @@ export default function ProfileInfoTab({ pageData }) {
   };
 
   const listStyleTime = {
-    fontSize: 28,
+    fontSize: 24,
     color: successColor,
   };
   return (
@@ -255,7 +255,10 @@ export default function ProfileInfoTab({ pageData }) {
                           <h4>{item.day}</h4>
                           {item.times.map((time) => {
                             return (
-                              <span style={{ marginRight: 40 }} key={time}>
+                              <span
+                                style={{ marginRight: 40, fontSize: 16 }}
+                                key={time}
+                              >
                                 <WatchLaterIcon style={listStyleTime} />
                                 &nbsp;{time.open}-{time.close}
                               </span>

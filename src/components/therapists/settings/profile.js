@@ -107,6 +107,7 @@ export default function Profile() {
         if (response.status) {
           setSuccess(response.message);
           setError("");
+          setSelectedImage(null);
           setInfo("profile", response.data.profile);
         } else {
           setError("Something went wrong");

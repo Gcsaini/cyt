@@ -29,7 +29,7 @@ import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";
 import useUserStore from "./store/userStore";
-import { getDecodedToken, getToken } from "./utils/jwt";
+import { getDecodedToken, getToken, removeToken } from "./utils/jwt";
 import ClientSettings from "./pages/client/settings";
 import ChangeMyPassword from "./pages/client/change-password";
 import AllWorkshop from "./pages/allworkshop";
@@ -44,11 +44,15 @@ function App() {
 
     if (data) {
       const userData = getDecodedToken();
-
-      if (userData.role === 1) {
-        fetchTherapistInfo();
+      const currentTime = Date.now() / 1000;
+      if (userData.exp < currentTime) {
+        removeToken();
       } else {
-        fetchUserInfo();
+        if (userData.role === 1) {
+          fetchTherapistInfo();
+        } else {
+          fetchUserInfo();
+        }
       }
     }
   }, [fetchUserInfo]);
