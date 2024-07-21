@@ -34,7 +34,7 @@ import ClientSettings from "./pages/client/settings";
 import ChangeMyPassword from "./pages/client/change-password";
 import AllWorkshop from "./pages/allworkshop";
 import NewWorkshops from "./pages/newworkshops";
-import AllCourses from "./pages/allCourses";
+import ViewAllTherapist from "./pages/view-all-therapist-page";
 const theme = createTheme();
 
 function App() {
@@ -105,10 +105,10 @@ function App() {
                 }
               />
               <Route
-                path="/allcourses-filter"
+                path="/view-all-therapist"
                 element={
                   // <ProtectedRoute>
-                  <AllCourses />
+                  <ViewAllTherapist />
                   // </ProtectedRoute>
                 }
               />

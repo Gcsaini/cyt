@@ -1,7 +1,7 @@
-import AllCourse from "../components/All-courses/allcourses";
+import AllCourse from "../components/View-All-Therapist/view-all-therapist";
 import MainLayout from "../components/therapists/main-layout";
 
-export default function AllCourses() {
+export default function ViewAllTherapistPage() {
   return (
     <>
       <MainLayout>

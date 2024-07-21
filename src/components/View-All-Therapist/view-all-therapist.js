@@ -1,5 +1,11 @@
+import React from "react";
+import Slider from "@mui/material/Slider";
 import demoImg from "../../assets/img/2.png";
-export default function AllCourse() {
+export default function ViewAllTherapist() {
+  const [open, setOpen] = React.useState(false);
+  const handleFilterClick = () => {
+    setOpen(!open);
+  };
   return (
     <>
       <div className="rbt-page-banner-wrapper">
@@ -60,14 +66,24 @@ export default function AllCourse() {
                     </div>
                     <div className="rbt-short-item">
                       <div className="view-more-btn text-start text-sm-end">
-                        <button className="discover-filter-button discover-filter-activation rbt-btn btn-white btn-md radius-round">
+                        <button
+                          onClick={handleFilterClick}
+                          className="discover-filter-button discover-filter-activation rbt-btn btn-white btn-md radius-round"
+                        >
                           Filter<i className="feather-filter"></i>
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="default-exp-wrapper d-none">
+                <div
+                  className={
+                    open === true
+                      ? "default-exp-wrapper"
+                      : "default-exp-wrapper  d-none"
+                  }
+                  // className="default-exp-wrapper d-none"
+                >
                   <div className="filter-inner">
                     <div className="filter-select-option">
                       <div className="filter-select rbt-modern-select">
@@ -150,9 +166,9 @@ export default function AllCourse() {
                                     transform: "translateX(-50%)",
                                     borderColor: "#2f57ef",
                                     backgroundColor: "#2f57ef",
-                                    opacity: 1,
+                                    opacity: "1",
                                     boxShadow: "none",
-                                    outline: 0
+                                    outline: "0"
                                   }}
                                   tabindex="0"
                                   role="slider"
@@ -162,36 +178,23 @@ export default function AllCourse() {
                                   aria-disabled="false"
                                   aria-orientation="horizontal"
                                 ></div>
-                                <div
-                                  className="rc-slider-handle rc-slider-handle-2"
-                                  style={{
-                                    left: "80%",
-                                    transform: "translateX(-50%)",
-                                    borderColor: "#2f57ef",
-                                    backgroundColor: "#2f57ef",
-                                    opacity: 1,
-                                    boxShadow: "none",
-                                    outline: 0
-                                  }}
-                                  tabindex="0"
-                                  role="slider"
-                                  aria-valuemin="0"
-                                  aria-valuemax="500"
-                                  aria-valuenow="400"
-                                  aria-disabled="false"
-                                  aria-orientation="horizontal"
-                                ></div>
+                                <Slider
+                                  style={{ color: "#3EB75E" }}
+                                  defaultValue={50}
+                                  aria-label="Default"
+                                  valueLabelDisplay="auto"
+                                />
                               </div>
                             </div>
                             <div className="slider__range--output">
                               <div className="price__output--wrap">
                                 <div className="price--output">
-                                  <span>Price :</span>
+                                  <span>Price:</span>
                                   <input
                                     type="text"
                                     id="amount"
                                     readonly=""
-                                    value="$0 - $400"
+                                    value="$50 - $3000"
                                   />
                                 </div>
                                 <div className="price--filter">
@@ -220,11 +223,12 @@ export default function AllCourse() {
           <div className="row g-5">
             <div
               className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
+              style={{ wordWrap: "break-word" }}
               data-sal-delay="150"
               data-sal="slide-up"
               data-sal-duration="800"
             >
-              <div className="rbt-card variation-03 rbt-hover ">
+              <div className="rbt-card rbt-hover ">
                 <div className="rbt-card-img">
                   <a className="thumbnail-link" href="/course-details-two/1">
                     <img
@@ -238,15 +242,15 @@ export default function AllCourse() {
                       src={demoImg}
                       style={{ color: "transparent" }}
                     />
-                    <span className="rbt-btn btn-white icon-hover">
+                    {/* <span className="rbt-btn btn-white icon-hover">
                       <span className="btn-text">Read More</span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
                       </span>
-                    </span>
+                    </span> */}
                   </a>
                 </div>
-                <div className="rbt-card-body">
+                {/* <div className="rbt-card-body">
                   <h4 className="rbt-card-title">
                     <a href="/course-details-two/1">
                       The Complete Histudy 2024: From Zero to Expert!
@@ -274,63 +278,58 @@ export default function AllCourse() {
                       </i>
                     </a>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              <div className="rbt-card variation-03 rbt-hover ">
-                <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/2">
-                    <img
-                      alt="Card image"
-                      loading="lazy"
-                      width="355"
-                      height="240"
-                      decoding="async"
-                      data-nimg="1"
-                      srcset="/_next/image?url=%2Fimages%2Fcourse%2Fclassic-lms-01.jpg&amp;w=384&amp;q=75 1x, /_next/image?url=%2Fimages%2Fcourse%2Fclassic-lms-01.jpg&amp;w=750&amp;q=75 2x"
-                      src="/_next/image?url=%2Fimages%2Fcourse%2Fclassic-lms-01.jpg&amp;w=750&amp;q=75"
-                      style={{ color: "transparent" }}
-                    />
-                    <span className="rbt-btn btn-white icon-hover">
-                      <span className="btn-text">Read More</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
+                </div> */}
                 <div className="rbt-card-body">
+                  <ul className="rbt-meta">
+                    <li style={{ fontSize: "16px" }}>
+                      <i className="feather-message-circle"></i>Hindi, English
+                    </li>
+                    <li style={{ fontSize: "16px" }}>
+                      <i className="feather-map-pin"></i>Uttarakhand
+                    </li>
+                  </ul>
                   <h4 className="rbt-card-title">
-                    <a href="/course-details-two/2">
-                      Difficult Things About Education.
-                    </a>
+                    <a style={{ cursor: "pointer" }}>Siddhant Kataria</a>
                   </h4>
-                  <div className="rbt-card-bottom">
+                  <div style={{ marginTop: "7px", display: "flex" }}>
+                    <span>
+                      <i className="feather-user"></i>
+                    </span>
+                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                      Counselling Psychologist
+                    </span>
+                  </div>
+                  <div style={{ marginTop: "5px", display: "flex" }}>
+                    <span>
+                      <i className="feather-heart"></i>
+                    </span>
+                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                      Individual Counselling
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      marginTop: "24px",
+                      marginBottom: "10px",
+                      display: "flex",
+                      justifyContent: "space-between"
+                    }}
+                  >
                     <a
-                      className="transparent-button"
-                      href="/course-details-two/2"
+                      className="view-btn view-btn-border"
+                      style={{ padding: "0px 10px", cursor: "pointer" }}
                     >
-                      <i>
-                        <svg
-                          width="17"
-                          height="12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g stroke="#27374D" fill="none" fill-rule="evenodd">
-                            <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
-                            <path
-                              stroke-linecap="square"
-                              d="M.663 5.572h14.594"
-                            ></path>
-                          </g>
-                        </svg>
-                      </i>
+                      View Profile
+                    </a>
+                    <a
+                      className="rbt-btn btn-gradient book-btn"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        padding: "0px 10px"
+                      }}
+                    >
+                      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
                     </a>
                   </div>
                 </div>
@@ -338,13 +337,14 @@ export default function AllCourse() {
             </div>
             <div
               className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
+              style={{ wordWrap: "break-word" }}
               data-sal-delay="150"
               data-sal="slide-up"
               data-sal-duration="800"
             >
-              <div className="rbt-card variation-03 rbt-hover ">
+              <div className="rbt-card rbt-hover ">
                 <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/3">
+                  <a className="thumbnail-link" href="/course-details-two/1">
                     <img
                       alt="Card image"
                       loading="lazy"
@@ -352,221 +352,70 @@ export default function AllCourse() {
                       height="240"
                       decoding="async"
                       data-nimg="1"
-                      srcset="/_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-02.jpg&amp;w=384&amp;q=75 1x, /_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-02.jpg&amp;w=750&amp;q=75 2x"
-                      src="/_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-02.jpg&amp;w=750&amp;q=75"
+                      srcset={demoImg}
+                      src={demoImg}
                       style={{ color: "transparent" }}
                     />
-                    <span className="rbt-btn btn-white icon-hover">
+                    {/* <span className="rbt-btn btn-white icon-hover">
                       <span className="btn-text">Read More</span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
                       </span>
-                    </span>
+                    </span> */}
                   </a>
                 </div>
+
                 <div className="rbt-card-body">
+                  <ul className="rbt-meta">
+                    <li style={{ fontSize: "16px" }}>
+                      <i className="feather-message-circle"></i>Hindi, English
+                    </li>
+                    <li style={{ fontSize: "16px" }}>
+                      <i className="feather-map-pin"></i>Uttarakhand
+                    </li>
+                  </ul>
                   <h4 className="rbt-card-title">
-                    <a href="/course-details-two/3">
-                      Five Things You Should Do In Education.
-                    </a>
+                    <a style={{ cursor: "pointer" }}>Siddhant Kataria</a>
                   </h4>
-                  <div className="rbt-card-bottom">
-                    <a
-                      className="transparent-button"
-                      href="/course-details-two/3"
-                    >
-                      <i>
-                        <svg
-                          width="17"
-                          height="12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g stroke="#27374D" fill="none" fill-rule="evenodd">
-                            <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
-                            <path
-                              stroke-linecap="square"
-                              d="M.663 5.572h14.594"
-                            ></path>
-                          </g>
-                        </svg>
-                      </i>
-                    </a>
+                  <div style={{ marginTop: "7px", display: "flex" }}>
+                    <span>
+                      <i className="feather-user"></i>
+                    </span>
+                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                      Counselling Psychologist
+                    </span>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              <div className="rbt-card variation-03 rbt-hover ">
-                <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/4">
-                    <img
-                      alt="Card image"
-                      loading="lazy"
-                      width="355"
-                      height="240"
-                      decoding="async"
-                      data-nimg="1"
-                      srcset="/_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-03.jpg&amp;w=384&amp;q=75 1x, /_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-03.jpg&amp;w=750&amp;q=75 2x"
-                      src="/_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-03.jpg&amp;w=750&amp;q=75"
-                      style={{ color: "transparent" }}
-                    />
-                    <span className="rbt-btn btn-white icon-hover">
-                      <span className="btn-text">Read More</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
+                  <div style={{ marginTop: "5px", display: "flex" }}>
+                    <span>
+                      <i className="feather-heart"></i>
                     </span>
-                  </a>
-                </div>
-                <div className="rbt-card-body">
-                  <h4 className="rbt-card-title">
-                    <a href="/course-details-two/4">
-                      The Complete Histudy 2024: From Zero to Expert!
-                    </a>
-                  </h4>
-                  <div className="rbt-card-bottom">
-                    <a
-                      className="transparent-button"
-                      href="/course-details-two/4"
-                    >
-                      <i>
-                        <svg
-                          width="17"
-                          height="12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g stroke="#27374D" fill="none" fill-rule="evenodd">
-                            <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
-                            <path
-                              stroke-linecap="square"
-                              d="M.663 5.572h14.594"
-                            ></path>
-                          </g>
-                        </svg>
-                      </i>
-                    </a>
+                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
+                      Individual Counselling
+                    </span>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              <div className="rbt-card variation-03 rbt-hover ">
-                <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/5">
-                    <img
-                      alt="Card image"
-                      loading="lazy"
-                      width="355"
-                      height="240"
-                      decoding="async"
-                      data-nimg="1"
-                      srcset="/_next/image?url=%2Fimages%2Fcourse%2Fclassic-lms-02.jpg&amp;w=384&amp;q=75 1x, /_next/image?url=%2Fimages%2Fcourse%2Fclassic-lms-02.jpg&amp;w=750&amp;q=75 2x"
-                      src="/_next/image?url=%2Fimages%2Fcourse%2Fclassic-lms-02.jpg&amp;w=750&amp;q=75"
-                      style={{ color: "transparent" }}
-                    />
-                    <span className="rbt-btn btn-white icon-hover">
-                      <span className="btn-text">Read More</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-                <div className="rbt-card-body">
-                  <h4 className="rbt-card-title">
-                    <a href="/course-details-two/5">
-                      Difficult Things About Education.
-                    </a>
-                  </h4>
-                  <div className="rbt-card-bottom">
+                  <div
+                    style={{
+                      marginTop: "24px",
+                      marginBottom: "10px",
+                      display: "flex",
+                      justifyContent: "space-between"
+                    }}
+                  >
                     <a
-                      className="transparent-button"
-                      href="/course-details-two/5"
+                      className="view-btn view-btn-border"
+                      style={{ padding: "0px 10px", cursor: "pointer" }}
                     >
-                      <i>
-                        <svg
-                          width="17"
-                          height="12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g stroke="#27374D" fill="none" fill-rule="evenodd">
-                            <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
-                            <path
-                              stroke-linecap="square"
-                              d="M.663 5.572h14.594"
-                            ></path>
-                          </g>
-                        </svg>
-                      </i>
+                      View Profile
                     </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              <div className="rbt-card variation-03 rbt-hover ">
-                <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/6">
-                    <img
-                      alt="Card image"
-                      loading="lazy"
-                      width="355"
-                      height="240"
-                      decoding="async"
-                      data-nimg="1"
-                      srcset="/_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-04.jpg&amp;w=384&amp;q=75 1x, /_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-04.jpg&amp;w=750&amp;q=75 2x"
-                      src="/_next/image?url=%2Fimages%2Fcourse%2Fcourse-online-04.jpg&amp;w=750&amp;q=75"
-                      style={{ color: "transparent" }}
-                    />
-                    <span className="rbt-btn btn-white icon-hover">
-                      <span className="btn-text">Read More</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-                <div className="rbt-card-body">
-                  <h4 className="rbt-card-title">
-                    <a href="/course-details-two/6">
-                      Five Things You Should Do In Education.
-                    </a>
-                  </h4>
-                  <div className="rbt-card-bottom">
                     <a
-                      className="transparent-button"
-                      href="/course-details-two/6"
+                      className="rbt-btn btn-gradient book-btn"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        padding: "0px 10px"
+                      }}
                     >
-                      <i>
-                        <svg
-                          width="17"
-                          height="12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g stroke="#27374D" fill="none" fill-rule="evenodd">
-                            <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
-                            <path
-                              stroke-linecap="square"
-                              d="M.663 5.572h14.594"
-                            ></path>
-                          </g>
-                        </svg>
-                      </i>
+                      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
                     </a>
                   </div>
                 </div>
