@@ -33,5 +33,7 @@ export const updateAvailabilitiesUrl = `${apiUrl}/update-availability-details`;
 export const getAvailabilitiesUrl = `${apiUrl}/get-availability-details`;
 export const getTherapistProfiles = `${apiUrl}/get-therapists-profile`;
 export const getTherapistProfile = `${apiUrl}/get-profile/`;
+export const sendOtpTosubscribe = `${apiUrl}/send-otp-to-subscribe`;
+export const verifyOtpTosubscribe = `${apiUrl}/verify-otp-to-subscribe`;
 export const defaultProfile =
   "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";

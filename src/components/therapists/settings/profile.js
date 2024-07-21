@@ -240,7 +240,9 @@ export default function Profile() {
       <div className="rbt-profile-row rbt-default-form row row--15">
         <div className="col-lg-6 col-md-6 col-sm-12 col-12  mb--15">
           <div className="rbt-form-group">
-            <label htmlFor="licensenumber">Language Spoken(Select any 2)</label>
+            <label htmlFor="Language Spoken(Select any 2)">
+              Language Spoken(Select any 2)
+            </label>
             <Select
               defaultValue={[languageSpoken[1]]}
               isMulti
@@ -260,7 +262,7 @@ export default function Profile() {
             <input
               id="licensenumber"
               type="text"
-              value={therapistInfo.license_number}
+              value={therapistInfo.license_number.toString()}
               onChange={(e) => setInfo("license_number", e.target.value)}
             />
           </div>

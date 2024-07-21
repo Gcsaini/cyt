@@ -14,8 +14,7 @@ export default function ProfileCardVert(props) {
           <Link to="/notfound" style={{ cursor: "pointer" }}>
             <ImageTag
               alt="Profile-photo"
-              height={"488"}
-              width={"710"}
+              style={{ height: "350px" }}
               src={data.profile}
             />
           </Link>

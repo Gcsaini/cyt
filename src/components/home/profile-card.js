@@ -182,12 +182,14 @@ export default function ProfileCard() {
             modules={[Autoplay]}
             className="mySwiper"
           >
-            <SwiperSlide>
-              {data &&
-                data.map((item) => {
-                  return <ProfileCardHor pageData={item} key={item._id} />;
-                })}
-            </SwiperSlide>
+            {data &&
+              data.map((item) => {
+                return (
+                  <SwiperSlide>
+                    <ProfileCardHor pageData={item} key={item._id} />{" "}
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </div>
         <div className="row">
@@ -198,7 +200,9 @@ export default function ProfileCard() {
                 to=""
               >
                 <span className="icon-reverse-wrapper">
-                  <span className="btn-text">Find More Experts</span>
+                  <Link to={"/view-all-therapist"}>
+                    <span className="btn-text">Find More Experts</span>
+                  </Link>
                   <span className="btn-icon">
                     <i className="feather-arrow-right"></i>
                   </span>

@@ -13,7 +13,7 @@ export default function ProfileCardHor({ pageData }) {
             <ImageTag
               alt="profile image"
               src={pageData.profile}
-              style={{ height: isMobile ? 255 : "auto" }}
+              style={{ height: isMobile ? 255 : 210 }}
             />
           </Link>
         </div>

@@ -74,6 +74,10 @@ function App() {
                 path="/therapist-registration"
                 element={<TherapistRegistration />}
               />
+              <Route
+                path="/view-all-therapist"
+                element={<ViewAllTherapist />}
+              />
               <Route exact path="/auth/success" element={<Success />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services/:id" element={<Services />} />
@@ -104,14 +108,7 @@ function App() {
                   // </ProtectedRoute>
                 }
               />
-              <Route
-                path="/view-all-therapist"
-                element={
-                  // <ProtectedRoute>
-                  <ViewAllTherapist />
-                  // </ProtectedRoute>
-                }
-              />
+
               <Route
                 path="/my-dashboard"
                 element={

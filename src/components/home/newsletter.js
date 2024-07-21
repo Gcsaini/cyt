@@ -1,19 +1,130 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import FormMessage from "../global/form-message";
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Button from "@mui/material/Button";
+import DialogContentText from "@mui/material/DialogContentText";
+import { postData } from "../../utils/actions";
+import { sendOtpTosubscribe, verifyOtpTosubscribe } from "../../utils/url";
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialogContent-root": {
+    padding: theme.spacing(2),
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+}));
+
 export default function NewsLetter() {
   const { ref, inView } = useInView({ threshold: 0 });
   const initialValue = 50;
   const initialValue2 = 900;
   const [count, setCount] = useState(initialValue);
   const [count1, setCount1] = useState(initialValue);
-  const [otpView, setOtpView] = useState(true);
+  const [otpView, setOtpView] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState();
+  const [open, setOpen] = React.useState(false);
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const duration = 50;
   const duration1 = 2500;
   const targetValue = 1000;
   const targetValue1 = 100;
+
+  const handleSubmit = async () => {
+    setSuccess("");
+    if (email === "") {
+      setOpen(true);
+      setError("Please enter valid email");
+      return;
+    } else if (!validateEmail(email)) {
+      setOpen(true);
+      setError("Please enter valid email");
+      return;
+    } else {
+      setError("");
+      setOpen(false);
+      const data = {
+        email,
+      };
+      try {
+        setLoading(true);
+        const response = await postData(sendOtpTosubscribe, data);
+        if (response.status) {
+          setSuccess(response.message);
+          setError("");
+          setOpen(false);
+          setOtpView(true);
+        } else {
+          setOpen(true);
+          setError("Something went wrong");
+        }
+      } catch (error) {
+        setOpen(true);
+        setError(error.response.data.message);
+      }
+
+      setLoading(false);
+    }
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleOtpSubmit = async () => {
+    setSuccess("");
+    if (otp.length !== 6) {
+      setError("Please enter valid otp");
+      return;
+    } else {
+      setError("");
+      const data = {
+        email,
+        otp,
+      };
+      try {
+        setLoading(true);
+        const response = await postData(verifyOtpTosubscribe, data);
+        if (response.status) {
+          setOtp("");
+          setError("");
+          setSuccess(response.message);
+          setOtpView(false);
+          setOpen(true);
+        } else {
+          setError("Something went wrong");
+        }
+      } catch (error) {
+        setError(error.response.data.message);
+      }
+      setLoading(false);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseOtpView = () => {
+    setOtpView(false);
+  };
+
+  const handleOtpChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value) && value.length <= 6) {
+      setOtp(value);
+    }
+  };
 
   useEffect(() => {
     let startValue = initialValue2;
@@ -74,9 +185,15 @@ export default function NewsLetter() {
                   updates.
                 </p>
               </div>
+
               {otpView ? (
                 <div className="newsletter-form-1 mt--40">
-                  <input type="email" placeholder="Enter OTP" />
+                  <input
+                    type="email"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
                   <button
                     type="submit"
                     className="rbt-btn btn-md btn-gradient hover-icon-reverse"
@@ -94,14 +211,21 @@ export default function NewsLetter() {
                 </div>
               ) : (
                 <div className="newsletter-form-1 mt--40">
-                  <input type="email" placeholder="Enter Your E-Email" />
+                  <input
+                    type="email"
+                    placeholder="Enter Your E-Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <button
-                    type="submit"
+                    onClick={handleSubmit}
                     className="rbt-btn btn-md btn-gradient hover-icon-reverse"
                   >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">
-                        Subscribe Our Newsletter{" "}
+                        {loading
+                          ? "Please wait..."
+                          : "Subscribe Our Newsletter"}
                       </span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
@@ -154,6 +278,82 @@ export default function NewsLetter() {
           </div>
         </div>
       </div>
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        fullWidth={true}
+        maxWidth={"xs"}
+      >
+        <DialogTitle
+          sx={{ m: 0, p: 2, fontSize: 16, fontWeight: "bold" }}
+          id="customized-dialog-title"
+        >
+          {error !== "" ? "Error" : "Success"}
+        </DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon sx={{ fontSize: "2.5rem" }} />
+        </IconButton>
+        <DialogContent dividers>
+          <FormMessage error={error} success={success} />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            autoFocus
+            onClick={handleClose}
+            style={{ fontSize: 16, fontWeight: "bold" }}
+          >
+            OK
+          </Button>
+        </DialogActions>
+      </BootstrapDialog>
+
+      <Dialog open={otpView} onClose={handleCloseOtpView}>
+        <DialogTitle style={{ fontSize: 17, fontWeight: "bold" }}>
+          Subscribe
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText style={{ fontSize: 16 }}>
+            To subscribe to this website, please enter otp sent to you email
+            address. We will send updates occasionally.
+          </DialogContentText>
+          <FormMessage error={error} success={success} />
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              value={otp}
+              onChange={handleOtpChange}
+              maxLength={6}
+            />
+            <span className="focus-border"></span>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleCloseOtpView}
+            style={{ fontSize: 16, fontWeight: "bold" }}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleOtpSubmit}
+            style={{ fontSize: 16, fontWeight: "bold" }}
+          >
+            {loading ? "Please wait" : "Subscribe"}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

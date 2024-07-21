@@ -1,11 +1,34 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
 import demoImg from "../../assets/img/2.png";
+import { getTherapistProfiles } from "../../utils/url";
+import { fetchData } from "../../utils/actions";
+import ErrorPage from "../../pages/error-page";
+import ProfileCardVert from "../home/profile-card-vert";
 export default function ViewAllTherapist() {
   const [open, setOpen] = React.useState(false);
+  const [data, setData] = React.useState([]);
+  const [count, setCount] = React.useState(0);
   const handleFilterClick = () => {
     setOpen(!open);
   };
+  const getData = async () => {
+    try {
+      const res = await fetchData(getTherapistProfiles, { priority: 1 });
+      if (res.status) {
+        setData(res.data);
+        setCount(res.totalCount);
+      } else {
+        return <ErrorPage />;
+      }
+    } catch (err) {
+      return <ErrorPage />;
+    }
+  };
+  React.useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <div className="rbt-page-banner-wrapper">
@@ -24,12 +47,14 @@ export default function ViewAllTherapist() {
                         <i className="feather-chevron-right"></i>
                       </div>
                     </li>
-                    <li className="rbt-breadcrumb-item active">All Courses</li>
+                    <li className="rbt-breadcrumb-item active">
+                      All Therapist
+                    </li>
                   </ul>
                   <div className=" title-wrapper">
-                    <h1 className="title mb--0"> All Courses</h1>
+                    <h1 className="title mb--0"> All Therapist</h1>
                     <a className="rbt-badge-2" href="/course-card-3#">
-                      <div className="image">🎉</div> 12 Courses
+                      <div className="image">🎉</div> {count} Therapists
                     </a>
                   </div>
                   <p className="description">
@@ -155,7 +180,7 @@ export default function ViewAllTherapist() {
                                   style={{
                                     left: "0%",
                                     width: "80%",
-                                    backgroundColor: "#2f57ef"
+                                    backgroundColor: "#2f57ef",
                                   }}
                                 ></div>
                                 <div className="rc-slider-step"></div>
@@ -168,7 +193,7 @@ export default function ViewAllTherapist() {
                                     backgroundColor: "#2f57ef",
                                     opacity: "1",
                                     boxShadow: "none",
-                                    outline: "0"
+                                    outline: "0",
                                   }}
                                   tabindex="0"
                                   role="slider"
@@ -221,206 +246,20 @@ export default function ViewAllTherapist() {
       <div className="rbt-section-overlayping-top rbt-section-gapBottom">
         <div className="container">
           <div className="row g-5">
-            <div
-              className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
-              style={{ wordWrap: "break-word" }}
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              <div className="rbt-card rbt-hover ">
-                <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/1">
-                    <img
-                      alt="Card image"
-                      loading="lazy"
-                      width="355"
-                      height="240"
-                      decoding="async"
-                      data-nimg="1"
-                      srcset={demoImg}
-                      src={demoImg}
-                      style={{ color: "transparent" }}
-                    />
-                    {/* <span className="rbt-btn btn-white icon-hover">
-                      <span className="btn-text">Read More</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                    </span> */}
-                  </a>
-                </div>
-                {/* <div className="rbt-card-body">
-                  <h4 className="rbt-card-title">
-                    <a href="/course-details-two/1">
-                      The Complete Histudy 2024: From Zero to Expert!
-                    </a>
-                  </h4>
-                  <div className="rbt-card-bottom">
-                    <a
-                      className="transparent-button"
-                      href="/course-details-two/1"
-                    >
-                      <i>
-                        <svg
-                          width="17"
-                          height="12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g stroke="#27374D" fill="none" fill-rule="evenodd">
-                            <path d="M10.614 0l5.629 5.629-5.63 5.629"></path>
-                            <path
-                              stroke-linecap="square"
-                              d="M.663 5.572h14.594"
-                            ></path>
-                          </g>
-                        </svg>
-                      </i>
-                    </a>
-                  </div>
-                </div> */}
-                <div className="rbt-card-body">
-                  <ul className="rbt-meta">
-                    <li style={{ fontSize: "16px" }}>
-                      <i className="feather-message-circle"></i>Hindi, English
-                    </li>
-                    <li style={{ fontSize: "16px" }}>
-                      <i className="feather-map-pin"></i>Uttarakhand
-                    </li>
-                  </ul>
-                  <h4 className="rbt-card-title">
-                    <a style={{ cursor: "pointer" }}>Siddhant Kataria</a>
-                  </h4>
-                  <div style={{ marginTop: "7px", display: "flex" }}>
-                    <span>
-                      <i className="feather-user"></i>
-                    </span>
-                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                      Counselling Psychologist
-                    </span>
-                  </div>
-                  <div style={{ marginTop: "5px", display: "flex" }}>
-                    <span>
-                      <i className="feather-heart"></i>
-                    </span>
-                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                      Individual Counselling
-                    </span>
-                  </div>
+            {data &&
+              data.map((item) => {
+                return (
                   <div
-                    style={{
-                      marginTop: "24px",
-                      marginBottom: "10px",
-                      display: "flex",
-                      justifyContent: "space-between"
-                    }}
+                    className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
+                    style={{ wordWrap: "break-word" }}
+                    data-sal-delay="150"
+                    data-sal="slide-up"
+                    data-sal-duration="800"
                   >
-                    <a
-                      className="view-btn view-btn-border"
-                      style={{ padding: "0px 10px", cursor: "pointer" }}
-                    >
-                      View Profile
-                    </a>
-                    <a
-                      className="rbt-btn btn-gradient book-btn"
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        padding: "0px 10px"
-                      }}
-                    >
-                      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                    </a>
+                    <ProfileCardVert data={item} />
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
-              style={{ wordWrap: "break-word" }}
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              <div className="rbt-card rbt-hover ">
-                <div className="rbt-card-img">
-                  <a className="thumbnail-link" href="/course-details-two/1">
-                    <img
-                      alt="Card image"
-                      loading="lazy"
-                      width="355"
-                      height="240"
-                      decoding="async"
-                      data-nimg="1"
-                      srcset={demoImg}
-                      src={demoImg}
-                      style={{ color: "transparent" }}
-                    />
-                    {/* <span className="rbt-btn btn-white icon-hover">
-                      <span className="btn-text">Read More</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                    </span> */}
-                  </a>
-                </div>
-
-                <div className="rbt-card-body">
-                  <ul className="rbt-meta">
-                    <li style={{ fontSize: "16px" }}>
-                      <i className="feather-message-circle"></i>Hindi, English
-                    </li>
-                    <li style={{ fontSize: "16px" }}>
-                      <i className="feather-map-pin"></i>Uttarakhand
-                    </li>
-                  </ul>
-                  <h4 className="rbt-card-title">
-                    <a style={{ cursor: "pointer" }}>Siddhant Kataria</a>
-                  </h4>
-                  <div style={{ marginTop: "7px", display: "flex" }}>
-                    <span>
-                      <i className="feather-user"></i>
-                    </span>
-                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                      Counselling Psychologist
-                    </span>
-                  </div>
-                  <div style={{ marginTop: "5px", display: "flex" }}>
-                    <span>
-                      <i className="feather-heart"></i>
-                    </span>
-                    <span style={{ fontSize: "16px", marginLeft: "5px" }}>
-                      Individual Counselling
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "24px",
-                      marginBottom: "10px",
-                      display: "flex",
-                      justifyContent: "space-between"
-                    }}
-                  >
-                    <a
-                      className="view-btn view-btn-border"
-                      style={{ padding: "0px 10px", cursor: "pointer" }}
-                    >
-                      View Profile
-                    </a>
-                    <a
-                      className="rbt-btn btn-gradient book-btn"
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        padding: "0px 10px"
-                      }}
-                    >
-                      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+                );
+              })}
           </div>
           <div className="row">
             <div className="col-lg-12 mt--60">
