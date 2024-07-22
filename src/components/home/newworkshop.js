@@ -1,5 +1,15 @@
+import React from "react";
 import demoPhoto from "../../assets/img/2.png";
 export default function NewWorkshop() {
+  const [open, setOpen] = React.useState(false);
+  const [sidebar, setSidebar] = React.useState(false);
+  const handleMenuClick = () => {
+    setOpen(!open);
+  };
+
+  const handleSidebarClick = () => {
+    setSidebar(!sidebar);
+  };
   return (
     <>
       <div className="rbt-breadcrumb-default rbt-breadcrumb-style-3">
@@ -168,19 +178,28 @@ export default function NewWorkshop() {
                           id="headingTwo0"
                         >
                           <button
-                            className="accordion-button "
+                            className={
+                              open === true
+                                ? "accordion-button"
+                                : "accordion-button collapsed"
+                            }
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo10"
-                            aria-expanded="true"
+                            aria-expanded={open === true ? "false" : "true"}
                             aria-controls="collapseTwo10"
+                            onClick={() => handleMenuClick()}
                           >
                             Intro to Course and Histudy
                           </button>
                         </h2>
                         <div
                           id="collapseTwo10"
-                          className="accordion-collapse collapse show"
+                          className={
+                            open === true
+                              ? "accordion-collapse collapse show"
+                              : "accordion-collapse collapse"
+                          }
                           aria-labelledby="headingTwo0"
                           data-bs-parent="#accordionExampleb2"
                         >
@@ -195,17 +214,63 @@ export default function NewWorkshop() {
                           </div>
                         </div>
                       </div>
-                      <div className="accordion-item card">
+                      {/* <div className="accordion-item card">
+                        <h2
+                          className="accordion-header card-header"
+                          id="headingTwo0"
+                        >
+                          <button
+                            className={
+                              open === true
+                                ? "accordion-button"
+                                : "accordion-button collapsed"
+                            }
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo10"
+                            aria-expanded={open === true ? "false" : "true"}
+                            aria-controls="collapseTwo10"
+                            onClick={() => handleMenuClick()}
+                          >
+                            Intro to Course and Histudy 2
+                          </button>
+                        </h2>
+                        <div
+                          id="collapseTwo10"
+                          className={
+                            open === true
+                              ? "accordion-collapse collapse show"
+                              : "accordion-collapse collapse"
+                          }
+                          aria-labelledby="headingTwo0"
+                          data-bs-parent="#accordionExampleb2"
+                        >
+                          <div className="accordion-body card-body">
+                            <p>
+                              Lorem, ipsum dolor sit amet consectetur
+                              adipisicing elit. Nobis, quisquam qui. Quia,
+                              tempore, atque, pariatur eius nobis quas nulla
+                              ipsam molestias provident fuga odio cum dolorum
+                              maiores minima? Aliquam, sequi.
+                            </p>
+                          </div>
+                        </div>
+                      </div> */}
+                      {/* <div className="accordion-item card">
                         <h2
                           className="accordion-header card-header"
                           id="headingTwo1"
                         >
                           <button
-                            className="accordion-button collapsed"
+                            className={
+                              open === true
+                                ? "accordion-button collapsed"
+                                : "accordion-button "
+                            }
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo11"
-                            aria-expanded="false"
+                            aria-expanded={open === true ? "true" : "false"}
                             aria-controls="collapseTwo11"
                           >
                             Course Fundamentals?
@@ -213,7 +278,11 @@ export default function NewWorkshop() {
                         </h2>
                         <div
                           id="collapseTwo11"
-                          className="accordion-collapse collapse "
+                          className={
+                            open === true
+                              ? "accordion-collapse collapse"
+                              : "accordion-collapse collapse show"
+                          }
                           aria-labelledby="headingTwo1"
                           data-bs-parent="#accordionExampleb2"
                         >
@@ -326,7 +395,7 @@ export default function NewWorkshop() {
                             </p>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -459,7 +528,7 @@ export default function NewWorkshop() {
                     <div
                       className="col-lg-6 col-md-6 col-sm-6 col-12 mt--30"
                       data-sal-delay="150"
-                      data-sal="slide-up"
+                      // data-sal="slide-up"
                       data-sal-duration="800"
                     >
                       <div className="rbt-card event-grid-card variation-01 rbt-hover">
@@ -517,7 +586,7 @@ export default function NewWorkshop() {
                     <div
                       className="col-lg-6 col-md-6 col-sm-6 col-12 mt--30"
                       data-sal-delay="150"
-                      data-sal="slide-up"
+                      // data-sal="slide-up"
                       data-sal-duration="800"
                     >
                       <div className="rbt-card event-grid-card variation-01 rbt-hover">
@@ -530,8 +599,8 @@ export default function NewWorkshop() {
                               height="240"
                               decoding="async"
                               data-nimg="1"
-                              srcset="/_next/image?url=%2Fimages%2Fevent%2Fgrid-type-02.jpg&amp;w=384&amp;q=75 1x, /_next/image?url=%2Fimages%2Fevent%2Fgrid-type-02.jpg&amp;w=750&amp;q=75 2x"
-                              src="/_next/image?url=%2Fimages%2Fevent%2Fgrid-type-02.jpg&amp;w=750&amp;q=75"
+                              srcset={demoPhoto}
+                              src={demoPhoto}
                               style={{ color: "transparent" }}
                             />
                             <div className="rbt-badge-3 bg-white">
@@ -645,7 +714,14 @@ export default function NewWorkshop() {
                         </span>
                       </a>
                     </div>
-                    <div className="rbt-widget-details has-show-more ">
+                    <div
+                      onClick={() => handleSidebarClick()}
+                      className={
+                        sidebar === true
+                          ? "rbt-widget-details has-show-more active"
+                          : "rbt-widget-details has-show-more"
+                      }
+                    >
                       <ul className="has-show-more-inner-content rbt-course-details-list-wrapper">
                         <li>
                           <span>Start Date</span>
@@ -696,7 +772,15 @@ export default function NewWorkshop() {
                           </span>
                         </li>
                       </ul>
-                      <div className="rbt-show-more-btn ">Show More</div>
+                      <div
+                        className={
+                          sidebar === true
+                            ? "rbt-show-more-btn  active"
+                            : "rbt-show-more-btn"
+                        }
+                      >
+                        Show More
+                      </div>
                     </div>
                     <div className="social-share-wrapper mt--30 text-center">
                       <div className="rbt-post-share d-flex align-items-center justify-content-center">
