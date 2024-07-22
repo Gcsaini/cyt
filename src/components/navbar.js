@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,6 +14,8 @@ import AssessmentImg from "../assets/img/assessments.png";
 import ProjectsImg from "../assets/img/projects.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../utils/image-tag";
+import { defaultProfile } from "../utils/url";
+import { getDecodedToken, getToken } from "../utils/jwt";
 export default function App() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -22,6 +24,21 @@ export default function App() {
   const [service, setService] = React.useState();
   const [search, setSearch] = React.useState();
   const [cart, setCart] = React.useState();
+  const [isToken, setIsToken] = React.useState(false);
+  const [isUser, setIsUser] = React.useState(false);
+
+  useEffect(() => {
+    const data = getToken();
+    if (data) {
+      setIsToken(true);
+      const userData = getDecodedToken();
+      if (userData.role === 1) {
+        setIsUser(false);
+      } else {
+        setIsUser(true);
+      }
+    }
+  });
 
   return (
     <>
@@ -487,18 +504,27 @@ export default function App() {
                     </button>
                   </li> */}
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
-                    <Link to="/login" className="service-menu-parent">
-                      <i className="feather-user"></i>&nbsp;Login
-                    </Link>
-                  </li>
-                  <li className="access-icon rbt-user-wrapper d-block d-xl-none">
-                    <Link
-                      style={{ cursor: "pointer" }}
-                      className="rbt-round-btn"
-                      to="/therapist-registration"
-                    >
-                      <i className="feather-user"></i>
-                    </Link>
+                    {isToken ? (
+                      isUser ? (
+                        <Link
+                          to="/my-dashboard"
+                          className="service-menu-parent"
+                        >
+                          <i className="feather-user"></i>&nbsp;Profile
+                        </Link>
+                      ) : (
+                        <Link
+                          to="/therapist-dashboard"
+                          className="service-menu-parent"
+                        >
+                          <i className="feather-user"></i>&nbsp;Profile
+                        </Link>
+                      )
+                    ) : (
+                      <Link to="/login" className="service-menu-parent">
+                        <i className="feather-user"></i>&nbsp;Login
+                      </Link>
+                    )}
                   </li>
                 </ul>
                 <div className="rbt-btn-wrapper d-none d-xl-block">

@@ -12,6 +12,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { threapistRegistrationUrl } from "../utils/url";
 import { Link } from "react-router-dom";
+import { profileTypeList } from "../utils/static-lists";
 export default function TherapistRegistration() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -268,16 +269,13 @@ export default function TherapistRegistration() {
                       onChange={(e) => setProfileType(e.target.value)}
                     >
                       <option value={""}>Select profile type</option>
-                      <option value={"Counselling Psychologist"}>
-                        Counselling Psychologist
-                      </option>
-                      <option value={"Clinical Psychologist"}>
-                        Clinical Psychologist
-                      </option>
-                      <option value={"Psychiatrist"}>Psychiatrist</option>
-                      <option value={"Special Educator"}>
-                        Special Educator
-                      </option>
+                      {profileTypeList.map((item) => {
+                        return (
+                          <option value={item} key={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
 

@@ -1,20 +1,59 @@
 import React from "react";
-import Slider from "@mui/material/Slider";
-import demoImg from "../../assets/img/2.png";
 import { getTherapistProfiles } from "../../utils/url";
 import { fetchData } from "../../utils/actions";
 import ErrorPage from "../../pages/error-page";
 import ProfileCardVert from "../home/profile-card-vert";
+import {
+  EducationList,
+  ExpList,
+  languageSpoken,
+  profileTypeList,
+  services,
+} from "../../utils/static-lists";
 export default function ViewAllTherapist() {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [count, setCount] = React.useState(0);
+  const [search, setSearch] = React.useState("");
+  const [filter, setFilter] = React.useState({
+    profile_type: "",
+    services: "",
+    year_of_exp: "",
+    language_spoken: "",
+    qualification: "",
+    search: "",
+  });
   const handleFilterClick = () => {
     setOpen(!open);
   };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    if (search.length > 2) {
+      setFilter((prevFilter) => ({
+        ...prevFilter,
+        search: value,
+      }));
+    } else {
+      setFilter((prevFilter) => ({
+        ...prevFilter,
+        search: "", // Reset the search key if the input has 3 or fewer words
+      }));
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFilter((prevFilter) => ({
+      ...prevFilter,
+      [name]: value,
+    }));
+  };
+
   const getData = async () => {
     try {
-      const res = await fetchData(getTherapistProfiles, { priority: 1 });
+      const res = await fetchData(getTherapistProfiles, filter);
       if (res.status) {
         setData(res.data);
         setCount(res.totalCount);
@@ -25,9 +64,10 @@ export default function ViewAllTherapist() {
       return <ErrorPage />;
     }
   };
+
   React.useEffect(() => {
     getData();
-  }, []);
+  }, [filter]);
 
   return (
     <>
@@ -71,7 +111,8 @@ export default function ViewAllTherapist() {
                   <div className="rbt-sorting-list d-flex flex-wrap align-items-center">
                     <div className="rbt-short-item">
                       <span className="course-index">
-                        Showing 16 of 12<span className="ms-1">results</span>
+                        Showing {data.length} of {count}
+                        <span className="ms-1">results</span>
                       </span>
                     </div>
                   </div>
@@ -80,7 +121,12 @@ export default function ViewAllTherapist() {
                   <div className="rbt-sorting-list d-flex flex-wrap align-items-end justify-content-start justify-content-lg-end">
                     <div className="rbt-short-item">
                       <form action="#" className="rbt-search-style me-0">
-                        <input type="text" placeholder="Search Your Course.." />
+                        <input
+                          type="text"
+                          placeholder="Search Your Therapist.."
+                          value={search}
+                          onChange={handleSearchChange}
+                        />
                         <button
                           type="submit"
                           className="rbt-search-btn rbt-round-btn"
@@ -107,133 +153,115 @@ export default function ViewAllTherapist() {
                       ? "default-exp-wrapper"
                       : "default-exp-wrapper  d-none"
                   }
-                  // className="default-exp-wrapper d-none"
                 >
                   <div className="filter-inner">
                     <div className="filter-select-option">
                       <div className="filter-select rbt-modern-select">
-                        <span className="select-label d-block">Short By</span>
-                        <select>
-                          <option>Default</option>
-                          <option>Latest</option>
-                          <option>Popularity</option>
-                          <option>Trending</option>
-                          <option>Price: low to high</option>
-                          <option>Price: high to low</option>
+                        <span className="select-label d-block">
+                          Short By Profile Type
+                        </span>
+                        <select
+                          value={filter.profile_type}
+                          name="profile_type"
+                          onChange={handleChange}
+                        >
+                          <option value={""}>Default</option>
+                          {profileTypeList.map((item) => {
+                            return (
+                              <option value={item} key={item}>
+                                {item}
+                              </option>
+                            );
+                          })}
                         </select>
                       </div>
                     </div>
                     <div className="filter-select-option">
                       <div className="filter-select rbt-modern-select">
                         <span className="select-label d-block">
-                          Short By Author
+                          Short By Services
                         </span>
-                        <select data-live-search="true" title="Select Author">
-                          <option data-subtext="Experts">Janin Afsana</option>
-                          <option data-subtext="Experts">Joe Biden</option>
-                          <option data-subtext="Experts">Fatima Asrafy</option>
-                          <option data-subtext="Experts">Aysha Baby</option>
-                          <option data-subtext="Experts">Mohamad Ali</option>
-                          <option data-subtext="Experts">Jone Li</option>
-                          <option data-subtext="Experts">Alberd Roce</option>
-                          <option data-subtext="Experts">Zeliski Noor</option>
+                        <select
+                          value={filter.services}
+                          name="services"
+                          onChange={handleChange}
+                        >
+                          <option value={""}>Default</option>
+                          {services.map((item) => {
+                            return (
+                              <option value={item} key={item}>
+                                {item}
+                              </option>
+                            );
+                          })}
                         </select>
                       </div>
                     </div>
                     <div className="filter-select-option">
                       <div className="filter-select rbt-modern-select">
                         <span className="select-label d-block">
-                          Short By Offer
+                          Short By Experience
                         </span>
-                        <select>
-                          <option>Free</option>
-                          <option>Paid</option>
-                          <option>Premium</option>
+                        <select
+                          value={filter.year_of_exp}
+                          name="year_of_exp"
+                          onChange={handleChange}
+                        >
+                          <option value={""}>Default</option>
+                          {ExpList.map((item) => {
+                            if (item !== "Select") {
+                              return (
+                                <option value={item} key={item}>
+                                  {item}
+                                </option>
+                              );
+                            }
+                          })}
                         </select>
                       </div>
                     </div>
                     <div className="filter-select-option">
                       <div className="filter-select rbt-modern-select">
                         <span className="select-label d-block">
-                          Short By Category
+                          Short By Language
                         </span>
-                        <select data-live-search="true">
-                          <option>Web Design</option>
-                          <option>Graphic</option>
-                          <option>App Development</option>
-                          <option>Figma Design</option>
+                        <select
+                          value={filter.language_spoken}
+                          name="language_spoken"
+                          onChange={handleChange}
+                        >
+                          <option value={""}>Default</option>
+                          {languageSpoken.map((item) => {
+                            return (
+                              <option value={item.value} key={item.value}>
+                                {item.label}
+                              </option>
+                            );
+                          })}
                         </select>
                       </div>
                     </div>
                     <div className="filter-select-option">
-                      <div className="filter-select">
+                      <div className="filter-select rbt-modern-select">
                         <span className="select-label d-block">
-                          Price Range
+                          Short By Qualifications
                         </span>
-                        <div className="price_filter s-filter clear">
-                          <form action="#" method="GET">
-                            <div id="slider-range">
-                              <div className="rc-slider rc-slider-horizontal">
-                                <div className="rc-slider-rail"></div>
-                                <div
-                                  className="rc-slider-track rc-slider-track-1"
-                                  style={{
-                                    left: "0%",
-                                    width: "80%",
-                                    backgroundColor: "#2f57ef",
-                                  }}
-                                ></div>
-                                <div className="rc-slider-step"></div>
-                                <div
-                                  className="rc-slider-handle rc-slider-handle-1"
-                                  style={{
-                                    left: "0%",
-                                    transform: "translateX(-50%)",
-                                    borderColor: "#2f57ef",
-                                    backgroundColor: "#2f57ef",
-                                    opacity: "1",
-                                    boxShadow: "none",
-                                    outline: "0",
-                                  }}
-                                  tabindex="0"
-                                  role="slider"
-                                  aria-valuemin="0"
-                                  aria-valuemax="500"
-                                  aria-valuenow="0"
-                                  aria-disabled="false"
-                                  aria-orientation="horizontal"
-                                ></div>
-                                <Slider
-                                  style={{ color: "#3EB75E" }}
-                                  defaultValue={50}
-                                  aria-label="Default"
-                                  valueLabelDisplay="auto"
-                                />
-                              </div>
-                            </div>
-                            <div className="slider__range--output">
-                              <div className="price__output--wrap">
-                                <div className="price--output">
-                                  <span>Price:</span>
-                                  <input
-                                    type="text"
-                                    id="amount"
-                                    readonly=""
-                                    value="$50 - $3000"
-                                  />
-                                </div>
-                                <div className="price--filter">
-                                  <a
-                                    className="rbt-btn btn-gradient btn-sm"
-                                    href="#"
-                                  >
-                                    Filter
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
+                        <select
+                          value={filter.qualification}
+                          onChange={handleChange}
+                          name="qualification"
+                        >
+                          <option value={""}>Default</option>
+                          {EducationList.map((item) => {
+                            if (item !== "Select") {
+                              return (
+                                <option value={item} key={item}>
+                                  {item}
+                                </option>
+                              );
+                            }
+                          })}
+                        </select>
                       </div>
                     </div>
                   </div>

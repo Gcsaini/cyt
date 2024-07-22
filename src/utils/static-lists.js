@@ -38,6 +38,12 @@ export const stateList = [
   "Ladakh",
 ];
 
+export const profileTypeList = [
+  "Counselling Psychologist",
+  "Clinical Psychologist",
+  "Psychiatrist",
+  "Special Educator",
+];
 export const counsellingTypes = [
   "Individual Counselling",
   "Couple Counselling",
@@ -199,3 +205,5 @@ export const allTimes = [
   "11:00pm",
   "11:30pm",
 ];
+
+export const PriceList = ["500-1000", "1000-1500", "1500-2000", "2000-2500"];

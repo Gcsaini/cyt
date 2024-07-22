@@ -223,9 +223,9 @@ export default function Profile() {
             <div className="tutor-content">
               <h5 className="title">
                 {therapistInfo.name} &nbsp;
-                <span style={{ fontSize: 15 }}>
-                  ({therapistInfo.profile_code || "#CYT1234"})
-                </span>
+                {therapistInfo.profile_code!==null? <span style={{ fontSize: 15 }}>
+                  ({therapistInfo.profile_code})
+                </span>:<span></span>}
               </h5>
               <div className="rbt-review">
                 <h6 className="title">{therapistInfo.email}</h6>
@@ -262,7 +262,7 @@ export default function Profile() {
             <input
               id="licensenumber"
               type="text"
-              value={therapistInfo.license_number.toString()}
+              value={therapistInfo.license_number!==null ?therapistInfo.license_number.toString():""}
               onChange={(e) => setInfo("license_number", e.target.value)}
             />
           </div>
