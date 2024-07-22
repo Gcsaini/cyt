@@ -293,9 +293,9 @@ export default function TherapistRegistration() {
                       onChange={(e) => setMode(e.target.value)}
                     >
                       <option value={""}>What is your service mode</option>
-                      <option value={1}>Online Only</option>
-                      <option value={2}>Offline Only</option>
-                      <option value={3}>Both</option>
+                      <option value={1}>Virtual</option>
+                      <option value={2}>In-Person</option>
+                      <option value={3}>Virtual & In-Person</option>
                     </select>
                   </div>
                   <div className="form-group">
@@ -372,7 +372,7 @@ export default function TherapistRegistration() {
                         onChange={handleCheckboxChange}
                       />
                       <label htmlFor="rbt-checkbox-4">
-                        Workshops/Events conducting
+                        Workshops/Events
                       </label>
                     </p>
                     <p className="rbt-checkbox-wrapper mb--5">

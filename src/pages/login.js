@@ -3,7 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
-import ClientImg from "../assets/img/client-01a92c.png";
+import ClientImg from "../assets/img/avatar-027dc8.png";
+import Fabiha from "../assets/img/psychologist.png";
+import ClientImg3 from "../assets/img/counselling.png";
 import ImageTag from "../utils/image-tag";
 import auth from "../utils/auth";
 import request from "../utils/request";
@@ -103,82 +105,62 @@ export default function Login() {
                   <div className="inner">
                     <div className="section-title text-start">
                       <span className="subtitle bg-pink-opacity">
-                        THE BEST THEME FOR
+                      Discover mental health experts.
                       </span>
                     </div>
-                    <h1 className="title">Online Learning</h1>
+                    <h1 className="title">Login for Mental Health</h1>
                     <p className="description">
-                      We are experienced in educationl platform and skilled
-                      strategies for the success of our online learning.
-                    </p>
-                    <div className="rating mb--20">
-                      <Link to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link className="px-1" to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link className="px-1" to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                    </div>
+                    Log in to access personalized support and manage appointments effortlessly. Track your mental health journey with ease and stay connected for continuous well-being.
+                    </p>  
                     <div className="rbt-like-total">
-                      <div className="profile-share">
-                        <Link
-                          to="#"
-                          className="avatar"
-                          data-tooltip="Rafi Dev"
-                          tabIndex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </Link>
-                        <Link
-                          to="#"
-                          className="avatar"
-                          data-tooltip="Mark"
-                          tabIndex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </Link>
-                        <Link
-                          to="#"
-                          className="avatar"
-                          data-tooltip="Jordan"
-                          tabIndex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </Link>
-                        <div className="more-author-text">
-                          <h5 className="total-join-students">
-                            Join Over 3000+ Students
-                          </h5>
-                          <p className="subtitle">
-                            Have a new ideas every week.
-                          </p>
-                        </div>
-                      </div>
+                  <div className="profile-share">
+                    <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Counselling Psychologist"
+                      tabIndex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={ClientImg}
+                      />
+                    </Link>
+                    <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Psychologist"
+                      tabIndex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={Fabiha}
+                      />
+                    </Link>
+                    <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Counselling Psychologist"
+                      tabIndex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={ClientImg3}
+                      />
+                    </Link>
+                    <div className="more-author-text">
+                      <h5 className="total-join-students">
+                        Join Over 50+ Experts
+                      </h5>
+                      <p className="subtitle">We are Listening You!</p>
                     </div>
+                  </div>
+                </div>
                   </div>
                 </div>
               </div>
