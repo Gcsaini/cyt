@@ -33,17 +33,7 @@ export default function PerformanceComponent() {
                     <div className="odometer odometer-auto-theme">
                       <div className="odometer-inside">
                         <span className="odometer-digit">
-                          <span className="odometer-digit-spacer">8</span>
-                          <span className="odometer-digit-inner">
-                            <span className="odometer-ribbon">
-                              <span className="odometer-ribbon-inner">
-                                <span className="odometer-value">5</span>
-                              </span>
-                            </span>
-                          </span>
-                        </span>
-                        <span className="odometer-digit">
-                          <span className="odometer-digit-spacer">8</span>
+                          <span className="odometer-digit-spacer">0</span>
                           <span className="odometer-digit-inner">
                             <span className="odometer-ribbon">
                               <span className="odometer-ribbon-inner">
@@ -53,7 +43,17 @@ export default function PerformanceComponent() {
                           </span>
                         </span>
                         <span className="odometer-digit">
-                          <span className="odometer-digit-spacer">8</span>
+                          <span className="odometer-digit-spacer">0</span>
+                          <span className="odometer-digit-inner">
+                            <span className="odometer-ribbon">
+                              <span className="odometer-ribbon-inner">
+                                <span className="odometer-value">0</span>
+                              </span>
+                            </span>
+                          </span>
+                        </span>
+                        <span className="odometer-digit">
+                          <span className="odometer-digit-spacer">0</span>
                           <span className="odometer-digit-inner">
                             <span className="odometer-ribbon">
                               <span className="odometer-ribbon-inner">
@@ -93,11 +93,11 @@ export default function PerformanceComponent() {
                     <div className="odometer odometer-auto-theme">
                       <div className="odometer-inside">
                         <span className="odometer-digit">
-                          <span className="odometer-digit-spacer">8</span>
+                          <span className="odometer-digit-spacer">0</span>
                           <span className="odometer-digit-inner">
                             <span className="odometer-ribbon">
                               <span className="odometer-ribbon-inner">
-                                <span className="odometer-value">8</span>
+                                <span className="odometer-value">0</span>
                               </span>
                             </span>
                           </span>
