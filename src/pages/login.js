@@ -14,6 +14,7 @@ import { loginUrl } from "../utils/url";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/material";
 import { getDecodedToken, setToken } from "../utils/jwt";
+import { postData } from "../utils/actions";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +22,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     if (email.length < 7 || !isValidMail(email)) {
@@ -37,25 +38,24 @@ export default function Login() {
       password,
     };
 
-    setLoading(true);
-
-    request(loginUrl, { method: "POST", body: value })
-      .then((response) => {
-        if (!response.status) {
-          setError(response.message);
+    try {
+      setLoading(true);
+      const response = await postData(loginUrl, value);
+      if (response.status) {
+        setToken(response.token, true);
+        const data = getDecodedToken(response.token);
+        if (data.role === 1) {
+          navigate("/therapist-dashboard");
         } else {
-          setToken(response.token, true);
-          const data = getDecodedToken(response.token);
-          if (data.role === 1) {
-            navigate("/therapist-dashboard");
-          } else {
-            navigate("/my-dashboard");
-          }
+          navigate("/my-dashboard");
         }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      } else {
+        setError(response.message);
+      }
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+
     setLoading(false);
   };
 
@@ -105,62 +105,65 @@ export default function Login() {
                   <div className="inner">
                     <div className="section-title text-start">
                       <span className="subtitle bg-pink-opacity">
-                      Discover mental health experts.
+                        Discover mental health experts.
                       </span>
                     </div>
                     <h1 className="title">Login for Mental Health</h1>
                     <p className="description">
-                    Log in to access personalized support and manage appointments effortlessly. Track your mental health journey with ease and stay connected for continuous well-being.
-                    </p>  
+                      Log in to access personalized support and manage
+                      appointments effortlessly. Track your mental health
+                      journey with ease and stay connected for continuous
+                      well-being.
+                    </p>
                     <div className="rbt-like-total">
-                  <div className="profile-share">
-                    <Link
-                      to="#"
-                      className="avatar"
-                      data-tooltip="Counselling Psychologist"
-                      tabIndex="0"
-                    >
-                      <ImageTag
-                        alt="education"
-                        width="55"
-                        height="55"
-                        src={ClientImg}
-                      />
-                    </Link>
-                    <Link
-                      to="#"
-                      className="avatar"
-                      data-tooltip="Psychologist"
-                      tabIndex="0"
-                    >
-                      <ImageTag
-                        alt="education"
-                        width="55"
-                        height="55"
-                        src={Fabiha}
-                      />
-                    </Link>
-                    <Link
-                      to="#"
-                      className="avatar"
-                      data-tooltip="Counselling Psychologist"
-                      tabIndex="0"
-                    >
-                      <ImageTag
-                        alt="education"
-                        width="55"
-                        height="55"
-                        src={ClientImg3}
-                      />
-                    </Link>
-                    <div className="more-author-text">
-                      <h5 className="total-join-students">
-                        Join Over 50+ Experts
-                      </h5>
-                      <p className="subtitle">We are Listening You!</p>
+                      <div className="profile-share">
+                        <Link
+                          to="#"
+                          className="avatar"
+                          data-tooltip="Counselling Psychologist"
+                          tabIndex="0"
+                        >
+                          <ImageTag
+                            alt="education"
+                            width="55"
+                            height="55"
+                            src={ClientImg}
+                          />
+                        </Link>
+                        <Link
+                          to="#"
+                          className="avatar"
+                          data-tooltip="Psychologist"
+                          tabIndex="0"
+                        >
+                          <ImageTag
+                            alt="education"
+                            width="55"
+                            height="55"
+                            src={Fabiha}
+                          />
+                        </Link>
+                        <Link
+                          to="#"
+                          className="avatar"
+                          data-tooltip="Counselling Psychologist"
+                          tabIndex="0"
+                        >
+                          <ImageTag
+                            alt="education"
+                            width="55"
+                            height="55"
+                            src={ClientImg3}
+                          />
+                        </Link>
+                        <div className="more-author-text">
+                          <h5 className="total-join-students">
+                            Join Over 50+ Experts
+                          </h5>
+                          <p className="subtitle">We are Listening You!</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
                   </div>
                 </div>
               </div>

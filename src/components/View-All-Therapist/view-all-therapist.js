@@ -14,6 +14,8 @@ export default function ViewAllTherapist() {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [count, setCount] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState(1);
   const [search, setSearch] = React.useState("");
   const [filter, setFilter] = React.useState({
     profile_type: "",
@@ -22,7 +24,9 @@ export default function ViewAllTherapist() {
     language_spoken: "",
     qualification: "",
     search: "",
+    page: currentPage,
   });
+
   const handleFilterClick = () => {
     setOpen(!open);
   };
@@ -51,12 +55,31 @@ export default function ViewAllTherapist() {
     }));
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <li key={i} className={currentPage === i ? "active" : ""}>
+          <a href="#!" onClick={() => handlePageChange(i)}>
+            {i}
+          </a>
+        </li>
+      );
+    }
+    return pageNumbers;
+  };
+
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfiles, filter);
       if (res.status) {
         setData(res.data);
         setCount(res.totalCount);
+        setTotalPages(Math.ceil(res.totalCount / 10));
       } else {
         return <ErrorPage />;
       }
@@ -294,19 +317,24 @@ export default function ViewAllTherapist() {
               <nav>
                 <div className="nav-links">
                   <ul className="rbt-pagination">
-                    <li className="disabled">
-                      <a aria-label="Previous" href="/course-card-3#">
+                    <li className={currentPage === 1 ? "disabled" : ""}>
+                      <a
+                        aria-label="Previous"
+                        href="#!"
+                        onClick={() => handlePageChange(currentPage - 1)}
+                      >
                         <i className="feather-chevron-left"></i>
                       </a>
                     </li>
-                    <li className="active">
-                      <a href="/course-card-3#">1</a>
-                    </li>
-                    <li className="">
-                      <a href="/course-card-3#">2</a>
-                    </li>
-                    <li className="">
-                      <a aria-label="Next" href="/course-card-3#">
+                    {renderPageNumbers()}
+                    <li
+                      className={currentPage === totalPages ? "disabled" : ""}
+                    >
+                      <a
+                        aria-label="Next"
+                        href="#!"
+                        onClick={() => handlePageChange(currentPage + 1)}
+                      >
                         <i className="feather-chevron-right"></i>
                       </a>
                     </li>
