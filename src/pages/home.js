@@ -8,7 +8,7 @@ import NewsLetter from "../components/home/newsletter";
 import ProfileCard from "../components/home/profile-card";
 import PromationalBanner from "../components/home/promational-banner";
 import Services from "../components/home/services";
-import TherapistProfile from "../components/home/therapist-profile";
+import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
 
 export default function HomePage() {
@@ -22,7 +22,7 @@ export default function HomePage() {
           <ProfileCard />
           <Counter />
           <PromationalBanner />
-          <TherapistProfile />
+          <HomeWorkshop />
           <Feedback />
           <Blogs />
           <CallToAction />

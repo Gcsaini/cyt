@@ -12,8 +12,10 @@ import { postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
 import useTherapistStore from "../../../store/therapistStore";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Select from "react-select";
 export default function Profile() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { therapistInfo, setInfo, setSessionFormats } = useTherapistStore();
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -184,7 +186,10 @@ export default function Profile() {
       role="tabpanel"
       aria-labelledby="profile-tab"
     >
-      <div className="rbt-dashboard-content-wrapper">
+      <div
+        className="rbt-dashboard-content-wrapper"
+        style={{ marginTop: isMobile ? 60 : 0 }}
+      >
         <div
           className="tutor-bg-photo bg_image bg_image_dash"
           style={{ height: 200 }}
@@ -223,7 +228,7 @@ export default function Profile() {
             <div className="tutor-content">
               <h5 className="title">
                 {therapistInfo.name} &nbsp;
-                {therapistInfo.profile_code !== "null" ? (
+                {therapistInfo.profile_code !== "" ? (
                   <span style={{ fontSize: 15 }}>
                     ({therapistInfo.profile_code})
                   </span>
@@ -266,11 +271,7 @@ export default function Profile() {
             <input
               id="licensenumber"
               type="text"
-              value={
-                therapistInfo.license_number !== "null"
-                  ? therapistInfo.license_number.toString()
-                  : ""
-              }
+              value={therapistInfo.license_number}
               onChange={(e) => setInfo("license_number", e.target.value)}
             />
           </div>

@@ -1,11 +1,12 @@
 import axios from "axios";
 import { getToken } from "./jwt";
 
-export const fetchById = (url) => {
+export const fetchById = (url, params = {}) => {
   return new Promise((resolve, reject) => {
     const token = getToken();
     axios
       .get(url, {
+        params,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -20,7 +21,6 @@ export const fetchById = (url) => {
 };
 
 export const fetchData = (url, params = {}) => {
-  console.log("proo", params);
   return new Promise((resolve, reject) => {
     axios
       .get(url, { params })

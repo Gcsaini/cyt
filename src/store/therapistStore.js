@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { fetchById } from "../utils/actions";
-import { getTherapist, getUserUrl } from "../utils/url";
+import { getTherapist } from "../utils/url";
 import { EducationList } from "../utils/static-lists";
 const initialTimes = {
   Monday: [{ open: "", close: "" }],

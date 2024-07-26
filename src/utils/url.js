@@ -35,5 +35,12 @@ export const getTherapistProfiles = `${apiUrl}/get-therapists-profile`;
 export const getTherapistProfile = `${apiUrl}/get-profile/`;
 export const sendOtpTosubscribe = `${apiUrl}/send-otp-to-subscribe`;
 export const verifyOtpTosubscribe = `${apiUrl}/verify-otp-to-subscribe`;
+export const createWorkshopUrl = `${apiUrl}/create-workshop`;
+export const getWorkshopsUrl = `${apiUrl}/get-workshops`;
+export const getWorkshopByIdUrl = `${apiUrl}/get-workshop`;
+export const getWorkshopWebUrl = `${apiUrl}/get-workshop-web`;
+export const disableWorkshopUrl = `${apiUrl}/disable-workshop`;
+export const deleteWorkshopUrl = `${apiUrl}/delete-workshop`;
+export const UpdateWorkshopUrl = `${apiUrl}/update-workshop`;
 export const defaultProfile =
   "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";

@@ -1,55 +1,54 @@
-import ImageTag from "../../utils/image-tag";
-import img from "../../assets/img/wellness.jpeg";
 import { Link } from "react-router-dom";
-export default function WellNessCard() {
+import ImageTag from "../../utils/image-tag";
+import { truncateString } from "../../utils/helpers";
+
+export default function WellNessCard({ data }) {
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+    <div className="col-lg-3 col-md-6 col-12">
       <div className="rbt-card variation-01 rbt-hover">
         <div className="rbt-card-img">
-          <Link to="">
-            <ImageTag alt="Card image" width="355" height="244" src={img} />
+          <Link href="/course-details/1">
+            <ImageTag
+              alt={truncateString(data.title, 20)}
+              loading="lazy"
+              style={{ height: 200 }}
+              src={data.workshop_image}
+            />
           </Link>
         </div>
         <div className="rbt-card-body">
           <div className="rbt-card-top">
-            <div className="rbt-review">
-              <div className="rating">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </div>
-              <span className="rating-count">(15 Reviews)</span>
+            <div className="rbt-price">
+              <span className="current-price">₹{data.price}</span>
+              <span className="off-price">₹{data.mrp}</span>
             </div>
-            <div className="rbt-bookmark-btn">
-              <Link
-                className="rbt-round-btn"
-                title="Bookmark"
-                to="/03-online-school#"
-              >
-                <i className="feather-bookmark"></i>
-              </Link>
-            </div>
+            <div className="rbt-bookmark-btn"></div>
           </div>
-          <h4 className="rbt-card-title">
-            <Link to="/course-details/1">Pehchaan - self awareness</Link>
+          <h4 className="rbt-card-title" style={{ fontSize: 16 }}>
+            <a href="/course-details/1">{truncateString(data.title, 60)}</a>
           </h4>
-          <ul className="rbt-meta">
+          <ul className="rbt-meta mt--15">
             <li>
-              <i className="feather-book"></i>2 Hours
+              <i className="feather-book"></i>
+              {data.language}
             </li>
             <li>
-              <i className="feather-users"></i>50 Seats
+              <i className="feather-users"></i> {data.level}
             </li>
           </ul>
-          <div className="rbt-card-bottom">
-            <div className="rbt-price">
-              <span className="current-price">800 INR</span>
-              <span className="off-price">1000 INR</span>
-            </div>
-            <Link className="rbt-btn-link" to="/course-details/1">
-              Registration Soon<i className="feather-arrow-right"></i>
+          <ul className="rbt-meta">
+            <li>
+              <i className="feather-book"></i> {data.event_date}
+            </li>
+          </ul>
+
+          <div class="rbt-card-bottom mt--20">
+            <Link
+              to={data.content_pdf}
+              target="_blank"
+              className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
+            >
+              Content PDF
             </Link>
           </div>
         </div>

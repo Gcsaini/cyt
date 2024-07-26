@@ -4,11 +4,8 @@ import Availability from "../../components/therapists/settings/availability";
 import PaymentDetails from "../../components/therapists/settings/payment-details";
 import React from "react";
 import { Link } from "react-router-dom";
-import { fetchById } from "../../utils/actions";
-import { getTherapist } from "../../utils/url";
 import TherapistFees from "../../components/therapists/settings/therapist-fees";
 import ServicesAndExperties from "../../components/therapists/settings/services-and-experties";
-import { errorColor } from "../../utils/colors";
 import useTherapistStore from "../../store/therapistStore";
 
 export default function ProfileSettings() {

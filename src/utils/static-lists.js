@@ -61,9 +61,9 @@ export const ExpList = [
 ];
 
 export const services = [
-  "Individual Counseling",
-  "Relationship Counseling",
-  "Teen Counseling",
+  "Individual Counselling",
+  "Relationship Counselling",
+  "Teen Counselling",
   "Diagnosis",
   "Workshops/Training",
 ];
@@ -207,3 +207,10 @@ export const allTimes = [
 ];
 
 export const PriceList = ["500-1000", "1000-1500", "1500-2000", "2000-2500"];
+
+export const WorkshopCategory = [
+  "Support Groups",
+  "Student Orientations",
+  "Workplace Training",
+  "Therapeutic Activities",
+];

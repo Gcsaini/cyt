@@ -13,7 +13,6 @@ import { useParams } from "react-router-dom";
 import PageProgressBar from "../components/global/page-progress";
 export default function ViewProfile() {
   const { id } = useParams();
-  console.log("iddd", id);
   const [profile, setProfile] = React.useState();
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
@@ -31,7 +30,7 @@ export default function ViewProfile() {
       setError(true);
     }
   };
-  console.log("pagedata", profile);
+
   useEffect(() => {
     getData();
   }, [id]);

@@ -115,8 +115,13 @@ export default function MainLayout(props) {
                                 </li>
                                 <li>
                                   <Link
-                                    className=""
-                                    to="/instructor/instructor-announcements"
+                                    className={
+                                      currentPath === "/workshops" ||
+                                      currentPath === "/create-workshop"
+                                        ? "active"
+                                        : ""
+                                    }
+                                    to="/workshops"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
                                     <span>Workshop/Event</span>

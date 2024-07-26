@@ -35,6 +35,9 @@ import ChangeMyPassword from "./pages/client/change-password";
 import AllWorkshop from "./pages/allworkshop";
 import NewWorkshops from "./pages/newworkshops";
 import ViewAllTherapist from "./pages/view-all-therapist-page";
+import CreateWorkshopPage from "./pages/therapists/create-workshop";
+import Workshops from "./pages/therapists/workshops";
+import UpdateWorkshopPage from "./pages/therapists/update-workshop";
 const theme = createTheme();
 
 function App() {
@@ -209,6 +212,33 @@ function App() {
                 element={
                   <TherapistProtectedRoute>
                     <Appointment />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/workshops"
+                element={
+                  <TherapistProtectedRoute>
+                    <Workshops />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/create-workshop"
+                element={
+                  <TherapistProtectedRoute>
+                    <CreateWorkshopPage />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/update-workshop/:id"
+                element={
+                  <TherapistProtectedRoute>
+                    <UpdateWorkshopPage />
                   </TherapistProtectedRoute>
                 }
               />

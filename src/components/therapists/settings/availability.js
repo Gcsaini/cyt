@@ -27,11 +27,7 @@ const Availability = () => {
       dayTimes.every((timeSlot) => !timeSlot.open && !timeSlot.close)
     );
 
-    if (allEmpty) {
-      return false;
-    }
-
-    return true;
+    return !allEmpty;
   };
 
   const handleSubmit = async () => {
@@ -100,15 +96,11 @@ const Availability = () => {
       setPageLoading(true);
       const res = await fetchById(getAvailabilitiesUrl);
 
-      if (Object.keys(res.data).length > 0) {
+      if (res.status && Object.keys(res.data).length > 0) {
         const transformedTimes = transformScheduleToTimes(res.data);
-        console.log("ressss", transformedTimes);
         setTimesAll(transformedTimes);
-      } else {
-        throw new Error("Failed to fetch data");
       }
     } catch (err) {
-      console.log("eerr", err.message);
       setError(err.message);
     }
     setPageLoading(false);

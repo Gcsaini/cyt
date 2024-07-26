@@ -13,7 +13,6 @@ export default function ClientSettings() {
     try {
       const res = await fetchById(getUserUrl);
       if (res.status) {
-        console.log("resss", res.data);
         setPageData(res.data);
       } else {
         setError(res.message);
