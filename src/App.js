@@ -33,11 +33,11 @@ import { getDecodedToken, getToken, removeToken } from "./utils/jwt";
 import ClientSettings from "./pages/client/settings";
 import ChangeMyPassword from "./pages/client/change-password";
 import AllWorkshop from "./pages/allworkshop";
-import NewWorkshops from "./pages/newworkshops";
 import ViewAllTherapist from "./pages/view-all-therapist-page";
 import CreateWorkshopPage from "./pages/therapists/create-workshop";
 import Workshops from "./pages/therapists/workshops";
 import UpdateWorkshopPage from "./pages/therapists/update-workshop";
+import WrokshopDetailPage from "./pages/workshop-detail-page";
 const theme = createTheme();
 
 function App() {
@@ -91,7 +91,10 @@ function App() {
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/all-workshop" element={<AllWorkshop />} />
-              <Route path="/new-workshop" element={<NewWorkshops />} />
+              <Route
+                path="/workshop-detail/:id"
+                element={<WrokshopDetailPage />}
+              />
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
               {/* client routes */}
@@ -100,14 +103,6 @@ function App() {
                 element={
                   // <ProtectedRoute>
                   <AllWorkshop />
-                  // </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/new-workshop"
-                element={
-                  // <ProtectedRoute>
-                  <NewWorkshops />
                   // </ProtectedRoute>
                 }
               />

@@ -73,6 +73,9 @@ export default function WorkshopCard({ data, onDelete }) {
             <li>
               <i className="feather-book"></i> {data.event_date}
             </li>
+            <li>
+              <i className="feather-book"></i> {data.event_time}
+            </li>
           </ul>
           <ul className="rbt-meta">
             <li>

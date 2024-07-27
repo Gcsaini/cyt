@@ -11,6 +11,7 @@ import { getTherapistProfile } from "../utils/url";
 import ErrorPage from "./error-page";
 import { useParams } from "react-router-dom";
 import PageProgressBar from "../components/global/page-progress";
+import HomeWorkshop from "../components/home/workshops";
 export default function ViewProfile() {
   const { id } = useParams();
   const [profile, setProfile] = React.useState();
@@ -47,7 +48,7 @@ export default function ViewProfile() {
       <ProfileHeader pageData={profile[0]} />
       <ProfileInfoTab pageData={profile[0]} />
       <ProfileContent pageData={profile[0]} />
-      <ProfileCourses />
+      <HomeWorkshop isWhite={true} />
       <NewsLetter />
       <Footer />
     </div>

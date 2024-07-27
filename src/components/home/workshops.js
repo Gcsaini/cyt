@@ -4,8 +4,8 @@ import WellNessCard from "./wellness-card";
 import React from "react";
 import { Link } from "react-router-dom";
 import { fetchData } from "../../utils/actions";
-import { getWorkshopWebUrl } from "../../utils/url";
-export default function HomeWorkshop() {
+import { getWorkshopsWebUrl } from "../../utils/url";
+export default function HomeWorkshop({ isWhite = false }) {
   const [data, setData] = React.useState([]);
   const [tab, setTab] = React.useState("See All");
   const handleClick = (id) => {
@@ -15,7 +15,7 @@ export default function HomeWorkshop() {
 
   const getData = async (tab) => {
     try {
-      const res = await fetchData(getWorkshopWebUrl, {
+      const res = await fetchData(getWorkshopsWebUrl, {
         category: tab === "See All" ? "" : tab,
       });
       if (res.status) {
@@ -31,7 +31,11 @@ export default function HomeWorkshop() {
   }, []);
 
   return (
-    <div className="rbt-course-area bg-color-extra2 rbt-section-gap">
+    <div
+      className={`rbt-course-area ${
+        isWhite ? "bg-color-white" : "bg-color-extra2"
+      } rbt-section-gap`}
+    >
       <div className="container">
         <div className="row mb--60">
           <div className="col-lg-12">
@@ -148,12 +152,14 @@ export default function HomeWorkshop() {
         </div>
 
         <div className="row" style={{ marginTop: 20 }}>
-          <div className="col-12">
-            {data &&
-              data.map((item) => {
-                return <WellNessCard data={item} key={item._id} />;
-              })}
-          </div>
+          {data &&
+            data.map((item) => {
+              return (
+                <div className="col-lg-3 col-md-6 col-12">
+                  <WellNessCard data={item} key={item._id} />
+                </div>
+              );
+            })}
         </div>
 
         {data.length > 5 && (

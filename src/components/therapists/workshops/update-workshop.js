@@ -1,10 +1,18 @@
-import { languageSpoken, WorkshopCategory } from "../../../utils/static-lists";
+import {
+  allTimes,
+  eventDuration,
+  languageSpoken,
+  WorkshopCategory,
+} from "../../../utils/static-lists";
 import React, { useState, useRef } from "react";
 import { postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
 import { UpdateWorkshopUrl } from "../../../utils/url";
 import { useNavigate } from "react-router-dom";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import "./editor.css";
 export default function UpdateWorkshop({ data }) {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -14,6 +22,18 @@ export default function UpdateWorkshop({ data }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const editorConfiguration = {
+    toolbar: [
+      "heading",
+      "|",
+      "bold",
+      "italic",
+      "link",
+      "bulletedList",
+      "numberedList",
+      "blockQuote",
+    ],
+  };
   const [info, setInfo] = useState({
     title: data.title,
     short_desc: data.short_desc,
@@ -24,6 +44,8 @@ export default function UpdateWorkshop({ data }) {
     price: data.price,
     desc: data.desc,
     category: data.category,
+    event_duration: data.duration,
+    event_time: data.event_time,
   });
 
   const handleChange = (e) => {
@@ -72,18 +94,6 @@ export default function UpdateWorkshop({ data }) {
     }
   };
 
-  const handleDesc = (event) => {
-    const inputText = event.target.value;
-    const words = inputText.trim().split(/\s+/);
-
-    if (words.length <= 150) {
-      setInfo((prevInfo) => ({
-        ...prevInfo,
-        ["desc"]: inputText,
-      }));
-    }
-  };
-
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
@@ -112,6 +122,15 @@ export default function UpdateWorkshop({ data }) {
     } else if (info.event_date === "") {
       setError("Please select event date.");
       return;
+    } else if (info.category === "") {
+      setError("Please select category.");
+      return;
+    } else if (info.event_time === "") {
+      setError("Please enter event time.");
+      return;
+    } else if (info.duration === "") {
+      setError("Please enter duration.");
+      return;
     } else {
       setError("");
       setLoading(true);
@@ -123,6 +142,8 @@ export default function UpdateWorkshop({ data }) {
       formData.append("level", info.level);
       formData.append("language", info.language);
       formData.append("event_date", info.event_date);
+      formData.append("event_time", info.event_time);
+      formData.append("duration", info.event_duration);
       formData.append("mrp", info.mrp);
       formData.append("price", info.price);
       formData.append("desc", info.desc);
@@ -252,7 +273,46 @@ export default function UpdateWorkshop({ data }) {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="mrp">MRP</label>
+            <label htmlFor="event-time">Event Start Time</label>
+            <select
+              style={selectStyle}
+              value={info.event_time}
+              name="event_time"
+              onChange={handleChange}
+            >
+              <option value="">Select Time &nbsp;&nbsp;</option>
+              {allTimes.map((timeOption) => (
+                <option key={timeOption} value={timeOption}>
+                  {timeOption}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="event_duration">Event Duration</label>
+            <select
+              id="event_duration"
+              style={selectStyle}
+              value={info.event_duration}
+              name="event_duration"
+              onChange={handleChange}
+            >
+              <option value="">Select</option>
+              {eventDuration.map((item) => {
+                return (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="mrp">Regular Price</label>
             <input
               id="mrp"
               type="tel"
@@ -264,7 +324,7 @@ export default function UpdateWorkshop({ data }) {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price">Discounted Price</label>
             <input
               id="price"
               type="tel"
@@ -305,17 +365,23 @@ export default function UpdateWorkshop({ data }) {
         <div className="col-12">
           <div className="rbt-form-group">
             <label htmlFor="desc">Description</label>
-            <textarea
-              id="desc"
-              cols="20"
-              rows="7"
-              value={info.desc}
-              style={{ resize: "none" }}
-              onChange={handleDesc}
-            ></textarea>
+            <CKEditor
+              editor={ClassicEditor}
+              data={info.desc}
+              config={editorConfiguration}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setInfo({
+                  ...info,
+                  desc: data,
+                });
+              }}
+            />
           </div>
         </div>
-        <FormMessage error={error} success={success} />
+        <div className="mt--20">
+          <FormMessage error={error} success={success} />
+        </div>
         <div className="col-12 mt--20">
           <div className="rbt-form-group">
             {loading ? (

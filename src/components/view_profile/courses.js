@@ -49,7 +49,7 @@ export default function ProfileCourses() {
             </ul>
           </div>
         </div>
-        {!isMobile && (
+        {/* {!isMobile && (
           <div className="row">
             <div className="col-lg-12">
               <div className="tab-content mt--60" id="rbt-myTabContent">
@@ -95,7 +95,7 @@ export default function ProfileCourses() {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

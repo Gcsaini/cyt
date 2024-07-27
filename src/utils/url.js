@@ -39,6 +39,7 @@ export const createWorkshopUrl = `${apiUrl}/create-workshop`;
 export const getWorkshopsUrl = `${apiUrl}/get-workshops`;
 export const getWorkshopByIdUrl = `${apiUrl}/get-workshop`;
 export const getWorkshopWebUrl = `${apiUrl}/get-workshop-web`;
+export const getWorkshopsWebUrl = `${apiUrl}/get-workshops-web`;
 export const disableWorkshopUrl = `${apiUrl}/disable-workshop`;
 export const deleteWorkshopUrl = `${apiUrl}/delete-workshop`;
 export const UpdateWorkshopUrl = `${apiUrl}/update-workshop`;

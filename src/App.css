@@ -33732,7 +33732,7 @@ span.transparent-button:hover i {
   display: inline-block;
   height: 30px;
   line-height: 30px;
-  padding: 0 22px;
+  padding: 0 12px;
   background: var(--color-gray-light);
   font-size: 14px;
   letter-spacing: 0.3px;

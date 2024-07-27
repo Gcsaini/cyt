@@ -155,6 +155,19 @@ export const languageSpoken = [
   { value: "English", label: "English" },
 ];
 
+export const eventDuration = [
+  "30 Minute",
+  "01 Hour",
+  "1.5 Hour",
+  "02 Hour",
+  "2.5 Hour",
+  "03 Hour",
+  "3.5 Hour",
+  "04 Hour",
+  "4.5 Hour",
+  "05 Hour",
+];
+
 export const sessionFormatsList = ["In-Person", "Audio call", "Video Call"];
 
 export const allTimes = [

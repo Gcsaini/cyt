@@ -11,3 +11,15 @@ export const getAge = (birthDateString) => {
 
   return age;
 };
+
+export const getDateDifference = (dateString) => {
+  const givenDate = new Date(dateString);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const differenceInMillis = givenDate - today;
+  const differenceInDays = differenceInMillis / (1000 * 60 * 60 * 24);
+
+  return parseInt(differenceInDays);
+};

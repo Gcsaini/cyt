@@ -1,10 +1,18 @@
-import { languageSpoken, WorkshopCategory } from "../../../utils/static-lists";
-import React, { useState, useRef } from "react";
+import {
+  allTimes,
+  eventDuration,
+  languageSpoken,
+  WorkshopCategory,
+} from "../../../utils/static-lists";
+import React, { useState, useRef, useEffect } from "react";
 import { postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
 import { createWorkshopUrl } from "../../../utils/url";
 import { useNavigate } from "react-router-dom";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import "./editor.css";
 export default function CreateWorkshop() {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -14,6 +22,19 @@ export default function CreateWorkshop() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [minDate, setMinDate] = useState("");
+  const editorConfiguration = {
+    toolbar: [
+      "heading",
+      "|",
+      "bold",
+      "italic",
+      "link",
+      "bulletedList",
+      "numberedList",
+      "blockQuote",
+    ],
+  };
   const [info, setInfo] = useState({
     title: "",
     short_desc: "",
@@ -24,6 +45,8 @@ export default function CreateWorkshop() {
     price: "",
     desc: "",
     category: "",
+    event_duration: "",
+    event_time: "",
   });
 
   const handleChange = (e) => {
@@ -72,18 +95,6 @@ export default function CreateWorkshop() {
     }
   };
 
-  const handleDesc = (event) => {
-    const inputText = event.target.value;
-    const words = inputText.trim().split(/\s+/);
-
-    if (words.length <= 150) {
-      setInfo((prevInfo) => ({
-        ...prevInfo,
-        ["desc"]: inputText,
-      }));
-    }
-  };
-
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
@@ -118,6 +129,15 @@ export default function CreateWorkshop() {
     } else if (pdf === null) {
       setError("Please select content pdf.");
       return;
+    } else if (info.category === "") {
+      setError("Please select category.");
+      return;
+    } else if (info.event_time === "") {
+      setError("Please enter event time.");
+      return;
+    } else if (info.duration === "") {
+      setError("Please enter duration.");
+      return;
     } else {
       setError("");
       setLoading(true);
@@ -129,6 +149,8 @@ export default function CreateWorkshop() {
       formData.append("level", info.level);
       formData.append("language", info.language);
       formData.append("event_date", info.event_date);
+      formData.append("event_time", info.event_time);
+      formData.append("duration", info.event_duration);
       formData.append("mrp", info.mrp);
       formData.append("price", info.price);
       formData.append("category", info.category);
@@ -150,6 +172,11 @@ export default function CreateWorkshop() {
     }
   };
 
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    setMinDate(today);
+  }, []);
+  console.log("category", info);
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <div
@@ -190,14 +217,15 @@ export default function CreateWorkshop() {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="gender">Select Category</label>
+            <label htmlFor="category">Select Category</label>
             <select
-              id="gender"
+              id="category"
               style={selectStyle}
               value={info.category}
               name="category"
               onChange={handleChange}
             >
+              <option value={""}>Select Category</option>
               {WorkshopCategory.map((item) => {
                 return (
                   <option value={item} key={item}>
@@ -243,6 +271,7 @@ export default function CreateWorkshop() {
             </select>
           </div>
         </div>
+
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
             <label htmlFor="event-date">Event Date</label>
@@ -251,13 +280,54 @@ export default function CreateWorkshop() {
               type="date"
               name="event_date"
               value={info.event_date}
+              min={minDate}
               onChange={handleChange}
             />
           </div>
         </div>
+
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="mrp">MRP</label>
+            <label htmlFor="event-time">Event Start Time</label>
+            <select
+              style={selectStyle}
+              value={info.event_time}
+              name="event_time"
+              onChange={handleChange}
+            >
+              <option value="">Select Time &nbsp;&nbsp;</option>
+              {allTimes.map((timeOption) => (
+                <option key={timeOption} value={timeOption}>
+                  {timeOption}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="event_duration">Event Duration</label>
+            <select
+              id="event_duration"
+              style={selectStyle}
+              value={info.event_duration}
+              name="event_duration"
+              onChange={handleChange}
+            >
+              <option value="">Select</option>
+              {eventDuration.map((item) => {
+                return (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt--15">
+          <div className="rbt-form-group">
+            <label htmlFor="mrp">Regular Price</label>
             <input
               id="mrp"
               type="tel"
@@ -267,9 +337,9 @@ export default function CreateWorkshop() {
             />
           </div>
         </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt--15">
           <div className="rbt-form-group">
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price">Discounted Price</label>
             <input
               id="price"
               type="tel"
@@ -310,17 +380,24 @@ export default function CreateWorkshop() {
         <div className="col-12">
           <div className="rbt-form-group">
             <label htmlFor="desc">Description</label>
-            <textarea
-              id="desc"
-              cols="20"
-              rows="7"
-              value={info.desc}
-              style={{ resize: "none" }}
-              onChange={handleDesc}
-            ></textarea>
+            <CKEditor
+              editor={ClassicEditor}
+              data={info.desc}
+              config={editorConfiguration}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setInfo({
+                  ...info,
+                  desc: data,
+                });
+              }}
+            />
           </div>
         </div>
-        <FormMessage error={error} success={success} />
+
+        <div className="mt--20">
+          <FormMessage error={error} success={success} />
+        </div>
         <div className="col-12 mt--20">
           <div className="rbt-form-group">
             {loading ? (
