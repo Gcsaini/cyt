@@ -84,7 +84,7 @@ export default function ProfileHeader(props) {
                       <i className="feather-map-pin"></i> {pageData.state}
                     </li>
                     <li style={{ color: whiteColor }}>
-                      <i className="feather-gender"></i> {pageData.gender}
+                      <i className="feather-users"></i> {pageData.city}
                     </li>
                     <ul className="social-icon social-default justify-content-start">
                       <li>
