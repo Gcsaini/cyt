@@ -8,7 +8,7 @@ export default function WellNessCard({ data }) {
       <div className="rbt-card-img">
         <Link href={`/workshop-detail/${data._id}`}>
           <ImageTag
-            alt={truncateString(data.title, 20)}
+            alt={truncateString(data.title, 16)}
             loading="lazy"
             style={{ height: 200 }}
             src={data.workshop_image}
