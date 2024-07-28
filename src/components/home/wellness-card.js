@@ -57,7 +57,7 @@ export default function WellNessCard({ data }) {
           <Link
             to={data.content_pdf}
             target="_blank"
-            className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
+            className="rbt-btn btn-gradient book-btn"
           >
             Enroll Now
           </Link>
