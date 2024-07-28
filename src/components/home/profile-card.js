@@ -70,7 +70,7 @@ export default function ProfileCard() {
                           onClick={() => handleClick("")}
                         >
                           <span className="title" style={{ cursor: "pointer" }}>
-                            See All
+                            See all
                           </span>
                         </Link>
                       </li>
@@ -201,7 +201,7 @@ export default function ProfileCard() {
               >
                 <span className="icon-reverse-wrapper">
                   <Link to={"/view-all-therapist"}>
-                    <span className="btn-text">Find More Experts</span>
+                    <span className="btn-text">Find More</span>
                   </Link>
                   <span className="btn-icon">
                     <i className="feather-arrow-right"></i>

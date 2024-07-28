@@ -47,7 +47,7 @@ export default function ProfileCardVert(props) {
 
           <div style={{ marginTop: 5, display: "flex" }}>
             <span>
-              <i className="feather-heart"></i>
+              <i className="feather-eye"></i>
             </span>
             <span style={{ fontSize: 16, marginLeft: 5 }}>
               {truncateString(data.serve_type)}

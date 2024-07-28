@@ -18,7 +18,7 @@ export default function ProfileCardHor({ pageData }) {
           </Link>
         </div>
         <div className="rbt-card-body">
-          {/* <div className="rbt-card-top">
+          <div className="rbt-card-top">
             <div className="rbt-review">
               <div className="rating">
                 <i className="fas fa-star"></i>
@@ -27,14 +27,14 @@ export default function ProfileCardHor({ pageData }) {
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
               </div>
-              <span className="rating-count">(15 Reviews)</span>
+              <span className="rating-count"></span>
             </div>
             <div className="rbt-bookmark-btn">
               <Link className="rbt-round-btn" title="Bookmark" to="">
                 <i className="feather-bookmark"></i>
               </Link>
             </div>
-          </div> */}
+          </div> 
           <h4 className="rbt-card-title">
             <Link to="">{pageData.name}</Link>
           </h4>
@@ -49,7 +49,7 @@ export default function ProfileCardHor({ pageData }) {
             </li>
 
             <li>
-              <i className="feather-message-circle"></i>
+              <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
                 {truncateString(pageData.serve_type)}
               </span>
