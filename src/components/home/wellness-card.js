@@ -8,7 +8,7 @@ export default function WellNessCard({ data }) {
       <div className="rbt-card-img">
         <Link href={`/workshop-detail/${data._id}`}>
           <ImageTag
-            alt={truncateString(data.title, 16)}
+            alt={truncateString(data.title, 20)}
             loading="lazy"
             style={{ height: 200 }}
             src={data.workshop_image}
@@ -40,7 +40,7 @@ export default function WellNessCard({ data }) {
         <ul className="rbt-meta">
           <li>
             <i className="feather-calendar"></i> {data.event_date}&nbsp;
-            {(data.event_time)}
+            ({data.event_time})
           </li>
         </ul>
 
