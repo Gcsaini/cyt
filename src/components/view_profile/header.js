@@ -88,13 +88,13 @@ export default function ProfileHeader(props) {
                     </li>
                     <ul className="social-icon social-default justify-content-start">
                       <li>
-                        <a href={`tel:${pageData.phone}`}>
-                          <i className="feather-phone"></i>
+                        <a>
+                          <i className="feather-bookmark"></i>
                         </a>
                       </li>
                       <li>
-                        <a href={`mailto:${pageData.email}`}>
-                          <i className="feather-mail"></i>
+                        <a>
+                          <i className="feather-share"></i>
                         </a>
                       </li>
                     </ul>
