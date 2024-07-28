@@ -197,12 +197,12 @@ export default function ProfileCard() {
             <div className="load-more-btn mt--60 text-center">
               <Link
                 className="rbt-btn btn-gradient btn-sm hover-icon-reverse"
-                to=""
+                to={"/view-all-therapist"}
               >
                 <span className="icon-reverse-wrapper">
-                  <Link to={"/view-all-therapist"}>
+                 
                     <span className="btn-text">Find More</span>
-                  </Link>
+                  
                   <span className="btn-icon">
                     <i className="feather-arrow-right"></i>
                   </span>
