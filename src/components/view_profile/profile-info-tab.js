@@ -41,7 +41,7 @@ export default function ProfileInfoTab({ pageData }) {
                   </Link>
                 </li>
                 <li>
-                  <Link
+                 {/* <Link
                     className={tab === 2 ? "tab-button active" : "tab-button"}
                     id="profile-tab-4"
                     aria-selected={tab === 2 ? "true" : "false"}
@@ -50,7 +50,7 @@ export default function ProfileInfoTab({ pageData }) {
                     <span className="title" style={{ cursor: "pointer" }}>
                       Location
                     </span>
-                  </Link>
+                  </Link>*/}
                 </li>
                 <li>
                   <Link
@@ -106,7 +106,7 @@ export default function ProfileInfoTab({ pageData }) {
                   <h4 className="rbt-title-style-3" style={{ marginTop: 20 }}>
                     Expertise
                   </h4>
-                  <div className="content">
+                  <i className="feather-check">
                     {pageData.experties.split(",").map((item, index) => {
                       return (
                         <span style={{ marginRight: 40 }} key={item}>
@@ -114,8 +114,8 @@ export default function ProfileInfoTab({ pageData }) {
                           &nbsp;{item}
                         </span>
                       );
-                    })}
-                  </div>
+                    })}</i>
+                
                 </div>
               </div>
               <div
