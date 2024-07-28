@@ -250,7 +250,7 @@ export default function Profile() {
         <div className="col-lg-6 col-md-6 col-sm-12 col-12  mb--15">
           <div className="rbt-form-group">
             <label htmlFor="Language Spoken(Select any 2)">
-              Language Spoken(Select any 2)
+              Language(Select any 2)
             </label>
             <Select
               defaultValue={[languageSpoken[1]]}
@@ -266,7 +266,7 @@ export default function Profile() {
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
             <label htmlFor="licensenumber">
-              License Number (if applicable)
+              License Number (if any)
             </label>
             <input
               id="licensenumber"
@@ -366,7 +366,7 @@ export default function Profile() {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="qualification">Higher Qualifications</label>
+            <label htmlFor="qualification">Highest Qualification</label>
             <select
               id="qualification"
               style={selectStyle}
