@@ -47,13 +47,13 @@ export default function ProfileHeader(props) {
                           </span> */}
                         </h5>
                         <div className="rbt-review">
-                          {/* <div className="rating">
+                         <div className="rating">
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
-                          </div> */}
+                          </div> 
                           <span className="rating-count">
                             {pageData.qualification}
                           </span>
