@@ -50,7 +50,7 @@ export default function WellNessCard({ data }) {
             target="_blank"
             className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
           >
-            Content PDF
+            Full Details 
           </Link>
         </div>
       </div>
