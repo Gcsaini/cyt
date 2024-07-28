@@ -60,11 +60,11 @@ export default function ProfileHeader(props) {
                         </div>
                         <ul className="rbt-meta rbt-meta-white mt--5">
                           <li>
-                            <i className="feather-book"></i>
+                            <i className="feather-user"></i>
                             {pageData.profile_type}
                           </li>
                           <li>
-                            <i className="feather-users"></i>
+                            <i className="feather-message-circle"></i>
                             {pageData.language_spoken}
                           </li>
                         </ul>
@@ -84,7 +84,7 @@ export default function ProfileHeader(props) {
                       <i className="feather-map-pin"></i> {pageData.state}
                     </li>
                     <li style={{ color: whiteColor }}>
-                      <i className="feather-users"></i> {pageData.gender}
+                      <i className="feather-gender"></i> {pageData.gender}
                     </li>
                     <ul className="social-icon social-default justify-content-start">
                       <li>
