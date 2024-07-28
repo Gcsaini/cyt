@@ -72,8 +72,7 @@ export default function ProfileInfoTab({ pageData }) {
                     onClick={() => handleClick(4)}
                   >
                     <span className="title" style={{ cursor: "pointer" }}>
-                      Business hours
-                    </span>
+                      Availability                   </span>
                   </Link>
                 </li>
               </ul>
