@@ -53,15 +53,6 @@ export default function WellNessCard({ data }) {
             Full Details 
           </Link>
         </div>
-        <div class="rbt-card-bottom mt--20">
-          <Link
-            to={data.content_pdf}
-            target="_blank"
-            className="rbt-btn btn-gradient book-btn"
-          >
-            Enroll Now
-          </Link>
-        </div>
       </div>
     </div>
   );
