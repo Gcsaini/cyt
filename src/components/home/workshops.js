@@ -151,18 +151,18 @@ export default function HomeWorkshop({ isWhite = false }) {
           </div>
         </div>
 
-        <div className="row" style={{ marginTop: 20 }}>
+        <div className="row g-4" style={{ marginTop: 20 }}>
           {data &&
             data.map((item) => {
               return (
-                <div className="col-lg-3 col-md-6 col-12">
-                  <WellNessCard data={item} key={item._id} />
+                <div className="col-lg-3 col-md-6 col-12" key={item._id}>
+                  <WellNessCard data={item} />
                 </div>
               );
             })}
         </div>
 
-        {data.length > 5 && (
+        {data.length > 8 && (
           <div className="row">
             <div className="col-lg-12">
               <div className="load-more-btn mt--60 text-center">

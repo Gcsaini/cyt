@@ -1,7 +1,7 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { Link } from "react-router-dom";
-import { truncateString } from "../../utils/helpers";
+import { getMinMaxPrice, truncateString } from "../../utils/helpers";
 export default function ProfileCardHor({ pageData }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -13,31 +13,23 @@ export default function ProfileCardHor({ pageData }) {
             <ImageTag
               alt="profile image"
               src={pageData.profile}
-              style={{ height: isMobile ? 255 : 210 }}
+              style={{ height: isMobile ? 255 : 235 }}
             />
           </Link>
         </div>
         <div className="rbt-card-body">
           <div className="rbt-card-top">
             <div className="rbt-review">
-              <div className="rating">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </div>
-              <span className="rating-count"></span>
+              <h4 className="rbt-card-title">
+                <Link to="">{pageData.name}</Link>
+              </h4>
             </div>
             <div className="rbt-bookmark-btn">
               <Link className="rbt-round-btn" title="Bookmark" to="">
                 <i className="feather-bookmark"></i>
               </Link>
             </div>
-          </div> 
-          <h4 className="rbt-card-title">
-            <Link to="">{pageData.name}</Link>
-          </h4>
+          </div>
           <ul className="rbt-meta" style={{ marginTop: 0 }}>
             <li>
               <i className="feather-user"></i>
@@ -47,11 +39,16 @@ export default function ProfileCardHor({ pageData }) {
               <i className="feather-message-circle"></i>
               {pageData.language_spoken}
             </li>
-
             <li>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
                 {truncateString(pageData.serve_type)}
+              </span>
+            </li>
+            <li>
+              <i className="feather-eye"></i>
+              <span style={{ lineHeight: "2rem" }}>
+                {getMinMaxPrice(pageData)}
               </span>
             </li>
           </ul>

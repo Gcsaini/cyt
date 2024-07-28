@@ -39,18 +39,17 @@ export default function WellNessCard({ data }) {
         </ul>
         <ul className="rbt-meta">
           <li>
-            <i className="feather-calendar"></i> {data.event_date}&nbsp;
-            ({data.event_time})
+            <i className="feather-calendar"></i> {data.event_date}&nbsp; (
+            {data.event_time})
           </li>
         </ul>
 
         <div class="rbt-card-bottom mt--20">
           <Link
-            to={data.content_pdf}
-            target="_blank"
+            to={`workshop-detail/${data._id}`}
             className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
           >
-            Full Details 
+            Full Details
           </Link>
         </div>
       </div>

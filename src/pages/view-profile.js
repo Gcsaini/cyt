@@ -3,8 +3,6 @@ import ProfileInfoTab from "../components/view_profile/profile-info-tab";
 import Footer from "../components/footer";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
-import ProfileCourses from "../components/view_profile/courses";
-import ProfileContent from "../components/view_profile/content";
 import { fetchData } from "../utils/actions";
 import React, { useEffect } from "react";
 import { getTherapistProfile } from "../utils/url";
@@ -47,8 +45,8 @@ export default function ViewProfile() {
       <MyNavbar />
       <ProfileHeader pageData={profile[0]} />
       <ProfileInfoTab pageData={profile[0]} />
-      <ProfileContent pageData={profile[0]} />
-      <HomeWorkshop isWhite={true} />
+      {/* <ProfileContent pageData={profile[0]} /> */}
+      <HomeWorkshop isWhite={false} />
       <NewsLetter />
       <Footer />
     </div>

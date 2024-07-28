@@ -173,7 +173,7 @@ export default function WorkshopDetail(props) {
                             Top Workshop
                           </span>
                           <h4 class="title">
-                            More Course By
+                            More Wroskhop By
                             <strong class="color-primary ms-3">
                               {data.post_by.name}
                             </strong>
@@ -360,14 +360,14 @@ export default function WorkshopDetail(props) {
           <div class="container">
             <div class="section-title mb--30">
               <span class="subtitle bg-primary-opacity">
-                More Similar Courses
+                More Similar Wrokshops
               </span>
-              <h4 class="title">Related Courses</h4>
+              <h4 class="title">Related Wrokshops</h4>
             </div>
             <div class="row g-5">
               {moreWorkshop.map((item) => {
                 return (
-                  <div className="col-lg-6 col-md-6 col-sm-6 col-12 sal-animate">
+                  <div className="col-lg-4 col-md-4 col-sm-6 col-12 sal-animate">
                     <WellNessCard data={item} />
                   </div>
                 );

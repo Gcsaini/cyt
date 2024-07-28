@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
-import { truncateString } from "../../utils/helpers";
+import { getMinMaxPrice, truncateString } from "../../utils/helpers";
 export default function ProfileCardVert(props) {
   const { data } = props;
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -51,6 +51,14 @@ export default function ProfileCardVert(props) {
             </span>
             <span style={{ fontSize: 16, marginLeft: 5 }}>
               {truncateString(data.serve_type)}
+            </span>
+          </div>
+          <div style={{ marginTop: 5, display: "flex" }}>
+            <span>
+              <i className="feather-eye"></i>
+            </span>
+            <span style={{ fontSize: 16, marginLeft: 5 }}>
+              {getMinMaxPrice(data)}
             </span>
           </div>
 

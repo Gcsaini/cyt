@@ -41,7 +41,7 @@ export default function ProfileInfoTab({ pageData }) {
                   </Link>
                 </li>
                 <li>
-                 {/* <Link
+                  {/* <Link
                     className={tab === 2 ? "tab-button active" : "tab-button"}
                     id="profile-tab-4"
                     aria-selected={tab === 2 ? "true" : "false"}
@@ -72,7 +72,8 @@ export default function ProfileInfoTab({ pageData }) {
                     onClick={() => handleClick(4)}
                   >
                     <span className="title" style={{ cursor: "pointer" }}>
-                      Availability                   </span>
+                      Availability{" "}
+                    </span>
                   </Link>
                 </li>
               </ul>
@@ -93,28 +94,38 @@ export default function ProfileInfoTab({ pageData }) {
                   <p>{pageData.bio}</p>
                   <h4 className="rbt-title-style-3">Services</h4>
                   <div className="content">
-                    {pageData.services.split(",").map((item, index) => {
-                      return (
-                        <span style={{ marginRight: 40 }} key={item}>
-                          <TrendingFlatIcon style={listStyle} />
-                          &nbsp;{item}
-                        </span>
-                      );
-                    })}
+                    <div class="row g-3">
+                      {pageData.services.split(",").map((item, index) => {
+                        return (
+                          <div class="col-lg-4 col-md-6 col-12" key={item}>
+                            <ul class="plan-offer-list">
+                              <li>
+                                <i class="feather-check"></i> &nbsp;{item}
+                              </li>
+                            </ul>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                   <h4 className="rbt-title-style-3" style={{ marginTop: 20 }}>
                     Expertise
                   </h4>
-                  <i className="content">
-                    {pageData.experties.split(",").map((item, index) => {
-                      return (
-                        <span style={{ marginRight: 40 }} key={item}>
-                          <TrendingFlatIcon style={listStyle} />
-                          &nbsp;{item}
-                        </span>
-                      );
-                    })}</i>
-                
+                  <div className="content">
+                    <div class="row g-3">
+                      {pageData.experties.split(",").map((item, index) => {
+                        return (
+                          <div class="col-lg-4 col-md-6 col-12" key={item}>
+                            <ul class="plan-offer-list">
+                              <li>
+                                <i class="feather-check"></i> &nbsp;{item}
+                              </li>
+                            </ul>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
