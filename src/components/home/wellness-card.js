@@ -30,17 +30,17 @@ export default function WellNessCard({ data }) {
         </h4>
         <ul className="rbt-meta mt--15">
           <li>
-            <i className="feather-book"></i>
+            <i className="feather-message-circle"></i>
             {data.language}
           </li>
           <li>
-            <i className="feather-users"></i> {data.level}
+            <i className="feather-heart"></i> {data.level}
           </li>
         </ul>
         <ul className="rbt-meta">
           <li>
-            <i className="feather-book"></i> {data.event_date}&nbsp;
-            {data.event_time}
+            <i className="fa-calendar"></i> {data.event_date}&nbsp;
+            {(data.event_time)}
           </li>
         </ul>
 
