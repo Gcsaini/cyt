@@ -106,7 +106,7 @@ export default function ProfileInfoTab({ pageData }) {
                   <h4 className="rbt-title-style-3" style={{ marginTop: 20 }}>
                     Expertise
                   </h4>
-                  <i className="feather-check">
+                  <i className="content">
                     {pageData.experties.split(",").map((item, index) => {
                       return (
                         <span style={{ marginRight: 40 }} key={item}>
