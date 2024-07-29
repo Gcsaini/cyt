@@ -167,7 +167,7 @@ export default function WorkshopDetail(props) {
                 {workshopByThisUser.length > 0 && (
                   <div className="related-course mt--60">
                     <div class="row g-5 align-items-end mb--20">
-                      <div class="col-lg-8 col-md-8 col-12">
+                      <div class="col-lg-12 col-md-12 col-12">
                         <div class="section-title">
                           <span class="subtitle bg-pink-opacity">
                             Top Workshop

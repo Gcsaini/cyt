@@ -10,6 +10,7 @@ import ErrorPage from "./error-page";
 import { useParams } from "react-router-dom";
 import PageProgressBar from "../components/global/page-progress";
 import HomeWorkshop from "../components/home/workshops";
+import ProfileWorkshop from "../components/view_profile/profile-workshop";
 export default function ViewProfile() {
   const { id } = useParams();
   const [profile, setProfile] = React.useState();
@@ -45,8 +46,9 @@ export default function ViewProfile() {
       <MyNavbar />
       <ProfileHeader pageData={profile[0]} />
       <ProfileInfoTab pageData={profile[0]} />
-      {/* <ProfileContent pageData={profile[0]} /> */}
-      <HomeWorkshop isWhite={false} />
+      {profile[0].userWorkshop.length > 0 && (
+        <ProfileWorkshop data={profile[0].userWorkshop} />
+      )}
       <NewsLetter />
       <Footer />
     </div>

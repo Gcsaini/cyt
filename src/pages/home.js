@@ -21,7 +21,6 @@ export default function HomePage() {
           <Services />
           <ProfileCard />
           <Counter />
-
           <HomeWorkshop isWhite={false} />
           <PromationalBanner />
           <Feedback />

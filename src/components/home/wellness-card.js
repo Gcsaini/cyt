@@ -46,7 +46,7 @@ export default function WellNessCard({ data }) {
 
         <div class="rbt-card-bottom mt--20">
           <Link
-            to={`workshop-detail/${data._id}`}
+            to={`/workshop-detail/${data._id}`}
             className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
           >
             Full Details
