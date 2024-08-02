@@ -12,7 +12,7 @@ const internInfo = [
     deg: "B.Sc. Psychology Student",
     profile: Priya,
     noOfStars: 5,
-    content: "Mental health awareness starts with you. Be kind to your mind.",
+    content: "Start the journey to mental health awareness with a simple step: nurture your mind with kindness.",
   },
   {
     name: "Shivangi Chandola",
