@@ -2,7 +2,6 @@ import TeamImg from "../../assets/img/founder.png";
 import TeamImg3 from "../../assets/img/fab.png";
 import TeamImg4 from "../../assets/img/akt.png";
 import TeamImg5 from "../../assets/img/gopichand.png";
-import TeamImg6 from "../../assets/img/sidhant.png";
 import vibhor from "../../assets/img/vibhor.png";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -72,18 +71,7 @@ const teamInfo = [
     content:
       "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
   },
-  {
-    name: "Mr. Sidhant Kataria",
-    deg: "Head of Marketing and Communication | Counselling Psychologist",
-    address: " Uttarakhand, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
-    profile: TeamImg6,
-    content:
-      "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
-  },
+ 
 ];
 export default function TeamBanner() {
   const [team, setTeam] = React.useState(teamInfo[0]);
