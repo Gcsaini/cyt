@@ -188,7 +188,7 @@ export default function CreateWorkshop() {
       <div className="rbt-profile-row rbt-default-form row row--15">
         <div className="col-12">
           <div className="rbt-form-group">
-            <label htmlFor="title">Title(Max 20 words)</label>
+            <label htmlFor="title">Title(Maximum 20 words)</label>
             <input
               id="title"
               type="text"
@@ -209,9 +209,9 @@ export default function CreateWorkshop() {
               onChange={handleChange}
             >
               <option value="">Select</option>
-              <option value="Basic">Basic</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
+              <option value="Basic">Basic Level</option>
+              <option value="Medium">Medium Level</option>
+              <option value="High">High Level</option>
             </select>
           </div>
         </div>
@@ -288,7 +288,7 @@ export default function CreateWorkshop() {
 
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="event-time">Event Start Time</label>
+            <label htmlFor="event-time">Start Time</label>
             <select
               style={selectStyle}
               value={info.event_time}
@@ -306,7 +306,7 @@ export default function CreateWorkshop() {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="event_duration">Event Duration</label>
+            <label htmlFor="event_duration">Duration</label>
             <select
               id="event_duration"
               style={selectStyle}
@@ -327,7 +327,7 @@ export default function CreateWorkshop() {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt--15">
           <div className="rbt-form-group">
-            <label htmlFor="mrp">Regular Price</label>
+            <label htmlFor="mrp">Set MRP</label>
             <input
               id="mrp"
               type="tel"
@@ -351,7 +351,7 @@ export default function CreateWorkshop() {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="content-pdf">Upload Content PDF</label>
+            <label htmlFor="content-pdf">Upload Broucher (only PDF)</label>
             <input
               id="content-pdf"
               type="file"
@@ -365,7 +365,7 @@ export default function CreateWorkshop() {
 
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="workshop-image">Upload Workshop Image</label>
+            <label htmlFor="workshop-image">Upload Cover Image (800 x 620 PX)</label>
             <input
               id="workshop-image"
               type="file"
@@ -379,7 +379,7 @@ export default function CreateWorkshop() {
 
         <div className="col-12">
           <div className="rbt-form-group">
-            <label htmlFor="desc">Description</label>
+            <label htmlFor="desc">Overview</label>
             <CKEditor
               editor={ClassicEditor}
               data={info.desc}
