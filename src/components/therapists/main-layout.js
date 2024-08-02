@@ -124,7 +124,7 @@ export default function MainLayout(props) {
                                     to="/workshops"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Workshop/Event</span>
+                                    <span>Create Event</span>
                                   </Link>
                                 </li>
                                 <li>
