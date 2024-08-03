@@ -72,7 +72,7 @@ export default function PerformanceComponent({ pageData }) {
                   alt="Icons Images"
                   width="100"
                   height="100"
-                  src={CounterImg}
+                  src={CounterImg1}
                 />
               </div>
               <div className="content">
@@ -90,7 +90,7 @@ export default function PerformanceComponent({ pageData }) {
                   alt="Icons Images"
                   width="100"
                   height="100"
-                  src={CounterImg1}
+                  src={CounterImg}
                 />
               </div>
               <div className="content">
