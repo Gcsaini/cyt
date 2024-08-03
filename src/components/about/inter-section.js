@@ -1,4 +1,5 @@
 import TeamImg from "../../assets/img/shivangi.png";
+import Priya from "../../assets/img/Priya.png";
 import TeamImg2 from "../../assets/img/aparajitab.png";
 import shivangirana from "../../assets/img/shivangirana.png";
 import avika from "../../assets/img/avika.png";
@@ -7,10 +8,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 const internInfo = [
   {
+    name: "Priya Mehta",
+    deg: "B.Sc. Psychology Student",
+    profile: Priya,
+    noOfStars: 5,
+    content: "Start the journey to mental health awareness with a simple step: nurture your mind with kindness.",
+  },
+  {
     name: "Shivangi Chandola",
     deg: "Graduate Psychology",
     profile: TeamImg,
-    noOfStars: 4,
+    noOfStars: 5,
     content: "Mental health awareness starts with you. Be kind to your mind.",
   },
 
@@ -18,7 +26,7 @@ const internInfo = [
     name: "Aparaajita Bhawaani",
     deg: "Graduate Psychology",
     profile: TeamImg2,
-    noOfStars: 3,
+    noOfStars: 5,
     content:
       "Don't suffer in silence. Reach out and get the support you deserve.",
   },
@@ -35,7 +43,7 @@ const internInfo = [
     name: "Avika",
     deg: "Graduation Student",
     profile: avika,
-    noOfStars: 2,
+    noOfStars: 5,
     content:
       "Every step towards mental wellness is a step towards a brighter future.",
   },
