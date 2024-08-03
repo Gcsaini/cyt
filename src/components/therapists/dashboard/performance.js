@@ -1,7 +1,7 @@
 import { FaInfoCircle } from "react-icons/fa";
 import ImageTag from "../../../utils/image-tag";
 import CounterImg from "../../../assets/img/counter-01.png";
-
+import CounterImg1 from "../../../assets/img/counter-02.png";
 export default function PerformanceComponent({ pageData }) {
   const counterValueStyle = {
     fontWeight: 700,
@@ -88,7 +88,7 @@ export default function PerformanceComponent({ pageData }) {
                   alt="Icons Images"
                   width="100"
                   height="100"
-                  src={CounterImg}
+                  src={CounterImg2}
                 />
               </div>
               <div className="content">
