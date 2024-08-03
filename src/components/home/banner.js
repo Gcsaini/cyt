@@ -11,15 +11,19 @@ import ClientImg3 from "../../assets/img/counselling.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { TypeAnimation } from "react-type-animation";
-import { fetchData } from "../../utils/actions";
-import { getTherapistProfiles } from "../../utils/url";
+import { fetchById, fetchData } from "../../utils/actions";
+import {
+  GetFavriouteTherapistListUrl,
+  getTherapistProfiles,
+} from "../../utils/url";
 import ErrorPage from "../../pages/error-page";
 import ProfileCardVert from "./profile-card-vert";
+import { getDecodedToken } from "../../utils/jwt";
 export default function Banner() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [data, setData] = React.useState([]);
-
+  const [favrioutes, setFavrioutes] = React.useState([]);
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfiles, { priority: 1 });
@@ -32,8 +36,25 @@ export default function Banner() {
       return <ErrorPage />;
     }
   };
+
+  const getFavrioutes = async () => {
+    try {
+      const res = await fetchById(GetFavriouteTherapistListUrl);
+      if (res.status) {
+        setFavrioutes(res.data.therapists || []);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   React.useEffect(() => {
     getData();
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role !== 1) {
+        getFavrioutes();
+      }
+    }
   }, []);
 
   return (
@@ -210,7 +231,10 @@ export default function Banner() {
                         {data.map((item) => {
                           return (
                             <SwiperSlide key={item._id}>
-                              <ProfileCardVert data={item} />
+                              <ProfileCardVert
+                                data={item}
+                                favrioutes={favrioutes}
+                              />
                             </SwiperSlide>
                           );
                         })}

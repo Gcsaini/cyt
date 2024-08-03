@@ -12,6 +12,10 @@ const useUserStore = create((set) => ({
 
   setUserInfo: (data) =>
     set((state) => ({ userInfo: { ...state.userInfo, ...data } })),
+  setInfo: (key, value) =>
+    set((state) => ({
+      userInfo: { ...state.userInfo, [key]: value },
+    })),
   fetchUserInfo: async () => {
     try {
       const response = await fetchById(getUserUrl);

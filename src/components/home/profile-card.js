@@ -6,14 +6,18 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import React from "react";
 import { Link } from "react-router-dom";
 import ErrorPage from "../../pages/error-page";
-import { fetchData } from "../../utils/actions";
-import { getTherapistProfiles } from "../../utils/url";
+import { fetchById, fetchData } from "../../utils/actions";
+import {
+  GetFavriouteTherapistListUrl,
+  getTherapistProfiles,
+} from "../../utils/url";
 import ProfileCardHor from "./profile-card-hor";
+import { getDecodedToken } from "../../utils/jwt";
 export default function ProfileCard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [tab, setTab] = React.useState("");
   const [data, setData] = React.useState([]);
-
+  const [favrioutes, setFavrioutes] = React.useState([]);
   const getData = async (tab) => {
     try {
       const res = await fetchData(getTherapistProfiles, {
@@ -34,8 +38,25 @@ export default function ProfileCard() {
     setTab(id);
     getData(id);
   };
+
+  const getFavrioutes = async () => {
+    try {
+      const res = await fetchById(GetFavriouteTherapistListUrl);
+      if (res.status) {
+        setFavrioutes(res.data.therapists || []);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   React.useEffect(() => {
     getData();
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role !== 1) {
+        getFavrioutes();
+      }
+    }
   }, []);
   return (
     <div className="rbt-rbt-card-area rbt-section-gap bg-color-extra2">
@@ -162,7 +183,7 @@ export default function ProfileCard() {
             spaceBetween={50}
             breakpoints={{
               640: {
-                slidesPerView: 1,
+                slidesPerView: isMobile ? 1 : 2,
                 spaceBetween: 40,
               },
               768: {
@@ -185,8 +206,8 @@ export default function ProfileCard() {
             {data &&
               data.map((item) => {
                 return (
-                  <SwiperSlide>
-                    <ProfileCardHor pageData={item} key={item._id} />{" "}
+                  <SwiperSlide key={item._id}>
+                    <ProfileCardHor pageData={item} favrioutes={favrioutes} />
                   </SwiperSlide>
                 );
               })}
@@ -200,9 +221,8 @@ export default function ProfileCard() {
                 to={"/view-all-therapist"}
               >
                 <span className="icon-reverse-wrapper">
-                 
-                    <span className="btn-text">Find More</span>
-                  
+                  <span className="btn-text">Find More</span>
+
                   <span className="btn-icon">
                     <i className="feather-arrow-right"></i>
                   </span>

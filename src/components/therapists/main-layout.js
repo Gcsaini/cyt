@@ -4,9 +4,12 @@ import useTherapistStore from "../../store/therapistStore";
 import { removeToken } from "../../utils/jwt";
 import DashboardTopNav from "./top-nav";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import { checkProfileSet } from "../../utils/url";
+import { fetchById } from "../../utils/actions";
+import CircleIcon from "@mui/icons-material/Circle";
 export default function MainLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const { profileSet, setProfileSet } = useTherapistStore();
   const { therapistInfo } = useTherapistStore();
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,6 +19,23 @@ export default function MainLayout(props) {
     removeToken();
     navigate("/login");
   };
+
+  const getData = async () => {
+    try {
+      const res = await fetchById(checkProfileSet);
+      if (res.status) {
+        setProfileSet(res.data.check);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  React.useEffect(() => {
+    if (!profileSet) {
+      getData();
+    }
+  }, []);
 
   return (
     <>
@@ -65,24 +85,66 @@ export default function MainLayout(props) {
                                         ? "active"
                                         : ""
                                     }
-                                    to="/appointments"
+                                    to=""
+                                    // to="/appointments"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
                                     <span>Appointments</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: "10px",
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
                                   </Link>
                                 </li>
 
                                 <li className="nav-item">
-                                  <Link className="" to="/invoices">
+                                  <Link
+                                    className=""
+                                    to=""
+                                    // to="/invoices"
+                                  >
                                     <i className="fa-solid fa-file-invoice"></i>
                                     <span>Invoices</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: "10px",
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
                                   </Link>
                                 </li>
 
                                 <li className="nav-item">
-                                  <Link className="" to="/reviews">
+                                  <Link
+                                    className=""
+                                    // to="/reviews"
+                                    to=""
+                                  >
                                     <i className="feather-star"></i>
                                     <span>Reviews</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: "10px",
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
                                   </Link>
                                 </li>
                               </ul>
@@ -90,7 +152,7 @@ export default function MainLayout(props) {
                             <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">
                                 Additional{" "}
-                                <span
+                                {/* <span
                                   style={{
                                     backgroundColor: "rgb(250, 10, 10)",
                                     padding: "5px",
@@ -99,18 +161,26 @@ export default function MainLayout(props) {
                                   }}
                                 >
                                   Coming soon
-                                </span>
+                                </span> */}
                               </h6>
                             </div>
                             <nav className="mainmenu-nav">
                               <ul className="dashboard-mainmenu rbt-default-sidebar-list">
                                 <li>
-                                  <Link
-                                    className=""
-                                    to="/instructor/instructor-personal-courses"
-                                  >
+                                  <Link className="" to="">
                                     <i className="fa-solid fa-file-medical"></i>
                                     <span>Case history</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: "10px",
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
                                   </Link>
                                 </li>
                                 <li>
@@ -134,6 +204,17 @@ export default function MainLayout(props) {
                                   >
                                     <i className="fa-solid fa-blog"></i>
                                     <span>Blog</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: 10,
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
                                   </Link>
                                 </li>
                               </ul>
@@ -153,7 +234,17 @@ export default function MainLayout(props) {
                                     to="/settings"
                                   >
                                     <i className="feather-settings"></i>
-                                    <span>Edit Profile</span>
+                                    <span>Settings</span>
+
+                                    {profileSet ? (
+                                      <CircleIcon
+                                        sx={{ color: "green", marginLeft: 2 }}
+                                      />
+                                    ) : (
+                                      <CircleIcon
+                                        sx={{ color: "red", marginLeft: 2 }}
+                                      />
+                                    )}
                                   </Link>
                                 </li>
                                 <li>

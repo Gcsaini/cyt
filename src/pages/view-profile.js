@@ -1,21 +1,27 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ProfileHeader from "../components/view_profile/header";
 import ProfileInfoTab from "../components/view_profile/profile-info-tab";
 import Footer from "../components/footer";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
-import { fetchData } from "../utils/actions";
-import React, { useEffect } from "react";
-import { getTherapistProfile } from "../utils/url";
+import { fetchById, fetchData } from "../utils/actions";
+import {
+  GetFavriouteTherapistListUrl,
+  getTherapistProfile,
+} from "../utils/url";
 import ErrorPage from "./error-page";
-import { useParams } from "react-router-dom";
 import PageProgressBar from "../components/global/page-progress";
-import HomeWorkshop from "../components/home/workshops";
 import ProfileWorkshop from "../components/view_profile/profile-workshop";
+import { getDecodedToken } from "../utils/jwt";
+
 export default function ViewProfile() {
   const { id } = useParams();
-  const [profile, setProfile] = React.useState();
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [profile, setProfile] = useState();
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [favrioutes, setFavrioutes] = useState([]);
+
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfile + id);
@@ -31,8 +37,23 @@ export default function ViewProfile() {
     }
   };
 
+  const getFavrioutes = async () => {
+    try {
+      const res = await fetchById(GetFavriouteTherapistListUrl);
+      if (res.status) {
+        setFavrioutes(res.data.therapists || []);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getData();
+    const data = getDecodedToken();
+    if (data && data.role !== 1) {
+      getFavrioutes();
+    }
   }, [id]);
 
   if (error) {
@@ -44,7 +65,7 @@ export default function ViewProfile() {
   ) : (
     <div id="__next">
       <MyNavbar />
-      <ProfileHeader pageData={profile[0]} />
+      <ProfileHeader pageData={profile[0]} favrioutes={favrioutes} />
       <ProfileInfoTab pageData={profile[0]} />
       {profile[0].userWorkshop.length > 0 && (
         <ProfileWorkshop data={profile[0].userWorkshop} />

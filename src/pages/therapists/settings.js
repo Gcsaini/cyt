@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import TherapistFees from "../../components/therapists/settings/therapist-fees";
 import ServicesAndExperties from "../../components/therapists/settings/services-and-experties";
 import useTherapistStore from "../../store/therapistStore";
+import { redColor } from "../../utils/colors";
 
 export default function ProfileSettings() {
-  const { therapistInfo, fetchTherapistInfo } = useTherapistStore();
+  const { therapistInfo, fetchTherapistInfo, profileSet } = useTherapistStore();
   const [tab, setTab] = React.useState(0);
   const style = {
     cursor: "pointer",
@@ -32,7 +33,14 @@ export default function ProfileSettings() {
       <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div className="content">
           <div className="section-title">
-            <h4 className="rbt-title-style-3">Edit Profile</h4>
+            <h4 className="rbt-title-style-3">
+              Edit Profile{" "}
+              {!profileSet && (
+                <span style={{ fontSize: 13, color: redColor }}>
+                  (Your Profile is incomplete)
+                </span>
+              )}
+            </h4>
           </div>
           <div className="advance-tab-button mb--30">
             <ul

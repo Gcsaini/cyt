@@ -71,6 +71,20 @@ export default function UserLayout(props) {
                                 </li>
 
                                 <li className="nav-item">
+                                  <Link
+                                    className={
+                                      currentPath === "/my-therapists"
+                                        ? "active"
+                                        : ""
+                                    }
+                                    to="/my-therapists"
+                                  >
+                                    <i className="fa-regular fa-calendar-check"></i>
+                                    <span>Favrioute Therapist</span>
+                                  </Link>
+                                </li>
+
+                                <li className="nav-item">
                                   <Link className="" to="/my-invoices">
                                     <i className="fa-solid fa-file-invoice"></i>
                                     <span>Invoices</span>

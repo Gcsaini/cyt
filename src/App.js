@@ -38,6 +38,9 @@ import CreateWorkshopPage from "./pages/therapists/create-workshop";
 import Workshops from "./pages/therapists/workshops";
 import UpdateWorkshopPage from "./pages/therapists/update-workshop";
 import WrokshopDetailPage from "./pages/workshop-detail-page";
+import Forgotpassword from "./pages/forgot-password";
+import FavriouteTherapistPage from "./pages/client/favrioute-therapits";
+import TherapistCheckoutPage from "./pages/therapist-checkout";
 const theme = createTheme();
 
 function App() {
@@ -74,6 +77,11 @@ function App() {
               <Route exact path="/register" element={<Register />} />
               <Route
                 exact
+                path="/forgot-password"
+                element={<Forgotpassword />}
+              />
+              <Route
+                exact
                 path="/therapist-registration"
                 element={<TherapistRegistration />}
               />
@@ -91,6 +99,7 @@ function App() {
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/all-workshop" element={<AllWorkshop />} />
+
               <Route
                 path="/workshop-detail/:id"
                 element={<WrokshopDetailPage />}
@@ -98,14 +107,6 @@ function App() {
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
               {/* client routes */}
-              <Route
-                path="/all-workshop"
-                element={
-                  // <ProtectedRoute>
-                  <AllWorkshop />
-                  // </ProtectedRoute>
-                }
-              />
 
               <Route
                 path="/my-dashboard"
@@ -126,10 +127,28 @@ function App() {
               />
 
               <Route
+                path="/my-therapists"
+                element={
+                  <ProtectedRoute>
+                    <FavriouteTherapistPage />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
                 path="/change-my-password"
                 element={
                   <ProtectedRoute>
                     <ChangeMyPassword />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/therapist-checkout/:id"
+                element={
+                  <ProtectedRoute>
+                    <TherapistCheckoutPage />
                   </ProtectedRoute>
                 }
               />

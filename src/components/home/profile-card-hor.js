@@ -2,14 +2,71 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { Link } from "react-router-dom";
 import { getMinMaxPrice, truncateString } from "../../utils/helpers";
-export default function ProfileCardHor({ pageData }) {
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import React from "react";
+import { getDecodedToken } from "../../utils/jwt";
+import { postData } from "../../utils/actions";
+import {
+  InsertFavriouteTherapistUrl,
+  RemoveFavriouteTherapistUrl,
+} from "../../utils/url";
+export default function ProfileCardHor({ pageData, favrioutes }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const [bookmark, setBookmark] = React.useState(false);
+  const [showBookmark, setShowBookmark] = React.useState(true);
+
+  const handleBookmark = (id, value) => {
+    setBookmark((prevBookmark) => !prevBookmark);
+    let isSuccess = true;
+    if (value) {
+      isSuccess = removeFavrioute(id);
+    } else {
+      isSuccess = addFavrioute(id);
+    }
+    if (!isSuccess) {
+      setBookmark(false);
+    }
+  };
+
+  const addFavrioute = async (id) => {
+    try {
+      const response = await postData(InsertFavriouteTherapistUrl, {
+        therapistId: id,
+      });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const removeFavrioute = async (id) => {
+    try {
+      const response = await postData(RemoveFavriouteTherapistUrl, {
+        therapistId: id,
+      });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  React.useEffect(() => {
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role === 1) {
+        setShowBookmark(false);
+      }
+    }
+    setBookmark(favrioutes.includes(pageData._id));
+  }, [pageData, favrioutes]);
+
   return (
     <div className="col-12 mt--30 sal-animate">
       <div className="rbt-card variation-01 rbt-hover card-list-2">
         <div className="rbt-card-img">
-          <Link to="">
+          <Link to={`/view-profile/${pageData._id}`}>
             <ImageTag
               alt="profile image"
               src={pageData.profile}
@@ -21,14 +78,27 @@ export default function ProfileCardHor({ pageData }) {
           <div className="rbt-card-top">
             <div className="rbt-review">
               <h4 className="rbt-card-title">
-                <Link to="">{pageData.name}</Link>
+                <Link to={`/view-profile/${pageData._id}`}>
+                  {pageData.name}
+                </Link>
               </h4>
             </div>
-            <div className="rbt-bookmark-btn">
-              <Link className="rbt-round-btn" title="Bookmark" to="">
-                <i className="feather-bookmark"></i>
-              </Link>
-            </div>
+            {showBookmark && (
+              <div className="rbt-bookmark-btn">
+                <a
+                  style={{ cursor: "pointer" }}
+                  className="rbt-round-btn"
+                  title="Bookmark"
+                  onClick={() => handleBookmark(pageData._id, bookmark)}
+                >
+                  {bookmark ? (
+                    <BookmarkAddedIcon sx={{ fontSize: 24 }} />
+                  ) : (
+                    <BookmarkBorderIcon sx={{ fontSize: 24 }} />
+                  )}
+                </a>
+              </div>
+            )}
           </div>
           <ul className="rbt-meta" style={{ marginTop: 0 }}>
             <li>

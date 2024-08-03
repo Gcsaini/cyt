@@ -196,8 +196,8 @@ export default function Login() {
                       className="rbt-lost-password text-end"
                       style={{ marginBottom: 15 }}
                     >
-                      <Link className="rbt-btn-link" to="/register">
-                        Create Account?
+                      <Link className="rbt-btn-link" to="/forgot-password">
+                        Forgot Password?
                       </Link>
                     </div>
                     <div className="form-submit-group">
@@ -209,7 +209,7 @@ export default function Login() {
                         <button
                           onClick={handleSubmit}
                           type="submit"
-                          className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
+                          className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100 "
                         >
                           <span className="icon-reverse-wrapper">
                             <span className="btn-text">Login</span>
@@ -222,6 +222,14 @@ export default function Login() {
                           </span>
                         </button>
                       )}
+                    </div>
+                    <div
+                      className="rbt-lost-password text-end"
+                      style={{ marginBottom: 15 }}
+                    >
+                      <Link className="rbt-btn-link" to="/register">
+                        Create Account?
+                      </Link>
                     </div>
                   </div>
                 </div>

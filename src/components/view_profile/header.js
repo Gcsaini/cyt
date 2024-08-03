@@ -1,10 +1,63 @@
 import ImageTag from "../../utils/image-tag";
-import Avatar from "../../assets/img/avatar-027dc8.png";
 import { whiteColor } from "../../utils/colors";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import React from "react";
+import { getDecodedToken } from "../../utils/jwt";
+import {
+  InsertFavriouteTherapistUrl,
+  RemoveFavriouteTherapistUrl,
+} from "../../utils/url";
+import { postData } from "../../utils/actions";
 export default function ProfileHeader(props) {
-  const { pageData } = props;
+  const { pageData, favrioutes } = props;
+  const [bookmark, setBookmark] = React.useState(false);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const [showBookmark, setShowBookmark] = React.useState(true);
+
+  const handleBookmark = (id, value) => {
+    setBookmark((prevBookmark) => !prevBookmark);
+    let isSuccess = true;
+    if (value) {
+      isSuccess = removeFavrioute(id);
+    } else {
+      isSuccess = addFavrioute(id);
+    }
+    if (!isSuccess) {
+      setBookmark(false);
+    }
+  };
+
+  const addFavrioute = async (id) => {
+    try {
+      const response = await postData(InsertFavriouteTherapistUrl, {
+        therapistId: id,
+      });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const removeFavrioute = async (id) => {
+    try {
+      const response = await postData(RemoveFavriouteTherapistUrl, {
+        therapistId: id,
+      });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  React.useEffect(() => {
+    const data = getDecodedToken();
+    if (data && data.role === 1) {
+      setShowBookmark(false);
+    }
+    setBookmark(favrioutes.includes(pageData._id));
+  }, [pageData, favrioutes]);
   return (
     <>
       <div className="rbt-page-banner-wrapper">
@@ -36,24 +89,32 @@ export default function ProfileHeader(props) {
                         width="250"
                         height="250"
                         src={pageData.profile}
+                        style={{
+                          borderRadius: 0,
+                          padding: 0,
+                          minWidth: 110,
+                          width: 110,
+                          minHeight: 120,
+                          height: 120,
+                        }}
                       />
                     </div>
                     <div className="tutor-content">
                       <div>
                         <h5 className="title">
-                          {pageData.name}{" "}
-                          {/* <span style={{ fontSize: 14 }}>
+                          {pageData.name}
+                          <span style={{ fontSize: 14 }}>
                             ({pageData.profile_code})
-                          </span> */}
+                          </span>
                         </h5>
                         <div className="rbt-review">
-                         <div className="rating">
+                          {/* <div className="rating">
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
-                          </div> 
+                          </div> */}
                           <span className="rating-count">
                             {pageData.qualification}
                           </span>
@@ -87,11 +148,24 @@ export default function ProfileHeader(props) {
                       <i className="feather-users"></i> {pageData.gender}
                     </li>
                     <ul className="social-icon social-default justify-content-start">
-                      <li>
-                        <a>
-                          <i className="feather-bookmark"></i>
-                        </a>
-                      </li>
+                      {showBookmark && (
+                        <li>
+                          <a
+                            style={{ cursor: "pointer" }}
+                            onClick={() =>
+                              handleBookmark(pageData._id, bookmark)
+                            }
+                          >
+                            {bookmark ? (
+                              <BookmarkAddedIcon
+                                sx={{ fontSize: 24, color: "black" }}
+                              />
+                            ) : (
+                              <BookmarkBorderIcon sx={{ fontSize: 24 }} />
+                            )}
+                          </a>
+                        </li>
+                      )}
                       <li>
                         <a>
                           <i className="feather-share"></i>

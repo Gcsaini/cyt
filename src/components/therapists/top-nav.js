@@ -9,6 +9,11 @@ export default function DashboardTopNav() {
   const { therapistInfo } = useTherapistStore();
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
+  const handleLogout = () => {
+    removeToken();
+    navigate("/login");
+  };
+
   return (
     <>
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>
@@ -79,14 +84,15 @@ export default function DashboardTopNav() {
                 </Link>
               </li>
               <li className="position-static">
-                <Link to="/settings" style={{ cursor: "pointer" }}>
+                <Link to="/change-password" style={{ cursor: "pointer" }}>
                   Change Password<i className="feather-chevron-down"></i>
                 </Link>
               </li>
+
               <li className="position-static">
-                <Link to="/change-password" style={{ cursor: "pointer" }}>
+                <a onClick={handleLogout} style={{ cursor: "pointer" }}>
                   Logout<i className="feather-chevron-down"></i>
-                </Link>
+                </a>
               </li>
             </ul>
           </nav>
@@ -153,7 +159,7 @@ export default function DashboardTopNav() {
                       <div className="inner">
                         <ul className="user-list-wrapper">
                           <li>
-                            <Link to="instructor/instructor-dashboard">
+                            <Link to="/therapist-dashboard">
                               <i className="feather-home"></i>
                               <span>My Dashboard</span>
                             </Link>
@@ -183,21 +189,13 @@ export default function DashboardTopNav() {
                         <hr className="mt--10 mb--10" />
                         <ul className="user-list-wrapper">
                           <li>
-                            <Link to="instructor/instructor-settings">
-                              <i className="feather-settings"></i>
-                              <span>Settings</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              onClick={() => {
-                                removeToken();
-                                navigate("/login");
-                              }}
+                            <a
+                              onClick={handleLogout}
+                              style={{ cursor: "pointer" }}
                             >
                               <i className="feather-log-out"></i>
                               <span>Logout</span>
-                            </Link>
+                            </a>
                           </li>
                         </ul>
                       </div>

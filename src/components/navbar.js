@@ -14,7 +14,6 @@ import AssessmentImg from "../assets/img/assessments.png";
 import ProjectsImg from "../assets/img/projects.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../utils/image-tag";
-import { defaultProfile } from "../utils/url";
 import { getDecodedToken, getToken } from "../utils/jwt";
 export default function App() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -38,7 +37,7 @@ export default function App() {
         setIsUser(true);
       }
     }
-  });
+  }, []);
 
   return (
     <>

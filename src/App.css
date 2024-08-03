@@ -1,8 +1,4 @@
-/*!
- * Bootstrap  v5.3.2 (https://getbootstrap.com/)
- * Copyright 2011-2023 The Bootstrap Authors
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root,
 [data-bs-theme="light"] {
   --bs-blue: #0d6efd;
@@ -44759,7 +44755,7 @@ blockquote.has-text-align-right cite {
     font-size: 14px;
   }
 }
-/*# sourceMappingURL=8c0980010a4ea2f7.css.map*/
+
 
 .swiper-custom-bullet {
   height: 2px;

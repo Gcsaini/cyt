@@ -8,7 +8,7 @@ import FormProgressBar from "../global/form-progressbar";
 import useUserStore from "../../store/userStore";
 import { getAge } from "../../utils/time";
 export default function MyProfile(props) {
-  const { userInfo, fetchUserInfo } = useUserStore();
+  const { userInfo, setInfo } = useUserStore();
   const { data } = props;
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -53,6 +53,8 @@ export default function MyProfile(props) {
         if (response.status) {
           setSuccess(response.message);
           setError("");
+          setInfo("profile", previewImage);
+          setInfo("name", name);
         } else {
           setError("Something went wrong");
         }

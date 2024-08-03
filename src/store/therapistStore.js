@@ -11,6 +11,7 @@ const initialTimes = {
   Saturday: [{ open: "", close: "" }],
   Sunday: [{ open: "", close: "" }],
 };
+
 const useTherapistStore = create((set) => ({
   paymentStore: {
     ac_name: "",
@@ -54,6 +55,8 @@ const useTherapistStore = create((set) => ({
     tcip: "",
   },
   times: initialTimes,
+  profileSet: false,
+  setProfileSet: (newProfileSet) => set({ profileSet: newProfileSet }),
   setTimes: (day, index, type, value) =>
     set((state) => {
       const updatedTimes = { ...state.times };
@@ -132,7 +135,7 @@ const useTherapistStore = create((set) => ({
  */
 
 useTherapistStore.subscribe((state) => {
-  // console.log("state", state.therapistInfo);
+  // console.log("state", state.profileSet);
 });
 
 export default useTherapistStore;
