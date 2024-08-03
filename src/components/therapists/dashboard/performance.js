@@ -37,7 +37,7 @@ export default function PerformanceComponent({ pageData }) {
                 <span style={counterValueStyle}>
                   {pageData.appointments ? pageData.appointments.length : 0}
                 </span>
-                <span className="subtitle">Today Appointments</span>
+                <span className="subtitle">Total Appointments</span>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function PerformanceComponent({ pageData }) {
               </div>
               <div className="content">
                 <span style={counterValueStyle}>{pageData.workshops}</span>
-                <span className="subtitle">Active Events</span>
+                <span className="subtitle">Follow-up Sessions</span>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function PerformanceComponent({ pageData }) {
                 <span style={counterValueStyle}>
                   {pageData.revenue ? pageData.revenue.length : 0}
                 </span>
-                <span className="subtitle">Monthly revenue</span>
+                <span className="subtitle">Monthly Revenue</span>
               </div>
             </div>
           </div>
