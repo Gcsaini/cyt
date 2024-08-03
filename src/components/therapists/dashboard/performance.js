@@ -1,7 +1,7 @@
 import { FaInfoCircle } from "react-icons/fa";
 import ImageTag from "../../../utils/image-tag";
 import CounterImg from "../../../assets/img/counter-01.png";
-import CounterImg1 from "../../../assets/img/counter-02.png";
+import CounterImg1 from "../../../assets/img/counter-03.png";
 import CounterImg2 from "../../../assets/img/card-icon-11b092.png";
 import CounterImg3 from "../../../assets/img/projectscyt.png";
 export default function PerformanceComponent({ pageData }) {
@@ -77,7 +77,7 @@ export default function PerformanceComponent({ pageData }) {
               </div>
               <div className="content">
                 <span style={counterValueStyle}>{pageData.workshops}</span>
-                <span className="subtitle">Follow-up Sessions</span>
+                <span className="subtitle">Active Events</span>
               </div>
             </div>
           </div>
