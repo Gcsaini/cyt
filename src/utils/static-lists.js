@@ -52,12 +52,12 @@ export const counsellingTypes = [
 
 export const ExpList = [
   "Select",
-  "1-2",
-  "3-5",
-  "6-10",
-  "11-15",
-  "16-20",
-  "21+",
+  "1-2 Years",
+  "3-5 Years",
+  "6-10 Years",
+  "11-15 Years",
+  "16-20 Years",
+  "21+ Years",
 ];
 
 export const services = [
@@ -90,7 +90,7 @@ export const dailyLiftIssuesList = [
   "Depression",
   "Self Esteem",
   "Time Management",
-  "Career Counselling",
+
   "Work Life Balance",
   "Burnout",
   "Life Transitions",
@@ -166,6 +166,7 @@ export const eventDuration = [
   "04 Hour",
   "4.5 Hour",
   "05 Hour",
+  "Onwards"
 ];
 
 export const sessionFormatsList = ["In-Person", "Audio call", "Video Call"];
