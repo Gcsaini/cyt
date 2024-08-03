@@ -62,7 +62,7 @@ export const ExpList = [
 
 export const services = [
   "Individual Counselling",
-  "Relationship Counselling",
+  "Couple Counselling",
   "Teen Counselling",
   "Diagnosis",
   "Workshops/Training",
@@ -79,7 +79,7 @@ export const EducationList = [
   "Doctor of Philosophy (Ph.D. in Psychology)",
   "Doctor of Medicine (M.D. in Psychiatry)",
   "Doctor of Psychology (Psy.D.)",
-  "Postgraduate Diploma in Counseling/Psychology",
+  "Postgraduate Diploma in Counseling Psychology",
   "Postgraduate Diploma in Special Education",
   "Other (Please specify)",
 ];
