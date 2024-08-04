@@ -55,7 +55,7 @@ export default function Workshops() {
                 <div class="col-lg-8">
                   <div class="inner">
                     <div class="content text-left">
-                      <h5 class="mb--5">Notify your all clients/students.</h5>
+                      <h5 class="mb--5">Notify your all clients & students.</h5>
                       <p class="b3">Events/Wrokshops/Internships/Trainings</p>
                     </div>
                   </div>
