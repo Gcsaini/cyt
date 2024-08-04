@@ -201,7 +201,7 @@ export default function HomeWorkshop({ isWhite = false }) {
             </div>
           </div>
         )}
-        {data.length > 8 && (
+        {data.length > 7 && (
           <div className="row">
             <div className="col-lg-12">
               <div className="load-more-btn mt--60 text-center">
