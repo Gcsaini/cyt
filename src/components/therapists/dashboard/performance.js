@@ -1,7 +1,9 @@
 import { FaInfoCircle } from "react-icons/fa";
 import ImageTag from "../../../utils/image-tag";
 import CounterImg from "../../../assets/img/counter-01.png";
-
+import CounterImg1 from "../../../assets/img/counter-03.png";
+import CounterImg2 from "../../../assets/img/card-icon-11b092.png";
+import CounterImg3 from "../../../assets/img/projectscyt.png";
 export default function PerformanceComponent({ pageData }) {
   const counterValueStyle = {
     fontWeight: 700,
@@ -30,14 +32,14 @@ export default function PerformanceComponent({ pageData }) {
                   alt="Icons Images"
                   width="100"
                   height="100"
-                  src={CounterImg}
+                  src={CounterImg2}
                 />
               </div>
               <div className="content">
                 <span style={counterValueStyle}>
                   {pageData.appointments ? pageData.appointments.length : 0}
                 </span>
-                <span className="subtitle">Appointments</span>
+                <span className="subtitle">Total Appointments</span>
               </div>
             </div>
           </div>
@@ -50,7 +52,7 @@ export default function PerformanceComponent({ pageData }) {
                   alt="Icons Images"
                   width="100"
                   height="100"
-                  src={CounterImg}
+                  src={CounterImg3}
                 />
               </div>
               <div className="content">
@@ -70,12 +72,12 @@ export default function PerformanceComponent({ pageData }) {
                   alt="Icons Images"
                   width="100"
                   height="100"
-                  src={CounterImg}
+                  src={CounterImg1}
                 />
               </div>
               <div className="content">
                 <span style={counterValueStyle}>{pageData.workshops}</span>
-                <span className="subtitle">Active workshops</span>
+                <span className="subtitle">Active Events</span>
               </div>
             </div>
           </div>
@@ -95,7 +97,7 @@ export default function PerformanceComponent({ pageData }) {
                 <span style={counterValueStyle}>
                   {pageData.revenue ? pageData.revenue.length : 0}
                 </span>
-                <span className="subtitle">Monthly revenue</span>
+                <span className="subtitle">Monthly Revenue</span>
               </div>
             </div>
           </div>
