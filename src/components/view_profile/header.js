@@ -102,7 +102,7 @@ export default function ProfileHeader(props) {
                     <div className="tutor-content">
                       <div>
                         <h5 className="title">
-                          {pageData.name}
+                          {pageData.name} &nbsp;
                           <span style={{ fontSize: 14 }}>
                             ({pageData.profile_code})
                           </span>

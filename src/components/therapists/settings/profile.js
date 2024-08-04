@@ -19,7 +19,7 @@ export default function Profile() {
   const { therapistInfo, setInfo, setSessionFormats } = useTherapistStore();
   const fileInputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -110,7 +110,9 @@ export default function Profile() {
           setSuccess(response.message);
           setError("");
           setSelectedImage(null);
-          setInfo("profile", response.data.profile);
+          if (response.data.profile !== "") {
+            setInfo("profile", response.data.profile);
+          }
         } else {
           setError("Something went wrong");
         }
@@ -265,9 +267,7 @@ export default function Profile() {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="licensenumber">
-              License Number (if any)
-            </label>
+            <label htmlFor="licensenumber">License Number (if any)</label>
             <input
               id="licensenumber"
               type="text"
@@ -340,7 +340,12 @@ export default function Profile() {
             <input
               id="office"
               type="text"
-              value={therapistInfo.office_address}
+              value={
+                therapistInfo.office_address == "null" ||
+                therapistInfo.office_address == null
+                  ? ""
+                  : therapistInfo.office_address
+              }
               onChange={(e) => setInfo("office_address", e.target.value)}
             />
           </div>

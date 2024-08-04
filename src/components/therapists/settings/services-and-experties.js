@@ -12,8 +12,8 @@ import { postData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
 import useTherapistStore from "../../../store/therapistStore";
-export default function ServicesAndExperties(props) {
-  const { therapistInfo } = useTherapistStore();
+export default function ServicesAndExperties() {
+  const { therapistInfo, setInfo } = useTherapistStore();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -56,6 +56,8 @@ export default function ServicesAndExperties(props) {
       const response = await postData(updateServiceExpertiesUrl, reqData);
       if (response.status) {
         setSuccess(response.message);
+        setInfo("services", reqData.services);
+        setInfo("experties", reqData.experties);
         setError("");
       } else {
         setError("Something went wrong");

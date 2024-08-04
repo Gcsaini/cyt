@@ -168,10 +168,10 @@ export default function UserLayout(props) {
                                   </Link>
                                 </li>
                                 <li>
-                                  <Link to={"#"} onClick={handleLogout}>
+                                  <a onClick={handleLogout}>
                                     <i className="feather-log-out"></i>
                                     <span>Logout</span>
-                                  </Link>
+                                  </a>
                                 </li>
                               </ul>
                             </nav>

@@ -1,7 +1,6 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
-import { Link } from "react-router-dom";
-import { getMinMaxPrice, truncateString } from "../../utils/helpers";
+import { getMinMaxPrice } from "../../utils/helpers";
 
 import React from "react";
 export default function ProfileCheckoutCard({ pageData }) {

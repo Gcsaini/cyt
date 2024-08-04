@@ -1,6 +1,9 @@
 import React from "react";
-import { getTherapistProfiles } from "../../utils/url";
-import { fetchData } from "../../utils/actions";
+import {
+  GetFavriouteTherapistListUrl,
+  getTherapistProfiles,
+} from "../../utils/url";
+import { fetchById, fetchData } from "../../utils/actions";
 import ErrorPage from "../../pages/error-page";
 import ProfileCardVert from "../home/profile-card-vert";
 import {
@@ -10,6 +13,7 @@ import {
   profileTypeList,
   services,
 } from "../../utils/static-lists";
+import { getDecodedToken } from "../../utils/jwt";
 export default function ViewAllTherapist() {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
@@ -17,6 +21,7 @@ export default function ViewAllTherapist() {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(1);
   const [search, setSearch] = React.useState("");
+  const [favrioutes, setFavrioutes] = React.useState([]);
   const [filter, setFilter] = React.useState({
     profile_type: "",
     services: "",
@@ -88,9 +93,25 @@ export default function ViewAllTherapist() {
     }
   };
 
+  const getFavrioutes = async () => {
+    try {
+      const res = await fetchById(GetFavriouteTherapistListUrl);
+      if (res.status) {
+        setFavrioutes(res.data.therapists || []);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   React.useEffect(() => {
     getData();
-  }, [filter]);
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role !== 1) {
+        getFavrioutes();
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -301,13 +322,14 @@ export default function ViewAllTherapist() {
               data.map((item) => {
                 return (
                   <div
+                    key={item._id}
                     className="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate"
                     style={{ wordWrap: "break-word" }}
                     data-sal-delay="150"
                     data-sal="slide-up"
                     data-sal-duration="800"
                   >
-                    <ProfileCardVert data={item} />
+                    <ProfileCardVert data={item} favrioutes={favrioutes} />
                   </div>
                 );
               })}

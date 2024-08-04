@@ -1,6 +1,20 @@
+import React from "react";
 import ProfileCheckoutCard from "./profile-checkout-card";
+import { getServiceFormats } from "../../utils/helpers";
 
 export default function TherapistCheckout({ profile }) {
+  const [services, setServices] = React.useState([]);
+  const [sessionFormats, setSessionFormats] = React.useState([]);
+  const [info, setInfo] = React.useState({
+    phone: "",
+    service: "",
+    format: "",
+    whom: "",
+    cname: "",
+    realtion_with_client: "",
+    gender: "",
+    dob: "",
+  });
   const styles = {
     iconStyle: {
       fontSize: 12,
@@ -14,7 +28,24 @@ export default function TherapistCheckout({ profile }) {
     selectStyle: { lineHeight: "20px", height: "50px" },
   };
 
-  console.log("profile", profile);
+  const handleService = (e) => {
+    setInfo("service", e.target.value);
+  };
+
+  const handleFormats = (e) => {
+    setInfo("format", e.target.value);
+  };
+
+  React.useEffect(() => {
+    console.log("useeffec", profile);
+    const services = getServiceFormats(profile);
+    setServices(services);
+    setSessionFormats(services[0]);
+    setInfo("service", services[0].service);
+  }, [profile]);
+
+  console.log("formats", sessionFormats);
+  console.log("services", services);
   return (
     <div className="checkout_area bg-color-white rbt-section-gap">
       <div className="container">
@@ -26,22 +57,40 @@ export default function TherapistCheckout({ profile }) {
                 <h4 className="checkout-title">Billing Address</h4>
                 <div className="row">
                   <div className="col-md-6 col-12 mb--10">
-                    <label>First Name*</label>
+                    <label htmlFor="name">First Name*</label>
                     <input
                       type="text"
                       placeholder="First Name"
                       value={profile.name}
+                      id="name"
                     />
                   </div>
 
                   <div className="col-md-6 col-12 mb--10">
-                    <label>Phone no*</label>
-                    <input type="text" placeholder="Phone number" />
+                    <label htmlFor="phone">Phone no*</label>
+                    <input type="text" placeholder="Phone number" id="phone" />
                   </div>
                   <div className="col-md-6 col-12 mb--20">
-                    <label htmlFor="gender">Gender</label>
+                    <label htmlFor="service">Service</label>
                     <select
-                      id="gender"
+                      id="service"
+                      style={styles.selectStyle}
+                      value={info.service}
+                      onChange={handleService}
+                    >
+                      {getServiceFormats(profile).map((item) => {
+                        return (
+                          <option value={item.service} key={item.service}>
+                            {item.service}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div className="col-md-6 col-12 mb--20">
+                    <label htmlFor="format">Session Formats</label>
+                    <select
+                      id="format"
                       style={styles.selectStyle}
                       // value={therapistInfo.gender}
                       // onChange={(e) => setInfo("gender", e.target.value)}
@@ -49,8 +98,12 @@ export default function TherapistCheckout({ profile }) {
                       <option value="" disabled selected>
                         Select
                       </option>
-                      {profile.services.split(",").map((service) => {
-                        return <option value={service}>{service}</option>;
+                      {sessionFormats.formats.map((format) => {
+                        return (
+                          <option value={format} key={format}>
+                            {format}
+                          </option>
+                        );
                       })}
                     </select>
                   </div>
@@ -71,8 +124,12 @@ export default function TherapistCheckout({ profile }) {
                   </div>
 
                   <div className="col-md-6 col-12 mb--10">
-                    <label>Client Name*</label>
-                    <input type="text" placeholder="Town/City" />
+                    <label htmlFor="client_name">Client Name*</label>
+                    <input
+                      type="text"
+                      placeholder="Client Name"
+                      id="client_name"
+                    />
                   </div>
                   <div className="col-md-6 col-12 mb--10">
                     <label htmlFor="gender">Relation With Client</label>
@@ -92,7 +149,7 @@ export default function TherapistCheckout({ profile }) {
                       <option value="Father">Father</option>
                     </select>
                   </div>
-                  <div className="col-md-6 col-12 mb--10">
+                  <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="gender">Gender</label>
                     <select
                       id="gender"
@@ -110,8 +167,8 @@ export default function TherapistCheckout({ profile }) {
                     </select>
                   </div>
                   <div className="col-md-6 col-12 mb--10">
-                    <label>Date of birth</label>
-                    <input type="date" />
+                    <label htmlFor="dob">Date of birth</label>
+                    <input type="date" id="dob" />
                   </div>
                 </div>
               </div>

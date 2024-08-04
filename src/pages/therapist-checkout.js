@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
-import { fetchById, fetchData } from "../utils/actions";
+import { fetchData } from "../utils/actions";
 import { getTherapistProfile } from "../utils/url";
 import ErrorPage from "./error-page";
 import PageProgressBar from "../components/global/page-progress";
@@ -14,12 +14,11 @@ export default function TherapistCheckoutPage() {
   const [profile, setProfile] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [favrioutes, setFavrioutes] = useState([]);
 
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfile + id);
-      console.log("resss", res);
+
       if (res.status && res.data.length > 0) {
         setProfile(res.data);
       } else {
@@ -33,14 +32,13 @@ export default function TherapistCheckoutPage() {
   };
 
   useEffect(() => {
-    console.log("inresss");
     getData();
   }, [id]);
 
   if (error) {
     return <ErrorPage />;
   }
-  console.log("profiii", profile);
+
   return loading ? (
     <PageProgressBar />
   ) : (

@@ -39,3 +39,51 @@ export const getMinMaxPrice = (obj) => {
 
   return `₹${minPrice} - ₹${maxPrice}`;
 };
+
+export const getServiceFormats = (obj) => {
+  let serviceOption = [];
+
+  if (obj.icv !== "" || obj.ica !== "" || obj.icip !== "") {
+    let formats = [];
+    if (obj.icv !== "") {
+      formats.push("Video Call");
+    }
+    if (obj.ica !== "") {
+      formats.push("Audio Call");
+    }
+    if (obj.icip !== "") {
+      formats.push("In Person-Call");
+    }
+    serviceOption.push({ service: "Individual Counselling", formats: formats });
+  }
+
+  if (obj.cca !== "" || obj.ccv !== "" || obj.ccip !== "") {
+    let formats = [];
+    if (obj.ccv !== "") {
+      formats.push("Video Call");
+    }
+    if (obj.cca !== "") {
+      formats.push("Audio Call");
+    }
+    if (obj.ccip !== "") {
+      formats.push("In Person-Call");
+    }
+    serviceOption.push({ service: "Couple Counselling", formats: formats });
+  }
+
+  if (obj.tca !== "" || obj.tcv !== "" || obj.tcip !== "") {
+    let formats = [];
+    if (obj.tcv !== "") {
+      formats.push("Video Call");
+    }
+    if (obj.tca !== "") {
+      formats.push("Audio Call");
+    }
+    if (obj.tcip !== "") {
+      formats.push("In Person-Call");
+    }
+    serviceOption.push({ service: "Teen Counselling", formats: formats });
+  }
+
+  return serviceOption;
+};
