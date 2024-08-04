@@ -47,7 +47,7 @@ export default function Workshops() {
       <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
         <div className="content">
           <div className="section-title">
-            <h4 className="rbt-title-style-3">Workshops/Events</h4>
+            <h4 className="rbt-title-style-3">Events/Wrokshops/Internships</h4>
           </div>
           <div class="rbt-callto-action rbt-cta-default style-2">
             <div class="content-wrapper overflow-hidden pt--30 pb--30 bg-color-primary-opacity">
@@ -55,15 +55,15 @@ export default function Workshops() {
                 <div class="col-lg-8">
                   <div class="inner">
                     <div class="content text-left">
-                      <h5 class="mb--5">Notify your all students.</h5>
-                      <p class="b3">Create Workshop</p>
+                      <h5 class="mb--5">Notify your all clients/students.</h5>
+                      <p class="b3">Create Events/Wrokshops/Internships</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="call-to-btn text-start text-lg-end position-relative">
                     <Link class="rbt-btn btn-sm" to="/create-workshop">
-                      <span data-text="Create Workshop">Create Workshop</span>
+                      <span data-text="Create Workshop">Create Event</span>
                     </Link>
                   </div>
                 </div>
