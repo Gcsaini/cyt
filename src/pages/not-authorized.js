@@ -9,13 +9,13 @@ export default function NotAuthorizedPage() {
             <div className="col-10">
               <h1 className="title">401!</h1>
               <h3 className="sub-title">Not Authorized</h3>
-              <p>You are not authorized to open this page.</p>
+              <p>Please login First.</p>
               <Link
                 className="rbt-btn btn-gradient icon-hover"
-                to="/"
+                to="/login"
                 style={{ cursor: "pointer" }}
               >
-                <span className="btn-text">Back To Home</span>
+                <span className="btn-text">Login Now</span>
                 <span className="btn-icon">
                   <i className="feather-arrow-right"></i>
                 </span>

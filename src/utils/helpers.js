@@ -46,43 +46,54 @@ export const getServiceFormats = (obj) => {
   if (obj.icv !== "" || obj.ica !== "" || obj.icip !== "") {
     let formats = [];
     if (obj.icv !== "") {
-      formats.push("Video Call");
+      formats.push({ format: "Video Call", price: parseInt(obj.icv) });
     }
     if (obj.ica !== "") {
-      formats.push("Audio Call");
+      formats.push({ format: "Audio Call", price: parseInt(obj.ica) });
     }
     if (obj.icip !== "") {
-      formats.push("In Person-Call");
+      formats.push({ format: "In Person-Call", price: parseInt(obj.icip) });
     }
-    serviceOption.push({ service: "Individual Counselling", formats: formats });
+    serviceOption.push({
+      service: "Individual Counselling",
+      formats: formats,
+    });
   }
 
   if (obj.cca !== "" || obj.ccv !== "" || obj.ccip !== "") {
     let formats = [];
+    let prices = [];
     if (obj.ccv !== "") {
-      formats.push("Video Call");
+      formats.push({ format: "Video Call", price: parseInt(obj.ccv) });
     }
     if (obj.cca !== "") {
-      formats.push("Audio Call");
+      formats.push({ format: "Audio Call", price: parseInt(obj.cca) });
     }
     if (obj.ccip !== "") {
-      formats.push("In Person-Call");
+      formats.push({ format: "In Person-Call", price: parseInt(obj.ccip) });
     }
-    serviceOption.push({ service: "Couple Counselling", formats: formats });
+    serviceOption.push({
+      service: "Couple Counselling",
+      formats: formats,
+    });
   }
 
   if (obj.tca !== "" || obj.tcv !== "" || obj.tcip !== "") {
     let formats = [];
+    let prices = [];
     if (obj.tcv !== "") {
-      formats.push("Video Call");
+      formats.push({ format: "Video Call", price: parseInt(obj.tcv) });
     }
     if (obj.tca !== "") {
-      formats.push("Audio Call");
+      formats.push({ format: "Audio Call", price: parseInt(obj.tca) });
     }
     if (obj.tcip !== "") {
-      formats.push("In Person-Call");
+      formats.push({ format: "In Person-Call", price: parseInt(obj.tcip) });
     }
-    serviceOption.push({ service: "Teen Counselling", formats: formats });
+    serviceOption.push({
+      service: "Teen Counselling",
+      formats: formats,
+    });
   }
 
   return serviceOption;
