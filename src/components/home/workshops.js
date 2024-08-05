@@ -207,12 +207,13 @@ export default function HomeWorkshop({ isWhite = false }) {
               <div className="load-more-btn mt--60 text-center">
                 <Link
                   className="rbt-btn btn-gradient btn-sm hover-icon-reverse"
-                  to=""
+                  to={"/all-workshop"} 
+                     
                 >
                   <span className="icon-reverse-wrapper">
-                    <Link to={"/all-workshop"} className="btn-text">
+                  <span className="btn-text">
                       Find All Workshop
-                    </Link>
+                      </span>
                     <span className="btn-icon">
                       <i className="feather-arrow-right"></i>
                     </span>
