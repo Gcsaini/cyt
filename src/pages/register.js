@@ -144,9 +144,13 @@ export default function Register() {
                         Discover Mental Health Experts
                       </span>
                     </div>
-                    <h1 className="title">Here, Your Connect with Professional.</h1>
+                    <h1 className="title">
+                      Here, Your Connect with Professional.
+                    </h1>
                     <p className="description">
-                      ChooseYourTherapist is a platform where we connect professionals to you for holistic well-being.  
+                      ChooseYourTherapist is a platform where we connect
+                      professionals to you for holistic well-being.{" "}
+                    </p>
                     <div className="rating mb--20">
                       <Link to="#">
                         <i className="fa fa-star"></i>
