@@ -141,14 +141,12 @@ export default function Register() {
                   <div className="inner">
                     <div className="section-title text-start">
                       <span className="subtitle bg-pink-opacity">
-                        THE BEST THEME FOR
+                        Discover Mental Health Experts
                       </span>
                     </div>
-                    <h1 className="title">Online Learning</h1>
+                    <h1 className="title">Here, Your Connect with Professional.</h1>
                     <p className="description">
-                      We are experienced in educationl platform and skilled
-                      strategies for the success of our online learning.
-                    </p>
+                      ChooseYourTherapist is a platform where we connect professionals to you for holistic well-being.  
                     <div className="rating mb--20">
                       <Link to="#">
                         <i className="fa fa-star"></i>
@@ -209,10 +207,10 @@ export default function Register() {
                         </Link>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                            Join Over 3000+ Students
+                            Connected 13k+ Clients with us
                           </h5>
                           <p className="subtitle">
-                            Have a new ideas every week.
+                            Take a first step for yourself here.
                           </p>
                         </div>
                       </div>
@@ -261,7 +259,7 @@ export default function Register() {
                   </div>
                 ) : (
                   <div className="rbt-contact-form contact-form-style-1">
-                    <h3 className="title">Register</h3>
+                    <h3 className="title">Register as User</h3>
                     <FormMessage error={error} success={success} />
                     <div id="contact-form">
                       <div className="form-group">
@@ -337,7 +335,7 @@ export default function Register() {
                           className="rbt-btn-link"
                           to="/therapist-registration"
                         >
-                          Are you an therapist?
+                          Are you a therapist?
                         </Link>
                       </div>
                     </div>
