@@ -4,6 +4,7 @@ import { getServiceFormats } from "../../utils/helpers";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
+import { generateHourlyIntervals } from "../../utils/time";
 export default function TherapistCheckout({ profile }) {
   const styles = {
     iconStyle: {
@@ -14,6 +15,14 @@ export default function TherapistCheckout({ profile }) {
     listStyle: {
       lineHeight: "18px",
       marginBottom: 0,
+    },
+    selectedIconStyle: {
+      fontSize: 12,
+      width: 20,
+      height: 20,
+      backgroundColor: "#fff",
+      color: "#2d54e6",
+      boxShadow: "0 0 10px rgba(0,0,0,.1)",
     },
     selectStyle: { lineHeight: "20px", height: "50px" },
   };
@@ -34,6 +43,9 @@ export default function TherapistCheckout({ profile }) {
     realtion_with_client: "",
     gender: "",
     dob: "",
+    date: "",
+    open_time: "",
+    close_time: "",
     price: 0,
   });
 
@@ -104,7 +116,12 @@ export default function TherapistCheckout({ profile }) {
   const handleDate = (date) => {
     setSelectedDate(date);
     const times = filterTimesForSelectedDate(date);
+    setAvailableTimes([]);
     setAvailableTimes(times);
+  };
+
+  const handleTimeSelect = (open, close) => {
+    setInfo((prev) => ({ ...prev, open_time: open, close_time: close }));
   };
 
   const generateDisabledDates = (availability) => {
@@ -194,6 +211,7 @@ export default function TherapistCheckout({ profile }) {
     }
   }, [profile]);
 
+  console.log("proffilee", info);
   return (
     <div className="checkout_area bg-color-white rbt-section-gap">
       <div className="container">
@@ -257,7 +275,7 @@ export default function TherapistCheckout({ profile }) {
                         handleChange(e.target.name, e.target.value)
                       }
                     >
-                      <option value="" disabled selected>
+                      <option value="" disabled>
                         Select
                       </option>
                       {sessionFormats.map((item) => {
@@ -378,26 +396,49 @@ export default function TherapistCheckout({ profile }) {
 
                 <div className="single-list" style={{ marginTop: 15 }}>
                   <h5 className="price-title" style={{ fontSize: "16px" }}>
-                    {"Monday"}
+                    {selectedDate &&
+                      selectedDate.toLocaleString("en-US", {
+                        weekday: "long",
+                      })}
                   </h5>
-                  <ul
-                    className="plan-offer-list"
+
+                  <div
+                    className="row plan-offer-list"
                     style={{ borderBottom: "none", marginTop: "-10px" }}
                   >
                     {availableTimes &&
                       availableTimes.length > 0 &&
                       availableTimes.map((time) => {
-                        return (
-                          <li style={styles.listStyle} key={time._id}>
-                            <i
-                              className="feather-check"
-                              style={styles.iconStyle}
-                            ></i>
-                            {time.open}-{time.close}
-                          </li>
-                        );
+                        return generateHourlyIntervals(
+                          time.open,
+                          time.close
+                        ).map((item, index) => {
+                          return (
+                            <div
+                              className="col-lg-6"
+                              key={index}
+                              style={{ cursor: "pointer" }}
+                              onClick={() =>
+                                handleTimeSelect(item.open, item.close)
+                              }
+                            >
+                              <li style={styles.listStyle}>
+                                <i
+                                  className="feather-check"
+                                  style={
+                                    info.open_time === item.open &&
+                                    info.close_time === item.close
+                                      ? styles.selectedIconStyle
+                                      : styles.iconStyle
+                                  }
+                                ></i>
+                                {item.open}-{item.close}
+                              </li>
+                            </div>
+                          );
+                        });
                       })}
-                  </ul>
+                  </div>
                 </div>
               </div>
             </div>
