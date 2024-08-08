@@ -1,7 +1,7 @@
 let apiUrl;
 const currentDomain = window.location.hostname;
 
-if (currentDomain === "localhost") {
+if (currentDomain !== "localhost") {
   apiUrl = "http://localhost:4000/api";
 } else {
   apiUrl = "https://cytapi.ap-south-1.elasticbeanstalk.com/api";

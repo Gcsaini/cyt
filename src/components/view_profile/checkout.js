@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import ProfileCheckoutCard from "./profile-checkout-card";
 import { getServiceFormats } from "../../utils/helpers";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./checkout-styles.css";
 export default function TherapistCheckout({ profile }) {
   const styles = {
     iconStyle: {
@@ -19,6 +21,9 @@ export default function TherapistCheckout({ profile }) {
   const [success, setSuccess] = React.useState("");
   const [services, setServices] = React.useState([]);
   const [sessionFormats, setSessionFormats] = React.useState([]);
+  const [disabledDates, setDisabledDates] = React.useState([]);
+  const [selectedDate, setSelectedDate] = React.useState();
+  const [availableTimes, setAvailableTimes] = React.useState([]);
   const [other, setOther] = React.useState(false);
   const [info, setInfo] = React.useState({
     phone: "",
@@ -79,21 +84,87 @@ export default function TherapistCheckout({ profile }) {
   };
 
   const handleSubmit = () => {
-    if (info.phone.length != 10) {
+    if (info.phone.length !== 10) {
       setError("Please enter phone number");
       return;
-    } else if (info.service == "") {
+    } else if (info.service === "") {
       setError("Please select service.");
       return;
-    } else if (info.whom == "") {
+    } else if (info.whom === "") {
       setError("Please select for whom you want to take service.");
       return;
-    } else if (info.format == "") {
+    } else if (info.format === "") {
       setError("Please select format.");
       return;
-    } else if (info.gender == "") {
+    } else if (info.gender === "") {
     } else if (info.dob) {
     }
+  };
+
+  const handleDate = (date) => {
+    setSelectedDate(date);
+    const times = filterTimesForSelectedDate(date);
+    setAvailableTimes(times);
+  };
+
+  const generateDisabledDates = (availability) => {
+    const today = new Date();
+    const disabled = [];
+
+    disabled.push(today);
+
+    const availableDays = availability.map((avail) => avail.day);
+    const allDays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+
+    allDays.forEach((day) => {
+      if (!availableDays.includes(day)) {
+        for (let i = 0; i < 365; i++) {
+          const date = new Date();
+          date.setDate(today.getDate() + i);
+          if (date.toLocaleString("en-US", { weekday: "long" }) === day) {
+            disabled.push(date);
+          }
+        }
+      }
+    });
+
+    setDisabledDates(disabled);
+    return disabled;
+  };
+
+  const findFirstAvailableDate = (disabled) => {
+    const today = new Date();
+    for (let i = 0; i < 365; i++) {
+      const date = new Date();
+      date.setDate(today.getDate() + i);
+      if (!isDateDisabled(date, disabled)) {
+        return date;
+      }
+    }
+    return null;
+  };
+
+  const isDateDisabled = (date, disabledDates) => {
+    return disabledDates.some(
+      (disabledDate) =>
+        disabledDate.getFullYear() === date.getFullYear() &&
+        disabledDate.getMonth() === date.getMonth() &&
+        disabledDate.getDate() === date.getDate()
+    );
+  };
+
+  const filterTimesForSelectedDate = (date) => {
+    const day = date.toLocaleString("en-US", { weekday: "long" });
+    const scheduleForDay = profile.schedule.find((avail) => avail.day === day);
+    return scheduleForDay ? scheduleForDay.times : [];
   };
 
   useEffect(() => {
@@ -101,10 +172,24 @@ export default function TherapistCheckout({ profile }) {
       const servicesres = getServiceFormats(profile);
       setServices(servicesres);
       if (servicesres.length > 0) {
-        handleChange("service", servicesres[0].service);
+        setInfo((prevInfo) => ({
+          ...prevInfo,
+          format: servicesres[0].formats[0].format,
+          service: servicesres[0].service,
+          price: servicesres[0].formats[0].price,
+        }));
         setSessionFormats(servicesres[0].formats);
-        handleChange("format", servicesres[0].formats[0].format);
-        handleChange("price", servicesres[0].formats[0].price);
+        // handleChange("format",);
+        // handleChange("price", );
+      }
+    }
+    if (profile.schedule.length > 0) {
+      const disabled = generateDisabledDates(profile.schedule);
+      const defaultDate = findFirstAvailableDate(disabled);
+      setSelectedDate(defaultDate);
+      if (defaultDate) {
+        const times = filterTimesForSelectedDate(defaultDate);
+        setAvailableTimes(times);
       }
     }
   }, [profile]);
@@ -283,36 +368,37 @@ export default function TherapistCheckout({ profile }) {
             <div className="col-12 mb--20">
               <div className="checkout-cart-total">
                 <h4 style={{ fontSize: 24 }}>Availabilities</h4>
-                {profile.schedule.map((item) => {
-                  return (
-                    <div
-                      className="single-list"
-                      key={item._id}
-                      style={{ marginTop: 15 }}
-                    >
-                      <h5 className="price-title" style={{ fontSize: "16px" }}>
-                        {item.day}
-                      </h5>
-                      <ul
-                        className="plan-offer-list"
-                        style={{ borderBottom: "none", marginTop: "-10px" }}
-                      >
-                        {item.times.length > 0 &&
-                          item.times.map((time) => {
-                            return (
-                              <li style={styles.listStyle} key={time._id}>
-                                <i
-                                  className="feather-check"
-                                  style={styles.iconStyle}
-                                ></i>
-                                {time.open}-{time.close}
-                              </li>
-                            );
-                          })}
-                      </ul>
-                    </div>
-                  );
-                })}
+                <DatePicker
+                  selected={selectedDate}
+                  minDate={new Date()}
+                  onChange={handleDate}
+                  excludeDates={disabledDates}
+                  className="custom-datepicker"
+                />
+
+                <div className="single-list" style={{ marginTop: 15 }}>
+                  <h5 className="price-title" style={{ fontSize: "16px" }}>
+                    {"Monday"}
+                  </h5>
+                  <ul
+                    className="plan-offer-list"
+                    style={{ borderBottom: "none", marginTop: "-10px" }}
+                  >
+                    {availableTimes &&
+                      availableTimes.length > 0 &&
+                      availableTimes.map((time) => {
+                        return (
+                          <li style={styles.listStyle} key={time._id}>
+                            <i
+                              className="feather-check"
+                              style={styles.iconStyle}
+                            ></i>
+                            {time.open}-{time.close}
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </div>
               </div>
             </div>
             <div className="col-12 mb--30">

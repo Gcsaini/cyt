@@ -1,5 +1,5 @@
 import { stateList } from "../../utils/static-lists";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { updateUserUrl } from "../../utils/url";
 import ImageTag from "../../utils/image-tag";
 import { postFormData } from "../../utils/actions";
@@ -45,7 +45,7 @@ export default function MyProfile(props) {
       formData.append("anumber", anumber);
       formData.append("state", state);
       formData.append("gender", gender);
-      formData.append("age", getAge(dob));
+      formData.append("age", dob !== "" ? getAge(dob) : "");
 
       try {
         setLoading(true);
@@ -53,7 +53,9 @@ export default function MyProfile(props) {
         if (response.status) {
           setSuccess(response.message);
           setError("");
-          setInfo("profile", previewImage);
+          if (previewImage !== null) {
+            setInfo("profile", previewImage);
+          }
           setInfo("name", name);
         } else {
           setError("Something went wrong");

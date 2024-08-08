@@ -157,7 +157,7 @@ export default function HomeWorkshop({ isWhite = false }) {
         {!isMobile && (
           <div className="row g-4" style={{ marginTop: 20 }}>
             {data &&
-              data.slice(0, 7).map((item) => {
+              data.slice(0, 8).map((item) => {
                 return (
                   <div className="col-lg-3 col-md-6 col-12" key={item._id}>
                     <WellNessCard data={item} />
@@ -188,7 +188,7 @@ export default function HomeWorkshop({ isWhite = false }) {
                     className="mySwiper"
                   >
                     {data &&
-                      data.slice(0, 7).map((item) => {
+                      data.slice(0, 8).map((item) => {
                         return (
                           <SwiperSlide key={item._id}>
                             <WellNessCard data={item} />
@@ -207,13 +207,10 @@ export default function HomeWorkshop({ isWhite = false }) {
               <div className="load-more-btn mt--60 text-center">
                 <Link
                   className="rbt-btn btn-gradient btn-sm hover-icon-reverse"
-                  to={"/all-workshop"} 
-                     
+                  to={"/all-workshop"}
                 >
                   <span className="icon-reverse-wrapper">
-                  <span className="btn-text">
-                      Find All Workshop
-                      </span>
+                    <span className="btn-text">Find All Workshop</span>
                     <span className="btn-icon">
                       <i className="feather-arrow-right"></i>
                     </span>
