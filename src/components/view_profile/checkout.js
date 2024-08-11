@@ -5,6 +5,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import { generateHourlyIntervals } from "../../utils/time";
+import FormMessage from "../global/form-message";
+import { postData } from "../../utils/actions";
+import { BookTherapistUrl } from "../../utils/url";
+import { useNavigate } from "react-router-dom";
+import FormProgressBar from "../global/form-progressbar";
 export default function TherapistCheckout({ profile }) {
   const styles = {
     iconStyle: {
@@ -26,12 +31,14 @@ export default function TherapistCheckout({ profile }) {
     },
     selectStyle: { lineHeight: "20px", height: "50px" },
   };
+  const navigate = useNavigate();
   const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState("");
   const [services, setServices] = React.useState([]);
   const [sessionFormats, setSessionFormats] = React.useState([]);
   const [disabledDates, setDisabledDates] = React.useState([]);
-  const [selectedDate, setSelectedDate] = React.useState();
+  const [selectedDate, setSelectedDate] = React.useState("");
   const [availableTimes, setAvailableTimes] = React.useState([]);
   const [other, setOther] = React.useState(false);
   const [info, setInfo] = React.useState({
@@ -46,7 +53,8 @@ export default function TherapistCheckout({ profile }) {
     date: "",
     open_time: "",
     close_time: "",
-    price: 0,
+    amount: 0,
+    therapist: profile._id,
   });
 
   const handleChange = (name, value) => {
@@ -60,7 +68,7 @@ export default function TherapistCheckout({ profile }) {
           ...prevInfo,
           service: value,
           format: selectedService.formats[0].format,
-          price: selectedService.formats[0].price,
+          amount: selectedService.formats[0].price,
         }));
       }
     } else if (name === "format") {
@@ -72,7 +80,7 @@ export default function TherapistCheckout({ profile }) {
           const updatedInfo = {
             ...prevInfo,
             format: selectedFormat.format,
-            price: selectedFormat.price,
+            amount: selectedFormat.price,
           };
           return updatedInfo;
         });
@@ -86,6 +94,21 @@ export default function TherapistCheckout({ profile }) {
         setOther(true);
       } else {
         setOther(false);
+        setInfo((prevInfo) => ({
+          ...prevInfo,
+          ["cname"]: "",
+          ["realtion_with_client"]: "",
+          ["gender"]: "",
+          ["dob"]: "",
+        }));
+      }
+    } else if (name === "phone") {
+      const formattedValue = value.replace(/\D/g, "");
+      if (formattedValue.length <= 10) {
+        setInfo((prevInfo) => ({
+          ...prevInfo,
+          [name]: formattedValue,
+        }));
       }
     } else {
       setInfo((prevInfo) => ({
@@ -95,7 +118,8 @@ export default function TherapistCheckout({ profile }) {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setSuccess("");
     if (info.phone.length !== 10) {
       setError("Please enter phone number");
       return;
@@ -108,13 +132,51 @@ export default function TherapistCheckout({ profile }) {
     } else if (info.format === "") {
       setError("Please select format.");
       return;
-    } else if (info.gender === "") {
-    } else if (info.dob) {
+    } else if (info.whom == "For Other" && info.cname.length < 4) {
+      setError("Please enter valid clinet name.");
+      return;
+    } else if (info.whom == "For Other" && info.realtion_with_client === "") {
+      setError("Please select relation with client.");
+      return;
+    } else if (info.whom == "For Other" && info.gender === "") {
+      setError("Please select gender.");
+      return;
+    } else if (info.whom == "For Other" && info.dob === "") {
+      setError("Please enter date of birht of client.");
+      return;
+    } else if (info.open_time === "" && info.close_time === "") {
+      setError("Please select the time you want to start.");
+      return;
+    } else {
+      setError("");
+      setLoading(true);
+      try {
+        setLoading(true);
+        const response = await postData(BookTherapistUrl, info);
+        if (response.status) {
+          setSuccess(response.message);
+          if (response.data.id !== "") {
+            navigate(`/payment-pending/${response.data.id}`);
+            setLoading(false);
+          }
+        } else {
+          setError("Something went wrong");
+          setLoading(false);
+        }
+      } catch (error) {
+        console.log(error);
+        setError(error?.response?.data?.message);
+        setLoading(false);
+      }
     }
   };
 
   const handleDate = (date) => {
     setSelectedDate(date);
+    setInfo((prevInfo) => ({
+      ...prevInfo,
+      ["date"]: date,
+    }));
     const times = filterTimesForSelectedDate(date);
     setAvailableTimes([]);
     setAvailableTimes(times);
@@ -193,17 +255,19 @@ export default function TherapistCheckout({ profile }) {
           ...prevInfo,
           format: servicesres[0].formats[0].format,
           service: servicesres[0].service,
-          price: servicesres[0].formats[0].price,
+          amount: servicesres[0].formats[0].price,
         }));
         setSessionFormats(servicesres[0].formats);
-        // handleChange("format",);
-        // handleChange("price", );
       }
     }
     if (profile.schedule.length > 0) {
       const disabled = generateDisabledDates(profile.schedule);
       const defaultDate = findFirstAvailableDate(disabled);
       setSelectedDate(defaultDate);
+      setInfo((prevInfo) => ({
+        ...prevInfo,
+        ["date"]: defaultDate,
+      }));
       if (defaultDate) {
         const times = filterTimesForSelectedDate(defaultDate);
         setAvailableTimes(times);
@@ -221,7 +285,8 @@ export default function TherapistCheckout({ profile }) {
             <div className="checkout-content-wrapper mt--20">
               <div id="billing-form">
                 <h4 className="checkout-title">Billing Address</h4>
-                <div className="row">
+                <FormMessage success={success} error={error} />
+                <div className="row mt--15">
                   <div className="col-md-6 col-12 mb--10">
                     <label htmlFor="name">First Name*</label>
                     <input
@@ -239,6 +304,7 @@ export default function TherapistCheckout({ profile }) {
                       placeholder="Phone number"
                       id="phone"
                       name="phone"
+                      value={info.phone || ""}
                       onChange={(e) =>
                         handleChange(e.target.name, e.target.value)
                       }
@@ -370,6 +436,7 @@ export default function TherapistCheckout({ profile }) {
                           type="date"
                           id="dob"
                           name="dob"
+                          max="2024-08-10"
                           value={info.dob}
                           onChange={(e) =>
                             handleChange(e.target.name, e.target.value)
@@ -450,33 +517,40 @@ export default function TherapistCheckout({ profile }) {
                 <ul>
                   <li>
                     {info.service}&nbsp;({info.format})
-                    <span>₹{info.price}</span>
+                    <span>₹{info.amount}</span>
                   </li>
                 </ul>
                 <p>
                   Shipping Fee <span>0</span>
                 </p>
                 <p>
-                  Sub Total<span>₹{info.price}</span>
+                  Sub Total<span>₹{info.amount}</span>
                 </p>
 
                 <h4 className="mt--30">
-                  Grand Total <span>₹{info.price}</span>
+                  Grand Total <span>₹{info.amount}</span>
                 </h4>
               </div>
             </div>
             <div className="plceholder-button mt--10">
-              <button className="rbt-btn btn-gradient hover-icon-reverse">
-                <span className="icon-reverse-wrapper">
-                  <span className="btn-text">Place order</span>
-                  <span className="btn-icon">
-                    <i className="feather-arrow-right"></i>
+              {loading ? (
+                <FormProgressBar />
+              ) : (
+                <button
+                  className="rbt-btn btn-gradient hover-icon-reverse"
+                  onClick={handleSubmit}
+                >
+                  <span className="icon-reverse-wrapper">
+                    <span className="btn-text">Place order</span>
+                    <span className="btn-icon">
+                      <i className="feather-arrow-right"></i>
+                    </span>
+                    <span className="btn-icon">
+                      <i className="feather-arrow-right"></i>
+                    </span>
                   </span>
-                  <span className="btn-icon">
-                    <i className="feather-arrow-right"></i>
-                  </span>
-                </span>
-              </button>
+                </button>
+              )}
             </div>
           </div>
         </div>

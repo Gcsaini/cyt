@@ -39875,10 +39875,9 @@ blockquote.has-text-align-right cite {
 }
 .checkout-title {
   font-size: 20px;
-  line-height: 23px;
+  line-height: 5px;
   text-transform: capitalize;
   font-weight: 700;
-  margin-bottom: 30px;
 }
 .checkout-content-wrapper {
   background: var(--color-white);

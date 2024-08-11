@@ -153,6 +153,15 @@ function App() {
                 }
               />
 
+              <Route
+                path="/payment-pending/:id"
+                element={
+                  <ProtectedRoute>
+                    <Success />
+                  </ProtectedRoute>
+                }
+              />
+
               {/* therapist related routes */}
               <Route
                 exact
