@@ -4,7 +4,7 @@ const currentDomain = window.location.hostname;
 if (currentDomain === "localhost") {
   apiUrl = "http://localhost:4000/api";
 } else {
-  apiUrl = "https://api.pherico.com/api";
+  apiUrl = "https://pherico.live/api";
 }
 
 export const defaultProfile =
