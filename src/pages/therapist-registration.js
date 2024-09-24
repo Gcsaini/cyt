@@ -63,7 +63,7 @@ export default function TherapistRegistration() {
       setError("");
       setLoading(true);
       const formData = new FormData();
-      formData.append("resume", selectedFile);
+      formData.append("file", selectedFile);
       formData.append("name", name);
       formData.append("phone", phone);
       formData.append("email", email);
@@ -369,9 +369,7 @@ export default function TherapistRegistration() {
                         value=" Workshops/Events conducting"
                         onChange={handleCheckboxChange}
                       />
-                      <label htmlFor="rbt-checkbox-4">
-                        Workshops/Events
-                      </label>
+                      <label htmlFor="rbt-checkbox-4">Workshops/Events</label>
                     </p>
                     <p className="rbt-checkbox-wrapper mb--5">
                       <input
