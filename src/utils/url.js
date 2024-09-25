@@ -4,7 +4,7 @@ const currentDomain = window.location.hostname;
 if (currentDomain === "localhost") {
   apiUrl = "http://localhost:4000/api";
 } else {
-  apiUrl = "https://pherico.live/api";
+  apiUrl = "https://cyt-backend.onrender.com";
 }
 
 export const defaultProfile =
