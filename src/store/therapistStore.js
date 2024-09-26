@@ -41,6 +41,8 @@ const useTherapistStore = create((set) => ({
     bio: "",
     createdAt: "",
     updatedAt: "",
+    fileKey: "",
+    profileKey: "",
     othEducation: false,
   },
   feeDetails: {
@@ -93,6 +95,7 @@ const useTherapistStore = create((set) => ({
   fetchTherapistInfo: async () => {
     try {
       const response = await fetchById(getTherapist);
+      console.log("resss", response);
       if (response.status) {
         const fetchedData = response.data;
 

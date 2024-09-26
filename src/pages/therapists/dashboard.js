@@ -11,7 +11,6 @@ export default function TherapistDashboard() {
   const [loading, setLoading] = React.useState(true);
 
   const getDashboardData = async () => {
-    console.log("hereee");
     try {
       const res = await fetchById(GetDashboardDataUrl);
       if (res.status) {

@@ -200,15 +200,15 @@ export default function Profile() {
           <div className="rbt-tutor-information-left">
             <div className="thumbnail rbt-avatars size-lg position-relative">
               <ImageTag
-                alt={therapistInfo.name}
-                style={{ height: 120, width: 120, borderRadius: "50%" }}
-                src={
-                  previewImage != null
-                    ? previewImage
-                    : therapistInfo.profile != null
-                    ? therapistInfo.profile
-                    : defaultProfile
-                }
+                alt={therapistInfo.name || "Default Name"}
+                style={{
+                  height: 120,
+                  width: 120,
+                  borderRadius: "50%",
+                  objectFit: "cover", // Ensures the image scales properly
+                  backgroundColor: "#ccc",
+                }}
+                src={previewImage ?? therapistInfo.profile ?? defaultProfile}
               />
               <div className="rbt-edit-photo-inner">
                 <button
