@@ -41,6 +41,8 @@ import WrokshopDetailPage from "./pages/workshop-detail-page";
 import Forgotpassword from "./pages/forgot-password";
 import FavriouteTherapistPage from "./pages/client/favrioute-therapits";
 import TherapistCheckoutPage from "./pages/therapist-checkout";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsCondition from "./pages/TermsCondition";
 const theme = createTheme();
 
 function App() {
@@ -104,6 +106,8 @@ function App() {
                 path="/workshop-detail/:id"
                 element={<WrokshopDetailPage />}
               />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-conditions" element={<TermsCondition />} />
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
               {/* client routes */}
