@@ -15,7 +15,7 @@ export default function TermsCondition() {
     <>
       <MyNavbar />
       <div style={styles.container}>
-        <h1>Terms and Conditions</h1>
+        <h1>Terms and Conditions for Using Choose Your Therapist</h1>
         <p>
           <strong>Last updated:</strong> 01-10-2024
         </p>
