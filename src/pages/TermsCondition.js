@@ -171,14 +171,6 @@ export default function TermsCondition() {
           liability to you.
         </p>
 
-        <h3>Governing Law</h3>
-        <p>
-          These Terms and Conditions are governed by and construed in accordance
-          with the laws of [Insert Jurisdiction]. Any disputes arising out of or
-          related to these terms will be resolved under the jurisdiction of the
-          courts in [Insert Jurisdiction].
-        </p>
-
         <h3>Contact Information</h3>
         <p>
           If you have any questions regarding these Terms and Conditions, please
