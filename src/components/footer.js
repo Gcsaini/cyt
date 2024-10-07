@@ -158,10 +158,13 @@ export default function Footer() {
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
               <ul className="copyright-link rbt-link-hover justify-content-center justify-content-lg-end mt_sm--10 mt_md--10">
                 <li>
-                  <a href="/terms-conditions">Terms of service</a>
+                  <a href="/terms-conditions">Terms of Service</a>
                 </li>
                 <li>
-                  <a href="/privacy-policy">Privacy policy</a>
+                  <a href="/cancellation-policy">Cancellation Policy</a>
+                </li>
+                <li>
+                  <a href="/privacy-policy">Privacy Policy</a>
                 </li>
               </ul>
             </div>
