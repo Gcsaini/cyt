@@ -43,6 +43,7 @@ import FavriouteTherapistPage from "./pages/client/favrioute-therapits";
 import TherapistCheckoutPage from "./pages/therapist-checkout";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsCondition from "./pages/TermsCondition";
+import CancellationPolicy from "./pages/cancel-policy";
 const theme = createTheme();
 
 function App() {
@@ -108,6 +109,10 @@ function App() {
               />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-conditions" element={<TermsCondition />} />
+              <Route
+                path="/cancellation-policy"
+                element={<CancellationPolicy />}
+              />
               <Route path="/notfound" element={<NotFoundPage />} />
               <Route path="*" element={<NotFoundPage />} />
               {/* client routes */}
