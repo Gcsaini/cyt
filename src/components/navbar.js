@@ -288,27 +288,7 @@ export default function App() {
                         Home
                       </Link>
                     </li>
-                    <li className="has-dropdown has-menu-child-item">
-                      <Link className="" to="#">
-                        About<i className="feather-chevron-down"></i>
-                      </Link>
-                      <ul className="submenu">
-                        <li className="has-dropdown">
-                          <Link to={"/about-us"} style={{ cursor: "pointer" }}>
-                            About us
-                          </Link>
-                        </li>
-
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/contact-us"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Contact us
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
+                   
                     {/* <li className="with-megamenu has-menu-child-item">
                       <Link className="" to="index.html#">
                         Services<i className="feather-chevron-down"></i>
@@ -438,17 +418,111 @@ export default function App() {
                           </div>
                         </div>
                       </div>
-                    </li> */}
+                    </li> 
                     <li className="position-static">
                       <Link
                         className="service-menu-parent"
                         to="/plans"
                         style={{ cursor: "pointer" }}
                       >
-                        Plans
+                        Service Plans
                       </Link>
-                    </li>
+                    </li>*/}
+                    <li className="has-dropdown has-menu-child-item">
+                      <Link className="" to="#">
+                        Therapist Directory<i className="feather-chevron-down"></i>
+                      </Link>
+                      <ul className="submenu">
+                        <li className="has-dropdown">
+                          <Link to={"/Counselling Psychologist"} style={{ cursor: "pointer" }}>
+                            Counselling Psychologist
+                          </Link>
+                        </li>
 
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Clinical Psychologist"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Clinical Psychologist
+                          </Link>
+                        </li>
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Psychiatrist"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Psychiatrist
+                          </Link>
+                        </li>
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Special Educator"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Special Educator
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="has-dropdown has-menu-child-item">
+                      <Link className="" to="#">
+                        Workshops for Wellness<i className="feather-chevron-down"></i>
+                      </Link>
+                      <ul className="submenu">
+                        <li className="has-dropdown">
+                          <Link to={"/Support Groups"} style={{ cursor: "pointer" }}>
+                            Support Groups
+                          </Link>
+                        </li>
+
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Student Orientations"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Student Orientations
+                          </Link>
+                        </li>
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Workplace Training"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Workplace Training
+                          </Link>
+                        </li>
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Therapeutic Activities"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Therapeutic Activities
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="has-dropdown has-menu-child-item">
+                      <Link className="" to="#">
+                        About<i className="feather-chevron-down"></i>
+                      </Link>
+                      <ul className="submenu">
+                        <li className="has-dropdown">
+                          <Link to={"/about-us"} style={{ cursor: "pointer" }}>
+                            About us
+                          </Link>
+                        </li>
+
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/contact-us"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Contact us
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
                     {/* <li className="position-static">
                       <button
                         className="service-menu-parent"
@@ -521,7 +595,7 @@ export default function App() {
                       )
                     ) : (
                       <Link to="/login" className="service-menu-parent">
-                        <i className="feather-user"></i>&nbsp;Login
+                        <i className="feather-user"></i>&nbsp;Login/Create Account
                       </Link>
                     )}
                   </li>
