@@ -136,13 +136,13 @@ export default function ViewAllTherapist() {
                     </li>
                   </ul>
                   <div className=" title-wrapper">
-                    <h1 className="title mb--0"> All Therapist</h1>
+                    <h1 className="title mb--0"> Search Therapist</h1>
                     <a className="rbt-badge-2" href="/course-card-3#">
-                      <div className="image">🎉</div> {count} Therapists
+                      <div className="image">🎉</div> {count} Therapist
                     </a>
                   </div>
                   <p className="description">
-                    Courses that help beginner designers become true unicorns.
+                  Discover the right therapist for your unique needs, all in one place.
                   </p>
                 </div>
               </div>
