@@ -2,13 +2,13 @@ let apiUrl;
 const currentDomain = window.location.hostname;
 
 if (currentDomain === "localhost") {
-  apiUrl = "http://localhost:4000/api";
+    apiUrl = "http://localhost:4000/api";
 } else {
-  apiUrl = "https://cyt-backend.onrender.com/api";
+    apiUrl = "https://cyt-backend.onrender.com/api";
 }
 
 export const defaultProfile =
-  "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";
+    "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";
 
 export const loginUrl = `${apiUrl}/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
