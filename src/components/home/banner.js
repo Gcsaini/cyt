@@ -37,6 +37,8 @@ export default function Banner() {
     }
   };
 
+
+
   const getFavrioutes = async () => {
     try {
       const res = await fetchById(GetFavriouteTherapistListUrl);
@@ -89,7 +91,7 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find Therapist Solutions withhhsasahhsdasdasda{" "}
+                  Find Therapist Solutions with
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />
