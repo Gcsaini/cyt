@@ -163,7 +163,7 @@ export default function Banner() {
                     </Link>
                     <div className="more-author-text">
                       <h5 className="total-join-students">
-                        Join Over 50+ Experts
+                       Your well-being awaits.
                       </h5>
                       <p className="subtitle">We are Listening You!</p>
                     </div>
