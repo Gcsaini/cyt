@@ -463,14 +463,7 @@ export default function App() {
                           </Link>
                         </li>
                         
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Student Orientations"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            For Educational Institutions Personalized Wellbeing
-                          </Link>
-                        </li>
+                      
                        
                       </ul>
                     </li>

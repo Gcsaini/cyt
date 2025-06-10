@@ -91,17 +91,17 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find Therapist Solutions with
+                  Find Therapist Solutions for
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />
                       <TypeAnimation
                         sequence={[
-                          "ChooseYourTherapist.in",
+                          "Personalized Wellbeing",
                           1500,
-                          "Online/In-Person Mode",
+                          "Corporate Needs",
                           1500,
-                          "Holistic Approach.",
+                          "Educational Institutions",
                           1500,
                         ]}
                         speed={10}
