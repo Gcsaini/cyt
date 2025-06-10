@@ -164,9 +164,9 @@ export default function Banner() {
                     
                     <div className="more-author-text">
                       <h5 className="total-join-students">
-                       Your well-being awaits.
+                       Over 5,000+ people have already found their path to well-being.
                       </h5>
-                      <p className="subtitle">We are Listening You!</p>
+                      <p className="subtitle">Your well-being awaits.</p>
                     </div>
                   </div>
                 </div>
