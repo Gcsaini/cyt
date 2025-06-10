@@ -21,7 +21,7 @@ export default function Services() {
               <h2 className="title">
                 {" "}
                 <span className="theme-gradient">
-                  Personalized Care for Your Whole Self
+                  Personalized Care for You
                 </span>
               </h2>
               <p>
