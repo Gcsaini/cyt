@@ -442,7 +442,7 @@ export default function App() {
                       <ul className="submenu">
                         <li className="has-dropdown">
                           <Link to={"/Support Groups"} style={{ cursor: "pointer" }}>
-                       Personalized Wellbeing
+                      For Personalized Wellbeing
                           </Link>
                         </li>
 
