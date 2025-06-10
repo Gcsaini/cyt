@@ -430,49 +430,19 @@ export default function App() {
                     </li>*/}
                     <li className="has-dropdown has-menu-child-item">
                       <Link className="" to="#">
-                        Therapist Directory<i className="feather-chevron-down"></i>
+                        Therapist Directory
                       </Link>
-                      <ul className="submenu">
-                        <li className="has-dropdown">
-                          <Link to={"/Counselling Psychologist"} style={{ cursor: "pointer" }}>
-                            Counselling Psychologist
-                          </Link>
-                        </li>
-
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Clinical Psychologist"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Clinical Psychologist
-                          </Link>
-                        </li>
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Psychiatrist"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Psychiatrist
-                          </Link>
-                        </li>
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Special Educator"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Special Educator
-                          </Link>
-                        </li>
-                      </ul>
+                      
+                     
                     </li>
                     <li className="has-dropdown has-menu-child-item">
                       <Link className="" to="#">
-                        Workshops for Wellness<i className="feather-chevron-down"></i>
+                      For Corporates<i className="feather-chevron-down"></i>
                       </Link>
                       <ul className="submenu">
                         <li className="has-dropdown">
                           <Link to={"/Support Groups"} style={{ cursor: "pointer" }}>
-                            Support Groups
+                          Employee Counseling
                           </Link>
                         </li>
 
@@ -481,7 +451,7 @@ export default function App() {
                             to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            Student Orientations
+                            Workshops & Training
                           </Link>
                         </li>
                         <li className="has-dropdown">
@@ -489,7 +459,7 @@ export default function App() {
                             to={"/Workplace Training"}
                             style={{ cursor: "pointer" }}
                           >
-                            Workplace Training
+                            Mental Health Check-ins
                           </Link>
                         </li>
                         <li className="has-dropdown">
@@ -497,7 +467,15 @@ export default function App() {
                             to={"/Therapeutic Activities"}
                             style={{ cursor: "pointer" }}
                           >
-                            Therapeutic Activities
+                            Mindfulness Sessions
+                          </Link>
+                        </li>
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/Therapeutic Activities"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Book a Discovery Call
                           </Link>
                         </li>
                       </ul>

@@ -1,4 +1,5 @@
-import { TypeAnimation } from "react-type-animation";
+ 
+ import { TypeAnimation } from "react-type-animation";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 export default function AboutUsBanner() {
