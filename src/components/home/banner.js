@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import ClientImg from "../../assets/img/avatar-027dc8.png";
 import Fabiha from "../../assets/img/psychologist.png";
+import counselling1 from "../../assets/img/counselling.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { TypeAnimation } from "react-type-animation";
@@ -145,6 +146,19 @@ export default function Banner() {
                         width="55"
                         height="55"
                         src={Fabiha}
+                      />
+                    </Link>
+                     <Link
+                      to="#"
+                      className="avatar"
+                      data-tooltip="Psychologist"
+                      tabIndex="0"
+                    >
+                      <ImageTag
+                        alt="education"
+                        width="55"
+                        height="55"
+                        src={counselling1}
                       />
                     </Link>
                     
