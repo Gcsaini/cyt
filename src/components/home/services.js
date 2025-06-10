@@ -44,7 +44,7 @@ export default function Services() {
                   <h5 className="title">Therapy Session</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      3 Plans Active<i className="feather-arrow-right"></i>
+                      Start Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ export default function Services() {
                   <h5 className="title">Support Groups</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
+                      Join Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -81,10 +81,10 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={StudentImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Student Orientations</h5>
+                  <h5 className="title">Wellness Hours</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
+                      Enroll Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -101,96 +101,18 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={WorkplaceImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Workplace Training</h5>
+                  <h5 className="title">Mindful Tour</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
+                      Book Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
               </div>
             </a>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-            <a
-              className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d-5"
-            >
-              <div className="inner">
-                <div className="icons">
-                  <LazyImage alt="Icons" dim={"80"} src={ActivitesImg} />
-                </div>
-                <div className="content">
-                  <h5 className="title">Therapeutic Activites</h5>
-                  <div className="read-more-btn">
-                    <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-            <a
-              className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d-6"
-            >
-              <div className="inner">
-                <div className="icons">
-                  <LazyImage alt="Icons" dim={"80"} src={AssessmentImg} />
-                </div>
-                <div className="content">
-                  <h5 className="title">Assessments</h5>
-                  <div className="read-more-btn">
-                    <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-            <a
-              className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle"
-            >
-              <div className="inner">
-                <div className="icons">
-                  <LazyImage alt="Icons" dim={"80"} src={ProjectsImg} />
-                </div>
-                <div className="content">
-                  <h5 className="title">CYT Projects</h5>
-                  <div className="read-more-btn">
-                    <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-            <a
-              className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle"
-            >
-              <div className="inner">
-                <div className="icons">
-                  <LazyImage alt="Icons" dim={"80"} src={specialoffer} />
-                </div>
-                <div className="content">
-                  <h5 className="title">Special Offers</h5>
-                  <div className="read-more-btn">
-                    <span className="rbt-btn-link">
-                      Coming Soon<i className="feather-arrow-right"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+        
+           
         </div>
       </div>
     </div>
