@@ -178,7 +178,7 @@ export default function Banner() {
                     style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
-                      <span className="btn-text">Therapist Registration</span>
+                      <span className="btn-text">Get Started</span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
                       </span>

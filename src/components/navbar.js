@@ -437,12 +437,12 @@ export default function App() {
                     </li>
                     <li className="has-dropdown has-menu-child-item">
                       <Link className="" to="#">
-                      For Corporates<i className="feather-chevron-down"></i>
+                      Services<i className="feather-chevron-down"></i>
                       </Link>
                       <ul className="submenu">
                         <li className="has-dropdown">
                           <Link to={"/Support Groups"} style={{ cursor: "pointer" }}>
-                          Employee Counseling
+                       Personalized Wellbeing
                           </Link>
                         </li>
 
@@ -451,33 +451,27 @@ export default function App() {
                             to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            Workshops & Training
+                            For Educational Institutions 
                           </Link>
                         </li>
                         <li className="has-dropdown">
                           <Link
-                            to={"/Workplace Training"}
+                            to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            Mental Health Check-ins
+                            For Corporate Needs 
                           </Link>
                         </li>
+                        
                         <li className="has-dropdown">
                           <Link
-                            to={"/Therapeutic Activities"}
+                            to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            Mindfulness Sessions
+                            For Educational Institutions Personalized Wellbeing
                           </Link>
                         </li>
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Therapeutic Activities"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Book a Discovery Call
-                          </Link>
-                        </li>
+                       
                       </ul>
                     </li>
                     <li className="has-dropdown has-menu-child-item">
