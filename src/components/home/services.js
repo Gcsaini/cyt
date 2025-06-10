@@ -17,7 +17,7 @@ export default function Services() {
         <div className="row">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle bg-primary-opacity">SERVICES</span>
+              <span className="subtitle bg-primary-opacity">PERSONALIZED SERVICES</span>
               <h2 className="title">
                 {" "}
                 <span className="theme-gradient">
