@@ -21,13 +21,11 @@ export default function Services() {
               <h2 className="title">
                 {" "}
                 <span className="theme-gradient">
-                  What are you looking for ?
+                  Personalized Care for Your Whole Self
                 </span>
               </h2>
               <p>
-                Are you looking for solutions to achieve holistic well-being?
-                Our services are designed to support your mental, emotional, and
-                spiritual health.
+                Looking for comprehensive support that honors your unique needs? Our services are built to cater to your individual mental, emotional, and spiritual health, helping you achieve complete and lasting well-being.
               </p>
             </div>
           </div>
