@@ -11,7 +11,7 @@ export default function Services() {
   return (
     <div
       className="rbt-categories-area bg-color-white rbt-section-gapBottom"
-      style={{ marginTop: 40 }}
+      style={{ marginTop: 90 }}
     >
       <div className="container">
         <div className="row">
