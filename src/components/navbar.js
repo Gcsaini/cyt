@@ -429,7 +429,7 @@ export default function App() {
                       </Link>
                     </li>*/}
                     <li className="has-dropdown has-menu-child-item">
-                      <Link to={"/view-profile"}>
+                      <Link to={"/view-profile"}style={{ cursor: "pointer" }}>
                         Therapist Directory
                       </Link>
                       
