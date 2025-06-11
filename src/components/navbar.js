@@ -568,9 +568,9 @@ export default function App() {
                 <div className="rbt-btn-wrapper d-none d-xl-block">
                   <Link
                     className="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none"
-                    to="index.html#"
+                    to="/therapist-registration"
                   >
-                    <span data-text="Enroll Now">Enroll Now</span>
+                    <span data-text="Are Your a Therapist?">Are You a Therapist?</span>
                   </Link>
                 </div>
                 <div
