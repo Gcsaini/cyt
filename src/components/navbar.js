@@ -200,6 +200,7 @@ export default function App() {
                   Faqs
                 </Link>
               </li>
+              
            {/*   <li className="position-static">
                 <Link to={"/plans"} className="" style={{ cursor: "pointer" }}>
                   Plans<i className="feather-chevron-down"></i>
@@ -502,6 +503,15 @@ export default function App() {
                         style={{ cursor: "pointer" }}
                       >
                         Faqs
+                      </Link>
+                    </li>
+                      <li className="position-static">
+                      <Link
+                        className="service-menu-parent"
+                        to="/more"
+                        style={{ cursor: "pointer" }}
+                      >
+                       More
                       </Link>
                     </li>
                     {/* <li className="position-static">
