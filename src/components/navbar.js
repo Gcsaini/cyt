@@ -69,12 +69,12 @@ export default function App() {
             </p>
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
-                <Link to="mailto:hello@example.com">
+                <Link to="info@chooseyourtherapist.in">
                   <i className="feather-mail"></i>info@chooseyourtherapist.in
                 </Link>
               </li>
               <li>
-                <Link to="index.html#">
+                <Link to="#">
                   <i className="feather-phone"></i>+91 8077757951
                 </Link>
               </li>
@@ -87,27 +87,13 @@ export default function App() {
                   Home<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              <li className="has-dropdown has-menu-child-item">
-                <Link
-                  className={about ? "open" : ""}
-                  onClick={() => setAbout(about !== true)}
-                >
-                  About<i className="feather-chevron-down"></i>
-                </Link>
-                <ul className={about ? "submenu active d-block" : "submenu"}>
-                  <li>
-                    <Link to={"/about-us"} style={{ cursor: "pointer" }}>
-                      About us
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link to={"/contact-us"} style={{ cursor: "pointer" }}>
-                      Contact us
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+                <li className="has-dropdown has-menu-child-item">
+                      <Link to={"/view-all-therapist"}style={{ cursor: "pointer" }}>
+                        Therapist Directory
+                      </Link>
+                      
+                     
+                    </li>
               <li className="with-megamenu has-menu-child-item">
                 <Link
                   className={service ? "open" : ""}
