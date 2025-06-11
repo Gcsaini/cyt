@@ -171,7 +171,28 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> 
+              <li className="has-dropdown has-menu-child-item">
+                      <Link className="" to="#">
+                        About<i className="feather-chevron-down"></i>
+                      </Link>
+                      <ul className="submenu">
+                        <li className="has-dropdown">
+                          <Link to={"/about-us"} style={{ cursor: "pointer" }}>
+                            About us
+                          </Link>
+                        </li>
+
+                        <li className="has-dropdown">
+                          <Link
+                            to={"/contact-us"}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Contact us
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
               <li className="position-static">
                 <Link to={"/plans"} className="" style={{ cursor: "pointer" }}>
                   Plans<i className="feather-chevron-down"></i>
