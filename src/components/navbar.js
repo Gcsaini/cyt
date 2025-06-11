@@ -195,8 +195,12 @@ export default function App() {
                           </Link>
                         </li>
                       </ul>
-                    </li>
-              <li className="position-static">
+                    </li> <li className="position-static">
+                <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
+                  Faqs
+                </Link>
+              </li>
+           {/*   <li className="position-static">
                 <Link to={"/plans"} className="" style={{ cursor: "pointer" }}>
                   Plans<i className="feather-chevron-down"></i>
                 </Link>
@@ -206,11 +210,7 @@ export default function App() {
                   Blogs
                 </Link>
               </li>
-              <li className="position-static">
-                <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
-                  Faqs
-                </Link>
-              </li>{" "}
+             {" "}
               {/* <li>
                 <Link
                   to={"#"}
