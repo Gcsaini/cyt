@@ -171,11 +171,14 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li> 
-              <li className="has-dropdown has-menu-child-item">
-                      <Link className="" to="#">
-                        About<i className="feather-chevron-down"></i>
-                      </Link>
+              </li> <li className="with-megamenu has-menu-child-item">
+                <Link
+                  className={about ? "open" : ""}
+                  onClick={() => setService(about !== true)}
+                >
+                   About<i className="feather-chevron-down"></i>
+                </Link>
+              
                       <ul className="submenu">
                         <li className="has-dropdown">
                           <Link to={"/about-us"} style={{ cursor: "pointer" }}>
