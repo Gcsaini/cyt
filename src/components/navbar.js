@@ -123,43 +123,31 @@ export default function App() {
                     </div>
                     <div className="row row--15">
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                        <h3 className="rbt-short-title">Our Solutions</h3>
+                        <h3 className="rbt-short-title">Individual</h3>
                         <ul className="mega-menu-item">
                           <li>
                             <Link to="/services/cyt-tands">
-                              Therapy & Counselling
+                             Personalized Care
                             </Link>
                           </li>
-                          <li>
-                            <Link to={"/services/cyt-tands"}>
-                              Therapeutic Activities
-                            </Link>
-                          </li>
-                          <li>
-                            <Link className="" to="course-filter-two-toggle">
-                              Peer Support Groups
-                            </Link>
-                          </li>
+                          
+                         
                         </ul>
                       </div>
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                        <h3 className="rbt-short-title">Our Solutions</h3>
+                        <h3 className="rbt-short-title">Business</h3>
                         <ul className="mega-menu-item">
                           <li>
                             <Link className="" to="course-card-3">
-                              Student Based Orientations
+                              For Educational Institutions
                             </Link>
                           </li>
                           <li>
                             <Link className="" to="course-masonry">
-                              Workplace Based Training
+                              For Corporate Needs
                             </Link>
                           </li>
-                          <li>
-                            <Link className="" to="course-with-sidebar">
-                              Assessments
-                            </Link>
-                          </li>
+                          
                         </ul>
                       </div>
                     </div>
@@ -167,13 +155,13 @@ export default function App() {
                       <div className="col-lg-12">
                         <ul className="nav-quick-access">
                           <li>
-                            <Link to="index.html#">
+                            <Link to="#">
                               <i className="feather-folder-minus"></i>
                               Terms of services
                             </Link>
                           </li>
                           <li>
-                            <Link to="index.html#">
+                            <Link to="#">
                               <i className="feather-folder-minus"></i>
                               Privecy policies
                             </Link>
