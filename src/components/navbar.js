@@ -560,7 +560,7 @@ export default function App() {
                       )
                     ) : (
                       <Link to="/login" className="service-menu-parent">
-                        <i className="feather-user"></i>&nbsp;SignIn/SignUp
+                        <i className="feather-user"></i>&nbsp;Sign In/Sign Up
                       </Link>
                     )}
                   </li>
