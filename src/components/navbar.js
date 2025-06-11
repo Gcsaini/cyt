@@ -429,7 +429,7 @@ export default function App() {
                       </Link>
                     </li>*/}
                     <li className="has-dropdown has-menu-child-item">
-                      <Link className="" to="#">
+                      <Link to={"/view-profile"}>
                         Therapist Directory
                       </Link>
                       
