@@ -105,10 +105,7 @@ export default function Footer() {
                       <span>Reg. Add. </span>
                       Laksar, Haridwar, Uttarakhand, India
                     </li>
-                    <li>
-                      <span>Service at: </span>
-                      Sec. 27 Noida, Uttar Pradesh
-                    </li>
+                    
                   </ul>
                   <ul className="social-icon social-default icon-naked justify-content-start mt--20">
                     <li>
