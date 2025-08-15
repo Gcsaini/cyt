@@ -6,6 +6,7 @@ import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import React from "react";
 import { getDecodedToken } from "../../utils/jwt";
 import {
+  imagePath,
   InsertFavriouteTherapistUrl,
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
@@ -88,7 +89,7 @@ export default function ProfileHeader(props) {
                         alt="Instructor"
                         width="250"
                         height="250"
-                        src={pageData.profile}
+                        src={`${imagePath}/${pageData.profile}`}
                         style={{
                           borderRadius: 0,
                           padding: 0,

@@ -8,6 +8,7 @@ import React from "react";
 import { getDecodedToken } from "../../utils/jwt";
 import { postData } from "../../utils/actions";
 import {
+  imagePath,
   InsertFavriouteTherapistUrl,
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
@@ -69,7 +70,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
           <Link to={`/view-profile/${pageData._id}`}>
             <ImageTag
               alt="profile image"
-              src={pageData.profile}
+               src={`${imagePath}/${pageData.profile}`}
               style={{ height: isMobile ? 255 : 235 }}
             />
           </Link>

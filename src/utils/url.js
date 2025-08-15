@@ -2,7 +2,7 @@ let apiUrl;
 const currentDomain = window.location.hostname;
 
 if (currentDomain === "localhost") {
-    apiUrl = "hhttps://api.chooseyourtherapist.in/api";
+    apiUrl = "https://api.chooseyourtherapist.in/api";
 } else {
     apiUrl = "https://api.chooseyourtherapist.in/api";
 }
@@ -10,6 +10,7 @@ if (currentDomain === "localhost") {
 export const defaultProfile =
     "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";
 
+export const imagePath = "https://api.chooseyourtherapist.in/uploads/images"
 export const loginUrl = `${apiUrl}/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
 export const registerUrl = `${apiUrl}/register`;

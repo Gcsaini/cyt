@@ -7,6 +7,7 @@ import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import React from "react";
 import { postData } from "../../utils/actions";
 import {
+  imagePath,
   InsertFavriouteTherapistUrl,
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
@@ -71,7 +72,7 @@ export default function ProfileCardVert(props) {
             <ImageTag
               alt="Profile-photo"
               style={{ height: "250px" }}
-              src={data.profile}
+              src={`${imagePath}/${data.profile}`}
             />
           </Link>
         </div>
