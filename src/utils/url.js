@@ -4,7 +4,7 @@ const currentDomain = window.location.hostname;
 if (currentDomain === "localhost") {
     apiUrl = "http://localhost:4000/api";
 } else {
-    apiUrl = "https://cyt-backend.onrender.com/api";
+    apiUrl = "https://api.chooseyourtherapist.in/";
 }
 
 export const defaultProfile =
