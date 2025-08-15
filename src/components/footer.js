@@ -97,13 +97,14 @@ export default function Footer() {
                     </li>
                     <li>
                       <span>E-mail: </span>
-                      <a href="info@chooseyourtherapist.in">
-                        info@chooseyourtherapist.in
+                      <a href="Chooseyourtherapist@gmail.com">
+                        Chooseyourtherapist@gmail.com
                       </a>
                     </li>
                     <li>
-                      <span>Reg. Add. </span>
-                      Laksar, Haridwar, Uttarakhand, India
+                      <span>Official. Add. </span>
+                     Gate No-3, D-137, near LPS GLOBAL SCHOOL, Block D, Sector 51, Noida, 
+                     Uttar Pradesh 201301, India
                     </li>
                     
                   </ul>
