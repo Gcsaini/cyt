@@ -382,6 +382,7 @@ export default function TherapistRegistration() {
                       </label>
                     </p>
                   </div>
+                  <span>Resume</span>
                   <div className="form-group">
                     <input
                       className="resume-upload"

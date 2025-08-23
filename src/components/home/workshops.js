@@ -96,57 +96,58 @@ export default function HomeWorkshop({ isWhite = false }) {
                     </span>
                   </Link>
                 </li>
+               
                 <li>
                   <Link
                     className={
-                      tab === "Student Orientations"
+                      tab === "Capacity Building"
+                        ? "tab-button active"
+                        : "tab-button"
+                    }
+                    id="business-tab-4"
+                    aria-selected={
+                      tab === "Capacity Building" ? "true" : "false"
+                    }
+                    onClick={() => handleClick("Capacity Building")}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Capacity Building
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={
+                      tab === "Ongoing Series"
+                        ? "tab-button active"
+                        : "tab-button"
+                    }
+                    id="business-tab-4"
+                    aria-selected={
+                      tab === "Ongoing Series" ? "true" : "false"
+                    }
+                    onClick={() => handleClick("Ongoing Series")}
+                  >
+                    <span className="title" style={{ cursor: "pointer" }}>
+                      Ongoing Series
+                    </span>
+                  </Link>
+                </li>
+                 <li>
+                  <Link
+                    className={
+                      tab === "Mentorship"
                         ? "tab-button active"
                         : "tab-button"
                     }
                     id="contact-tab-4"
                     aria-selected={
-                      tab === "Student Orientations" ? "true" : "false"
+                      tab === "Mentorship" ? "true" : "false"
                     }
-                    onClick={() => handleClick("Student Orientations")}
+                    onClick={() => handleClick("Mentorship")}
                   >
                     <span className="title" style={{ cursor: "pointer" }}>
-                      Student Orientations
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className={
-                      tab === "Workplace Training"
-                        ? "tab-button active"
-                        : "tab-button"
-                    }
-                    id="business-tab-4"
-                    aria-selected={
-                      tab === "Workplace Training" ? "true" : "false"
-                    }
-                    onClick={() => handleClick("Workplace Training")}
-                  >
-                    <span className="title" style={{ cursor: "pointer" }}>
-                      Workplace Training
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className={
-                      tab === "Therapeutic Activities"
-                        ? "tab-button active"
-                        : "tab-button"
-                    }
-                    id="business-tab-4"
-                    aria-selected={
-                      tab === "Therapeutic Activities" ? "true" : "false"
-                    }
-                    onClick={() => handleClick("Therapeutic Activities")}
-                  >
-                    <span className="title" style={{ cursor: "pointer" }}>
-                      Therapeutic Activities
+                     Mentorship
                     </span>
                   </Link>
                 </li>

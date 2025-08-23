@@ -7,6 +7,7 @@ import ImageTag from "../../utils/image-tag";
 import { truncateString } from "../../utils/helpers";
 import { getDateDifference } from "../../utils/time";
 import WellNessCard from "./wellness-card";
+import { imagePath } from "../../utils/url";
 export default function WorkshopDetail(props) {
   const { data, workshopByThisUser, moreWorkshop } = props;
   const [open, setOpen] = React.useState(false);
@@ -52,7 +53,7 @@ export default function WorkshopDetail(props) {
                       <Link href={`view-profile/${data.post_by._id}`}>
                         <ImageTag
                           alt={data.post_by.name}
-                          src={data.post_by.profile}
+                          src={`${imagePath}/${data.post_by.profile}`}
                         />
                       </Link>
                     </div>
@@ -96,7 +97,7 @@ export default function WorkshopDetail(props) {
                     width="800"
                     height="550"
                     className="w-100"
-                    src={data.workshop_image}
+                    src={`${imagePath}/${data.workshop_image}`}
                   />
                 </div>
 
@@ -125,7 +126,7 @@ export default function WorkshopDetail(props) {
                             alt="Author Images"
                             width="250"
                             height="250"
-                            src={data.post_by.profile}
+                            src={`${imagePath}/${data.post_by.profile}`}
                           />
                         </Link>
                       </div>
@@ -217,7 +218,7 @@ export default function WorkshopDetail(props) {
                         alt={data.title}
                         width="355"
                         height="255"
-                        src={data.workshop_image}
+                        src={`${imagePath}/${data.workshop_image}`}
                       />
                     </div>
                   </div>

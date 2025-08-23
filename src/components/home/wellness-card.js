@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ImageTag from "../../utils/image-tag";
 import { truncateString } from "../../utils/helpers";
+import { imagePath } from "../../utils/url";
 
 export default function WellNessCard({ data }) {
   return (
@@ -11,7 +12,7 @@ export default function WellNessCard({ data }) {
             alt={truncateString(data.title, 20)}
             loading="lazy"
             style={{ height: 200 }}
-            src={data.workshop_image}
+            src={`${imagePath}/${data.workshop_image}`} 
           />
         </Link>
       </div>
