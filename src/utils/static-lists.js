@@ -224,7 +224,7 @@ export const PriceList = ["500-1000", "1000-1500", "1500-2000", "2000-2500"];
 
 export const WorkshopCategory = [
   "Support Groups",
-  "Student Orientations",
-  "Workplace Training",
-  "Therapeutic Activities",
+  "Capacity Building",
+  "Ongoing Series",
+  "Mentorship",
 ];
