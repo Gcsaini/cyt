@@ -32,7 +32,7 @@ export default function WellNessCard({ data }) {
         <ul className="rbt-meta mt--15">
           <li>
             <i className="feather-message-circle"></i>
-            {data.language}
+            {data.category}
           </li>
           <li>
             <i className="feather-heart"></i> {data.level}
@@ -50,7 +50,7 @@ export default function WellNessCard({ data }) {
             to={`/workshop-detail/${data._id}`}
             className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
           >
-            Full Details
+           Check Now
           </Link>
         </div>
       </div>
