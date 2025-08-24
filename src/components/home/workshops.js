@@ -45,19 +45,16 @@ export default function HomeWorkshop({ isWhite = false }) {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">
-                Mental Health Wrokshops/Activites
+                Mental Health Practices & Tools
               </span>
               <h2 className="title">
                 {" "}
                 <span className="theme-gradient">
-                  Wellness Workshops by Professionals
+                  Mind Matters Programs
                 </span>
               </h2>
               <p>
-                Join our workshops and activities designed to enhance your
-                mental health and well-being. From stress management sessions to
-                personal development workshops, explore a variety of
-                opportunities to engage, learn, and grow.
+                Learn, connect, and grow with guided programs focused on building calm, clarity, and confidence.
               </p>
             </div>
           </div>
