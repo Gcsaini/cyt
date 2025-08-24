@@ -4,40 +4,36 @@ import Footer from "../components/footer";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import { fetchData } from "../utils/actions";
-import { getTherapistProfile } from "../utils/url";
-import ErrorPage from "./error-page";
+import { pendingPaymentUrl } from "../utils/url";
 import PageProgressBar from "../components/global/page-progress";
-import TherapistCheckout from "../components/view_profile/checkout";
 import { useCallback } from "react";
-export default function TherapistCheckoutPage() {
+import PaymentPending from "../components/view_profile/payment-pending";
+import { toast } from "react-toastify";
+
+export default function PaymentPendingPage() {
   const { id } = useParams();
-  const [profile, setProfile] = useState();
-  const [error, setError] = useState(false);
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
   const getData = useCallback(async () => {
     try {
-      const res = await fetchData(getTherapistProfile + id);
+      const res = await fetchData(`${pendingPaymentUrl}/${id}`);
 
-      if (res.status && res.data.length > 0) {
-        setProfile(res.data);
+      if (res.status) {
+        setData(res.data);
       } else {
-        setError(true);
+        toast.error(res.message);
       }
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      setError(true);
+      toast.error(true);
     }
   }, [id]);
 
   useEffect(() => {
     getData();
   }, [getData]);
-
-  if (error) {
-    return <ErrorPage />;
-  }
 
   return loading ? (
     <PageProgressBar />
@@ -49,7 +45,7 @@ export default function TherapistCheckoutPage() {
           <div className="row mt--60">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Checkout</h2>
+                <h2 className="title">Payment</h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <Link href="/">Home</Link>
@@ -59,14 +55,14 @@ export default function TherapistCheckoutPage() {
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">Checkout</li>
+                  <li className="rbt-breadcrumb-item active">Payment</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {profile.length > 0 && <TherapistCheckout profile={profile[0]} />}
+      {data && Object.keys(data).length > 0 && <PaymentPending pageData={data} />}
       <NewsLetter />
       <Footer />
     </div>

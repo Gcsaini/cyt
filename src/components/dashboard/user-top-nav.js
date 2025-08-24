@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ImageTag from "../../utils/image-tag";
 import useUserStore from "../../store/userStore";
 import { removeToken } from "../../utils/jwt";
-import { defaultProfile } from "../../utils/url";
+import { frontendUrl, imagePath } from "../../utils/url";
 export default function UserDashboardTopNav() {
   const { userInfo } = useUserStore();
   const navigate = useNavigate();
@@ -42,27 +42,32 @@ export default function UserDashboardTopNav() {
                   Dashboard<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              <li className="position-static">
+              {/* <li className="position-static">
                 <Link to="/my-invoices" style={{ cursor: "pointer" }}>
                   Invoices<i className="feather-chevron-down"></i>
                 </Link>
-              </li>
+              </li> */}
               <li className="position-static">
                 <Link to="/my-appointments" style={{ cursor: "pointer" }}>
                   Appointments<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               <li className="position-static">
+                <Link to="/my-therapists" style={{ cursor: "pointer" }}>
+                  Favrioute Therapist<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              {/* <li className="position-static">
                 <Link to="/my-reviews" style={{ cursor: "pointer" }}>
                   Rewiews<i className="feather-chevron-down"></i>
                 </Link>
-              </li>
+              </li> */}
               <li className="position-static">
                 <Link to="/my-bookings" style={{ cursor: "pointer" }}>
                   Booking History<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              <li className="position-static">
+              {/* <li className="position-static">
                 <Link to="/my-courses" style={{ cursor: "pointer" }}>
                   Enrolled Courses/workshops
                   <i className="feather-chevron-down"></i>
@@ -73,7 +78,7 @@ export default function UserDashboardTopNav() {
                   Reports
                   <i className="feather-chevron-down"></i>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
@@ -103,8 +108,9 @@ export default function UserDashboardTopNav() {
                   <li className="access-icon">
                     <a
                       className="search-trigger-active rbt-round-btn"
-                      href="https://chooseyourtherapist.in"
+                      href={frontendUrl}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fa-solid fa-globe"></i>
                     </a>
@@ -124,7 +130,7 @@ export default function UserDashboardTopNav() {
                           <ImageTag
                             alt="User"
                             height={"43"}
-                            src={userInfo.profile || defaultProfile}
+                            src={`${imagePath}/${userInfo.profile}`}
                           />
                         </div>
                         <div className="admin-info">
@@ -139,6 +145,12 @@ export default function UserDashboardTopNav() {
                             <Link to="/my-dashboard">
                               <i className="feather-home"></i>
                               <span>My Dashboard</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/my-therapists">
+                              <i className="feather-shopping-bag"></i>
+                              <span>Favrioute Therapist</span>
                             </Link>
                           </li>
                           <li>

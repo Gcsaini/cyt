@@ -7,17 +7,19 @@ import ClientImg from "../assets/img/avatar-027dc8.png";
 import Fabiha from "../assets/img/psychologist.png";
 import ClientImg3 from "../assets/img/counselling.png";
 import ImageTag from "../utils/image-tag";
-import auth from "../utils/auth";
-import request from "../utils/request";
 import { isValidMail } from "../utils/validators";
-import { loginUrl } from "../utils/url";
+import { loginUrl, verifyOtpUrl } from "../utils/url";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/material";
 import { getDecodedToken, setToken } from "../utils/jwt";
 import { postData } from "../utils/actions";
+import FormMessage from "../components/global/form-message";
+import FormProgressBar from "../components/global/form-progressbar";
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpView, setOtpView] = useState(false);
+  const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,20 +31,47 @@ export default function Login() {
       setError("Please enter valid email address");
       return;
     }
-    if (password.length < 6) {
-      setError("Please enter valid password");
-      return;
-    }
+
     const value = {
       email,
-      password,
     };
 
     try {
       setLoading(true);
       const response = await postData(loginUrl, value);
       if (response.status) {
-        setToken(response.token, true);
+        setSuccess(response.message);
+        setError("");
+        setOtpView(true);
+      } else {
+        setError(response.message);
+      }
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+
+    setLoading(false);
+  };
+
+  const handleOtp = async () => {
+    setError("");
+
+    if (otp.length !== 6) {
+      setError("Please enter valid OTP");
+      return;
+    }
+    const value = {
+      email,
+      otp,
+    };
+    try {
+      setLoading(true);
+      const response = await postData(verifyOtpUrl, value);
+      if (response.status) {
+        setSuccess(response.message);
+        setError("");
+        setOtp("");
+        setToken(response.token);
         const data = getDecodedToken(response.token);
         if (data.role === 1) {
           navigate("/therapist-dashboard");
@@ -53,6 +82,7 @@ export default function Login() {
         setError(response.message);
       }
     } catch (error) {
+      setSuccess("");
       setError(error.response.data.message);
     }
 
@@ -170,68 +200,88 @@ export default function Login() {
               <div className="col-lg-5">
                 <div className="rbt-contact-form contact-form-style-1">
                   <h3 className="title">Login</h3>
-                  <p style={{ color: "#ff0000" }}>
-                    {error !== "" ? error : ""}
-                  </p>
-                  <div id="contact-form">
-                    <div className="form-group">
-                      <input
-                        placeholder="Email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <span className="focus-border"></span>
-                    </div>
-                    <div
-                      className="rbt-lost-password text-end"
-                      style={{ marginBottom: 15 }}
-                    >
-                      <Link className="rbt-btn-link" to="/forgot-password">
-                        Forgot Password?
-                      </Link>
-                    </div>
-                    <div className="form-submit-group">
-                      {loading ? (
-                        <Box sx={{ display: "flex", justifyContent: "center" }}>
-                          <CircularProgress />
-                        </Box>
-                      ) : (
-                        <button
-                          onClick={handleSubmit}
-                          type="submit"
-                          className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100 "
-                        >
-                          <span className="icon-reverse-wrapper">
-                            <span className="btn-text">Login</span>
-                            <span className="btn-icon">
-                              <i className="feather-arrow-right"></i>
+                  <FormMessage error={error} success={success} />
+                  {otpView ? (
+                    <div id="contact-form">
+                      <div className="form-group">
+                        <input
+                          placeholder="Enter OTP"
+                          type="text"
+                          value={otp}
+                          onChange={(e) => setOtp(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+
+                      <div className="form-submit-group">
+                        {loading ? (
+                          <FormProgressBar />
+                        ) : (
+                          <button
+                            onClick={handleOtp}
+                            type="submit"
+                            className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100 mt--15"
+                          >
+                            <span className="icon-reverse-wrapper">
+                              <span className="btn-text">Verify OTP</span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
                             </span>
-                            <span className="btn-icon">
-                              <i className="feather-arrow-right"></i>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div id="contact-form">
+                      <div className="form-group">
+                        <input
+                          placeholder="Email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <span className="focus-border"></span>
+                      </div>
+
+                      <div className="form-submit-group">
+                        {loading ? (
+                          <Box
+                            sx={{ display: "flex", justifyContent: "center" }}
+                          >
+                            <CircularProgress />
+                          </Box>
+                        ) : (
+                          <button
+                            onClick={handleSubmit}
+                            type="submit"
+                            className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100 "
+                          >
+                            <span className="icon-reverse-wrapper">
+                              <span className="btn-text">Send OTP</span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
+                              <span className="btn-icon">
+                                <i className="feather-arrow-right"></i>
+                              </span>
                             </span>
-                          </span>
-                        </button>
-                      )}
+                          </button>
+                        )}
+                      </div>
+                      <div
+                        className="rbt-lost-password text-end"
+                        style={{ marginBottom: 15 }}
+                      >
+                        <Link className="rbt-btn-link" to="/register">
+                          Create Account?
+                        </Link>
+                      </div>
                     </div>
-                    <div
-                      className="rbt-lost-password text-end"
-                      style={{ marginBottom: 15 }}
-                    >
-                      <Link className="rbt-btn-link" to="/register">
-                        Create Account?
-                      </Link>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>

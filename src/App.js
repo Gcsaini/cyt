@@ -31,7 +31,6 @@ import useTherapistStore from "./store/therapistStore";
 import useUserStore from "./store/userStore";
 import { getDecodedToken, getToken, removeToken } from "./utils/jwt";
 import ClientSettings from "./pages/client/settings";
-import ChangeMyPassword from "./pages/client/change-password";
 import AllWorkshop from "./pages/allworkshop";
 import ViewAllTherapist from "./pages/view-all-therapist-page";
 import CreateWorkshopPage from "./pages/therapists/create-workshop";
@@ -44,6 +43,11 @@ import TherapistCheckoutPage from "./pages/therapist-checkout";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsCondition from "./pages/TermsCondition";
 import CancellationPolicy from "./pages/cancel-policy";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PaymentPending from "./components/view_profile/payment-pending";
+import PaymentPendingPage from "./pages/payment-pending";
+import MyBookingsPage from "./pages/client/my-bookings";
 const theme = createTheme();
 
 function App() {
@@ -65,7 +69,7 @@ function App() {
         }
       }
     }
-  }, [fetchUserInfo]);
+  }, [fetchUserInfo, fetchTherapistInfo]);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -127,6 +131,15 @@ function App() {
               />
 
               <Route
+                path="/my-appointments"
+                element={
+                  <ProtectedRoute>
+                    <UserDashboard />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
                 path="/my-settings"
                 element={
                   <ProtectedRoute>
@@ -134,24 +147,27 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              {
+                <Route
+                  path="/my-therapists"
+                  element={
+                    <ProtectedRoute>
+                      <FavriouteTherapistPage />
+                    </ProtectedRoute>
+                  }
+                />
+              }
 
-              <Route
-                path="/my-therapists"
-                element={
-                  <ProtectedRoute>
-                    <FavriouteTherapistPage />
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/change-my-password"
-                element={
-                  <ProtectedRoute>
-                    <ChangeMyPassword />
-                  </ProtectedRoute>
-                }
-              />
+              {
+                <Route
+                  path="/my-bookings"
+                  element={
+                    <ProtectedRoute>
+                      <MyBookingsPage />
+                    </ProtectedRoute>
+                  }
+                />
+              }
 
               <Route
                 path="/therapist-checkout/:id"
@@ -159,11 +175,21 @@ function App() {
                   <ProtectedRoute>
                     <TherapistCheckoutPage />
                   </ProtectedRoute>
+                  // <TherapistCheckoutPage />
                 }
               />
 
               <Route
                 path="/payment-pending/:id"
+                element={
+                  <ProtectedRoute>
+                    <PaymentPendingPage />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/payment-success/"
                 element={
                   <ProtectedRoute>
                     <Success />
@@ -277,6 +303,7 @@ function App() {
             </Routes>
           </div>
         </div>
+        <ToastContainer position="top-right" autoClose={3000} />
       </>
     </ThemeProvider>
   );

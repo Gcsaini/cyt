@@ -1,6 +1,6 @@
 import { stateList } from "../../utils/static-lists";
 import React, { useState, useRef } from "react";
-import { updateUserUrl } from "../../utils/url";
+import { imagePath, updateUserUrl } from "../../utils/url";
 import ImageTag from "../../utils/image-tag";
 import { postFormData } from "../../utils/actions";
 import FormMessage from "../global/form-message";
@@ -98,7 +98,7 @@ export default function MyProfile(props) {
               <ImageTag
                 alt={userInfo.name}
                 style={{ height: 120, width: 120, borderRadius: "50%" }}
-                src={previewImage != null ? previewImage : userInfo.profile}
+                src={previewImage != null ? previewImage : `${imagePath}/${userInfo.profile}`}
               />
               <div className="rbt-edit-photo-inner">
                 <button

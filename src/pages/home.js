@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Banner from "../components/home/banner";
 import Blogs from "../components/home/blogs";
@@ -10,8 +11,26 @@ import PromationalBanner from "../components/home/promational-banner";
 import Services from "../components/home/services";
 import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
+import Popup from "../components/global/popup";
 
 export default function HomePage() {
+  const [showPopup, setShowPopup] = useState(false);
+
+    useEffect(() => {
+    const lastVisit = localStorage.getItem("popupShownAt");
+
+    if (!lastVisit) {
+      setShowPopup(true);
+      localStorage.setItem("popupShownAt", Date.now());
+    } else {
+      const now = Date.now();
+      const oneHour = 60 * 60 * 1000; // 1 hour in ms
+      if (now - parseInt(lastVisit, 10) > oneHour) {
+        setShowPopup(true);
+        localStorage.setItem("popupShownAt", Date.now());
+      }
+    }
+  }, []);
   return (
     <div id="__next">
       <main className="">
@@ -27,6 +46,7 @@ export default function HomePage() {
           <Blogs />
           <CallToAction />
           <NewsLetter />
+          <Popup open={showPopup} onClose={() => setShowPopup(false)} />
         </main>
         <Footer />
       </main>

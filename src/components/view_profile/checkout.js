@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import ProfileCheckoutCard from "./profile-checkout-card";
 import { getServiceFormats } from "../../utils/helpers";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
-import { generateHourlyIntervals } from "../../utils/time";
 import FormMessage from "../global/form-message";
 import { postData } from "../../utils/actions";
 import { BookTherapistUrl } from "../../utils/url";
 import { useNavigate } from "react-router-dom";
 import FormProgressBar from "../global/form-progressbar";
+import useUserStore from "../../store/userStore";
 export default function TherapistCheckout({ profile }) {
+  const { userInfo } = useUserStore();
+
   const styles = {
     iconStyle: {
       fontSize: 12,
@@ -37,28 +38,28 @@ export default function TherapistCheckout({ profile }) {
   const [success, setSuccess] = React.useState("");
   const [services, setServices] = React.useState([]);
   const [sessionFormats, setSessionFormats] = React.useState([]);
-  const [disabledDates, setDisabledDates] = React.useState([]);
-  const [selectedDate, setSelectedDate] = React.useState("");
-  const [availableTimes, setAvailableTimes] = React.useState([]);
   const [other, setOther] = React.useState(false);
   const [info, setInfo] = React.useState({
+    name: userInfo.name || "",
     phone: "",
     service: "",
     format: "",
     whom: "",
     cname: "",
     realtion_with_client: "",
-    gender: "",
-    dob: "",
-    date: "",
-    open_time: "",
-    close_time: "",
+    notes: "",
+    age: "",
     amount: 0,
     therapist: profile._id,
   });
 
   const handleChange = (name, value) => {
-    if (name === "service") {
+    if (name === "name" || name === "notes") {
+      setInfo((prevInfo) => ({
+        ...prevInfo,
+        [name]: value,
+      }));
+    } else if (name === "service") {
       const selectedService = services.find(
         (service) => service.service === value
       );
@@ -98,8 +99,7 @@ export default function TherapistCheckout({ profile }) {
           ...prevInfo,
           ["cname"]: "",
           ["realtion_with_client"]: "",
-          ["gender"]: "",
-          ["dob"]: "",
+          ["age"]: "",
         }));
       }
     } else if (name === "phone") {
@@ -110,6 +110,12 @@ export default function TherapistCheckout({ profile }) {
           [name]: formattedValue,
         }));
       }
+    } else if (name === "age") {
+      const formattedValue = value.replace(/\D/g, "");
+      setInfo((prevInfo) => ({
+        ...prevInfo,
+        [name]: formattedValue,
+      }));
     } else {
       setInfo((prevInfo) => ({
         ...prevInfo,
@@ -117,6 +123,8 @@ export default function TherapistCheckout({ profile }) {
       }));
     }
   };
+
+  console.log("user info", info);
 
   const handleSubmit = async () => {
     setSuccess("");
@@ -138,14 +146,11 @@ export default function TherapistCheckout({ profile }) {
     } else if (info.whom == "For Other" && info.realtion_with_client === "") {
       setError("Please select relation with client.");
       return;
-    } else if (info.whom == "For Other" && info.gender === "") {
-      setError("Please select gender.");
+    } else if (info.whom == "For Other" && info.age === "") {
+      setError("Please enter age  of client.");
       return;
-    } else if (info.whom == "For Other" && info.dob === "") {
-      setError("Please enter date of birht of client.");
-      return;
-    } else if (info.open_time === "" && info.close_time === "") {
-      setError("Please select the time you want to start.");
+    } else if (info.whom === "For Other" && (info.age < 7 || info.age > 90)) {
+      setError("Please enter valid age");
       return;
     } else {
       setError("");
@@ -160,7 +165,7 @@ export default function TherapistCheckout({ profile }) {
             setLoading(false);
           }
         } else {
-          setError("Something went wrong");
+          setError(response.message);
           setLoading(false);
         }
       } catch (error) {
@@ -169,81 +174,6 @@ export default function TherapistCheckout({ profile }) {
         setLoading(false);
       }
     }
-  };
-
-  const handleDate = (date) => {
-    setSelectedDate(date);
-    setInfo((prevInfo) => ({
-      ...prevInfo,
-      ["date"]: date,
-    }));
-    const times = filterTimesForSelectedDate(date);
-    setAvailableTimes([]);
-    setAvailableTimes(times);
-  };
-
-  const handleTimeSelect = (open, close) => {
-    setInfo((prev) => ({ ...prev, open_time: open, close_time: close }));
-  };
-
-  const generateDisabledDates = (availability) => {
-    const today = new Date();
-    const disabled = [];
-
-    disabled.push(today);
-
-    const availableDays = availability.map((avail) => avail.day);
-    const allDays = [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ];
-
-    allDays.forEach((day) => {
-      if (!availableDays.includes(day)) {
-        for (let i = 0; i < 365; i++) {
-          const date = new Date();
-          date.setDate(today.getDate() + i);
-          if (date.toLocaleString("en-US", { weekday: "long" }) === day) {
-            disabled.push(date);
-          }
-        }
-      }
-    });
-
-    setDisabledDates(disabled);
-    return disabled;
-  };
-
-  const findFirstAvailableDate = (disabled) => {
-    const today = new Date();
-    for (let i = 0; i < 365; i++) {
-      const date = new Date();
-      date.setDate(today.getDate() + i);
-      if (!isDateDisabled(date, disabled)) {
-        return date;
-      }
-    }
-    return null;
-  };
-
-  const isDateDisabled = (date, disabledDates) => {
-    return disabledDates.some(
-      (disabledDate) =>
-        disabledDate.getFullYear() === date.getFullYear() &&
-        disabledDate.getMonth() === date.getMonth() &&
-        disabledDate.getDate() === date.getDate()
-    );
-  };
-
-  const filterTimesForSelectedDate = (date) => {
-    const day = date.toLocaleString("en-US", { weekday: "long" });
-    const scheduleForDay = profile.schedule.find((avail) => avail.day === day);
-    return scheduleForDay ? scheduleForDay.times : [];
   };
 
   useEffect(() => {
@@ -260,24 +190,11 @@ export default function TherapistCheckout({ profile }) {
         setSessionFormats(servicesres[0].formats);
       }
     }
-    if (profile.schedule.length > 0) {
-      const disabled = generateDisabledDates(profile.schedule);
-      const defaultDate = findFirstAvailableDate(disabled);
-      setSelectedDate(defaultDate);
-      setInfo((prevInfo) => ({
-        ...prevInfo,
-        ["date"]: defaultDate,
-      }));
-      if (defaultDate) {
-        const times = filterTimesForSelectedDate(defaultDate);
-        setAvailableTimes(times);
-      }
-    }
   }, [profile]);
 
   console.log("proffilee", info);
   return (
-    <div className="checkout_area bg-color-white rbt-section-gap">
+    <div className="checkout_area bg-color-white ">
       <div className="container">
         <div className="row g-5 checkout-form">
           <div className="col-lg-7">
@@ -288,20 +205,26 @@ export default function TherapistCheckout({ profile }) {
                 <FormMessage success={success} error={error} />
                 <div className="row mt--15">
                   <div className="col-md-6 col-12 mb--10">
-                    <label htmlFor="name">First Name*</label>
+                    <label htmlFor="name">Full Name*</label>
                     <input
                       type="text"
                       placeholder="First Name"
-                      value={profile.name}
+                      value={info.name}
                       id="name"
+                      name="name"
+                      onChange={
+                        !userInfo?.name
+                          ? (e) => handleChange(e.target.name, e.target.value)
+                          : undefined
+                      }
                     />
                   </div>
 
                   <div className="col-md-6 col-12 mb--10">
-                    <label htmlFor="phone">Phone no*</label>
+                    <label htmlFor="phone">Whatsapp no*</label>
                     <input
                       type="text"
-                      placeholder="Phone number"
+                      placeholder="Whatsapp number"
                       id="phone"
                       name="phone"
                       value={info.phone || ""}
@@ -404,40 +327,26 @@ export default function TherapistCheckout({ profile }) {
                             Select
                           </option>
                           <option value="Brother">Brother</option>
+                          <option value="Brother">Cousine</option>
                           <option value="Sister">Sister</option>
+                          <option value="Sister">Daughter</option>
+                          <option value="Sister">Son</option>
                           <option value="Spouse">Spouse</option>
                           <option value="Mother">Mother</option>
                           <option value="Father">Father</option>
+                          <option value="Father">Grand Father</option>
+                          <option value="Father">Grand Mother</option>
                         </select>
                       </div>
-                      <div className="col-md-6 col-12 mb--20">
-                        <label htmlFor="gender">Gender</label>
-                        <select
-                          id="gender"
-                          style={styles.selectStyle}
-                          name="gender"
-                          value={info.gender}
-                          onChange={(e) =>
-                            handleChange(e.target.name, e.target.value)
-                          }
-                        >
-                          <option value="" disabled selected>
-                            Select
-                          </option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                          <option value="Non-binary">Non-binary</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
+
                       <div className="col-md-6 col-12 mb--10">
-                        <label htmlFor="dob">Date of birth</label>
+                        <label htmlFor="dob">Age</label>
                         <input
-                          type="date"
-                          id="dob"
-                          name="dob"
-                          max="2024-08-10"
-                          value={info.dob}
+                          type="text"
+                          placeholder="Age"
+                          id="age"
+                          name="age"
+                          value={info.age}
                           onChange={(e) =>
                             handleChange(e.target.name, e.target.value)
                           }
@@ -445,6 +354,19 @@ export default function TherapistCheckout({ profile }) {
                       </div>
                     </>
                   )}
+                  <div className="col-md-6 col-12 mb--10">
+                    <label htmlFor="name">Additional Notes</label>
+                    <input
+                      type="text"
+                      placeholder="Additional Notes"
+                      value={info.notes}
+                      id="notes"
+                      name="notes"
+                      onChange={(e) =>
+                        handleChange(e.target.name, e.target.value)
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -452,59 +374,34 @@ export default function TherapistCheckout({ profile }) {
           <div className="col-lg-5">
             <div className="col-12 mb--20">
               <div className="checkout-cart-total">
-                <h4 style={{ fontSize: 24 }}>Availabilities</h4>
-                <DatePicker
-                  selected={selectedDate}
-                  minDate={new Date()}
-                  onChange={handleDate}
-                  excludeDates={disabledDates}
-                  className="custom-datepicker"
-                />
+                <h4 style={{ fontSize: 24 }}>For Offline Session</h4>
 
                 <div className="single-list" style={{ marginTop: 15 }}>
                   <h5 className="price-title" style={{ fontSize: "16px" }}>
-                    {selectedDate &&
-                      selectedDate.toLocaleString("en-US", {
-                        weekday: "long",
-                      })}
+                    Address
                   </h5>
 
                   <div
                     className="row plan-offer-list"
                     style={{ borderBottom: "none", marginTop: "-10px" }}
                   >
-                    {availableTimes &&
-                      availableTimes.length > 0 &&
-                      availableTimes.map((time) => {
-                        return generateHourlyIntervals(
-                          time.open,
-                          time.close
-                        ).map((item, index) => {
-                          return (
-                            <div
-                              className="col-lg-6"
-                              key={index}
-                              style={{ cursor: "pointer" }}
-                              onClick={() =>
-                                handleTimeSelect(item.open, item.close)
-                              }
-                            >
-                              <li style={styles.listStyle}>
-                                <i
-                                  className="feather-check"
-                                  style={
-                                    info.open_time === item.open &&
-                                    info.close_time === item.close
-                                      ? styles.selectedIconStyle
-                                      : styles.iconStyle
-                                  }
-                                ></i>
-                                {item.open}-{item.close}
-                              </li>
-                            </div>
-                          );
-                        });
-                      })}
+                    <h6>
+                      Gate No-3, D-137, near LPS GLOBAL SCHOOL, Block D, Sector
+                      51, Noida, Uttar Pradesh 201301
+                    </h6>
+                  </div>
+
+                  <div
+                    className="row plan-offer-list"
+                    style={{ borderBottom: "none", marginTop: "-10px" }}
+                  >
+                    <a
+                      href="https://maps.app.goo.gl/2byXtVajMfGuLRSF8?g_st=ipc"
+                      style={{ color: "#20c2a6" }}
+                      target="_blank"
+                    >
+                      Map Location
+                    </a>
                   </div>
                 </div>
               </div>
@@ -521,7 +418,7 @@ export default function TherapistCheckout({ profile }) {
                   </li>
                 </ul>
                 <p>
-                  Shipping Fee <span>0</span>
+                  Tax <span>0</span>
                 </p>
                 <p>
                   Sub Total<span>₹{info.amount}</span>
@@ -541,7 +438,7 @@ export default function TherapistCheckout({ profile }) {
                   onClick={handleSubmit}
                 >
                   <span className="icon-reverse-wrapper">
-                    <span className="btn-text">Place order</span>
+                    <span className="btn-text">Continue</span>
                     <span className="btn-icon">
                       <i className="feather-arrow-right"></i>
                     </span>
