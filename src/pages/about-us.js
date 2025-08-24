@@ -16,9 +16,7 @@ export default function AboutUs() {
       <AboutUsBanner />
         <ServiceQuality />
       <AboutCyt />
-     
-    
-      <ServiceQuality />
+  
       <CallToActionAbout />
       <InterSection />
       <Feedback />
