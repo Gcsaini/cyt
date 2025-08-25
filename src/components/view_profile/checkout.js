@@ -5,53 +5,66 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import FormMessage from "../global/form-message";
 import { postData } from "../../utils/actions";
-import { BookTherapistUrl } from "../../utils/url";
+import { BookTherapistUrl, BookTherapistUrlAnomalously, verifyOtpUrl } from "../../utils/url";
 import { useNavigate } from "react-router-dom";
 import FormProgressBar from "../global/form-progressbar";
 import useUserStore from "../../store/userStore";
+import {
+  Dialog,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@mui/material";
+const styles = {
+  iconStyle: {
+    fontSize: 12,
+    width: 20,
+    height: 20,
+  },
+  listStyle: {
+    lineHeight: "18px",
+    marginBottom: 0,
+  },
+  selectedIconStyle: {
+    fontSize: 12,
+    width: 20,
+    height: 20,
+    backgroundColor: "#fff",
+    color: "#2d54e6",
+    boxShadow: "0 0 10px rgba(0,0,0,.1)",
+  },
+  selectStyle: { lineHeight: "20px", height: "50px" },
+};
 export default function TherapistCheckout({ profile }) {
   const { userInfo } = useUserStore();
-
-  const styles = {
-    iconStyle: {
-      fontSize: 12,
-      width: 20,
-      height: 20,
-    },
-    listStyle: {
-      lineHeight: "18px",
-      marginBottom: 0,
-    },
-    selectedIconStyle: {
-      fontSize: 12,
-      width: 20,
-      height: 20,
-      backgroundColor: "#fff",
-      color: "#2d54e6",
-      boxShadow: "0 0 10px rgba(0,0,0,.1)",
-    },
-    selectStyle: { lineHeight: "20px", height: "50px" },
-  };
   const navigate = useNavigate();
   const [error, setError] = React.useState("");
+  const [otpError, setOtpError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState("");
   const [services, setServices] = React.useState([]);
   const [sessionFormats, setSessionFormats] = React.useState([]);
   const [other, setOther] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [otp, setOtp] = React.useState("");
+  const [bookingId, setBookingId] = React.useState();
+
   const [info, setInfo] = React.useState({
     name: userInfo.name || "",
     phone: "",
+    email: "",
     service: "",
     format: "",
-    whom: "",
+    whom: userInfo.email ? "" : "Self",
     cname: "",
     realtion_with_client: "",
     notes: "",
     age: "",
     amount: 0,
     therapist: profile._id,
+    isLoggedIn: false
   });
+
 
   const handleChange = (name, value) => {
     if (name === "name" || name === "notes") {
@@ -116,6 +129,10 @@ export default function TherapistCheckout({ profile }) {
         ...prevInfo,
         [name]: formattedValue,
       }));
+    }
+    else if (name === "otp") {
+      const formattedValue = value.replace(/\D/g, "").slice(0, 6); // only numbers, max 6 digits
+      setOtp(formattedValue);
     } else {
       setInfo((prevInfo) => ({
         ...prevInfo,
@@ -124,8 +141,6 @@ export default function TherapistCheckout({ profile }) {
     }
   };
 
-  console.log("user info", info);
-
   const handleSubmit = async () => {
     setSuccess("");
     if (info.phone.length !== 10) {
@@ -133,6 +148,10 @@ export default function TherapistCheckout({ profile }) {
       return;
     } else if (info.service === "") {
       setError("Please select service.");
+      return;
+    }
+    else if (!userInfo.email && info.email === "") {
+      setError("Please Enter Email id.");
       return;
     } else if (info.whom === "") {
       setError("Please select for whom you want to take service.");
@@ -157,24 +176,63 @@ export default function TherapistCheckout({ profile }) {
       setLoading(true);
       try {
         setLoading(true);
-        const response = await postData(BookTherapistUrl, info);
+        const response = await postData(info.isLoggedIn ? BookTherapistUrl : BookTherapistUrlAnomalously, info);
         if (response.status) {
-          setSuccess(response.message);
-          if (response.data.id !== "") {
-            navigate(`/payment-pending/${response.data.id}`);
-            setLoading(false);
+          if (info.isLoggedIn) {
+            setSuccess(response.message);
+            if (response.data.id !== "") {
+              navigate(`/payment-pending/${response.data.id}`);
+            }
+          } else {
+            setBookingId(response.data.id);
+            setOpen(true);
           }
+
         } else {
           setError(response.message);
-          setLoading(false);
+
         }
       } catch (error) {
         console.log(error);
         setError(error?.response?.data?.message);
-        setLoading(false);
       }
+      setLoading(false);
     }
   };
+
+  const onClose = () => {
+    setOpen(false);
+  }
+
+  const verifyOtp = async () => {
+    setOtpError("");
+    if (otp.length !== 6) {
+      setOtpError("Please enter valid OTP");
+      return;
+    }
+    let email = info.email;
+    const value = {
+      email,
+      otp,
+    };
+    try {
+      setLoading(true);
+      const response = await postData(verifyOtpUrl, value);
+      if (response.status) {
+        setOtpError("");
+        setOtp("");
+        navigate(`/payment-pending/${bookingId}`);
+      } else {
+        setOtpError(response.message);
+      }
+    } catch (error) {
+      setSuccess("");
+      setOtpError(error.response.data.message);
+    }
+    setLoading(false);
+  };
+
+
 
   useEffect(() => {
     if (profile) {
@@ -190,9 +248,11 @@ export default function TherapistCheckout({ profile }) {
         setSessionFormats(servicesres[0].formats);
       }
     }
+    if (userInfo && userInfo.email) {
+      info.isLoggedIn = true
+    }
   }, [profile]);
 
-  console.log("proffilee", info);
   return (
     <div className="checkout_area bg-color-white ">
       <div className="container">
@@ -208,7 +268,7 @@ export default function TherapistCheckout({ profile }) {
                     <label htmlFor="name">Full Name*</label>
                     <input
                       type="text"
-                      placeholder="First Name"
+                      placeholder="Full Name"
                       value={info.name}
                       id="name"
                       name="name"
@@ -233,26 +293,20 @@ export default function TherapistCheckout({ profile }) {
                       }
                     />
                   </div>
-                  <div className="col-md-6 col-12 mb--20">
-                    <label htmlFor="service">Service</label>
-                    <select
-                      id="service"
-                      style={styles.selectStyle}
-                      name="service"
-                      value={info.service}
+                  {!info.isLoggedIn && <div className="col-md-6 col-12 mb--10">
+                    <label htmlFor="phone">Email*</label>
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      id="email"
+                      name="email"
+                      value={info.email}
                       onChange={(e) =>
                         handleChange(e.target.name, e.target.value)
                       }
-                    >
-                      {services.map((item) => {
-                        return (
-                          <option value={item.service} key={item.service}>
-                            {item.service}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
+                    />
+                  </div>}
+
                   <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="format">Session Formats</label>
                     <select
@@ -277,6 +331,26 @@ export default function TherapistCheckout({ profile }) {
                     </select>
                   </div>
                   <div className="col-md-6 col-12 mb--20">
+                    <label htmlFor="service">Service</label>
+                    <select
+                      id="service"
+                      style={styles.selectStyle}
+                      name="service"
+                      value={info.service}
+                      onChange={(e) =>
+                        handleChange(e.target.name, e.target.value)
+                      }
+                    >
+                      {services.map((item) => {
+                        return (
+                          <option value={item.service} key={item.service}>
+                            {item.service}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  {info.isLoggedIn && <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="gender">For Whom</label>
                     <select
                       id="gender"
@@ -287,13 +361,13 @@ export default function TherapistCheckout({ profile }) {
                         handleChange(e.target.name, e.target.value)
                       }
                     >
-                      <option value="" disabled selected>
+                      <option value="" disabled>
                         Select
                       </option>
                       <option value="Self">Self</option>
                       <option value="For Other">For Other</option>
                     </select>
-                  </div>
+                  </div>}
 
                   {other && (
                     <>
@@ -356,12 +430,11 @@ export default function TherapistCheckout({ profile }) {
                   )}
                   <div className="col-md-6 col-12 mb--10">
                     <label htmlFor="name">Additional Notes</label>
-                    <input
-                      type="text"
+                    <textarea
                       placeholder="Additional Notes"
-                      value={info.notes}
                       id="notes"
                       name="notes"
+                      value={info.notes}
                       onChange={(e) =>
                         handleChange(e.target.name, e.target.value)
                       }
@@ -452,6 +525,49 @@ export default function TherapistCheckout({ profile }) {
           </div>
         </div>
       </div>
+      <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth >
+        <div style={{ padding: "8px" }}>
+          <h5>Enter OTP</h5>
+          <FormMessage success={success} error={otpError} />
+          <DialogContent dividers>
+            <div className="col-md-6 col-12 mb--10">
+              <label htmlFor="phone">OTP*</label>
+              <input
+                type="text"
+                placeholder="OTP"
+                id="otp"
+                value={otp}
+                name="otp"
+                onChange={(e) =>
+                  handleChange(e.target.name, e.target.value)
+                }
+              />
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <div className="plceholder-button mt--10">
+              {loading ? (
+                <FormProgressBar />
+              ) : (
+                <button
+                  className="rbt-btn btn-gradient hover-icon-reverse"
+                  onClick={verifyOtp}
+                >
+                  <span className="icon-reverse-wrapper">
+                    <span className="btn-text">Submit</span>
+                    <span className="btn-icon">
+                      <i className="feather-arrow-right"></i>
+                    </span>
+                    <span className="btn-icon">
+                      <i className="feather-arrow-right"></i>
+                    </span>
+                  </span>
+                </button>
+              )}
+            </div>
+          </DialogActions>
+        </div>
+      </Dialog>
     </div>
   );
 }

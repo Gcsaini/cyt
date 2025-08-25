@@ -14,23 +14,23 @@ import MyNavbar from "../components/navbar";
 import Popup from "../components/global/popup";
 
 export default function HomePage() {
-  const [showPopup, setShowPopup] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
 
-    useEffect(() => {
-    const lastVisit = localStorage.getItem("popupShownAt");
+  //   useEffect(() => {
+  //   const lastVisit = localStorage.getItem("popupShownAt");
 
-    if (!lastVisit) {
-      setShowPopup(true);
-      localStorage.setItem("popupShownAt", Date.now());
-    } else {
-      const now = Date.now();
-      const oneHour = 60 * 60 * 1000; // 1 hour in ms
-      if (now - parseInt(lastVisit, 10) > oneHour) {
-        setShowPopup(true);
-        localStorage.setItem("popupShownAt", Date.now());
-      }
-    }
-  }, []);
+  //   if (!lastVisit) {
+  //     setShowPopup(true);
+  //     localStorage.setItem("popupShownAt", Date.now());
+  //   } else {
+  //     const now = Date.now();
+  //     const oneHour = 60 * 60 * 1000; // 1 hour in ms
+  //     if (now - parseInt(lastVisit, 10) > oneHour) {
+  //       setShowPopup(true);
+  //       localStorage.setItem("popupShownAt", Date.now());
+  //     }
+  //   }
+  // }, []);
   return (
     <div id="__next">
       <main className="">
@@ -46,7 +46,7 @@ export default function HomePage() {
           <Blogs />
           <CallToAction />
           <NewsLetter />
-          <Popup open={showPopup} onClose={() => setShowPopup(false)} />
+          {/* <Popup open={showPopup} onClose={() => setShowPopup(false)} /> */}
         </main>
         <Footer />
       </main>
