@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ModalComponent from "../therapists/Modal/Modal-component";
 const {
@@ -8,20 +8,37 @@ const {
 } = require("@mui/material");
 
 export default function PaymentSuccessModal({ open, onClose }) {
+  const [timeLeft, setTimeLeft] = useState(15);
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/");
   };
 
   useEffect(() => {
-    let timer;
+    let countdown;
+    let redirectTimer;
+
     if (open) {
-      timer = setTimeout(() => {
+      // countdown timer
+      countdown = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev > 0) return prev - 1;
+          return 0;
+        });
+      }, 1000);
+
+      // redirect after 15 seconds
+      redirectTimer = setTimeout(() => {
         navigate("/");
       }, 15000);
     }
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearInterval(countdown);
+      clearTimeout(redirectTimer);
+    };
   }, [open, navigate]);
+
   return (
     <ModalComponent open={open} onClose={onClose} width="50%">
       <DialogTitle>
@@ -34,7 +51,7 @@ export default function PaymentSuccessModal({ open, onClose }) {
           Your payment has been successfully processed. Thank you!
         </h6>
         <h6 className="price-title" style={{ fontSize: "16px" }}>
-          Redirecting to home in 15 seconds...
+          Redirecting to home in {timeLeft} seconds...
         </h6>
       </DialogContent>
       <DialogActions>

@@ -63,6 +63,7 @@ export const RemoveFavriouteTherapistUrl = `${apiUrl}/remove-favrioute-therapist
 export const GetFavriouteTherapistUrl = `${apiUrl}/get-favrioute-therapists`;
 export const GetFavriouteTherapistListUrl = `${apiUrl}/get-favrioute-therapists-list`;
 export const BookTherapistUrl = `${apiUrl}/book-therapist`;
+export const BookTherapistUrlAnomalously = `${apiUrl}/book-therapist-anomalously`;
 export const pendingPaymentUrl = `${apiUrl}/get-payment`;
 export const savePaymentUrl = `${apiUrl}/save-payment`;
 export const getBookings = `${apiUrl}/get-bookings`;

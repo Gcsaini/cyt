@@ -172,19 +172,17 @@ function App() {
               <Route
                 path="/therapist-checkout/:id"
                 element={
-                  <ProtectedRoute>
-                    <TherapistCheckoutPage />
-                  </ProtectedRoute>
-                  // <TherapistCheckoutPage />
+                  // <ProtectedRoute>
+                  //   <TherapistCheckoutPage />
+                  // </ProtectedRoute>
+                  <TherapistCheckoutPage />
                 }
               />
 
               <Route
                 path="/payment-pending/:id"
                 element={
-                  <ProtectedRoute>
-                    <PaymentPendingPage />
-                  </ProtectedRoute>
+                  <PaymentPendingPage />
                 }
               />
 

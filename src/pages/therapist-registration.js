@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import { threapistRegistrationUrl } from "../utils/url";
 import { Link } from "react-router-dom";
 import { profileTypeList } from "../utils/static-lists";
+import { postFormData } from "../utils/actions";
 export default function TherapistRegistration() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -72,13 +73,9 @@ export default function TherapistRegistration() {
       formData.append("serve", checkedValues.join(", "));
 
       try {
-        const response = await axios.post(threapistRegistrationUrl, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        if (response.data.status) {
-          setSuccess(response.data.message);
+        const response = await postFormData(threapistRegistrationUrl, formData);
+        if (response.status) {
+          setSuccess(response.message);
           setError("");
           setName("");
           setEmail("");
@@ -151,7 +148,7 @@ export default function TherapistRegistration() {
                     </div>
                     <h3 className="title">Are you a therapist?</h3>
 
-                    <ul class="check-box-points">
+                    <ul className="check-box-points">
                       <li>
                         Expand Your Reach: Connect with a broad client base
                         seeking professional mental health support.
@@ -180,7 +177,7 @@ export default function TherapistRegistration() {
                         knowledge.
                       </li>
                     </ul>
-                    <p class="note">
+                    <p className="note">
                       Please note: Therapists are not employees of Choose Your
                       Therapist LLP. They provide their services independently.
                       We approve them based on their qualifications and
