@@ -112,9 +112,9 @@ export default function TherapistRegistration() {
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
                 <h2 className="title">
-                  Become a part of
-                  <span className="theme-gradient">#ChooseYourTherapist</span>
-                  and serve professionally.
+                  List Yourself as a Professional
+                  <span className="theme-gradient">Professional</span>
+              
                 </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
