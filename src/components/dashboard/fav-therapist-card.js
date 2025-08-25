@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import ImageTag from "../../utils/image-tag";
+import { imagePath } from "../../utils/url";
 
 export default function FavTherapistCard({ data, removeFav }) {
   return (
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
         <div className="rbt-card-img">
-          <Link to="/notfound" style={{ cursor: "pointer" }}>
+          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
             <ImageTag
-              alt="Profile-photo"
+              alt={data.name}
               style={{ height: "250px" }}
-              src={data.profile}
+              src={`${imagePath}/${data.profile}`}
             />
           </Link>
           <div
@@ -35,6 +36,8 @@ export default function FavTherapistCard({ data, removeFav }) {
             <a
               class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
               title="Delete"
+              alt={"delete"}
+              
             >
               <i class="feather-trash-2 pl--0"></i>
             </a>
@@ -53,7 +56,7 @@ export default function FavTherapistCard({ data, removeFav }) {
           </ul>
 
           <h4 className="rbt-card-title">
-            <Link to="/notfound" style={{ cursor: "pointer" }}>
+            <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
               {data.name}
             </Link>
           </h4>
@@ -83,7 +86,7 @@ export default function FavTherapistCard({ data, removeFav }) {
               justifyContent: "center",
             }}
           >
-            <Link className="rbt-btn btn-gradient book-btn" to="/notfound">
+            <Link className="rbt-btn btn-gradient book-btn" to={`/therapist-checkout/${data._id}`}>
               <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
             </Link>
           </div>

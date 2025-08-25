@@ -30,7 +30,7 @@ export default function UserLayout(props) {
                 {isMobile ? (
                   <div></div>
                 ) : (
-                  <div className="col-lg-3">
+                  <div className="col-lg-2">
                     <div className="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
                       <div className="inner">
                         <div className="content-item-content">
@@ -63,7 +63,7 @@ export default function UserLayout(props) {
                                         ? "active"
                                         : ""
                                     }
-                                    to="/appointments"
+                                    to="/my-appointments"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
                                     <span>Appointments</span>
@@ -84,7 +84,7 @@ export default function UserLayout(props) {
                                   </Link>
                                 </li>
 
-                                <li className="nav-item">
+                               {/*  <li className="nav-item">
                                   <Link className="" to="/my-invoices">
                                     <i className="fa-solid fa-file-invoice"></i>
                                     <span>Invoices</span>
@@ -96,7 +96,7 @@ export default function UserLayout(props) {
                                     <i className="feather-star"></i>
                                     <span>Reviews</span>
                                   </Link>
-                                </li>
+                                </li> */}
                                 <li className="nav-item">
                                   <Link className="" to="/my-bookings">
                                     <i className="feather-star"></i>
@@ -105,7 +105,7 @@ export default function UserLayout(props) {
                                 </li>
                               </ul>
                             </nav>
-                            <div className="section-title mt--40 mb--20">
+                            {/* <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">
                                 Additional
                                 <span
@@ -119,8 +119,8 @@ export default function UserLayout(props) {
                                   Coming soon
                                 </span>
                               </h6>
-                            </div>
-                            <nav className="mainmenu-nav">
+                            </div> */}
+                            {/* <nav className="mainmenu-nav">
                               <ul className="dashboard-mainmenu rbt-default-sidebar-list">
                                 <li>
                                   <Link className="" to="/my-courses">
@@ -135,7 +135,7 @@ export default function UserLayout(props) {
                                   </Link>
                                 </li>
                               </ul>
-                            </nav>
+                            </nav> */}
                             <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">User</h6>
                             </div>
@@ -154,19 +154,7 @@ export default function UserLayout(props) {
                                     <span>Edit Profile</span>
                                   </Link>
                                 </li>
-                                <li>
-                                  <Link
-                                    className={
-                                      currentPath === "/change-my-password"
-                                        ? "active"
-                                        : ""
-                                    }
-                                    to="/change-my-password"
-                                  >
-                                    <i className="feather-settings"></i>
-                                    <span>Change Password</span>
-                                  </Link>
-                                </li>
+                               
                                 <li>
                                   <a onClick={handleLogout}>
                                     <i className="feather-log-out"></i>
@@ -181,7 +169,7 @@ export default function UserLayout(props) {
                     </div>
                   </div>
                 )}
-                <div className="col-lg-9">{props.children}</div>
+                <div className="col-lg-10">{props.children}</div>
               </div>
             </div>
           </div>

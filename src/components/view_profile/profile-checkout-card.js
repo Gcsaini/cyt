@@ -1,8 +1,6 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
-import { getMinMaxPrice } from "../../utils/helpers";
-
-import React from "react";
+import { imagePath } from "../../utils/url";
 export default function ProfileCheckoutCard({ pageData }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const listStyle = {
@@ -15,11 +13,11 @@ export default function ProfileCheckoutCard({ pageData }) {
         <div className="rbt-card-img" style={{ flexBasis: "33%" }}>
           <ImageTag
             alt="profile image"
-            src={pageData.profile}
-            style={{ height: isMobile ? 255 : 235 }}
+            src={`${imagePath}/${pageData.profile}`}
+            style={{ height: isMobile ? 255 : 185 }}
           />
         </div>
-        <div className="rbt-card-body" style={{ flexBasis: "67%" }}>
+        <div className="rbt-card-body" style={{ flexBasis: "90%" }}>
           <div className="rbt-card-top">
             <div className="rbt-review">
               <h4 className="rbt-card-title">
@@ -43,18 +41,18 @@ export default function ProfileCheckoutCard({ pageData }) {
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>{pageData.serve_type}</span>
             </li>
-            <li style={listStyle}>
+            {/* <li style={listStyle}>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
                 {pageData.qualification}
               </span>
-            </li>
-            <li style={listStyle}>
+            </li> */}
+            {/* <li style={listStyle}>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
                 {getMinMaxPrice(pageData)}
               </span>
-            </li>
+            </li> */}
             <li style={listStyle}>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "1rem" }}>

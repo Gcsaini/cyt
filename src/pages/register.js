@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidMail } from "../utils/validators";
-import { registerUrl, sendOtpUrl, verifyOtpUrl } from "../utils/url";
+import { registerUrl, verifyOtpUrl } from "../utils/url";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
@@ -15,7 +15,6 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
@@ -40,25 +39,21 @@ export default function Register() {
       setError("Please enter valid email address");
       return;
     }
-    if (password.length < 6) {
-      setError("Please enter valid password");
-      return;
-    }
+  
     const value = {
       email,
       name,
       phone,
-      password,
     };
     try {
       setLoading(true);
       const response = await postData(registerUrl, value);
       if (response.status) {
-        setSuccess("An Otp has been sent to your mail id");
+        setSuccess(response.message);
         setOtpView(true);
         setError("");
       } else {
-        setError("Something went wrong");
+        setError(response.message);
       }
     } catch (error) {
       setError(error.response.data.message);
@@ -84,7 +79,7 @@ export default function Register() {
         setSuccess(response.message);
         setError("");
         setOtp("");
-        setToken(response.data.token);
+        setToken(response.token);
         navigate("/my-dashboard");
       } else {
         setError("Something went wrong");
@@ -290,15 +285,6 @@ export default function Register() {
                           type="text"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                        />
-                        <span className="focus-border"></span>
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          placeholder="Password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
                         />
                         <span className="focus-border"></span>
                       </div>

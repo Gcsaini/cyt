@@ -8,6 +8,7 @@ import {
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
 import { errorColor } from "../../utils/colors";
+import PageWrapper from "../../components/global/page-wrapper";
 
 export default function FavriouteTherapistPage() {
   const [data, setData] = React.useState([]);
@@ -59,35 +60,25 @@ export default function FavriouteTherapistPage() {
 
   return (
     <UserLayout>
-      <div className="rbt-dashboard-content bg-color-white rbt-shadow-box">
-        <div className="content">
-          <div className="section-title">
-            <h4 className="rbt-title-style-3">
-              Favrioute Therapist
-              <p style={{ fontSize: 16, color: errorColor }}>{error}</p>
-            </h4>
-          </div>
-          {loading ? (
-            <FormProgressBar />
+      <PageWrapper pageTitle={"Favrioute Therapist"} loading={loading}>
+        <div className="row gy-5">
+          {data && data.length > 0 ? (
+            data.map((item) => {
+              return (
+                <div className="col-lg-4 col-md-6 col-12" key={item._id}>
+                  <FavTherapistCard
+                    data={item}
+                    key={item._id}
+                    removeFav={handleRemoveFav}
+                  />
+                </div>
+              );
+            })
           ) : (
-            <div className="row gy-5">
-              {data &&
-                data.length > 0 &&
-                data.map((item) => {
-                  return (
-                    <div className="col-lg-4 col-md-6 col-12" key={item._id}>
-                      <FavTherapistCard
-                        data={item}
-                        key={item._id}
-                        removeFav={handleRemoveFav}
-                      />
-                    </div>
-                  );
-                })}
-            </div>
+            <h6>No Therapist Found</h6>
           )}
         </div>
-      </div>
+      </PageWrapper>
     </UserLayout>
   );
 }

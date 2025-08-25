@@ -1,16 +1,24 @@
 let apiUrl;
+let baseApi;
+let baseFrontendUrl;
 const currentDomain = window.location.hostname;
 
 if (currentDomain === "localhost") {
-    apiUrl = "https://api.chooseyourtherapist.in/api";
+  // apiUrl = "https://api.chooseyourtherapist.in/api";
+  apiUrl = "http://localhost:4000/api";
+  baseApi = "http://localhost:4000";
+  baseFrontendUrl = "http://localhost:3000/";
 } else {
-    apiUrl = "https://api.chooseyourtherapist.in/api";
+  apiUrl = "https://api.chooseyourtherapist.in/api";
+  baseApi = "https://api.chooseyourtherapist.in";
+  baseFrontendUrl = "https://chooseyourtherapist.in/";
 }
 
 export const defaultProfile =
-    "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";
+  "https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png";
 
-export const imagePath = "https://api.chooseyourtherapist.in/uploads/images"
+export const frontendUrl = baseFrontendUrl;
+export const imagePath = `${baseApi}/uploads/images`;
 export const loginUrl = `${apiUrl}/login`;
 export const threapistRegistrationUrl = `${apiUrl}/therapist-registeration`;
 export const registerUrl = `${apiUrl}/register`;
@@ -55,3 +63,6 @@ export const RemoveFavriouteTherapistUrl = `${apiUrl}/remove-favrioute-therapist
 export const GetFavriouteTherapistUrl = `${apiUrl}/get-favrioute-therapists`;
 export const GetFavriouteTherapistListUrl = `${apiUrl}/get-favrioute-therapists-list`;
 export const BookTherapistUrl = `${apiUrl}/book-therapist`;
+export const pendingPaymentUrl = `${apiUrl}/get-payment`;
+export const savePaymentUrl = `${apiUrl}/save-payment`;
+export const getBookings = `${apiUrl}/get-bookings`;
