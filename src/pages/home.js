@@ -37,6 +37,7 @@ export default function HomePage() {
         <MyNavbar />
         <main className="rbt-main-wrapper">
           <Banner />
+          <
           <Services />
           <ProfileCard />
           <Counter />
