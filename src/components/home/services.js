@@ -54,6 +54,24 @@ export default function Services() {
           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
+              href="course-filter-one-toggle/%5bcourseId%5d"
+            >
+              <div className="inner">
+                
+                <div className="content">
+                
+                  <div className="read-more-btn">
+                    <span>
+                     When stress feels heavy, simply sharing can make it lighter — let’s start the conversation.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+            <a
+              className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-3"
             >
               <div className="inner">
@@ -74,6 +92,42 @@ export default function Services() {
           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
+              href="course-filter-one-toggle/%5bcourseId%5d"
+            >
+              <div className="inner">
+                
+                <div className="content">
+                
+                  <div className="read-more-btn">
+                    <span>
+                     When stress feels heavy, simply sharing can make it lighter — let’s start the conversation.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+            <a
+              className="rbt-cat-box rbt-cat-box-1 text-center"
+              href="course-filter-one-toggle/%5bcourseId%5d"
+            >
+              <div className="inner">
+                
+                <div className="content">
+                
+                  <div className="read-more-btn">
+                    <span>
+                     When stress feels heavy, simply sharing can make it lighter — let’s start the conversation.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+         <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+            <a
+              className="rbt-cat-box rbt-cat-box-1 text-center"
               href="course-filter-one-toggle/%5bcourseId%5d-4"
             >
               <div className="inner">
@@ -85,6 +139,24 @@ export default function Services() {
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Enroll Now<i className="feather-arrow-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
+            <a
+              className="rbt-cat-box rbt-cat-box-1 text-center"
+              href="course-filter-one-toggle/%5bcourseId%5d"
+            >
+              <div className="inner">
+                
+                <div className="content">
+                
+                  <div className="read-more-btn">
+                    <span>
+                     When stress feels heavy, simply sharing can make it lighter — let’s start the conversation.
                     </span>
                   </div>
                 </div>
