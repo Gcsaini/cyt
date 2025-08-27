@@ -110,6 +110,7 @@ const Availability = () => {
       getData();
     }
   }, [setTimes]);
+  
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <>

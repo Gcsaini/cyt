@@ -6,80 +6,33 @@ import { getFeeDetailsUrl, updateFeeDetailsUrl } from "../../../utils/url";
 import { fetchById, postData } from "../../../utils/actions";
 import FormProgressBar from "../../global/form-progressbar";
 import FormMessage from "../../global/form-message";
+import { toast } from "react-toastify";
 export default function Fees() {
-  const { feeDetails, setFeeDetails, setMultipleFeeDetails } =
+  const { therapistInfo, setFee } =
     useTherapistStore();
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const handleChange = (field, value) => {
-    if (value === "" || /^\d*\.?\d*$/.test(value)) {
-      setSuccess("");
-      const numericValue = parseFloat(value);
-      if (!isNaN(numericValue) && (numericValue < 500 || numericValue > 2500)) {
-        setError("Price must be between 500 and 2500");
-      } else {
-        setError("");
-      }
-      setFeeDetails(field, value);
-    }
-  };
 
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
-    const allFieldsEmpty = Object.values(feeDetails).every(
-      (value) => value === ""
-    );
-    const anyFieldOutOfRange = Object.values(feeDetails).some((value) => {
-      const numericValue = parseFloat(value);
-      return numericValue < 500 || numericValue > 2500;
-    });
-    if (allFieldsEmpty) {
-      setError("Please enter your price details");
-    } else if (anyFieldOutOfRange) {
-      setError("Price must be between 500 and 2500");
-    } else {
-      setError("");
-      setLoading(true);
-      try {
-        setLoading(true);
-        const response = await postData(updateFeeDetailsUrl, feeDetails);
-        if (response.status) {
-          setSuccess(response.message);
-          setError("");
-        } else {
-          setError("Something went wrong");
-        }
-      } catch (error) {
-        setError(error.response.data.message);
-      }
-      setLoading(false);
-    }
-  };
-
-  const getData = async () => {
+    setLoading(true);
     try {
-      setPageLoading(true);
-      const res = await fetchById(getFeeDetailsUrl);
-      if (Object.keys(res.data).length > 0) {
-        setMultipleFeeDetails(res.data);
+      setLoading(true);
+      const response = await postData(updateFeeDetailsUrl, {fees:therapistInfo.fees});
+      if (response.status) {
+        setSuccess(response.message);
+        setError("");
+      } else {
+        setError(response.message || "Something went wrong");
       }
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.response.data.message);
     }
-    setPageLoading(false);
+    setLoading(false);
   };
-
-  React.useEffect(() => {
-    const allFieldsFilled = Object.values(feeDetails).every(
-      (value) => value !== ""
-    );
-    if (!allFieldsFilled) {
-      getData();
-    }
-  }, []);
 
   return pageLoading ? (
     <FormProgressBar />
@@ -106,105 +59,38 @@ export default function Fees() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  Individual Counselling
-                  <FaInfoCircle
-                    title={`Short information about Individual Counselling`}
-                    className="info-icon"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.ica}
-                    onChange={(e) => handleChange("ica", e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.icv}
-                    onChange={(e) => handleChange("icv", e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.icip}
-                    onChange={(e) => handleChange("icip", e.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Couple Counselling
-                  <FaInfoCircle
-                    title={`Short information about Couple Counselling`}
-                    className="info-icon"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.cca}
-                    onChange={(e) => handleChange("cca", e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.ccv}
-                    onChange={(e) => handleChange("ccv", e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.ccip}
-                    onChange={(e) => handleChange("ccip", e.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Teen Counselling
-                  <FaInfoCircle
-                    title={`Short information about Teen Counselling`}
-                    className="info-icon"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.tca}
-                    onChange={(e) => handleChange("tca", e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.tcv}
-                    onChange={(e) => handleChange("tcv", e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={feeDetails.tcip}
-                    onChange={(e) => handleChange("tcip", e.target.value)}
-                  />
-                </td>
-              </tr>
+              {therapistInfo.fees.map((feeItem, serviceIndex) => (
+                <tr key={serviceIndex}>
+                  <td>
+                    {feeItem.name}
+                    <FaInfoCircle
+                      title={`Short information about ${feeItem.name}`}
+                      className="info-icon"
+                    />
+                  </td>
+                  {feeItem.formats.map((format, formatIndex) => {
+                    return (
+                      <td key={formatIndex}>
+                        <input
+                          type="text"
+                          placeholder="Price"
+                          value={format?.fee || ""}
+                          onChange={(e) =>
+                            setFee(serviceIndex, formatIndex, e.target.value)
+                          }
+                          onBlur={(e) => {
+                            let value = parseInt(e.target.value);
+                            if (isNaN(value) || value < 500 || value > 2500) {
+                              setFee(serviceIndex, formatIndex, "");
+                              toast.error("Price must be between 500 and 2500");
+                            }
+                          }}
+                        />
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

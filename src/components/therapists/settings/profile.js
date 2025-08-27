@@ -6,7 +6,7 @@ import {
   stateList,
 } from "../../../utils/static-lists";
 import React, { useState, useRef } from "react";
-import { defaultProfile, updateTherapistProfileUrl } from "../../../utils/url";
+import { defaultProfile, imagePath, updateTherapistProfileUrl } from "../../../utils/url";
 import ImageTag from "../../../utils/image-tag";
 import { postFormData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
@@ -72,23 +72,23 @@ export default function Profile() {
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
-    if (therapistInfo.name === "") {
+    if (therapistInfo.user.name === "") {
       setError("Name can not be empty");
       return;
-    } else if (therapistInfo.phone === "") {
+    } else if (therapistInfo.user.phone === "") {
       setError("Phone Number can not be empty");
       return;
     } else {
       setError("");
       setLoading(true);
       const formData = new FormData();
-      formData.append("name", therapistInfo.name);
-      formData.append("phone", therapistInfo.phone);
+      formData.append("name", therapistInfo.user.name);
+      formData.append("phone", therapistInfo.user.phone);
       formData.append("qualification", therapistInfo.qualification);
       formData.append("license_number", therapistInfo.license_number);
-      formData.append("bio", therapistInfo.bio);
+      formData.append("bio", therapistInfo.user.bio);
       formData.append("state", therapistInfo.state);
-      formData.append("gender", therapistInfo.gender);
+      formData.append("gender", therapistInfo.user.gender);
       formData.append("office_address", therapistInfo.office_address);
       formData.append("year_of_exp", therapistInfo.year_of_exp);
       formData.append("file", selectedImage);
@@ -200,7 +200,7 @@ export default function Profile() {
           <div className="rbt-tutor-information-left">
             <div className="thumbnail rbt-avatars size-lg position-relative">
               <ImageTag
-                alt={therapistInfo.name || "Default Name"}
+                alt={therapistInfo.user.name || "Default Name"}
                 style={{
                   height: 120,
                   width: 120,
@@ -208,7 +208,7 @@ export default function Profile() {
                   objectFit: "cover", // Ensures the image scales properly
                   backgroundColor: "#ccc",
                 }}
-                src={previewImage ?? therapistInfo.profile ?? defaultProfile}
+                src={previewImage ?? `${imagePath}/${therapistInfo.user.profile}` ?? defaultProfile}
               />
               <div className="rbt-edit-photo-inner">
                 <button
@@ -229,7 +229,7 @@ export default function Profile() {
             </div>
             <div className="tutor-content">
               <h5 className="title">
-                {therapistInfo.name} &nbsp;
+                {therapistInfo.user.name} &nbsp;
                 {therapistInfo.profile_code !== "" ? (
                   <span style={{ fontSize: 15 }}>
                     ({therapistInfo.profile_code})
@@ -239,7 +239,7 @@ export default function Profile() {
                 )}
               </h5>
               <div className="rbt-review">
-                <h6 className="title">{therapistInfo.email}</h6>
+                <h6 className="title">{therapistInfo.user.email}</h6>
               </div>
               <div className="rbt-review">
                 <h6 className="title">{therapistInfo.profile_type}</h6>
@@ -282,8 +282,8 @@ export default function Profile() {
             <input
               id="fullname"
               type="text"
-              value={therapistInfo.name}
-              onChange={(e) => setInfo("name", e.target.value)}
+              value={therapistInfo.user.name}
+              onChange={(e) => setInfo("user.name", e.target.value)}
             />
           </div>
         </div>
@@ -293,8 +293,8 @@ export default function Profile() {
             <select
               id="gender"
               style={selectStyle}
-              value={therapistInfo.gender}
-              onChange={(e) => setInfo("gender", e.target.value)}
+              value={therapistInfo.user.gender}
+              onChange={(e) => setInfo("user.gender", e.target.value)}
             >
               <option value="">Select</option>
               <option value="Male">Male</option>
@@ -310,7 +310,7 @@ export default function Profile() {
             <input
               id="phonenumber"
               type="tel"
-              value={therapistInfo.phone}
+              value={therapistInfo.user.phone}
               onChange={(e) => setInfo("phone", e.target.value)}
             />
           </div>
@@ -342,7 +342,7 @@ export default function Profile() {
               type="text"
               value={
                 therapistInfo.office_address == "null" ||
-                therapistInfo.office_address == null
+                  therapistInfo.office_address == null
                   ? ""
                   : therapistInfo.office_address
               }
@@ -432,8 +432,8 @@ export default function Profile() {
               id="bio"
               cols="20"
               rows="5"
-              value={therapistInfo.bio}
-              onChange={(e) => setInfo("bio", e.target.value)}
+              value={therapistInfo.user.bio}
+              onChange={(e) => setInfo("user.bio", e.target.value)}
             ></textarea>
           </div>
         </div>

@@ -19,11 +19,18 @@ const useTherapistStore = create((set) => ({
     ifsc: "",
     upi: "",
   },
+  feeInfo: {},
   therapistInfo: {
-    name: "",
-    phone: "",
-    profile: "",
-    email: "",
+    user: {
+      name: "",
+      email: "",
+      phone: "",
+      profile: "",
+      bio: "",
+      age: "",
+      gender: "",
+      dob: ""
+    },
     serve_type: "",
     profile_type: "",
     mode: "",
@@ -38,23 +45,13 @@ const useTherapistStore = create((set) => ({
     session_formats: [],
     services: "",
     experties: "",
-    bio: "",
     createdAt: "",
     updatedAt: "",
     fileKey: "",
     profileKey: "",
     othEducation: false,
-  },
-  feeDetails: {
-    icv: "",
-    ica: "",
-    icip: "",
-    cca: "",
-    ccv: "",
-    ccip: "",
-    tca: "",
-    tcv: "",
-    tcip: "",
+    availabilities: [],
+    fees: [],
   },
   times: initialTimes,
   profileSet: false,
@@ -80,11 +77,47 @@ const useTherapistStore = create((set) => ({
     }),
 
   setTherapistInfo: (data) =>
-    set((state) => ({ therapistInfo: { ...state.therapistInfo, ...data } })),
-  setInfo: (key, value) =>
-    set((state) => ({
-      therapistInfo: { ...state.therapistInfo, [key]: value },
+    set(() => ({
+      therapistInfo: {
+        ...data,
+        user: {
+          name: data?.user?.name || "",
+          email: data?.user?.email || "",
+          phone: data?.user?.phone || "",
+          profile: data?.user?.profile || "",
+          bio: data?.user?.bio || "",
+          gender: data?.user.gender || "",
+          age: data?.user.age || "",
+        },
+      },
     })),
+
+  setInfo: (key, value) =>
+    set((state) => {
+      if (key.startsWith("user.")) {
+        const field = key.split(".")[1];
+        return {
+          therapistInfo: {
+            ...state.therapistInfo,
+            user: { ...state.therapistInfo.user, [field]: value },
+          },
+        };
+      }
+      return {
+        therapistInfo: { ...state.therapistInfo, [key]: value },
+      };
+    }),
+  setFee: (serviceIndex, formatIndex, fee) =>
+    set((state) => {
+      const updatedFees = [...state.therapistInfo.fees];
+      updatedFees[serviceIndex].formats[formatIndex].fee = fee; // store raw input
+      return {
+        therapistInfo: {
+          ...state.therapistInfo,
+          fees: updatedFees,
+        },
+      };
+    }),
   setSessionFormats: (formats) =>
     set((state) => ({
       therapistInfo: {
@@ -95,11 +128,9 @@ const useTherapistStore = create((set) => ({
   fetchTherapistInfo: async () => {
     try {
       const response = await fetchById(getTherapist);
-      console.log("resss", response);
       if (response.status) {
         const fetchedData = response.data;
 
-        // Transform session_formats
         fetchedData.session_formats = fetchedData.session_formats
           ? fetchedData.session_formats.split(",").map((item) => item.trim())
           : [];
@@ -109,13 +140,25 @@ const useTherapistStore = create((set) => ({
 
         fetchedData.language_spoken = fetchedData.language_spoken
           ? fetchedData.language_spoken.split(",").map((value) => ({
-              value: value.trim(),
-              label: value.trim(),
-            }))
+            value: value.trim(),
+            label: value.trim(),
+          }))
           : [];
+
+        fetchedData.availabilities = fetchedData.availabilities
+          ? fetchedData.availabilities.map((schedule) => ({
+            day: schedule.day,
+            times: schedule.times.map((time) => ({
+              open: time.open,
+              close: time.close,
+            })),
+          }))
+          : [];
+
         set((state) => ({
           therapistInfo: { ...state.therapistInfo, ...fetchedData },
         }));
+
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -126,10 +169,6 @@ const useTherapistStore = create((set) => ({
     set((state) => ({ paymentStore: { ...state.paymentStore, [key]: value } })),
   setMultiplePaymentStore: (data) =>
     set((state) => ({ paymentStore: { ...state.paymentStore, ...data } })),
-  setFeeDetails: (key, value) =>
-    set((state) => ({ feeDetails: { ...state.feeDetails, [key]: value } })),
-  setMultipleFeeDetails: (data) =>
-    set((state) => ({ feeDetails: { ...state.feeDetails, ...data } })),
 }));
 
 /**

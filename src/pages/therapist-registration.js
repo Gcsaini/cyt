@@ -5,15 +5,20 @@ import Footer from "../components/footer";
 import ClientImg from "../assets/img/avatar-027dc8.png";
 import Fabiha from "../assets/img/psychologist.png";
 import ClientImg3 from "../assets/img/counselling.png";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import { useState } from "react";
-import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { threapistRegistrationUrl } from "../utils/url";
+import { threapistRegistrationUrl, verifyOtpUrl } from "../utils/url";
 import { Link } from "react-router-dom";
 import { profileTypeList } from "../utils/static-lists";
-import { postFormData } from "../utils/actions";
+import { postData, postFormData } from "../utils/actions";
+import FormMessage from "../components/global/form-message";
+import FormProgressBar from "../components/global/form-progressbar";
 export default function TherapistRegistration() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,6 +30,9 @@ export default function TherapistRegistration() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState("");
+  const [open, setOpen] = useState(false);
+  const [otpError, setOtpError] = useState("");
+  const [otp, setOtp] = useState("");
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -75,13 +83,13 @@ export default function TherapistRegistration() {
       try {
         const response = await postFormData(threapistRegistrationUrl, formData);
         if (response.status) {
-          setSuccess(response.message);
+          setSuccess("");
           setError("");
           setName("");
-          setEmail("");
           setPhone("");
           setSelectedFile(null);
           setCheckedValues([]);
+          setOpen(true);
         } else {
           setError("Something went wrong");
         }
@@ -103,6 +111,43 @@ export default function TherapistRegistration() {
     });
   };
 
+  const onClose = () => {
+    setOpen(false);
+  }
+
+  const handleChange = (value) => {
+    const formattedValue = value.replace(/\D/g, "").slice(0, 6);
+    setOtp(formattedValue);
+  }
+
+  const verifyOtp = async () => {
+    setOtpError("");
+    if (otp.length !== 6) {
+      setOtpError("Please enter valid OTP");
+      return;
+    }
+    const value = {
+      email,
+      otp,
+    };
+    try {
+      setLoading(true);
+      const response = await postData(verifyOtpUrl, value);
+      if (response.status) {
+        setOtpError("");
+        setOtp("");
+        setOpen(false);
+        setSuccess("Thank you for submitting your resume. Our admin will review your profile soon. You will receive approval via email.")
+      } else {
+        setOtpError(response.message);
+      }
+    } catch (error) {
+      setSuccess("");
+      setOtpError(error.response.data.message);
+    }
+    setLoading(false);
+  };
+
   return (
     <>
       <MyNavbar />
@@ -114,7 +159,7 @@ export default function TherapistRegistration() {
                 <h2 className="title">
                   List Yourself as a Professional
                   <span className="theme-gradient">Professional</span>
-              
+
                 </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
@@ -422,6 +467,49 @@ export default function TherapistRegistration() {
           </div>
         </div>
       </div>
+      <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth >
+        <div style={{ padding: "8px" }}>
+          <h5>Enter OTP</h5>
+          <FormMessage success={success} error={otpError} />
+          <DialogContent dividers>
+            <div className="col-md-6 col-12 mb--10">
+              <label htmlFor="phone">OTP*</label>
+              <input
+                type="text"
+                placeholder="OTP"
+                id="otp"
+                value={otp}
+                name="otp"
+                onChange={(e) =>
+                  handleChange(e.target.value)
+                }
+              />
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <div className="plceholder-button mt--10">
+              {loading ? (
+                <FormProgressBar />
+              ) : (
+                <button
+                  className="rbt-btn btn-gradient hover-icon-reverse"
+                  onClick={verifyOtp}
+                >
+                  <span className="icon-reverse-wrapper">
+                    <span className="btn-text">Submit</span>
+                    <span className="btn-icon">
+                      <i className="feather-arrow-right"></i>
+                    </span>
+                    <span className="btn-icon">
+                      <i className="feather-arrow-right"></i>
+                    </span>
+                  </span>
+                </button>
+              )}
+            </div>
+          </DialogActions>
+        </div>
+      </Dialog>
       <NewsLetter />
 
       <div className="rbt-progress-parent">

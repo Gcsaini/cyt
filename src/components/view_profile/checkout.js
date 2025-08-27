@@ -13,7 +13,6 @@ import {
   Dialog,
   DialogContent,
   DialogActions,
-  Button,
 } from "@mui/material";
 const styles = {
   iconStyle: {
@@ -131,7 +130,7 @@ export default function TherapistCheckout({ profile }) {
       }));
     }
     else if (name === "otp") {
-      const formattedValue = value.replace(/\D/g, "").slice(0, 6); // only numbers, max 6 digits
+      const formattedValue = value.replace(/\D/g, "").slice(0, 6);
       setOtp(formattedValue);
     } else {
       setInfo((prevInfo) => ({
@@ -412,22 +411,21 @@ export default function TherapistCheckout({ profile }) {
                           <option value="Father">Grand Mother</option>
                         </select>
                       </div>
-
-                      <div className="col-md-6 col-12 mb--10">
-                        <label htmlFor="dob">Age</label>
-                        <input
-                          type="text"
-                          placeholder="Age"
-                          id="age"
-                          name="age"
-                          value={info.age}
-                          onChange={(e) =>
-                            handleChange(e.target.name, e.target.value)
-                          }
-                        />
-                      </div>
                     </>
                   )}
+                  <div className="col-md-6 col-12 mb--10">
+                    <label htmlFor="dob">Age</label>
+                    <input
+                      type="text"
+                      placeholder="Age"
+                      id="age"
+                      name="age"
+                      value={info.age}
+                      onChange={(e) =>
+                        handleChange(e.target.name, e.target.value)
+                      }
+                    />
+                  </div>
                   <div className="col-md-6 col-12 mb--10">
                     <label htmlFor="name">Additional Notes</label>
                     <textarea

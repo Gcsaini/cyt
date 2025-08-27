@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ImageTag from "../../utils/image-tag";
 import useTherapistStore from "../../store/therapistStore";
 import { removeToken } from "../../utils/jwt";
-import { defaultProfile } from "../../utils/url";
+import { defaultProfile, imagePath } from "../../utils/url";
 export default function DashboardTopNav() {
   const { therapistInfo } = useTherapistStore();
   const navigate = useNavigate();
@@ -147,11 +147,11 @@ export default function DashboardTopNav() {
                           <ImageTag
                             alt="User"
                             height={"43"}
-                            src={therapistInfo.profile || defaultProfile}
+                            src={`${imagePath}/${therapistInfo.user.profile}` || defaultProfile}
                           />
                         </div>
                         <div className="admin-info">
-                          <span className="name">{therapistInfo.name}</span>
+                          <span className="name">{therapistInfo.user.name}</span>
                         </div>
                       </div>
                     </div>
