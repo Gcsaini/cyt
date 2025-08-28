@@ -40,6 +40,7 @@ export default function UpdateWorkshop({ data }) {
     level: data.level,
     language: data.language,
     event_date: data.event_date,
+    event_end_date: data.event_end_date,
     mrp: data.mrp,
     price: data.price,
     desc: data.desc,
@@ -122,7 +123,15 @@ export default function UpdateWorkshop({ data }) {
     } else if (info.event_date === "") {
       setError("Please select event date.");
       return;
-    } else if (info.category === "") {
+    }else if (info.event_end_date === "") {
+      setError("Please select event end date.");
+      return;
+    }
+    else if (info.event_end_date === "") {
+      setError("Please select event end date.");
+      return;
+    } 
+    else if (info.category === "") {
       setError("Please select category.");
       return;
     } else if (info.event_time === "") {
@@ -142,6 +151,7 @@ export default function UpdateWorkshop({ data }) {
       formData.append("level", info.level);
       formData.append("language", info.language);
       formData.append("event_date", info.event_date);
+      formData.append("event_end_date", info.event_end_date);
       formData.append("event_time", info.event_time);
       formData.append("duration", info.event_duration);
       formData.append("mrp", info.mrp);
@@ -261,12 +271,24 @@ export default function UpdateWorkshop({ data }) {
         </div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="event-date">Event Date</label>
+            <label htmlFor="event-date">Event Start Date</label>
             <input
               id="event-date"
               type="date"
               name="event_date"
               value={info.event_date}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="event-date">Event End Date</label>
+            <input
+              id="event-end-date"
+              type="date"
+              name="event_end_date"
+              value={info.event_end_date}
               onChange={handleChange}
             />
           </div>

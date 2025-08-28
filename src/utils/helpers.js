@@ -5,39 +5,24 @@ export const truncateString = (str, maxLength = 50) => {
   return str.slice(0, maxLength - 3) + "...";
 };
 
-export const getMinMaxPrice = (obj) => {
-  const priceKeys = [
-    "icv",
-    "ica",
-    "icip",
-    "cca",
-    "ccv",
-    "ccip",
-    "tca",
-    "tcv",
-    "tcip",
-  ];
+export const getMinMaxPrice = (fees) => {
+  console.log('feesssss',fees);
+  const feesArray = JSON.parse(JSON.stringify(fees));
 
-  const prices = Object.fromEntries(
-    Object.entries(obj).filter(([key]) => priceKeys.includes(key))
-  );
+  const allFees = feesArray
+    .map(f => f.formats.map(fmt => fmt.fee))
+    .reduce((acc, val) => acc.concat(val), [])
+    .filter(f => f !== null);
 
-  let minPrice = Infinity;
-  let maxPrice = -Infinity;
+  if (allFees.length > 0) {
+    const minFee = Math.min(...allFees);
+    const maxFee = Math.max(...allFees);
 
-  for (const [key, value] of Object.entries(prices)) {
-    const price = parseInt(value, 10);
-
-    if (price < minPrice) {
-      minPrice = price;
-    }
-
-    if (price > maxPrice) {
-      maxPrice = price;
-    }
+    return `₹${minFee} - ₹${maxFee}`;
   }
-
-  return `₹${minPrice} - ₹${maxPrice}`;
+  else {
+    return "--"
+  }
 };
 
 export const getServiceFormats = (obj) => {

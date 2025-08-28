@@ -44796,3 +44796,7 @@ blockquote.has-text-align-right cite {
   cursor: "pointer";
 }
 
+.bg_image--29 {
+    background-image: url(./assets/img/bg-image-29.jpg);
+}
+

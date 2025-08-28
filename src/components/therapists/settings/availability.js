@@ -11,7 +11,7 @@ import {
 } from "../../../utils/url";
 
 const Availability = () => {
-  const { times, setTimes, setTimesAll, addOvertime, deleteOvertime } =
+  const { therapistInfo, times, setTimes, setTimesAll, addOvertime, deleteOvertime } =
     useTherapistStore();
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
@@ -92,25 +92,15 @@ const Availability = () => {
   };
 
   const getData = async () => {
-    try {
-      setPageLoading(true);
-      const res = await fetchById(getAvailabilitiesUrl);
-
-      if (res.status && Object.keys(res.data).length > 0) {
-        const transformedTimes = transformScheduleToTimes(res.data);
-        setTimesAll(transformedTimes);
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-    setPageLoading(false);
+    const transformedTimes = transformScheduleToTimes(therapistInfo.availabilities);
+    setTimesAll(transformedTimes);
   };
   useEffect(() => {
     if (!validateTimes()) {
       getData();
     }
   }, [setTimes]);
-  
+
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (
     <>

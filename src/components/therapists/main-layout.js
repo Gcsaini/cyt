@@ -247,19 +247,7 @@ export default function MainLayout(props) {
                                     )}
                                   </Link>
                                 </li>
-                                <li>
-                                  <Link
-                                    className={
-                                      currentPath === "/change-password"
-                                        ? "active"
-                                        : ""
-                                    }
-                                    to="/change-password"
-                                  >
-                                    <i className="feather-settings"></i>
-                                    <span>Change Password</span>
-                                  </Link>
-                                </li>
+                              
 
                                 <li>
                                   <a

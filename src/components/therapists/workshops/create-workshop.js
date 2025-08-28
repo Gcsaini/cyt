@@ -41,6 +41,7 @@ export default function CreateWorkshop() {
     level: "",
     language: "",
     event_date: "",
+    event_end_date: "",
     mrp: "",
     price: "",
     desc: "",
@@ -123,6 +124,10 @@ export default function CreateWorkshop() {
     } else if (info.event_date === "") {
       setError("Please select event date.");
       return;
+    }
+    else if (info.event_end_date === "") {
+      setError("Please select event end date.");
+      return;
     } else if (selectedImage === null) {
       setError("Please select image.");
       return;
@@ -149,6 +154,7 @@ export default function CreateWorkshop() {
       formData.append("level", info.level);
       formData.append("language", info.language);
       formData.append("event_date", info.event_date);
+      formData.append("event_end_date", info.event_end_date);
       formData.append("event_time", info.event_time);
       formData.append("duration", info.event_duration);
       formData.append("mrp", info.mrp);
@@ -274,12 +280,26 @@ export default function CreateWorkshop() {
 
         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
           <div className="rbt-form-group">
-            <label htmlFor="event-date">Event Date</label>
+            <label htmlFor="event-date">Event Start Date</label>
             <input
               id="event-date"
               type="date"
               name="event_date"
               value={info.event_date}
+              min={minDate}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+          <div className="rbt-form-group">
+            <label htmlFor="event-date">Event End Date</label>
+            <input
+              id="event-end-date"
+              type="date"
+              name="event_end_date"
+              value={info.event_end_date}
               min={minDate}
               onChange={handleChange}
             />

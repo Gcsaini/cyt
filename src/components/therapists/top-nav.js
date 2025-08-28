@@ -84,12 +84,6 @@ export default function DashboardTopNav() {
                 </Link>
               </li>
               <li className="position-static">
-                <Link to="/change-password" style={{ cursor: "pointer" }}>
-                  Change Password<i className="feather-chevron-down"></i>
-                </Link>
-              </li>
-
-              <li className="position-static">
                 <a onClick={handleLogout} style={{ cursor: "pointer" }}>
                   Logout<i className="feather-chevron-down"></i>
                 </a>
@@ -171,13 +165,7 @@ export default function DashboardTopNav() {
                               <span>Edit Profile</span>
                             </Link>
                           </li>
-                          <li>
-                            <Link to="/change-password">
-                              <i className="feather-heart"></i>
-                              <span>Change Password</span>
-                            </Link>
-                          </li>
-
+                         
                           <li>
                             <Link to="instructor/instructor-order-history">
                               <i className="feather-clock"></i>

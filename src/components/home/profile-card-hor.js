@@ -70,7 +70,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
           <Link to={`/view-profile/${pageData._id}`}>
             <ImageTag
               alt="profile image"
-               src={`${imagePath}/${pageData.profile}`}
+               src={`${imagePath}/${pageData.user.profile}`}
               style={{ height: isMobile ? 255 : 235 }}
             />
           </Link>
@@ -80,7 +80,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
             <div className="rbt-review">
               <h4 className="rbt-card-title">
                 <Link to={`/view-profile/${pageData._id}`}>
-                  {pageData.name}
+                  {pageData.user.name}
                 </Link>
               </h4>
             </div>
@@ -119,7 +119,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
             <li>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
-                {getMinMaxPrice(pageData)}
+                {getMinMaxPrice(pageData.fees)}
               </span>
             </li>
           </ul>

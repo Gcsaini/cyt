@@ -48,6 +48,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PaymentPending from "./components/view_profile/payment-pending";
 import PaymentPendingPage from "./pages/payment-pending";
 import MyBookingsPage from "./pages/client/my-bookings";
+import SerivcePage from "./pages/ServicePage";
 const theme = createTheme();
 
 function App() {
@@ -106,6 +107,7 @@ function App() {
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/all-workshop" element={<AllWorkshop />} />
+              <Route path="/new-service" element={<SerivcePage />} />
 
               <Route
                 path="/workshop-detail/:id"

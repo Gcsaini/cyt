@@ -18,6 +18,7 @@ export default function ProfileCardVert(props) {
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [bookmark, setBookmark] = React.useState(favrioutes.includes(data._id));
   const [showBookmark, setShowBookmark] = React.useState(true);
+  const [fees, setFees] = React.useState([]);
 
   const handleBookmark = (id, value) => {
     setBookmark((prevBookmark) => !prevBookmark);
@@ -62,7 +63,10 @@ export default function ProfileCardVert(props) {
       }
     }
     setBookmark(favrioutes.includes(data._id));
+    setFees(data.fees);
   }, [data, favrioutes]);
+
+  console.log("data.fess", data.fees);
 
   return (
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
@@ -72,7 +76,7 @@ export default function ProfileCardVert(props) {
             <ImageTag
               alt="Profile-photo"
               style={{ height: "250px" }}
-              src={`${imagePath}/${data.profile}`}
+              src={`${imagePath}/${data.user.profile}`}
             />
           </Link>
         </div>
@@ -94,7 +98,7 @@ export default function ProfileCardVert(props) {
                   to={`/view-profile/${data._id}`}
                   style={{ cursor: "pointer" }}
                 >
-                  {data.name}
+                  {data.user.name}
                 </Link>
               </h4>
             </div>
@@ -124,13 +128,13 @@ export default function ProfileCardVert(props) {
             </span>
           </div>
 
-         
+
           <div style={{ marginTop: 5, display: "flex" }}>
             <span>
               <i className="feather-eye"></i>
             </span>
             <span style={{ fontSize: 16, marginLeft: 5 }}>
-              {getMinMaxPrice(data)}
+              {getMinMaxPrice(fees)}
             </span>
           </div>
 

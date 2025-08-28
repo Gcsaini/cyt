@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { truncateString } from "../../../utils/helpers";
 import { useEffect, useState } from "react";
 import { fetchById } from "../../../utils/actions";
-import { disableWorkshopUrl } from "../../../utils/url";
+import { disableWorkshopUrl, imagePath } from "../../../utils/url";
 export default function WorkshopCard({ data, onDelete }) {
   const [isActive, setIsActive] = useState(false);
   const handleToggle = (value) => {
@@ -36,7 +36,7 @@ export default function WorkshopCard({ data, onDelete }) {
               alt={truncateString(data.title, 20)}
               loading="lazy"
               style={{ height: 200 }}
-              src={data.workshop_image}
+              src={`${imagePath}/${data.workshop_image}`}
             />
           </Link>
         </div>
@@ -80,7 +80,7 @@ export default function WorkshopCard({ data, onDelete }) {
           <ul className="rbt-meta">
             <li>
               <i className="feather-book"></i>
-              <Link to={data.content_pdf} target="_blank">
+              <Link to={`${imagePath}/${data.content_pdf}`} target="_blank">
                 Content PDF
               </Link>
             </li>
