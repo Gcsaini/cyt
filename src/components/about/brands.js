@@ -1,4 +1,4 @@
-import BrandImg from "../../assets/img/hubs124e.png";
+import BrandImg from "../../assets/img/American.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";

@@ -9,6 +9,7 @@ import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import InterSection from "../components/about/inter-section";
 import Collaborator from "../components/about/collaborator";
+import Brands from "../components/about/brands";
 export default function AboutUs() {
   return (
     <div id="__next">
@@ -20,7 +21,7 @@ export default function AboutUs() {
       <CallToActionAbout />
       <InterSection />
       <Feedback />
-
+<Brands/>
       <NewsLetter />
       <Footer />
     </div>

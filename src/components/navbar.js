@@ -70,12 +70,12 @@ export default function App() {
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
                 <Link to="info@chooseyourtherapist.in">
-                  <i className="feather-mail"></i>info@chooseyourtherapist.in
+                  <i className="feather-mail"></i>info.cyt@gmail.com
                 </Link>
               </li>
               <li>
                 <Link to="#">
-                  <i className="feather-phone"></i>+91 8077757951
+                  <i className="feather-phone"></i>+91-807-775-7951
                 </Link>
               </li>
             </ul>
@@ -91,8 +91,6 @@ export default function App() {
                       <Link to={"/view-all-therapist"}style={{ cursor: "pointer" }}>
                         Therapist Directory
                       </Link>
-                      
-                     
                     </li>
               <li className="with-megamenu has-menu-child-item">
                 <Link
@@ -174,7 +172,7 @@ export default function App() {
               </li> <li className="with-megamenu has-menu-child-item">
                 <Link
                   className={about ? "open" : ""}
-                  onClick={() => setService(about !== true)}
+                  onClick={() => setAbout(about !== true)}
                 >
                    About<i className="feather-chevron-down"></i>
                 </Link>
