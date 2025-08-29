@@ -199,26 +199,7 @@ export default function App() {
                 </Link>
               </li>
               
-           {/*   <li className="position-static">
-                <Link to={"/plans"} className="" style={{ cursor: "pointer" }}>
-                  Plans<i className="feather-chevron-down"></i>
-                </Link>
-              </li>
-              <li className="position-static">
-                <Link to={"/blogs"} className="" style={{ cursor: "pointer" }}>
-                  Blogs
-                </Link>
-              </li>
-             {" "}
-              {/* <li>
-                <Link
-                  to={"#"}
-                  onClick={() => handleClick("/join-us")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Join us
-                </Link>
-              </li> */}
+          
             </ul>
           </nav>
           <div className="mobile-menu-bottom">

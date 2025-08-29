@@ -5,7 +5,9 @@ import { registerUrl, verifyOtpUrl } from "../utils/url";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
-import ClientImg from "../assets/img/client-01a92c.png";
+import ClientImg from "../assets/img/avatar-027dc8.png";
+import Fabiha from "../assets/img/psychologist.png";
+import ClientImg3 from "../assets/img/counselling.png";
 import ImageTag from "../utils/image-tag";
 import FormProgressBar from "../components/global/form-progressbar";
 import FormMessage from "../components/global/form-message";
@@ -110,7 +112,11 @@ export default function Register() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Register</h2>
+                  <h2 className="title">
+                 The Right Therapist, 
+                  <span className="theme-gradient"> Just for You</span>
+              
+                </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <Link to="/">Home</Link>
@@ -120,7 +126,7 @@ export default function Register() {
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">register</li>
+                  <li className="rbt-breadcrumb-item active">Register</li>
                 </ul>
               </div>
             </div>
@@ -139,78 +145,60 @@ export default function Register() {
                         Discover Mental Health Experts
                       </span>
                     </div>
-                    <h1 className="title">
-                      Here, Your Connect with Professional.
-                    </h1>
-                    <p className="description">
-                      ChooseYourTherapist is a platform where we connect
-                      professionals to you for holistic well-being.{" "}
-                    </p>
-                    <div className="rating mb--20">
-                      <Link to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link className="px-1" to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link className="px-1" to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="fa fa-star"></i>
-                      </Link>
-                    </div>
-                    <div className="rbt-like-total">
-                      <div className="profile-share">
-                        <Link
-                          to="#"
-                          className="avatar"
-                          data-tooltip="Rafi Dev"
-                          tabIndex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </Link>
-                        <Link
-                          to="#"
-                          className="avatar"
-                          data-tooltip="Mark"
-                          tabIndex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </Link>
-                        <Link
-                          to="#"
-                          className="avatar"
-                          data-tooltip="Jordan"
-                          tabIndex="0"
-                        >
-                          <ImageTag
-                            alt="education"
-                            width="55"
-                            height="55"
-                            src={ClientImg}
-                          />
-                        </Link>
-                        <div className="more-author-text">
-                          <h5 className="total-join-students">
-                            Connected 13k+ Clients with us
-                          </h5>
-                          <p className="subtitle">
-                            Take a first step for yourself here.
-                          </p>
+                   <h1 className="title"> Because healing starts with your choice..</h1>
+                                       <p className="description">
+                                         Log in to access personalized support and manage
+                                         appointments effortlessly. Track your mental health
+                                         journey with ease and stay connected for continuous
+                                         well-being.
+                                       </p>
+                                       <div className="rbt-like-total">
+                                         <div className="profile-share">
+                                           <Link
+                                             to="#"
+                                             className="avatar"
+                                             data-tooltip="Counselling Psychologist"
+                                             tabIndex="0"
+                                           >
+                                             <ImageTag
+                                               alt="education"
+                                               width="55"
+                                               height="55"
+                                               src={ClientImg}
+                                             />
+                                           </Link>
+                                           <Link
+                                             to="#"
+                                             className="avatar"
+                                             data-tooltip="Psychologist"
+                                             tabIndex="0"
+                                           >
+                                             <ImageTag
+                                               alt="education"
+                                               width="55"
+                                               height="55"
+                                               src={Fabiha}
+                                             />
+                                           </Link>
+                                           <Link
+                                             to="#"
+                                             className="avatar"
+                                             data-tooltip="Counselling Psychologist"
+                                             tabIndex="0"
+                                           >
+                                             <ImageTag
+                                               alt="education"
+                                               width="55"
+                                               height="55"
+                                               src={ClientImg3}
+                                             />
+                                           </Link>
+                                           <div className="more-author-text">
+                                             <h5 className="total-join-students">
+                                                5,245+ people have already found their path to well-being.
+                                             </h5>
+                                             <p className="subtitle">Your well-being awaits.</p>
+                                           
                         </div>
                       </div>
                     </div>
@@ -293,7 +281,7 @@ export default function Register() {
                         style={{ marginBottom: 15 }}
                       >
                         <Link className="rbt-btn-link" to="/login">
-                          Login?
+                          Already have an account ?
                         </Link>
                       </div>
                       <div className="form-submit-group">
@@ -306,7 +294,7 @@ export default function Register() {
                             className="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round w-100"
                           >
                             <span className="icon-reverse-wrapper">
-                              <span className="btn-text">Login</span>
+                              <span className="btn-text">Sign In</span>
                               <span className="btn-icon">
                                 <i className="feather-arrow-right"></i>
                               </span>

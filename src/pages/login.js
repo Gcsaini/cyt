@@ -108,7 +108,11 @@ export default function Login() {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
-                <h2 className="title">Login</h2>
+                <h2 className="title">
+                Access Your 
+                  <span className="theme-gradient"> Personalized Support </span>
+              
+                </h2>
                 <ul className="page-list">
                   <li className="rbt-breadcrumb-item">
                     <Link to="/">Home</Link>
@@ -138,7 +142,7 @@ export default function Login() {
                         Discover mental health experts.
                       </span>
                     </div>
-                    <h1 className="title">Login for Mental Health</h1>
+                    <h1 className="title"> Because healing starts with your choice..</h1>
                     <p className="description">
                       Log in to access personalized support and manage
                       appointments effortlessly. Track your mental health
@@ -188,9 +192,9 @@ export default function Login() {
                         </Link>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                            Join Over 50+ Experts
+                             5,245+ people have already found their path to well-being.
                           </h5>
-                          <p className="subtitle">We are Listening You!</p>
+                          <p className="subtitle">Your well-being awaits.</p>
                         </div>
                       </div>
                     </div>
