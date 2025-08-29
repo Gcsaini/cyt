@@ -15,6 +15,7 @@ export default function AboutUs() {
     <div id="__next">
       <MyNavbar />
       <AboutUsBanner />
+      <TeamBanner/>
         <ServiceQuality />
       <AboutCyt />
   

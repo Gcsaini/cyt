@@ -1,5 +1,5 @@
-import TeamImg from "../../assets/img/founder.png";
-import TeamImg3 from "../../assets/img/fab.png";
+import TeamImg from "../../assets/img/deepdirec.png";
+import TeamImg3 from "../../assets/img/ffabb.png";
 import TeamImg4 from "../../assets/img/akt.png";
 import TeamImg5 from "../../assets/img/gopichand.png";
 import vibhor from "../../assets/img/vibhor.png";
@@ -90,10 +90,9 @@ export default function TeamBanner() {
         <div className="row mb--60">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <h2 className="title">Meet the Innovative minds at CYT</h2>
+              <h2 className="title">The Faces Behind the Vision</h2>
               <p className="description mt--10">
-                Choose Your Therapist LLP aims to create a network of therapists
-                to make mental health services accessible to everyone.
+              "Choose Your Therapist" vision comes alive through people. Each face represents compassion, skill, and dedication — working together to build a platform where mental well-being is prioritized and every journey is valued.
               </p>
             </div>
           </div>
