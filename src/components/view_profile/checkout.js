@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ProfileCheckoutCard from "./profile-checkout-card";
-import { getServiceFormats } from "../../utils/helpers";
+import { getFormatsByServiceId, getServiceFormats, getServices } from "../../utils/helpers";
 import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import FormMessage from "../global/form-message";
@@ -42,6 +42,8 @@ export default function TherapistCheckout({ profile }) {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState("");
   const [services, setServices] = React.useState([]);
+  const [selectedService, setSelectedService] = React.useState({});
+  const [selectedFormat, setSelectedFormat] = React.useState({});
   const [sessionFormats, setSessionFormats] = React.useState([]);
   const [other, setOther] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -145,7 +147,7 @@ export default function TherapistCheckout({ profile }) {
     if (info.phone.length !== 10) {
       setError("Please enter phone number");
       return;
-    } else if (info.service === "") {
+    } else if (Object.keys(selectedService).length === 0) {
       setError("Please select service.");
       return;
     }
@@ -155,7 +157,7 @@ export default function TherapistCheckout({ profile }) {
     } else if (info.whom === "") {
       setError("Please select for whom you want to take service.");
       return;
-    } else if (info.format === "") {
+    } else if (Object.keys(selectedFormat).length === 0) {
       setError("Please select format.");
       return;
     } else if (info.whom == "For Other" && info.cname.length < 4) {
@@ -175,6 +177,7 @@ export default function TherapistCheckout({ profile }) {
       setLoading(true);
       try {
         setLoading(true);
+
         const response = await postData(info.isLoggedIn ? BookTherapistUrl : BookTherapistUrlAnomalously, info);
         if (response.status) {
           if (info.isLoggedIn) {
@@ -231,26 +234,49 @@ export default function TherapistCheckout({ profile }) {
     setLoading(false);
   };
 
+  const handleFormatChange = (e) => {
+    const selected = sessionFormats.find((item) => item._id === e.target.value);
+    setSelectedFormat(selected || {});
+    setInfo((prev) => ({
+      ...prev,
+      format: selected.type,
+      service: selectedService.name,
+      amount: selected.fee
+    }))
+  };
 
+  const setConfig = async (profile) => {
+    const validServices = await getServices(profile.fees);
+    setServices(validServices);
+    setInfo((prev) => ({
+      ...prev,
+      service: selectedService.name,
+    }))
+    if (validServices.length > 0) {
+      const formats = getFormatsByServiceId(profile.fees, validServices[0]._id);
+      console.log('formatss function', formats);
+      setSessionFormats(formats);
+    }
+  }
 
   useEffect(() => {
     if (profile) {
-      const servicesres = getServiceFormats(profile);
-      setServices(servicesres);
-      if (servicesres.length > 0) {
-        setInfo((prevInfo) => ({
-          ...prevInfo,
-          format: servicesres[0].formats[0].format,
-          service: servicesres[0].service,
-          amount: servicesres[0].formats[0].price,
-        }));
-        setSessionFormats(servicesres[0].formats);
-      }
+      setConfig(profile);
     }
     if (userInfo && userInfo.email) {
       info.isLoggedIn = true
     }
   }, [profile]);
+
+
+  useEffect(() => {
+    const formats = getFormatsByServiceId(profile.fees, selectedService._id);
+    setSessionFormats(formats);
+  }, [selectedService])
+
+  console.log("selected service", selectedService);
+  console.log("selected format", selectedFormat);
+  console.log("selected info", info);
 
   return (
     <div className="checkout_area bg-color-white ">
@@ -307,48 +333,48 @@ export default function TherapistCheckout({ profile }) {
                   </div>}
 
                   <div className="col-md-6 col-12 mb--20">
-                    <label htmlFor="format">Session Formats</label>
-                    <select
-                      id="format"
-                      style={styles.selectStyle}
-                      name="format"
-                      value={info.format}
-                      onChange={(e) =>
-                        handleChange(e.target.name, e.target.value)
-                      }
-                    >
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {sessionFormats.map((item) => {
-                        return (
-                          <option value={item.format} key={item.format}>
-                            {item.format}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                  <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="service">Service</label>
                     <select
                       id="service"
                       style={styles.selectStyle}
                       name="service"
-                      value={info.service}
+                      value={selectedService._id}
                       onChange={(e) =>
-                        handleChange(e.target.name, e.target.value)
+                        setSelectedService(services.find(s => s._id === e.target.value))
                       }
                     >
                       {services.map((item) => {
                         return (
-                          <option value={item.service} key={item.service}>
-                            {item.service}
+                          <option value={item._id} key={item._id}>
+                            {item.name}
                           </option>
                         );
                       })}
                     </select>
                   </div>
+
+                  <div className="col-md-6 col-12 mb--20">
+                    <label htmlFor="format">Session Formats</label>
+                    <select
+                      id="format"
+                      style={styles.selectStyle}
+                      name="format"
+                      value={selectedFormat._id || ""}
+                      onChange={handleFormatChange}
+                    >
+                      <option value="" selected>
+                        Select
+                      </option>
+                      {sessionFormats.map((item) => {
+                        return (
+                          <option value={item._id} key={item._id}>
+                            {item.type.toUpperCase().charAt(0) + item.type.slice(1)}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+
                   {info.isLoggedIn && <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="gender">For Whom</label>
                     <select

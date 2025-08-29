@@ -19,7 +19,7 @@ export default function TherapistCheckoutPage() {
     try {
       const res = await fetchData(getTherapistProfile + id);
 
-      if (res.status && res.data.length > 0) {
+      if (res.status && Object.keys(res.data).length > 0) {
         setProfile(res.data);
       } else {
         setError(true);
@@ -66,7 +66,7 @@ export default function TherapistCheckoutPage() {
           </div>
         </div>
       </div>
-      {profile.length > 0 && <TherapistCheckout profile={profile[0]} />}
+      {Object.keys(profile).length > 0 && <TherapistCheckout profile={profile} />}
       <NewsLetter />
       <Footer />
     </div>

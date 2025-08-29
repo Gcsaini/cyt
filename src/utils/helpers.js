@@ -6,7 +6,6 @@ export const truncateString = (str, maxLength = 50) => {
 };
 
 export const getMinMaxPrice = (fees) => {
-  console.log('feesssss',fees);
   const feesArray = JSON.parse(JSON.stringify(fees));
 
   const allFees = feesArray
@@ -23,6 +22,27 @@ export const getMinMaxPrice = (fees) => {
   else {
     return "--"
   }
+};
+
+export const getServices = async (fees = []) => {
+  const validServices = fees
+    .filter(service =>
+      service.formats?.some(format => format.fee !== null)
+    )
+    .map(service => ({
+      _id: service._id,
+      name: service.name
+    }));
+
+  return validServices;
+};
+
+export const getFormatsByServiceId = (fees, serviceId) => {
+  const service = fees.find(s => s._id === serviceId);
+  if (!service) return [];
+
+  // return only formats with non-null fee
+  return service.formats.filter(format => format.fee !== null);
 };
 
 export const getServiceFormats = (obj) => {
