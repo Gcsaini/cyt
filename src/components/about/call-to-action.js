@@ -5,6 +5,7 @@ export default function CallToActionAbout() {
     <div className="rbt-call-to-action-area rbt-section-gap bg-gradient-8">
       <div className="rbt-callto-action rbt-cta-default style-6">
         <div className="container">
+          
           <div className="row g-5 align-items-center content-wrapper">
             <div className="col-xxl-3 col-xl-3 col-lg-6">
               <div className="inner">
