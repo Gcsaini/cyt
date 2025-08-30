@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ProfileCheckoutCard from "./profile-checkout-card";
-import { getFormatsByServiceId, getServiceFormats, getServices } from "../../utils/helpers";
+import { getFormatsByServiceId, getServices } from "../../utils/helpers";
 import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import FormMessage from "../global/form-message";
