@@ -25,7 +25,7 @@ export default function ViewProfile() {
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfile + id);
-      if (res.status && res.data.length > 0) {
+      if (res.status && Object.keys(res.data).length > 0) {
         setProfile(res.data);
       } else {
         setError(true);
@@ -65,10 +65,10 @@ export default function ViewProfile() {
   ) : (
     <div id="__next">
       <MyNavbar />
-      <ProfileHeader pageData={profile[0]} favrioutes={favrioutes} />
-      <ProfileInfoTab pageData={profile[0]} />
-      {profile[0].userWorkshop.length > 0 && (
-        <ProfileWorkshop data={profile[0].userWorkshop} />
+      <ProfileHeader pageData={profile} favrioutes={favrioutes} />
+      <ProfileInfoTab pageData={profile} />
+       {profile && profile.workshops.length > 0 && (
+        <ProfileWorkshop data={profile.workshops} />
       )}
       <NewsLetter />
       <Footer />

@@ -37,6 +37,18 @@ export const getServices = async (fees = []) => {
   return validServices;
 };
 
+export const getValidServices = async (fees = []) => {
+  const validServices = fees
+    .filter(service =>
+      service.formats?.some(format => format.fee !== null)
+    ).map(service => ({
+      _id: service._id,
+      name: service.name,
+      formats: service.formats.filter(format => format.fee !== null)
+    }));
+  return validServices;
+};
+
 export const getFormatsByServiceId = (fees, serviceId) => {
   const service = fees.find(s => s._id === serviceId);
   if (!service) return [];

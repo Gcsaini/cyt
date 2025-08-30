@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import { successColor } from "../../utils/colors";
+import { getFormatsByServiceId, getServices, getValidServices } from "../../utils/helpers";
 export default function ProfileInfoTab({ pageData }) {
   const [tab, setTab] = React.useState(1);
+  const [services, setServices] = React.useState();
+  const [formats, setFormats] = React.useState();
   const handleClick = (id) => {
     setTab(id);
   };
@@ -18,6 +21,16 @@ export default function ProfileInfoTab({ pageData }) {
     fontSize: 24,
     color: successColor,
   };
+
+  const setConfig = async (profile) => {
+    const validServices = await getValidServices(profile.fees);
+    setServices(validServices);
+  };
+
+  useEffect(() => {
+    setConfig(pageData);
+  }, [pageData])
+
   return (
     <div
       className="rbt-advance-tab-area bg-color-white"
@@ -91,16 +104,16 @@ export default function ProfileInfoTab({ pageData }) {
               >
                 <h4 className="rbt-title-style-3">About me</h4>
                 <div className="content">
-                  <p>{pageData.bio}</p>
+                  <p>{pageData.user.bio}</p>
                   <h4 className="rbt-title-style-3">Services</h4>
                   <div className="content">
-                    <div class="row g-3">
+                    <div className="row g-3">
                       {pageData.services.split(",").map((item, index) => {
                         return (
-                          <div class="col-lg-4 col-md-6 col-12" key={item}>
-                            <ul class="plan-offer-list">
+                          <div className="col-lg-4 col-md-6 col-12" key={item}>
+                            <ul className="plan-offer-list">
                               <li>
-                                <i class="feather-check"></i> &nbsp;{item}
+                                <i className="feather-check"></i> &nbsp;{item}
                               </li>
                             </ul>
                           </div>
@@ -112,13 +125,13 @@ export default function ProfileInfoTab({ pageData }) {
                     Expertise
                   </h4>
                   <div className="content">
-                    <div class="row g-3">
+                    <div className="row g-3">
                       {pageData.experties.split(",").map((item, index) => {
                         return (
-                          <div class="col-lg-4 col-md-6 col-12" key={item}>
-                            <ul class="plan-offer-list">
+                          <div className="col-lg-4 col-md-6 col-12" key={item}>
+                            <ul className="plan-offer-list">
                               <li>
-                                <i class="feather-check"></i> &nbsp;{item}
+                                <i className="feather-check"></i> &nbsp;{item}
                               </li>
                             </ul>
                           </div>
@@ -154,100 +167,25 @@ export default function ProfileInfoTab({ pageData }) {
                 aria-labelledby="contact-tab-4"
               >
                 <div className="content">
-                  {(pageData.ica !== "" ||
-                    pageData.icip !== "" ||
-                    pageData.icv !== "") && (
-                    <>
-                      <h4 className="rbt-title-style-3">
-                        Individual Counselling
+                  {services && services.map((item) => {
+                    return <div key={item._id}>
+                      <h4 className="rbt-title-style-3" >
+                       {item.name}
                       </h4>
                       <div className="col-lg-6 col-md-12 col-12">
                         <ul className="rbt-list-style-2">
-                          {pageData.ica !== "" && (
-                            <li>
-                              <i className="feather-check"></i>Audio : ₹
-                              {pageData.ica}
+                          {item.formats.map((format) => {
+                            return <li key={format._id}>
+                              <i className="feather-check"></i>{format.type.toUpperCase().charAt(0) + format.type.slice(1)} : ₹
+                              {format.fee}
                             </li>
-                          )}
-                          {pageData.icip !== "" && (
-                            <li>
-                              <i className="feather-check"></i> In-Person Call :
-                              ₹{pageData.icip}
-                            </li>
-                          )}
-                          {pageData.icv !== "" && (
-                            <li>
-                              <i className="feather-check"></i> Video : ₹
-                              {pageData.icv}
-                            </li>
-                          )}
+                          })}
                         </ul>
                       </div>
-                    </>
-                  )}
+                    </div>
+                  })}
                 </div>
-                <div className="content">
-                  {(pageData.tca !== "" ||
-                    pageData.tcip !== "" ||
-                    pageData.tcv !== "") && (
-                    <>
-                      <h4 className="rbt-title-style-3">Teen Counselling</h4>
-                      <div className="col-lg-6 col-md-12 col-12">
-                        <ul className="rbt-list-style-2">
-                          {pageData.tca !== "" && (
-                            <li>
-                              <i className="feather-check"></i>Audio : ₹
-                              {pageData.tca}
-                            </li>
-                          )}
-                          {pageData.tcip !== "" && (
-                            <li>
-                              <i className="feather-check"></i> In-Person Call :
-                              ₹{pageData.tcip}
-                            </li>
-                          )}
-                          {pageData.tcv !== "" && (
-                            <li>
-                              <i className="feather-check"></i> Video : ₹
-                              {pageData.tcv}
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                    </>
-                  )}
-                </div>
-                <div className="content">
-                  {(pageData.cca !== "" ||
-                    pageData.ccip !== "" ||
-                    pageData.ccv !== "") && (
-                    <>
-                      <h4 className="rbt-title-style-3">Couple Counselling</h4>
-                      <div className="col-lg-6 col-md-12 col-12">
-                        <ul className="rbt-list-style-2">
-                          {pageData.cca !== "" && (
-                            <li>
-                              <i className="feather-check"></i>Audio : ₹
-                              {pageData.cca}
-                            </li>
-                          )}
-                          {pageData.ccip !== "" && (
-                            <li>
-                              <i className="feather-check"></i> In-Person Call :
-                              ₹{pageData.ccip}
-                            </li>
-                          )}
-                          {pageData.ccv !== "" && (
-                            <li>
-                              <i className="feather-check"></i> Video : ₹
-                              {pageData.ccv}
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                    </>
-                  )}
-                </div>
+               
               </div>
               <div
                 className={
@@ -258,16 +196,16 @@ export default function ProfileInfoTab({ pageData }) {
                 aria-labelledby="business-tab-4"
               >
                 <div className="content">
-                  {pageData.schedule &&
-                    pageData.schedule.map((item) => {
+                  {pageData.availabilities &&
+                    pageData.availabilities.map((item,index) => {
                       return (
-                        <div key={item.day} className="rbt-title-style-3">
+                        <div key={index} className="rbt-title-style-3">
                           <h4>{item.day}</h4>
-                          {item.times.map((time) => {
+                          {item.times.map((time,index) => {
                             return (
                               <span
                                 style={{ marginRight: 40, fontSize: 16 }}
-                                key={time}
+                                key={index}
                               >
                                 <WatchLaterIcon style={listStyleTime} />
                                 &nbsp;{time.open}-{time.close}

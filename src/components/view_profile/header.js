@@ -15,7 +15,7 @@ export default function ProfileHeader(props) {
   const { pageData, favrioutes } = props;
   const [bookmark, setBookmark] = React.useState(false);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const [showBookmark, setShowBookmark] = React.useState(true);
+  const [showBookmark, setShowBookmark] = React.useState(false);
 
   const handleBookmark = (id, value) => {
     setBookmark((prevBookmark) => !prevBookmark);
@@ -52,13 +52,41 @@ export default function ProfileHeader(props) {
     }
   };
 
+  const handleShare = (e) => {
+    e.preventDefault();
+
+    const profileUrl = `${window.location.origin}/view-profile/${pageData._id}`;
+
+    if (navigator.share) {
+      // Use native share (mobile + some browsers)
+      navigator.share({
+        title: pageData.name || "Therapist Profile",
+        text: "Check out this therapist profile",
+        url: profileUrl,
+      }).catch((err) => {
+        console.log("Sharing failed", err);
+      });
+    } else {
+      // Fallback: copy link
+      navigator.clipboard.writeText(profileUrl).then(() => {
+        alert("Profile link copied to clipboard!");
+      });
+    }
+  }
+
   React.useEffect(() => {
     const data = getDecodedToken();
-    if (data && data.role === 1) {
+    if (!data) return;
+
+    if (data.role === 1) {
       setShowBookmark(false);
+    } else {
+      setShowBookmark(true);
+      setBookmark(favrioutes.includes(pageData._id));
     }
-    setBookmark(favrioutes.includes(pageData._id));
   }, [pageData, favrioutes]);
+
+
   return (
     <>
       <div className="rbt-page-banner-wrapper">
@@ -89,7 +117,7 @@ export default function ProfileHeader(props) {
                         alt="Instructor"
                         width="250"
                         height="250"
-                        src={`${imagePath}/${pageData.profile}`}
+                        src={`${imagePath}/${pageData.user.profile}`}
                         style={{
                           borderRadius: 0,
                           padding: 0,
@@ -103,7 +131,7 @@ export default function ProfileHeader(props) {
                     <div className="tutor-content">
                       <div>
                         <h5 className="title">
-                          {pageData.name} &nbsp;
+                          {pageData.user.name} &nbsp;
                           <span style={{ fontSize: 14 }}>
                             ({pageData.profile_code})
                           </span>
@@ -146,7 +174,7 @@ export default function ProfileHeader(props) {
                       <i className="feather-map-pin"></i> {pageData.state}
                     </li>
                     <li style={{ color: whiteColor }}>
-                      <i className="feather-users"></i> {pageData.gender}
+                      <i className="feather-users"></i> {pageData.user?.gender || '-'}
                     </li>
                     <ul className="social-icon social-default justify-content-start">
                       {showBookmark && (
@@ -168,7 +196,7 @@ export default function ProfileHeader(props) {
                         </li>
                       )}
                       <li>
-                        <a>
+                        <a onClick={handleShare} style={{ cursor: "pointer" }}>
                           <i className="feather-share"></i>
                         </a>
                       </li>

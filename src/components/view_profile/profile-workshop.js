@@ -3,6 +3,7 @@ import "swiper/css/pagination";
 import React from "react";
 import WellNessCard from "../home/wellness-card";
 export default function ProfileWorkshop({ data }) {
+  console.log("workshop data", data);
   return (
     <div className={`rbt-course-area ${"bg-color-extra2"} rbt-section-gap`}>
       <div className="container">

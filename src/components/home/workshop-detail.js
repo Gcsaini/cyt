@@ -53,14 +53,14 @@ export default function WorkshopDetail(props) {
                       <Link href={`view-profile/${data.post_by._id}`}>
                         <ImageTag
                           alt={data.post_by.name}
-                          src={`${imagePath}/${data.post_by.profile}`}
+                          src={`${imagePath}/${data.post_by.user.profile}`}
                         />
                       </Link>
                     </div>
                     <div class="rbt-author-info">
                       By &nbsp;
                       <Link href={`view-profile/${data.post_by._id}`}>
-                        {data.post_by.name}
+                        {data.post_by.user.name}
                       </Link>
                       &nbsp;In&nbsp;
                       <a href="#">{data.post_by.profile_type}</a>
@@ -126,7 +126,7 @@ export default function WorkshopDetail(props) {
                             alt="Author Images"
                             width="250"
                             height="250"
-                            src={`${imagePath}/${data.post_by.profile}`}
+                            src={`${imagePath}/${data.post_by.user.profile}`}
                           />
                         </Link>
                       </div>
@@ -137,7 +137,7 @@ export default function WorkshopDetail(props) {
                               class="hover-flip-item-wrapper"
                               href={`view-profile/${data.post_by._id}`}
                             >
-                              {data.post_by.name}
+                              {data.post_by.user.name}
                             </Link>
                           </h5>
                           <span class="b3 subtitle">
@@ -157,7 +157,7 @@ export default function WorkshopDetail(props) {
                             <span style={{ fontSize: 15 }}>
                               <b>Bio: </b>
                             </span>
-                            {truncateString(data.post_by.bio, 90)}
+                            {truncateString(data.post_by.user.bio, 90)}
                           </p>
                         </div>
                       </div>

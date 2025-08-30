@@ -246,18 +246,35 @@ export default function TherapistCheckout({ profile }) {
   };
 
   const setConfig = async (profile) => {
-    const validServices = await getServices(profile.fees);
-    setServices(validServices);
+  const validServices = await getServices(profile.fees);
+  setServices(validServices);
+
+  if (validServices.length > 0) {
+    const firstService = validServices[0];
+    setSelectedService(firstService);
+
     setInfo((prev) => ({
       ...prev,
-      service: selectedService.name,
-    }))
-    if (validServices.length > 0) {
-      const formats = getFormatsByServiceId(profile.fees, validServices[0]._id);
-      console.log('formatss function', formats);
-      setSessionFormats(formats);
+      service: firstService.name,
+    }));
+
+    const formats = await getFormatsByServiceId(profile.fees, firstService._id);
+    setSessionFormats(formats);
+
+    if (formats.length > 0) {
+      const firstFormat = formats[0];
+      setSelectedFormat(firstFormat);
+
+      setInfo((prev) => ({
+        ...prev,
+        format: firstFormat.type,
+        amount: firstFormat.fee,
+      }));
     }
   }
+};
+
+
 
   useEffect(() => {
     if (profile) {
@@ -268,6 +285,8 @@ export default function TherapistCheckout({ profile }) {
     }
   }, [profile]);
 
+  
+  console.log("profile in checkout", info);
 
   useEffect(() => {
     const formats = getFormatsByServiceId(profile.fees, selectedService._id);
