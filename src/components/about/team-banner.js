@@ -157,23 +157,7 @@ export default function TeamBanner() {
                       </span>
                     </div>
                     <p>{team.content}</p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <Link to={team.facebook} target="_blank">
-                          <i className="feather-facebook"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={team.linkdin} target="_blank">
-                          <i className="fab fa-linkedin-in"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={team.instagram} target="_blank">
-                          <i className="feather-instagram"></i>
-                        </Link>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>
