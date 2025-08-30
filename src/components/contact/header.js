@@ -27,7 +27,7 @@ export default function Header() {
               <div className="inner">
                 <h4 className="title">Contact Phone Number</h4>
                 <p>
-                  <a href="/+444%20555%20666%20777">+918077757951</a>
+                  <a href="/+444%20555%20666%20777">+91-807-775-7951</a>
                 </p>
                
               </div>
@@ -45,11 +45,9 @@ export default function Header() {
               </div>
               <div className="inner">
                 <h4 className="title">Our Email Address</h4>
+                
                 <p>
-                  <a href="mailto:admin@gmail.com">director@chooseyourtherapist.in</a>
-                </p>
-                <p>
-                  <a href="mailto:admin@gmail.com">info@chooseyourtherapist.in</a>
+                  <a href="mailto:admin@gmail.com">info.cyt@gmail.com</a>
                 </p>
               </div>
             </div>
@@ -66,14 +64,10 @@ export default function Header() {
               </div>
               <div className="inner">
                 <h4 className="title">Our Location</h4>
-                <p>
-                  <a href="mailto:undefined"><span>Reg. Add. </span>
-                  Laksar, Haridwar, Uttarakhand, India</a>
-                </p>
-                <br/>
+             
                 <p>
                   <a href="mailto:undefined"><span>Service at: </span>
-                  Sec. 27 Noida, Uttar Pradesh</a>
+                 Gate No-3, D-137, near LPS GLOBAL SCHOOL, Block D, Sector 51, Noida, Uttar Pradesh 201301</a>
                 </p>
                
               </div>

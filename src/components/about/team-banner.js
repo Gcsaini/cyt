@@ -3,6 +3,8 @@ import TeamImg3 from "../../assets/img/ffabb.png";
 import TeamImg4 from "../../assets/img/akt.png";
 import TeamImg5 from "../../assets/img/gopichand.png";
 import vibhor from "../../assets/img/vibhor.png";
+import RitikaGupta from "../../assets/img/RitikaGupta.png";
+import anushka from "../../assets/img/anushka.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import React from "react";
@@ -12,7 +14,7 @@ import { Link } from "react-router-dom";
 const teamInfo = [
   {
     name: "Mr. Deepak Kumar",
-    deg: "Founder & Director | Counselling Psychologist   (B.A, M.A, Ph.D Research Scholar)",
+    deg: "Founder & Director | Counselling Psychologist   (B.A, M.A, Ph.D Researcher-NET)",
     address: " Uttarakhand, IN",
     instagram: "",
     facebook: "",
@@ -35,18 +37,7 @@ const teamInfo = [
       "As a passionate advocate for mental health and a co-founder dedicated to leveraging technology for societal good. My vision is to harness cutting-edge technological solutions to address mental health challenges, fostering a culture of wellness and resilience. ",
   },
 
-  {
-    name: "Mr. Gopichand Saini",
-    deg: "Cheif Technology officer",
-    address: " Noida, Uttarpradesh, IN",
-
-    instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
-    facebook: "https://www.facebook.com/gopichand.saini.3?mibextid=ZbWKwL",
-    linkdin: "https://www.linkedin.com/in/gopichand-saini-0a979313b/",
-    profile: TeamImg5,
-    content:
-      "Welcome to CYT, where innovation meets excellence. As the Chief Technology Officer, I am proud to lead a dedicated team committed to delivering cutting-edge solutions that drive your success. Our passion for technology, combined with our customer-centric approach, empowers us to create impactful, sustainable, and scalable innovations. Join us on our journey to shape the future, one breakthrough at a time.",
-  },
+  
   {
     name: "Ms. Fabiha Sultana Shaik",
     deg: "Cheif Advisor | Psychologist",
@@ -58,6 +49,43 @@ const teamInfo = [
     profile: TeamImg3,
     content:
       "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
+  },
+  
+  {
+    name: "Ms. Ritika Gupta",
+    deg: "Operations Lead",
+    address: " Noida, IN",
+
+    instagram: "",
+    facebook: "",
+    linkdin: "",
+    profile: RitikaGupta,
+    content:
+      "She is the Operations Lead who blends efficiency with empathy, ensuring that our platform runs seamlessly while staying true to its mission of holistic wellbeing. She is a creative thinker and analytical planner, turning ideas into action and building processes that drive meaningful impact.",
+  },
+  {
+    name: "Ms. Anushka Singh",
+    deg: "Community Growth Lead | M.A Clinical Psychology",
+    address: " Ranchi, IN",
+
+    instagram: "",
+    facebook: "",
+    linkdin: "",
+    profile: anushka,
+    content:
+      "She is the Community Growth Lead, passionate about building strong, supportive networks that promote holistic wellbeing. She is a strategic thinker and relationship builder, creating initiatives that connect people, encourage collaboration, and drive meaningful community impact.",
+  },
+  {
+    name: "Mr. Gopichand Saini",
+    deg: "Cheif Technology officer",
+    address: " Noida, Uttarpradesh, IN",
+
+    instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
+    facebook: "https://www.facebook.com/gopichand.saini.3?mibextid=ZbWKwL",
+    linkdin: "https://www.linkedin.com/in/gopichand-saini-0a979313b/",
+    profile: TeamImg5,
+    content:
+      "Welcome to CYT, where innovation meets excellence. As the Chief Technology Officer, I am proud to lead a dedicated team committed to delivering cutting-edge solutions that drive your success. Our passion for technology, combined with our customer-centric approach, empowers us to create impactful, sustainable, and scalable innovations. Join us on our journey to shape the future, one breakthrough at a time.",
   },
   {
     name: "Mr. Vibhor Verma",
@@ -129,23 +157,7 @@ export default function TeamBanner() {
                       </span>
                     </div>
                     <p>{team.content}</p>
-                    <ul className="social-icon social-default mt--20 justify-content-start">
-                      <li>
-                        <Link to={team.facebook} target="_blank">
-                          <i className="feather-facebook"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={team.linkdin} target="_blank">
-                          <i className="fab fa-linkedin-in"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to={team.instagram} target="_blank">
-                          <i className="feather-instagram"></i>
-                        </Link>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>
