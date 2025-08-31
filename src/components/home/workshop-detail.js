@@ -50,7 +50,7 @@ export default function WorkshopDetail(props) {
                   <p class="description">{data.short_desc}</p>
                   <div class="rbt-author-meta mb--20">
                     <div class="rbt-avater">
-                      <Link href={`view-profile/${data.post_by._id}`}>
+                      <Link to={`/view-profile/${data.post_by._id}`}>
                         <ImageTag
                           alt={data.post_by.name}
                           src={`${imagePath}/${data.post_by.user.profile}`}
@@ -59,7 +59,7 @@ export default function WorkshopDetail(props) {
                     </div>
                     <div class="rbt-author-info">
                       By &nbsp;
-                      <Link href={`view-profile/${data.post_by._id}`}>
+                      <Link to={`/view-profile/${data.post_by._id}`}>
                         {data.post_by.user.name}
                       </Link>
                       &nbsp;In&nbsp;
@@ -120,15 +120,21 @@ export default function WorkshopDetail(props) {
                       <h4 class="rbt-title-style-3">Instructor</h4>
                     </div>
                     <div class="media align-items-center">
-                      <div class="thumbnail">
-                        <Link href={`view-profile/${data.post_by._id}`}>
-                          <ImageTag
-                            alt="Author Images"
-                            width="250"
-                            height="250"
-                            src={`${imagePath}/${data.post_by.user.profile}`}
-                          />
-                        </Link>
+                      <div className="thumbnail rbt-avatars size-lg">
+                        <ImageTag
+                          alt="Instructor"
+                          width="250"
+                          height="250"
+                          src={`${imagePath}/${data.post_by.user.profile}`}
+                          style={{
+                            borderRadius: 0,
+                            padding: 0,
+                            minWidth: 110,
+                            width: 110,
+                            minHeight: 120,
+                            height: 120,
+                          }}
+                        />
                       </div>
                       <div class="media-body">
                         <div class="author-info">
@@ -143,23 +149,9 @@ export default function WorkshopDetail(props) {
                           <span class="b3 subtitle">
                             {data.post_by.profile_type}
                           </span>
-                          <ul class="rbt-meta mb--5 mt--5">
-                            <li>
-                              <span style={{ lineHeight: "2rem" }}>
-                                <b>Experties: </b>
-                                {data.post_by.experties}
-                              </span>
-                            </li>
-                          </ul>
+
                         </div>
-                        <div class="content">
-                          <p class="description">
-                            <span style={{ fontSize: 15 }}>
-                              <b>Bio: </b>
-                            </span>
-                            {truncateString(data.post_by.user.bio, 90)}
-                          </p>
-                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -227,6 +219,7 @@ export default function WorkshopDetail(props) {
                       <Link
                         className="rbt-btn btn-gradient icon-hover w-100 d-block text-center"
                         href="#"
+                        to={`/workshop-booking/${data._id}`}
                       >
                         <span className="btn-text">Book Now</span>
                         <span className="btn-icon">
@@ -248,6 +241,12 @@ export default function WorkshopDetail(props) {
                           <span>Start Date</span>
                           <span className="rbt-feature-value rbt-badge-5">
                             {data.event_date}
+                          </span>
+                        </li>
+                        <li>
+                          <span>End Date</span>
+                          <span className="rbt-feature-value rbt-badge-5">
+                            {data.event_end_date}
                           </span>
                         </li>
                         <li>
@@ -276,6 +275,7 @@ export default function WorkshopDetail(props) {
                             {data.language}
                           </span>
                         </li>
+
                       </ul>
                     </div>
                     <div className="social-share-wrapper mt--30 text-center">
@@ -338,7 +338,7 @@ export default function WorkshopDetail(props) {
                 <div class="rbt-single-list action-btn">
                   <a
                     class="rbt-btn btn-gradient hover-icon-reverse btn-md"
-                    href="#"
+                    href={`/workshop-booking/${data._id}`}
                   >
                     <span class="icon-reverse-wrapper">
                       <span class="btn-text">Book Now</span>

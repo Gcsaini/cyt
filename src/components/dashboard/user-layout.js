@@ -103,6 +103,12 @@ export default function UserLayout(props) {
                                     <span>Booking History</span>
                                   </Link>
                                 </li>
+                                <li className="nav-item">
+                                  <Link className="" to="/my-workshop-bookings">
+                                    <i className="feather-star"></i>
+                                    <span>Event Booking</span>
+                                  </Link>
+                                </li>
                               </ul>
                             </nav>
                             {/* <div className="section-title mt--40 mb--20">

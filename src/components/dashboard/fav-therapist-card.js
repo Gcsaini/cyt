@@ -9,7 +9,7 @@ export default function FavTherapistCard({ data, removeFav }) {
         <div className="rbt-card-img">
           <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
             <ImageTag
-              alt={data.name}
+              alt={data.user.name}
               style={{ height: "250px" }}
               src={`${imagePath}/${data.profile}`}
             />
@@ -57,7 +57,7 @@ export default function FavTherapistCard({ data, removeFav }) {
 
           <h4 className="rbt-card-title">
             <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
-              {data.name}
+              {data.user.name}
             </Link>
           </h4>
           <div style={{ marginTop: 7, display: "flex" }}>

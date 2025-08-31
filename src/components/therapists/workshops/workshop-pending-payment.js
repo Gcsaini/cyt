@@ -1,21 +1,19 @@
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
-import FormMessage from "../global/form-message";
-import { postData } from "../../utils/actions";
-import { savePaymentUrl, saveWorkshopPaymentUrl } from "../../utils/url";
-import FormProgressBar from "../global/form-progressbar";
-import QrcodeCard from "../global/qrcode-card";
-import PaymentSuccessModal from "./payment-success-popup";
-export default function PaymentPending({ pageData }) {
+import { postData } from "../../../utils/actions";
+import FormMessage from "../../global/form-message";
+import QrcodeCard from "../../global/qrcode-card";
+import FormProgressBar from "../../global/form-progressbar";
+import PaymentSuccessModal from "../../view_profile/payment-success-popup";
+import { saveWorkshopPaymentUrl } from "../../../utils/url";
+export default function WorkshopPaymentPending({ pageData }) {
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [transactionId, setTransanctionId] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = React.useState("");
 
-  
-    console.log("payment id", pageData);
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
@@ -31,7 +29,7 @@ export default function PaymentPending({ pageData }) {
       };
       try {
         setLoading(true);
-        const response = await postData(savePaymentUrl, data);
+        const response = await postData(saveWorkshopPaymentUrl, data);
         if (response.status) {
           setSuccess("Payment Recevided successfully");
           setOpen(true);

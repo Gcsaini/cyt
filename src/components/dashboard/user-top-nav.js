@@ -67,6 +67,11 @@ export default function UserDashboardTopNav() {
                   Booking History<i className="feather-chevron-down"></i>
                 </Link>
               </li>
+              <li className="position-static">
+                <Link to="//my-workshop-bookings" style={{ cursor: "pointer" }}>
+                  Event Booking<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
               {/* <li className="position-static">
                 <Link to="/my-courses" style={{ cursor: "pointer" }}>
                   Enrolled Courses/workshops

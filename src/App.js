@@ -49,6 +49,9 @@ import PaymentPending from "./components/view_profile/payment-pending";
 import PaymentPendingPage from "./pages/payment-pending";
 import MyBookingsPage from "./pages/client/my-bookings";
 import SerivcePage from "./pages/ServicePage";
+import WorkshopBookingPage from "./pages/workshop-booking";
+import PaymentWorkshopPage from "./pages/payment-workshop";
+import MyWorkshopBookingsPage from "./pages/client/my-workshop-bookings";
 const theme = createTheme();
 
 function App() {
@@ -171,6 +174,17 @@ function App() {
                 />
               }
 
+               {
+                <Route
+                  path="//my-workshop-bookings"
+                  element={
+                    <ProtectedRoute>
+                      <MyWorkshopBookingsPage />
+                    </ProtectedRoute>
+                  }
+                />
+              }
+
               <Route
                 path="/therapist-checkout/:id"
                 element={
@@ -180,11 +194,24 @@ function App() {
                   <TherapistCheckoutPage />
                 }
               />
+              <Route
+                path="/workshop-booking/:id"
+                element={
+                  <WorkshopBookingPage />
+                }
+              />
 
               <Route
                 path="/payment-pending/:id"
                 element={
                   <PaymentPendingPage />
+                }
+              />
+
+               <Route
+                path="/workshop-pending/:id"
+                element={
+                  <PaymentWorkshopPage />
                 }
               />
 

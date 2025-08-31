@@ -1,0 +1,46 @@
+.custom-datepicker .react-datepicker__triangle {
+  display: none; /* Optional: hides the small arrow */
+}
+
+.custom-datepicker .react-datepicker {
+  width: 400px; /* Set your desired width */
+  height: 500px; /* Set your desired height */
+}
+
+.custom-datepicker .react-datepicker__month-container {
+  height: 100%; /* Ensures the container takes up the full height */
+}
+
+.custom-datepicker .react-datepicker__header {
+  height: auto; /* Adjust header height if necessary */
+}
+
+.custom-datepicker .react-datepicker__day,
+.custom-datepicker .react-datepicker__day-name {
+  width: auto; /* Adjust day and day-name width if necessary */
+  height: auto; /* Adjust day and day-name height if necessary */
+}
+
+.custom-datepicker .react-datepicker__day,
+.custom-datepicker .react-datepicker__day-name,
+.custom-datepicker .react-datepicker__time-name,
+.custom-datepicker__current-month,
+.custom-datepicker__header {
+  font-size: 20px; /* Set your desired font size */
+}
+
+.custom-datepicker .react-datepicker__current-month {
+  font-size: 18px; /* Set your desired font size for the month */
+}
+
+.custom-datepicker .react-datepicker__day-name {
+  font-size: 14px; /* Set your desired font size for the day names */
+}
+
+.custom-datepicker .react-datepicker__day {
+  font-size: 16px; /* Set your desired font size for the days */
+}
+
+.custom-datepicker .react-datepicker__time-list-item {
+  font-size: 16px; /* Set your desired font size for the time list items */
+}

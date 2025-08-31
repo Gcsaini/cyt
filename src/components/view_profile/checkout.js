@@ -58,12 +58,13 @@ export default function TherapistCheckout({ profile }) {
     format: "",
     whom: userInfo.email ? "" : "Self",
     cname: "",
-    realtion_with_client: "",
+    relation_with_client: "",
     notes: "",
     age: "",
     amount: 0,
     therapist: profile._id,
-    isLoggedIn: false
+    is_logged_in: false,
+    user_id: userInfo._id || "",
   });
 
 
@@ -112,7 +113,7 @@ export default function TherapistCheckout({ profile }) {
         setInfo((prevInfo) => ({
           ...prevInfo,
           ["cname"]: "",
-          ["realtion_with_client"]: "",
+          ["relation_with_client"]: "",
           ["age"]: "",
         }));
       }
@@ -144,14 +145,14 @@ export default function TherapistCheckout({ profile }) {
 
   const handleSubmit = async () => {
     setSuccess("");
-    if (info.phone.length !== 10) {
+    if (!info.is_logged_in && info.phone.length !== 10) {
       setError("Please enter phone number");
       return;
     } else if (Object.keys(selectedService).length === 0) {
       setError("Please select service.");
       return;
     }
-    else if (!userInfo.email && info.email === "") {
+    else if (!info.is_logged_in && !userInfo.email && info.email === "") {
       setError("Please Enter Email id.");
       return;
     } else if (info.whom === "") {
@@ -163,7 +164,7 @@ export default function TherapistCheckout({ profile }) {
     } else if (info.whom == "For Other" && info.cname.length < 4) {
       setError("Please enter valid clinet name.");
       return;
-    } else if (info.whom == "For Other" && info.realtion_with_client === "") {
+    } else if (info.whom == "For Other" && info.relation_with_client === "") {
       setError("Please select relation with client.");
       return;
     } else if (info.whom == "For Other" && info.age === "") {
@@ -178,18 +179,10 @@ export default function TherapistCheckout({ profile }) {
       try {
         setLoading(true);
 
-        const response = await postData(info.isLoggedIn ? BookTherapistUrl : BookTherapistUrlAnomalously, info);
+        const response = await postData(BookTherapistUrl, info);
         if (response.status) {
-          if (info.isLoggedIn) {
-            setSuccess(response.message);
-            if (response.data.id !== "") {
-              navigate(`/payment-pending/${response.data.id}`);
-            }
-          } else {
-            setBookingId(response.data.id);
-            setOpen(true);
-          }
-
+          setBookingId(response.data.id);
+          setOpen(true);
         } else {
           setError(response.message);
 
@@ -246,56 +239,56 @@ export default function TherapistCheckout({ profile }) {
   };
 
   const setConfig = async (profile) => {
-  const validServices = await getServices(profile.fees);
-  setServices(validServices);
+    const validServices = await getServices(profile.fees);
+    setServices(validServices);
 
-  if (validServices.length > 0) {
-    const firstService = validServices[0];
-    setSelectedService(firstService);
-
-    setInfo((prev) => ({
-      ...prev,
-      service: firstService.name,
-    }));
-
-    const formats = await getFormatsByServiceId(profile.fees, firstService._id);
-    setSessionFormats(formats);
-
-    if (formats.length > 0) {
-      const firstFormat = formats[0];
-      setSelectedFormat(firstFormat);
+    if (validServices.length > 0) {
+      const firstService = validServices[0];
+      setSelectedService(firstService);
 
       setInfo((prev) => ({
         ...prev,
-        format: firstFormat.type,
-        amount: firstFormat.fee,
+        service: firstService.name,
+      }));
+
+      const formats = await getFormatsByServiceId(profile.fees, firstService._id);
+      setSessionFormats(formats);
+
+      if (formats.length > 0) {
+        const firstFormat = formats[0];
+        setSelectedFormat(firstFormat);
+
+        setInfo((prev) => ({
+          ...prev,
+          format: firstFormat.type,
+          amount: firstFormat.fee,
+        }));
+      }
+      setInfo((prev) => ({
+        ...prev,
+        therapist: profile._id,
+        is_logged_in: userInfo.email ? true : false,
+        user_id: userInfo._id || "",
+        email: userInfo.email || "",
       }));
     }
-  }
-};
-
+  };
 
 
   useEffect(() => {
     if (profile) {
       setConfig(profile);
     }
-    if (userInfo && userInfo.email) {
-      info.isLoggedIn = true
-    }
   }, [profile]);
 
-  
-  console.log("profile in checkout", info);
 
   useEffect(() => {
     const formats = getFormatsByServiceId(profile.fees, selectedService._id);
     setSessionFormats(formats);
   }, [selectedService])
 
-  console.log("selected service", selectedService);
-  console.log("selected format", selectedFormat);
-  console.log("selected info", info);
+  console.log("user info", info);
+
 
   return (
     <div className="checkout_area bg-color-white ">
@@ -308,48 +301,54 @@ export default function TherapistCheckout({ profile }) {
                 <h4 className="checkout-title">Billing Address</h4>
                 <FormMessage success={success} error={error} />
                 <div className="row mt--15">
-                  <div className="col-md-6 col-12 mb--10">
-                    <label htmlFor="name">Full Name*</label>
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      value={info.name}
-                      id="name"
-                      name="name"
-                      onChange={
-                        !userInfo?.name
-                          ? (e) => handleChange(e.target.name, e.target.value)
-                          : undefined
-                      }
-                    />
-                  </div>
 
-                  <div className="col-md-6 col-12 mb--10">
-                    <label htmlFor="phone">Whatsapp no*</label>
-                    <input
-                      type="text"
-                      placeholder="Whatsapp number"
-                      id="phone"
-                      name="phone"
-                      value={info.phone || ""}
-                      onChange={(e) =>
-                        handleChange(e.target.name, e.target.value)
-                      }
-                    />
-                  </div>
-                  {!info.isLoggedIn && <div className="col-md-6 col-12 mb--10">
-                    <label htmlFor="phone">Email*</label>
-                    <input
-                      type="text"
-                      placeholder="Email"
-                      id="email"
-                      name="email"
-                      value={info.email}
-                      onChange={(e) =>
-                        handleChange(e.target.name, e.target.value)
-                      }
-                    />
-                  </div>}
+                  {!info.is_logged_in &&
+
+                    <>
+                      <div className="col-md-6 col-12 mb--10">
+                        <label htmlFor="name">Full Name*</label>
+                        <input
+                          type="text"
+                          placeholder="Full Name"
+                          value={info.name}
+                          id="name"
+                          name="name"
+                          onChange={
+                            !userInfo?.name
+                              ? (e) => handleChange(e.target.name, e.target.value)
+                              : undefined
+                          }
+                        />
+                      </div>
+
+                      <div className="col-md-6 col-12 mb--10">
+                        <label htmlFor="phone">Whatsapp no*</label>
+                        <input
+                          type="text"
+                          placeholder="Whatsapp number"
+                          id="phone"
+                          name="phone"
+                          value={info.phone || ""}
+                          onChange={(e) =>
+                            handleChange(e.target.name, e.target.value)
+                          }
+                        />
+                      </div>
+                      <div className="col-md-6 col-12 mb--10">
+                        <label htmlFor="phone">Email*</label>
+                        <input
+                          type="text"
+                          placeholder="Email"
+                          id="email"
+                          name="email"
+                          value={info.email}
+                          onChange={(e) =>
+                            handleChange(e.target.name, e.target.value)
+                          }
+                        />
+                      </div>
+                    </>
+                  }
 
                   <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="service">Service</label>
@@ -394,7 +393,7 @@ export default function TherapistCheckout({ profile }) {
                     </select>
                   </div>
 
-                  {info.isLoggedIn && <div className="col-md-6 col-12 mb--20">
+                  {info.is_logged_in && <div className="col-md-6 col-12 mb--20">
                     <label htmlFor="gender">For Whom</label>
                     <select
                       id="gender"
@@ -429,14 +428,14 @@ export default function TherapistCheckout({ profile }) {
                         />
                       </div>
                       <div className="col-md-6 col-12 mb--10">
-                        <label htmlFor="realtion_with_client">
+                        <label htmlFor="relation_with_client">
                           Relation With Client
                         </label>
                         <select
-                          id="realtion_with_client"
+                          id="relation_with_client"
                           style={styles.selectStyle}
-                          value={info.realtion_with_client}
-                          name="realtion_with_client"
+                          value={info.relation_with_client}
+                          name="relation_with_client"
                           onChange={(e) =>
                             handleChange(e.target.name, e.target.value)
                           }

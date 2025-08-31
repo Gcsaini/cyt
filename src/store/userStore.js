@@ -8,6 +8,7 @@ const useUserStore = create((set) => ({
     phone: "",
     profile: "",
     email: "",
+    _id:""
   },
 
   setUserInfo: (data) =>
@@ -28,8 +29,11 @@ const useUserStore = create((set) => ({
   },
 }));
 
+
+
 useUserStore.subscribe((state) => {
   // console.log("state", state.times);
+  console.log("state info",state.userInfo);
 });
 
 export default useUserStore;

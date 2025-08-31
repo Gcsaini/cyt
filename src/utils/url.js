@@ -67,3 +67,7 @@ export const BookTherapistUrlAnomalously = `${apiUrl}/book-therapist-anomalously
 export const pendingPaymentUrl = `${apiUrl}/get-payment`;
 export const savePaymentUrl = `${apiUrl}/save-payment`;
 export const getBookings = `${apiUrl}/get-bookings`;
+export const bookWorkshopUrl = `${apiUrl}/book-workshop`;
+export const getPaymentQrUrl = `${apiUrl}/get-payment-qr`;
+export const saveWorkshopPaymentUrl = `${apiUrl}/save-workshop-payment`;
+export const GetMyWorkshopBooking = `${apiUrl}/get-my-workshop-bookings`;
