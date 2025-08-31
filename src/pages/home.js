@@ -41,9 +41,11 @@ export default function HomePage() {
           <ProfileCard />
           <Counter />
           <HomeWorkshop isWhite={false} />
+          <Blogs />
+
           <PromationalBanner />
           <Feedback />
-          <Blogs />
+         
           <CallToAction />
           <NewsLetter />
           {/* <Popup open={showPopup} onClose={() => setShowPopup(false)} /> */}
