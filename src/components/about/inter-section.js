@@ -3,10 +3,19 @@ import Priya from "../../assets/img/Priya.png";
 import TeamImg2 from "../../assets/img/aparajitab.png";
 import shivangirana from "../../assets/img/shivangirana.png";
 import avika from "../../assets/img/avika.png";
+import priya from "../../assets/img/priyaa.png";
 import ImageTag from "../../utils/image-tag";
 import React from "react";
 import { Link } from "react-router-dom";
 const internInfo = [
+   
+ {
+    name: "Priya Ranga",
+    deg: "Diploma",
+    profile: priya,
+    noOfStars: 5,
+    content: "Start the journey to mental health awareness with a simple step: nurture your mind with kindness.",
+  },
   {
     name: "Priya Mehta",
     deg: "B.Sc. Psychology Student",
