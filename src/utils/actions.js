@@ -20,6 +20,26 @@ export const fetchById = (url, params = {}) => {
   });
 };
 
+
+export const deleteById = (url, params = {}) => {
+  return new Promise((resolve, reject) => {
+    const token = getToken();
+    axios
+      .delete(url, {
+        params,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
 export const fetchData = (url, params = {}) => {
   return new Promise((resolve, reject) => {
     axios

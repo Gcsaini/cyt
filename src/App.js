@@ -20,7 +20,6 @@ import Register from "./pages/register";
 import Success from "./pages/success";
 import TherapistDashboard from "./pages/therapists/dashboard";
 import ProfileSettings from "./pages/therapists/settings";
-import ChangePassword from "./pages/therapists/change-password";
 import Appointment from "./pages/therapists/appointment";
 import Notification from "./pages/therapists/notifications";
 import Invoices from "./pages/therapists/invoices";
@@ -45,13 +44,15 @@ import TermsCondition from "./pages/TermsCondition";
 import CancellationPolicy from "./pages/cancel-policy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PaymentPending from "./components/view_profile/payment-pending";
 import PaymentPendingPage from "./pages/payment-pending";
 import MyBookingsPage from "./pages/client/my-bookings";
 import SerivcePage from "./pages/ServicePage";
 import WorkshopBookingPage from "./pages/workshop-booking";
 import PaymentWorkshopPage from "./pages/payment-workshop";
 import MyWorkshopBookingsPage from "./pages/client/my-workshop-bookings";
+import CoupansPage from "./pages/therapists/coupans";
+import CreateCoupanPage from "./pages/therapists/create-coupan";
+import UpdateCoupanPage from "./pages/therapists/update-coupan";
 const theme = createTheme();
 
 function App() {
@@ -271,16 +272,6 @@ function App() {
                   </TherapistProtectedRoute>
                 }
               />
-
-              <Route
-                exact
-                path="/change-password"
-                element={
-                  <TherapistProtectedRoute>
-                    <ChangePassword />
-                  </TherapistProtectedRoute>
-                }
-              />
               <Route
                 exact
                 path="/notifications"
@@ -315,6 +306,33 @@ function App() {
                 element={
                   <TherapistProtectedRoute>
                     <CreateWorkshopPage />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/coupons"
+                element={
+                  <TherapistProtectedRoute>
+                    <CoupansPage />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/coupon/create"
+                element={
+                  <TherapistProtectedRoute>
+                    <CreateCoupanPage />
+                  </TherapistProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/coupon/update/:id"
+                element={
+                  <TherapistProtectedRoute>
+                    <UpdateCoupanPage />
                   </TherapistProtectedRoute>
                 }
               />

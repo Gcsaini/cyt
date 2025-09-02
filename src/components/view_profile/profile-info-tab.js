@@ -1,20 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import { successColor } from "../../utils/colors";
-import { getFormatsByServiceId, getServices, getValidServices } from "../../utils/helpers";
+import {getValidServices } from "../../utils/helpers";
 export default function ProfileInfoTab({ pageData }) {
   const [tab, setTab] = React.useState(1);
   const [services, setServices] = React.useState();
   const [formats, setFormats] = React.useState();
   const handleClick = (id) => {
     setTab(id);
-  };
-
-  const listStyle = {
-    fontSize: 34,
-    color: successColor,
   };
 
   const listStyleTime = {

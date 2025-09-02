@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import FormMessage from "../global/form-message";
 import { postData } from "../../utils/actions";
-import { BookTherapistUrl, BookTherapistUrlAnomalously, verifyOtpUrl } from "../../utils/url";
+import { ApplyCouponUrl, BookTherapistUrl, BookTherapistUrlAnomalously, verifyOtpUrl } from "../../utils/url";
 import { useNavigate } from "react-router-dom";
 import FormProgressBar from "../global/form-progressbar";
 import useUserStore from "../../store/userStore";
@@ -14,6 +14,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import { toast } from "react-toastify";
 const styles = {
   iconStyle: {
     fontSize: 12,
@@ -38,6 +39,7 @@ export default function TherapistCheckout({ profile }) {
   const { userInfo } = useUserStore();
   const navigate = useNavigate();
   const [error, setError] = React.useState("");
+  const [couponError, setCouponError] = React.useState("");
   const [otpError, setOtpError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState("");
@@ -67,6 +69,15 @@ export default function TherapistCheckout({ profile }) {
     user_id: userInfo._id || "",
   });
 
+  const [amountInfo, setAmountInfo] = React.useState({
+    coupon: "",
+    amount: 0,
+    tax: 0,
+    subtotal: 0,
+    discount: 0,
+    afterdiscount: 0
+  })
+
 
   const handleChange = (name, value) => {
     if (name === "name" || name === "notes") {
@@ -84,8 +95,12 @@ export default function TherapistCheckout({ profile }) {
           ...prevInfo,
           service: value,
           format: selectedService.formats[0].format,
-          amount: selectedService.formats[0].price,
         }));
+        setAmountInfo((prev) => ({
+          ...prev,
+          amount: selectedService.formats[0].price,
+          afterdiscount: selectedService.formats[0].price
+        }))
       }
     } else if (name === "format") {
       const selectedFormat = sessionFormats.find(
@@ -100,6 +115,11 @@ export default function TherapistCheckout({ profile }) {
           };
           return updatedInfo;
         });
+        setAmountInfo((prev) => ({
+          ...prev,
+          amount: selectedFormat.price,
+          afterdiscount: selectedFormat.price
+        }))
       }
     } else if (name === "whom") {
       setInfo((prevInfo) => ({
@@ -178,6 +198,7 @@ export default function TherapistCheckout({ profile }) {
       setLoading(true);
       try {
         setLoading(true);
+        info.amount = amountInfo.afterdiscount;
 
         const response = await postData(BookTherapistUrl, info);
         if (response.status) {
@@ -236,6 +257,11 @@ export default function TherapistCheckout({ profile }) {
       service: selectedService.name,
       amount: selected.fee
     }))
+    setAmountInfo((prev)=>({
+      ...prev,
+      amount:selected.fee,
+      afterdiscount:selected.fee-prev.discount
+    }))
   };
 
   const setConfig = async (profile) => {
@@ -263,6 +289,11 @@ export default function TherapistCheckout({ profile }) {
           format: firstFormat.type,
           amount: firstFormat.fee,
         }));
+        setAmountInfo((prev) => ({
+          ...prev,
+          amount: firstFormat.fee,
+          afterdiscount: firstFormat.fee
+        }))
       }
       setInfo((prev) => ({
         ...prev,
@@ -287,7 +318,51 @@ export default function TherapistCheckout({ profile }) {
     setSessionFormats(formats);
   }, [selectedService])
 
+  const handleCouponApply = async () => {
+    setCouponError("");
+    try {
+      const reqData = {
+        therapist_id: profile._id,
+        code: amountInfo.coupon,
+        apply_for: "Therapist"
+      }
+      console.log("applying....");
+      const res = await postData(ApplyCouponUrl, reqData);
+      console.log("apply res", res);
+      if (res?.status && res?.data) {
+        const { discount_type, discount_value } = res.data;
+
+        let discount = 0;
+
+        if (discount_type === "flat") {
+          discount = discount_value;
+        } else if (discount_type === "percentage") {
+          discount = (amountInfo.amount * discount_value) / 100;
+        }
+
+
+        discount = Math.min(discount, amountInfo.amount);
+        setAmountInfo((prev) => ({
+          ...prev,
+          discount,
+          afterdiscount: prev.amount - discount,
+        }));
+        toast.success("Coupon applied successfully!");
+      } else {
+
+        setCouponError(res.message);;
+        toast.error(res?.message || "Invalid coupon");
+      }
+
+
+    } catch (error) {
+      setCouponError(error.response.data.message || "Error applying coupon");
+    }
+
+  }
+
   console.log("user info", info);
+  console.log("amount info", amountInfo);
 
 
   return (
@@ -529,19 +604,47 @@ export default function TherapistCheckout({ profile }) {
                 <ul>
                   <li>
                     {info.service}&nbsp;({info.format})
-                    <span>₹{info.amount}</span>
+                    <span>₹{amountInfo.amount}</span>
                   </li>
                 </ul>
                 <p>
                   Tax <span>0</span>
                 </p>
                 <p>
-                  Sub Total<span>₹{info.amount}</span>
+                  Sub Total<span>₹{amountInfo.amount}</span>
                 </p>
+                {
+                  amountInfo.discount!=0 && <p>
+                  Coupon Discount<span>₹{amountInfo.discount}</span>
+                </p>
+                }
+                <div className="mt--10" style={{ display: "flex", justifyContent: "space-between", gap: "20px" }}>
+                  <div >
+                    <input
+                      type="text"
+                      placeholder="Coupon?"
+                      id="coupon"
+                      name="coupon"
+                      value={amountInfo.coupon}
+                      onChange={(e) =>
+                        setAmountInfo((prev) => ({
+                          ...prev,
+                          coupon: e.target.value
+                        }))
+                      }
+                      style={{ marginBottom: 0 }}
+                    />
+                    {couponError && <span style={{ color: "red", fontSize: "12px", }}>{couponError}</span>}
+                  </div>
+                  <div >
+                    <a class="rbt-btn btn-sm" onClick={handleCouponApply}>Apply</a>
+                  </div>
+                </div>
 
                 <h4 className="mt--30">
-                  Grand Total <span>₹{info.amount}</span>
+                  Grand Total <span style={{fontSize:"26px",}}>₹{amountInfo.afterdiscount}</span>
                 </h4>
+
               </div>
             </div>
             <div className="plceholder-button mt--10">

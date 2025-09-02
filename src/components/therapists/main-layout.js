@@ -35,7 +35,7 @@ export default function MainLayout(props) {
     if (!profileSet) {
       getData();
     }
-  }, []);
+  }, [getData]);
 
   return (
     <>
@@ -194,7 +194,21 @@ export default function MainLayout(props) {
                                     to="/workshops"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Create Event</span>
+                                    <span>Events</span>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className={
+                                      currentPath === "/coupons" ||
+                                      currentPath === "/create-coupon"
+                                        ? "active"
+                                        : ""
+                                    }
+                                    to="/coupons"
+                                  >
+                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <span>Coupons</span>
                                   </Link>
                                 </li>
                                 <li>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Banner from "../components/home/banner";
 import Blogs from "../components/home/blogs";
@@ -11,7 +10,6 @@ import PromationalBanner from "../components/home/promational-banner";
 import Services from "../components/home/services";
 import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
-import Popup from "../components/global/popup";
 
 export default function HomePage() {
   // const [showPopup, setShowPopup] = useState(false);

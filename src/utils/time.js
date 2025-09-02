@@ -72,3 +72,7 @@ export const generateHourlyIntervals = (open, close) => {
 
   return intervals;
 };
+
+export const formatDate = (dateString) => {
+  return new Date(dateString).toLocaleDateString("en-GB"); 
+};
