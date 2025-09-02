@@ -26,7 +26,42 @@ export default function TeamAbout() {
             rowSpacing={2}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-             <Grid item xs={12} sm={6} md={3} key={1}>
+            <Grid item xs={12} sm={6} md={3} key={4}>
+                  <div class="team">
+                    <div class="thumbnail">
+                      <ImageTag
+                        alt="Blog"
+                        height={"180"}
+                        width={"300"}
+                        src={avika}
+                      />
+                    </div>
+                    <div class="content">
+                      <h4 class="title">Avika</h4>
+                      <p class="designation">Intern</p>
+                    </div>
+                    <ul class="social-icon">
+                      <li>
+                        <a href="/elements/team#">
+                          <i class="fab fa-facebook-f"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/elements/team#">
+                          <i class="fab fa-linkedin-in"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/elements/team#">
+                          <i class="fab fa-twitter"></i>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                    
+                  </div>
+                </Grid>
+                  <Grid item xs={12} sm={6} md={3} key={1}>
                   <div class="team">
                     <div class="thumbnail">
                       <ImageTag

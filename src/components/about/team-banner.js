@@ -5,6 +5,7 @@ import TeamImg5 from "../../assets/img/gopichand.png";
 import vibhor from "../../assets/img/vibhor.png";
 import RitikaGupta from "../../assets/img/RitikaGupta.png";
 import anushka from "../../assets/img/anushka.png";
+import Ayushi from "../../assets/img/ayushi.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import React from "react";
@@ -50,7 +51,18 @@ const teamInfo = [
     content:
       "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
   },
-  
+  {
+    name: "Ms. Ayushi Pandwal",
+    deg: "External Research & Academic Advisor | Assistant Professor",
+    address: " Noida, IN",
+
+    instagram: "",
+    facebook: "",
+    linkdin: "",
+    profile: Ayushi,
+    content:
+      "She is the External Research and Academic Advisor and Assistant Professor at Amity University, dedicated to advancing knowledge and fostering academic excellence. Passionate about research and education, she provides strategic guidance to strengthen scholarly initiatives, enhance learning outcomes, and support evidence-based practices. A critical thinker and mentor, she helps bridge the gap between research and real-world application, empowering individuals and institutions to achieve meaningful academic impact.",
+  },
   {
     name: "Ms. Ritika Gupta",
     deg: "Operations Lead",
@@ -75,6 +87,7 @@ const teamInfo = [
     content:
       "She is the Community Growth Lead, passionate about building strong, supportive networks that promote holistic wellbeing. She is a strategic thinker and relationship builder, creating initiatives that connect people, encourage collaboration, and drive meaningful community impact.",
   },
+  
   {
     name: "Mr. Gopichand Saini",
     deg: "Cheif Technology officer",
