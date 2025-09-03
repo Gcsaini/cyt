@@ -182,7 +182,7 @@ export default function TherapistCheckout({ profile }) {
       setError("Please select format.");
       return;
     } else if (info.whom == "For Other" && info.cname.length < 4) {
-      setError("Please enter valid clinet name.");
+      setError("Please enter valid client name.");
       return;
     } else if (info.whom == "For Other" && info.relation_with_client === "") {
       setError("Please select relation with client.");
@@ -528,6 +528,7 @@ export default function TherapistCheckout({ profile }) {
                           <option value="Father">Father</option>
                           <option value="Father">Grand Father</option>
                           <option value="Father">Grand Mother</option>
+                           <option value="Father">Other</option>
                         </select>
                       </div>
                     </>
@@ -564,7 +565,7 @@ export default function TherapistCheckout({ profile }) {
           <div className="col-lg-5">
             <div className="col-12 mb--20">
               <div className="checkout-cart-total">
-                <h4 style={{ fontSize: 24 }}>For Offline Session</h4>
+                <h4 style={{ fontSize: 24 }}>Visit In-Person</h4>
 
                 <div className="single-list" style={{ marginTop: 15 }}>
                   <h5 className="price-title" style={{ fontSize: "16px" }}>
@@ -576,7 +577,7 @@ export default function TherapistCheckout({ profile }) {
                     style={{ borderBottom: "none", marginTop: "-10px" }}
                   >
                     <h6>
-                      Gate No-3, D-137, near LPS GLOBAL SCHOOL, Block D, Sector
+                      D-137, near LPS GLOBAL SCHOOL, Block D, Sector
                       51, Noida, Uttar Pradesh 201301
                     </h6>
                   </div>
