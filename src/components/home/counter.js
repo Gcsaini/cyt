@@ -21,7 +21,7 @@ export default function Counter() {
   const initialValue2 = 12750;
   const targetValue2 = 11989;
   const initialValue3 = 1000;
-  const targetValue3 = 1200;
+  const targetValue3 = 1252;
   useEffect(() => {
     let startValue = initialValue;
     const interval = Math.floor(duration / (targetValue - initialValue));
@@ -184,7 +184,7 @@ export default function Counter() {
                           </span>
                         </h3>
                         <span className="subtitle">
-                          Social Media Connections
+                          Community Growth
                         </span>
                       </div>
                     </div>
@@ -215,7 +215,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Valueable Feedbacks</span>
+                        <span className="subtitle">Valuble Words</span>
                       </div>
                     </div>
                   </div>
