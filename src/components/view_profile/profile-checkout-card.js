@@ -21,9 +21,9 @@ export default function ProfileCheckoutCard({ pageData }) {
           <div className="rbt-card-top">
             <div className="rbt-review">
               <h4 className="rbt-card-title">
-                {pageData.name}
+                {pageData.name}&nbsp;
                 <span style={{ fontSize: 15, color: "rgb(89, 89, 89)" }}>
-                  ({pageData.profile_code})
+                
                 </span>
               </h4>
             </div>
