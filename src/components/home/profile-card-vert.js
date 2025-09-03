@@ -131,9 +131,9 @@ export default function ProfileCardVert(props) {
 
           <div style={{ marginTop: 5, display: "flex" }}>
             <span>
-              <i className="feather-book"style={{ fontSize: 16, marginLeft: 5 }}></i>
-          
-            
+              <i className="feather-book"></i>
+            </span>
+            <span style={{ fontSize: 16, marginLeft: 5 }}>
               {getMinMaxPrice(fees)}
             </span>
           </div>
