@@ -21,7 +21,7 @@ export default function ProfileCheckoutCard({ pageData }) {
           <div className="rbt-card-top">
             <div className="rbt-review">
               <h4 className="rbt-card-title">
-                {pageData.name}&nbsp;
+                {pageData.name}
                 <span style={{ fontSize: 15, color: "rgb(89, 89, 89)" }}>
                   ({pageData.profile_code})
                 </span>
@@ -37,10 +37,7 @@ export default function ProfileCheckoutCard({ pageData }) {
               <i className="feather-message-circle"></i>
               {pageData.language_spoken}
             </li>
-            <li style={listStyle}>
-              <i className="feather-eye"></i>
-              <span style={{ lineHeight: "2rem" }}>{pageData.serve_type}</span>
-            </li>
+           
             {/* <li style={listStyle}>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
