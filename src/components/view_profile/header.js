@@ -63,6 +63,7 @@ export default function ProfileHeader(props) {
         title: pageData.name || "Therapist Profile",
         text: "Check out this therapist profile",
         url: profileUrl,
+        
       }).catch((err) => {
         console.log("Sharing failed", err);
       });

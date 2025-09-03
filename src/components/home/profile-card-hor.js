@@ -110,12 +110,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
               <i className="feather-message-circle"></i>
               {pageData.language_spoken}
             </li>
-            <li>
-              <i className="feather-eye"></i>
-              <span style={{ lineHeight: "2rem" }}>
-                {truncateString(pageData.serve_type)}
-              </span>
-            </li>
+           
             <li>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
