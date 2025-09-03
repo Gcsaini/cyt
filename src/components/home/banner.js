@@ -77,14 +77,14 @@ export default function Banner() {
                 ) : (
                   <div
                     className="rbt-new-badge rbt-new-badge-one"
-                    style={{ marginTop: isTablet ? 25 : 0 }}
+                    style={{ marginTop: isMobile ? 25 : 0 }}
                   >
                     <span className="rbt-new-badge-icon">
                       <PersonSearchIcon
                         sx={{ color: "#228756", fontSize: 30 }}
                       />
                     </span>{" "}
-                    Discover mental health experts.
+                   Find professional mental health support online or in-person.
                   </div>
                 )}
                 <h3
