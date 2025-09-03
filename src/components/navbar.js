@@ -171,22 +171,15 @@ export default function App() {
                 </div>
               </li> 
               
-              <li className="with-megamenu has-menu-child-item">
-                <Link
-                  className={about ? "open" : ""}
-                  onClick={() => setAbout(about !== true)}
-                >
-                   About<i className="feather-chevron-down"></i>
-                </Link>
-              
-                      <ul className="submenu">
-                        <li className="mega-menu-item">
+             
+                     
+                        <li className="position-static">
                           <Link to={"/about-us"} style={{ cursor: "pointer" }}>
                             About us
                           </Link>
                         </li>
 
-                        <li className="mega-menu-item">
+                        <li className="position-static">
                           <Link
                             to={"/contact-us"}
                             style={{ cursor: "pointer" }}
@@ -194,8 +187,8 @@ export default function App() {
                             Contact us
                           </Link>
                         </li>
-                      </ul>
-                    </li> <li className="position-static">
+                     
+                     <li className="position-static">
                 <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
                   Faqs
                 </Link>
