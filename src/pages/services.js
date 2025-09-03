@@ -6,7 +6,6 @@ import NewsLetter from "../components/home/newsletter";
 import ServiceDetails from "../components/services/service-details";
 import React from "react";
 import { useParams } from "react-router-dom";
-import blog2 from "../../assets/img/blog2.png";
 import NotFoundPage from "./notfound";
 export default function Services() {
   const [data, setData] = React.useState();
