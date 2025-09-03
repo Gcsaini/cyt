@@ -373,7 +373,7 @@ export default function TherapistCheckout({ profile }) {
             <ProfileCheckoutCard pageData={profile} />
             <div className="checkout-content-wrapper mt--20">
               <div id="billing-form">
-                <h4 className="checkout-title">Billing Address</h4>
+                <h4 className="checkout-title">Booking Details</h4>
                 <FormMessage success={success} error={error} />
                 <div className="row mt--15">
 
@@ -546,9 +546,9 @@ export default function TherapistCheckout({ profile }) {
                     />
                   </div>
                   <div className="col-md-6 col-12 mb--10">
-                    <label htmlFor="name">Additional Notes</label>
+                    <label htmlFor="name">Major Concern</label>
                     <textarea
-                      placeholder="Additional Notes"
+                      placeholder="write your major concern here."
                       id="notes"
                       name="notes"
                       value={info.notes}
@@ -599,7 +599,7 @@ export default function TherapistCheckout({ profile }) {
             <div className="col-12 mb--30">
               <div className="checkout-cart-total">
                 <h4>
-                  Product <span>Total</span>
+                  Service <span>Total</span>
                 </h4>
                 <ul>
                   <li>
@@ -607,9 +607,7 @@ export default function TherapistCheckout({ profile }) {
                     <span>₹{amountInfo.amount}</span>
                   </li>
                 </ul>
-                <p>
-                  Tax <span>0</span>
-                </p>
+             
                 <p>
                   Sub Total<span>₹{amountInfo.amount}</span>
                 </p>
@@ -644,10 +642,7 @@ export default function TherapistCheckout({ profile }) {
                 <h4 className="mt--30">
                   Grand Total <span style={{fontSize:"26px",}}>₹{amountInfo.afterdiscount}</span>
                 </h4>
-
-              </div>
-            </div>
-            <div className="plceholder-button mt--10">
+  <div className="plceholder-button mt--10">
               {loading ? (
                 <FormProgressBar />
               ) : (
@@ -667,6 +662,9 @@ export default function TherapistCheckout({ profile }) {
                 </button>
               )}
             </div>
+              </div>
+            </div>
+          
           </div>
         </div>
       </div>
