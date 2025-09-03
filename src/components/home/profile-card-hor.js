@@ -112,7 +112,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
             </li>
            
             <li>
-              <i className="feather-eye"></i>
+              <i className="feather-book"></i>
               <span style={{ lineHeight: "2rem" }}>
                 {getMinMaxPrice(pageData.fees)}
               </span>
@@ -129,7 +129,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
               className="view-btn view-btn-border"
               to={`/view-profile/${pageData._id}`}
               style={{
-                padding: isMobile || isTablet ? "0 24px" : "0 16px",
+                padding: isMobile || isTablet ? "0 26px" : "0 10px",
               }}
             >
               View Profile
@@ -140,7 +140,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: isMobile || isTablet ? "0 26px" : "0 20px",
+                padding: isMobile || isTablet ? "0 20px" : "0 16px",
               }}
             >
               <span>Book Now</span>
