@@ -208,25 +208,21 @@ export default function App() {
               </Link>
             </div>
             <div className="social-share-wrapper">
-              <span className="rbt-short-title d-block">Find With Us</span>
+              <span className="rbt-short-title d-block">Follow ChooseYourTherapist</span>
               <ul className="social-icon social-default transparent-with-border justify-content-start mt--20">
                 <li>
-                  <Link to="https://www.facebook.com/">
+                  <Link to="https://www.facebook.com/cyt8113">
                     <i className="feather-facebook"></i>
                   </Link>
                 </li>
+               
                 <li>
-                  <Link to="https://www.twitter.com/">
-                    <i className="feather-twitter"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="https://www.instagram.com/">
+                  <Link to="https://www.instagram.com/choose.your.therapist">
                     <i className="feather-instagram"></i>
                   </Link>
                 </li>
                 <li>
-                  <Link to="https://www.linkdin.com/">
+                  <Link to="https://www.linkedin.com/company/choose-your-therapist">
                     <i className="feather-linkedin"></i>
                   </Link>
                 </li>
