@@ -6,17 +6,18 @@ import NewsLetter from "../components/home/newsletter";
 import ServiceDetails from "../components/services/service-details";
 import React from "react";
 import { useParams } from "react-router-dom";
+import blog2 from "../../assets/img/blog2.png";
 import NotFoundPage from "./notfound";
 export default function Services() {
   const [data, setData] = React.useState();
   const { id } = useParams();
   const serviceContent = [
     {
-      id: "cyt-tands",
+      id: "personalized_wellbeing",
       title:
-        "Your Journey to Healing Starts Here: Therapy and Counseling Solutions",
-      short_desc: "dasda",
-      image: "blog-single-03.webp",
+        "Step Into Your Personalized Wellness Journey",
+      short_desc: "A space designed just for you—offering therapy, support, and mindful experiences that bring balance, clarity, and growth to your life.",
+      image: "blog2.png",
       image_caption: "Providing Support, Guidance, and Tools",
       long_desc:
         "Therapy and counseling sessions are essential mental health services provided by trained professionals to individuals seeking support for emotional, psychological, or behavioral issues. These sessions offer a safe, non-judgmental space for clients to explore their thoughts, feelings, and experiences.",
@@ -74,7 +75,7 @@ export default function Services() {
           <>
             <ServicesHeader data={data} />
             <ServiceDetails data={data} />
-            <TherapistProfile data={data} />
+            
           </>
         )}
       </div>

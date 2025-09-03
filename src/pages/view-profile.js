@@ -15,6 +15,38 @@ import PageProgressBar from "../components/global/page-progress";
 import ProfileWorkshop from "../components/view_profile/profile-workshop";
 import { getDecodedToken } from "../utils/jwt";
 
+/* ✅ Static Meta SEO */
+document.title = "Therapist Profile | Wellness Platform";
+const metaDescription = document.querySelector("meta[name='description']");
+if (metaDescription) {
+  metaDescription.setAttribute(
+    "content",
+    "Discover therapist details, workshops, and professional background on our wellness platform."
+  );
+} else {
+  const meta = document.createElement("meta");
+  meta.name = "description";
+  meta.content =
+    "Discover therapist details, workshops, and professional background on our wellness platform.";
+  document.head.appendChild(meta);
+}
+
+const ogTitle = document.createElement("meta");
+ogTitle.setAttribute("property", "og:title");
+ogTitle.content = "Therapist Profile";
+document.head.appendChild(ogTitle);
+
+const ogDesc = document.createElement("meta");
+ogDesc.setAttribute("property", "og:description");
+ogDesc.content =
+  "Explore therapist profiles, workshops, and book therapy sessions easily.";
+document.head.appendChild(ogDesc);
+
+const ogType = document.createElement("meta");
+ogType.setAttribute("property", "og:type");
+ogType.content = "website";
+document.head.appendChild(ogType);
+
 export default function ViewProfile() {
   const { id } = useParams();
   const [profile, setProfile] = useState();
@@ -27,6 +59,13 @@ export default function ViewProfile() {
       const res = await fetchData(getTherapistProfile + id);
       if (res.status && Object.keys(res.data).length > 0) {
         setProfile(res.data);
+
+        // ✅ Dynamic SEO Update
+        document.title = `${res.data.name} | Therapist Profile`;
+        const meta = document.querySelector("meta[name='description']");
+        if (meta) {
+          meta.setAttribute("content", res.data.bio?.substring(0, 150) || "");
+        }
       } else {
         setError(true);
       }
@@ -67,11 +106,10 @@ export default function ViewProfile() {
       <MyNavbar />
       <ProfileHeader pageData={profile} favrioutes={favrioutes} />
       <ProfileInfoTab pageData={profile} />
-       {profile && profile.workshops.length > 0 && (
+      {profile && profile.workshops.length > 0 && (
         <ProfileWorkshop data={profile.workshops} />
       )}
       <NewsLetter />
       <Footer />
     </div>
-  );
-}
+  );}
