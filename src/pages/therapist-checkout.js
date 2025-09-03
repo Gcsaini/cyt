@@ -67,6 +67,7 @@ export default function TherapistCheckoutPage() {
         </div>
       </div>
       {Object.keys(profile).length > 0 && <TherapistCheckout profile={profile} />}
+      
       <NewsLetter />
       <Footer />
     </div>
