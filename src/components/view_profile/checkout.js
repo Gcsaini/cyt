@@ -621,7 +621,7 @@ export default function TherapistCheckout({ profile }) {
                   <div >
                     <input
                       type="text"
-                      placeholder="Coupon?"
+                      placeholder="Use Coupon"
                       id="coupon"
                       name="coupon"
                       value={amountInfo.coupon}
