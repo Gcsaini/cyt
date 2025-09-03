@@ -201,17 +201,6 @@ export default function ProfileHeader(props) {
                         </a>
                       </li>
                     </ul>
-                     <Link
-                                  className="rbt-btn btn-gradient book-btn"
-                                  to={`/therapist-checkout/${data._id}`}
-                                  style={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    padding: isTablet ? "0 20px" : "0 16px",
-                                  }}
-                                >
-                                  <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                                </Link>
                   </ul>
                 </div>
               </div>
