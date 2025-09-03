@@ -75,6 +75,8 @@ export default function TherapistCheckout({ profile }) {
     tax: 0,
     subtotal: 0,
     discount: 0,
+    discount_type: "",
+    discount_value: 0,
     afterdiscount: 0
   })
 
@@ -251,16 +253,17 @@ export default function TherapistCheckout({ profile }) {
   const handleFormatChange = (e) => {
     const selected = sessionFormats.find((item) => item._id === e.target.value);
     setSelectedFormat(selected || {});
+    let amount = selected.fee;
     setInfo((prev) => ({
       ...prev,
       format: selected.type,
       service: selectedService.name,
-      amount: selected.fee
+      amount
     }))
-    setAmountInfo((prev)=>({
+
+    setAmountInfo((prev) => ({
       ...prev,
-      amount:selected.fee,
-      afterdiscount:selected.fee-prev.discount
+      amount,
     }))
   };
 
@@ -326,34 +329,19 @@ export default function TherapistCheckout({ profile }) {
         code: amountInfo.coupon,
         apply_for: "Therapist"
       }
-      console.log("applying....");
       const res = await postData(ApplyCouponUrl, reqData);
-      console.log("apply res", res);
       if (res?.status && res?.data) {
         const { discount_type, discount_value } = res.data;
-
-        let discount = 0;
-
-        if (discount_type === "flat") {
-          discount = discount_value;
-        } else if (discount_type === "percentage") {
-          discount = (amountInfo.amount * discount_value) / 100;
-        }
-
-
-        discount = Math.min(discount, amountInfo.amount);
         setAmountInfo((prev) => ({
           ...prev,
-          discount,
-          afterdiscount: prev.amount - discount,
+          discount_type,
+          discount_value
         }));
         toast.success("Coupon applied successfully!");
       } else {
-
         setCouponError(res.message);;
         toast.error(res?.message || "Invalid coupon");
       }
-
 
     } catch (error) {
       setCouponError(error.response.data.message || "Error applying coupon");
@@ -361,8 +349,25 @@ export default function TherapistCheckout({ profile }) {
 
   }
 
-  console.log("user info", info);
-  console.log("amount info", amountInfo);
+
+  useEffect(() => {
+    let discount = 0;
+
+    if (amountInfo.discount_type === "flat") {
+      discount = amountInfo.discount_value;
+    } else if (amountInfo.discount_type === "percentage") {
+      discount = (amountInfo.amount * amountInfo.discount_value) / 100;
+    }
+
+    discount = Math.min(discount, amountInfo.amount);
+
+    setAmountInfo((prev) => ({
+      ...prev,
+      discount,
+      afterdiscount: amountInfo.amount - discount,
+    }));
+  }, [amountInfo.amount, amountInfo.discount_type, amountInfo.discount_value]);
+
 
 
   return (
@@ -614,9 +619,9 @@ export default function TherapistCheckout({ profile }) {
                   Sub Total<span>₹{amountInfo.amount}</span>
                 </p>
                 {
-                  amountInfo.discount!=0 && <p>
-                  Coupon Discount<span>₹{amountInfo.discount}</span>
-                </p>
+                  amountInfo.discount != 0 && <p>
+                    Coupon Discount<span>₹{amountInfo.discount}</span>
+                  </p>
                 }
                 <div className="mt--10" style={{ display: "flex", justifyContent: "space-between", gap: "20px" }}>
                   <div >
@@ -642,7 +647,7 @@ export default function TherapistCheckout({ profile }) {
                 </div>
 
                 <h4 className="mt--30">
-                  Grand Total <span style={{fontSize:"26px",}}>₹{amountInfo.afterdiscount}</span>
+                  Grand Total <span style={{ fontSize: "26px", }}>₹{amountInfo.afterdiscount}</span>
                 </h4>
 
               </div>

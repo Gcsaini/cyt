@@ -8,35 +8,18 @@ import {
     DialogActions,
 } from "@mui/material";
 import WorkshopCheckoutCard from "./workshop-checkout-card";
-import { bookWorkshopUrl, verifyOtpUrl } from "../../../utils/url";
+import { ApplyCouponUrl, bookWorkshopUrl, verifyOtpUrl } from "../../../utils/url";
 import useUserStore from "../../../store/userStore";
 import FormProgressBar from "../../global/form-progressbar";
 import { postData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
-const styles = {
-    iconStyle: {
-        fontSize: 12,
-        width: 20,
-        height: 20,
-    },
-    listStyle: {
-        lineHeight: "18px",
-        marginBottom: 0,
-    },
-    selectedIconStyle: {
-        fontSize: 12,
-        width: 20,
-        height: 20,
-        backgroundColor: "#fff",
-        color: "#2d54e6",
-        boxShadow: "0 0 10px rgba(0,0,0,.1)",
-    },
-    selectStyle: { lineHeight: "20px", height: "50px" },
-};
+import { toast } from "react-toastify";
+
 export default function WorkshopCheckout({ data }) {
     const { userInfo } = useUserStore();
     const navigate = useNavigate();
     const [error, setError] = React.useState("");
+    const [couponError, setCouponError] = React.useState("");
     const [otpError, setOtpError] = React.useState("");
     const [loading, setLoading] = React.useState(false);
     const [success, setSuccess] = React.useState("");
@@ -58,6 +41,18 @@ export default function WorkshopCheckout({ data }) {
         workshopId: ""
     });
 
+    const [amountInfo, setAmountInfo] = React.useState({
+        coupon: "",
+        amount: 0,
+        tax: 0,
+        subtotal: 0,
+        discount: 0,
+        discount_type: "",
+        discount_value: 0,
+        afterdiscount: 0
+    })
+
+    console.log("afte discount",amountInfo);
 
 
     const handleStudentChange = (e) => {
@@ -176,10 +171,69 @@ export default function WorkshopCheckout({ data }) {
             workshopId: data._id,
             email: userInfo.email || "",
         }));
+        setAmountInfo((prev) => ({
+            ...prev,
+            amount: data.price,
+        }))
     }
+
+
+    const handleCouponApply = async () => {
+        setCouponError("");
+        try {
+            const reqData = {
+                therapist_id: data.post_by._id,
+                code: amountInfo.coupon,
+                apply_for: "Workshop"
+            }
+            const res = await postData(ApplyCouponUrl, reqData);
+            if (res?.status && res?.data) {
+                const { discount_type, discount_value } = res.data;
+                setAmountInfo((prev) => ({
+                    ...prev,
+                    discount_type,
+                    discount_value
+                }));
+                toast.success("Coupon applied successfully!");
+            } else {
+                setCouponError(res.message);;
+                toast.error(res?.message || "Invalid coupon");
+            }
+
+        } catch (error) {
+            setCouponError(error.response.data.message || "Error applying coupon");
+        }
+
+    }
+
     useEffect(() => {
         setConfigFn(data);
     }, [data]);
+
+
+    useEffect(() => {
+        let discount = 0;
+
+        if (amountInfo.discount_type === "flat") {
+            discount = amountInfo.discount_value;
+        } else if (amountInfo.discount_type === "percentage") {
+            discount = (amountInfo.amount * amountInfo.discount_value) / 100;
+        }
+
+        discount = Math.min(discount, amountInfo.amount);
+        let afterdiscount = amountInfo.amount - discount;
+        setAmountInfo((prev) => ({
+            ...prev,
+            discount,
+            afterdiscount,
+        }));
+        setInfo((prev)=>({
+            ...prev,
+            amount:afterdiscount
+        }))
+    }, [amountInfo.amount, amountInfo.discount_type, amountInfo.discount_value]);
+
+console.log("info after",info);
 
 
     return (
@@ -307,19 +361,47 @@ export default function WorkshopCheckout({ data }) {
                                 <ul>
                                     <li>
                                         {data.title}&nbsp;
-                                        <span>₹{info.amount}</span>
+                                        <span>₹{amountInfo.amount}</span>
                                     </li>
                                 </ul>
                                 <p>
                                     Tax <span>0</span>
                                 </p>
                                 <p>
-                                    Sub Total<span>₹{info.amount}</span>
+                                    Sub Total<span>₹{amountInfo.amount}</span>
                                 </p>
+                                {
+                                    amountInfo.discount != 0 && <p>
+                                        Coupon Discount<span>₹{amountInfo.discount}</span>
+                                    </p>
+                                }
+                                <div className="mt--10" style={{ display: "flex", justifyContent: "space-between", gap: "20px" }}>
+                                    <div >
+                                        <input
+                                            type="text"
+                                            placeholder="Coupon?"
+                                            id="coupon"
+                                            name="coupon"
+                                            value={amountInfo.coupon}
+                                            onChange={(e) =>
+                                                setAmountInfo((prev) => ({
+                                                    ...prev,
+                                                    coupon: e.target.value
+                                                }))
+                                            }
+                                            style={{ marginBottom: 0 }}
+                                        />
+                                        {couponError && <span style={{ color: "red", fontSize: "12px", }}>{couponError}</span>}
+                                    </div>
+                                    <div >
+                                        <a class="rbt-btn btn-sm" onClick={handleCouponApply}>Apply</a>
+                                    </div>
+                                </div>
 
                                 <h4 className="mt--30">
-                                    Grand Total <span>₹{info.amount}</span>
+                                    Grand Total <span style={{ fontSize: "26px", }}>₹{amountInfo.afterdiscount}</span>
                                 </h4>
+
                             </div>
                         </div>
                         <div className="plceholder-button mt--10">
