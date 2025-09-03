@@ -77,7 +77,7 @@ export default function Banner() {
                 ) : (
                   <div
                     className="rbt-new-badge rbt-new-badge-one"
-                    style={{ marginTop: isMobile ? 25 : 0 }}
+                    style={{ marginTop: isTablet ? 25 : 0 }}
                   >
                     <span className="rbt-new-badge-icon">
                       <PersonSearchIcon
@@ -91,7 +91,7 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Therapist Solutions for
+                 Get Therapist Solutions for
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />
