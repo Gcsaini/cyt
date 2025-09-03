@@ -65,7 +65,7 @@ export default function App() {
               </div>
             </div>
             <p className="description">
-              Your well-being is our priority. Discover your best self with us.
+              Because healing starts with your choice.
             </p>
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
@@ -87,7 +87,7 @@ export default function App() {
                   Home<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-                <li className="has-dropdown has-menu-child-item">
+                <li className="position-static">
                       <Link to={"/view-all-therapist"}style={{ cursor: "pointer" }}>
                         Therapist Directory
                       </Link>
@@ -121,7 +121,7 @@ export default function App() {
                     </div>
                     <div className="row row--15">
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                        <h3 className="rbt-short-title">Individual</h3>
+                        <h3 className="rbt-short-title">For Individual Growth</h3>
                         <ul className="mega-menu-item">
                           <li>
                             <Link to="/services/cyt-tands">
@@ -133,16 +133,16 @@ export default function App() {
                         </ul>
                       </div>
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                        <h3 className="rbt-short-title">Business</h3>
+                        <h3 className="rbt-short-title">For Community & Growth</h3>
                         <ul className="mega-menu-item">
                           <li>
                             <Link className="" to="course-card-3">
-                              For Educational Institutions
+                              Educational Institutions
                             </Link>
                           </li>
                           <li>
                             <Link className="" to="course-masonry">
-                              For Corporate Needs
+                              Corporate Needs
                             </Link>
                           </li>
                           
@@ -169,7 +169,9 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li> <li className="with-megamenu has-menu-child-item">
+              </li> 
+              
+              <li className="with-megamenu has-menu-child-item">
                 <Link
                   className={about ? "open" : ""}
                   onClick={() => setAbout(about !== true)}
@@ -178,13 +180,13 @@ export default function App() {
                 </Link>
               
                       <ul className="submenu">
-                        <li className="has-dropdown">
+                        <li className="mega-menu-item">
                           <Link to={"/about-us"} style={{ cursor: "pointer" }}>
                             About us
                           </Link>
                         </li>
 
-                        <li className="has-dropdown">
+                        <li className="mega-menu-item">
                           <Link
                             to={"/contact-us"}
                             style={{ cursor: "pointer" }}
