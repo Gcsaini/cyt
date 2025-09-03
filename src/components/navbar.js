@@ -208,9 +208,10 @@ export default function App() {
             <div className="rbt-btn-wrapper mb--20">
               <Link
                 className="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center"
-                to="index.html"
+                to="/view-all-therapist" 
+                    style={{ cursor: "pointer" }}
               >
-                <span>Enroll Now</span>
+                <span>Get Started</span>
               </Link>
             </div>
             <div className="social-share-wrapper">
