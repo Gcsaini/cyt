@@ -43,7 +43,8 @@ export default function Services() {
                 <div className="content">
                   <h5 className="title">Therapy Session</h5>
                   <div className="read-more-btn">
-                    <span className="rbt-btn-link">
+                    <span className="rbt-btn-link"
+                    to="/view-all-therapist" >
                       Start Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>

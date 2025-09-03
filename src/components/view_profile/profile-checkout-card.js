@@ -37,10 +37,7 @@ export default function ProfileCheckoutCard({ pageData }) {
               <i className="feather-message-circle"></i>
               {pageData.language_spoken}
             </li>
-            <li style={listStyle}>
-              <i className="feather-eye"></i>
-              <span style={{ lineHeight: "2rem" }}>{pageData.serve_type}</span>
-            </li>
+           
             {/* <li style={listStyle}>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
