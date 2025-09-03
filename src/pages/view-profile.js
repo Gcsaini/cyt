@@ -15,37 +15,30 @@ import PageProgressBar from "../components/global/page-progress";
 import ProfileWorkshop from "../components/view_profile/profile-workshop";
 import { getDecodedToken } from "../utils/jwt";
 
-/* ✅ Static Meta SEO */
-document.title = "Therapist Profile | Wellness Platform";
-const metaDescription = document.querySelector("meta[name='description']");
-if (metaDescription) {
-  metaDescription.setAttribute(
-    "content",
-    "Discover therapist details, workshops, and professional background on our wellness platform."
-  );
-} else {
-  const meta = document.createElement("meta");
-  meta.name = "description";
-  meta.content =
-    "Discover therapist details, workshops, and professional background on our wellness platform.";
-  document.head.appendChild(meta);
+/* ✅ Default Static Meta SEO */
+document.title = "Choose Your Therapist | Wellness Platform";
+
+function setOrCreateMeta(attr, key, value) {
+  let element = document.querySelector(`${attr}[${key}='${value}']`);
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(key, value);
+    document.head.appendChild(element);
+  }
+  return element;
 }
 
-const ogTitle = document.createElement("meta");
-ogTitle.setAttribute("property", "og:title");
-ogTitle.content = "Therapist Profile";
-document.head.appendChild(ogTitle);
-
-const ogDesc = document.createElement("meta");
-ogDesc.setAttribute("property", "og:description");
-ogDesc.content =
-  "Explore therapist profiles, workshops, and book therapy sessions easily.";
-document.head.appendChild(ogDesc);
-
-const ogType = document.createElement("meta");
-ogType.setAttribute("property", "og:type");
-ogType.content = "website";
-document.head.appendChild(ogType);
+// Preload default meta
+setOrCreateMeta("meta", "name", "description").setAttribute(
+  "content",
+  "Discover therapist details, workshops, and professional background on our wellness platform."
+);
+setOrCreateMeta("meta", "property", "og:title").setAttribute("content", "Therapist Profile");
+setOrCreateMeta("meta", "property", "og:description").setAttribute(
+  "content",
+  "Explore therapist profiles, workshops, and book therapy sessions easily."
+);
+setOrCreateMeta("meta", "property", "og:type").setAttribute("content", "website");
 
 export default function ViewProfile() {
   const { id } = useParams();
@@ -60,11 +53,40 @@ export default function ViewProfile() {
       if (res.status && Object.keys(res.data).length > 0) {
         setProfile(res.data);
 
-        // ✅ Dynamic SEO Update
+        // ✅ Dynamic SEO Updates
         document.title = `${res.data.name} | Therapist Profile`;
-        const meta = document.querySelector("meta[name='description']");
-        if (meta) {
-          meta.setAttribute("content", res.data.bio?.substring(0, 150) || "");
+
+        // meta description
+        const metaDesc = setOrCreateMeta("meta", "name", "description");
+        metaDesc.setAttribute(
+          "content",
+          res.data.bio?.substring(0, 150) || "Therapist profile details."
+        );
+
+        // og:title
+        setOrCreateMeta("meta", "property", "og:title").setAttribute(
+          "content",
+          res.data.name || "Therapist Profile"
+        );
+
+        // og:description
+        setOrCreateMeta("meta", "property", "og:description").setAttribute(
+          "content",
+          res.data.bio?.substring(0, 150) || "Explore therapist workshops and sessions."
+        );
+
+        // og:url
+        setOrCreateMeta("meta", "property", "og:url").setAttribute(
+          "content",
+          `${window.location.origin}/view-profile/${id}`
+        );
+
+        // ✅ og:image (profile photo)
+        if (res.data.image) {
+          setOrCreateMeta("meta", "property", "og:image").setAttribute(
+            "content",
+            res.data.image
+          );
         }
       } else {
         setError(true);
@@ -112,4 +134,5 @@ export default function ViewProfile() {
       <NewsLetter />
       <Footer />
     </div>
-  );}
+  );
+}
