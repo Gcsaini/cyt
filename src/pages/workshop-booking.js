@@ -42,6 +42,7 @@ export default function WorkshopBookingPage() {
             <MyNavbar />
             <PageBreadCrumb title="Confirm Your Program Access" linkTitle="Checkout"/>
             {Object.keys(data).length > 0 && <WorkshopCheckout data={data} />}
+           
             <NewsLetter />
             <Footer />
         </div>
