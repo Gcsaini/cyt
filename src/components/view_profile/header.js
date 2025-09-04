@@ -130,14 +130,7 @@ export default function ProfileHeader(props) {
                       />
                     </div>
                     <div className="tutor-content">
-                      <div>
-                        <h3 className="title">
-                          {pageData.user.name} &nbsp;
-                          
-                        </h3><span className="title">
-                            {pageData.qualification}
-                          </span>
-                        <div className="rbt-review">
+                      <div> <div className="rbt-review">
                            <div className="rating">
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
@@ -146,6 +139,13 @@ export default function ProfileHeader(props) {
                             <i className="fas fa-star"></i>
                           </div> 
                           </div> 
+                        <h3 className="title">
+                          {pageData.user.name} &nbsp;
+                          
+                        </h3><span className="title">
+                            {pageData.qualification}
+                          </span>
+                       
                           
                         
                         <ul className="rbt-meta rbt-meta-white mt--5">
