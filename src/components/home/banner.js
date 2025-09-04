@@ -84,14 +84,14 @@ export default function Banner() {
                         sx={{ color: "#228756", fontSize: 30 }}
                       />
                     </span>{" "}
-                    Discover mental health experts.
+                   Find professional mental health support online or in-person.
                   </div>
                 )}
                 <h3
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Find Therapist Solutions for
+                 Get Therapist Solutions for
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />
@@ -164,7 +164,7 @@ export default function Banner() {
                     
                     <div className="more-author-text">
                       <h5 className="total-join-students">
-                       Over 5,245+ people have already found their path to well-being.
+                      Over 5,245+ already on their wellness journey.
                       </h5>
                       <p className="subtitle">Your well-being awaits.</p>
                     </div>

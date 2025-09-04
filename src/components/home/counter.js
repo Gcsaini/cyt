@@ -15,13 +15,13 @@ export default function Counter() {
   const [count2, setCount2] = useState(initialValue);
   const [count3, setCount3] = useState(initialValue);
   const duration = 2500;
-  const targetValue = 50;
+  const targetValue = 100;
   const initialValue1 = 1800;
-  const targetValue1 = 2000;
+  const targetValue1 = 5245;
   const initialValue2 = 12750;
-  const targetValue2 = 13000;
+  const targetValue2 = 11989;
   const initialValue3 = 1000;
-  const targetValue3 = 1200;
+  const targetValue3 = 1252;
   useEffect(() => {
     let startValue = initialValue;
     const interval = Math.floor(duration / (targetValue - initialValue));
@@ -123,7 +123,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Mental Health Experts</span>
+                        <span className="subtitle">Listed Therapists</span>
                       </div>
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Completed Sessions</span>
+                        <span className="subtitle">Wellness Counts</span>
                       </div>
                     </div>
                   </div>
@@ -184,7 +184,7 @@ export default function Counter() {
                           </span>
                         </h3>
                         <span className="subtitle">
-                          Social Media Connections
+                          Community Growth
                         </span>
                       </div>
                     </div>
@@ -215,7 +215,7 @@ export default function Counter() {
                             </div>
                           </span>
                         </h3>
-                        <span className="subtitle">Valueable Feedbacks</span>
+                        <span className="subtitle">Valuble Words</span>
                       </div>
                     </div>
                   </div>
@@ -229,13 +229,14 @@ export default function Counter() {
                     WHY CHOOSE US
                   </span>
                   <h2 className="title">
-                    Providing A Network of Mental health Experts
+                    A Complete Approach to Your Well-Being
                   </h2>
                   <p className="description has-medium-font-size mt--20 mb--0">
-                    From individual to group counseling, we offer a wide range
-                    of services to address various mental health issues. Our
-                    goal is to provide you with comprehensive care that supports
-                    your overall well-being.
+                    We go beyond just therapy sessions by providing client and therapist dashboards for 
+                    seamless interaction, holistic programs that support your overall well-being, and 
+                    special discounts to make care more affordable. With a trusted network of certified experts, 
+                    we’re here to make your journey toward 
+                    better mental health easier, accessible, and more personalized.
                   </p>
                 </div>
                 <div className="rbt-feature-wrapper mt--30">
@@ -244,7 +245,7 @@ export default function Counter() {
                       <i className="feather-heart"></i>
                     </div>
                     <div className="feature-content">
-                      <h6 className="feature-title">Affordable Sessions</h6>
+                      <h6 className="feature-title">Affordable Wellbeing</h6>
                     </div>
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
@@ -252,7 +253,7 @@ export default function Counter() {
                       <i className="feather-user-check"></i>
                     </div>
                     <div className="feature-content">
-                      <h6 className="feature-title">Supportive Experts</h6>
+                      <h6 className="feature-title">Certified Therapists</h6>
                     </div>
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">
@@ -260,7 +261,7 @@ export default function Counter() {
                       <i className="feather-clipboard"></i>
                     </div>
                     <div className="feature-content">
-                      <h6 className="feature-title">Personalized Space</h6>
+                      <h6 className="feature-title">Personalized Dashboard</h6>
                     </div>
                   </div>
                   <div className="rbt-feature feature-style-1 align-items-center">

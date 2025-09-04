@@ -25,7 +25,7 @@ export default function Services() {
                 </span>
               </h2>
               <p>
-                Looking for comprehensive support that honors your unique needs? Our services are built to cater to your individual mental, emotional, and spiritual health, helping you achieve complete and lasting well-being.
+                Personalized care that puts you first. From emotional support to mental clarity, we create a safe space to nurture your unique path toward lasting well-being.
               </p>
             </div>
           </div>

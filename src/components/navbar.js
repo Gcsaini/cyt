@@ -65,7 +65,7 @@ export default function App() {
               </div>
             </div>
             <p className="description">
-              Your well-being is our priority. Discover your best self with us.
+              Because healing starts with your choice.
             </p>
             <ul className="navbar-top-left rbt-information-list justify-content-start">
               <li>
@@ -87,7 +87,7 @@ export default function App() {
                   Home<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-                <li className="has-dropdown has-menu-child-item">
+                <li className="position-static">
                       <Link to={"/view-all-therapist"}style={{ cursor: "pointer" }}>
                         Therapist Directory
                       </Link>
@@ -121,7 +121,7 @@ export default function App() {
                     </div>
                     <div className="row row--15">
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                        <h3 className="rbt-short-title">Individual</h3>
+                        <h3 className="rbt-short-title">For Individual Growth</h3>
                         <ul className="mega-menu-item">
                           <li>
                             <Link to="/services/cyt-tands">
@@ -133,16 +133,16 @@ export default function App() {
                         </ul>
                       </div>
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                        <h3 className="rbt-short-title">Business</h3>
+                        <h3 className="rbt-short-title">For Community & Growth</h3>
                         <ul className="mega-menu-item">
                           <li>
                             <Link className="" to="course-card-3">
-                              For Educational Institutions
+                              Educational Institutions
                             </Link>
                           </li>
                           <li>
                             <Link className="" to="course-masonry">
-                              For Corporate Needs
+                              Corporate Needs
                             </Link>
                           </li>
                           
@@ -169,22 +169,17 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li> <li className="with-megamenu has-menu-child-item">
-                <Link
-                  className={about ? "open" : ""}
-                  onClick={() => setAbout(about !== true)}
-                >
-                   About<i className="feather-chevron-down"></i>
-                </Link>
+              </li> 
               
-                      <ul className="submenu">
-                        <li className="has-dropdown">
+             
+                     
+                        <li className="position-static">
                           <Link to={"/about-us"} style={{ cursor: "pointer" }}>
                             About us
                           </Link>
                         </li>
 
-                        <li className="has-dropdown">
+                        <li className="position-static">
                           <Link
                             to={"/contact-us"}
                             style={{ cursor: "pointer" }}
@@ -192,8 +187,8 @@ export default function App() {
                             Contact us
                           </Link>
                         </li>
-                      </ul>
-                    </li> <li className="position-static">
+                     
+                     <li className="position-static">
                 <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
                   Faqs
                 </Link>
@@ -206,31 +201,28 @@ export default function App() {
             <div className="rbt-btn-wrapper mb--20">
               <Link
                 className="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center"
-                to="index.html"
+                to="/view-all-therapist" 
+                    style={{ cursor: "pointer" }}
               >
-                <span>Enroll Now</span>
+                <span>Get Started</span>
               </Link>
             </div>
             <div className="social-share-wrapper">
-              <span className="rbt-short-title d-block">Find With Us</span>
+              <span className="rbt-short-title d-block">Follow ChooseYourTherapist</span>
               <ul className="social-icon social-default transparent-with-border justify-content-start mt--20">
                 <li>
-                  <Link to="https://www.facebook.com/">
+                  <Link to="https://www.facebook.com/cyt8113">
                     <i className="feather-facebook"></i>
                   </Link>
                 </li>
+               
                 <li>
-                  <Link to="https://www.twitter.com/">
-                    <i className="feather-twitter"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="https://www.instagram.com/">
+                  <Link to="https://www.instagram.com/choose.your.therapist">
                     <i className="feather-instagram"></i>
                   </Link>
                 </li>
                 <li>
-                  <Link to="https://www.linkdin.com/">
+                  <Link to="https://www.linkedin.com/company/choose-your-therapist">
                     <i className="feather-linkedin"></i>
                   </Link>
                 </li>
@@ -419,8 +411,8 @@ export default function App() {
                       </Link>
                       <ul className="submenu">
                         <li className="has-dropdown">
-                          <Link to={"/Support Groups"} style={{ cursor: "pointer" }}>
-                      For Personalized Wellbeing
+                          <Link to={"/services/cyt-tands"} style={{ cursor: "pointer" }}>
+                     Personalized Wellbeing
                           </Link>
                         </li>
 
@@ -429,7 +421,7 @@ export default function App() {
                             to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            For Educational Institutions 
+                            Educational Institutions 
                           </Link>
                         </li>
                         <li className="has-dropdown">
@@ -437,7 +429,7 @@ export default function App() {
                             to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            For Corporate Needs 
+                            Corporate Needs 
                           </Link>
                         </li>
                         
@@ -484,15 +476,7 @@ export default function App() {
                         Faqs
                       </Link>
                     </li>
-                      <li className="position-static">
-                      <Link
-                        className="service-menu-parent"
-                        to="/more"
-                        style={{ cursor: "pointer" }}
-                      >
-                       More
-                      </Link>
-                    </li>
+                     
                     {/* <li className="position-static">
                       <button
                         className="service-menu-parent"
@@ -535,14 +519,14 @@ export default function App() {
                           to="/my-dashboard"
                           className="service-menu-parent"
                         >
-                          <i className="feather-user"></i>&nbsp;Profile
+                          <i className="feather-user"></i>&nbsp; Profile
                         </Link>
                       ) : (
                         <Link
                           to="/therapist-dashboard"
                           className="service-menu-parent"
                         >
-                          <i className="feather-user"></i>&nbsp;Profile
+                          <i className="feather-user"></i>&nbsp; Therapist Profile
                         </Link>
                       )
                     ) : (
@@ -597,340 +581,10 @@ export default function App() {
                   </form>
                 </div>
               </div>
-              <div className="row" style={{ marginBottom: 80 }}>
-                <div className="rbt-categories-area bg-color-white">
-                  <div className="container">
-                    <Swiper
-                      style={{
-                        "--swiper-pagination-bottom": 0,
-                        height: isMobile || isTablet ? 220 : 320,
-                      }}
-                      spaceBetween={50}
-                      breakpoints={{
-                        560: {
-                          slidesPerView: 1,
-                          spaceBetween: 40,
-                        },
-                        768: {
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                        },
-                        1024: {
-                          slidesPerView: 3,
-                          spaceBetween: 20,
-                        },
-                      }}
-                      pagination={{
-                        clickable: true,
-                      }}
-                      autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                      }}
-                      modules={[Autoplay, Pagination]}
-                      className="mySwiper"
-                    >
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={TherypyImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">Therapy Session</h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    3 Plans Active
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d-3"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={SupportImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">Peer Support Groups</h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d-4"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={StudentImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">
-                                  Student based Orientations
-                                </h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d-4"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={StudentImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">
-                                  Student based Orientations
-                                </h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d-2"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={WorkplaceImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">
-                                  Workplace based Training
-                                </h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d-5"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={ActivitesImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">Therapeutic Activites</h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle/%5bcourseId%5d-6"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={AssessmentImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">Assessments</h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="col-12">
-                          <Link
-                            className="rbt-cat-box rbt-cat-box-1 text-center"
-                            to="course-filter-one-toggle"
-                          >
-                            <div className="inner">
-                              <div className="icons">
-                                <ImageTag
-                                  alt="Icons"
-                                  height={"80"}
-                                  src={ProjectsImg}
-                                />
-                              </div>
-                              <div className="content">
-                                <h5 className="title">CYT Projects</h5>
-                                <div className="read-more-btn">
-                                  <span className="rbt-btn-link">
-                                    Coming Soon
-                                    <i className="feather-arrow-right"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                    </Swiper>
-
-                    <div className="row g-5"></div>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
-          <div
-            className={cart ? "cart-sidenav-menu-active" : "rbt-cart-side-menu"}
-          >
-            <div
-              className={
-                cart
-                  ? "rbt-cart-side-menu side-menu-active"
-                  : "rbt-cart-side-menu"
-              }
-            >
-              <div className="inner-wrapper">
-                <div className="inner-top">
-                  <div className="content">
-                    <div className="title">
-                      <h4 className="title mb--0">Your shopping cart</h4>
-                    </div>
-                    <div className="rbt-btn-close" id="btn_sideNavClose">
-                      <button
-                        className="minicart-close-button rbt-round-btn"
-                        onClick={() => setCart(false)}
-                      >
-                        <i className="feather-x"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <nav className="side-nav w-100">
-                  <div className="rbt-minicart-wrapper"></div>
-                </nav>
-                <div className="rbt-minicart-footer">
-                  <hr className="mb--0" />
-                  <div className="rbt-cart-subttotal">
-                    <p className="subtotal">
-                      <strong>Subtotal:</strong>
-                    </p>
-                    <p className="price">$0</p>
-                  </div>
-                  <hr className="mb--0" />
-                  <div className="rbt-minicart-bottom mt--20">
-                    <div className="view-cart-btn">
-                      <Link
-                        className="rbt-btn btn-border icon-hover w-100 text-center"
-                        to="/cart"
-                      >
-                        <span className="btn-text">View Cart</span>
-                        <span className="btn-icon">
-                          <i className="feather-arrow-right"></i>
-                        </span>
-                      </Link>
-                    </div>
-                    <div className="checkout-btn mt--20">
-                      <Link
-                        className="rbt-btn btn-gradient icon-hover w-100 text-center"
-                        to="/checkout"
-                      >
-                        <span className="btn-text">Checkout</span>
-                        <span className="btn-icon">
-                          <i className="feather-arrow-right"></i>
-                        </span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <Link
-              className="close_side_menu"
-              onClick={() => setCart(false)}
-            ></Link>
-          </div>
+          
         </div>
       </header>
     </>

@@ -43,6 +43,14 @@ export default function WellNessCard({ data }) {
             <i className="feather-calendar"></i> {data.event_date}&nbsp; (
             {data.event_time})
           </li>
+          <div class="rbt-author-info">
+                                By &nbsp;
+                                <Link to={`/view-profile/${data.post_by._id}`}>
+                                  {data.post_by.user.name}
+                                </Link>
+                                &nbsp;In&nbsp;
+                                <a href="#">{data.post_by.profile_type}</a>
+                              </div>
         </ul>
 
         <div className="rbt-card-bottom mt--20">
