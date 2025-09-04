@@ -30,7 +30,7 @@ export default function Footer() {
                   <div className="contact-btn mt--30">
                     <a
                       className="rbt-btn hover-icon-reverse btn-border-gradient radius-round"
-                      href=""
+                      href="/contact-us"
                     >
                       <div className="icon-reverse-wrapper">
                         <span className="btn-text">Contact With Us</span>
@@ -75,7 +75,7 @@ export default function Footer() {
                       <a href="/therapist-registration">Join Platform</a>
                     </li>
                     <li>
-                      <a href="blog-list">Dashboard</a>
+                      <a href="/login">Dashboard</a>
                     </li>
                     <li>
                       <a href="/login">Login</a>
