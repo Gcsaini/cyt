@@ -96,7 +96,7 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-2">
-                    Self-Care Tips for Busy Professionals
+                   Is Your Relationship Missing the Intimacy?
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">
@@ -138,7 +138,7 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h5 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d-3">
-                    The Connection Between Physical and Mental Health.
+                   How to Help a Friend during a Panic Attack ?
                   </a>
                 </h5>
                 <div className="rbt-card-bottom">
