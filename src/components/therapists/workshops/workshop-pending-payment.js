@@ -62,14 +62,12 @@ export default function WorkshopPaymentPending({ pageData }) {
                     <h4 style={{ fontSize: 24 }}>Transaction Id</h4>
 
                     <div className="single-list" style={{ marginTop: 15 }}>
-                      <h5 className="price-title" style={{ fontSize: "16px" }}>
-                        Enter your Transaction ID here. 
-                      </h5>
+                      
 
                       <div className="col-md-12 col-12 mb--10">
                         <input
                           type="text"
-                          placeholder="Transaction Id"
+                          placeholder="Enter your Transaction ID here."
                           id="transaction id"
                           value={transactionId}
                           onChange={(e) => setTransanctionId(e.target.value)}
