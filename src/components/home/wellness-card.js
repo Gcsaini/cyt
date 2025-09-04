@@ -44,14 +44,7 @@ export default function WellNessCard({ data }) {
             {data.event_time})
           </li>
         </ul>
- <div class="rbt-author-info">
-                      By &nbsp;
-                      <Link to={`/view-profile/${data.post_by._id}`}>
-                        {data.post_by.user.name}
-                      </Link>
-                      &nbsp;In&nbsp;
-                      <a href="#">{data.post_by.profile_type}</a>
-                    </div>
+
         <div className="rbt-card-bottom mt--20">
           <Link
             to={`/workshop-detail/${data._id}`}
