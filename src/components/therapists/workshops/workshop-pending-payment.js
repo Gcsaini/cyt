@@ -63,7 +63,7 @@ export default function WorkshopPaymentPending({ pageData }) {
 
                     <div className="single-list" style={{ marginTop: 15 }}>
                       <h5 className="price-title" style={{ fontSize: "16px" }}>
-                        Enter Transaction Id
+                        Enter your Transaction ID here. Once the payment is verified, the status will be updated on your dashboard.
                       </h5>
 
                       <div className="col-md-12 col-12 mb--10">
