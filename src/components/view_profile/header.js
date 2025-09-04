@@ -136,7 +136,9 @@ export default function ProfileHeader(props) {
                           <span style={{ fontSize: 14 }}>
                             ({pageData.profile_code})
                           </span>
-                        </h5>
+                        </h5><span className="rating-count">
+                            {pageData.qualification}
+                          </span>
                         <div className="rbt-review">
                            <div className="rating">
                             <i className="fas fa-star"></i>
@@ -145,10 +147,9 @@ export default function ProfileHeader(props) {
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                           </div> 
-                          <span className="rating-count">
-                            {pageData.qualification}
-                          </span>
-                        </div>
+                          </div> 
+                          
+                        
                         <ul className="rbt-meta rbt-meta-white mt--5">
                           <li>
                             <i className="feather-user"></i>
