@@ -49,7 +49,7 @@ export default function WellNessCard({ data }) {
                       <Link to={`/view-profile/${data.post_by._id}`}>
                         {data.post_by.user.name}
                       </Link>
-                      &nbsp;-&nbsp;
+                      &nbsp;In&nbsp;
                       <a href="#">{data.post_by.profile_type}</a>
                     </div>
         <div className="rbt-card-bottom mt--20">
