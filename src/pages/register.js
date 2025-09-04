@@ -13,6 +13,7 @@ import FormProgressBar from "../components/global/form-progressbar";
 import FormMessage from "../components/global/form-message";
 import { getDecodedToken, setToken } from "../utils/jwt";
 import { postData } from "../utils/actions";
+import PageBreadCrumb from "../components/global/page-breadcrumb";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -107,32 +108,7 @@ export default function Register() {
   return (
     <div>
       <MyNavbar />
-      <div className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-        <div className="container mt--60">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="breadcrumb-inner text-center">
-                  <h2 className="title">
-                 The Right Therapist, 
-                  <span className="theme-gradient"> Just for You</span>
-              
-                </h2>
-                <ul className="page-list">
-                  <li className="rbt-breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <div className="icon-right">
-                      <i className="feather-chevron-right"></i>
-                    </div>
-                  </li>
-                  <li className="rbt-breadcrumb-item active">Register</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageBreadCrumb title="The Right Therapist, Just for You" linkTitle="Register"/>
       <div className="rbt-banner-area rbt-banner-3 header-transperent-spacer">
         <div className="wrapper">
           <div className="container">

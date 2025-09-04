@@ -15,6 +15,7 @@ import { getDecodedToken, setToken } from "../utils/jwt";
 import { postData } from "../utils/actions";
 import FormMessage from "../components/global/form-message";
 import FormProgressBar from "../components/global/form-progressbar";
+import PageBreadCrumb from "../components/global/page-breadcrumb";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
@@ -103,32 +104,7 @@ export default function Login() {
   return (
     <div>
       <MyNavbar />
-      <div className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-        <div className="container mt--60">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="breadcrumb-inner text-center">
-                <h2 className="title">
-                Access Your 
-                  <span className="theme-gradient"> Personalized Support </span>
-              
-                </h2>
-                <ul className="page-list">
-                  <li className="rbt-breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <div className="icon-right">
-                      <i className="feather-chevron-right"></i>
-                    </div>
-                  </li>
-                  <li className="rbt-breadcrumb-item active">Login</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      =<PageBreadCrumb title="Access Your  Personalized Support" linkTitle="Login"/>
 
       <div className="rbt-banner-area rbt-banner-3 header-transperent-spacer">
         <div className="wrapper">

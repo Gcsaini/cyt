@@ -177,7 +177,7 @@ function App() {
 
                {
                 <Route
-                  path="//my-workshop-bookings"
+                  path="/my-workshop-bookings"
                   element={
                     <ProtectedRoute>
                       <MyWorkshopBookingsPage />

@@ -4,44 +4,14 @@ import Newsletter from "../components/home/newsletter";
 import Faqs from "../components/home/faqs";
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import PageBreadCrumb from "../components/global/page-breadcrumb";
 export default function FaqPage() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <div id="__next">
       <MyNavbar />
-      <div
-        className="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1"
-        style={{ marginTop: isMobile || isTablet ? 70 : 50 }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="breadcrumb-inner text-center">
-                <h2 className="title">
-                  Frequently{" "}
-                  <span className="theme-gradient">Asked Questions</span> (FAQs)
-                </h2>
-                <ul className="page-list">
-                  <li className="rbt-breadcrumb-item">
-                    <Link to={"/"} style={{ cursor: "pointer" }}>
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <div className="icon-right">
-                      <i className="feather-chevron-right"></i>
-                    </div>
-                  </li>
-                  <li className="rbt-breadcrumb-item active">
-                    Help and Support for Clients
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageBreadCrumb title="Frequently Asked Questions (FAQ)" linkTitle="Help and Support for Clients"/>
       <Faqs />
 
       <div className="rbt-contact-me bg-color-extra2 rbt-section-gap">

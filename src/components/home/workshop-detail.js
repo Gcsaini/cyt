@@ -47,9 +47,9 @@ export default function WorkshopDetail(props) {
                     </li>
                   </ul>
                   <h2 className="title mb--0">{data.title}</h2>
-                  <p class="description">{data.short_desc}</p>
-                  <div class="rbt-author-meta mb--20">
-                    <div class="rbt-avater">
+                  <p className="description">{data.short_desc}</p>
+                  <div className="rbt-author-meta mb--20">
+                    <div className="rbt-avater">
                       <Link to={`/view-profile/${data.post_by._id}`}>
                         <ImageTag
                           alt={data.post_by.name}
@@ -57,7 +57,7 @@ export default function WorkshopDetail(props) {
                         />
                       </Link>
                     </div>
-                    <div class="rbt-author-info">
+                    <div className="rbt-author-info">
                       By &nbsp;
                       <Link to={`/view-profile/${data.post_by._id}`}>
                         {data.post_by.user.name}
@@ -66,17 +66,17 @@ export default function WorkshopDetail(props) {
                       <a href="#">{data.post_by.profile_type}</a>
                     </div>
                   </div>
-                  <ul class="rbt-meta">
+                  <ul className="rbt-meta">
                     <li>
-                      <i class="feather-calendar"></i>
+                      <i className="feather-calendar"></i>
                       {data.event_date} &nbsp; {data.event_time} (
                       {data.duration})
                     </li>
                     <li>
-                      <i class="feather-award"></i> {data.level}
+                      <i className="feather-award"></i> {data.level}
                     </li>
                     <li>
-                      <i class="feather-globe"></i> {data.language}
+                      <i className="feather-globe"></i> {data.language}
                     </li>
                   </ul>
                 </div>
@@ -112,15 +112,15 @@ export default function WorkshopDetail(props) {
                   </div>
                 </div>
                 <div
-                  class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30"
+                  className="rbt-instructor rbt-shadow-box intructor-wrapper mt--30"
                   id="intructor"
                 >
-                  <div class="about-author border-0 pb--0 pt--0">
-                    <div class="section-title mb--30">
-                      <h4 class="rbt-title-style-3">Instructor</h4>
+                  <div className="about-author border-0 pb--0 pt--0">
+                    <div className="section-title mb--30">
+                      <h4 className="rbt-title-style-3">Instructor</h4>
                     </div>
-                    <div class="media align-items-center">
-                      <div className="thumbnail rbt-avatars size-lg">
+                    <div className="row g-5 media align-items-center">
+                      <div className="col-lg-6 col-md-6 col-sm-6 thumbnail rbt-avatars size-lg">
                         <ImageTag
                           alt="Instructor"
                           width="250"
@@ -136,17 +136,17 @@ export default function WorkshopDetail(props) {
                           }}
                         />
                       </div>
-                      <div class="media-body">
-                        <div class="author-info">
-                          <h5 class="title" style={{ lineHeight: 0.24 }}>
+                      <div className="col-lg-6 col-md-6 col-sm-6 media-body">
+                        <div className="author-info">
+                          <h5 className="title" style={{ lineHeight: 0.24 }}>
                             <Link
-                              class="hover-flip-item-wrapper"
+                              className="hover-flip-item-wrapper"
                               href={`view-profile/${data.post_by._id}`}
                             >
                               {data.post_by.user.name}
                             </Link>
                           </h5>
-                          <span class="b3 subtitle">
+                          <span className="b3 subtitle">
                             {data.post_by.profile_type}
                           </span>
 
@@ -159,15 +159,15 @@ export default function WorkshopDetail(props) {
 
                 {workshopByThisUser.length > 0 && (
                   <div className="related-course mt--60">
-                    <div class="row g-5 align-items-end mb--20">
-                      <div class="col-lg-12 col-md-12 col-12">
-                        <div class="section-title">
-                          <span class="subtitle bg-pink-opacity">
+                    <div className="row g-5 align-items-end mb--20">
+                      <div className="col-lg-12 col-md-12 col-12">
+                        <div className="section-title">
+                          <span className="subtitle bg-pink-opacity">
                             Top Workshop
                           </span>
-                          <h4 class="title">
+                          <h4 className="title">
                             More Wroskhop By
-                            <strong class="color-primary ms-3">
+                            <strong className="color-primary ms-3">
                               {data.post_by.name}
                             </strong>
                           </h4>
@@ -190,16 +190,16 @@ export default function WorkshopDetail(props) {
             <div className="col-lg-4 mt_md--60 mt_sm--60">
               <div className="course-sidebar rbt-gradient-border sticky-top rbt-shadow-box course-sidebar-top">
                 <div className="inner">
-                  <div class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="rbt-price">
-                      <span class="current-price">₹{data.price}</span>
-                      <span class="off-price" style={{ fontSize: 15 }}>
+                  <div className="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
+                    <div className="rbt-price">
+                      <span className="current-price">₹{data.price}</span>
+                      <span className="off-price" style={{ fontSize: 15 }}>
                         ₹{data.mrp}
                       </span>
                     </div>
-                    <div class="discount-time">
-                      <span class="rbt-badge color-danger bg-color-danger-opacity">
-                        <i class="feather-clock"></i>{" "}
+                    <div className="discount-time">
+                      <span className="rbt-badge color-danger bg-color-danger-opacity">
+                        <i className="feather-clock"></i>{" "}
                         {getDateDifference(data.event_date)} days left!
                       </span>
                     </div>
@@ -321,32 +321,32 @@ export default function WorkshopDetail(props) {
           </div>
         </div>
       </div>
-      <div class="rbt-course-action-bottom rbt-course-action-active">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6">
-              <div class="section-title text-center text-md-start">
-                <h5 class="title mb--0">{data.title}</h5>
+      <div className="rbt-course-action-bottom rbt-course-action-active">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-md-6">
+              <div className="section-title text-center text-md-start">
+                <h5 className="title mb--0">{data.title}</h5>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 mt_sm--15">
-              <div class="course-action-bottom-right rbt-single-group">
-                <div class="rbt-single-list rbt-price large-size justify-content-center">
-                  <span class="current-price color-primary">₹{data.price}</span>
-                  <span class="off-price">₹{data.mrp}</span>
+            <div className="col-lg-6 col-md-6 mt_sm--15">
+              <div className="course-action-bottom-right rbt-single-group">
+                <div className="rbt-single-list rbt-price large-size justify-content-center">
+                  <span className="current-price color-primary">₹{data.price}</span>
+                  <span className="off-price">₹{data.mrp}</span>
                 </div>
-                <div class="rbt-single-list action-btn">
+                <div className="rbt-single-list action-btn">
                   <a
-                    class="rbt-btn btn-gradient hover-icon-reverse btn-md"
+                    className="rbt-btn btn-gradient hover-icon-reverse btn-md"
                     href={`/workshop-booking/${data._id}`}
                   >
-                    <span class="icon-reverse-wrapper">
-                      <span class="btn-text">Book Now</span>
-                      <span class="btn-icon">
-                        <i class="feather-arrow-right"></i>
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">Book Now</span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
                       </span>
-                      <span class="btn-icon">
-                        <i class="feather-arrow-right"></i>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
                       </span>
                     </span>
                   </a>
@@ -357,15 +357,15 @@ export default function WorkshopDetail(props) {
         </div>
       </div>
       {moreWorkshop.length > 0 && (
-        <div class="rbt-related-course-area bg-color-white pt--60 rbt-section-gapBottom">
-          <div class="container">
-            <div class="section-title mb--30">
-              <span class="subtitle bg-primary-opacity">
+        <div className="rbt-related-course-area bg-color-white pt--60 rbt-section-gapBottom">
+          <div className="container">
+            <div className="section-title mb--30">
+              <span className="subtitle bg-primary-opacity">
                 More Similar Wrokshops
               </span>
-              <h4 class="title">Related Wrokshops</h4>
+              <h4 className="title">Related Wrokshops</h4>
             </div>
-            <div class="row g-5">
+            <div className="row g-5">
               {moreWorkshop.map((item) => {
                 return (
                   <div className="col-lg-4 col-md-4 col-sm-6 col-12 sal-animate">
@@ -377,9 +377,9 @@ export default function WorkshopDetail(props) {
           </div>
         </div>
       )}
-      <div class="rbt-separator-mid">
-        <div class="container">
-          <hr class="rbt-separator m-0" />
+      <div className="rbt-separator-mid">
+        <div className="container">
+          <hr className="rbt-separator m-0" />
         </div>
       </div>
     </>

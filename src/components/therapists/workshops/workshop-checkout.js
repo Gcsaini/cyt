@@ -15,6 +15,7 @@ import { postData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import { toast } from "react-toastify";
 
+
 export default function WorkshopCheckout({ data }) {
     const { userInfo } = useUserStore();
     const navigate = useNavigate();
@@ -52,7 +53,7 @@ export default function WorkshopCheckout({ data }) {
         afterdiscount: 0
     })
 
-    console.log("afte discount",amountInfo);
+    console.log("afte discount", amountInfo);
 
 
     const handleStudentChange = (e) => {
@@ -227,13 +228,13 @@ export default function WorkshopCheckout({ data }) {
             discount,
             afterdiscount,
         }));
-        setInfo((prev)=>({
+        setInfo((prev) => ({
             ...prev,
-            amount:afterdiscount
+            amount: afterdiscount
         }))
     }, [amountInfo.amount, amountInfo.discount_type, amountInfo.discount_value]);
 
-console.log("info after",info);
+    console.log("info after", info);
 
 
     return (
@@ -249,33 +250,39 @@ console.log("info after",info);
                                 <div className="row mt--15">
                                     <div className="row mt--15">
                                         <label htmlFor="">Are you student?</label>
-                                        <div className="col-2 mb--10">
-                                            <div className="single-method">
-                                                <input
-                                                    type="radio"
-                                                    id="student_no"
-                                                    name="is_student"
-                                                    value="no"
-                                                    checked={info.is_student === false}
-                                                    onChange={handleStudentChange}
-                                                />
-                                                <label htmlFor="student_no">No</label>
-                                            </div>
-                                        </div>
-                                        <div className="col-2 mb--10">
-                                            <div className="single-method">
-                                                <input
-                                                    type="radio"
-                                                    id="student_yes"
-                                                    name="is_student"
-                                                    value="yes"
-                                                    checked={info.is_student === true}
-                                                    onChange={handleStudentChange}
-                                                />
-                                                <label htmlFor="student_yes">Yes</label>
-                                            </div>
-                                        </div>
+                                        <div className="col-6 col-md-6 col-lg-6 mb--10">
+                                            <div className="row">
+                                                <div className="col-6 col-md-6 col-lg-6">
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="student_no"
+                                                            name="is_student"
+                                                            value="no"
+                                                            checked={info.is_student === false}
+                                                            onChange={handleStudentChange}
+                                                            style={{width:'60px'}}
+                                                        />
+                                                        <label htmlFor="student_no">No</label>
+                                                    </>
+                                                </div>
+                                                <div className="col-6 col-md-6 col-lg-6">
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="student_yes"
+                                                            name="is_student"
+                                                            value="yes"
+                                                            checked={info.is_student === true}
+                                                            onChange={handleStudentChange}
+                                                            style={{width:'60px'}}
+                                                        />
+                                                        <label htmlFor="student_yes">Yes</label>
+                                                    </>
+                                                </div>
 
+                                            </div>
+                                        </div>
                                     </div>
                                     {!info.is_logged_in &&
                                         <> <div className="col-md-6 col-12 mb--10">
@@ -359,8 +366,8 @@ console.log("info after",info);
                                     Product <span>Total</span>
                                 </h4>
                                 <ul>
-                                    <li>
-                                        {data.title}&nbsp;
+                                    <li style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
+                                        {data.title}
                                         <span>₹{amountInfo.amount}</span>
                                     </li>
                                 </ul>
@@ -409,7 +416,7 @@ console.log("info after",info);
                                 <FormProgressBar />
                             ) : (
                                 <button
-                                    className="rbt-btn btn-gradient hover-icon-reverse"
+                                    className="rbt-btn btn-gradient hover-icon-reverse mb--20"
                                     onClick={handleSubmit}
                                 >
                                     <span className="icon-reverse-wrapper">

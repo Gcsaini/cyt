@@ -2,7 +2,7 @@ import LazyImage from "../../utils/lazy-image";
 import ContactImg from "../../assets/img/contact.webp";
 export default function ContactForm() {
   return (
-    <div className="rbt-contact-address undefined">
+    <div className="rbt-contact-address">
       <div className="container">
         <div className="row g-5">
           <div className="col-lg-6">
