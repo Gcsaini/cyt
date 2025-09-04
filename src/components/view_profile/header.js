@@ -113,7 +113,7 @@ export default function ProfileHeader(props) {
                   }}
                 >
                   <div className="rbt-tutor-information-left">
-                    <div className="rbt-card-img">
+                    <div className="thumbnail rbt-avatars size-lg">
                       <ImageTag
                         alt="Instructor"
                         width="250"
