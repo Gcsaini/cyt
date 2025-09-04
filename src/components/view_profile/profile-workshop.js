@@ -11,7 +11,7 @@ export default function ProfileWorkshop({ data }) {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">
-                Mental Health Practices & Tools
+                Mental Health Practices & Tool
               </span>
               <h2 className="title">
                 <span className="theme-gradient">
