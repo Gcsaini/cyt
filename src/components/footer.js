@@ -81,7 +81,7 @@ export default function Footer() {
                       <a href="/login">Login</a>
                     </li>
                     <li>
-                      <a href="/login">Register</a>
+                      <a href="/therapist-registration">Register</a>
                     </li>
                   </ul>
                 </div>
@@ -96,7 +96,7 @@ export default function Footer() {
                     </li>
                     <li>
                       <span>E-mail: </span>
-                      <a>
+                      <a href="">
                         Chooseyourtherapist@gmail.com
                       </a>
                     </li>
@@ -107,24 +107,28 @@ export default function Footer() {
                     </li>
                     
                   </ul>
-                  <ul className="social-icon social-default transparent-with-border justify-content-start mt--20">
-                                 <li>
-                                   <Link to="https://www.facebook.com/cyt8113">
-                                     <i className="feather-facebook"></i>
-                                   </Link>
-                                 </li>
-                                
-                                 <li>
-                                   <Link to="https://www.instagram.com/choose.your.therapist">
-                                     <i className="feather-instagram"></i>
-                                   </Link>
-                                 </li>
-                                 <li>
-                                   <Link to="https://www.linkedin.com/company/choose-your-therapist">
-                                     <i className="feather-linkedin"></i>
-                                   </Link>
-                                 </li>
-                               </ul>
+                  <ul className="social-icon social-default icon-naked justify-content-start mt--20">
+                    <li>
+                      <a href="#">
+                        <i className="feather-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="feather-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="feather-instagram"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="feather-linkedin"></i>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -145,7 +149,7 @@ export default function Footer() {
                 <a href="https://chooseyourtherapist.in">
                   Choose Your Therapist LLP.
                 </a>
-                All Rights Reserved
+                 All Rights Reserved
               </p>
             </div>
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
