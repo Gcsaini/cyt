@@ -9,7 +9,7 @@ export default function PageBreadCrumb({ title = "", linkTitle = "" }) {
                         <h2 className="title">{title}</h2>
                         <ul className="page-list mb--20">
                             <li className="rbt-breadcrumb-item">
-                                <Link to="/">Home</Link>
+                                <Link to="/home">Home</Link>
                             </li>
                             <li>
                                 <div className="icon-right">

@@ -363,7 +363,7 @@ export default function WorkshopCheckout({ data }) {
                         <div className="col-12 mb--30">
                             <div className="checkout-cart-total">
                                 <h4>
-                                    Product <span>Total</span>
+                                    Program <span>Total</span>
                                 </h4>
                                 <ul>
                                     <li style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
@@ -371,9 +371,7 @@ export default function WorkshopCheckout({ data }) {
                                         <span>₹{amountInfo.amount}</span>
                                     </li>
                                 </ul>
-                                <p>
-                                    Tax <span>0</span>
-                                </p>
+                               
                                 <p>
                                     Sub Total<span>₹{amountInfo.amount}</span>
                                 </p>
@@ -386,7 +384,7 @@ export default function WorkshopCheckout({ data }) {
                                     <div >
                                         <input
                                             type="text"
-                                            placeholder="Coupon?"
+                                            placeholder="Use Coupon"
                                             id="coupon"
                                             name="coupon"
                                             value={amountInfo.coupon}
