@@ -120,12 +120,12 @@ export default function ProfileHeader(props) {
                         height="250"
                         src={`${imagePath}/${pageData.user.profile}`}
                         style={{
-                          borderRadius: 0,
+                          borderRadius: 10,
                           padding: 0,
-                          minWidth: 110,
-                          width: 110,
-                          minHeight: 120,
-                          height: 120,
+                          minWidth: 130,
+                          width: 140,
+                          minHeight: 140,
+                          height: 130,
                         }}
                       />
                     </div>
