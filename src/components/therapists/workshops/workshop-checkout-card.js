@@ -14,7 +14,7 @@ export default function WorkshopCheckoutCard({ pageData }) {
           <ImageTag
             alt="workshop image"
             src={`${imagePath}/${pageData.workshop_image}`}
-            style={{ height: isMobile ? 255 : 185 }}
+            style={{ height: isMobile ? 255 : 150 }}
           />
         </div>
         <div className="rbt-card-body" style={{ flexBasis: "90%" }}>

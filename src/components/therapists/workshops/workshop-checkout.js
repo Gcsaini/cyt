@@ -245,7 +245,7 @@ export default function WorkshopCheckout({ data }) {
                         <WorkshopCheckoutCard pageData={data} />
                         <div className="checkout-content-wrapper mt--20">
                             <div id="billing-form">
-                                <h4 className="checkout-title">Billing Address</h4>
+                                <h4 className="checkout-title">Billing Details</h4>
                                 <FormMessage success={success} error={error} />
                                 <div className="row mt--15">
                                     <div className="row mt--15">
