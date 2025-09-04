@@ -12,7 +12,6 @@ import { EditDeleteButton } from "../../components/therapists/coupans/edit-delet
 
 const columns = [
     "Code",
-    "Type",
     "Value",
     "Max Usage",
     "Used",
@@ -78,8 +77,7 @@ export default function CoupansPage() {
                                 return (
                                     <tr key={item._id}>
                                         <th>{item.code}</th>
-                                        <td>{item.discount_type === "percentage" ? "%" : item.discount_type}</td>
-                                        <td>{item.discount_value}</td>
+                                        <td>{item.discount_type === "percentage" ? `${item.discount_value}%` : `₹${item.discount_value}`}</td>
                                         <td>
                                             {item.max_usage}
                                         </td>

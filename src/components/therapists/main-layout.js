@@ -81,26 +81,16 @@ export default function MainLayout(props) {
                                   <Link
                                     className={
                                       currentPath ===
-                                      "/instructor/instructor-profile"
+                                      "/appointments"
                                         ? "active"
                                         : ""
                                     }
-                                    to=""
-                                    // to="/appointments"
+                                    
+                                    to="/appointments"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
                                     <span>Appointments</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
+                                    
                                   </Link>
                                 </li>
 
@@ -261,8 +251,6 @@ export default function MainLayout(props) {
                                     )}
                                   </Link>
                                 </li>
-                              
-
                                 <li>
                                   <a
                                     onClick={handleLogout}

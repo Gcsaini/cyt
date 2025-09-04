@@ -53,6 +53,7 @@ import MyWorkshopBookingsPage from "./pages/client/my-workshop-bookings";
 import CoupansPage from "./pages/therapists/coupans";
 import CreateCoupanPage from "./pages/therapists/create-coupan";
 import UpdateCoupanPage from "./pages/therapists/update-coupan";
+import AppointmentsPage from "./pages/therapists/appointment";
 const theme = createTheme();
 
 function App() {
@@ -250,7 +251,7 @@ function App() {
                 path="/appointments"
                 element={
                   <TherapistProtectedRoute>
-                    <Appointment />
+                    <AppointmentsPage />
                   </TherapistProtectedRoute>
                 }
               />

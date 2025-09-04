@@ -1,34 +1,41 @@
-import React, { useState } from "react";
-import AppointmentCancelled from "../../components/therapists/appointment/appointment-cancelled";
-import AppointmentCompleted from "../../components/therapists/appointment/appointment-completed";
-import AppointmentTabContent from "../../components/therapists/appointment/appointment-tab-content";
+import { useEffect, useState } from "react";
 import AppointmentTabHead from "../../components/therapists/appointment/appointment-tab-head";
 import AppointmentPageSidebar from "../../components/therapists/appointment/appointmentheader";
 import MainLayout from "../../components/therapists/main-layout";
+import AppointmentsContent from "../../components/therapists/appointment/appointment-content";
+import { toast } from "react-toastify";
+import { fetchById } from "../../utils/actions";
+import { getBookings } from "../../utils/url";
+import PageProgressBar from "../../components/global/page-progress";
 
-export default function Appointment() {
-  const [activeTab, setActiveTab] = useState("upcoming");
+export default function AppointmentsPage() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case "upcoming":
-        return <AppointmentTabContent />;
-      case "cancelled":
-        return <AppointmentCancelled />;
-      case "completed":
-        return <AppointmentCompleted />;
-      default:
-        return <AppointmentTabContent />;
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const res = await fetchById(getBookings);
+      if (res.status) {
+        setData(res.data);
+      } else {
+        toast.error(res.message);
+      }
+    } catch (err) {
+      toast.error(err.message);
     }
+    setLoading(false);
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <>
-      <MainLayout>
+    <MainLayout>
         <AppointmentPageSidebar />
-        <AppointmentTabHead setActiveTab={setActiveTab} />
-        {renderContent()}
+        <AppointmentTabHead />
+        {loading ? <PageProgressBar /> : data && data.length > 0 && <AppointmentsContent appointments={data} />}
       </MainLayout>
-    </>
   );
 }

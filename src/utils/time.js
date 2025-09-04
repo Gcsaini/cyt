@@ -76,3 +76,19 @@ export const generateHourlyIntervals = (open, close) => {
 export const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString("en-GB"); 
 };
+
+export const formatDateTime =(dateString) =>{
+  const dateObj = new Date(dateString);
+
+  // Extract date in YYYY-MM-DD format
+  const date = dateObj.toISOString().slice(0, 10);
+
+  // Extract time in hh:mm AM/PM
+  const hours = dateObj.getHours();
+  const minutes = String(dateObj.getMinutes()).padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12; // convert 0 to 12
+  const time = `${formattedHours}:${minutes} ${ampm}`;
+
+  return `${date}, ${time}`;
+}

@@ -68,8 +68,20 @@ export default function UserDashboardTopNav() {
                 </Link>
               </li>
               <li className="position-static">
-                <Link to="//my-workshop-bookings" style={{ cursor: "pointer" }}>
+                <Link to="/my-workshop-bookings" style={{ cursor: "pointer" }}>
                   Event Booking<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link
+                  onClick={() => {
+                    removeToken();
+                    navigate("/login");
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <i className="feather-log-out"></i>
+                  <span>Logout</span>
                 </Link>
               </li>
               {/* <li className="position-static">

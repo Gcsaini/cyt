@@ -4,7 +4,7 @@ import "./appointmentheader.css";
 export default function Appointmentheader() {
   return (
     <div className="dashboard-header">
-      <h3>Today Appointment</h3>
+      <h3>&nbsp;&nbsp;Appointments</h3>
       <ul className="header-list-btns">
         <li>
           <div className="input-block dash-search-input">
@@ -14,27 +14,7 @@ export default function Appointmentheader() {
             </span>
           </div>
         </li>
-        <li>
-          <div className="view-icons">
-            <a href="appointments.html" className="active">
-              <i className="fa-solid fa-list"></i>
-            </a>
-          </div>
-        </li>
-        <li>
-          <div className="view-icons">
-            <a href="doctor-appointments-grid.html">
-              <i className="fa-solid fa-th"></i>
-            </a>
-          </div>
-        </li>
-        <li>
-          <div className="view-icons">
-            <a href="#">
-              <i className="fa-solid fa-calendar-check"></i>
-            </a>
-          </div>
-        </li>
+        
       </ul>
     </div>
   );

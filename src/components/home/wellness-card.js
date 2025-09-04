@@ -46,7 +46,7 @@ export default function WellNessCard({ data }) {
           <div class="rbt-author-info">
                                 By &nbsp;
                                 <Link to={`/view-profile/${data.post_by._id}`}>
-                                  {data.post_by.user.name}
+                                  {data.post_by.user?.name}
                                 </Link>
                                 &nbsp;In&nbsp;
                                 <a href="#">{data.post_by.profile_type}</a>
