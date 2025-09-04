@@ -133,10 +133,10 @@ export default function ProfileHeader(props) {
                       <div>
                         <h5 className="title">
                           {pageData.user.name} &nbsp;
-                          <span style={{ fontSize: 14 }}>
+                          <span style={{ fontSize: 10 }}>
                             ({pageData.profile_code})
                           </span>
-                        </h5><span className="rating-count">
+                        </h5><span className="title">
                             {pageData.qualification}
                           </span>
                         <div className="rbt-review">
