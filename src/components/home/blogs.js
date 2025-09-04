@@ -49,12 +49,11 @@ export default function Blogs() {
               <div className="rbt-card-body">
                 <h3 className="rbt-card-title">
                   <a href="blog-details/%5bblogId%5d">
-                    Why We Choose the Partners We Do: The Psychology of
-                    Attraction
+                    The Art of Setting Boundaries without Feeling Guilty
                   </a>
                 </h3>
                 <p className="rbt-card-text">
-                  Understanding the Mysteries of Attraction and Compatibility.
+                  Have you ever found yourself saying “yes” when deep down you wanted to scream “no”? 
                 </p>
                 <div className="rbt-card-bottom">
                   <a
