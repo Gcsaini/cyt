@@ -15,7 +15,7 @@ export default function ProfileWorkshop({ data }) {
               </span>
               <h2 className="title">
                 <span className="theme-gradient">
-                  Mind Matters Programs by &nbsp; {pageData.user.name} 
+                  Mind Matters Programs  
                 </span>
               </h2>
             </div>
