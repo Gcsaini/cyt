@@ -14,7 +14,7 @@ export default function WorkshopCheckoutCard({ pageData }) {
           <ImageTag
             alt="workshop image"
             src={`${imagePath}/${pageData.workshop_image}`}
-            style={{ height: isMobile ? 255 : 185 }}
+            style={{ height: isMobile ? 255 : 150 }}
           />
         </div>
         <div className="rbt-card-body" style={{ flexBasis: "90%" }}>
@@ -29,7 +29,7 @@ export default function WorkshopCheckoutCard({ pageData }) {
             </div>
           </div>
           <ul className="rbt-meta" style={{ marginTop: 0 }}>
-            <li style={listStyle}>
+           {/*  <li style={listStyle}>
               <strong>Description:</strong>{pageData.short_desc}
             </li>
             <li style={listStyle}>
@@ -39,7 +39,7 @@ export default function WorkshopCheckoutCard({ pageData }) {
              
               <span style={{ lineHeight: "2rem" }}>{pageData.event_time}</span>
             </li>
-            {/* <li style={listStyle}>
+            <li style={listStyle}>
               <i className="feather-eye"></i>
               <span style={{ lineHeight: "2rem" }}>
                 {pageData.qualification}

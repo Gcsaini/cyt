@@ -23,7 +23,7 @@ export default function QrcodeCard({ pageData }) {
                 </span>
                 <br />
               </h4>
-              <span>After payment please submit the transaction id</span>
+              <span>After completing the payment, please submit your transaction ID. Kindly note that the payment will be received in the account holder’s name – Deepak Kumar. Once the payment is verified, the status will be updated on your dashboard.</span>
             </div>
           </div>
         </div>

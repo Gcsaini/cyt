@@ -12,7 +12,7 @@ export default function WellNessCard({ data }) {
             alt={truncateString(data.title, 20)}
             loading="lazy"
             style={{ height: 200 }}
-            src={`${imagePath}/${data.workshop_image}`} 
+            src={`${imagePath}/${data.workshop_image}`}
           />
         </Link>
       </div>
@@ -44,13 +44,13 @@ export default function WellNessCard({ data }) {
             {data.event_time})
           </li>
           <div class="rbt-author-info">
-                                By &nbsp;
-                                <Link to={`/view-profile/${data.post_by._id}`}>
-                                  {data.post_by.user?.name}
-                                </Link>
-                                &nbsp;In&nbsp;
-                                <a href="#">{data.post_by.profile_type}</a>
-                              </div>
+            By &nbsp;
+            <Link to={`/view-profile/${data.post_by._id}`}>
+              {data.post_by.user?.name}
+            </Link>
+            &nbsp;In&nbsp;
+            <a href="#">{data.post_by.profile_type}</a>
+          </div>
         </ul>
 
         <div className="rbt-card-bottom mt--20">
@@ -58,7 +58,7 @@ export default function WellNessCard({ data }) {
             to={`/workshop-detail/${data._id}`}
             className="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
           >
-           Check Now
+            Check Now
           </Link>
         </div>
       </div>

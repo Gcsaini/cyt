@@ -245,7 +245,7 @@ export default function WorkshopCheckout({ data }) {
                         <WorkshopCheckoutCard pageData={data} />
                         <div className="checkout-content-wrapper mt--20">
                             <div id="billing-form">
-                                <h4 className="checkout-title">Billing Address</h4>
+                                <h4 className="checkout-title">Billing Details</h4>
                                 <FormMessage success={success} error={error} />
                                 <div className="row mt--15">
                                     <div className="row mt--15">
@@ -363,7 +363,7 @@ export default function WorkshopCheckout({ data }) {
                         <div className="col-12 mb--30">
                             <div className="checkout-cart-total">
                                 <h4>
-                                    Product <span>Total</span>
+                                    Program <span>Total</span>
                                 </h4>
                                 <ul>
                                     <li style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
@@ -371,9 +371,7 @@ export default function WorkshopCheckout({ data }) {
                                         <span>₹{amountInfo.amount}</span>
                                     </li>
                                 </ul>
-                                <p>
-                                    Tax <span>0</span>
-                                </p>
+                               
                                 <p>
                                     Sub Total<span>₹{amountInfo.amount}</span>
                                 </p>
@@ -386,7 +384,7 @@ export default function WorkshopCheckout({ data }) {
                                     <div >
                                         <input
                                             type="text"
-                                            placeholder="Coupon?"
+                                            placeholder="Use Coupon"
                                             id="coupon"
                                             name="coupon"
                                             value={amountInfo.coupon}
@@ -408,10 +406,7 @@ export default function WorkshopCheckout({ data }) {
                                 <h4 className="mt--30">
                                     Grand Total <span style={{ fontSize: "26px", }}>₹{amountInfo.afterdiscount}</span>
                                 </h4>
-
-                            </div>
-                        </div>
-                        <div className="plceholder-button mt--10">
+  <div className="plceholder-button mt--10">
                             {loading ? (
                                 <FormProgressBar />
                             ) : (
@@ -431,6 +426,9 @@ export default function WorkshopCheckout({ data }) {
                                 </button>
                             )}
                         </div>
+                            </div>
+                        </div>
+                      
                     </div>
                 </div>
             </div>
