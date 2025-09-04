@@ -408,10 +408,7 @@ export default function WorkshopCheckout({ data }) {
                                 <h4 className="mt--30">
                                     Grand Total <span style={{ fontSize: "26px", }}>₹{amountInfo.afterdiscount}</span>
                                 </h4>
-
-                            </div>
-                        </div>
-                        <div className="plceholder-button mt--10">
+  <div className="plceholder-button mt--10">
                             {loading ? (
                                 <FormProgressBar />
                             ) : (
@@ -431,6 +428,9 @@ export default function WorkshopCheckout({ data }) {
                                 </button>
                             )}
                         </div>
+                            </div>
+                        </div>
+                      
                     </div>
                 </div>
             </div>
