@@ -131,12 +131,12 @@ export default function ProfileHeader(props) {
                     </div>
                     <div className="tutor-content">
                       <div>
-                        <h5 className="title">
+                        <h2 className="title">
                           {pageData.user.name} &nbsp;
                           <span style={{ fontSize: 10 }}>
                             ({pageData.profile_code})
                           </span>
-                        </h5><span className="title">
+                        </h2><span className="title">
                             {pageData.qualification}
                           </span>
                         <div className="rbt-review">
