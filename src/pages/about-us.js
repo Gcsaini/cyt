@@ -1,4 +1,5 @@
 import AboutCyt from "../components/about/about-cyt";
+import StoryCyt from "../components/about/storycyt";
 import AboutUsBanner from "../components/about/banner";
 import CallToActionAbout from "../components/about/call-to-action";
 import ServiceQuality from "../components/about/service-quality";
@@ -18,12 +19,12 @@ export default function AboutUs() {
         <ServiceQuality />
       <AboutCyt />
       <TeamBanner/>
-  
+ 
   
       <CallToActionAbout />
       <InterSection />
       <Feedback />
-<Brands/>
+
       <NewsLetter />
       <Footer />
     </div>
