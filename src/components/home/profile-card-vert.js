@@ -101,15 +101,16 @@ export default function ProfileCardVert(props) {
                   {data.user.name}
                 </Link>
               </h4>
-              <div className="rbt-review">
+               
+               <div className="rbt-review">
                            <div className="rating">
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
+                          </div>  
                           </div> 
-                          </div>
             </div>
             {showBookmark && (
               <div className="rbt-bookmark-btn">
@@ -159,7 +160,7 @@ export default function ProfileCardVert(props) {
               className="view-btn view-btn-border"
               to={`/view-profile/${data._id}`}
               style={{
-                padding: isMobile ? "0 27px" : "0 26px",
+                padding: isMobile ? "0 27px" : "0 27px",
                 cursor: "pointer",
               }}
             >
@@ -171,7 +172,7 @@ export default function ProfileCardVert(props) {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: isTablet ? "0 20px" : "0 27px",
+                padding: isTablet ? "0 27px" : "0 27px",
               }}
             >
               <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
