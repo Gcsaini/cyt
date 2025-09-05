@@ -41,7 +41,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={TherypyImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Therapy Session</h5>
+                  <h5 className="title">Wellbeing Therapy Session</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link"
                     to="/view-all-therapist" >
@@ -63,7 +63,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={SupportImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Support Groups</h5>
+                  <h5 className="title">Community Group Programs</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Register Now<i className="feather-arrow-right"></i>
@@ -84,7 +84,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={StudentImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Mentorship</h5>
+                  <h5 className="title">Mentorship Programs</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Register Now<i className="feather-arrow-right"></i>
@@ -105,7 +105,7 @@ export default function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={WorkplaceImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Mindful Tour</h5>
+                  <h5 className="title">Mindfulness Tour Initiative</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>
