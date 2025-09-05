@@ -1,28 +1,14 @@
 import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
 import logo1 from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
-import TherypyImg from "../assets/img/therapy (1).png";
-import SupportImg from "../assets/img/support-groups.png";
-import StudentImg from "../assets/img/students.png";
-import WorkplaceImg from "../assets/img/workplace.png";
-import ActivitesImg from "../assets/img/activites.png";
-import AssessmentImg from "../assets/img/assessments.png";
-import ProjectsImg from "../assets/img/projects.png";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../utils/image-tag";
 import { getDecodedToken, getToken } from "../utils/jwt";
 export default function App() {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [show, setShow] = React.useState(false);
-  const [about, setAbout] = React.useState();
   const [service, setService] = React.useState();
   const [search, setSearch] = React.useState();
-  const [cart, setCart] = React.useState();
   const [isToken, setIsToken] = React.useState(false);
   const [isUser, setIsUser] = React.useState(false);
 

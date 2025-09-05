@@ -1,9 +1,9 @@
-export default function DashboardStatics() {
+export default function DashboardStatics({ data }) {
     return <div className="row">
         <div className="col-lg-4 col-md-3 col-md-3 col-sm-12">
             <div class="rbt-performance-feature-list">
                 <div class="rbt-performance-feature">
-                    <span class="rbt-feature-score">00</span>
+                    <span class="rbt-feature-score">{(data && data.bookings) || '00'}</span>
                     <div class="rbt-separator"></div>
                     <span class="rbt-feature-text">Therapists</span>
                 </div>
@@ -12,7 +12,7 @@ export default function DashboardStatics() {
         <div className="col-lg-4 col-md-3 col-md-3 col-sm-12">
             <div class="rbt-performance-feature-list">
                 <div class="rbt-performance-feature">
-                    <span class="rbt-feature-score">00</span>
+                    <span class="rbt-feature-score">{(data && data.events) || '00'}</span>
                     <div class="rbt-separator"></div>
                     <span class="rbt-feature-text">Events</span>
                 </div>
@@ -21,7 +21,7 @@ export default function DashboardStatics() {
         <div className="col-lg-4 col-md-3 col-md-3 col-sm-12">
             <div class="rbt-performance-feature-list">
                 <div class="rbt-performance-feature">
-                    <span class="rbt-feature-score">00</span>
+                    <span class="rbt-feature-score">{(data && data.appointments) || '00'}</span>
                     <div class="rbt-separator"></div>
                     <span class="rbt-feature-text">Appointments</span>
                 </div>
@@ -30,26 +30,3 @@ export default function DashboardStatics() {
     </div>
 }
 
-
-{/* <div class="rbt-performance-feature-list">
-        <div class="rbt-performance-feature">
-            <span class="rbt-feature-score">95%</span>
-            <div class="rbt-separator"></div>
-            <span class="rbt-feature-text">Performance</span>
-        </div>
-        <div class="rbt-performance-feature">
-            <span class="rbt-feature-score">100%</span>
-            <div class="rbt-separator"></div>
-            <span class="rbt-feature-text">Page SEO</span>
-        </div>
-        <div class="rbt-performance-feature">
-            <span class="rbt-feature-score">100%</span>
-            <div class="rbt-separator"></div>
-            <span class="rbt-feature-text">Best Practice</span>
-        </div>
-        <div class="rbt-performance-feature">
-            <span class="rbt-feature-score">98%</span>
-            <div class="rbt-separator"></div>
-            <span class="rbt-feature-text">Accessibility</span>
-        </div>
-    </div> */}

@@ -1,4 +1,3 @@
-import NotifyBar from "../dashboard/notify-bar";
 import FormProgressBar from "./form-progressbar";
 
 export default function PageWrapper({ pageTitle, loading = false, buttonTitle = "", onClick, children }) {

@@ -1,22 +1,105 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import React from "react";
+import  { useState } from "react";
 import useUserStore from "../../store/userStore";
 import { removeToken } from "../../utils/jwt";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import UserDashboardTopNav from "./user-top-nav";
 import DashboardFooter from "../global/dashboard-footer";
 import NotifyBar from "./notify-bar";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import { sendOtpTosubscribe, verifyOtpTosubscribe } from "../../utils/url";
+import { postData } from "../../utils/actions";
+import { toast } from "react-toastify";
+import { CircularProgress } from "@mui/material";
+import FormProgressBar from "../global/form-progressbar";
 export default function UserLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { userInfo } = useUserStore();
   const location = useLocation();
   const navigate = useNavigate();
+  const [otpView, setOtpView] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState();
   const currentPath = location.pathname;
 
   const handleLogout = () => {
     removeToken();
     navigate("/login");
   };
+
+  const handleSubmit = async () => {
+    if (email === "") {
+      toast.error("Please enter valid email");
+      return;
+    } else if (!validateEmail(email)) {
+      toast.error("Please enter valid email");
+      return;
+    } else {
+      const data = {
+        email,
+      };
+      try {
+        setLoading(true);
+        const response = await postData(sendOtpTosubscribe, data);
+        if (response.status) {
+          toast.success(response.message);
+          setOtpView(true);
+        } else {
+          toast.error("Something went wrong");
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+      setLoading(false);
+    }
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleOtpSubmit = async () => {
+    if (otp.length !== 6) {
+      toast.error("Please enter valid otp");
+      return;
+    } else {
+      const data = {
+        email,
+        otp,
+      };
+      try {
+        setLoading(true);
+        const response = await postData(verifyOtpTosubscribe, data);
+        if (response.status) {
+          setOtp("");
+          toast.success(response.message);
+          setOtpView(false);
+        } else {
+          toast.error(response.message);
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+      setLoading(false);
+    }
+  };
+
+
+  const handleCloseOtpView = () => {
+    setOtpView(false);
+  };
+
+  const handleOtpChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value) && value.length <= 6) {
+      setOtp(value);
+    }
+  };
+
 
   return (
     <>
@@ -125,20 +208,20 @@ export default function UserLayout(props) {
                   </div>
                 )}
                 <div className="col-lg-10">
-                   <NotifyBar/>
+                  <NotifyBar title={props.title || ""} />
                   {props.children}
                   <div class="section-title text-center mt--100 mb--100">
                     <h2 class="title">Want to get special offers <br /> and Course updates?</h2>
-                    <form action="#" class="newsletter-form-1 mt--50 radius-round">
-                      <input class="rbt-border" type="email" placeholder="Enter Your E-Email" />
-                      <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
+                    <div class="newsletter-form-1 mt--50 radius-round">
+                      <input class="rbt-border" type="email" placeholder="Enter Your E-Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                      {loading ? <CircularProgress /> : <button onClick={handleSubmit} class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
                         <span class="icon-reverse-wrapper">
                           <span class="btn-text">Subscribe</span>
                           <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                           <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                         </span>
-                      </button>
-                    </form>
+                      </button>}
+                    </div>
                   </div>
                   <DashboardFooter />
                 </div>
@@ -146,6 +229,51 @@ export default function UserLayout(props) {
             </div>
           </div>
         </div>
+        <Dialog open={otpView} onClose={(event, reason) => {
+          if (reason === "backdropClick" || reason === "escapeKeyDown") {
+            return;
+          }
+          handleCloseOtpView();
+        }} maxWidth="sm" fullWidth>
+          <div style={{ padding: "8px" }}>
+            <h5>Enter OTP</h5>
+            <DialogContent dividers>
+              <div className="col-md-6 col-12 mb--10">
+                <label htmlFor="phone">OTP*</label>
+                <input
+                  type="text"
+                  placeholder="OTP"
+                  id="otp"
+                  value={otp}
+                  name="otp"
+                  onChange={handleOtpChange}
+                />
+              </div>
+            </DialogContent>
+            <DialogActions>
+              <div className="plceholder-button mt--10">
+                {loading ? (
+                  <FormProgressBar />
+                ) : (
+                  <button
+                    className="rbt-btn btn-gradient hover-icon-reverse"
+                    onClick={handleOtpSubmit}
+                  >
+                    <span className="icon-reverse-wrapper">
+                      <span className="btn-text">Submit</span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
+                      <span className="btn-icon">
+                        <i className="feather-arrow-right"></i>
+                      </span>
+                    </span>
+                  </button>
+                )}
+              </div>
+            </DialogActions>
+          </div>
+        </Dialog>
       </div>
     </>
   );

@@ -1,28 +1,17 @@
 import React, { useState } from "react";
 import UserLayout from "../../components/dashboard/user-layout";
 import FavTherapistCard from "../../components/dashboard/fav-therapist-card";
-import FormProgressBar from "../../components/global/form-progressbar";
 import { fetchById, postData } from "../../utils/actions";
 import {
   GetFavriouteTherapistUrl,
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
-import { errorColor } from "../../utils/colors";
 import PageWrapper from "../../components/global/page-wrapper";
 import { toast } from "react-toastify";
 
 export default function FavriouteTherapistPage() {
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
-  const handleChange = (field, value) => {
-    setData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
 
   const getData = async () => {
     try {
@@ -30,10 +19,10 @@ export default function FavriouteTherapistPage() {
       if (res.status) {
         setData(res.data);
       } else {
-        setError(res.message);
+        toast.error(res.message);
       }
     } catch (err) {
-      setError(err.message);
+      toast.error(err.message);
     }
     setLoading(false);
   };
