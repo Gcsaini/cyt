@@ -7,7 +7,7 @@ export default function NotifyBar() {
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-5 col-12">
                     <div class="fancy-menu-text fancu-menu-start">
-                        <p>Intro price. Get Histudy for Big Sale -95% off.<i class="feather-chevron-right"></i></p>
+                        <p>Welcome, this is your zone to grow at ChooseYourTherapist.<i class="feather-chevron-right"></i></p>
                     </div>
                 </div>
             </div>
