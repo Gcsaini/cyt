@@ -77,7 +77,7 @@ export default function UserLayout(props) {
                                     to="/my-therapists"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Bestie Therapists</span>
+                                    <span>My Care</span>
                                   </Link>
                                 </li>
 
