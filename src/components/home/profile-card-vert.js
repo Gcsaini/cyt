@@ -80,7 +80,7 @@ export default function ProfileCardVert(props) {
             />
           </Link>
         </div>         <div class="rbt-badge-3 bg-white">
-                                            <span>Top</span>
+                                            <span></span>
                                             
                                         </div>
         <div className="rbt-card-body">
