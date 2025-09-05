@@ -301,7 +301,7 @@ export default function WorkshopDetail(props) {
                       <div className="contact-with-us text-center">
                         <p>For any quaries</p>
                         <p className="rbt-badge-2 mt--10 justify-content-center w-100">
-                          <i className="feather-phone mr--5"></i> Type "MMP Quaries" on WhatsApp:
+                          <i className="feather-phone mr--5"></i> WhatsApp us:
                           <a href="#">
                             <strong>+91 8077757951</strong>
                           </a>
