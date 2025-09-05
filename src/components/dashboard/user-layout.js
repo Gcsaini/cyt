@@ -211,7 +211,7 @@ export default function UserLayout(props) {
                   <NotifyBar title={props.title || ""} />
                   {props.children}
                   <div class="section-title text-center mt--100 mb--100">
-                    <h2 class="title">Get therapist discounts, new program launches, and platform updates - <br /> straight to your inbox. </h2>
+                    <h2 class="title">Get discounts, programs & updates directly in mail. <br /> directly in mail. </h2>
                     <div class="newsletter-form-1 mt--50 radius-round">
                       <input class="rbt-border" type="email" placeholder="Enter Your E-Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                       {loading ? <CircularProgress /> : <button onClick={handleSubmit} class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
