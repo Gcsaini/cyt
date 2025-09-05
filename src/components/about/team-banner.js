@@ -15,14 +15,14 @@ import { Link } from "react-router-dom";
 const teamInfo = [
   {
     name: "Mr. Deepak Kumar",
-    deg: "Founder & Director | Counselling Psychologist   (B.A, M.A, Ph.D Researcher-NET)",
+    deg: "Founder & Director |Psychologist (B.A, M.A, Ph.D Psychology-NET)",
     address: " Uttarakhand, IN",
     instagram: "",
     facebook: "",
     linkdin: "",
     profile: TeamImg,
     content:
-      "I'm passionate about providing accessible and effective mental health services. At Choose Your Therapist LLP, we aim to provide comprehensive documentation of our platform’s features,  services, and commitment to making mental health care more approachable, convenient, and personalized for everyone",
+      "As a practicing psychologist, our Director’s vision is to create a world where mental wellness is valued equally to physical health and seeking help is a sign of strength.",
   },
 
   {
@@ -35,22 +35,20 @@ const teamInfo = [
     linkdin: "",
     profile: TeamImg4,
     content:
-      "As a passionate advocate for mental health and a co-founder dedicated to leveraging technology for societal good. My vision is to harness cutting-edge technological solutions to address mental health challenges, fostering a culture of wellness and resilience. ",
-  },
+      "As a co-founder, the vision is to integrate technology with care, making mental health support more approachable, scalable, and impactful for individuals and communities.", },
 
   
   {
     name: "Ms. Fabiha Sultana Shaik",
     deg: "Cheif Advisor | Psychologist",
-    address: " Noida, Uttarpradesh, IN",
+    address: " Andhra Pradesh, IN",
 
     instagram: "",
     facebook: "",
     linkdin: "",
     profile: TeamImg3,
     content:
-      "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
-  },
+      "As Chief Advisor and Psychologist, the vision is to explore the intricacies of the human mind and implement innovative strategies that enhance our platform, promoting stigma-free care and holistic well-being for all.", },
   {
     name: "Ms. Ayushi Pandwal",
     deg: "External Research & Academic Advisor | Assistant Professor",
@@ -61,8 +59,7 @@ const teamInfo = [
     linkdin: "",
     profile: Ayushi,
     content:
-      "She is the External Research and Academic Advisor and Assistant Professor at Amity University, dedicated to advancing knowledge and fostering academic excellence. Passionate about research and education, she provides strategic guidance to strengthen scholarly initiatives, enhance learning outcomes, and support evidence-based practices. A critical thinker and mentor, she helps bridge the gap between research and real-world application, empowering individuals and institutions to achieve meaningful academic impact.",
-  },
+      "As External Research and Academic Advisor, the vision is to strengthen scholarly initiatives, promote evidence-based practices, and support meaningful academic growth for individuals and institutions.", },
   {
     name: "Ms. Ritika Gupta",
     deg: "Operations Lead",
