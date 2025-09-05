@@ -54,7 +54,7 @@ export default function UserLayout(props) {
                                     }
                                   >
                                     <i className="feather-home"></i>
-                                    <span>Dashboard</span>
+                                    <span>Home Base</span>
                                   </Link>
                                 </li>
                                 <li className="nav-item">
@@ -64,7 +64,7 @@ export default function UserLayout(props) {
                                       : ""
                                   } to="/my-bookings">
                                     <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Appointments</span>
+                                    <span>My Bookings</span>
                                   </Link>
                                 </li>
                                 <li className="nav-item">
@@ -77,14 +77,14 @@ export default function UserLayout(props) {
                                     to="/my-therapists"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Favrioute Therapist</span>
+                                    <span>Bestie Therapists</span>
                                   </Link>
                                 </li>
 
                                 <li className="nav-item">
                                   <Link className="" to="/my-workshop-bookings">
                                     <i className="feather-star"></i>
-                                    <span>Event Booking</span>
+                                    <span>Events & Vibes</span>
                                   </Link>
                                 </li>
 
@@ -106,14 +106,14 @@ export default function UserLayout(props) {
                                     to="/my-settings"
                                   >
                                     <i className="feather-settings"></i>
-                                    <span>Edit Profile</span>
+                                    <span>My Edit</span>
                                   </Link>
                                 </li>
 
                                 <li>
                                   <a onClick={handleLogout}>
                                     <i className="feather-log-out"></i>
-                                    <span>Logout</span>
+                                    <span>Sign Out</span>
                                   </a>
                                 </li>
                               </ul>
