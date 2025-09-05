@@ -79,7 +79,10 @@ export default function ProfileCardVert(props) {
               src={`${imagePath}/${data.user.profile}`}
             />
           </Link>
-        </div>
+        </div>         <div class="rbt-badge-3 bg-white">
+                                            <span>Top</span>
+                                            
+                                        </div>
         <div className="rbt-card-body">
           <ul className="rbt-meta">
             <li style={{ fontSize: 16 }}>
