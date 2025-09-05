@@ -150,7 +150,7 @@ export default function ProfileCardVert(props) {
               className="view-btn view-btn-border"
               to={`/view-profile/${data._id}`}
               style={{
-                padding: isMobile ? "0 26px" : "0 10px",
+                padding: isMobile ? "0 26px" : "0 26px",
                 cursor: "pointer",
               }}
             >
@@ -162,7 +162,7 @@ export default function ProfileCardVert(props) {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: isTablet ? "0 20px" : "0 16px",
+                padding: isTablet ? "0 20px" : "0 26px",
               }}
             >
               <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
