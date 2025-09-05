@@ -43,7 +43,7 @@ export default function WorkshopDetail(props) {
                       </div>
                     </li>
                     <li className="rbt-breadcrumb-item active">
-                      Workshop Detail
+                      Mind Matters Programs
                     </li>
                   </ul>
                   <h2 className="title mb--0">{data.title}</h2>
@@ -62,7 +62,7 @@ export default function WorkshopDetail(props) {
                       <Link to={`/view-profile/${data.post_by._id}`}>
                         {data.post_by.user.name}
                       </Link>
-                      &nbsp;In&nbsp;
+                      &nbsp;&nbsp;
                       <a href="#">{data.post_by.profile_type}</a>
                     </div>
                   </div>
@@ -117,7 +117,7 @@ export default function WorkshopDetail(props) {
                 >
                   <div className="about-author border-0 pb--0 pt--0">
                     <div className="section-title mb--30">
-                      <h4 className="rbt-title-style-3">Instructor</h4>
+                      <h4 className="rbt-title-style-3">By Listed Therapist</h4>
                     </div>
                     <div className="row g-5 media align-items-center">
                       <div className="col-lg-6 col-md-6 col-sm-6 thumbnail rbt-avatars size-lg">
@@ -163,10 +163,10 @@ export default function WorkshopDetail(props) {
                       <div className="col-lg-12 col-md-12 col-12">
                         <div className="section-title">
                           <span className="subtitle bg-pink-opacity">
-                            Top Workshop
+                            Mental Health Practices & Tools
                           </span>
                           <h4 className="title">
-                            More Wroskhop By
+                            Mind Matters Programs By
                             <strong className="color-primary ms-3">
                               {data.post_by.name}
                             </strong>
@@ -221,7 +221,7 @@ export default function WorkshopDetail(props) {
                         href="#"
                         to={`/workshop-booking/${data._id}`}
                       >
-                        <span className="btn-text">Book Now</span>
+                        <span className="btn-text">Register Now</span>
                         <span className="btn-icon">
                           <i className="feather-arrow-right"></i>
                         </span>
@@ -257,18 +257,12 @@ export default function WorkshopDetail(props) {
                         </li>
 
                         <li>
-                          <span>Skill Level</span>
+                          <span>Level</span>
                           <span className="rbt-feature-value rbt-badge-5">
                             {data.level}
                           </span>
                         </li>
-                        <li>
-                          <span>Location</span>
-                          <span className="rbt-feature-value rbt-badge-5">
-                            Online
-                          </span>
-                        </li>
-
+                        
                         <li>
                           <span>Language</span>
                           <span className="rbt-feature-value rbt-badge-5">
@@ -305,11 +299,11 @@ export default function WorkshopDetail(props) {
                       </div>
                       <hr className="mt--20" />
                       <div className="contact-with-us text-center">
-                        <p>For details about the workshop</p>
+                        <p>For any quaries</p>
                         <p className="rbt-badge-2 mt--10 justify-content-center w-100">
-                          <i className="feather-phone mr--5"></i> Call Us:
+                          <i className="feather-phone mr--5"></i> Type "MMP Quaries" on WhatsApp:
                           <a href="#">
-                            <strong>+91 90121 74819</strong>
+                            <strong>+91 8077757951</strong>
                           </a>
                         </p>
                       </div>
@@ -341,7 +335,7 @@ export default function WorkshopDetail(props) {
                     href={`/workshop-booking/${data._id}`}
                   >
                     <span className="icon-reverse-wrapper">
-                      <span className="btn-text">Book Now</span>
+                      <span className="btn-text">Register Now</span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
                       </span>
@@ -361,9 +355,9 @@ export default function WorkshopDetail(props) {
           <div className="container">
             <div className="section-title mb--30">
               <span className="subtitle bg-primary-opacity">
-                More Similar Wrokshops
+                More Similar Mental Health Practices & Tools
               </span>
-              <h4 className="title">Related Wrokshops</h4>
+              <h4 className="title">Related Mind Matters Programs</h4>
             </div>
             <div className="row g-5">
               {moreWorkshop.map((item) => {
