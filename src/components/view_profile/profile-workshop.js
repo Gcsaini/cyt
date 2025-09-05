@@ -11,11 +11,11 @@ export default function ProfileWorkshop({ data }) {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <span className="subtitle bg-primary-opacity">
-                Mental Health Wrokshops/Activites
+                Mental Health Practices & Tools
               </span>
               <h2 className="title">
                 <span className="theme-gradient">
-                  Wellness Workshops by Professionals
+                  Mind Matters Programs  
                 </span>
               </h2>
             </div>

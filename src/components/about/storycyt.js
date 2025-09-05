@@ -1,22 +1,11 @@
 import { Link } from "react-router-dom";
 
-export default function AboutCyt() {
+export default function StoryCyt() {
   return (
     <div className="rbt-about-area about-style-1 bg-color-extra2 rbt-section-gap">
       <div className="container">
-        <div className="row g-5 align-items-start">
-          <div className="col-lg-6">
-            <div className="content">
-              <h2
-                className="title mb--0 sal-animate"
-                data-sal="slide-up"
-                data-sal-duration="700"
-              >
-              Therapists Who Care, A Platform That Connects You to the Right Support at the Right Time
-              </h2>
-            </div>
-          </div>
-          <div
+         
+          <div className="row g-5 align-items-start"></div><div
             className="col-lg-6 sal-animate"
             data-sal="slide-up"
             data-sal-duration="700"
@@ -37,6 +26,19 @@ Rather than being “just a platform,” Choose Your Therapist is a continuing j
               </Link>
             </div>
           </div>
+        <div className="row g-5 align-items-start">
+          <div className="col-lg-6">
+            <div className="content">
+              <h2
+                className="title mb--0 sal-animate"
+                data-sal="slide-up"
+                data-sal-duration="700"
+              >
+             The Story of Choose Your Therapist LLP
+              </h2>
+            </div>
+          </div>
+         
         </div>
       </div>
     </div>

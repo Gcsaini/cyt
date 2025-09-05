@@ -34,18 +34,18 @@ export default function Services() {
           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d"
+              href="/view-all-therapist"
             >
               <div className="inner">
                 <div className="icons">
                   <LazyImage alt="Icons" dim={"80"} src={TherypyImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Therapy Session</h5>
+                  <h5 className="title">Wellbeing Therapy Session</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link"
                     to="/view-all-therapist" >
-                      Start Now<i className="feather-arrow-right"></i>
+                     Book Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -56,17 +56,17 @@ export default function Services() {
            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d-3"
+              href="#"
             >
               <div className="inner">
                 <div className="icons">
                   <LazyImage alt="Icons" dim={"80"} src={SupportImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Support Groups</h5>
+                  <h5 className="title">Community Group Programs</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Join Now<i className="feather-arrow-right"></i>
+                      Register Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -77,17 +77,17 @@ export default function Services() {
          <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d-4"
+              href="#"
             >
               <div className="inner">
                 <div className="icons">
                   <LazyImage alt="Icons" dim={"80"} src={StudentImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Wellness Hours</h5>
+                  <h5 className="title">Mentorship Programs</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Enroll Now<i className="feather-arrow-right"></i>
+                      Register Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -98,17 +98,17 @@ export default function Services() {
           <div className="col-lg-3 col-md-6 col-sm-6 col-6">
             <a
               className="rbt-cat-box rbt-cat-box-1 text-center"
-              href="course-filter-one-toggle/%5bcourseId%5d-2"
+              href="#"
             >
               <div className="inner">
                 <div className="icons">
                   <LazyImage alt="Icons" dim={"80"} src={WorkplaceImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Mindful Tour</h5>
+                  <h5 className="title">Mindfulness Tour Initiative</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Book Now<i className="feather-arrow-right"></i>
+                      Coming Soon<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>

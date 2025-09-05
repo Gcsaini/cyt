@@ -165,8 +165,8 @@ export default function NewsLetter() {
       className="rbt-newsletter-area newsletter-style-2 rbt-section-gap"
       ref={ref}
       style={{
-        background: "#115B37",
-      }}
+  background: "linear-gradient(to right, rgb(32, 117, 143), rgb(36, 168, 97))"
+}}
     >
       <div className="container">
         <div className="row row--15 align-items-center">

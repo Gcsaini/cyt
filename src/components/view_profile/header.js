@@ -120,24 +120,17 @@ export default function ProfileHeader(props) {
                         height="250"
                         src={`${imagePath}/${pageData.user.profile}`}
                         style={{
-                          borderRadius: 0,
+                          borderRadius: 10,
                           padding: 0,
-                          minWidth: 110,
-                          width: 110,
-                          minHeight: 120,
-                          height: 120,
+                          minWidth: 130,
+                          width: 140,
+                          minHeight: 140,
+                          height: 130,
                         }}
                       />
                     </div>
                     <div className="tutor-content">
-                      <div>
-                        <h5 className="title">
-                          {pageData.user.name} &nbsp;
-                          <span style={{ fontSize: 14 }}>
-                            ({pageData.profile_code})
-                          </span>
-                        </h5>
-                        <div className="rbt-review">
+                      <div> <div className="rbt-review">
                            <div className="rating">
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
@@ -145,10 +138,16 @@ export default function ProfileHeader(props) {
                             <i className="fas fa-star"></i>
                             <i className="fas fa-star"></i>
                           </div> 
-                          <span className="rating-count">
+                          </div> 
+                        <h3 className="title">
+                          {pageData.user.name} &nbsp;
+                          
+                        </h3><span className="title">
                             {pageData.qualification}
                           </span>
-                        </div>
+                       
+                          
+                        
                         <ul className="rbt-meta rbt-meta-white mt--5">
                           <li>
                             <i className="feather-user"></i>

@@ -14,7 +14,7 @@ export default function ProfileCheckoutCard({ pageData }) {
           <ImageTag
             alt="profile image"
             src={`${imagePath}/${pageData.user.profile}`}
-            style={{ height: isMobile ? 260 : 180 }}
+            style={{ height: isMobile ? 250 : 180 }}
           />
         </div>
         <div className="rbt-card-body" style={{ flexBasis: "90%" }}>
