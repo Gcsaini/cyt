@@ -9,7 +9,7 @@ export default function DashboardFooter() {
                         <ul class="copyright-link rbt-link-hover justify-content-center justify-content-lg-end mt_sm--10 mt_md--10">
                             <li><a href="#">Terms of service</a></li>
                             <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Subscription</a></li>
+                            <li><a href="#">Cancellation Policy</a></li>
                         </ul>
                     </div>
                 </div>
