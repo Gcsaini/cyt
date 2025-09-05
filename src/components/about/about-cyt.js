@@ -12,7 +12,7 @@ export default function AboutCyt() {
                 data-sal="slide-up"
                 data-sal-duration="700"
               >
-               Therapists Who Care, A Platform That Connects..
+              Therapists Who Care, A Platform That Connects You to the Right Support at the Right Time
               </h2>
             </div>
           </div>
