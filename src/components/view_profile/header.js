@@ -194,7 +194,7 @@ export default function ProfileHeader(props) {
                             )}
                           </a>
                         </li>
-                      )}
+                      )} 
                       <li>
                         <a onClick={handleShare} style={{ cursor: "pointer" }}>
                           <i className="feather-share"></i>

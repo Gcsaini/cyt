@@ -13,9 +13,11 @@ import {
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
 export default function ProfileCardHor({ pageData, favrioutes }) {
+   
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [bookmark, setBookmark] = React.useState(false);
+  
   const [showBookmark, setShowBookmark] = React.useState(true);
 
   const handleBookmark = (id, value) => {
@@ -136,7 +138,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
             </Link>
             <Link
               className="rbt-btn btn-gradient book-btn"
-              to=""
+              to="#"
               style={{
                 display: "flex",
                 justifyContent: "center",
