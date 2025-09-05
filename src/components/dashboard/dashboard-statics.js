@@ -5,7 +5,7 @@ export default function DashboardStatics() {
                 <div class="rbt-performance-feature">
                     <span class="rbt-feature-score">00</span>
                     <div class="rbt-separator"></div>
-                    <span class="rbt-feature-text">Booked Therapy Session</span>
+                    <span class="rbt-feature-text">Booked Session</span>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@ export default function DashboardStatics() {
                 <div class="rbt-performance-feature">
                     <span class="rbt-feature-score">00</span>
                     <div class="rbt-separator"></div>
-                    <span class="rbt-feature-text">Registered Mind Matters Programs</span>
+                    <span class="rbt-feature-text">Registered Events</span>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@ export default function DashboardStatics() {
                 <div class="rbt-performance-feature">
                     <span class="rbt-feature-score">00</span>
                     <div class="rbt-separator"></div>
-                    <span class="rbt-feature-text">Currrent Active Booking</span>
+                    <span class="rbt-feature-text">Currrent Booking</span>
                 </div>
             </div>
         </div>
