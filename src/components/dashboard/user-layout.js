@@ -5,6 +5,7 @@ import { removeToken } from "../../utils/jwt";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import UserDashboardTopNav from "./user-top-nav";
 import DashboardFooter from "../global/dashboard-footer";
+import NotifyBar from "./notify-bar";
 export default function UserLayout(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { userInfo } = useUserStore();
@@ -58,10 +59,10 @@ export default function UserLayout(props) {
                                 </li>
                                 <li className="nav-item">
                                   <Link className={
-                                      currentPath === "/my-bookings"
-                                        ? "active"
-                                        : ""
-                                    } to="/my-bookings">
+                                    currentPath === "/my-bookings"
+                                      ? "active"
+                                      : ""
+                                  } to="/my-bookings">
                                     <i className="fa-regular fa-calendar-check"></i>
                                     <span>Appointments</span>
                                   </Link>
@@ -89,7 +90,7 @@ export default function UserLayout(props) {
 
                               </ul>
                             </nav>
-                           
+
                             <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">User</h6>
                             </div>
@@ -123,12 +124,28 @@ export default function UserLayout(props) {
                     </div>
                   </div>
                 )}
-                <div className="col-lg-10">{props.children}</div>
+                <div className="col-lg-10">
+                   <NotifyBar/>
+                  {props.children}
+                  <div class="section-title text-center mt--100 mb--100">
+                    <h2 class="title">Want to get special offers <br /> and Course updates?</h2>
+                    <form action="#" class="newsletter-form-1 mt--50 radius-round">
+                      <input class="rbt-border" type="email" placeholder="Enter Your E-Email" />
+                      <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
+                        <span class="icon-reverse-wrapper">
+                          <span class="btn-text">Subscribe</span>
+                          <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                          <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </span>
+                      </button>
+                    </form>
+                  </div>
+                  <DashboardFooter />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <DashboardFooter/>
       </div>
     </>
   );

@@ -11,7 +11,7 @@ export default function FavTherapistCard({ data, removeFav }) {
             <ImageTag
               alt={data.user.name}
               style={{ height: "250px" }}
-              src={`${imagePath}/${data.profile}`}
+              src={`${imagePath}/${data.user.profile}`}
             />
           </Link>
           <div

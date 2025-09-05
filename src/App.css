@@ -44800,3 +44800,54 @@ blockquote.has-text-align-right cite {
     background-image: url(./assets/img/bg-image-29.jpg);
 }
 
+.rbt-performance-feature-list {
+    display: flex
+;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 12px;
+    margin-top: 24px;
+}
+
+.rbt-performance-feature-list .rbt-performance-feature {
+    display: inline-block;
+    padding: 24px 32px;
+    background: var(--color-white);
+    box-shadow: var(--shadow-1);
+    border-radius: 500px;
+    flex-basis: calc(50% - 4px);
+    display: flex
+;
+    align-items: center;
+    gap: 16px;
+}
+
+.rbt-performance-feature-list .rbt-performance-feature .rbt-feature-score {
+    color: var(--color-success);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-b1);
+    font-weight: var(--f-bold);
+    line-height: 1.12;
+}
+
+.rbt-separator {
+    position: relative;
+}
+
+.rbt-separator::after {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 1px;
+    background: var(--color-border);
+    top: 50%;
+    transform: translateY(-50%);
+}
+.rbt-performance-feature-list .rbt-performance-feature .rbt-feature-text {
+    color: var(--color-black);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-b3);
+    font-weight: var(--f-medium);
+    line-height: 1.5;
+}
+
