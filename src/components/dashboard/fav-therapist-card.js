@@ -7,7 +7,7 @@ export default function FavTherapistCard({ data, removeFav }) {
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
         <div className="rbt-card-img">
-          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
+          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }} target="_blank">
             <ImageTag
               alt={data.user.name}
               style={{ height: "250px" }}
@@ -56,7 +56,7 @@ export default function FavTherapistCard({ data, removeFav }) {
           </ul>
 
           <h4 className="rbt-card-title">
-            <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
+            <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }} target="_blank">
               {data.user.name}
             </Link>
           </h4>

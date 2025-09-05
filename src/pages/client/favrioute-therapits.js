@@ -62,8 +62,8 @@ export default function FavriouteTherapistPage() {
     <UserLayout>
       <PageWrapper pageTitle={"Favrioute Therapist"} loading={loading}>
         <div className="row gy-5">
-          {data && data.length > 0 ? (
-            data.map((item) => {
+          {data && Object.keys(data).length > 0 ? (
+           data.therapists.length>0 && data.therapists.map((item) => {
               return (
                 <div className="col-lg-4 col-md-6 col-12" key={item._id}>
                   <FavTherapistCard

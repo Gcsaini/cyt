@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import UserLayout from "../../components/dashboard/user-layout";
 import { fetchById } from "../../utils/actions";
-import {   GetMyWorkshopBooking} from "../../utils/url";
+import { GetMyWorkshopBooking } from "../../utils/url";
 import PageWrapper from "../../components/global/page-wrapper";
 import CreateTable from "../../components/global/create-table";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 const columns = [
   "Posted By",
-  "Category",
   "Title",
+  "Category",
   "Level",
   "Event Date",
-  "Paid Amount",
-  "Language",
+  "Student",
   "Payment Status",
 ];
 
@@ -47,22 +47,47 @@ export default function MyWorkshopBookingsPage() {
               {data.map((item) => {
                 return (
                   <tr>
-                    <th>{item.workshop.post_by.user.name}</th>
+                    <td>
+                      <Link to={`/view-profile/${item.workshop.post_by._id}`} target="_blank"><span style={{ fontSize: "14px", color: "#2e70afff", cursor: "pointer" }}>{item.workshop.post_by.profile_code}</span></Link>
+                      <br /> <span style={{ fontSize: "15px", lineHeight: 1.3, display: "inline-block" }}>{item.workshop.post_by.user.name}</span>
+                    </td>
+                    
+                    <td title={item.workshop?.title}>
+                      <Link to={`/workshop-detail/${item.workshop._id}`} target="_blank"><span style={{ fontSize: "14px", lineHeight: 1.3, display: "inline-block",color: "#2e70afff", cursor: "pointer" }}>
+                        {item.workshop?.title?.slice(0, 15)}
+                        {item.workshop?.title?.length > 15 && "..."}
+                      </span>
+                      </Link>
+                    </td>
                     <td>{item.workshop.category}</td>
-                    <td title={item.workshop.title}>{item.title?.length > 20
-                        ? item.workshop.title.substring(0, 20) + "..."
-                        : item.workshop.title}</td>
                     <td>
-                      {item.workshop.level}
-                    </td>
-                    <td>{item.workshop.event_date}</td>
-                    <td>{item.amount}</td>
-                    <td title={item.workshop.language}>
-                      {item.workshop.language}
+                      <span className="apponitment-types" style={{ marginTop: "-8px" }}>
+                        <li>{item.workshop.level}</li>
+                      </span>
+                      <span style={{ fontSize: "14px", lineHeight: 1.3, display: "inline-block" }}>
+                        {item.workshop.language}
+                      </span>
                     </td>
                     <td>
-                      {item.transaction.status.name}
+                      <span style={{ fontSize: "14px", lineHeight: 1.3, display: "inline-block" }}>
+                        {item.workshop.event_date}
+                      </span></td>
+                     <td>
+                       {item.is_student?
+                       <>
+                        <span style={{fontSize:"13px"}} title={item.program_name}> {item.program_name.slice(0, 15)}
+                        {item.program_name.length > 15 && "..."}</span>
+                        <span style={{fontSize:"13px"}} title={item.institution_name}> {item.institution_name.slice(0,15)}
+                           {item.institution_name.length > 15 && "..."}
+                        </span>
+                          </>:"-"
+                        }
                     </td>
+                    <td>
+                      <span class="rbt-badge-5 bg-primary-opacity">{item.transaction.status.name}</span>
+                      <span style={{ fontSize: "14px" }}>₹ {item.transaction.amount}</span>
+                    </td>
+
                   </tr>
                 );
               })}
