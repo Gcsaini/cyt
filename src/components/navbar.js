@@ -201,7 +201,7 @@ export default function App() {
             <div className="rbt-btn-wrapper mb--20">
               <Link
                 className="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center"
-                to="/view-all-therapist" 
+                to="/login" 
                     style={{ cursor: "pointer" }}
               >
                 <span>Get Started</span>

@@ -36,7 +36,7 @@ export default function CallToAction() {
                 <div className="slider-btn">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
-                    href="/05-classic-lms#"
+                    href="/contact-us"
                   >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Get Started</span>
