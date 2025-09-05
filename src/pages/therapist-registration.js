@@ -216,17 +216,10 @@ export default function TherapistRegistration() {
                         Marketing and Promotion: Leverage our marketing efforts
                         to increase your visibility and attract more clients.
                       </li>
-                      <li>
-                        Professional Growth: Participate in workshops, seminars,
-                        and training programs to enhance your skills and
-                        knowledge.
-                      </li>
+                     
                     </ul>
                     <p className="note">
-                      Please note: Therapists are not employees of Choose Your
-                      Therapist LLP. They provide their services independently.
-                      We approve them based on their qualifications and
-                      experience criteria.
+                     Therapists on our platform are independent practitioners, not employees of Choose Your Therapist LLP. Each therapist is approved based on recognized qualifications (e.g., M.A./M.Sc. in Psychology, M.Phil. in Clinical Psychology, Psychiatric Social Work, or equivalent), relevant training, certifications, and professional experience.
                     </p>
                     <div className="rating mb--20">
                       <i className="fa fa-star"></i>
@@ -280,13 +273,13 @@ export default function TherapistRegistration() {
                         </Link>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                            Join Over 50+ Experts
+                            100 + Resume Recieved
                           </h5>
                           <p className="subtitle">
                             <input type="checkbox" id="criteriaCheckbox" />
                             <label htmlFor="criteriaCheckbox">
                               For more information, please refer to our criteria
-                              <Link to="link">here</Link>.
+                              <Link to="link"> here.</Link>
                             </label>
                           </p>
                         </div>
