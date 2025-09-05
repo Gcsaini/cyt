@@ -4,7 +4,7 @@ export default function NotifyBar() {
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-5 col-12 d-none d-md-block">
                         <div class="fancy-menu-text fancu-menu-start">
-                            <p>This is your safe corner for therapy, learning, and self-discovery.<i class="feather-chevron-right"></i></p>
+                            <p>Your space for therapy and growth.<i class="feather-chevron-right"></i></p>
                         </div>
                     </div>
                 </div>
