@@ -12,8 +12,7 @@ export default function AboutCyt() {
                 data-sal="slide-up"
                 data-sal-duration="700"
               >
-                About the platform where we provide you a path for your mental
-                wellness.
+               Therapists Who Care, A Platform That Connects..
               </h2>
             </div>
           </div>
@@ -23,13 +22,9 @@ export default function AboutCyt() {
             data-sal-duration="700"
           >
             <p className="mb--40 mb_sm--20">
-              Choose Your Therapist LLP was founded in 2020 amidst the COVID-19
-              pandemic to address the growing need for accessible mental health
-              care. CYT is a registered mental health platform operating under
-              the legal frameworks of the MCA (Ministry of Corporate Affairs)
-              and MSME (Micro, Small, and Medium Enterprises). Our platform
-              serves as a bridge between individuals seeking mental health
-              support and experienced counselors.
+             Choose Your Therapist LLP was born out of an idea during the COVID-19 pandemic in 2020, when the need for accessible and trusted mental health care became more evident than ever. What began as a simple initiative through an Instagram page and late-night website experiments gradually took shape into a structured platform.
+On 16th July 2021, Choose Your Therapist LLP was officially incorporated, making the vision a registered reality. Today, CYT operates under the legal frameworks of the Ministry of Corporate Affairs (MCA) and MSME (Micro, Small, and Medium Enterprises).
+Rather than being “just a platform,” Choose Your Therapist is a continuing journey — connecting individuals with mental health professionals, fostering awareness, and creating safe spaces where therapy is approachable and trusted.
             </p>
             <div className="readmore-btn">
               <Link
