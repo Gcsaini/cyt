@@ -7,11 +7,11 @@ export default function FavTherapistCard({ data, removeFav }) {
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
         <div className="rbt-card-img">
-          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }} target="_blank">
+          <Link to={`/view-profile/${data.therapist._id}`} style={{ cursor: "pointer" }} target="_blank">
             <ImageTag
-              alt={data.user.name}
+              alt={data.therapist.user.name}
               style={{ height: "250px" }}
-              src={`${imagePath}/${data.user.profile}`}
+              src={`${imagePath}/${data.therapist.user.profile}`}
             />
           </Link>
           <div
@@ -31,7 +31,7 @@ export default function FavTherapistCard({ data, removeFav }) {
               alignItems: "center",
               cursor: "pointer",
             }}
-            onClick={() => removeFav(data._id)}
+            onClick={() => removeFav(data.therapist._id)}
           >
             <a
               class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
@@ -47,17 +47,17 @@ export default function FavTherapistCard({ data, removeFav }) {
           <ul className="rbt-meta">
             <li style={{ fontSize: 16 }}>
               <i className="feather-message-circle"></i>
-              {data.language_spoken}
+              {data.therapist.language_spoken}
             </li>
             <li style={{ fontSize: 16 }}>
               <i className="feather-map-pin"></i>
-              {data.state}
+              {data.therapist.state}
             </li>
           </ul>
 
           <h4 className="rbt-card-title">
-            <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }} target="_blank">
-              {data.user.name}
+            <Link to={`/view-profile/${data.therapist._id}`} style={{ cursor: "pointer" }} target="_blank">
+              {data.therapist.user.name}
             </Link>
           </h4>
           <div style={{ marginTop: 7, display: "flex" }}>
@@ -65,7 +65,7 @@ export default function FavTherapistCard({ data, removeFav }) {
               <i className="feather-user"></i>
             </span>
             <span style={{ fontSize: 16, marginLeft: 5 }}>
-              {data.profile_type}
+              {data.therapist.profile_type}
             </span>
           </div>
 
@@ -86,7 +86,7 @@ export default function FavTherapistCard({ data, removeFav }) {
               justifyContent: "center",
             }}
           >
-            <Link className="rbt-btn btn-gradient book-btn" to={`/therapist-checkout/${data._id}`}>
+            <Link className="rbt-btn btn-gradient book-btn" to={`/therapist-checkout/${data.therapist._id}`}>
               <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
             </Link>
           </div>

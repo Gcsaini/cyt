@@ -9,6 +9,7 @@ import {
 } from "../../utils/url";
 import { errorColor } from "../../utils/colors";
 import PageWrapper from "../../components/global/page-wrapper";
+import { toast } from "react-toastify";
 
 export default function FavriouteTherapistPage() {
   const [data, setData] = React.useState([]);
@@ -38,19 +39,19 @@ export default function FavriouteTherapistPage() {
   };
 
   const handleRemoveFav = async (id) => {
-    setError("");
-    const filter = data.filter((item) => item._id !== id);
+    const filter = data.filter((item) => item.therapist._id !== id);
     setData(filter);
     try {
       const response = await postData(RemoveFavriouteTherapistUrl, {
         therapistId: id,
       });
       if (!response.status) {
-        setError(response.message);
+        toast.error(response.message);
         getData();
       }
+      toast.success(response.message);
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -63,7 +64,7 @@ export default function FavriouteTherapistPage() {
       <PageWrapper pageTitle={"Favrioute Therapist"} loading={loading}>
         <div className="row gy-5">
           {data && Object.keys(data).length > 0 ? (
-           data.therapists.length>0 && data.therapists.map((item) => {
+           data.length>0 && data.map((item) => {
               return (
                 <div className="col-lg-4 col-md-6 col-12" key={item._id}>
                   <FavTherapistCard
