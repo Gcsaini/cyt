@@ -8,9 +8,8 @@ export default function DashInfo() {
                         <i class="feather-heart"></i>
                     </div>
                     <div class="feature-content">
-                        <h6 class="feature-title">Flexible Classes</h6>
-                        <p class="feature-description">It is a long established fact that a reader will
-                            be distracted by this on readable content of when looking at its layout.</p>
+                        <h6 class="feature-title">Mind Matters</h6>
+                        <p class="feature-description">Mental health shapes how we think, feel, and cope every day. Caring for it is as important as caring for your body.</p>
                     </div>
                 </div>
 
@@ -19,8 +18,8 @@ export default function DashInfo() {
                         <i class="feather-book"></i>
                     </div>
                     <div class="feature-content">
-                        <h6 class="feature-title">Learn From Anywhere</h6>
-                        <p class="feature-description">Sed distinctio repudiandae eos recusandae laborum eaque non eius iure suscipit laborum eaque non eius iure suscipit.</p>
+                        <h6 class="feature-title">Power of Therapy</h6>
+                        <p class="feature-description">Therapy is your safe space to talk, heal, and reflect. It helps reduce stress, build clarity, and strengthen self-growth.</p>
                     </div>
                 </div>
 
@@ -33,9 +32,8 @@ export default function DashInfo() {
                         <i class="feather-heart"></i>
                     </div>
                     <div class="feature-content">
-                        <h6 class="feature-title">Flexible Classes</h6>
-                        <p class="feature-description">It is a long established fact that a reader will
-                            be distracted by this on readable content of when looking at its layout.</p>
+                        <h6 class="feature-title">Support Groups</h6>
+                        <p class="feature-description">Be part of safe, supportive communities where you can share, listen, and grow together with people who understand.</p>
                     </div>
                 </div>
 
@@ -44,8 +42,8 @@ export default function DashInfo() {
                         <i class="feather-book"></i>
                     </div>
                     <div class="feature-content">
-                        <h6 class="feature-title">Learn From Anywhere</h6>
-                        <p class="feature-description">Sed distinctio repudiandae eos recusandae laborum eaque non eius iure suscipit laborum eaque non eius iure suscipit.</p>
+                        <h6 class="feature-title">Wellness for All</h6>
+                        <p class="feature-description">Mental wellness is for all. Whether facing challenges or seeking growth, this platform guides you toward balance and peace.</p>
                     </div>
                 </div>
 
