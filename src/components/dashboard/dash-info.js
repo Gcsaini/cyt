@@ -3,7 +3,7 @@ export default function DashInfo() {
 
         <div class="col-lg-6">
             <div class="rbt-feature-wrapper">
-                <div class="rbt-feature feature-style-1">
+                <div class="rbt-feature feature-style-2">
                     <div class="icon bg-pink-opacity">
                         <i class="feather-heart"></i>
                     </div>
@@ -14,7 +14,7 @@ export default function DashInfo() {
                     </div>
                 </div>
 
-                <div class="rbt-feature feature-style-1">
+                <div class="rbt-feature feature-style-2">
                     <div class="icon bg-primary-opacity">
                         <i class="feather-book"></i>
                     </div>
