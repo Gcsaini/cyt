@@ -10,6 +10,7 @@ import PageProgressBar from "../../components/global/page-progress";
 
 export default function AppointmentsPage() {
   const [data, setData] = useState([]);
+  const [statusList, setDataList] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getData = async () => {
@@ -18,6 +19,7 @@ export default function AppointmentsPage() {
       const res = await fetchById(getBookings);
       if (res.status) {
         setData(res.data);
+        setDataList(res.statuslist);
       } else {
         toast.error(res.message);
       }
@@ -35,7 +37,7 @@ export default function AppointmentsPage() {
     <MainLayout>
         <AppointmentPageSidebar />
         <AppointmentTabHead />
-        {loading ? <PageProgressBar /> : data && data.length > 0 && <AppointmentsContent appointments={data} />}
+        {loading ? <PageProgressBar /> : data && data.length > 0 && <AppointmentsContent appointments={data} statusList={statusList} onRefresh={getData}/>}
       </MainLayout>
   );
 }

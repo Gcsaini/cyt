@@ -78,3 +78,6 @@ export const UpdateCoupansUrl = `${apiUrl}/coupon/update`;
 export const DeleteCoupansUrl = `${apiUrl}/coupon/delete`;
 export const ToggleCoupanStatusUrl = `${apiUrl}/coupon/status`;
 export const ApplyCouponUrl = `${apiUrl}/coupon/apply`;
+export const UpdatePaymentStatusUrl = `${apiUrl}/update-payment-status`;
+export const StartSessionUrl = `${apiUrl}/start-session`;
+export const EndSessionUrl = `${apiUrl}/end-session`;

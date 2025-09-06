@@ -526,16 +526,17 @@ export default function TherapistCheckout({ profile }) {
                             Select
                           </option>
                           <option value="Brother">Brother</option>
-                          <option value="Brother">Cousine</option>
+                          <option value="Friend">Friend</option>
+                          <option value="Cousine">Cousine</option>
                           <option value="Sister">Sister</option>
-                          <option value="Sister">Daughter</option>
-                          <option value="Sister">Son</option>
+                          <option value="Daughter">Daughter</option>
+                          <option value="Son">Son</option>
                           <option value="Spouse">Spouse</option>
                           <option value="Mother">Mother</option>
                           <option value="Father">Father</option>
-                          <option value="Father">Grand Father</option>
-                          <option value="Father">Grand Mother</option>
-                           <option value="Father">Other</option>
+                          <option value="Grand Father">Grand Father</option>
+                          <option value="Grand Mother">Grand Mother</option>
+                           <option value="Other">Other</option>
                         </select>
                       </div>
                     </>

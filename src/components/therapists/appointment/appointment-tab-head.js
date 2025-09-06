@@ -33,20 +33,19 @@ export default function AppointmentTabHead({ setActiveTab }) {
               Completed<span>214</span>
             </button>
           </li>
-        </ul>
-      </div>
-      <div className="filter-head">
-        <div className="position-relative daterange-wraper me-2">
-          <div className="input-groupicon calender-input">
+          <li className="nav-item" role="presentation"> <div className="position-relative daterange-wraper me-2">
+          <div className="input-groupicon calender-input" >
             <input
               type="text"
               className="form-control date-range bookingrange"
               placeholder="From Date - To Date"
+              style={{height:36}}
             />
           </div>
           <i className="fa-solid fa-calendar-days"></i>
-        </div>
-        <div className="form-sorts dropdown">
+        </div></li>
+        <li className="nav-item" role="presentation"> 
+           <div className="form-sorts dropdown">
           <a
             href="javascript:void(0);"
             className="dropdown-toggle"
@@ -156,7 +155,10 @@ export default function AppointmentTabHead({ setActiveTab }) {
             </div>
           </div>
         </div>
+          </li>
+        </ul>
       </div>
+     
     </div>
   );
 }

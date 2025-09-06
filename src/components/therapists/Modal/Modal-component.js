@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 
 
 
-export default function ModalComponent({ open, handleClose,width="60%", children }) {
+export default function ModalComponent({ open, handleClose,width="60%", content }) {
 
   const style = {
   position: "absolute",
@@ -25,7 +25,7 @@ export default function ModalComponent({ open, handleClose,width="60%", children
       aria-describedby="modal-modal-description"
     >
       <Box sx={style} className="modal-box">
-        {children}
+        {content}
       </Box>
     </Modal>
   );

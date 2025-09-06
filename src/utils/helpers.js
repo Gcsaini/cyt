@@ -1,3 +1,6 @@
+import { SESSION_STATUS } from "./constant";
+import { formatDateTime } from "./time";
+
 export const truncateString = (str, maxLength = 50) => {
   if (str.length <= maxLength) {
     return str;
@@ -115,3 +118,36 @@ export const getServiceFormats = (obj) => {
 
   return serviceOption;
 };
+
+export const getStatusColor = (status) => {
+  let color = "bg-color-success-opacity color-success";
+  if (status === SESSION_STATUS.COMPLETED || status === SESSION_STATUS.STARTED) {
+    color = "bg-color-success-opacity color-success";
+  }
+  if (status === SESSION_STATUS.NEW) {
+    color = "bg-color-warning-opacity color-warning";
+  }
+  if (status === SESSION_STATUS.CANCELED) {
+    color = "bg-color-danger-opacity color-danger";
+  }
+  return color;
+
+}
+
+export const getDateTime = (item) => {
+  let dateTime = "";
+  if (item.status === SESSION_STATUS.COMPLETED) {
+    dateTime =formatDateTime(item.session_completed_at);
+  }
+  if (item.status === SESSION_STATUS.NEW) {
+    dateTime =formatDateTime(item.booking_date);
+  }
+  if (item.status === SESSION_STATUS.STARTED) {
+    dateTime =formatDateTime(item.session_started_at);
+  }
+   if (item.status === SESSION_STATUS.CANCELED) {
+    dateTime =formatDateTime(item.session_started_at);
+  }
+  return dateTime;
+
+}
