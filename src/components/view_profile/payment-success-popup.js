@@ -7,11 +7,11 @@ const {
   DialogActions,
 } = require("@mui/material");
 
-export default function PaymentSuccessModal({ open, onClose }) {
+export default function PaymentSuccessModal({ open, onClose,navigateTo="/" }) {
   const [timeLeft, setTimeLeft] = useState(15);
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate("/");
+    navigate(navigateTo);
   };
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function PaymentSuccessModal({ open, onClose }) {
     let redirectTimer;
 
     if (open) {
-      // countdown timer
       countdown = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev > 0) return prev - 1;
@@ -27,7 +26,6 @@ export default function PaymentSuccessModal({ open, onClose }) {
         });
       }, 1000);
 
-      // redirect after 15 seconds
       redirectTimer = setTimeout(() => {
         navigate("/");
       }, 15000);

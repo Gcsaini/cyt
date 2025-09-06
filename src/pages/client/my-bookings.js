@@ -48,7 +48,7 @@ export default function MyBookingsPage() {
             <CreateTable columns={columns}>
               {data.map((item) => {
                 return (
-                  <tr>
+                  <tr key={item._id}>
                     <td>
                        <Link to={`/view-profile/${item.therapist._id}`} target="_blank"><span style={{fontSize:"14px",color:"#2e70afff",cursor:"pointer"}}>{item.therapist.profile_code}</span></Link>
                      <br/> <span style={{fontSize:"15px",lineHeight:1.3,display:"inline-block"}}>{item.therapist.user.name}</span>
@@ -86,7 +86,7 @@ export default function MyBookingsPage() {
                          </>:""}
                         </td>
                     <td>
-                      <span class="rbt-badge-5 bg-primary-opacity">{item.transaction.status.name}</span>
+                      <span className="rbt-badge-5 bg-primary-opacity">{item.transaction.status.name}</span>
                       <span style={{fontSize:"14px"}}>₹ {item.transaction.amount}</span>
                     </td>
                   </tr>

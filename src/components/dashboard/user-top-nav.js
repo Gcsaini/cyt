@@ -9,6 +9,12 @@ export default function UserDashboardTopNav() {
   const { userInfo } = useUserStore();
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
+
+
+ const handleLogout = () => {
+    removeToken();
+    navigate("/login");
+  };
   return (
     <>
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>
@@ -74,28 +80,14 @@ export default function UserDashboardTopNav() {
               </li>
               <li className="position-static">
                 <Link
-                  onClick={() => {
-                    removeToken();
-                    navigate("/login");
-                  }}
+                  onClick={handleLogout}
                   style={{ cursor: "pointer" }}
                 >
                   <i className="feather-log-out"></i>
                   <span>Logout</span>
                 </Link>
               </li>
-              {/* <li className="position-static">
-                <Link to="/my-courses" style={{ cursor: "pointer" }}>
-                  Enrolled Courses/workshops
-                  <i className="feather-chevron-down"></i>
-                </Link>
-              </li>
-              <li className="position-static">
-                <Link to="/my-reports" style={{ cursor: "pointer" }}>
-                  Reports
-                  <i className="feather-chevron-down"></i>
-                </Link>
-              </li> */}
+             
             </ul>
           </nav>
         </div>
@@ -167,13 +159,20 @@ export default function UserDashboardTopNav() {
                           <li>
                             <Link to="/my-therapists">
                               <i className="feather-shopping-bag"></i>
-                              <span>Favrioute Therapist</span>
+                              <span>My Care</span>
                             </Link>
                           </li>
                           <li>
                             <Link to="/my-bookings">
                               <i className="feather-shopping-bag"></i>
                               <span>My Bookings</span>
+                            </Link>
+                          </li>
+                          
+                           <li>
+                            <Link to="/my-workshop-bookings">
+                              <i className="feather-shopping-bag"></i>
+                              <span>Events & Vibes</span>
                             </Link>
                           </li>
                           <li>
@@ -188,10 +187,8 @@ export default function UserDashboardTopNav() {
                         <ul className="user-list-wrapper">
                           <li>
                             <Link
-                              onClick={() => {
-                                removeToken();
-                                navigate("/login");
-                              }}
+                              onClick={handleLogout}
+                              style={{ cursor: "pointer" }}
                             >
                               <i className="feather-log-out"></i>
                               <span>Logout</span>

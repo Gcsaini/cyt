@@ -14,6 +14,7 @@ import FormProgressBar from "../../global/form-progressbar";
 import { postData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import { toast } from "react-toastify";
+import { getToken } from "../../../utils/jwt";
 
 
 export default function WorkshopCheckout({ data }) {
@@ -52,9 +53,6 @@ export default function WorkshopCheckout({ data }) {
         discount_value: 0,
         afterdiscount: 0
     })
-
-    console.log("afte discount", amountInfo);
-
 
     const handleStudentChange = (e) => {
         setInfo((prev) => ({
@@ -163,11 +161,12 @@ export default function WorkshopCheckout({ data }) {
     };
 
     const setConfigFn = async (data) => {
+         const token = getToken();
         setInfo((prev) => ({
             ...prev,
             therapist: data.post_by._id,
             amount: data.price,
-            is_logged_in: userInfo.email ? true : false,
+            is_logged_in: token ? true : false,
             user_id: userInfo._id || "",
             workshopId: data._id,
             email: userInfo.email || "",

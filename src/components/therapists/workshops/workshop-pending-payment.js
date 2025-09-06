@@ -7,6 +7,7 @@ import QrcodeCard from "../../global/qrcode-card";
 import FormProgressBar from "../../global/form-progressbar";
 import PaymentSuccessModal from "../../view_profile/payment-success-popup";
 import { saveWorkshopPaymentUrl } from "../../../utils/url";
+import { getToken, setToken } from "../../../utils/jwt";
 export default function WorkshopPaymentPending({ pageData }) {
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -31,7 +32,11 @@ export default function WorkshopPaymentPending({ pageData }) {
         setLoading(true);
         const response = await postData(saveWorkshopPaymentUrl, data);
         if (response.status) {
-          setSuccess("Payment Recevided successfully");
+          const token = getToken();
+          if(!token){
+            setToken(response.token);
+          }
+          setSuccess("Payment Recevide successfully");
           setOpen(true);
           setLoading(false);
         } else {
@@ -101,7 +106,7 @@ export default function WorkshopPaymentPending({ pageData }) {
           )}
         </div>
       </div>
-      <PaymentSuccessModal open={open} onClose={() => setOpen(false)} />
+      <PaymentSuccessModal open={open} onClose={() => setOpen(false)} navigateTo="/my-workshop-bookings" />
     </div>
   );
 }

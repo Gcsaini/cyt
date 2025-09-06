@@ -15,6 +15,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { toast } from "react-toastify";
+import { getToken } from "../../utils/jwt";
 const styles = {
   iconStyle: {
     fontSize: 12,
@@ -298,10 +299,11 @@ export default function TherapistCheckout({ profile }) {
           afterdiscount: firstFormat.fee
         }))
       }
+      const token = getToken();
       setInfo((prev) => ({
         ...prev,
         therapist: profile._id,
-        is_logged_in: userInfo.email ? true : false,
+        is_logged_in: token ? true : false,
         user_id: userInfo._id || "",
         email: userInfo.email || "",
       }));
@@ -641,7 +643,7 @@ export default function TherapistCheckout({ profile }) {
                     {couponError && <span style={{ color: "red", fontSize: "12px", }}>{couponError}</span>}
                   </div>
                   <div >
-                    <a class="rbt-btn btn-sm" onClick={handleCouponApply}>Apply</a>
+                    <a className="rbt-btn btn-sm" onClick={handleCouponApply}>Apply</a>
                   </div>
                 </div>
 

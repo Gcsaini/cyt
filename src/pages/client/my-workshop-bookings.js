@@ -46,7 +46,7 @@ export default function MyWorkshopBookingsPage() {
             <CreateTable columns={columns}>
               {data.map((item) => {
                 return (
-                  <tr>
+                  <tr key={item._id}>
                     <td>
                       <Link to={`/view-profile/${item.workshop.post_by._id}`} target="_blank"><span style={{ fontSize: "14px", color: "#2e70afff", cursor: "pointer" }}>{item.workshop.post_by.profile_code}</span></Link>
                       <br /> <span style={{ fontSize: "15px", lineHeight: 1.3, display: "inline-block" }}>{item.workshop.post_by.user.name}</span>
@@ -75,16 +75,16 @@ export default function MyWorkshopBookingsPage() {
                      <td>
                        {item.is_student?
                        <>
-                        <span style={{fontSize:"13px"}} title={item.program_name}> {item.program_name.slice(0, 15)}
-                        {item.program_name.length > 15 && "..."}</span>
-                        <span style={{fontSize:"13px"}} title={item.institution_name}> {item.institution_name.slice(0,15)}
+                        <span style={{fontSize:"13px", lineHeight: 1.3, display: "inline-block"}} title={item.program_name}> {item.program_name.slice(0, 15)}
+                        {item.program_name.length > 15 && "..."}</span><br/>
+                        <span style={{fontSize:"13px", lineHeight: 1.3, display: "inline-block",paddingTop:"-10px"}} title={item.institution_name}> {item.institution_name.slice(0,15)}
                            {item.institution_name.length > 15 && "..."}
                         </span>
                           </>:"-"
                         }
                     </td>
                     <td>
-                      <span class="rbt-badge-5 bg-primary-opacity">{item.transaction.status.name}</span>
+                      <span className="rbt-badge-5 bg-primary-opacity">{item.transaction.status.name}</span>
                       <span style={{ fontSize: "14px" }}>₹ {item.transaction.amount}</span>
                     </td>
 
