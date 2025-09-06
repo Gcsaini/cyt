@@ -199,6 +199,17 @@ export default function ProfileHeader(props) {
                         <a onClick={handleShare} style={{ cursor: "pointer" }}>
                           <i className="feather-share"></i>
                         </a>
+                        <Link
+                                      className="rbt-btn btn-gradient book-btn"
+                                      to={`/therapist-checkout/${data._id}`}
+                                      style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        padding: isTablet ? "0 27px" : "0 27px",
+                                      }}
+                                    >
+                                      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+                                    </Link>
                       </li>
                     </ul>
                   </ul>
