@@ -44846,7 +44846,7 @@ blockquote.has-text-align-right cite {
 .rbt-performance-feature-list .rbt-performance-feature .rbt-feature-text {
     color: var(--color-black);
     font-family: var(--font-primary);
-    font-size: var(--font-size-b3);
+    font-size: var(--font-size-b1);
     font-weight: var(--f-medium);
     line-height: 1.5;
 }

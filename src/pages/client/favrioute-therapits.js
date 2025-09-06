@@ -50,7 +50,7 @@ export default function FavriouteTherapistPage() {
 
   return (
     <UserLayout>
-      <PageWrapper pageTitle={"Favrioute Therapist"} loading={loading}>
+      <PageWrapper pageTitle={"Shortlist Therapist"} loading={loading}>
         <div className="row gy-5">
           {data && Object.keys(data).length > 0 ? (
            data.length>0 && data.map((item) => {

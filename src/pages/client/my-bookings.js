@@ -42,7 +42,7 @@ export default function MyBookingsPage() {
 
   return (
     <UserLayout>
-      <PageWrapper pageTitle={"Appointments"} loading={loading}>
+      <PageWrapper pageTitle={"My Bookings"} loading={loading}>
         <div className="row gy-5">
           {data && data.length > 0 ? (
             <CreateTable columns={columns}>

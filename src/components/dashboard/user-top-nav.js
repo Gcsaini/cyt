@@ -45,7 +45,7 @@ export default function UserDashboardTopNav() {
             <ul className="mainmenu">
               <li className="position-static">
                 <Link to="/my-dashboard" style={{ cursor: "pointer" }}>
-                  Dashboard<i className="feather-chevron-down"></i>
+                 Home Base<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               {/* <li className="position-static">
@@ -54,13 +54,13 @@ export default function UserDashboardTopNav() {
                 </Link>
               </li> */}
               <li className="position-static">
-                <Link to="/my-appointments" style={{ cursor: "pointer" }}>
-                  Appointments<i className="feather-chevron-down"></i>
+                <Link to="/my-bookings" style={{ cursor: "pointer" }}>
+                  My Bookings<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               <li className="position-static">
                 <Link to="/my-therapists" style={{ cursor: "pointer" }}>
-                  Favrioute Therapist<i className="feather-chevron-down"></i>
+                  My Care<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               {/* <li className="position-static">
@@ -68,23 +68,25 @@ export default function UserDashboardTopNav() {
                   Rewiews<i className="feather-chevron-down"></i>
                 </Link>
               </li> */}
-              <li className="position-static">
-                <Link to="/my-bookings" style={{ cursor: "pointer" }}>
-                  Booking History<i className="feather-chevron-down"></i>
-                </Link>
-              </li>
+
               <li className="position-static">
                 <Link to="/my-workshop-bookings" style={{ cursor: "pointer" }}>
-                  Event Booking<i className="feather-chevron-down"></i>
+                  Events & Vibes<i className="feather-chevron-down"></i>
                 </Link>
               </li>
+                <li className="position-static">
+                <Link to="/my-settings" style={{ cursor: "pointer" }}>
+                  My Edit<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              
               <li className="position-static">
                 <Link
                   onClick={handleLogout}
                   style={{ cursor: "pointer" }}
                 >
                   <i className="feather-log-out"></i>
-                  <span>Logout</span>
+                  <span>Sign Out</span>
                 </Link>
               </li>
              
