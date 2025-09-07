@@ -102,17 +102,7 @@ export default function MainLayout(props) {
                                   >
                                     <i className="fa-solid fa-file-invoice"></i>
                                     <span>Billing</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
+                                   
                                   </Link>
                                 </li>
 
@@ -124,17 +114,7 @@ export default function MainLayout(props) {
                                   >
                                     <i className="feather-star"></i>
                                     <span>Feedback</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
+                                    
                                   </Link>
                                 </li>
                               </ul>
@@ -160,17 +140,7 @@ export default function MainLayout(props) {
                                   <Link className="" to="">
                                     <i className="fa-solid fa-file-medical"></i>
                                     <span>Case history</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
+                                   
                                   </Link>
                                 </li>
                                 <li>
@@ -208,17 +178,7 @@ export default function MainLayout(props) {
                                   >
                                     <i className="fa-solid fa-blog"></i>
                                     <span>Blog</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: 10,
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
+                                   
                                   </Link>
                                 </li>
                               </ul>
