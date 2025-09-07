@@ -89,7 +89,7 @@ export default function MainLayout(props) {
                                     to="/appointments"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Appointments</span>
+                                    <span>My Sessions</span>
                                     
                                   </Link>
                                 </li>
@@ -101,7 +101,7 @@ export default function MainLayout(props) {
                                     // to="/invoices"
                                   >
                                     <i className="fa-solid fa-file-invoice"></i>
-                                    <span>Invoices</span>
+                                    <span>Billing</span>
                                     <span
                                       style={{
                                         backgroundColor: "rgb(250, 10, 10)",
@@ -123,7 +123,7 @@ export default function MainLayout(props) {
                                     to=""
                                   >
                                     <i className="feather-star"></i>
-                                    <span>Reviews</span>
+                                    <span>Feedback</span>
                                     <span
                                       style={{
                                         backgroundColor: "rgb(250, 10, 10)",
@@ -184,7 +184,7 @@ export default function MainLayout(props) {
                                     to="/workshops"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Events</span>
+                                    <span>Create Programs</span>
                                   </Link>
                                 </li>
                                 <li>
@@ -198,7 +198,7 @@ export default function MainLayout(props) {
                                     to="/coupons"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Coupons</span>
+                                    <span>Create Coupons</span>
                                   </Link>
                                 </li>
                                 <li>
@@ -238,7 +238,7 @@ export default function MainLayout(props) {
                                     to="/settings"
                                   >
                                     <i className="feather-settings"></i>
-                                    <span>Settings</span>
+                                    <span>Edit Profile</span>
 
                                     {profileSet ? (
                                       <CircleIcon
