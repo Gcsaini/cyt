@@ -138,13 +138,14 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
             </Link>
             <Link
               className="rbt-btn btn-gradient book-btn"
-              to="#"
+              to={`/therapist-checkout/${pageData._id}`}
               style={{
                 display: "flex",
                 justifyContent: "center",
                 padding: isMobile || isTablet ? "0 20px" : "0 16px",
               }}
             >
+
               <span>Book Now</span>
             </Link>
           </div>

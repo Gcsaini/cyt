@@ -7,7 +7,7 @@ export default function BookBtn() {
       to=""
       style={{ display: "flex", justifyContent: "center" }}
     >
-      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+      <span>Book Now</span>
     </Link>
   );
 }

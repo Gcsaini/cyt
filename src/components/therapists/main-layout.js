@@ -93,50 +93,36 @@ export default function MainLayout(props) {
                                     
                                   </Link>
                                 </li>
-
-                                <li className="nav-item">
+                                <li>
                                   <Link
-                                    className=""
-                                    to=""
-                                    // to="/invoices"
+                                    className={
+                                      currentPath === "/workshops" ||
+                                      currentPath === "/create-workshop"
+                                        ? "active"
+                                        : ""
+                                    }
+                                    to="/workshops"
                                   >
-                                    <i className="fa-solid fa-file-invoice"></i>
-                                    <span>Invoices</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
+                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <span>Events</span>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className={
+                                      currentPath === "/coupons" ||
+                                      currentPath === "/create-coupon"
+                                        ? "active"
+                                        : ""
+                                    }
+                                    to="/coupons"
+                                  >
+                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <span>Coupons</span>
                                   </Link>
                                 </li>
 
-                                <li className="nav-item">
-                                  <Link
-                                    className=""
-                                    // to="/reviews"
-                                    to=""
-                                  >
-                                    <i className="feather-star"></i>
-                                    <span>Reviews</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
-                                  </Link>
-                                </li>
+                                
                               </ul>
                             </nav>
                             <div className="section-title mt--40 mb--20">
@@ -173,34 +159,8 @@ export default function MainLayout(props) {
                                     </span>
                                   </Link>
                                 </li>
-                                <li>
-                                  <Link
-                                    className={
-                                      currentPath === "/workshops" ||
-                                      currentPath === "/create-workshop"
-                                        ? "active"
-                                        : ""
-                                    }
-                                    to="/workshops"
-                                  >
-                                    <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Events</span>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className={
-                                      currentPath === "/coupons" ||
-                                      currentPath === "/create-coupon"
-                                        ? "active"
-                                        : ""
-                                    }
-                                    to="/coupons"
-                                  >
-                                    <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Coupons</span>
-                                  </Link>
-                                </li>
+                                
+                                
                                 <li>
                                   <Link
                                     className=""
@@ -213,6 +173,49 @@ export default function MainLayout(props) {
                                         backgroundColor: "rgb(250, 10, 10)",
                                         padding: "5px",
                                         marginLeft: 10,
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
+                                  </Link>
+                                </li>
+                                <li className="nav-item">
+                                  <Link
+                                    className=""
+                                    to=""
+                                    // to="/invoices"
+                                  >
+                                    <i className="fa-solid fa-file-invoice"></i>
+                                    <span>Invoices</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: "10px",
+                                        borderRadius: "5px",
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      Coming soon
+                                    </span>
+                                  </Link>
+                                </li>
+
+                                <li className="nav-item">
+                                  <Link
+                                    className=""
+                                    // to="/reviews"
+                                    to=""
+                                  >
+                                    <i className="feather-star"></i>
+                                    <span>Reviews</span>
+                                    <span
+                                      style={{
+                                        backgroundColor: "rgb(250, 10, 10)",
+                                        padding: "5px",
+                                        marginLeft: "10px",
                                         borderRadius: "5px",
                                         color: "#fff",
                                       }}

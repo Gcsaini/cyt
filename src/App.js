@@ -54,6 +54,7 @@ import CoupansPage from "./pages/therapists/coupans";
 import CreateCoupanPage from "./pages/therapists/create-coupan";
 import UpdateCoupanPage from "./pages/therapists/update-coupan";
 import AppointmentsPage from "./pages/therapists/appointment";
+import ComingSoon from "./pages/coming-soon";
 const theme = createTheme();
 
 function App() {
@@ -260,16 +261,16 @@ function App() {
                 path="/invoices"
                 element={
                   <TherapistProtectedRoute>
-                    <Invoices />
+                    <ComingSoon />
                   </TherapistProtectedRoute>
                 }
               />
 
               <Route
                 path="/reviews"
-                element={
+                element={ 
                   <TherapistProtectedRoute>
-                    <Reviews />
+                    <ComingSoon />
                   </TherapistProtectedRoute>
                 }
               />
@@ -278,20 +279,40 @@ function App() {
                 path="/notifications"
                 element={
                   <TherapistProtectedRoute>
-                    <Notification />
+                    <ComingSoon />
                   </TherapistProtectedRoute>
                 }
               />
 
-              <Route
+               <Route
                 exact
-                path="/appointments"
+                path="/case-history"
                 element={
                   <TherapistProtectedRoute>
-                    <Appointment />
+                    <ComingSoon />
                   </TherapistProtectedRoute>
                 }
               />
+               <Route
+                exact
+                path="/blogs"
+                element={
+                  <TherapistProtectedRoute>
+                    <ComingSoon />
+                  </TherapistProtectedRoute>
+                }
+              />
+
+               <Route
+                exact
+                path="/case-history"
+                element={
+                  <TherapistProtectedRoute>
+                    <ComingSoon />
+                  </TherapistProtectedRoute>
+                }
+              />
+
               <Route
                 exact
                 path="/workshops"

@@ -11,7 +11,11 @@ import {
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
 import { postData } from "../../utils/actions";
+import { Link, useNavigate } from "react-router-dom";
+import BookBtn from "../global/book-btn";
 export default function ProfileHeader(props) {
+  const navigate = useNavigate();
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const { pageData, favrioutes } = props;
   const [bookmark, setBookmark] = React.useState(false);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -63,7 +67,7 @@ export default function ProfileHeader(props) {
         title: pageData.name || "Therapist Profile",
         text: "Check out this therapist profile",
         url: profileUrl,
-        
+
       }).catch((err) => {
         console.log("Sharing failed", err);
       });
@@ -73,6 +77,10 @@ export default function ProfileHeader(props) {
         alert("Profile link copied to clipboard!");
       });
     }
+  }
+
+  const handleClick = ()=>{
+    navigate(`/therapist-checkout/${pageData._id}`);
   }
 
   React.useEffect(() => {
@@ -131,23 +139,23 @@ export default function ProfileHeader(props) {
                     </div>
                     <div className="tutor-content">
                       <div> <div className="rbt-review">
-                           <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                          </div> 
-                          </div> 
+                        <div className="rating">
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                        </div>
+                      </div>
                         <h3 className="title">
                           {pageData.user.name} &nbsp;
-                          
+
                         </h3><span className="title">
-                            {pageData.qualification}
-                          </span>
-                       
-                          
-                        
+                          {pageData.qualification}
+                        </span>
+
+
+
                         <ul className="rbt-meta rbt-meta-white mt--5">
                           <li>
                             <i className="feather-user"></i>
@@ -157,6 +165,7 @@ export default function ProfileHeader(props) {
                             <i className="feather-message-circle"></i>
                             {pageData.language_spoken}
                           </li>
+                          <li><i className="feather-map-pin"></i> {pageData.state}</li>
                         </ul>
                       </div>
                     </div>
@@ -170,9 +179,9 @@ export default function ProfileHeader(props) {
                       marginBottom: 0,
                     }}
                   >
-                    <li style={{ color: "#ffffff" }}>
+                    {/* <li style={{ color: "#ffffff" }}>
                       <i className="feather-map-pin"></i> {pageData.state}
-                    </li>
+                    </li> */}
                     <li style={{ color: whiteColor }}>
                       <i className="feather-users"></i> {pageData.user?.gender || '-'}
                     </li>
@@ -194,22 +203,28 @@ export default function ProfileHeader(props) {
                             )}
                           </a>
                         </li>
-                      )} 
+                      )}
                       <li>
                         <a onClick={handleShare} style={{ cursor: "pointer" }}>
                           <i className="feather-share"></i>
                         </a>
-                        <Link
-                                      className="rbt-btn btn-gradient book-btn"
-                                      to={`/therapist-checkout/${data._id}`}
-                                      style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        padding: isTablet ? "0 27px" : "0 27px",
-                                      }}
-                                    >
-                                      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-                                    </Link>
+                        <div className="mt--15" >
+                          <button
+                            onClick={handleClick}
+                            style={{
+                              backgroundColor: "white",
+                              borderRadius: "4px",
+                              padding: "10px 20px",
+                              border: "1px solid #ccc",
+                              cursor: "pointer",
+                              transition: "background-color 0.3s",
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0f0f0")}
+                            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "white")}
+                          >
+                            Book Now
+                          </button>
+                        </div>
                       </li>
                     </ul>
                   </ul>

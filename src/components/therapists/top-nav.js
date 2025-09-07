@@ -52,29 +52,40 @@ export default function DashboardTopNav() {
                   Appointments<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-
               <li className="position-static">
-                <Link to="/reviews" style={{ cursor: "pointer" }}>
+                <Link 
+                to="/invoices" 
+                style={{ cursor: "pointer" }}>
+                  Invoices<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              
+              <li className="position-static">
+                <Link 
+                to="/reviews" 
+                style={{ cursor: "pointer" }}>
                   Rewiews<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               <li className="position-static">
-                <Link to="/invoices" style={{ cursor: "pointer" }}>
-                  Invoices<i className="feather-chevron-down"></i>
-                </Link>
-              </li>
-              <li className="position-static">
-                <Link to="/case-history" style={{ cursor: "pointer" }}>
+                <Link 
+                to="/case-history" 
+                style={{ cursor: "pointer" }}>
                   Case History<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               <li className="position-static">
-                <Link to="/workshop-events" style={{ cursor: "pointer" }}>
-                  Workshop/Events<i className="feather-chevron-down"></i>
+                <Link to="/workshops" style={{ cursor: "pointer" }}>
+                  Events<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               <li className="position-static">
-                <Link to="/blogs-settings" style={{ cursor: "pointer" }}>
+                <Link to="/coupons" style={{ cursor: "pointer" }}>
+                  Coupons<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
+              <li className="position-static">
+                <Link to="/blogs" style={{ cursor: "pointer" }}>
                   Blog<i className="feather-chevron-down"></i>
                 </Link>
               </li>

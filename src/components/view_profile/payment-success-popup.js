@@ -5,9 +5,12 @@ const {
   DialogTitle,
   DialogContent,
   DialogActions,
+  useMediaQuery,
 } = require("@mui/material");
 
-export default function PaymentSuccessModal({ open, onClose,navigateTo="/" }) {
+export default function PaymentSuccessModal({ open, onClose, navigateTo = "/" }) {
+    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+     const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [timeLeft, setTimeLeft] = useState(15);
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -38,35 +41,36 @@ export default function PaymentSuccessModal({ open, onClose,navigateTo="/" }) {
   }, [open, navigate]);
 
   return (
-    <ModalComponent open={open} onClose={onClose} width="50%">
-      <DialogTitle>
-        <h5 className="price-title" style={{ fontSize: "16px" }}>
-          Payment Recevide🎉
-        </h5>{" "}
-      </DialogTitle>
-      <DialogContent>
-        <h6 className="price-title" style={{ fontSize: "16px" }}>
-          Your payment has been successfully processed. Thank you!
-        </h6>
-        <h6 className="price-title" style={{ fontSize: "16px" }}>
-          Redirecting to home in {timeLeft} seconds...
-        </h6>
-      </DialogContent>
-      <DialogActions>
-        <button
-          className="rbt-btn btn-gradient hover-icon-reverse"
-          onClick={handleNavigate}
-        >
-          <span className="icon-reverse-wrapper">
-            <span className="btn-text">OK</span>
-            <span className="btn-icon">
+    <ModalComponent open={open} onClose={onClose} width={isMobile?"90%":isTablet?"80%":"50%"} content={
+      <>
+        <DialogTitle>
+          <h5 className="price-title" style={{ fontSize: "16px" }}>
+            Payment Received🎉
+          </h5>{" "}
+        </DialogTitle>
+        <DialogContent>
+          <h6 className="price-title" style={{ fontSize: "16px" }}>
+            Your payment has been successfully processed. Thank you!
+          </h6>
+          <h6 className="price-title" style={{ fontSize: "16px" }}>
+            Redirecting to home in {timeLeft} seconds...
+          </h6>
+        </DialogContent>
+        <DialogActions>
+          <button
+            className="rbt-btn btn-gradient hover-icon-reverse"
+            onClick={handleNavigate}
+          >
+            <span className="icon-reverse-wrapper">
+              <span className="btn-text">OK</span>
+              <span className="btn-icon">
+              </span>
+              <span className="btn-icon">
+                <i className="feather-arrow-right"></i>
+              </span>
             </span>
-            <span className="btn-icon">
-              <i className="feather-arrow-right"></i>
-            </span>
-          </span>
-        </button>
-      </DialogActions>
-    </ModalComponent>
+          </button>
+        </DialogActions></>
+    } />
   );
 }
