@@ -87,7 +87,7 @@ const teamInfo = [
   
   {
     name: "Mr. Gopichand Saini",
-    deg: "Cheif Technology officer",
+    deg: "Chief Technology officer",
     address: " Noida, Uttarpradesh, IN",
 
     instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
