@@ -225,6 +225,23 @@ export default function ProfileHeader(props) {
                             Book Now
                           </button>
                         </div>
+                         <div className="mt--15" >
+                          <button
+                            onClick={handleShare}
+                            style={{
+                              backgroundColor: "white",
+                              borderRadius: "4px",
+                              padding: "10px 20px",
+                              border: "1px solid #ccc",
+                              cursor: "pointer",
+                              transition: "background-color 0.3s",
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0f0f0")}
+                            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "white")}
+                          >
+                            Share Now
+                          </button>
+                        </div>
                       </li>
                       
                     </ul>
