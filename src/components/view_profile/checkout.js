@@ -573,7 +573,7 @@ export default function TherapistCheckout({ profile }) {
           <div className="col-lg-5">
             <div className="col-12 mb--20">
               <div className="checkout-cart-total">
-                <h4 style={{ fontSize: 24 }}>Visit In-Person</h4>
+                <h4 style={{ fontSize: 24 }}>Choose Your Therapist LLP Office :</h4>
 
                 <div className="single-list" style={{ marginTop: 15 }}>
                   <h5 className="price-title" style={{ fontSize: "16px" }}>
