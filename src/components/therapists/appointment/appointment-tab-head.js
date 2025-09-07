@@ -12,7 +12,7 @@ export default function AppointmentTabHead({ setActiveTab }) {
               id="pills-upcoming-tab"
               type="button"
             >
-              Upcoming<span>21</span>
+              Upcoming<span>00</span>
             </button>
           </li>
           <li className="nav-item" role="presentation">
@@ -21,7 +21,7 @@ export default function AppointmentTabHead({ setActiveTab }) {
               id="pills-cancel-tab"
               type="button"
             >
-              Cancelled<span>16</span>
+              Cancelled<span>00</span>
             </button>
           </li>
           <li className="nav-item" role="presentation">
@@ -30,7 +30,7 @@ export default function AppointmentTabHead({ setActiveTab }) {
               id="pills-complete-tab"
               type="button"
             >
-              Completed<span>214</span>
+              Completed<span>00</span>
             </button>
           </li>
           <li className="nav-item" role="presentation"> <div className="position-relative daterange-wraper me-2">
