@@ -110,7 +110,7 @@ export default function ProfileHeader(props) {
             <div className="col-lg-12">
               <div
                 className="rbt-dashboard-content-wrapper"
-                style={{ marginTop: isMobile ? 60 : 0 }}
+                style={{ marginTop: isMobile ? 100 : 0 }}
               >
                 <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
                 <div
