@@ -185,49 +185,46 @@ export default function ProfileHeader(props) {
                     <li style={{ color: whiteColor }}>
                       <i className="feather-users"></i> {pageData.user?.gender || '-'}
                     </li>
-                    <ul className="social-icon social-default justify-content-start">
-                      {showBookmark && (
-                        <li>
-                          <a
-                            style={{ cursor: "pointer" }}
-                            onClick={() =>
-                              handleBookmark(pageData._id, bookmark)
-                            }
-                          >
-                            {bookmark ? (
-                              <BookmarkAddedIcon
-                                sx={{ fontSize: 24, color: "black" }}
-                              />
-                            ) : (
-                              <BookmarkBorderIcon sx={{ fontSize: 24 }} />
-                            )}
-                          </a>
-                        </li>
-                      )}
-                      <li>
-                        <a onClick={handleShare} style={{ cursor: "pointer" }}>
-                          <i className="feather-share"></i>
-                        </a>
-                        <div className="mt--15" >
-                          <button
-                            onClick={handleClick}
-                            style={{
-                              backgroundColor: "white",
-                              borderRadius: "4px",
-                              padding: "10px 20px",
-                              border: "1px solid #ccc",
-                              cursor: "pointer",
-                              transition: "background-color 0.3s",
-                            }}
-                            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0f0f0")}
-                            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "white")}
-                          >
-                            Book Now
-                          </button>
-                        </div>
-                      </li>
+                    
+                     <li>
+  <div className="mt--15" style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
+    <button
+      onClick={handleClick}
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+        borderRadius: "4px",
+        padding: "10px 30px",
+        border: "1px solid #ccc",
+        cursor: "pointer",
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0f0f0")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "white")}
+    >
+      Book Now
+    </button>
+
+    <button
+      onClick={handleShare}
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+        borderRadius: "4px",
+        padding: "10px 30px",
+        border: "1px solid #ccc",
+        cursor: "pointer",
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0f0f0")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "white")}
+    >
+      Share Now
+    </button>
+  </div>
+</li>
                       
-                    </ul>
+                    
                   </ul>
                   
                 </div>
