@@ -84,14 +84,14 @@ export default function Banner() {
                         sx={{ color: "#228756", fontSize: 30 }}
                       />
                     </span>{" "}
-                   Find professional mental health support online or in-person.
+                    Find professional mental health support online or in-person.
                   </div>
                 )}
                 <h3
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                 Get Therapist Solutions for
+                  Get Therapist Solutions for
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />
@@ -148,7 +148,7 @@ export default function Banner() {
                         src={Fabiha}
                       />
                     </Link>
-                     <Link
+                    <Link
                       to="#"
                       className="avatar"
                       data-tooltip="Psychologist"
@@ -161,10 +161,10 @@ export default function Banner() {
                         src={counselling1}
                       />
                     </Link>
-                    
+
                     <div className="more-author-text">
                       <h5 className="total-join-students">
-                      Over 5,245+ already on their wellness journey.
+                        Over 5,245+ already on their wellness journey.
                       </h5>
                       <p className="subtitle">Your well-being awaits.</p>
                     </div>
@@ -174,7 +174,7 @@ export default function Banner() {
                 <div className="slider-btn">
                   <Link
                     className="rbt-btn btn-gradient hover-icon-reverse"
-                    to="/view-all-therapist" 
+                    to="/view-all-therapist"
                     style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
@@ -231,7 +231,7 @@ export default function Banner() {
                         modules={[Autoplay]}
                         className="mySwiper"
                       >
-                        {data.map((item) => {
+                        {data.slice(0, 10).map((item) => {
                           return (
                             <SwiperSlide key={item._id}>
                               <ProfileCardVert
