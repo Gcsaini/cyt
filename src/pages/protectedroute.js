@@ -1,4 +1,3 @@
-import React from "react";
 import { getDecodedToken } from "../utils/jwt";
 import NotAuthorizedPage from "./not-authorized";
 

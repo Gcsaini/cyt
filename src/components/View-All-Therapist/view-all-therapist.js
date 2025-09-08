@@ -17,11 +17,13 @@ import { getDecodedToken } from "../../utils/jwt";
 export default function ViewAllTherapist() {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
+  const [allData, setAllData] = React.useState([]);
   const [count, setCount] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(1);
   const [search, setSearch] = React.useState("");
   const [favrioutes, setFavrioutes] = React.useState([]);
+  const timeoutRef = React.useRef(null);
   const [filter, setFilter] = React.useState({
     profile_type: "",
     services: "",
@@ -39,18 +41,16 @@ export default function ViewAllTherapist() {
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearch(value);
-    if (search.length > 2) {
+
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
       setFilter((prevFilter) => ({
         ...prevFilter,
-        search: value,
+        search: value.length > 2 ? value : "",
       }));
-    } else {
-      setFilter((prevFilter) => ({
-        ...prevFilter,
-        search: "", // Reset the search key if the input has 3 or fewer words
-      }));
-    }
+    }, 300);
   };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,8 +83,9 @@ export default function ViewAllTherapist() {
       const res = await fetchData(getTherapistProfiles, filter);
       if (res.status) {
         setData(res.data);
+        setAllData(res.data);
         setCount(res.totalCount);
-        setTotalPages(Math.ceil(res.totalCount / 10));
+        setTotalPages(Math.ceil(res.totalCount / 30));
       } else {
         return <ErrorPage />;
       }
@@ -112,6 +113,57 @@ export default function ViewAllTherapist() {
       }
     }
   }, []);
+
+  React.useEffect(() => {
+    let filtered = allData;
+
+    if (filter.search) {
+      filtered = filtered.filter((item) => {
+        const searchText = filter.search.toLowerCase();
+        return (
+          (item.user.name || "").toLowerCase().includes(searchText) ||
+          (item.services || "").toLowerCase().includes(searchText) ||
+          (item.qualification || "").toLowerCase().includes(searchText) ||
+          (item.language_spoken || "").toLowerCase().includes(searchText)
+        );
+      });
+    }
+
+    if (filter.profile_type) {
+      filtered = filtered.filter((item) => item.profile_type === filter.profile_type);
+    }
+
+    if (filter.services) {
+      filtered = filtered.filter((item) =>
+        item.services?.includes(filter.services)
+      );
+    }
+
+    if (filter.year_of_exp) {
+      filtered = filtered.filter(
+        (item) => (item.year_of_exp || "").trim() === filter.year_of_exp
+      );
+    }
+
+    if (filter.language_spoken) {
+      filtered = filtered.filter((item) =>
+        item.language_spoken?.includes(filter.language_spoken)
+      );
+    }
+
+    if (filter.qualification) {
+      filtered = filtered.filter(
+        (item) => item.qualification === filter.qualification
+      );
+    }
+
+    const startIndex = (filter.page - 1) * 10;
+    const endIndex = startIndex + 10;
+    filtered = filtered.slice(startIndex, endIndex);
+
+    setData(filtered);
+  }, [filter, allData]);
+
 
   return (
     <>
@@ -142,7 +194,7 @@ export default function ViewAllTherapist() {
                     </a>
                   </div>
                   <p className="description">
-                  Discover the right therapist for your unique needs, all in one place.
+                    Discover the right therapist for your unique needs, all in one place.
                   </p>
                 </div>
               </div>

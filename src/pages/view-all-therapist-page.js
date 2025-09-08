@@ -1,5 +1,5 @@
 import React from "react";
-import AllCourse from "../components/View-All-Therapist/view-all-therapist";
+import ViewAllTherapist from "../components/View-All-Therapist/view-all-therapist";
 import Footer from "../components/footer";
 import NewsLetter from "../components/home/newsletter";
 import MyNavbar from "../components/navbar";
@@ -10,7 +10,7 @@ export default function ViewAllTherapistPage() {
       <main className="">
         <MyNavbar />
         <main className="rbt-main-wrapper">
-          <AllCourse />
+          <ViewAllTherapist />
           <NewsLetter />
         </main>
         <Footer />

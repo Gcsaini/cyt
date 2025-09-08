@@ -10,8 +10,7 @@ export default function UserDashboardTopNav() {
   const navigate = useNavigate();
   const [show, setShow] = React.useState(false);
 
-
- const handleLogout = () => {
+  const handleLogout = () => {
     removeToken();
     navigate("/login");
   };
@@ -45,7 +44,7 @@ export default function UserDashboardTopNav() {
             <ul className="mainmenu">
               <li className="position-static">
                 <Link to="/my-dashboard" style={{ cursor: "pointer" }}>
-                 Home Base<i className="feather-chevron-down"></i>
+                  Home Base<i className="feather-chevron-down"></i>
                 </Link>
               </li>
               {/* <li className="position-static">
@@ -74,22 +73,22 @@ export default function UserDashboardTopNav() {
                   Events & Vibes<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-                <li className="position-static">
+              <li className="position-static">
                 <Link to="/my-settings" style={{ cursor: "pointer" }}>
                   My Edit<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              
+
               <li className="position-static">
-                <Link
+                <button
                   onClick={handleLogout}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", background: "none", border: "none",marginTop:"5px",marginLeft:"-4px" }}
                 >
-                  <i className="feather-log-out"></i>
-                  <span>Sign Out</span>
-                </Link>
+                
+                  <span style={{fontSize:"17px",fontWeight:600}}>Logout</span>
+                </button>
               </li>
-             
+
             </ul>
           </nav>
         </div>
@@ -170,8 +169,8 @@ export default function UserDashboardTopNav() {
                               <span>My Bookings</span>
                             </Link>
                           </li>
-                          
-                           <li>
+
+                          <li>
                             <Link to="/my-workshop-bookings">
                               <i className="feather-shopping-bag"></i>
                               <span>Events & Vibes</span>
@@ -188,13 +187,20 @@ export default function UserDashboardTopNav() {
                         <hr className="mt--10 mb--10" />
                         <ul className="user-list-wrapper">
                           <li>
-                            <Link
+                            {/* <Link
                               onClick={handleLogout}
                               style={{ cursor: "pointer" }}
                             >
                               <i className="feather-log-out"></i>
                               <span>Logout</span>
-                            </Link>
+                            </Link> */}
+                            <button
+                              onClick={handleLogout}
+                              style={{ cursor: "pointer", background: "none", border: "none" }}
+                            >
+                              <i className="feather-log-out" style={{color:"#999ea6"}}></i>
+                              <span style={{color:"#999ea6",fontSize:"15px"}}> &nbsp;Logout</span>
+                            </button>
                           </li>
                         </ul>
                       </div>
