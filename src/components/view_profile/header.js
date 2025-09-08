@@ -185,25 +185,7 @@ export default function ProfileHeader(props) {
                     <li style={{ color: whiteColor }}>
                       <i className="feather-users"></i> {pageData.user?.gender || '-'}
                     </li>
-                    <ul className="social-icon social-default justify-content-start">
-                      {showBookmark && (
-                        <li>
-                          <a
-                            style={{ cursor: "pointer" }}
-                            onClick={() =>
-                              handleBookmark(pageData._id, bookmark)
-                            }
-                          >
-                            {bookmark ? (
-                              <BookmarkAddedIcon
-                                sx={{ fontSize: 24, color: "black" }}
-                              />
-                            ) : (
-                              <BookmarkBorderIcon sx={{ fontSize: 24 }} />
-                            )}
-                          </a>
-                        </li>
-                      )}
+                    
                      <li>
   <div className="mt--15" style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
     <button
@@ -242,7 +224,7 @@ export default function ProfileHeader(props) {
   </div>
 </li>
                       
-                    </ul>
+                    
                   </ul>
                   
                 </div>
