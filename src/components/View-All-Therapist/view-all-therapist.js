@@ -84,7 +84,7 @@ export default function ViewAllTherapist() {
       if (res.status) {
         setData(res.data);
         setCount(res.totalCount);
-        setTotalPages(Math.ceil(res.totalCount / 10));
+        setTotalPages(Math.ceil(res.totalCount / 20));
       } else {
         return <ErrorPage />;
       }
