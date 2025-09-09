@@ -48,10 +48,12 @@ export default function Login() {
         setError(response.message);
       }
     } catch (error) {
-      setError(error.response.data.message);
+      console.log("error",error);
+      setError(error.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
 
-    setLoading(false);
   };
 
   const handleOtp = async () => {
@@ -84,10 +86,12 @@ export default function Login() {
       }
     } catch (error) {
       setSuccess("");
-      setError(error.response.data.message);
+      setError(error.response?.data?.message || "Something went wrong");
+    } finally {
+
+      setLoading(false);
     }
 
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -104,7 +108,7 @@ export default function Login() {
   return (
     <div>
       <MyNavbar />
-      =<PageBreadCrumb title="Access Your  Personalized Support" linkTitle="Login"/>
+      =<PageBreadCrumb title="Access Your  Personalized Support" linkTitle="Login" />
 
       <div className="rbt-banner-area rbt-banner-3 header-transperent-spacer">
         <div className="wrapper">
@@ -168,7 +172,7 @@ export default function Login() {
                         </Link>
                         <div className="more-author-text">
                           <h5 className="total-join-students">
-                             5,245+ people have already found their path to well-being.
+                            5,245+ people have already found their path to well-being.
                           </h5>
                           <p className="subtitle">Your well-being awaits.</p>
                         </div>
