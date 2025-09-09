@@ -90,7 +90,7 @@ export default function ProfileCardVert(props) {
       <span
         className="rbt-badge-6"
         style={{
-          backgroundColor: "#007bff", // solid blue (you can change the color)
+          backgroundColor: "#0c7426ff", // solid blue (you can change the color)
           color: "#fff",
           padding: "5px 12px",
           borderRadius: "6px",
@@ -98,7 +98,7 @@ export default function ProfileCardVert(props) {
           fontWeight: "600",
         }}
       >
-        Highly Recommended
+        Recommended Therapist
       </span>
     </div>
   </Link>
