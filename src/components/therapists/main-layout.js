@@ -89,7 +89,7 @@ export default function MainLayout(props) {
                                     to="/appointments"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Appointments</span>
+                                    <span>Booking History</span>
                                     
                                   </Link>
                                 </li>
@@ -104,7 +104,7 @@ export default function MainLayout(props) {
                                     to="/workshops"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Events</span>
+                                    <span>Create Events</span>
                                   </Link>
                                 </li>
                                 <li>
@@ -118,7 +118,7 @@ export default function MainLayout(props) {
                                     to="/coupons"
                                   >
                                     <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Coupons</span>
+                                    <span>Create Coupons</span>
                                   </Link>
                                 </li>
 
@@ -148,7 +148,7 @@ export default function MainLayout(props) {
                                     <span>Case history</span>
                                     <span
                                       style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
+                                        backgroundColor: "rgba(43, 194, 76, 1)",
                                         padding: "5px",
                                         marginLeft: "10px",
                                         borderRadius: "5px",
@@ -170,7 +170,7 @@ export default function MainLayout(props) {
                                     <span>Blog</span>
                                     <span
                                       style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
+                                        backgroundColor: "rgba(43, 194, 76, 1)",
                                         padding: "5px",
                                         marginLeft: 10,
                                         borderRadius: "5px",
@@ -191,7 +191,7 @@ export default function MainLayout(props) {
                                     <span>Invoices</span>
                                     <span
                                       style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
+                                        backgroundColor: "rgba(43, 194, 76, 1)",
                                         padding: "5px",
                                         marginLeft: "10px",
                                         borderRadius: "5px",
@@ -213,7 +213,7 @@ export default function MainLayout(props) {
                                     <span>Reviews</span>
                                     <span
                                       style={{
-                                        backgroundColor: "rgb(250, 10, 10)",
+                                        backgroundColor: "rgba(43, 194, 76, 1)",
                                         padding: "5px",
                                         marginLeft: "10px",
                                         borderRadius: "5px",
@@ -241,7 +241,7 @@ export default function MainLayout(props) {
                                     to="/settings"
                                   >
                                     <i className="feather-settings"></i>
-                                    <span>Settings</span>
+                                    <span>Edit Profile</span>
 
                                     {profileSet ? (
                                       <CircleIcon
