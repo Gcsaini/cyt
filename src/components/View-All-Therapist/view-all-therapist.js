@@ -157,8 +157,8 @@ export default function ViewAllTherapist() {
       );
     }
 
-    const startIndex = (filter.page - 1) * 10;
-    const endIndex = startIndex + 10;
+    const startIndex = (filter.page - 1) * 30;
+    const endIndex = startIndex + 30;
     filtered = filtered.slice(startIndex, endIndex);
 
     setData(filtered);
