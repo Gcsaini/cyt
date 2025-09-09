@@ -87,7 +87,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
       <span
         className="rbt-badge-6"
         style={{
-          backgroundColor: "#0c7426", // solid green
+          backgroundColor: "#161899ff", // solid green
           color: "#fff",
           padding: "5px 12px",
           borderRadius: "6px",
