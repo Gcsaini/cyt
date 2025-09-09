@@ -73,7 +73,7 @@ export default function MainLayout(props) {
                                     }
                                   >
                                     <i className="feather-home"></i>
-                                    <span>Dashboard</span>
+                                    <span>Home</span>
                                   </Link>
                                 </li>
 
