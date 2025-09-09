@@ -13,4 +13,11 @@ export default function NotifyBar({ title = "Good to see you here." }) {
             </div>
         </div>
     </div>
+
+
+
+
+
+    
+    
 }
