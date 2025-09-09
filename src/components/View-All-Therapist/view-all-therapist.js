@@ -24,6 +24,7 @@ export default function ViewAllTherapist() {
   const [search, setSearch] = React.useState("");
   const [favrioutes, setFavrioutes] = React.useState([]);
   const timeoutRef = React.useRef(null);
+  const [loading, setLoading] = React.useState(false);
   const [filter, setFilter] = React.useState({
     profile_type: "",
     services: "",
@@ -78,19 +79,23 @@ export default function ViewAllTherapist() {
     return pageNumbers;
   };
 
-  const getData = async () => {
+  const getData = async (page = 1) => {
     try {
-      const res = await fetchData(getTherapistProfiles, filter);
+      setLoading(true);
+      const res = await fetchData(getTherapistProfiles, { ...filter, page });
       if (res.status) {
         setData(res.data);
         setAllData(res.data);
         setCount(res.totalCount);
-        setTotalPages(Math.ceil(res.totalCount / 30));
+        setTotalPages(Math.ceil(res.totalCount / 12));
+        setCurrentPage(page);
       } else {
         return <ErrorPage />;
       }
     } catch (err) {
       return <ErrorPage />;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -369,7 +374,13 @@ export default function ViewAllTherapist() {
       </div>
       <div className="rbt-section-overlayping-top rbt-section-gapBottom">
         <div className="container">
-          <div className="row g-5">
+          {loading ? (
+            <div className="text-center my-4">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          ) : (<div className="row g-5">
             {data &&
               data.map((item) => {
                 return (
@@ -386,7 +397,61 @@ export default function ViewAllTherapist() {
                 );
               })}
           </div>
-          
+          )}
+          <div class="row">
+            <div class="col-lg-12 mt--60">
+              <nav>
+                <ul className="rbt-pagination justify-content-center">
+                  {/* Previous */}
+                  <li>
+                    <a
+                      href="#"
+                      aria-label="Previous"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (currentPage > 1) getData(currentPage - 1);
+                      }}
+                      style={{ pointerEvents: currentPage === 1 ? "none" : "auto", opacity: currentPage === 1 ? 0.5 : 1 }}
+                    >
+                      <i className="feather-chevron-left"></i>
+                    </a>
+                  </li>
+
+                  {/* Pages */}
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <li key={i} className={currentPage === i + 1 ? "active" : ""}>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          getData(i + 1);
+                        }}
+                      >
+                        {i + 1}
+                      </a>
+                    </li>
+                  ))}
+
+                  {/* Next */}
+                  <li>
+                    <a
+                      href="#"
+                      aria-label="Next"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (currentPage < totalPages) getData(currentPage + 1);
+                      }}
+                      style={{ pointerEvents: currentPage === totalPages ? "none" : "auto", opacity: currentPage === totalPages ? 0.5 : 1 }}
+                    >
+                      <i className="feather-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </>

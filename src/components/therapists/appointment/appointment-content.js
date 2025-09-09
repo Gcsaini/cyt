@@ -159,7 +159,7 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
         toast.error(response.message);
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -180,7 +180,7 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
         toast.error(response.message);
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     } finally {
       setSessionEnding(false);
     }
