@@ -103,7 +103,7 @@ export default function MainLayout(props) {
                                     }
                                     to="/workshops"
                                   >
-                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <i className="fa-pen-to-square"></i>
                                     <span>Create Events</span>
                                   </Link>
                                 </li>
@@ -117,7 +117,7 @@ export default function MainLayout(props) {
                                     }
                                     to="/coupons"
                                   >
-                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <i className="fa-ticket"></i>
                                     <span>Create Coupons</span>
                                   </Link>
                                 </li>
