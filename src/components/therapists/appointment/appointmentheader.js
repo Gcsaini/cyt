@@ -4,7 +4,7 @@ import "./appointmentheader.css";
 export default function Appointmentheader() {
   return (
     <div className="dashboard-header">
-      <h3>&nbsp;&nbsp;Client Booking</h3>
+      <h3>&nbsp;&nbsp;Session Bookinig History</h3>
       <ul className="header-list-btns">
         <li>
           <div className="input-block dash-search-input">
