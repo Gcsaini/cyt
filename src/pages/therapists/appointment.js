@@ -35,8 +35,8 @@ export default function AppointmentsPage() {
 
   return (
     <MainLayout>
-        <AppointmentPageSidebar />
-        <AppointmentTabHead />
+        {/* <AppointmentPageSidebar /> */}
+        {/* <AppointmentTabHead /> */}
         {loading ? <PageProgressBar /> : data && data.length > 0 && <AppointmentsContent appointments={data} statusList={statusList} onRefresh={getData}/>}
       </MainLayout>
   );

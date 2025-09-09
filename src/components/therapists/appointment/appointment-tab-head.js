@@ -1,4 +1,3 @@
-import React from "react";
 import "./appointment-tab-head.css";
 
 export default function AppointmentTabHead({ setActiveTab }) {

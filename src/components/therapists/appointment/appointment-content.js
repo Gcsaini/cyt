@@ -188,7 +188,25 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
 
 
   return (
-    <>
+    <> <div className="dashboard-header mt--30">
+      <h3>&nbsp;&nbsp;Session Bookinig History</h3>
+    </div>
+      <div className="appointment-tabs">
+        <ul className="nav nav-pills inner-tab" id="pills-tab" role="tablist">
+          
+          <ul className="header-list-btns">
+            <li>
+              <div className="input-block dash-search-input">
+                <input type="text" className="form-control" placeholder="Search" />
+                <span className="search-icon">
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </span>
+              </div>
+            </li>
+
+          </ul>
+        </ul>
+      </div >
       <div
         className="tab-pane fade show active"
         id="pills-upcoming"
@@ -210,15 +228,15 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
             <tbody>
               {appointments && appointments.map((appointment) => {
                 return <tr key={appointment._id}>
-                  <th  style={{width:200}}>
+                  <th style={{ width: 200 }}>
                     <p class="h6 mb--5"><i className="fa-solid fa-user"></i> &nbsp;{appointment.client?.name}</p>
                     <p class="b3"><i className="fa-solid fa-phone"></i> &nbsp;{appointment.client?.phone}</p>
                   </th>
-                  <td  style={{width:170}}>
+                  <td style={{ width: 170 }}>
                     <p class="h6 mb--5">{appointment.service}</p>
                     <p class="b3">{appointment.format}</p>
                   </td>
-                  <td style={{width:150}}>{
+                  <td style={{ width: 150 }}>{
                     appointment.whom === "Self" ? <p class="b3">Self</p> :
                       <>
                         <p class="h6 mb--5">{appointment.cname}</p>
@@ -228,22 +246,22 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
                   }
 
                   </td>
-                  <td style={{width:180}}>
+                  <td style={{ width: 180 }}>
                     <p class="h6 mb--5" style={{ fontSize: "14px" }}>{getDateTime(appointment)}</p>
                     <span class={`rbt-badge-5 ${getStatusColor(appointment.status)}`}>{appointment.status}</span>
                   </td>
                   <td>
-                    <PaymentStatus statusList={statusList} item={appointment} />
+                    <p class="h6 mb--5" style={{ fontSize: "14px" }}>{appointment.transaction.status.name}</p>
                   </td>
                   <td>
                     <div class="rbt-button-group">
-                      <a class="rbt-btn btn-xs bg-primary-opacity radius-round" onClick={() => handleView(appointment)} style={{cursor:"pointer"}}>View</a>
+                      <a class="rbt-btn btn-xs bg-primary-opacity radius-round" onClick={() => handleView(appointment)} style={{ cursor: "pointer" }}>View</a>
                       {appointment.status !== SESSION_STATUS.COMPLETED &&
                         appointment.status !== SESSION_STATUS.CANCELED && (
                           appointment.status === SESSION_STATUS.STARTED ? (
-                            sessionEnding ? <Box><CircularProgress /></Box> : <a class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger" style={{cursor:"pointer"}} onClick={() => endSession(appointment)}>End</a>
+                            sessionEnding ? <Box><CircularProgress /></Box> : <a class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger" style={{ cursor: "pointer" }} onClick={() => endSession(appointment)}>End</a>
                           ) :
-                            <a class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger" style={{cursor:"pointer"}} onClick={() => handlePin(appointment)}>Start</a>
+                            <a class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger" style={{ cursor: "pointer" }} onClick={() => handlePin(appointment)}>Start</a>
                         )}
                     </div>
                   </td>
