@@ -103,7 +103,7 @@ export default function MainLayout(props) {
                                     }
                                     to="/workshops"
                                   >
-                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <i className="fa-solid fa-file-medical"></i>
                                     <span>Create Events</span>
                                   </Link>
                                 </li>
@@ -117,7 +117,7 @@ export default function MainLayout(props) {
                                     }
                                     to="/coupons"
                                   >
-                                    <i className="fa-solid fa-place-of-worship"></i>
+                                    <i className="feather-star"></i>
                                     <span>Create Coupons</span>
                                   </Link>
                                 </li>
@@ -144,7 +144,7 @@ export default function MainLayout(props) {
                               <ul className="dashboard-mainmenu rbt-default-sidebar-list">
                                 <li>
                                   <Link className="" to="">
-                                    <i className="fa-solid fa-file-medical"></i>
+                                    <i className="fa-solid fa-place-of-worship"></i>
                                     <span>Case history</span>
                                     <span
                                       style={{
