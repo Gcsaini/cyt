@@ -82,17 +82,27 @@ export default function ProfileCardVert(props) {
       className="rbt-badge-group"
       style={{
         position: "absolute",
-        top: "10px",
+        bottom: "10px",
         right: "10px",
         zIndex: 2,
       }}
     >
-      <span className="rbt-badge-6 bg-primary-opacity">
+      <span
+        className="rbt-badge-6"
+        style={{
+          backgroundColor: "#007bff", // solid blue (you can change the color)
+          color: "#fff",
+          padding: "5px 12px",
+          borderRadius: "6px",
+          fontSize: "12px",
+          fontWeight: "600",
+        }}
+      >
         Highly Recommended
       </span>
     </div>
   </Link>
-</div>      
+</div> 
         <div className="rbt-card-body">
           <ul className="rbt-meta">
             <li style={{ fontSize: 16 }}>
