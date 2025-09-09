@@ -13,11 +13,11 @@ import {
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
 export default function ProfileCardHor({ pageData, favrioutes }) {
-   
+
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [bookmark, setBookmark] = React.useState(false);
-  
+
   const [showBookmark, setShowBookmark] = React.useState(true);
 
   const handleBookmark = (id, value) => {
@@ -68,38 +68,38 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
   return (
     <div className="col-12 mt--30 sal-animate">
       <div className="rbt-card variation-01 rbt-hover card-list-2">
-      <div className="rbt-card-img" style={{ position: "relative" }}>
-  <Link to={`/view-profile/${pageData._id}`}>
-    <ImageTag
-      alt="profile image"
-      src={`${imagePath}/${pageData.user.profile}`}
-      style={{ height: isMobile ? 255 : 235, width: "100%", objectFit: "cover" }}
-    />
-    <div
-      className="rbt-badge-group"
-      style={{
-        position: "absolute",
-        bottom: "10px",
-        right: "10px", // badge on bottom-right
-        zIndex: 2,
-      }}
-    >
-      <span
-        className="rbt-badge-6"
-        style={{
-          backgroundColor: "#161899ff", // solid green
-          color: "#fff",
-          padding: "5px 12px",
-          borderRadius: "6px",
-          fontSize: "12px",
-          fontWeight: "600",
-        }}
-      >
-        Verified
-      </span>
-    </div>
-  </Link>
-</div>
+        <div className="rbt-card-img" style={{ position: "relative" }}>
+          <Link to={`/view-profile/${pageData._id}`}>
+            <ImageTag
+              alt="profile image"
+              src={`${imagePath}/${pageData.user.profile}`}
+              style={{ height: isMobile ? 255 : 235, width: "100%", objectFit: "cover" }}
+            />
+            <div
+              className="rbt-badge-group"
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px", // badge on bottom-right
+                zIndex: 2,
+              }}
+            >
+              <span
+                className="rbt-badge-6"
+                style={{
+                  backgroundColor: "#161899ff", // solid green
+                  color: "#fff",
+                  padding: "5px 12px",
+                  borderRadius: "6px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                }}
+              >
+                Verified
+              </span>
+            </div>
+          </Link>
+        </div>
         <div className="rbt-card-body">
           <div className="rbt-card-top">
             <div className="rbt-review">
@@ -135,7 +135,7 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
               <i className="feather-message-circle"></i>
               {pageData.language_spoken}
             </li>
-           
+
             <li>
               <i className="feather-book"></i>
               <span style={{ lineHeight: "2rem" }}>

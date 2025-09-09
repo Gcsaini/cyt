@@ -21,8 +21,8 @@ export default function ProfileCard() {
   const getData = async (tab) => {
     try {
       const res = await fetchData(getTherapistProfiles, {
-        priority: 1,
         profile_type: tab,
+        priority:2
       });
       if (res.status) {
         setData(res.data);

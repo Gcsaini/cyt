@@ -33,6 +33,7 @@ export default function ViewAllTherapist() {
     qualification: "",
     search: "",
     page: currentPage,
+    pageSize:12
   });
 
   const handleFilterClick = () => {

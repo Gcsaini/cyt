@@ -72,37 +72,51 @@ export default function ProfileCardVert(props) {
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
         <div className="rbt-card-img" style={{ position: "relative" }}>
-  <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
-    <ImageTag
-      alt="Profile-photo"
-      style={{ height: "250px", width: "100%", objectFit: "cover" }}
-      src={`${imagePath}/${data.user.profile}`}
-    />
-    <div
-      className="rbt-badge-group"
-      style={{
-        position: "absolute",
-        bottom: "10px",
-        left: "10px", // moved to bottom-left
-        zIndex: 2,
-      }}
-    >
-      <span
-        className="rbt-badge-6"
-        style={{
-          backgroundColor: "#15aa3aff", // solid green
-          color: "#fff",
-          padding: "5px 12px",
-          borderRadius: "6px",
-          fontSize: "12px",
-          fontWeight: "600",
-        }}
-      >
-        Recommended
-      </span>
-    </div>
-  </Link>
-</div>
+          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
+            <ImageTag
+              alt="Profile-photo"
+              style={{ height: "250px", width: "100%", objectFit: "cover" }}
+              src={`${imagePath}/${data.user.profile}`}
+            />
+            <div
+              className="rbt-badge-group"
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                left: "10px",
+                zIndex: 2,
+              }}
+            >
+              {data.priority === 1 && <span
+                className="rbt-badge-6"
+                style={{
+                  backgroundColor: "#15aa3aff",
+                  color: "#fff",
+                  padding: "5px 12px",
+                  borderRadius: "6px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                }}
+              >
+                Recommended
+              </span>}
+              {data.priority === 2 && <span
+                className="rbt-badge-6"
+                style={{
+                  backgroundColor: "#161899ff",
+                  color: "#fff",
+                  padding: "5px 12px",
+                  borderRadius: "6px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                }}
+              >
+                Verified
+              </span>
+              }
+            </div>
+          </Link>
+        </div>
         <div className="rbt-card-body">
           <ul className="rbt-meta">
             <li style={{ fontSize: 16 }}>
@@ -124,16 +138,16 @@ export default function ProfileCardVert(props) {
                   {data.user.name}
                 </Link>
               </h4>
-               
-               <div className="rbt-review">
-                           <div className="rating">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                          </div>  
-                          </div> 
+
+              <div className="rbt-review">
+                <div className="rating">
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                </div>
+              </div>
             </div>
             {showBookmark && (
               <div className="rbt-bookmark-btn">

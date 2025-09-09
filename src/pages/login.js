@@ -75,8 +75,7 @@ export default function Login() {
         setError("");
         setOtp("");
         setToken(response.token);
-        const data = getDecodedToken(response.token);
-        if (data.role === 1) {
+        if (response.data.role === 1) {
           navigate("/therapist-dashboard");
         } else {
           navigate("/my-dashboard");
