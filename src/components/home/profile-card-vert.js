@@ -71,19 +71,28 @@ export default function ProfileCardVert(props) {
   return (
     <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
       <div className="rbt-card variation-01">
-        <div className="rbt-card-img">
-          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
-            <ImageTag
-              alt="Profile-photo"
-              style={{ height: "250px" }}
-              src={`${imagePath}/${data.user.profile}`}
-            /><div class="rbt-badge-group">
-            <span class="rbt-badge-6 bg-primary-opacity">Highly Recommended
-</span>
-     
-</div>
-          </Link>
-        </div>        
+        <div className="rbt-card-img" style={{ position: "relative" }}>
+  <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
+    <ImageTag
+      alt="Profile-photo"
+      style={{ height: "250px", width: "100%", objectFit: "cover" }}
+      src={`${imagePath}/${data.user.profile}`}
+    />
+    <div
+      className="rbt-badge-group"
+      style={{
+        position: "absolute",
+        top: "10px",
+        right: "10px",
+        zIndex: 2,
+      }}
+    >
+      <span className="rbt-badge-6 bg-primary-opacity">
+        Highly Recommended
+      </span>
+    </div>
+  </Link>
+</div>      
         <div className="rbt-card-body">
           <ul className="rbt-meta">
             <li style={{ fontSize: 16 }}>
