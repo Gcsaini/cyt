@@ -58,7 +58,7 @@ export default function MainLayout(props) {
                           <div className="rbt-default-sidebar-wrapper">
                             <div className="section-title mb--20">
                               <h6 className="rbt-title-style-2">
-                                Welcome, {therapistInfo.name}
+                                Welcome, {therapistInfo.user.name}
                               </h6>
                             </div>
                             <nav className="mainmenu-nav">
