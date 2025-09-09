@@ -386,37 +386,7 @@ export default function ViewAllTherapist() {
                 );
               })}
           </div>
-          <div className="row">
-            <div className="col-lg-12 mt--60">
-              <nav>
-                <div className="nav-links">
-                  <ul className="rbt-pagination">
-                    <li className={currentPage === 1 ? "disabled" : ""}>
-                      <a
-                        aria-label="Previous"
-                        href="#!"
-                        onClick={() => handlePageChange(currentPage - 1)}
-                      >
-                        <i className="feather-chevron-left"></i>
-                      </a>
-                    </li>
-                    {renderPageNumbers()}
-                    <li
-                      className={currentPage === totalPages ? "disabled" : ""}
-                    >
-                      <a
-                        aria-label="Next"
-                        href="#!"
-                        onClick={() => handlePageChange(currentPage + 1)}
-                      >
-                        <i className="feather-chevron-right"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-            </div>
-          </div>
+          
         </div>
       </div>
     </>
