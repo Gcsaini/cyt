@@ -91,7 +91,7 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                  Get Therapist Solutions for
+                 Bharat’s Growing Network of Verified Therapists
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />

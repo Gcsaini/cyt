@@ -17,7 +17,14 @@ export default function AboutUsBanner() {
                   </span>{" "}
                   About CYT
                 </div>
-                <h1 className="title">
+               <h1
+  className="title"
+  style={{
+    whiteSpace: "nowrap",      // prevent line break
+    overflow: "hidden",        // hide overflow if text too long
+    textOverflow: "ellipsis",  // add ... if it exceeds mobile width
+  }}
+>
   Because Therapist should be{" "}
   <TypeAnimation
     sequence={["Verified", 1500, "Accessible", 1500, "Specialized", 1500]}
@@ -30,7 +37,7 @@ export default function AboutUsBanner() {
       display: "inline-block",
       verticalAlign: "middle",
       minWidth: "120px", // keeps width stable
-      textAlign: "left"
+      textAlign: "left",
     }}
   />
 </h1>
