@@ -115,9 +115,9 @@ export default function Banner() {
                   <br />
                 </h1>
                 <p className="description">
-                Connecting you with affordable therapists.
+                Professional help, whenever you need it, 
                   <strong>
-                    -let mental health experts lead you to well-being.
+                     for a healthier state of mind.
                   </strong>
                 </p>
                 <div className="rbt-like-total">
