@@ -34,7 +34,7 @@ export default function AboutUsBanner() {
     }}
   />
 </h1>
-                <p className="description has-medium-font-size mt--20">Choose Your Therapist (CYT) bridges the gap between you and qualified mental health professionals. With verified psychologists/therapists across India, CYT makes therapy accessible, affordable, and tailored to your needs—wherever you are.</p>
+               
                 <div className="slider-btn rbt-button-group justify-content-center">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
