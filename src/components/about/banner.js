@@ -15,21 +15,26 @@ export default function AboutUsBanner() {
                   <span className="rbt-new-badge-icon">
                     <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                   </span>{" "}
-                  Discover mental health experts.
+                  About CYT
                 </div>
                 <h1 className="title">
-                  Read About Our
-                  {isMobile ? <br /> : ""}
-                  <TypeAnimation
-                    sequence={[" Background", 1500, " Vision", 1500]}
-                    speed={10}
-                    style={{ fontSize: "1em" }}
-                    repeat={Infinity}
-                    deletionSpeed={20}
-                    className="theme-gradient"
-                  />
-                </h1>
-                <p className="description has-medium-font-size mt--20"></p>
+  Because Therapist should be{" "}
+  <TypeAnimation
+    sequence={["Verified", 1500, "Accessible", 1500, "Specialized", 1500]}
+    speed={10}
+    repeat={Infinity}
+    deletionSpeed={20}
+    className="theme-gradient"
+    style={{
+      whiteSpace: "nowrap",
+      display: "inline-block",
+      verticalAlign: "middle",
+      minWidth: "120px", // keeps width stable
+      textAlign: "left"
+    }}
+  />
+</h1>
+                <p className="description has-medium-font-size mt--20">Choose Your Therapist (CYT) bridges the gap between you and qualified mental health professionals. With verified psychologists/therapists across India, CYT makes therapy accessible, affordable, and tailored to your needs—wherever you are.</p>
                 <div className="slider-btn rbt-button-group justify-content-center">
                   <a
                     className="rbt-btn btn-gradient hover-icon-reverse"
