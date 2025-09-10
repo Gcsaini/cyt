@@ -94,14 +94,14 @@ export default function Banner() {
                  Bharat’s Growing Network of Verified Therapists for 
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
-                      <br />
+                     
                       <TypeAnimation
                         sequence={[
-                          "Personalized Wellbeing",
+                          "Accessibility",
                           1500,
-                          "Corporate Needs",
+                          "Affordability",
                           1500,
-                          "Educational Institutions",
+                          "Wellness",
                           1500,
                         ]}
                         speed={10}
