@@ -87,33 +87,32 @@ export default function Banner() {
                     Find professional mental health support online or in-person.
                   </div>
                 )}
-                <h1
-                  className={isMobile ? "banner-text-title" : "title"}
-                  style={{ marginTop: isMobile ? 10 : 20 }}
-                >
-                 Bharat’s Growing Network of Verified Therapists for 
-                  <span className="header-caption ms-2">
-                    <span className="cd-headline rotate-1">
-                     
-                      <TypeAnimation
-                        sequence={[
-                          "Accessibility",
-                          1500,
-                          "Affordability",
-                          1500,
-                          "Wellness",
-                          1500,
-                        ]}
-                        speed={10}
-                        style={{ fontSize: "1.1em" }}
-                        repeat={Infinity}
-                        deletionSpeed={20}
-                        className="theme-gradient"
-                      />
-                    </span>
-                  </span>
-                  <br />
-                </h1>
+               <h1
+  className={isMobile ? "banner-text-title" : "title"}
+  style={{ marginTop: isMobile ? 10 : 20, lineHeight: "1.3em" }}
+>
+  Bharat’s Growing Network of Verified Therapists for{" "}
+  <span
+    style={{
+      display: "inline-block",
+      minWidth: "120px",  // reserve space for the longest word
+      height: "1.5em",    // fix height so banner doesn’t jump
+      verticalAlign: "middle",
+    }}
+  >
+    <TypeAnimation
+      sequence={["Accessibility", 1500, "Affordability", 1500, "Wellness", 1500]}
+      speed={10}
+      repeat={Infinity}
+      deletionSpeed={20}
+      className="theme-gradient"
+      style={{
+        display: "inline-block",
+        whiteSpace: "nowrap", // prevent line breaks
+      }}
+    />
+  </span>
+</h1>
                 <p className="description">
                 Professional help, whenever you need it, 
                   <strong>
