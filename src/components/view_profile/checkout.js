@@ -229,10 +229,15 @@ export default function TherapistCheckout({ profile }) {
 
       }
     } catch (error) {
-      console.log(error);
       setError(error?.response?.data?.message);
     } finally {
       setLoading(false);
+      setInfo((prev)=>({
+        ...prev,
+        name:"",
+        phone:"",
+        notes:""
+      }));
     }
 
   };

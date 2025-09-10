@@ -161,7 +161,7 @@ export default function WorkshopCheckout({ data }) {
     };
 
     const setConfigFn = async (data) => {
-         const token = getToken();
+        const token = getToken();
         setInfo((prev) => ({
             ...prev,
             therapist: data.post_by._id,
@@ -181,6 +181,14 @@ export default function WorkshopCheckout({ data }) {
     const handleCouponApply = async () => {
         setCouponError("");
         try {
+            if (amountInfo.coupon === "") {
+                setCouponError("Please Enter Coupon Code");
+                return false;
+            }
+            if (amountInfo.coupon.length > 10) {
+                setCouponError("Coupon is Invalid");
+                return false;
+            }
             const reqData = {
                 therapist_id: data.post_by._id,
                 code: amountInfo.coupon,
@@ -260,7 +268,7 @@ export default function WorkshopCheckout({ data }) {
                                                             value="no"
                                                             checked={info.is_student === false}
                                                             onChange={handleStudentChange}
-                                                            style={{width:'60px'}}
+                                                            style={{ width: '60px' }}
                                                         />
                                                         <label htmlFor="student_no">No</label>
                                                     </>
@@ -274,7 +282,7 @@ export default function WorkshopCheckout({ data }) {
                                                             value="yes"
                                                             checked={info.is_student === true}
                                                             onChange={handleStudentChange}
-                                                            style={{width:'60px'}}
+                                                            style={{ width: '60px' }}
                                                         />
                                                         <label htmlFor="student_yes">Yes</label>
                                                     </>
@@ -370,7 +378,7 @@ export default function WorkshopCheckout({ data }) {
                                         <span>₹{amountInfo.amount}</span>
                                     </li>
                                 </ul>
-                               
+
                                 <p>
                                     Sub Total<span>₹{amountInfo.amount}</span>
                                 </p>
@@ -405,33 +413,38 @@ export default function WorkshopCheckout({ data }) {
                                 <h4 className="mt--30">
                                     Grand Total <span style={{ fontSize: "26px", }}>₹{amountInfo.afterdiscount}</span>
                                 </h4>
-  <div className="plceholder-button mt--10">
-                            {loading ? (
-                                <FormProgressBar />
-                            ) : (
-                                <button
-                                    className="rbt-btn btn-gradient hover-icon-reverse mb--20"
-                                    onClick={handleSubmit}
-                                >
-                                    <span className="icon-reverse-wrapper">
-                                        <span className="btn-text">Continue</span>
-                                        <span className="btn-icon">
-                                            <i className="feather-arrow-right"></i>
-                                        </span>
-                                        <span className="btn-icon">
-                                            <i className="feather-arrow-right"></i>
-                                        </span>
-                                    </span>
-                                </button>
-                            )}
-                        </div>
+                                <div className="plceholder-button mt--10">
+                                    {loading ? (
+                                        <FormProgressBar />
+                                    ) : (
+                                        <button
+                                            className="rbt-btn btn-gradient hover-icon-reverse mb--20"
+                                            onClick={handleSubmit}
+                                        >
+                                            <span className="icon-reverse-wrapper">
+                                                <span className="btn-text">Continue</span>
+                                                <span className="btn-icon">
+                                                    <i className="feather-arrow-right"></i>
+                                                </span>
+                                                <span className="btn-icon">
+                                                    <i className="feather-arrow-right"></i>
+                                                </span>
+                                            </span>
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
             </div>
-            <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth >
+            <Dialog open={open} onClose={(event, reason) => {
+                if (reason === "backdropClick" || reason === "escapeKeyDown") {
+                    return;
+                }
+                onClose(event, reason);
+            }} maxWidth="sm" fullWidth >
                 <div style={{ padding: "8px" }}>
                     <h5>Enter OTP</h5>
                     <FormMessage success={success} error={otpError} />
