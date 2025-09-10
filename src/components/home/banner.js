@@ -105,7 +105,7 @@ export default function Banner() {
                           1500,
                         ]}
                         speed={10}
-                        style={{ fontSize: "1.5em" }}
+                        style={{ fontSize: "1.1em" }}
                         repeat={Infinity}
                         deletionSpeed={20}
                         className="theme-gradient"
