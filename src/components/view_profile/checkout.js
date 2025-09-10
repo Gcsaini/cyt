@@ -321,6 +321,7 @@ export default function TherapistCheckout({ profile }) {
       setInfo((prev) => ({
         ...prev,
         therapist: profile._id,
+        whom: !token && "Self",
         is_logged_in: token ? true : false,
         user_id: userInfo._id || "",
         email: userInfo.email || "",
@@ -701,7 +702,12 @@ export default function TherapistCheckout({ profile }) {
           </div>
         </div>
       </div>
-      <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth >
+      <Dialog open={open} onClose={(event, reason) => {
+        if (reason === "backdropClick" || reason === "escapeKeyDown") {
+          return;
+        }
+        onClose(event, reason);
+      }} maxWidth="sm" fullWidth >
         <div style={{ padding: "8px" }}>
           <h5>Enter OTP</h5>
           <FormMessage success={success} error={otpError} />

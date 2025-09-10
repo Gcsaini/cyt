@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import FormMessage from "../global/form-message";
 import { postData } from "../../utils/actions";
-import { savePaymentUrl, saveWorkshopPaymentUrl } from "../../utils/url";
+import { savePaymentUrl} from "../../utils/url";
 import FormProgressBar from "../global/form-progressbar";
 import QrcodeCard from "../global/qrcode-card";
 import PaymentSuccessModal from "./payment-success-popup";
@@ -31,23 +31,22 @@ export default function PaymentPending({ pageData }) {
       try {
         setLoading(true);
         const response = await postData(savePaymentUrl, data);
-        console.log("ressponse", response);
         if (response.status) {
           const token = getToken();
-          console.log("tokennn", token);
           if (!token) {
             setToken(response.token);
           }
-
           setSuccess("Payment Recevided successfully");
           setOpen(true);
-          setLoading(false);
+
         } else {
           setError(response.message);
-          setLoading(false);
+
         }
       } catch (error) {
         setError(error?.response?.data?.message);
+
+      } finally {
         setLoading(false);
       }
     }
@@ -62,7 +61,7 @@ export default function PaymentPending({ pageData }) {
           </div>
           <div className="col-lg-5">
             <div className="col-12 mb--20">
-              
+
               <div className="checkout-cart-total">
                 <h4 style={{ fontSize: 24 }}>Transaction Id</h4>
 

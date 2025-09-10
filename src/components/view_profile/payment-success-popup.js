@@ -9,8 +9,8 @@ const {
 } = require("@mui/material");
 
 export default function PaymentSuccessModal({ open, onClose, navigateTo = "/" }) {
-    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-     const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [timeLeft, setTimeLeft] = useState(15);
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -41,7 +41,12 @@ export default function PaymentSuccessModal({ open, onClose, navigateTo = "/" })
   }, [open, navigate]);
 
   return (
-    <ModalComponent open={open} onClose={onClose} width={isMobile?"90%":isTablet?"80%":"50%"} content={
+    <ModalComponent open={open} onClose={(event, reason) => {
+      if (reason === "backdropClick" || reason === "escapeKeyDown") {
+        return;
+      }
+      onClose(event, reason);
+    }} width={isMobile ? "90%" : isTablet ? "80%" : "50%"} content={
       <>
         <DialogTitle>
           <h5 className="price-title" style={{ fontSize: "16px" }}>
