@@ -116,7 +116,7 @@ export default function Banner() {
                 <p className="description">
                 Professional help, whenever you need it, 
                   <strong>
-                     for a healthier state of mind.
+                      for a healthier state of mind.
                   </strong>
                 </p>
                 <div className="rbt-like-total">
@@ -173,7 +173,7 @@ export default function Banner() {
                 <div className="slider-btn">
                   <Link
                     className="rbt-btn btn-gradient hover-icon-reverse"
-                    to="/view-all-therapist"
+                    to="/login"
                     style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
