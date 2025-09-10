@@ -168,55 +168,73 @@ export default function TherapistCheckout({ profile }) {
 
   const handleSubmit = async () => {
     setSuccess("");
-    if (!info.is_logged_in && info.phone.length !== 10) {
+    if (!info.is_logged_in && info.phone?.length !== 10) {
       setError("Please enter phone number");
-      return;
-    } else if (Object.keys(selectedService).length === 0) {
-      setError("Please select service.");
-      return;
+      return false;
     }
-    else if (!info.is_logged_in && !userInfo.email && info.email === "") {
-      setError("Please Enter Email id.");
-      return;
-    } else if (info.whom === "") {
+
+    if (Object.keys(selectedService).length === 0) {
+      setError("Please select service.");
+      return false;
+    }
+
+    if (!info.is_logged_in && !userInfo?.email && !info.email) {
+      setError("Please enter Email ID.");
+      return false;
+    }
+
+    if (info.is_logged_in && !info.whom) {
       setError("Please select for whom you want to take service.");
-      return;
-    } else if (Object.keys(selectedFormat).length === 0) {
+      return false;
+    }
+
+    if (Object.keys(selectedFormat).length === 0) {
       setError("Please select format.");
-      return;
-    } else if (info.whom == "For Other" && info.cname.length < 4) {
-      setError("Please enter valid client name.");
-      return;
-    } else if (info.whom == "For Other" && info.relation_with_client === "") {
-      setError("Please select relation with client.");
-      return;
-    } else if (info.whom == "For Other" && info.age === "") {
-      setError("Please enter age  of client.");
-      return;
-    } else if (info.whom === "For Other" && (info.age < 7 || info.age > 90)) {
-      setError("Please enter valid age");
-      return;
-    } else {
-      setError("");
-      setLoading(true);
-      try {
-        setLoading(true);
-        info.amount = amountInfo.afterdiscount;
+      return false;
+    }
 
-        const response = await postData(BookTherapistUrl, info);
-        if (response.status) {
-          setBookingId(response.data.id);
-          setOpen(true);
-        } else {
-          setError(response.message);
-
-        }
-      } catch (error) {
-        console.log(error);
-        setError(error?.response?.data?.message);
+    if (info.whom === "For Other") {
+      if (!info.cname || info.cname.length < 4) {
+        setError("Please enter valid client name.");
+        return false;
       }
+
+      if (!info.relation_with_client) {
+        setError("Please select relation with client.");
+        return false;
+      }
+
+      if (!info.age) {
+        setError("Please enter age of client.");
+        return false;
+      }
+
+      if (info.age < 7 || info.age > 90) {
+        setError("Please enter valid age.");
+        return false;
+      }
+    }
+    setError("");
+    setLoading(true);
+    try {
+      setLoading(true);
+      info.amount = amountInfo.afterdiscount;
+
+      const response = await postData(BookTherapistUrl, info);
+      if (response.status) {
+        setBookingId(response.data.id);
+        setOpen(true);
+      } else {
+        setError(response.message);
+
+      }
+    } catch (error) {
+      console.log(error);
+      setError(error?.response?.data?.message);
+    } finally {
       setLoading(false);
     }
+
   };
 
   const onClose = () => {
@@ -536,7 +554,7 @@ export default function TherapistCheckout({ profile }) {
                           <option value="Father">Father</option>
                           <option value="Grand Father">Grand Father</option>
                           <option value="Grand Mother">Grand Mother</option>
-                           <option value="Other">Other</option>
+                          <option value="Other">Other</option>
                         </select>
                       </div>
                     </>
@@ -616,7 +634,7 @@ export default function TherapistCheckout({ profile }) {
                     <span>₹{amountInfo.amount}</span>
                   </li>
                 </ul>
-             
+
                 <p>
                   Sub Total<span>₹{amountInfo.amount}</span>
                 </p>
@@ -651,29 +669,29 @@ export default function TherapistCheckout({ profile }) {
                 <h4 className="mt--30">
                   Grand Total <span style={{ fontSize: "26px", }}>₹{amountInfo.afterdiscount}</span>
                 </h4>
-  <div className="plceholder-button mt--10">
-              {loading ? (
-                <FormProgressBar />
-              ) : (
-                <button
-                  className="rbt-btn btn-gradient hover-icon-reverse"
-                  onClick={handleSubmit}
-                >
-                  <span className="icon-reverse-wrapper">
-                    <span className="btn-text">Continue</span>
-                    <span className="btn-icon">
-                      <i className="feather-arrow-right"></i>
-                    </span>
-                    <span className="btn-icon">
-                      <i className="feather-arrow-right"></i>
-                    </span>
-                  </span>
-                </button>
-              )}
-            </div>
+                <div className="plceholder-button mt--10">
+                  {loading ? (
+                    <FormProgressBar />
+                  ) : (
+                    <button
+                      className="rbt-btn btn-gradient hover-icon-reverse"
+                      onClick={handleSubmit}
+                    >
+                      <span className="icon-reverse-wrapper">
+                        <span className="btn-text">Continue</span>
+                        <span className="btn-icon">
+                          <i className="feather-arrow-right"></i>
+                        </span>
+                        <span className="btn-icon">
+                          <i className="feather-arrow-right"></i>
+                        </span>
+                      </span>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          
+
           </div>
         </div>
       </div>
