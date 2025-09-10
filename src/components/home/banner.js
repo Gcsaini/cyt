@@ -87,7 +87,7 @@ export default function Banner() {
                     Find professional mental health support online or in-person.
                   </div>
                 )}
-                <h3
+                <h1
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
@@ -113,7 +113,7 @@ export default function Banner() {
                     </span>
                   </span>
                   <br />
-                </h3>
+                </h1>
                 <p className="description">
                 Connecting you with affordable therapists.
                   <strong>
