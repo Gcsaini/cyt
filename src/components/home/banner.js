@@ -89,14 +89,14 @@ export default function Banner() {
                 )}
                <h1
   className={isMobile ? "banner-text-title" : "title"}
-  style={{ marginTop: isMobile ? 10 : 20, lineHeight: "2em" }}
+  style={{ marginTop: isMobile ? 10 : 20, lineHeight: "1.3em" }}
 >
   Bharat’s Growing Network of Verified Therapists for{" "}
   <span
     style={{
       display: "inline-block",
       minWidth: "120px",  // reserve space for the longest word
-      height: "2em",    // fix height so banner doesn’t jump
+      height: "1.5em",    // fix height so banner doesn’t jump
       verticalAlign: "middle",
     }}
   >
