@@ -344,6 +344,14 @@ export default function TherapistCheckout({ profile }) {
   const handleCouponApply = async () => {
     setCouponError("");
     try {
+      if (amountInfo.coupon === "") {
+        setCouponError("Please Enter Coupon Code");
+        return false;
+      }
+      if (amountInfo.coupon.length > 10) {
+        setCouponError("Coupon is Invalid");
+        return false;
+      }
       const reqData = {
         therapist_id: profile._id,
         code: amountInfo.coupon,
@@ -357,14 +365,12 @@ export default function TherapistCheckout({ profile }) {
           discount_type,
           discount_value
         }));
-        toast.success("Coupon applied successfully!");
+        setCouponError("Coupon applied successfully!");
       } else {
-        setCouponError(res.message);;
-        toast.error(res?.message || "Invalid coupon");
+        setCouponError(res.message || "Invalid coupon");
       }
-
     } catch (error) {
-      setCouponError(error.response.data.message || "Error applying coupon");
+      setCouponError(error.response?.data?.message || "Error applying coupon");
     }
 
   }
