@@ -2,10 +2,6 @@ import TherypyImg from "../../assets/img/therapysessioncyt.png";
 import SupportImg from "../../assets/img/support.png";
 import StudentImg from "../../assets/img/studentorientation.png";
 import WorkplaceImg from "../../assets/img/workplacetraining.png";
-import ActivitesImg from "../../assets/img/therapeutic.png";
-import AssessmentImg from "../../assets/img/assessmentss.png";
-import ProjectsImg from "../../assets/img/projectscyt.png";
-import specialoffer from "../../assets/img/special.png";
 import LazyImage from "../../utils/lazy-image";
 export default function Services() {
   return (
@@ -120,5 +116,6 @@ export default function Services() {
         </div>
       </div>
     </div>
+    
   );
 }

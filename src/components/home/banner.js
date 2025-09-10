@@ -84,19 +84,19 @@ export default function Banner() {
                         sx={{ color: "#228756", fontSize: 30 }}
                       />
                     </span>{" "}
-                    Find professional mental health support online or in-person.
+                   Trusted by People, Powered by Verified Therapists.
                   </div>
                 )}
                <h1
   className={isMobile ? "banner-text-title" : "title"}
-  style={{ marginTop: isMobile ? 10 : 20, lineHeight: "1.3em" }}
+  style={{ marginTop: isMobile ? 10 : 20, lineHeight: "2em" }}
 >
   Bharat’s Growing Network of Verified Therapists for{" "}
   <span
     style={{
       display: "inline-block",
       minWidth: "120px",  // reserve space for the longest word
-      height: "1.5em",    // fix height so banner doesn’t jump
+      height: "2em",    // fix height so banner doesn’t jump
       verticalAlign: "middle",
     }}
   >
