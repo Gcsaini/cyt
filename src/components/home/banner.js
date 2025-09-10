@@ -91,7 +91,7 @@ export default function Banner() {
                   className={isMobile ? "banner-text-title" : "title"}
                   style={{ marginTop: isMobile ? 10 : 20 }}
                 >
-                 Bharat’s Growing Network of Verified Therapists
+                 Bharat’s Growing Network of Verified Therapists for 
                   <span className="header-caption ms-2">
                     <span className="cd-headline rotate-1">
                       <br />
@@ -115,7 +115,7 @@ export default function Banner() {
                   <br />
                 </h3>
                 <p className="description">
-                  A healthy mind is the key to a fulfilled life
+                Connecting you with affordable therapists.
                   <strong>
                     -let mental health experts lead you to well-being.
                   </strong>
