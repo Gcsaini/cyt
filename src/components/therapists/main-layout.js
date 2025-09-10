@@ -101,7 +101,7 @@ export default function MainLayout(props) {
                                         ? "active"
                                         : ""
                                     }
-                                    to="/workshops"
+                                    to=""
                                   >
                                     <i className="fa-solid fa-file-medical"></i>
                                     <span>Create Events</span>
