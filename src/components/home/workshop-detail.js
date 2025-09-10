@@ -20,8 +20,6 @@ export default function WorkshopDetail(props) {
     setSidebar(!sidebar);
   };
 
-  console.log("dataaaa", data);
-
   return (
     <>
       <div className="rbt-breadcrumb-default rbt-breadcrumb-style-3">

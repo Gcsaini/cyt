@@ -9,18 +9,17 @@ export default function App() {
   const [show, setShow] = React.useState(false);
   const [service, setService] = React.useState();
   const [search, setSearch] = React.useState();
-  const [isToken, setIsToken] = React.useState(false);
-  const [isUser, setIsUser] = React.useState(false);
+  const [userType, setUserType] = React.useState(0);
 
   useEffect(() => {
     const data = getToken();
     if (data) {
-      setIsToken(true);
       const userData = getDecodedToken();
+      console.log("userDataaa",userData);
       if (userData.role === 1) {
-        setIsUser(false);
+        setUserType(2);
       } else {
-        setIsUser(true);
+        setUserType(1);
       }
     }
   }, []);
@@ -73,11 +72,11 @@ export default function App() {
                   Home<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-                <li className="position-static">
-                      <Link to={"/view-all-therapist"}style={{ cursor: "pointer" }}>
-                        Therapist Directory
-                      </Link>
-                    </li>
+              <li className="position-static">
+                <Link to={"/view-all-therapist"} style={{ cursor: "pointer" }}>
+                  Therapist Directory
+                </Link>
+              </li>
               <li className="with-megamenu has-menu-child-item">
                 <Link
                   className={service ? "open" : ""}
@@ -111,11 +110,11 @@ export default function App() {
                         <ul className="mega-menu-item">
                           <li>
                             <Link to="/services/cyt-tands">
-                             Personalized Care
+                              Personalized Care
                             </Link>
                           </li>
-                          
-                         
+
+
                         </ul>
                       </div>
                       <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
@@ -131,7 +130,7 @@ export default function App() {
                               Corporate Needs
                             </Link>
                           </li>
-                          
+
                         </ul>
                       </div>
                     </div>
@@ -155,40 +154,40 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-              </li> 
-              
-             
-                     
-                        <li className="position-static">
-                          <Link to={"/about-us"} style={{ cursor: "pointer" }}>
-                            About us
-                          </Link>
-                        </li>
+              </li>
 
-                        <li className="position-static">
-                          <Link
-                            to={"/contact-us"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Contact us
-                          </Link>
-                        </li>
-                     
-                     <li className="position-static">
+
+
+              <li className="position-static">
+                <Link to={"/about-us"} style={{ cursor: "pointer" }}>
+                  About us
+                </Link>
+              </li>
+
+              <li className="position-static">
+                <Link
+                  to={"/contact-us"}
+                  style={{ cursor: "pointer" }}
+                >
+                  Contact us
+                </Link>
+              </li>
+
+              <li className="position-static">
                 <Link to={"/faqs"} className="" style={{ cursor: "pointer" }}>
                   Faqs
                 </Link>
               </li>
-              
-          
+
+
             </ul>
           </nav>
           <div className="mobile-menu-bottom">
             <div className="rbt-btn-wrapper mb--20">
               <Link
                 className="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center"
-                to="/login" 
-                    style={{ cursor: "pointer" }}
+                to="/login"
+                style={{ cursor: "pointer" }}
               >
                 <span>Get Started</span>
               </Link>
@@ -201,7 +200,7 @@ export default function App() {
                     <i className="feather-facebook"></i>
                   </Link>
                 </li>
-               
+
                 <li>
                   <Link to="https://www.instagram.com/choose.your.therapist">
                     <i className="feather-instagram"></i>
@@ -244,161 +243,21 @@ export default function App() {
                         Home
                       </Link>
                     </li>
-                   
-                    {/* <li className="with-megamenu has-menu-child-item">
-                      <Link className="" to="index.html#">
-                        Services<i className="feather-chevron-down"></i>
-                      </Link>
-                      <div className="rbt-megamenu grid-item-2">
-                        <div className="wrapper">
-                          <div className="row">
-                            <div className="col-lg-12">
-                              <div className="mega-top-banner">
-                                <div className="content">
-                                  <h4 className="title">Developer hub</h4>
-                                  <p className="description">
-                                    Start building fast, with code samples, key
-                                    resources and more.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row row--15">
-                            <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                              <h3 className="rbt-short-title">Our Solutions</h3>
-                              <ul className="mega-menu-item">
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    Therapy & Counselling
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-rs");
-                                    }}
-                                  >
-                                    Therapeutic Activities
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    Peer Support Groups
-                                  </button>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                              <h3 className="rbt-short-title">Our Solutions</h3>
-                              <ul className="mega-menu-item">
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    Student Based Orientations
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    Workplace Based Training
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    Assessments
-                                  </button>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-lg-12">
-                              <ul className="nav-quick-access">
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    <i className="feather-folder-minus"></i>{" "}
-                                    Terms of services
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    className="service-menu"
-                                    onClick={() => {
-                                      handleClick("/services/cyt-tands");
-                                    }}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    {" "}
-                                    <i className="feather-folder-minus"></i>
-                                    Privecy policies
-                                  </button>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li> 
-                    <li className="position-static">
-                      <Link
-                        className="service-menu-parent"
-                        to="/plans"
-                        style={{ cursor: "pointer" }}
-                      >
-                        Service Plans
-                      </Link>
-                    </li>*/}
                     <li className="has-dropdown has-menu-child-item">
-                      <Link to={"/view-all-therapist"}style={{ cursor: "pointer" }}>
+                      <Link to={"/view-all-therapist"} style={{ cursor: "pointer" }}>
                         Therapist Directory
                       </Link>
-                      
-                     
+
+
                     </li>
                     <li className="has-dropdown has-menu-child-item">
                       <Link className="" to="#">
-                      Services<i className="feather-chevron-down"></i>
+                        Services<i className="feather-chevron-down"></i>
                       </Link>
                       <ul className="submenu">
                         <li className="has-dropdown">
                           <Link to={"/services/cyt-tands"} style={{ cursor: "pointer" }}>
-                     Personalized Wellbeing
+                            Personalized Wellbeing
                           </Link>
                         </li>
 
@@ -407,7 +266,7 @@ export default function App() {
                             to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            Educational Institutions 
+                            Educational Institutions
                           </Link>
                         </li>
                         <li className="has-dropdown">
@@ -415,12 +274,12 @@ export default function App() {
                             to={"/Student Orientations"}
                             style={{ cursor: "pointer" }}
                           >
-                            Corporate Needs 
+                            Corporate Needs
                           </Link>
                         </li>
-                        
-                      
-                       
+
+
+
                       </ul>
                     </li>
                     <li className="has-dropdown has-menu-child-item">
@@ -444,15 +303,7 @@ export default function App() {
                         </li>
                       </ul>
                     </li>
-                    {/* <li className="position-static">
-                      <button
-                        className="service-menu-parent"
-                        onClick={() => handleClick("/blogs")}
-                        style={{ cursor: "pointer" }}
-                      >
-                        Blogs
-                      </button>
-                    </li> */}
+
                     <li className="position-static">
                       <Link
                         className="service-menu-parent"
@@ -462,16 +313,7 @@ export default function App() {
                         Faqs
                       </Link>
                     </li>
-                     
-                    {/* <li className="position-static">
-                      <button
-                        className="service-menu-parent"
-                        to={"#"}
-                        onClick={() => handleClick("/join-us")}
-                      >
-                        Join us
-                      </button>
-                    </li> */}
+
                   </ul>
                 </nav>
               </div>
@@ -489,32 +331,16 @@ export default function App() {
                       <i className="feather-search"></i>
                     </button>
                   </li>
-                  {/* <li className="access-icon rbt-mini-cart">
-                    <button
-                      className="rbt-cart-sidenav-activation rbt-round-btn"
-                      onClick={() => setCart(true)}
-                    >
-                      <i className="feather-shopping-cart"></i>
-                      <span className="rbt-cart-count">1</span>
-                    </button>
-                  </li> */}
+
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
-                    {isToken ? (
-                      isUser ? (
-                        <Link
-                          to="/my-dashboard"
-                          className="service-menu-parent"
-                        >
-                          <i className="feather-user"></i>&nbsp; Profile
-                        </Link>
-                      ) : (
-                        <Link
-                          to="/therapist-dashboard"
-                          className="service-menu-parent"
-                        >
-                          <i className="feather-user"></i>&nbsp; Therapist Profile
-                        </Link>
-                      )
+
+                    {userType === 1 || userType === 2 ? (
+                      <Link
+                        to={userType === 1 ? "my-dashboard" : "/therapist-dashboard"}
+                        className="service-menu-parent"
+                      >
+                        <i className="feather-user"></i>&nbsp; {userType === 1 ? "Profile" : "Therapist Profile"}
+                      </Link>
                     ) : (
                       <Link to="/login" className="service-menu-parent">
                         <i className="feather-user"></i>&nbsp;Sign In/Sign Up
@@ -567,10 +393,10 @@ export default function App() {
                   </form>
                 </div>
               </div>
-             
+
             </div>
           </div>
-          
+
         </div>
       </header>
     </>

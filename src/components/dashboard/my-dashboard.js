@@ -1,5 +1,3 @@
-import DashboardStatics from "./dashboard-statics";
-
 export default function MyDashboard() {
   return (
     <div className="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">

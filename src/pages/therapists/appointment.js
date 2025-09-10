@@ -35,9 +35,19 @@ export default function AppointmentsPage() {
 
   return (
     <MainLayout>
-        {/* <AppointmentPageSidebar /> */}
-        {/* <AppointmentTabHead /> */}
-        {loading ? <PageProgressBar /> : data && data.length > 0 && <AppointmentsContent appointments={data} statusList={statusList} onRefresh={getData}/>}
-      </MainLayout>
+      <AppointmentPageSidebar />
+      {loading ? <PageProgressBar /> : data && data.length === 0 ? <div
+        className="min-h-[320px] flex flex-col items-center justify-center p-6 bg-white rounded-2xl shadow-sm text-center"
+        style={{ marginLeft: 10, paddingBottom: 20 }}
+      >
+        <h3 className="font-semibold mb-2" style={{ fontSize: 16 }}>
+          No appointments found
+        </h3>
+        <p className="text-sm text-gray-600 mb-6">
+          Your booking will appear here once clients start booking sessions with you.
+        </p>
+      </div>
+        : <AppointmentsContent appointments={data} statusList={statusList} onRefresh={getData} />}
+    </MainLayout>
   );
 }

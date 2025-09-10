@@ -47,7 +47,6 @@ export default function TherapistCheckoutPage() {
       <MyNavbar />
       <PageBreadCrumb title="Checkout" linkTitle="Checkout"/>
       {Object.keys(profile).length > 0 && <TherapistCheckout profile={profile} />}
-      
       <NewsLetter />
       <Footer />
     </div>

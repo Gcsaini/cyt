@@ -188,25 +188,7 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
 
 
   return (
-    <> <div className="dashboard-header mt--30">
-      <h3>&nbsp;&nbsp;Session Bookinig History</h3>
-    </div>
-      <div className="appointment-tabs">
-        <ul className="nav nav-pills inner-tab" id="pills-tab" role="tablist">
-          
-          <ul className="header-list-btns">
-            <li>
-              <div className="input-block dash-search-input">
-                <input type="text" className="form-control" placeholder="Search" />
-                <span className="search-icon">
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </span>
-              </div>
-            </li>
-
-          </ul>
-        </ul>
-      </div >
+    <> 
       <div
         className="tab-pane fade show active"
         id="pills-upcoming"
@@ -251,7 +233,7 @@ const AppointmentsContent = ({ appointments, statusList, onRefresh }) => {
                     <span class={`rbt-badge-5 ${getStatusColor(appointment.status)}`}>{appointment.status}</span>
                   </td>
                   <td>
-                    <p class="h6 mb--5" style={{ fontSize: "14px" }}>{appointment.transaction.status.name}</p>
+                    <p class="h6 mb--5" style={{ fontSize: "14px" }}>{appointment.transaction?.status?.name}</p>
                   </td>
                   <td>
                     <div class="rbt-button-group">
