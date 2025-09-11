@@ -53,10 +53,10 @@ export function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={TherypyImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Wellbeing Therapy Session</h5>
+                  <h5 className="title">Create Profile</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link" to="/view-all-therapist">
-                      Book Now<i className="feather-arrow-right"></i>
+                      Setting<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -71,10 +71,10 @@ export function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={SupportImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Community Group Programs</h5>
+                  <h5 className="title">Booking History</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Register Now<i className="feather-arrow-right"></i>
+                      Check Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -89,10 +89,10 @@ export function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={StudentImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Mentorship Programs</h5>
+                  <h5 className="title">Create Coupon</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
-                      Register Now<i className="feather-arrow-right"></i>
+                      Click Now<i className="feather-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export function Services() {
                   <LazyImage alt="Icons" dim={"80"} src={WorkplaceImg} />
                 </div>
                 <div className="content">
-                  <h5 className="title">Mindfulness Tour Initiative</h5>
+                  <h5 className="title">Create MMP</h5>
                   <div className="read-more-btn">
                     <span className="rbt-btn-link">
                       Coming Soon<i className="feather-arrow-right"></i>
