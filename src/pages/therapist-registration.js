@@ -170,8 +170,8 @@ export default function TherapistRegistration() {
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">.
-                    List Yourself as a Counselling Psychologist/Clinical Psychologist/Psychiatrist
+                  <li className="rbt-breadcrumb-item active">
+                    List Yourself as a Professional.
                   </li>
                 </ul>
               </div>
