@@ -157,8 +157,8 @@ export default function TherapistRegistration() {
             <div className="col-lg-12">
               <div className="breadcrumb-inner text-center">
                 <h2 className="title">
-                  List Yourself as a 
-                  <span className="theme-gradient"> Professional</span>
+                 A Therapist Network
+                  <span className="theme-gradient"> Across India</span>
               
                 </h2>
                 <ul className="page-list">
@@ -170,8 +170,8 @@ export default function TherapistRegistration() {
                       <i className="feather-chevron-right"></i>
                     </div>
                   </li>
-                  <li className="rbt-breadcrumb-item active">
-                    Join as Mental Health Expert
+                  <li className="rbt-breadcrumb-item active">.
+                    List Yourself as a Counselling Psychologist/Clinical Psychologist/Psychiatrist
                   </li>
                 </ul>
               </div>
@@ -191,36 +191,34 @@ export default function TherapistRegistration() {
                         Why Join Us?
                       </span>
                     </div>
-                    <h3 className="title">Are you a therapist?</h3>
+                    <h4 className="title">Are you a therapist?</h4>
 
                     <ul className="check-box-points">
-                      <li>
-                        Expand Your Reach: Connect with a broad client base
-                        seeking professional mental health support.
-                      </li>
-                      <li>
-                        Flexible Work Environment: Choose your hours and work
-                        location, whether online or in-person.
-                      </li>
-                      <li>
-                        Comprehensive Support: Access our extensive resources,
-                        including continuous professional development and peer
-                        support groups.
-                      </li>
-                      <li>
-                        Collaborative Community: Join a network of dedicated
-                        mental health professionals and benefit from
-                        collaborative opportunities.
-                      </li>
-                      <li>
-                        Marketing and Promotion: Leverage our marketing efforts
-                        to increase your visibility and attract more clients.
-                      </li>
-                     
-                    </ul>
-                    <p className="note">
-                     Therapists on our platform are independent practitioners, not employees of Choose Your Therapist LLP. Each therapist is approved based on recognized qualifications (e.g., M.A./M.Sc. in Psychology, M.Phil. in Clinical Psychology, Psychiatric Social Work, or equivalent), relevant training, certifications, and professional experience.
-                    </p>
+  <li>
+    Verified Network: Be part of Bharat’s growing network of trusted and verified therapists.
+  </li>
+  <li>
+    Enhanced Visibility: Showcase your expertise and reach more clients with your dedicated profile.
+  </li>
+  <li>
+    Booking & Documentation Support: Access tools for client management and maintaining progress records efficiently.
+  </li>
+  <li>
+    SEO Optimization: Boost your profile visibility on search engines and attract more clients online.
+  </li>
+  <li>
+    Collaborative Community: Join a network of mental health professionals and exchange knowledge with peers.
+  </li>
+</ul>
+
+
+  <p className="note">
+  Therapists on our platform are <strong>independent practitioners</strong>, not employees of Choose Your Therapist LLP. 
+  Each therapist is approved based on recognized qualifications (e.g., M.A./M.Sc. in Psychology, M.Phil. in Clinical Psychology, Psychiatric Social Work, or equivalent), relevant training, certifications, and professional experience.  
+  We empower mental health professionals with enhanced visibility, profile SEO optimization, client booking & documentation tools, 
+  and growth opportunities while building a verified therapist network across India.
+
+</p>
                     <div className="rating mb--20">
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>

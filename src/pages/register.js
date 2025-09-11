@@ -222,7 +222,7 @@ export default function Register() {
                   </div>
                 ) : (
                   <div className="rbt-contact-form contact-form-style-1">
-                    <h3 className="title">Register as User</h3>
+                    <h3 className="title">Register as Client</h3>
                     <FormMessage error={error} success={success} />
                     <div id="contact-form">
                       <div className="form-group">

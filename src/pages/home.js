@@ -22,8 +22,10 @@ export default function HomePage() {
         <MyNavbar />
         <main className="rbt-main-wrapper">
           <Banner />
-          <Services />
-          <State/>
+            <Services />
+           <State/>
+        
+        
           <ProfileCard />
           <Counter />
           <HomeWorkshop isWhite={false} />
