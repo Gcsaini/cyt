@@ -46,7 +46,7 @@ export default function State() {
                     <h5 className="title">{state.name}</h5>
                     <div className="read-more-btn">
                       <span className="rbt-btn-link">
-                        1 Course <i className="feather-arrow-right"></i>
+                        Find Therapist<i className="feather-arrow-right"></i>
                       </span>
                     </div>
                   </div>
