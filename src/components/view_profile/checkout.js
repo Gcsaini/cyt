@@ -59,7 +59,7 @@ export default function TherapistCheckout({ profile }) {
     email: "",
     service: "",
     format: "",
-    whom: userInfo.email ? "" : "Self",
+    whom:"Self",
     cname: "",
     relation_with_client: "",
     notes: "",
@@ -354,7 +354,7 @@ export default function TherapistCheckout({ profile }) {
         setCouponError("Please Enter Coupon Code");
         return false;
       }
-      if (amountInfo.coupon.length > 10) {
+      if (amountInfo.coupon.length > 20) {
         setCouponError("Coupon is Invalid");
         return false;
       }
