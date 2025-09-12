@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Footer from "../components/footer";
 import Banner from "../components/home/banner";
+import State from "../components/home/state";
 import Blogs from "../components/home/blogs";
 import CallToAction from "../components/home/call-to-action";
 import Counter from "../components/home/counter";
@@ -21,7 +22,10 @@ export default function HomePage() {
         <MyNavbar />
         <main className="rbt-main-wrapper">
           <Banner />
-          <Services />
+            <Services />
+           <State/>
+        
+        
           <ProfileCard />
           <Counter />
           <HomeWorkshop isWhite={false} />

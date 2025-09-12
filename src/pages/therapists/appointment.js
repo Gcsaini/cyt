@@ -41,7 +41,7 @@ export default function AppointmentsPage() {
         style={{ marginLeft: 10, paddingBottom: 20 }}
       >
         <h3 className="font-semibold mb-2" style={{ fontSize: 16 }}>
-          No appointments found
+          No Bookings Yet
         </h3>
         <p className="text-sm text-gray-600 mb-6">
           Your booking will appear here once clients start booking sessions with you.
