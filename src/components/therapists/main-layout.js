@@ -89,7 +89,7 @@ export default function MainLayout(props) {
                                     to="/appointments"
                                   >
                                     <i className="fa-regular fa-calendar-check"></i>
-                                    <span>Booking History</span>
+                                    <span>Session Booking</span>
                                     
                                   </Link>
                                 </li>
@@ -125,107 +125,110 @@ export default function MainLayout(props) {
                                 
                               </ul>
                             </nav>
-                            <div className="section-title mt--40 mb--20">
-                              <h6 className="rbt-title-style-2">
-                                Additional{" "}
-                                {/* <span
-                                  style={{
-                                    backgroundColor: "rgb(250, 10, 10)",
-                                    padding: "5px",
-                                    borderRadius: "5px",
-                                    color: "#fff",
-                                  }}
-                                >
-                                  Coming soon
-                                </span> */}
-                              </h6>
-                            </div>
-                            <nav className="mainmenu-nav">
-                              <ul className="dashboard-mainmenu rbt-default-sidebar-list">
-                                <li>
-                                  <Link className="" to="">
-                                    <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Case history</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgba(43, 194, 76, 1)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
-                                  </Link>
-                                </li>
-                                
-                                
-                                <li>
-                                  <Link
-                                    className=""
-                                    to="/instructor/instructor-announcements"
-                                  >
-                                    <i className="fa-solid fa-blog"></i>
-                                    <span>Blog</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgba(43, 194, 76, 1)",
-                                        padding: "5px",
-                                        marginLeft: 10,
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
-                                  </Link>
-                                </li>
-                                <li className="nav-item">
-                                  <Link
-                                    className=""
-                                    to=""
-                                    // to="/invoices"
-                                  >
-                                    <i className="fa-solid fa-file-invoice"></i>
-                                    <span>Invoices</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgba(43, 194, 76, 1)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
-                                  </Link>
-                                </li>
+                           {/*
+<div className="section-title mt--40 mb--20">
+  <h6 className="rbt-title-style-2">
+    Additional{" "}
+    <span
+      style={{
+        backgroundColor: "rgb(250, 10, 10)",
+        padding: "5px",
+        borderRadius: "5px",
+        color: "#fff",
+      }}
+    >
+      Coming soon
+    </span> 
+  </h6>
+</div>
+<nav className="mainmenu-nav">
+  <ul className="dashboard-mainmenu rbt-default-sidebar-list">
+    <li>
+      <Link className="" to="">
+        <i className="fa-solid fa-place-of-worship"></i>
+        <span>Case history</span>
+        <span
+          style={{
+            backgroundColor: "rgba(43, 194, 76, 1)",
+            padding: "5px",
+            marginLeft: "10px",
+            borderRadius: "5px",
+            color: "#fff",
+          }}
+        >
+          Coming soon
+        </span>
+      </Link>
+    </li>
 
-                                <li className="nav-item">
-                                  <Link
-                                    className=""
-                                    // to="/reviews"
-                                    to=""
-                                  >
-                                    <i className="feather-star"></i>
-                                    <span>Reviews</span>
-                                    <span
-                                      style={{
-                                        backgroundColor: "rgba(43, 194, 76, 1)",
-                                        padding: "5px",
-                                        marginLeft: "10px",
-                                        borderRadius: "5px",
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      Coming soon
-                                    </span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </nav>
+    <li>
+      <Link
+        className=""
+        to="/instructor/instructor-announcements"
+      >
+        <i className="fa-solid fa-blog"></i>
+        <span>Blog</span>
+        <span
+          style={{
+            backgroundColor: "rgba(43, 194, 76, 1)",
+            padding: "5px",
+            marginLeft: 10,
+            borderRadius: "5px",
+            color: "#fff",
+          }}
+        >
+          Coming soon
+        </span>
+      </Link>
+    </li>
+
+    <li className="nav-item">
+      <Link
+        className=""
+        to=""
+        // to="/invoices"
+      >
+        <i className="fa-solid fa-file-invoice"></i>
+        <span>Invoices</span>
+        <span
+          style={{
+            backgroundColor: "rgba(43, 194, 76, 1)",
+            padding: "5px",
+            marginLeft: "10px",
+            borderRadius: "5px",
+            color: "#fff",
+          }}
+        >
+          Coming soon
+        </span>
+      </Link>
+    </li>
+
+    <li className="nav-item">
+      <Link
+        className=""
+        // to="/reviews"
+        to=""
+      >
+        <i className="feather-star"></i>
+        <span>Reviews</span>
+        <span
+          style={{
+            backgroundColor: "rgba(43, 194, 76, 1)",
+            padding: "5px",
+            marginLeft: "10px",
+            borderRadius: "5px",
+            color: "#fff",
+          }}
+        >
+          Coming soon
+        </span>
+      </Link>
+    </li>
+  </ul>
+</nav>
+*/}
+
                             <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">User</h6>
                             </div>
