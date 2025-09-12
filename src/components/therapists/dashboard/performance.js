@@ -7,7 +7,7 @@ export default function NotifyBar({ title = "Good to see you here." }) {
     <div
       className="rbt-header-top-2 color-white pt--15 pb--15 mb--15"
       style={{
-        backgroundColor: "#013220",
+        backgroundColor: "#00b874ff",
         borderRadius: "6px",
         marginTop: isMobile ? "20px" : 0,
       }}
