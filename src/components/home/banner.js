@@ -173,7 +173,7 @@ export default function Banner() {
                 <div className="slider-btn">
                   <Link
                     className="rbt-btn btn-gradient hover-icon-reverse"
-                    to="/register"
+                    to="/view-all-therapist"
                     style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
