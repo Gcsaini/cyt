@@ -1,11 +1,13 @@
+import { useMediaQuery } from "@mui/material";
 
-export function NotifyBar({ title = "Dashboard currently under development" }) {
+export default function NotifyBar({ title = "Good to see you here." }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
   return (
     <div
       className="rbt-header-top-2 color-white pt--15 pb--15 mb--15"
       style={{
-        backgroundColor: "rgba(43, 194, 76, 1)",
+        backgroundColor: "#013220",
         borderRadius: "6px",
         marginTop: isMobile ? "20px" : 0,
       }}
@@ -20,7 +22,7 @@ export function NotifyBar({ title = "Dashboard currently under development" }) {
         </div>
       </div>
     </div>
-  );
+ 
+);
+
 }
-
-
