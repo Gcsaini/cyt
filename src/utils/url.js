@@ -4,8 +4,8 @@ let baseFrontendUrl;
 const currentDomain = window.location.hostname;
 
 if (currentDomain === "localhost") {
-  // apiUrl = "https://api.chooseyourtherapist.in/api";
-  apiUrl = "http://localhost:4000/api";
+  apiUrl = "https://api.chooseyourtherapist.in/api";
+  // apiUrl = "http://localhost:4000/api";
   baseApi = "http://localhost:4000";
   baseFrontendUrl = "http://localhost:3000/";
 } else {

@@ -54,20 +54,20 @@ export default function TherapistCheckout({ profile }) {
   const [bookingId, setBookingId] = React.useState();
 
   const [info, setInfo] = React.useState({
-    name: userInfo.name || "",
+    name: "",
     phone: "",
     email: "",
     service: "",
     format: "",
-    whom:"Self",
+    whom: "Self",
     cname: "",
     relation_with_client: "",
     notes: "",
     age: "",
     amount: 0,
-    therapist: profile._id,
+    therapist: "",
     is_logged_in: false,
-    user_id: userInfo._id || "",
+    user_id: "",
   });
 
   const [amountInfo, setAmountInfo] = React.useState({
@@ -168,8 +168,8 @@ export default function TherapistCheckout({ profile }) {
 
   const handleSubmit = async () => {
     setSuccess("");
-    if (!info.is_logged_in && info.phone?.length !== 10) {
-      setError("Please enter phone number");
+    if (!info.is_logged_in && !/^\d{10}$/.test(info.phone)) {
+      setError("Please enter valid 10-digit phone number.");
       return false;
     }
 
@@ -180,6 +180,9 @@ export default function TherapistCheckout({ profile }) {
 
     if (!info.is_logged_in && !userInfo?.email && !info.email) {
       setError("Please enter Email ID.");
+      return false;
+    } else if (!info.is_logged_in && info.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email)) {
+      setError("Please enter valid Email ID.");
       return false;
     }
 
@@ -209,7 +212,7 @@ export default function TherapistCheckout({ profile }) {
         return false;
       }
 
-      if (info.age < 7 || info.age > 90) {
+      if (info.age < 12 || info.age > 90) {
         setError("Please enter valid age.");
         return false;
       }
@@ -232,15 +235,17 @@ export default function TherapistCheckout({ profile }) {
       setError(error?.response?.data?.message);
     } finally {
       setLoading(false);
-      setInfo((prev)=>({
+      setInfo((prev) => ({
         ...prev,
-        name:"",
-        phone:"",
-        notes:""
+        name: "",
+        phone: "",
+        notes: ""
       }));
     }
 
   };
+
+  console.log("user infooooo",info);
 
   const onClose = () => {
     setOpen(false);
@@ -291,48 +296,53 @@ export default function TherapistCheckout({ profile }) {
     }))
   };
 
-  const setConfig = async (profile) => {
-    const validServices = await getServices(profile.fees);
-    setServices(validServices);
+const setConfig = async (profile) => {
+  const validServices = await getServices(profile.fees);
+  setServices(validServices);
 
-    if (validServices.length > 0) {
-      const firstService = validServices[0];
-      setSelectedService(firstService);
+  let updates = { therapist: profile._id };
 
-      setInfo((prev) => ({
+  if (validServices.length > 0) {
+    const firstService = validServices[0];
+    setSelectedService(firstService);
+    updates.service = firstService.name;
+
+    const formats = await getFormatsByServiceId(profile.fees, firstService._id);
+    setSessionFormats(formats);
+
+    if (formats.length > 0) {
+      const firstFormat = formats[0];
+      setSelectedFormat(firstFormat);
+
+      updates.format = firstFormat.type;
+      updates.amount = firstFormat.fee;
+
+      setAmountInfo((prev) => ({
         ...prev,
-        service: firstService.name,
+        amount: firstFormat.fee,
+        afterdiscount: firstFormat.fee,
       }));
+    }
+  }
 
-      const formats = await getFormatsByServiceId(profile.fees, firstService._id);
-      setSessionFormats(formats);
+  setInfo((prev) => ({
+    ...prev,
+    ...updates,
+  }));
+};
 
-      if (formats.length > 0) {
-        const firstFormat = formats[0];
-        setSelectedFormat(firstFormat);
 
-        setInfo((prev) => ({
-          ...prev,
-          format: firstFormat.type,
-          amount: firstFormat.fee,
-        }));
-        setAmountInfo((prev) => ({
-          ...prev,
-          amount: firstFormat.fee,
-          afterdiscount: firstFormat.fee
-        }))
-      }
+  useEffect(() => {
+    if (userInfo?._id) {
       const token = getToken();
       setInfo((prev) => ({
         ...prev,
-        therapist: profile._id,
-        whom: !token && "Self",
-        is_logged_in: token ? true : false,
-        user_id: userInfo._id || "",
+        user_id: userInfo._id,
         email: userInfo.email || "",
+        is_logged_in: !!token,
       }));
     }
-  };
+  }, [userInfo]);
 
 
   useEffect(() => {
@@ -345,6 +355,15 @@ export default function TherapistCheckout({ profile }) {
   useEffect(() => {
     const formats = getFormatsByServiceId(profile.fees, selectedService._id);
     setSessionFormats(formats);
+    if (formats.length > 0) {
+      const firstFormat = formats[0];
+      setSelectedFormat(firstFormat);
+      setAmountInfo((prev) => ({
+        ...prev,
+        amount: firstFormat.fee,
+        afterdiscount: firstFormat.fee,
+      }));
+    }
   }, [selectedService])
 
   const handleCouponApply = async () => {

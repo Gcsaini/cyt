@@ -336,7 +336,7 @@ export default function App() {
 
                     {userType === 1 || userType === 2 ? (
                       <Link
-                        to={userType === 1 ? "my-dashboard" : "/therapist-dashboard"}
+                        to={userType === 1 ? "/my-dashboard" : "/therapist-dashboard"}
                         className="service-menu-parent"
                       >
                         <i className="feather-user"></i>&nbsp; {userType === 1 ? "Profile" : "Therapist Profile"}

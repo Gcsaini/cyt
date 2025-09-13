@@ -66,7 +66,10 @@ function App() {
     if (data) {
       const userData = getDecodedToken();
       const currentTime = Date.now() / 1000;
-      if (userData.exp < currentTime) {
+      if (userData.role === 2) {
+        removeToken();
+      }
+      else if (userData.exp < currentTime) {
         removeToken();
       } else {
         if (userData.role === 1) {
@@ -177,7 +180,7 @@ function App() {
                 />
               }
 
-               {
+              {
                 <Route
                   path="/my-workshop-bookings"
                   element={
@@ -211,7 +214,7 @@ function App() {
                 }
               />
 
-               <Route
+              <Route
                 path="/workshop-pending/:id"
                 element={
                   <PaymentWorkshopPage />
@@ -268,7 +271,7 @@ function App() {
 
               <Route
                 path="/reviews"
-                element={ 
+                element={
                   <TherapistProtectedRoute>
                     <ComingSoon />
                   </TherapistProtectedRoute>
@@ -284,7 +287,7 @@ function App() {
                 }
               />
 
-               <Route
+              <Route
                 exact
                 path="/case-history"
                 element={
@@ -293,7 +296,7 @@ function App() {
                   </TherapistProtectedRoute>
                 }
               />
-               <Route
+              <Route
                 exact
                 path="/blogs"
                 element={
@@ -303,7 +306,7 @@ function App() {
                 }
               />
 
-               <Route
+              <Route
                 exact
                 path="/case-history"
                 element={
