@@ -118,11 +118,12 @@ export default function Banner() {
   style={{
     display: "inline-block",
     whiteSpace: "normal",
-    fontWeight: 700,  // bold text
+    fontWeight: 700,             // bold text
     lineHeight: "1.5em",
-    fontSize: isMobile ? "1.5rem" : "2.5rem" // responsive font size
+    fontSize: "clamp(1.8rem, 4vw, 2.5rem)" // auto-scale for mobile and desktop
   }}
 />
+
 
 
 </div>
