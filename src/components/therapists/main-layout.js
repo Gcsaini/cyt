@@ -94,7 +94,7 @@ export default function MainLayout(props) {
 
                                 <li className="nav-item">
                                   <Link
-                                    to=""
+                                    to="/workshops"
                                     className={
                                       currentPath === "/workshops" ||
                                       currentPath === "/create-workshop"

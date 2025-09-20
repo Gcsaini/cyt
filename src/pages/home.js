@@ -14,6 +14,7 @@ import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
 import PaymentSuccessModal from "../components/view_profile/payment-success-popup";
 
+
 export default function HomePage() {
 
   return (
@@ -38,6 +39,7 @@ export default function HomePage() {
           <NewsLetter />
           {/* <Popup open={showPopup} onClose={() => setShowPopup(false)} /> */}
         </main>
+      
         <Footer />
       </main>
     </div>

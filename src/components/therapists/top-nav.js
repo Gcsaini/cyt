@@ -82,17 +82,18 @@ export default function DashboardTopNav() {
                   Case History<i className="feather-chevron-down"></i>
                 </Link>
               </li>
-              <li className="position-static">
-                <Link to="/workshops" style={{ cursor: "pointer" }}>
-                  Events<i className="feather-chevron-down"></i>
-                </Link>
-              </li>
+            
               
               <li className="position-static">
                 <Link to="/blogs" style={{ cursor: "pointer" }}>
                   Blog<i className="feather-chevron-down"></i>
                 </Link>
               </li>*/}
+                <li className="position-static">
+                <Link to="/workshops" style={{ cursor: "pointer" }}>
+                  Create Events<i className="feather-chevron-down"></i>
+                </Link>
+              </li>
               <li className="position-static">
                 <Link to="/settings" style={{ cursor: "pointer" }}>
                   Edit Profile<i className="feather-chevron-down"></i>
