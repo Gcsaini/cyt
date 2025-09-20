@@ -107,17 +107,17 @@ export default function Banner() {
 >
   <TypeAnimation
     sequence={[
-      "Accessible Online Counselling",
+       "Book a Psychologist in Noida",
     1500,
-    "In-Person Psychologist Meet in Noida",
+    "Access Online Counselling Anytime",
     1500,
-    "Book Verified Therapy Sessions Online and Offline",
+    "Meet Expert Psychologists Offline",
     1500,
-    "Trusted Verified Therapists Across India",
+    "Trusted Therapy Across Cities",
     1500,
-    "Professional Therapy Sessions Online and Offline",
+    "Professional Counsellors Near You",
     1500,
-    "Offline Counselling Services You Can Trust",
+    "Affordable Therapy Sessions Online & Offline",
     1500
     ]}
     wrapper="div" // this ensures each string is a block element
@@ -135,10 +135,10 @@ export default function Banner() {
 
 
 
-                <p className="description">
-  Get professional mental health support from certified psychologists and counsellors online/in-person. 
-  Book <strong>affordable therapy sessions</strong> anytime for a healthier state of mind.
+               <p className="description">
+  Book <strong>certified psychologists</strong> online or in-person in Noida. Trusted therapist anytime.
 </p>
+
 
                 <div className="rbt-like-total">
                   <div className="profile-share">
@@ -148,12 +148,12 @@ export default function Banner() {
                       data-tooltip="Counselling Psychologist"
                       tabIndex="0"
                     >
-                      <ImageTag
-                        alt="education"
-                        width="55"
-                        height="55"
-                        src={ClientImg}
-                      />
+                     <ImageTag
+  alt="Verified Counselling Psychologist Avatar - Choose Your Therapist Noida"
+  width="55"
+  height="55"
+  src={ClientImg}
+/>
                     </Link>
                     <Link
                       to="#"
@@ -161,12 +161,12 @@ export default function Banner() {
                       data-tooltip="Psychologist"
                       tabIndex="0"
                     >
-                      <ImageTag
-                        alt="education"
-                        width="55"
-                        height="55"
-                        src={Fabiha}
-                      />
+                     <ImageTag
+  alt="Certified Psychologist Avatar for Online and Offline Therapy - Choose Your Therapist"
+  width="55"
+  height="55"
+  src={Fabiha}
+/>
                     </Link>
                     <Link
                       to="#"
@@ -174,12 +174,12 @@ export default function Banner() {
                       data-tooltip="Psychologist"
                       tabIndex="0"
                     >
-                      <ImageTag
-                        alt="education"
-                        width="55"
-                        height="55"
-                        src={counselling1}
-                      />
+                     <ImageTag
+  alt="Professional Counsellor Avatar Providing Trusted Therapy - Choose Your Therapist"
+  width="55"
+  height="55"
+  src={counselling1}
+/>
                     </Link>
 
                     <div className="more-author-text">
