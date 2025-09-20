@@ -93,8 +93,8 @@ export default function Banner() {
 >
   Bharat’s Growing Network of{' '}
   <span className="theme-gradient">Verified Therapists</span>{' '}
-  Connecting You to{' '}
-  <span className="theme-gradient">Trusted Counselling Support</span>
+  Connecting to You..!{' '}
+
 </h1>
 
 <div
