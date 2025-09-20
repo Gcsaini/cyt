@@ -87,38 +87,59 @@ export default function Banner() {
                    Trusted by People, Powered by Verified Therapists.
                   </div>
                 )}
-               <h1
+       <h1
   className={isMobile ? "banner-text-title" : "title"}
-  style={{ marginTop: isMobile ? 10 : 20, lineHeight: "1.3em" }}
+  aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
 >
-  Bharat’s Growing Network of Verified Therapists for{" "}
-  <span
+  Bharat’s Growing Network of{' '}
+  <span className="theme-gradient">Verified Therapists</span>{' '}
+  Connecting You to{' '}
+  <span className="theme-gradient">Trusted Counselling Support</span>
+</h1>
+
+<div
+  style={{
+    minHeight: "3em", // reserve enough height for tallest string (adjust as needed)
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start", // or "center" if you want centered
+  }}
+>
+  <TypeAnimation
+    sequence={[
+     "Accessible Online Counselling",
+    1500,
+    "In-Person Psychologist Meet in Noida",
+    1500,
+    "Affordable Counselling Sessions Across Cities",
+    1500,
+    "Trusted Verified Therapists Across India",
+    1500,
+    "Professional Therapy Sessions Online and Offline",
+    1500,
+    "Offline Counselling Services You Can Trust",
+    1500
+    ]}
+    wrapper="div" // this ensures each string is a block element
+    speed={10}
+    repeat={Infinity}
+    deletionSpeed={20}
+    className="theme-gradient"
     style={{
       display: "inline-block",
-      minWidth: "120px",  // reserve space for the longest word
-      height: "1.5em",    // fix height so banner doesn’t jump
-      verticalAlign: "middle",
+      whiteSpace: "normal", // allow wrapping
     }}
-  >
-    <TypeAnimation
-      sequence={["Accessibility", 1500, "Affordability", 1500, "Wellness", 1500]}
-      speed={10}
-      repeat={Infinity}
-      deletionSpeed={20}
-      className="theme-gradient"
-      style={{
-        display: "inline-block",
-        whiteSpace: "nowrap", // prevent line breaks
-      }}
-    />
-  </span>
-</h1>
+  />
+</div>
+
+
+
+
                 <p className="description">
-                Professional help, whenever you need it, 
-                  <strong>
-                      for a healthier state of mind.
-                  </strong>
-                </p>
+  Get professional mental health support from certified psychologists and counsellors online. 
+  Book <strong>affordable therapy sessions</strong> anytime for a healthier state of mind.
+</p>
+
                 <div className="rbt-like-total">
                   <div className="profile-share">
                     <Link
