@@ -93,7 +93,7 @@ export default function Banner() {
 >
   Bharat’s Growing Network of{' '}
   <span className="theme-gradient">Verified Therapists</span>{' '}
-  Connecting to You..!{' '}
+  Connecting to You..{' '}
 
 </h1>
 
