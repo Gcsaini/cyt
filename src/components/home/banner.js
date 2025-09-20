@@ -99,7 +99,7 @@ export default function Banner() {
 
 <div
   style={{
-    minHeight: "1em", // reserve enough height for tallest string (adjust as needed)
+    minHeight: "3em", // reserve enough height for tallest string (adjust as needed)
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start", // or "center" if you want centered
