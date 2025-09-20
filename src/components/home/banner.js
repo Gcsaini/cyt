@@ -99,7 +99,7 @@ export default function Banner() {
 
 <div
   style={{
-    minHeight: "3em", // reserve enough height for tallest string (adjust as needed)
+    minHeight: "2em", // reserve enough height for tallest string (adjust as needed)
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start", // or "center" if you want centered
@@ -136,7 +136,7 @@ export default function Banner() {
 
 
                 <p className="description">
-  Get professional mental health support from certified psychologists and counsellors online. 
+  Get professional mental health support from certified psychologists and counsellors online/in-person. 
   Book <strong>affordable therapy sessions</strong> anytime for a healthier state of mind.
 </p>
 
