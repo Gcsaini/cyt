@@ -126,7 +126,7 @@ export default function Banner() {
   style={{
     display: "inline-block",
     whiteSpace: "normal",
-    fontSize: "2 rem", // increase size
+    fontSize: "2.5 rem", // increase size
     fontWeight: 700,    // make bold
     lineHeight: "3rem"  // spacing between lines
   }}
