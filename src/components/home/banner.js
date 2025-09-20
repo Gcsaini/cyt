@@ -99,7 +99,7 @@ export default function Banner() {
 >
   <TypeAnimation
   sequence={[
-    "Book a Psychologist in Noida",
+    "Book a Psychologist",
     1500,
     "Access Online Counselling",
     1500,
@@ -118,11 +118,13 @@ export default function Banner() {
   style={{
     display: "inline-block",
     whiteSpace: "normal",
-    fontSize: "2.5 rem", // increase size
-    fontWeight: 700,    // make bold
-    lineHeight: "3rem"  // spacing between lines
+    fontWeight: 700,  // bold text
+    lineHeight: "1.5em",
+    fontSize: isMobile ? "1.5rem" : "2.5rem" // responsive font size
   }}
 />
+
+
 </div>
 
 
