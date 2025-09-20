@@ -87,15 +87,7 @@ export default function Banner() {
                    Trusted by People, Powered by Verified Therapists.
                   </div>
                 )}
-       <h1
-  className={isMobile ? "banner-text-title" : "title"}
-  aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
->
-  Bharat’s Growing Network of{' '}
-  <span className="theme-gradient">Verified Therapists</span>{' '}
-  Connecting to You..{' '}
-
-</h1>
+      <h1 className={isMobile ? "banner-text-title" : "title"} aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support" > Bharat’s Growing Network of{' '} <span className="theme-gradient">Verified Therapists</span>{' '} Connecting You to{' '} <span className="theme-gradient">Trusted Counselling Support</span> </h1>
 
 <div
   style={{
