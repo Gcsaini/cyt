@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Bharat's Growing Network of Verified Therapists | Choose Your Therapist</title>
 
   <!-- Favicon -->
@@ -15,20 +16,20 @@
   <!-- SEO Meta Description -->
   <meta name="description" content="Find certified psychologists and counsellors online or in-person in Noida. Choose Your Therapist connects you to trusted therapy services across India for your well-being." />
 
-  <!-- Keywords -->
-  <meta name="keywords" content="psychologist Noida, online counselling, in-person therapy, verified therapists, therapy sessions, professional counsellors, trusted therapy, wellness support, book therapy online" />
+  <!-- Keywords for SEO -->
+  <meta name="keywords" content="psychologist Noida, online counselling, in-person therapy, verified therapists, therapy sessions, professional counsellors, trusted therapy, wellness support, book therapy online, mental health services, best therapist in India" />
 
   <!-- Author & Robots -->
   <meta name="author" content="Choose Your Therapist LLP">
   <meta name="robots" content="index, follow" />
 
-  <!-- Geo-targeting -->
+  <!-- Geo-targeting for local SEO -->
   <meta name="geo.region" content="IN-UT">
   <meta name="geo.placename" content="Noida, Uttarakhand">
   <meta name="geo.position" content="30.0668,79.0193">
   <meta name="ICBM" content="30.0668,79.0193">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Social Sharing -->
   <meta property="og:title" content="Bharat's Growing Network of Verified Therapists | Choose Your Therapist">
   <meta property="og:description" content="Connect with certified psychologists and counsellors online or in-person in Noida. Trusted therapy services across India.">
   <meta property="og:image" content="https://i.postimg.cc/gj1yngrd/choose.png">
@@ -49,126 +50,14 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
 
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+  <!-- Manifest for PWA -->
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./logo192.png" />
 
-    .banner {
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    .banner h1 {
-      font-size: 2.5rem;
-      line-height: 3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .theme-gradient {
-      background: linear-gradient(to right, #00b874, #228756);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .type-animation {
-      display: inline-block;
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 1.5em;
-    }
-
-    .description {
-      font-size: 1.2rem;
-      margin-top: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .banner h1 {
-        font-size: 1.8rem;
-        line-height: 2.2rem;
-      }
-
-      .type-animation {
-        font-size: 1.1rem;
-      }
-
-      .description {
-        font-size: 1rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
-  <div class="banner">
-    <h1>
-      Bharat's Growing Network of <span class="theme-gradient">Verified Therapists</span> Connecting You to <span class="theme-gradient">Trusted Counselling Support</span>
-    </h1>
-
-    <div class="type-animation" id="type-animation"></div>
-
-    <p class="description">
-      Certified psychologists and counsellors online or in-person. Book therapy sessions anytime for your well-being.
-    </p>
-  </div>
-
-  <!-- Type Animation Script -->
-  <script>
-    const phrases = [
-      "Accessible Online Counselling",
-      "In-Person Psychologist Meet in Noida",
-      "Trusted Therapy Across India",
-      "Professional Therapy Sessions Online and Offline",
-      "Reliable Offline Counselling Services"
-    ];
-
-    let i = 0;
-    let j = 0;
-    let currentPhrase = '';
-    let isDeleting = false;
-    const speed = 100;
-    const wait = 1500;
-    const typeEl = document.getElementById('type-animation');
-
-    function type() {
-      const fullPhrase = phrases[i];
-      if (isDeleting) {
-        currentPhrase = fullPhrase.substring(0, currentPhrase.length - 1);
-      } else {
-        currentPhrase = fullPhrase.substring(0, currentPhrase.length + 1);
-      }
-
-      typeEl.textContent = currentPhrase;
-
-      if (!isDeleting && currentPhrase === fullPhrase) {
-        setTimeout(() => isDeleting = true, wait);
-      } else if (isDeleting && currentPhrase === '') {
-        isDeleting = false;
-        i = (i + 1) % phrases.length;
-      }
-
-      setTimeout(type, isDeleting ? speed / 2 : speed);
-    }
-
-    type();
-  </script>
-
-  <!-- Tawk.to Live Chat -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = "https://embed.tawk.to/667414b4dd590416e2580cc6/1i0qn1osp";
-      s1.charset = "UTF-8";
-      s1.setAttribute("crossorigin", "*");
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
+  <!-- No visible content for SEO purposes -->
 </body>
 
 </html>
