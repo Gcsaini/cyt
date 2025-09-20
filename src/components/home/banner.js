@@ -106,8 +106,8 @@ export default function Banner() {
   }}
 >
   <TypeAnimation
-    sequence={[
-       "Book a Psychologist in Noida",
+  sequence={[
+    "Book a Psychologist in Noida",
     1500,
     "Access Online Counselling Anytime",
     1500,
@@ -119,17 +119,20 @@ export default function Banner() {
     1500,
     "Affordable Therapy Sessions Online & Offline",
     1500
-    ]}
-    wrapper="div" // this ensures each string is a block element
-    speed={10}
-    repeat={Infinity}
-    deletionSpeed={20}
-    className="theme-gradient"
-    style={{
-      display: "inline-block",
-      whiteSpace: "normal", // allow wrapping
-    }}
-  />
+  ]}
+  wrapper="div"
+  speed={10}
+  repeat={Infinity}
+  deletionSpeed={20}
+  className="theme-gradient"
+  style={{
+    display: "inline-block",
+    whiteSpace: "normal",
+    fontSize: "2.5rem", // increase size
+    fontWeight: 700,    // make bold
+    lineHeight: "3rem"  // spacing between lines
+  }}
+/>
 </div>
 
 
