@@ -107,11 +107,11 @@ export default function Banner() {
 >
   <TypeAnimation
     sequence={[
-     "Accessible Online Counselling",
+      "Accessible Online Counselling",
     1500,
     "In-Person Psychologist Meet in Noida",
     1500,
-    "Affordable Counselling Sessions Across Cities",
+    "Book Verified Therapy Sessions Online and Offline",
     1500,
     "Trusted Verified Therapists Across India",
     1500,
