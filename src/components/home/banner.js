@@ -109,15 +109,13 @@ export default function Banner() {
   sequence={[
     "Book a Psychologist in Noida",
     1500,
-    "Access Online Counselling Anytime",
+    "Access Online Counselling",
     1500,
-    "Meet Expert Psychologists Offline",
+    "Meet Psychologists In-Person",
     1500,
-    "Trusted Therapy Across Cities",
+    "Trusted Therapy Across States",
     1500,
-    "Professional Counsellors Near You",
-    1500,
-    "Affordable Therapy Sessions Online & Offline",
+    "Affordable Therapy Sessions",
     1500
   ]}
   wrapper="div"
@@ -128,7 +126,7 @@ export default function Banner() {
   style={{
     display: "inline-block",
     whiteSpace: "normal",
-    fontSize: "2.5rem", // increase size
+    fontSize: "2 rem", // increase size
     fontWeight: 700,    // make bold
     lineHeight: "3rem"  // spacing between lines
   }}
