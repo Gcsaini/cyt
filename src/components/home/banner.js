@@ -221,7 +221,7 @@ export default function Banner() {
                     style={{
                       cursor: "pointer",
                       padding: isMobile ? "18px 50px" : "12px 25px",
-                      fontSize: isMobile ? "1.3rem" : "1rem",
+                      fontSize: isMobile ? "4rem" : "2rem",
                     }}
                   >
                     <span className="icon-reverse-wrapper">
