@@ -53,14 +53,14 @@ export default function Banner() {
     <section className="rbt-banner-area rbt-banner-1">
       {/* SEO Meta */}
       <Helmet>
-        <title>Verified Therapists in India | Book Online & In-Person Therapy</title>
+        <title>Top Verified Psychologists in India | Online & In-Person Therapy Sessions</title>
         <meta
           name="description"
-          content="Connect with certified psychologists across India. Book online or in-person therapy sessions in Noida. Trusted counselling and mental health support."
+          content="Find certified psychologists and therapists across India. Book online or in-person counselling sessions, mental health support, and therapy with trusted experts in Noida and beyond."
         />
         <meta
           name="keywords"
-          content="Verified therapists India, online counselling, book psychologist, affordable therapy, mental health support, Noida counselling"
+          content="verified psychologists India, online therapy India, book psychologist online, mental health counselling, in-person therapy, Noida therapists, affordable therapy sessions, certified therapists, wellness support, trusted counselling"
         />
       </Helmet>
 
