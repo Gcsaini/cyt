@@ -221,11 +221,11 @@ export default function Banner() {
                     style={{
                       cursor: "pointer",
                       padding: isMobile ? "18px 50px" : "12px 25px",
-                      fontSize: isMobile ? "3rem" : "2rem",
+                      fontSize: isMobile ? "2.5rem" : "2rem",
                     }}
                   >
                     <span className="icon-reverse-wrapper">
-                      <span className="btn-text">Get Started</span>
+                      <span className="btn-text">Check Therapist Directory</span>
                       <span className="btn-icon">
                         <i className="feather-arrow-right"></i>
                       </span>
