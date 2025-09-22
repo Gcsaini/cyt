@@ -220,8 +220,8 @@ export default function Banner() {
                     to="/view-all-therapist"
                     style={{
                       cursor: "pointer",
-                      padding: isMobile ? "18px 50px" : "12px 25px",
-                      fontSize: isMobile ? "2.5rem" : "2rem",
+                     
+                     
                     }}
                   >
                     <span className="icon-reverse-wrapper">
