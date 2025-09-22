@@ -96,21 +96,21 @@ export default function Banner() {
                   </div>
                 )}
 
-                <h1
-  className={isMobile ? "banner-text-title" : "title"}
-  aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+               <h1 className={isMobile ? "banner-text-title" : "title"}
+  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
   style={{
-    fontSize: isMobile ? "2rem" : "3rem", // Desktop H1 bigger (3rem), mobile slightly bigger (2rem)
-    lineHeight: isMobile ? "2.5rem" : "3.5rem", // Adjust line height accordingly
-    marginTop: "0",
-    textAlign: "left", // keeps both mobile and desktop left-aligned
+    fontSize: isMobile ? "2rem" : "3rem",
+    lineHeight: isMobile ? "2.5rem" : "3.5rem",
+    marginTop: 0,
+    textAlign: "left",
   }}
 >
-  Bharat’s Growing Network of{" "}
+  Bharat's Growing Network of{" "}
   <span className="theme-gradient">Verified Therapists</span>{" "}
   Connecting You to{" "}
   <span className="theme-gradient">Trusted Counselling Support</span>
 </h1>
+
 
                 {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
