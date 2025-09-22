@@ -96,20 +96,27 @@ export default function Banner() {
                   </div>
                 )}
 
-               <h1 className={isMobile ? "banner-text-title" : "title"}
+               <h1
+  className={isMobile ? "banner-text-title" : "title"}
   aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
   style={{
     fontSize: isMobile ? "3.5rem" : "4rem",
-    lineHeight: isMobile ? "3.5rem" : "3rem",
+    lineHeight: isMobile ? "3.5rem" : "4.5rem",
     marginTop: 0,
-    textAlign: "left",
+    textAlign: isMobile ? "center" : "left",
+    wordBreak: "break-word",
   }}
 >
   Bharat's Growing Network of{" "}
-  <span className="theme-gradient">Verified Therapists</span>{" "}
+  <span className="theme-gradient" style={{ background: "linear-gradient(90deg, #228756, #56ab2f)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+    Verified Therapists
+  </span>{" "}
   Connecting You to{" "}
-  <span className="theme-gradient">Trusted Counselling Support</span>
+  <span className="theme-gradient-alt" style={{ background: "linear-gradient(90deg, #005bea, #004e92)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+    Trusted Counselling Support
+  </span>
 </h1>
+
 
 
                 {/* TypeAnimation hidden on mobile */}
