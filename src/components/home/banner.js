@@ -5,7 +5,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation"; // ✅ Make sure this is imported
+import { TypeAnimation } from "react-type-animation"; // ✅ Make sure installed
 import ImageTag from "../../utils/image-tag";
 import { fetchById, fetchData } from "../../utils/actions";
 import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
@@ -57,11 +57,9 @@ export default function Banner() {
         paddingBottom: isMobile ? "40px" : "100px",
       }}
     >
-      {/* SEO Meta */}
       <Helmet>
         <title>
-          Top Verified Psychologists in India | Online & In-Person Therapy
-          Sessions
+          Top Verified Psychologists in India | Online & In-Person Therapy Sessions
         </title>
         <meta
           name="description"
@@ -80,8 +78,8 @@ export default function Banner() {
             className="col-lg-8 col-md-12 col-sm-12 col-12"
             style={{
               display: "flex",
-              justifyContent: "center",
-              textAlign: isMobile ? "center" : "left",
+              justifyContent: "flex-start", // left aligned even on mobile
+              textAlign: "left",
             }}
           >
             <div className="content">
@@ -92,28 +90,27 @@ export default function Banner() {
                     style={{ marginTop: isTablet ? 25 : 0 }}
                   >
                     <span className="rbt-new-badge-icon">
-                      <PersonSearchIcon
-                        sx={{ color: "#228756", fontSize: 30 }}
-                      />
+                      <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                     </span>{" "}
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
 
                 <h1
-                  className={isMobile ? "banner-text-title" : "title"}
-                  aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
-                  style={{
-                    fontSize: isMobile ? "1.8rem" : "clamp(1.8rem, 4vw, 2.5rem)",
-                    lineHeight: isMobile ? "2.2rem" : "1.5em",
-                    marginTop: isMobile ? "10px" : "0",
-                  }}
-                >
-                  Bharat’s Growing Network of{" "}
-                  <span className="theme-gradient">Verified Therapists</span>{" "}
-                  Connecting You to{" "}
-                  <span className="theme-gradient">Trusted Counselling Support</span>
-                </h1>
+  className={isMobile ? "banner-text-title" : "title"}
+  aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+  style={{
+    fontSize: isMobile ? "2rem" : "3rem", // Desktop H1 bigger (3rem), mobile slightly bigger (2rem)
+    lineHeight: isMobile ? "2.5rem" : "3.5rem", // Adjust line height accordingly
+    marginTop: "0",
+    textAlign: "left", // keeps both mobile and desktop left-aligned
+  }}
+>
+  Bharat’s Growing Network of{" "}
+  <span className="theme-gradient">Verified Therapists</span>{" "}
+  Connecting You to{" "}
+  <span className="theme-gradient">Trusted Counselling Support</span>
+</h1>
 
                 {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
@@ -147,12 +144,8 @@ export default function Banner() {
                   </div>
                 )}
 
-                <p
-                  className="description"
-                  style={{ textAlign: isMobile ? "center" : "left" }}
-                >
-                  Book <strong>certified psychologists</strong> online or
-                  in-person in Noida. Trusted therapist anytime.
+                <p className="description">
+                  Book <strong>certified psychologists</strong> online or in-person in Noida. Trusted therapist anytime.
                 </p>
 
                 <div className="rbt-like-total">
