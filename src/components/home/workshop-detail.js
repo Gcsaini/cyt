@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async"; // SEO
 import demoPhoto from "../../assets/img/2.png";
 import LazyImage from "../../utils/lazy-image";
 import BgImage from "../../assets/img/bg-image-10.png";
@@ -8,20 +9,37 @@ import { truncateString } from "../../utils/helpers";
 import { getDateDifference } from "../../utils/time";
 import WellNessCard from "./wellness-card";
 import { imagePath } from "../../utils/url";
+
 export default function WorkshopDetail(props) {
   const { data, workshopByThisUser, moreWorkshop } = props;
   const [open, setOpen] = React.useState(false);
   const [sidebar, setSidebar] = React.useState(false);
-  const handleMenuClick = () => {
-    setOpen(!open);
-  };
 
-  const handleSidebarClick = () => {
-    setSidebar(!sidebar);
-  };
+  const handleMenuClick = () => setOpen(!open);
+  const handleSidebarClick = () => setSidebar(!sidebar);
+
+  // Short description for meta tags
+  const metaDescription = truncateString(data.short_desc, 160);
 
   return (
     <>
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>{data.title} | Mind Matters Programs</title>
+        <meta name="description" content={metaDescription} />
+        <meta name="keywords" content={`Mindfulness, Therapy, Mental Health, ${data.title}`} />
+        <meta property="og:title" content={data.title} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:image" content={`${imagePath}/${data.workshop_image}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={data.title} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={`${imagePath}/${data.workshop_image}`} />
+      </Helmet>
+
+      {/* Breadcrumb & Header */}
       <div className="rbt-breadcrumb-default rbt-breadcrumb-style-3">
         <div className="breadcrumb-inner breadcrumb-dark">
           <LazyImage alt="BG Image" width="1920" height="1408" src={BgImage} />
@@ -29,66 +47,65 @@ export default function WorkshopDetail(props) {
         <div className="container mt--40">
           <div className="row">
             <div className="col-lg-8">
-              <div className="content">
-                <div className="content text-start">
-                  <ul className="page-list">
-                    <li className="rbt-breadcrumb-item">
-                      <Link href="/">Home</Link>
-                    </li>
-                    <li>
-                      <div className="icon-right">
-                        <i className="feather-chevron-right"></i>
-                      </div>
-                    </li>
-                    <li className="rbt-breadcrumb-item active">
-                      Mind Matters Programs
-                    </li>
-                  </ul>
-                  <h2 className="title mb--0">{data.title}</h2>
-                  <p className="description">{data.short_desc}</p>
-                  <div className="rbt-author-meta mb--20">
-                    <div className="rbt-avater">
-                      <Link to={`/view-profile/${data.post_by._id}`}>
-                        <ImageTag
-                          alt={data.post_by.name}
-                          src={`${imagePath}/${data.post_by.user.profile}`}
-                        />
-                      </Link>
+              <div className="content text-start">
+                <ul className="page-list">
+                  <li className="rbt-breadcrumb-item">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <div className="icon-right">
+                      <i className="feather-chevron-right"></i>
                     </div>
-                    <div className="rbt-author-info">
-                      By &nbsp;
-                      <Link to={`/view-profile/${data.post_by._id}`}>
-                        {data.post_by.user.name}
-                      </Link>
-                      &nbsp;|&nbsp;
-                      <a href="#">{data.post_by.profile_type}</a>
-                    </div>
+                  </li>
+                  <li className="rbt-breadcrumb-item active">
+                    Mind Matters Programs
+                  </li>
+                </ul>
+                <h2 className="title mb--0">{data.title}</h2>
+                <p className="description">{data.short_desc}</p>
+                <div className="rbt-author-meta mb--20">
+                  <div className="rbt-avater">
+                    <Link to={`/view-profile/${data.post_by._id}`}>
+                      <ImageTag
+                        alt={data.post_by.name}
+                        src={`${imagePath}/${data.post_by.user.profile}`}
+                      />
+                    </Link>
                   </div>
-                  <ul className="rbt-meta">
-                    <li>
-                      <i className="feather-calendar"></i>
-                      {data.event_date} &nbsp; {data.event_time} (
-                      {data.duration})
-                    </li>
-                    <li>
-                      <i className="feather-award"></i> {data.level}
-                    </li>
-                    <li>
-                      <i className="feather-globe"></i> {data.language}
-                    </li>
-                  </ul>
+                  <div className="rbt-author-info">
+                    By &nbsp;
+                    <Link to={`/view-profile/${data.post_by._id}`}>
+                      {data.post_by.user.name}
+                    </Link>
+                    &nbsp;|&nbsp;
+                    <a href="#">{data.post_by.profile_type}</a>
+                  </div>
                 </div>
+                <ul className="rbt-meta">
+                  <li>
+                    <i className="feather-calendar"></i>
+                    {data.event_date} &nbsp; {data.event_time} ({data.duration})
+                  </li>
+                  <li>
+                    <i className="feather-award"></i> {data.level}
+                  </li>
+                  <li>
+                    <i className="feather-globe"></i> {data.language}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Workshop Details */}
       <div className="rbt-course-details-area rbt-section-gap">
         <div className="container">
           <div className="row g-5">
             <div className="col-lg-8">
               <div className="course-details-content">
+                {/* Workshop Image */}
                 <div className="rbt-feature-box rbt-shadow-box thuumbnail">
                   <ImageTag
                     alt="Card image"
@@ -99,6 +116,7 @@ export default function WorkshopDetail(props) {
                   />
                 </div>
 
+                {/* Event Description */}
                 <div className="rbt-feature-box rbt-shadow-box mt--60">
                   <div className="row g-5">
                     <div className="col-lg-12">
@@ -109,6 +127,8 @@ export default function WorkshopDetail(props) {
                     </div>
                   </div>
                 </div>
+
+                {/* Instructor */}
                 <div
                   className="rbt-instructor rbt-shadow-box intructor-wrapper mt--30"
                   id="intructor"
@@ -139,22 +159,19 @@ export default function WorkshopDetail(props) {
                           <h5 className="title" style={{ lineHeight: 0.24 }}>
                             <Link
                               className="hover-flip-item-wrapper"
-                              href={`view-profile/${data.post_by._id}`}
+                              to={`view-profile/${data.post_by._id}`}
                             >
                               {data.post_by.user.name}
                             </Link>
                           </h5>
-                          <span className="b3 subtitle">
-                            {data.post_by.profile_type}
-                          </span>
-
+                          <span className="b3 subtitle">{data.post_by.profile_type}</span>
                         </div>
-
                       </div>
                     </div>
                   </div>
                 </div>
 
+                {/* More Workshops by Same User */}
                 {workshopByThisUser.length > 0 && (
                   <div className="related-course mt--60">
                     <div className="row g-5 align-items-end mb--20">
@@ -173,18 +190,18 @@ export default function WorkshopDetail(props) {
                       </div>
                     </div>
                     <div className="row g-5">
-                      {workshopByThisUser.map((item) => {
-                        return (
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-12 sal-animate">
-                            <WellNessCard data={item} />
-                          </div>
-                        );
-                      })}
+                      {workshopByThisUser.map((item) => (
+                        <div key={item._id} className="col-lg-6 col-md-6 col-sm-6 col-12 sal-animate">
+                          <WellNessCard data={item} />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
               </div>
             </div>
+
+            {/* Sidebar */}
             <div className="col-lg-4 mt_md--60 mt_sm--60">
               <div className="course-sidebar rbt-gradient-border sticky-top rbt-shadow-box course-sidebar-top">
                 <div className="inner">
@@ -202,6 +219,8 @@ export default function WorkshopDetail(props) {
                       </span>
                     </div>
                   </div>
+
+                  {/* Video/Image */}
                   <div className="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15 mt--20">
                     <div className="video-content">
                       <ImageTag
@@ -212,11 +231,12 @@ export default function WorkshopDetail(props) {
                       />
                     </div>
                   </div>
+
+                  {/* Register Button */}
                   <div className="content pt--30">
                     <div className="add-to-card-button mb--15">
                       <Link
                         className="rbt-btn btn-gradient icon-hover w-100 d-block text-center"
-                        href="#"
                         to={`/workshop-booking/${data._id}`}
                       >
                         <span className="btn-text">Register Now</span>
@@ -226,10 +246,11 @@ export default function WorkshopDetail(props) {
                       </Link>
                     </div>
 
+                    {/* Sidebar Details */}
                     <div
                       onClick={() => handleSidebarClick()}
                       className={
-                        sidebar === true
+                        sidebar
                           ? "rbt-widget-details has-show-more active"
                           : "rbt-widget-details has-show-more"
                       }
@@ -237,39 +258,28 @@ export default function WorkshopDetail(props) {
                       <ul className="has-show-more-inner-content rbt-course-details-list-wrapper">
                         <li>
                           <span>Start Date</span>
-                          <span className="rbt-feature-value rbt-badge-5">
-                            {data.event_date}
-                          </span>
+                          <span className="rbt-feature-value rbt-badge-5">{data.event_date}</span>
                         </li>
                         <li>
                           <span>End Date</span>
-                          <span className="rbt-feature-value rbt-badge-5">
-                            {data.event_end_date}
-                          </span>
+                          <span className="rbt-feature-value rbt-badge-5">{data.event_end_date}</span>
                         </li>
                         <li>
                           <span>Start Time</span>
-                          <span className="rbt-feature-value rbt-badge-5">
-                            {data.event_time}
-                          </span>
+                          <span className="rbt-feature-value rbt-badge-5">{data.event_time}</span>
                         </li>
-
                         <li>
                           <span>Level</span>
-                          <span className="rbt-feature-value rbt-badge-5">
-                            {data.level}
-                          </span>
+                          <span className="rbt-feature-value rbt-badge-5">{data.level}</span>
                         </li>
-                        
                         <li>
                           <span>Language</span>
-                          <span className="rbt-feature-value rbt-badge-5">
-                            {data.language}
-                          </span>
+                          <span className="rbt-feature-value rbt-badge-5">{data.language}</span>
                         </li>
-
                       </ul>
                     </div>
+
+                    {/* Social Share */}
                     <div className="social-share-wrapper mt--30 text-center">
                       <div className="rbt-post-share d-flex align-items-center justify-content-center">
                         <ul className="social-icon social-default transparent-with-border justify-content-center">
@@ -289,7 +299,7 @@ export default function WorkshopDetail(props) {
                             </a>
                           </li>
                           <li>
-                            <a href="https://www.linkdin.com/">
+                            <a href="https://www.linkedin.com/">
                               <i className="feather-linkedin"></i>
                             </a>
                           </li>
@@ -297,7 +307,7 @@ export default function WorkshopDetail(props) {
                       </div>
                       <hr className="mt--20" />
                       <div className="contact-with-us text-center">
-                        <p>For any quaries</p>
+                        <p>For any queries</p>
                         <p className="rbt-badge-2 mt--10 justify-content-center w-100">
                           <i className="feather-phone mr--5"></i> WhatsApp us:
                           <a href="#">
@@ -313,6 +323,8 @@ export default function WorkshopDetail(props) {
           </div>
         </div>
       </div>
+
+      {/* Bottom Register Bar */}
       <div className="rbt-course-action-bottom rbt-course-action-active">
         <div className="container">
           <div className="row align-items-center">
@@ -328,9 +340,9 @@ export default function WorkshopDetail(props) {
                   <span className="off-price">₹{data.mrp}</span>
                 </div>
                 <div className="rbt-single-list action-btn">
-                  <a
+                  <Link
                     className="rbt-btn btn-gradient hover-icon-reverse btn-md"
-                    href={`/workshop-booking/${data._id}`}
+                    to={`/workshop-booking/${data._id}`}
                   >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Register Now</span>
@@ -341,13 +353,15 @@ export default function WorkshopDetail(props) {
                         <i className="feather-arrow-right"></i>
                       </span>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* More Workshops */}
       {moreWorkshop.length > 0 && (
         <div className="rbt-related-course-area bg-color-white pt--60 rbt-section-gapBottom">
           <div className="container">
@@ -358,17 +372,16 @@ export default function WorkshopDetail(props) {
               <h4 className="title">Related Mind Matters Programs</h4>
             </div>
             <div className="row g-5">
-              {moreWorkshop.map((item) => {
-                return (
-                  <div className="col-lg-4 col-md-4 col-sm-6 col-12 sal-animate">
-                    <WellNessCard data={item} />
-                  </div>
-                );
-              })}
+              {moreWorkshop.map((item) => (
+                <div key={item._id} className="col-lg-4 col-md-4 col-sm-6 col-12 sal-animate">
+                  <WellNessCard data={item} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       )}
+
       <div className="rbt-separator-mid">
         <div className="container">
           <hr className="rbt-separator m-0" />
