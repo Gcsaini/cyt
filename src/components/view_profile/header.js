@@ -20,14 +20,14 @@ export default function ProfileHeader({ pageData, favrioutes }) {
 
   const profileUrl = `${window.location.origin}/view-profile/${pageData._id}`;
   const title = `${pageData.user.name} - ${pageData.qualification} | Choose Your Therapist`;
-  const description = `View ${pageData.user.name}, a qualified ${pageData.profile_type} based in ${pageData.state}. Languages: ${pageData.language_spoken}. Book a session today.`;
-  const imageUrl = `${imagePath}/${pageData.user.profile}`;
+  const description = `View ${pageData.user.name}, a qualified ${pageData.qualification} and ${pageData.profile_type} based in ${pageData.state}. Languages: ${pageData.language_spoken}. Book a session today.`;
 
   React.useEffect(() => {
     const data = getDecodedToken();
     if (!data) return;
-    if (data.role === 1) setShowBookmark(false);
-    else {
+    if (data.role === 1) {
+      setShowBookmark(false);
+    } else {
       setShowBookmark(true);
       setBookmark(favrioutes.includes(pageData._id));
     }
@@ -37,16 +37,19 @@ export default function ProfileHeader({ pageData, favrioutes }) {
 
   const handleShare = (e) => {
     e.preventDefault();
+
+    const shareText = `${pageData.user.name}, a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
+
     if (navigator.share) {
       navigator
         .share({
           title: pageData.user.name,
-          text: "Check out this therapist profile",
+          text: shareText,
           url: profileUrl,
         })
         .catch((err) => console.log("Sharing failed", err));
     } else {
-      navigator.clipboard.writeText(profileUrl).then(() => {
+      navigator.clipboard.writeText(`${shareText} ${profileUrl}`).then(() => {
         alert("Profile link copied to clipboard!");
       });
     }
@@ -56,7 +59,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     try {
       const response = await postData(InsertFavriouteTherapistUrl, { therapistId: id });
       return !!response.status;
-    } catch {
+    } catch (error) {
       return false;
     }
   };
@@ -65,7 +68,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     try {
       const response = await postData(RemoveFavriouteTherapistUrl, { therapistId: id });
       return !!response.status;
-    } catch {
+    } catch (error) {
       return false;
     }
   };
@@ -78,50 +81,38 @@ export default function ProfileHeader({ pageData, favrioutes }) {
 
   return (
     <>
-      {/* ✅ SEO & Social Sharing */}
+      {/* SEO */}
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Choose Your Therapist" />
-        <link rel="canonical" href={profileUrl} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="profile" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={profileUrl} />
-        <meta property="og:image" content={imageUrl} />
-
-        {/* Twitter */}
+        <meta property="og:image" content={`${imagePath}/${pageData.user.profile}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={imageUrl} />
-
-        {/* JSON-LD Structured Data */}
+        <meta name="twitter:image" content={`${imagePath}/${pageData.user.profile}`} />
+        <link rel="canonical" href={profileUrl} />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
             name: pageData.user.name,
-            image: imageUrl,
+            image: `${imagePath}/${pageData.user.profile}`,
             gender: pageData.user?.gender || "Not specified",
             jobTitle: pageData.qualification,
-            description: `${pageData.user.name} is a ${pageData.profile_type} based in ${pageData.state}.`,
+            description: `${pageData.user.name} is a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}.`,
             address: { "@type": "PostalAddress", addressRegion: pageData.state },
           })}
         </script>
       </Helmet>
 
-      {/* ✅ Page Content */}
+      {/* Page Content */}
       <div className="rbt-page-banner-wrapper">
         <div className="rbt-banner-image"></div>
       </div>
-      <div
-        className="rbt-dashboard-area rbt-section-overlayping-top"
-        style={{ paddingBottom: 30 }}
-      >
+      <div className="rbt-dashboard-area rbt-section-overlayping-top" style={{ paddingBottom: 30 }}>
         <div className="container mt--60">
           <div className="row">
             <div className="col-lg-12">
@@ -148,7 +139,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                         alt={`${pageData.user.name} - ${pageData.qualification}`}
                         width="250"
                         height="250"
-                        src={imageUrl}
+                        src={`${imagePath}/${pageData.user.profile}`}
                         style={{ borderRadius: 10, padding: 0, width: 140, height: 130 }}
                         loading="lazy"
                       />
@@ -156,33 +147,25 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                     <div className="tutor-content">
                       <h1
                         className="title"
-                        style={{
-                          color: whiteColor,
-                          fontSize: isMobile ? "28px" : "32px",
-                          margin: 4,
-                        }}
+                        style={{ color: whiteColor, fontSize: isMobile ? "30px" : "36px", margin: 4 }}
                       >
                         {pageData.user.name}
                       </h1>
                       <h2
                         className="title"
-                        style={{
-                          color: whiteColor,
-                          fontSize: isMobile ? "20px" : "24px",
-                          fontWeight: 500,
-                        }}
+                        style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}
                       >
-                        {pageData.qualification}
+                        {pageData.qualification} - {pageData.profile_type}
                       </h2>
                       <ul className="rbt-meta rbt-meta-white mt--5">
-                        <li>
-                          <i className="feather-user"></i> {pageData.profile_type}
-                        </li>
                         <li>
                           <i className="feather-message-circle"></i> {pageData.language_spoken}
                         </li>
                         <li>
                           <i className="feather-map-pin"></i> {pageData.state}
+                        </li>
+                        <li>
+                          <i className="feather-users"></i> {pageData.user?.gender || "-"}
                         </li>
                       </ul>
                     </div>
