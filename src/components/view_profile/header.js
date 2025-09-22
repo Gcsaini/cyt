@@ -59,29 +59,34 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     if (!isSuccess) setBookmark(false);
   };
 
+  // --- UPDATED SHARE FUNCTION ---
   const handleShare = async () => {
-    const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
-    // For browsers and mobile that support Web Share API
+    const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!\n\n${profileUrl}`;
+
+    // Web Share API for mobile
     if (navigator.share) {
       try {
-        const response = await fetch(`${imagePath}/${pageData.user.profile}`);
-        const blob = await response.blob();
-        const file = new File([blob], "profile.jpg", { type: blob.type });
         await navigator.share({
           title: `${pageData.user.name} - ${pageData.profile_type}`,
           text: shareText,
-          files: [file],
           url: profileUrl,
         });
       } catch (error) {
         console.log("Sharing failed", error);
-        alert("Sharing failed. You can copy the link manually.");
+        alert("Sharing failed. You can copy the link manually below.");
+        showCopyPrompt(shareText);
       }
     } else {
-      // fallback: copy link
-      navigator.clipboard.writeText(`${shareText} ${profileUrl}`).then(() => {
-        alert("Profile link copied to clipboard!");
-      });
+      // Fallback for desktop
+      showCopyPrompt(shareText);
+    }
+  };
+
+  // Show a prompt with share text for all users
+  const showCopyPrompt = (text) => {
+    const copied = window.prompt("Copy and share this profile:", text);
+    if (copied !== null) {
+      navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard!"));
     }
   };
 
@@ -91,23 +96,16 @@ export default function ProfileHeader({ pageData, favrioutes }) {
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
-
-        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={profileUrl} />
         <meta property="og:image" content={`${imagePath}/${pageData.user.profile}`} />
         <meta property="og:type" content="profile" />
-
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={`${imagePath}/${pageData.user.profile}`} />
-
         <link rel="canonical" href={profileUrl} />
-
-        {/* JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -183,7 +181,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                       onClick={handleShare}
                       style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
                     >
-                      Share Now
+                      Share Profile
                     </button>
                   </div>
                 </div>
