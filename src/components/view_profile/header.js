@@ -5,7 +5,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 import ImageTag from "../../utils/image-tag";
 import { whiteColor } from "../../utils/colors";
-import { getDecodedToken } from "../../utils/jwt";
 import { imagePath } from "../../utils/url";
 
 export default function ProfileHeader({ pageData }) {
@@ -16,15 +15,35 @@ export default function ProfileHeader({ pageData }) {
   const title = `${pageData.user.name} - ${pageData.profile_type}`;
   const description = `${pageData.user.name} is a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}. Gender: ${pageData.user?.gender || "-"}.`;
 
+  // ✅ Book Now navigation
   const handleClick = () => navigate(`/therapist-checkout/${pageData._id}`);
 
-  // ✅ WhatsApp direct share
-  const handleShare = () => {
+  // ✅ Universal Share (mobile: share sheet, desktop: clipboard)
+  const handleShare = async () => {
     const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
-      shareText + " " + profileUrl
-    )}`;
-    window.open(whatsappUrl, "_blank");
+    const shareUrl = profileUrl;
+
+    if (navigator.share) {
+      // Mobile: native share dialog
+      try {
+        await navigator.share({
+          title: `${pageData.user.name} - ${pageData.profile_type}`,
+          text: shareText,
+          url: shareUrl,
+        });
+      } catch (error) {
+        console.log("Sharing cancelled or failed:", error);
+      }
+    } else {
+      // Desktop: copy to clipboard
+      try {
+        await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+        alert("Profile link copied to clipboard! Paste it anywhere to share.");
+      } catch (error) {
+        console.log("Clipboard write failed:", error);
+        alert("Sharing not supported. Please copy the link manually.");
+      }
+    }
   };
 
   return (
@@ -104,15 +123,16 @@ export default function ProfileHeader({ pageData }) {
                     <div className="thumbnail rbt-avatars size-lg">
                       <ImageTag
                         alt={`${pageData.user.name} - ${pageData.qualification}`}
-                        width="250"
-                        height="250"
+                        width={isMobile ? "200" : "250"}
+                        height={isMobile ? "180" : "220"}
                         src={`${imagePath}/${pageData.user.profile}`}
                         style={{
-                          borderRadius: 10, // ✅ rectangle with soft edges
+                          borderRadius: 12, // ✅ rectangle with soft edges
                           padding: 0,
-                          width: 140,
-                          height: 130,
+                          width: isMobile ? 180 : 220,
+                          height: isMobile ? 160 : 200,
                           objectFit: "cover",
+                          boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
                         }}
                         loading="lazy"
                       />
@@ -124,7 +144,7 @@ export default function ProfileHeader({ pageData }) {
                         className="title"
                         style={{
                           color: whiteColor,
-                          fontSize: isMobile ? "30px" : "36px",
+                          fontSize: isMobile ? "28px" : "36px",
                           margin: 4,
                         }}
                         initial={{ opacity: 0, y: -30 }}
