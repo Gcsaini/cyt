@@ -59,16 +59,14 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     if (!isSuccess) setBookmark(false);
   };
 
-  const handleShare = async (e) => {
-    e.preventDefault();
+  const handleShare = async () => {
     const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
-
-    if (navigator.canShare && navigator.canShare({ files: [] })) {
+    // For browsers and mobile that support Web Share API
+    if (navigator.share) {
       try {
         const response = await fetch(`${imagePath}/${pageData.user.profile}`);
         const blob = await response.blob();
         const file = new File([blob], "profile.jpg", { type: blob.type });
-
         await navigator.share({
           title: `${pageData.user.name} - ${pageData.profile_type}`,
           text: shareText,
@@ -77,9 +75,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         });
       } catch (error) {
         console.log("Sharing failed", error);
-        alert("Sharing failed. Try copying the link instead.");
+        alert("Sharing failed. You can copy the link manually.");
       }
     } else {
+      // fallback: copy link
       navigator.clipboard.writeText(`${shareText} ${profileUrl}`).then(() => {
         alert("Profile link copied to clipboard!");
       });
@@ -88,19 +87,27 @@ export default function ProfileHeader({ pageData, favrioutes }) {
 
   return (
     <>
-      {/* SEO */}
+      {/* SEO + Open Graph */}
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
+
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={profileUrl} />
         <meta property="og:image" content={`${imagePath}/${pageData.user.profile}`} />
+        <meta property="og:type" content="profile" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={`${imagePath}/${pageData.user.profile}`} />
+
         <link rel="canonical" href={profileUrl} />
+
+        {/* JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -129,9 +136,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                   className="rbt-tutor-information"
                   style={{
                     display: "flex",
-                    flexDirection: isMobile ? "column" : "row",
+                    flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    flexWrap: "wrap",
                   }}
                 >
                   <div className="rbt-tutor-information-left" style={{ textAlign: isMobile ? "center" : "left" }}>
@@ -163,41 +171,20 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                     </div>
                   </div>
 
-                  {/* Buttons - now side by side even on mobile */}
-                  <div style={{ marginTop: 20 }}>
-                    <div style={{
-                      display: "flex",
-                      gap: "10px",
-                      flexDirection: "row", // Always row
-                      justifyContent: isMobile ? "center" : "flex-start",
-                    }}>
-                      <button
-                        onClick={handleClick}
-                        style={{
-                          flex: 1,
-                          backgroundColor: "white",
-                          borderRadius: 4,
-                          padding: "10px 30px",
-                          border: "1px solid #ccc",
-                          cursor: "pointer",
-                        }}
-                      >
-                        Book Now
-                      </button>
-                      <button
-                        onClick={handleShare}
-                        style={{
-                          flex: 1,
-                          backgroundColor: "white",
-                          borderRadius: 4,
-                          padding: "10px 30px",
-                          border: "1px solid #ccc",
-                          cursor: "pointer",
-                        }}
-                      >
-                        Share Now
-                      </button>
-                    </div>
+                  {/* Buttons side by side even on mobile */}
+                  <div style={{ marginTop: 20, display: "flex", gap: 10, flex: isMobile ? "1 1 100%" : "none" }}>
+                    <button
+                      onClick={handleClick}
+                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
+                    >
+                      Book Now
+                    </button>
+                    <button
+                      onClick={handleShare}
+                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
+                    >
+                      Share Now
+                    </button>
                   </div>
                 </div>
               </div>
