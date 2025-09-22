@@ -1,13 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import demoPhoto from "../../assets/img/2.png";
 import LazyImage from "../../utils/lazy-image";
+import BgImage from "../../assets/img/bg-image-10.png";
 import { Link } from "react-router-dom";
 import ImageTag from "../../utils/image-tag";
 import { truncateString } from "../../utils/helpers";
 import { getDateDifference } from "../../utils/time";
 import WellNessCard from "./wellness-card";
 import { imagePath } from "../../utils/url";
-import BgImage from "../../assets/img/bg-image-10.png";
 
 export default function WorkshopDetail(props) {
   const { data, workshopByThisUser, moreWorkshop } = props;
@@ -168,53 +169,20 @@ export default function WorkshopDetail(props) {
             {/* Sidebar */}
             <div className="col-lg-4 mt_md--60 mt_sm--60">
               <aside className="course-sidebar rbt-gradient-border sticky-top rbt-shadow-box course-sidebar-top">
+                {/* Price & Register */}
                 <div className="inner">
-                  {/* Social Share Buttons */}
-                  <div className="social-share-wrapper text-center mb--20">
-                    <h6 className="mb--10">Share this Workshop</h6>
-                    <div className="rbt-post-share d-flex align-items-center justify-content-center">
-                      <ul className="social-icon social-default transparent-with-border justify-content-center">
-                        <li>
-                          <a
-                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <i className="feather-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(data.title)}&url=${encodeURIComponent(currentUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <i className="feather-twitter"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <i className="feather-linkedin"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`https://wa.me/?text=${encodeURIComponent(data.title + " " + currentUrl)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <i className="feather-phone"></i>
-                          </a>
-                        </li>
-                      </ul>
+                  <div className="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
+                    <div className="rbt-price">
+                      <span className="current-price">₹{data.price}</span>
+                      <span className="off-price" style={{ fontSize: 15 }}>₹{data.mrp}</span>
+                    </div>
+                    <div className="discount-time">
+                      <span className="rbt-badge color-danger bg-color-danger-opacity">
+                        <i className="feather-clock"></i> {getDateDifference(data.event_date)} days left!
+                      </span>
                     </div>
                   </div>
 
-                  {/* Register Now Button */}
                   <div className="add-to-card-button mb--15 mt--20">
                     <Link
                       className="rbt-btn btn-gradient icon-hover w-100 d-block text-center"
