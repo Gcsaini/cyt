@@ -4,40 +4,84 @@ import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { whiteColor } from "../../utils/colors";
-import { imagePath } from "../../utils/url";
+import { getDecodedToken } from "../../utils/jwt";
+import {
+  imagePath,
+  InsertFavriouteTherapistUrl,
+  RemoveFavriouteTherapistUrl,
+} from "../../utils/url";
+import { postData } from "../../utils/actions";
 
-export default function ProfileHeader({ pageData }) {
+export default function ProfileHeader({ pageData, favrioutes }) {
   const navigate = useNavigate();
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const [bookmark, setBookmark] = React.useState(false);
+  const [showBookmark, setShowBookmark] = React.useState(false);
 
   const profileUrl = `${window.location.origin}/view-profile/${pageData._id}`;
   const title = `${pageData.user.name} - ${pageData.profile_type}`;
   const description = `${pageData.user.name} is a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}. Gender: ${pageData.user?.gender || "-"}.`;
 
+  React.useEffect(() => {
+    const data = getDecodedToken();
+    if (!data) return;
+    if (data.role === 1) {
+      setShowBookmark(false);
+    } else {
+      setShowBookmark(true);
+      setBookmark(favrioutes.includes(pageData._id));
+    }
+  }, [pageData, favrioutes]);
+
   const handleClick = () => navigate(`/therapist-checkout/${pageData._id}`);
+
+  const addFavrioute = async (id) => {
+    try {
+      const response = await postData(InsertFavriouteTherapistUrl, { therapistId: id });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const removeFavrioute = async (id) => {
+    try {
+      const response = await postData(RemoveFavriouteTherapistUrl, { therapistId: id });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const handleBookmark = async (id, value) => {
+    setBookmark((prev) => !prev);
+    const isSuccess = value ? await removeFavrioute(id) : await addFavrioute(id);
+    if (!isSuccess) setBookmark(false);
+  };
 
   const handleShare = async () => {
     const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
-    const shareUrl = profileUrl;
-
+    // For browsers and mobile that support Web Share API
     if (navigator.share) {
       try {
+        const response = await fetch(`${imagePath}/${pageData.user.profile}`);
+        const blob = await response.blob();
+        const file = new File([blob], "profile.jpg", { type: blob.type });
         await navigator.share({
           title: `${pageData.user.name} - ${pageData.profile_type}`,
           text: shareText,
-          url: shareUrl,
+          files: [file],
+          url: profileUrl,
         });
       } catch (error) {
-        console.log("Sharing cancelled or failed:", error);
+        console.log("Sharing failed", error);
+        alert("Sharing failed. You can copy the link manually.");
       }
     } else {
-      try {
-        await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-        alert("Profile link copied to clipboard! Paste it anywhere to share.");
-      } catch (error) {
-        console.log("Clipboard write failed:", error);
-        alert("Sharing not supported. Please copy the link manually.");
-      }
+      // fallback: copy link
+      navigator.clipboard.writeText(`${shareText} ${profileUrl}`).then(() => {
+        alert("Profile link copied to clipboard!");
+      });
     }
   };
 
@@ -47,60 +91,41 @@ export default function ProfileHeader({ pageData }) {
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
+
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={profileUrl} />
-        <meta
-          property="og:image"
-          content={`${imagePath}/${pageData.user.profile}`}
-        />
+        <meta property="og:image" content={`${imagePath}/${pageData.user.profile}`} />
         <meta property="og:type" content="profile" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta
-          name="twitter:image"
-          content={`${imagePath}/${pageData.user.profile}`}
-        />
+        <meta name="twitter:image" content={`${imagePath}/${pageData.user.profile}`} />
+
         <link rel="canonical" href={profileUrl} />
+
+        {/* JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: pageData.user.name,
+            image: `${imagePath}/${pageData.user.profile}`,
+            gender: pageData.user?.gender || "Not specified",
+            jobTitle: pageData.qualification,
+            description: description,
+            address: { "@type": "PostalAddress", addressRegion: pageData.state },
+          })}
+        </script>
       </Helmet>
 
-      {/* Embedded CSS for animation */}
-      <style>
-        {`
-          .fade-in {
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeInUp 0.8s forwards;
-          }
-          .fade-in.delay-1 { animation-delay: 0.3s; }
-          .fade-in.delay-2 { animation-delay: 0.6s; }
-          .fade-in.delay-3 { animation-delay: 0.9s; }
-
-          @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-          }
-
-          .profile-image-square {
-            width: 180px;
-            height: 180px;
-            border-radius: 12px;
-            overflow: hidden;
-            object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            margin: 0 auto;
-          }
-
-          @media (min-width: 1024px) {
-            .profile-image-square {
-              width: 220px;
-              height: 220px;
-            }
-          }
-        `}
-      </style>
-
       {/* Page Content */}
+      <div className="rbt-page-banner-wrapper">
+        <div className="rbt-banner-image"></div>
+      </div>
       <div className="rbt-dashboard-area rbt-section-overlayping-top" style={{ paddingBottom: 30 }}>
         <div className="container mt--60">
           <div className="row">
@@ -117,104 +142,46 @@ export default function ProfileHeader({ pageData }) {
                     flexWrap: "wrap",
                   }}
                 >
-                  {/* Profile Image + Info */}
-                  <div
-                    className="rbt-tutor-information-left"
-                    style={{ textAlign: isMobile ? "center" : "left" }}
-                  >
+                  <div className="rbt-tutor-information-left" style={{ textAlign: isMobile ? "center" : "left" }}>
                     <div className="thumbnail rbt-avatars size-lg">
                       <ImageTag
                         alt={`${pageData.user.name} - ${pageData.qualification}`}
-                        width="220"
-                        height="220"
+                        width="250"
+                        height="250"
                         src={`${imagePath}/${pageData.user.profile}`}
-                        className="profile-image-square"
+                        style={{ borderRadius: 10, padding: 0, width: 140, height: 130 }}
                         loading="lazy"
                       />
                     </div>
-
                     <div className="tutor-content">
-                      <h1
-                        className="title fade-in"
-                        style={{
-                          color: whiteColor,
-                          fontSize: isMobile ? "28px" : "36px",
-                          margin: 4,
-                        }}
-                      >
+                      <h1 className="title" style={{ color: whiteColor, fontSize: isMobile ? "30px" : "36px", margin: 4 }}>
                         {pageData.user.name}
                       </h1>
-
-                      <h2
-                        className="title fade-in delay-1"
-                        style={{
-                          color: whiteColor,
-                          fontSize: isMobile ? "20px" : "24px",
-                          fontWeight: 500,
-                        }}
-                      >
+                      <h2 className="title" style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}>
                         {pageData.profile_type}
                       </h2>
-
-                      <h3
-                        className="title fade-in delay-2"
-                        style={{
-                          color: whiteColor,
-                          fontSize: isMobile ? "18px" : "20px",
-                          fontWeight: 400,
-                        }}
-                      >
+                      <h3 className="title" style={{ color: whiteColor, fontSize: isMobile ? "18px" : "20px", fontWeight: 400 }}>
                         {pageData.qualification}
                       </h3>
-
-                      <ul className="rbt-meta rbt-meta-white mt--5 fade-in delay-3">
-                        <li>
-                          <i className="feather-message-circle"></i>{" "}
-                          {pageData.language_spoken}
-                        </li>
-                        <li>
-                          <i className="feather-map-pin"></i> {pageData.state}
-                        </li>
-                        <li>
-                          <i className="feather-users"></i>{" "}
-                          {pageData.user?.gender || "-"}
-                        </li>
+                      <ul className="rbt-meta rbt-meta-white mt--5">
+                        <li><i className="feather-message-circle"></i> {pageData.language_spoken}</li>
+                        <li><i className="feather-map-pin"></i> {pageData.state}</li>
+                        <li><i className="feather-users"></i> {pageData.user?.gender || "-"}</li>
                       </ul>
                     </div>
                   </div>
 
-                  {/* Buttons */}
-                  <div
-                    style={{
-                      marginTop: 20,
-                      display: "flex",
-                      gap: 10,
-                      flex: isMobile ? "1 1 100%" : "none",
-                    }}
-                  >
+                  {/* Buttons side by side even on mobile */}
+                  <div style={{ marginTop: 20, display: "flex", gap: 10, flex: isMobile ? "1 1 100%" : "none" }}>
                     <button
                       onClick={handleClick}
-                      style={{
-                        flex: 1,
-                        backgroundColor: "white",
-                        borderRadius: 4,
-                        padding: "10px 30px",
-                        border: "1px solid #ccc",
-                        cursor: "pointer",
-                      }}
+                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
                     >
                       Book Now
                     </button>
                     <button
                       onClick={handleShare}
-                      style={{
-                        flex: 1,
-                        backgroundColor: "white",
-                        borderRadius: 4,
-                        padding: "10px 30px",
-                        border: "1px solid #ccc",
-                        cursor: "pointer",
-                      }}
+                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
                     >
                       Share Now
                     </button>
