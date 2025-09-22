@@ -5,7 +5,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation"; // ✅ Make sure installed
+import { TypeAnimation } from "react-type-animation"; 
 import ImageTag from "../../utils/image-tag";
 import { fetchById, fetchData } from "../../utils/actions";
 import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
@@ -78,8 +78,9 @@ export default function Banner() {
             className="col-lg-8 col-md-12 col-sm-12 col-12"
             style={{
               display: "flex",
-              justifyContent: "flex-start", // left aligned even on mobile
+              justifyContent: "flex-start",
               textAlign: "left",
+              flexDirection: "column",
             }}
           >
             <div className="content">
@@ -96,44 +97,41 @@ export default function Banner() {
                   </div>
                 )}
 
-              <h1
-  className={isMobile ? "banner-text-title" : "title"}
-  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
-  style={{
-    fontSize: isMobile ? "3.5rem" : "4rem",
-    lineHeight: isMobile ? "3.5rem" : "4.5rem",
-    marginTop: 0,
-    textAlign: isMobile ? "center" : "left",
-    wordBreak: "break-word",
-  }}
->
-  Bharat's Growing Network of
-  {isMobile && <br />} {/* Only adds line break on mobile */}
-  <span
-    className="theme-gradient"
-    style={{
-      background: "linear-gradient(90deg, #228756, #56ab2f)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-  >
-    Verified Therapists
-  </span>{" "}
-  Connecting You to{" "}
-  <span
-    className="theme-gradient-alt"
-    style={{
-      background: "linear-gradient(90deg, #004e92, #005bea)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-  >
-    Trusted Counselling Support
-  </span>
-</h1>
-
-
-
+                <h1
+                  className={isMobile ? "banner-text-title" : "title"}
+                  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+                  style={{
+                    fontSize: isMobile ? "3.5rem" : "4rem",
+                    lineHeight: isMobile ? "3.5rem" : "4.5rem",
+                    marginTop: 0,
+                    textAlign: isMobile ? "center" : "left",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  Bharat's Growing Network of
+                  {isMobile && <br />} {/* Verified Therapists new line on mobile */}
+                  <span
+                    className="theme-gradient"
+                    style={{
+                      background: "linear-gradient(90deg, #228756, #56ab2f)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Verified Therapists
+                  </span>{" "}
+                  Connecting You to{" "}
+                  <span
+                    className="theme-gradient-alt"
+                    style={{
+                      background: "linear-gradient(90deg, #004e92, #005bea)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Trusted Counselling Support
+                  </span>
+                </h1>
 
                 {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
@@ -167,10 +165,18 @@ export default function Banner() {
                   </div>
                 )}
 
-                <p className="description">
+                {/* Book certified psychologists line */}
+                <p
+                  className="description"
+                  style={{
+                    textAlign: isMobile ? "center" : "left",
+                    marginTop: "20px",
+                  }}
+                >
                   Book <strong>certified psychologists</strong> online or in-person in Noida. Trusted therapist anytime.
                 </p>
 
+                {/* Avatars */}
                 <div className="rbt-like-total">
                   <div className="profile-share">
                     {[ClientImg, Fabiha, counselling1].map((img, i) => (
@@ -199,12 +205,23 @@ export default function Banner() {
                   </div>
                 </div>
 
-                <br />
-                <div className="slider-btn">
+                {/* Get Started button */}
+                <div
+                  className="slider-btn"
+                  style={{
+                    display: "flex",
+                    justifyContent: isMobile ? "center" : "flex-start",
+                    marginTop: "20px",
+                  }}
+                >
                   <Link
                     className="rbt-btn btn-gradient hover-icon-reverse"
                     to="/view-all-therapist"
-                    style={{ cursor: "pointer" }}
+                    style={{
+                      cursor: "pointer",
+                      padding: isMobile ? "15px 40px" : "12px 25px",
+                      fontSize: isMobile ? "1.2rem" : "1rem",
+                    }}
                   >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Get Started</span>
