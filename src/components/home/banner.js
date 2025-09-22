@@ -168,14 +168,19 @@ export default function Banner() {
 
                 {/* Centered description on mobile */}
                 <p
-                  className="description"
-                  style={{
-                    textAlign: isMobile ? "center" : "left",
-                    marginTop: "15px",
-                  }}
-                >
-                  Book <strong>certified psychologists</strong> online or in-person in Noida. Trusted therapist anytime.
-                </p>
+  className="description"
+  style={{
+    textAlign: isMobile ? "center" : "left",
+    marginTop: "15px",
+    
+  }}
+>
+  Book{" "}
+  <span style={{ color: "#004e92", fontWeight: "bold" }}>
+    verified psychologists
+  </span>{" "}
+  online or in-person in Noida. Trusted therapist anytime.
+</p>
 
                 {/* Avatar Section */}
                 <div className="rbt-like-total">
