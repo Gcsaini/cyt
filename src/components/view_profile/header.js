@@ -59,11 +59,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     if (!isSuccess) setBookmark(false);
   };
 
-  // --- UPDATED SHARE FUNCTION ---
+  // --- SHARE FUNCTION ---
   const handleShare = async () => {
     const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!\n\n${profileUrl}`;
 
-    // Web Share API for mobile
     if (navigator.share) {
       try {
         await navigator.share({
@@ -77,12 +76,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         showCopyPrompt(shareText);
       }
     } else {
-      // Fallback for desktop
       showCopyPrompt(shareText);
     }
   };
 
-  // Show a prompt with share text for all users
   const showCopyPrompt = (text) => {
     const copied = window.prompt("Copy and share this profile:", text);
     if (copied !== null) {
@@ -92,6 +89,30 @@ export default function ProfileHeader({ pageData, favrioutes }) {
 
   return (
     <>
+      {/* Inline CSS */}
+      <style>{`
+        @keyframes slideUp {0% { opacity:0; transform: translateY(30px);} 100% { opacity:1; transform: translateY(0); }}
+        .animate-slide-up { animation-name: slideUp; animation-duration: 0.6s; animation-fill-mode: forwards; opacity:0; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        .rbt-tutor-information-left .thumbnail img { border-radius: 10px; object-fit: cover; }
+        @media screen and (max-width: 600px) {
+          .rbt-tutor-information-left .thumbnail img { width: 100px !important; height: 100px !important; }
+          .tutor-bg-photo { height: 150px !important; }
+          .rbt-tutor-information button { flex: 1 1 100%; }
+        }
+
+        .tutor-bg-photo { background-size: cover; background-position: center; border-radius:10px; }
+        .tutor-content .title { margin:4px 0; color: ${whiteColor}; }
+        .rbt-meta-white { list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:10px; margin-top:5px; color:#fff; }
+        .rbt-meta-white li i { margin-right:5px; }
+        .rbt-tutor-information button { flex:1; background-color:white; border-radius:4px; padding:10px 30px; border:1px solid #ccc; cursor:pointer; transition: all 0.3s ease; }
+        .rbt-tutor-information button:hover { background-color: #f0f0f0; }
+      `}</style>
+
       {/* SEO + Open Graph */}
       <Helmet>
         <title>{title}</title>
@@ -124,44 +145,40 @@ export default function ProfileHeader({ pageData, favrioutes }) {
       <div className="rbt-page-banner-wrapper">
         <div className="rbt-banner-image"></div>
       </div>
+
       <div className="rbt-dashboard-area rbt-section-overlayping-top" style={{ paddingBottom: 30 }}>
         <div className="container mt--60">
           <div className="row">
             <div className="col-lg-12">
-              <div className="rbt-dashboard-content-wrapper" style={{ marginTop: isMobile ? 100 : 0 }}>
-                <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
+              <div className="rbt-dashboard-content-wrapper" style={{ marginTop: isMobile ? 60 : 0 }}>
+                {/* Banner */}
+                <div
+                  className="tutor-bg-photo bg_image bg_image--22"
+                  style={{ height: isMobile ? 150 : 350 }}
+                ></div>
+
+                {/* Tutor Info */}
                 <div
                   className="rbt-tutor-information"
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexWrap: "wrap",
-                  }}
+                  style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}
                 >
-                  <div className="rbt-tutor-information-left" style={{ textAlign: isMobile ? "center" : "left" }}>
+                  <div className="rbt-tutor-information-left" style={{ textAlign: isMobile ? "center" : "left", flex: "1 1 100%", marginTop: isMobile ? 10 : 0 }}>
                     <div className="thumbnail rbt-avatars size-lg">
                       <ImageTag
                         alt={`${pageData.user.name} - ${pageData.qualification}`}
                         width="250"
                         height="250"
                         src={`${imagePath}/${pageData.user.profile}`}
-                        style={{ borderRadius: 10, padding: 0, width: 140, height: 130 }}
+                        style={{ borderRadius: 10, width: isMobile ? 100 : 140, height: isMobile ? 100 : 130, objectFit: "cover" }}
                         loading="lazy"
                       />
                     </div>
+
                     <div className="tutor-content">
-                      <h1 className="title" style={{ color: whiteColor, fontSize: isMobile ? "30px" : "36px", margin: 4 }}>
-                        {pageData.user.name}
-                      </h1>
-                      <h2 className="title" style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}>
-                        {pageData.profile_type}
-                      </h2>
-                      <h3 className="title" style={{ color: whiteColor, fontSize: isMobile ? "18px" : "20px", fontWeight: 400 }}>
-                        {pageData.qualification}
-                      </h3>
-                      <ul className="rbt-meta rbt-meta-white mt--5">
+                      <h1 className="title animate-slide-up delay-1">{pageData.user.name}</h1>
+                      <h2 className="title animate-slide-up delay-2">{pageData.profile_type}</h2>
+                      <h3 className="title animate-slide-up delay-3">{pageData.qualification}</h3>
+                      <ul className="rbt-meta rbt-meta-white mt--5 animate-slide-up delay-4">
                         <li><i className="feather-message-circle"></i> {pageData.language_spoken}</li>
                         <li><i className="feather-map-pin"></i> {pageData.state}</li>
                         <li><i className="feather-users"></i> {pageData.user?.gender || "-"}</li>
@@ -169,20 +186,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                     </div>
                   </div>
 
-                  {/* Buttons side by side even on mobile */}
+                  {/* Buttons */}
                   <div style={{ marginTop: 20, display: "flex", gap: 10, flex: isMobile ? "1 1 100%" : "none" }}>
-                    <button
-                      onClick={handleClick}
-                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
-                    >
-                      Book Now
-                    </button>
-                    <button
-                      onClick={handleShare}
-                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
-                    >
-                      Share Profile
-                    </button>
+                    <button onClick={handleClick}>Book Now</button>
+                    <button onClick={handleShare}>Share Profile</button>
                   </div>
                 </div>
               </div>
