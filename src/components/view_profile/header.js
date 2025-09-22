@@ -151,12 +151,17 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                       >
                         {pageData.user.name}
                       </h1>
+                      {/* Profile Type first */}
                       <h2
                         className="title"
                         style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}
                       >
-                        {pageData.qualification} - {pageData.profile_type}
+                        {pageData.profile_type}
                       </h2>
+                      {/* Qualification below */}
+                      <p style={{ color: whiteColor, fontSize: isMobile ? "16px" : "18px", margin: "4px 0" }}>
+                        {pageData.qualification}
+                      </p>
                       <ul className="rbt-meta rbt-meta-white mt--5">
                         <li>
                           <i className="feather-message-circle"></i> {pageData.language_spoken}
