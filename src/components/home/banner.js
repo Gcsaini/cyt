@@ -99,8 +99,8 @@ export default function Banner() {
                <h1 className={isMobile ? "banner-text-title" : "title"}
   aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
   style={{
-    fontSize: isMobile ? "2rem" : "3rem",
-    lineHeight: isMobile ? "2.5rem" : "3.5rem",
+    fontSize: isMobile ? "4rem" : "3rem",
+    lineHeight: isMobile ? "3.5rem" : "4rem",
     marginTop: 0,
     textAlign: "left",
   }}
