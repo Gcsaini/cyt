@@ -96,7 +96,7 @@ export default function Banner() {
                   </div>
                 )}
 
-               <h1
+              <h1
   className={isMobile ? "banner-text-title" : "title"}
   aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
   style={{
@@ -107,15 +107,31 @@ export default function Banner() {
     wordBreak: "break-word",
   }}
 >
-  Bharat's Growing Network of{" "}
-  <span className="theme-gradient" style={{ background: "linear-gradient(90deg, #228756, #56ab2f)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+  Bharat's Growing Network of
+  {isMobile && <br />} {/* Only adds line break on mobile */}
+  <span
+    className="theme-gradient"
+    style={{
+      background: "linear-gradient(90deg, #228756, #56ab2f)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
     Verified Therapists
   </span>{" "}
   Connecting You to{" "}
-  <span className="theme-gradient-alt" style={{ background: "linear-gradient(90deg, #005bea, #004e92)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+  <span
+    className="theme-gradient-alt"
+    style={{
+      background: "linear-gradient(90deg, #004e92, #005bea)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
     Trusted Counselling Support
   </span>
 </h1>
+
 
 
 
