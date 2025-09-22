@@ -19,8 +19,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
   const [showBookmark, setShowBookmark] = React.useState(false);
 
   const profileUrl = `${window.location.origin}/view-profile/${pageData._id}`;
-  const title = `${pageData.user.name} - ${pageData.qualification} | Choose Your Therapist`;
-  const description = `View ${pageData.user.name}, a qualified ${pageData.qualification} and ${pageData.profile_type} based in ${pageData.state}. Languages: ${pageData.language_spoken}. Book a session today.`;
+  const title = `${pageData.user.name} - ${pageData.profile_type}`;
+  const description = `${pageData.user.name} is a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}. Gender: ${pageData.user?.gender || "-"}.`;
 
   React.useEffect(() => {
     const data = getDecodedToken();
@@ -34,26 +34,6 @@ export default function ProfileHeader({ pageData, favrioutes }) {
   }, [pageData, favrioutes]);
 
   const handleClick = () => navigate(`/therapist-checkout/${pageData._id}`);
-
-  const handleShare = (e) => {
-    e.preventDefault();
-
-    const shareText = `${pageData.user.name}, a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
-
-    if (navigator.share) {
-      navigator
-        .share({
-          title: pageData.user.name,
-          text: shareText,
-          url: profileUrl,
-        })
-        .catch((err) => console.log("Sharing failed", err));
-    } else {
-      navigator.clipboard.writeText(`${shareText} ${profileUrl}`).then(() => {
-        alert("Profile link copied to clipboard!");
-      });
-    }
-  };
 
   const addFavrioute = async (id) => {
     try {
@@ -79,6 +59,33 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     if (!isSuccess) setBookmark(false);
   };
 
+  const handleShare = async (e) => {
+    e.preventDefault();
+    const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!`;
+
+    if (navigator.canShare && navigator.canShare({ files: [] })) {
+      try {
+        const response = await fetch(`${imagePath}/${pageData.user.profile}`);
+        const blob = await response.blob();
+        const file = new File([blob], "profile.jpg", { type: blob.type });
+
+        await navigator.share({
+          title: `${pageData.user.name} - ${pageData.profile_type}`,
+          text: shareText,
+          files: [file],
+          url: profileUrl,
+        });
+      } catch (error) {
+        console.log("Sharing failed", error);
+        alert("Sharing failed. Try copying the link instead.");
+      }
+    } else {
+      navigator.clipboard.writeText(`${shareText} ${profileUrl}`).then(() => {
+        alert("Profile link copied to clipboard!");
+      });
+    }
+  };
+
   return (
     <>
       {/* SEO */}
@@ -102,7 +109,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
             image: `${imagePath}/${pageData.user.profile}`,
             gender: pageData.user?.gender || "Not specified",
             jobTitle: pageData.qualification,
-            description: `${pageData.user.name} is a ${pageData.qualification} & ${pageData.profile_type} based in ${pageData.state}.`,
+            description: description,
             address: { "@type": "PostalAddress", addressRegion: pageData.state },
           })}
         </script>
@@ -116,10 +123,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         <div className="container mt--60">
           <div className="row">
             <div className="col-lg-12">
-              <div
-                className="rbt-dashboard-content-wrapper"
-                style={{ marginTop: isMobile ? 100 : 0 }}
-              >
+              <div className="rbt-dashboard-content-wrapper" style={{ marginTop: isMobile ? 100 : 0 }}>
                 <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
                 <div
                   className="rbt-tutor-information"
@@ -127,13 +131,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                     display: "flex",
                     flexDirection: isMobile ? "column" : "row",
                     justifyContent: "space-between",
-                    alignItems: isMobile ? "center" : "flex-start",
+                    alignItems: "center",
                   }}
                 >
-                  <div
-                    className="rbt-tutor-information-left"
-                    style={{ textAlign: isMobile ? "center" : "left" }}
-                  >
+                  <div className="rbt-tutor-information-left" style={{ textAlign: isMobile ? "center" : "left" }}>
                     <div className="thumbnail rbt-avatars size-lg">
                       <ImageTag
                         alt={`${pageData.user.name} - ${pageData.qualification}`}
@@ -145,45 +146,31 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                       />
                     </div>
                     <div className="tutor-content">
-                      <h1
-                        className="title"
-                        style={{ color: whiteColor, fontSize: isMobile ? "30px" : "36px", margin: 4 }}
-                      >
+                      <h1 className="title" style={{ color: whiteColor, fontSize: isMobile ? "30px" : "36px", margin: 4 }}>
                         {pageData.user.name}
                       </h1>
-                      {/* Profile Type first */}
-                      <h2
-                        className="title"
-                        style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}
-                      >
+                      <h2 className="title" style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}>
                         {pageData.profile_type}
                       </h2>
-                      {/* Qualification below */}
-                      <p style={{ color: whiteColor, fontSize: isMobile ? "16px" : "18px", margin: "4px 0" }}>
+                      <h3 className="title" style={{ color: whiteColor, fontSize: isMobile ? "18px" : "20px", fontWeight: 400 }}>
                         {pageData.qualification}
-                      </p>
+                      </h3>
                       <ul className="rbt-meta rbt-meta-white mt--5">
-                        <li>
-                          <i className="feather-message-circle"></i> {pageData.language_spoken}
-                        </li>
-                        <li>
-                          <i className="feather-map-pin"></i> {pageData.state}
-                        </li>
-                        <li>
-                          <i className="feather-users"></i> {pageData.user?.gender || "-"}
-                        </li>
+                        <li><i className="feather-message-circle"></i> {pageData.language_spoken}</li>
+                        <li><i className="feather-map-pin"></i> {pageData.state}</li>
+                        <li><i className="feather-users"></i> {pageData.user?.gender || "-"}</li>
                       </ul>
                     </div>
                   </div>
 
-                  <div style={{ marginTop: isMobile ? 20 : 0 }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "10px",
-                        flexDirection: isMobile ? "column" : "row",
-                      }}
-                    >
+                  {/* Buttons - now side by side even on mobile */}
+                  <div style={{ marginTop: 20 }}>
+                    <div style={{
+                      display: "flex",
+                      gap: "10px",
+                      flexDirection: "row", // Always row
+                      justifyContent: isMobile ? "center" : "flex-start",
+                    }}>
                       <button
                         onClick={handleClick}
                         style={{
