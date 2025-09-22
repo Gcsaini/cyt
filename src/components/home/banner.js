@@ -5,7 +5,6 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation";
 import ImageTag from "../../utils/image-tag";
 import { fetchById, fetchData } from "../../utils/actions";
 import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
@@ -50,10 +49,19 @@ export default function Banner() {
   }, []);
 
   return (
-    <section className="rbt-banner-area rbt-banner-1">
+    <section
+      className="rbt-banner-area rbt-banner-1"
+      style={{
+        paddingTop: isMobile ? "60px" : "120px",
+        paddingBottom: isMobile ? "40px" : "100px",
+      }}
+    >
       {/* SEO Meta */}
       <Helmet>
-        <title>Top Verified Psychologists in India | Online & In-Person Therapy Sessions</title>
+        <title>
+          Top Verified Psychologists in India | Online & In-Person Therapy
+          Sessions
+        </title>
         <meta
           name="description"
           content="Find certified psychologists and therapists across India. Book online or in-person counselling sessions, mental health support, and therapy with trusted experts in Noida and beyond."
@@ -67,13 +75,25 @@ export default function Banner() {
       <div className="container mt--60">
         <div className="row justify-content-between align-items-center">
           {/* Banner Text */}
-          <div className="col-lg-8 col-md-12 col-sm-12 col-12" style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            className="col-lg-8 col-md-12 col-sm-12 col-12"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              textAlign: isMobile ? "center" : "left",
+            }}
+          >
             <div className="content">
               <div className="inner">
                 {!isMobile && (
-                  <div className="rbt-new-badge rbt-new-badge-one" style={{ marginTop: isTablet ? 25 : 0 }}>
+                  <div
+                    className="rbt-new-badge rbt-new-badge-one"
+                    style={{ marginTop: isTablet ? 25 : 0 }}
+                  >
                     <span className="rbt-new-badge-icon">
-                      <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
+                      <PersonSearchIcon
+                        sx={{ color: "#228756", fontSize: 30 }}
+                      />
                     </span>{" "}
                     Trusted by People, Powered by Verified Therapists
                   </div>
@@ -82,42 +102,56 @@ export default function Banner() {
                 <h1
                   className={isMobile ? "banner-text-title" : "title"}
                   aria-label="Bharat’s Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+                  style={{
+                    fontSize: isMobile ? "1.8rem" : "clamp(1.8rem, 4vw, 2.5rem)",
+                    lineHeight: isMobile ? "2.2rem" : "1.5em",
+                    marginTop: isMobile ? "10px" : "0",
+                  }}
                 >
-                  Bharat’s Growing Network of <span className="theme-gradient">Verified Therapists</span> Connecting You to{" "}
+                  Bharat’s Growing Network of{" "}
+                  <span className="theme-gradient">Verified Therapists</span>{" "}
+                  Connecting You to{" "}
                   <span className="theme-gradient">Trusted Counselling Support</span>
                 </h1>
 
-                <div style={{ minHeight: "3em", display: "flex", alignItems: "center" }}>
-                  <TypeAnimation
-                    sequence={[
-                      "Book a Psychologist",
-                      1500,
-                      "Access Online Counselling",
-                      1500,
-                      "Meet Psychologists In-Person",
-                      1500,
-                      "Trusted Therapy Across States",
-                      1500,
-                      "Affordable Therapy Sessions",
-                      1500,
-                    ]}
-                    wrapper="div"
-                    speed={10}
-                    repeat={Infinity}
-                    deletionSpeed={20}
-                    className="theme-gradient"
-                    style={{
-                      display: "inline-block",
-                      fontWeight: 700,
-                      lineHeight: "1.5em",
-                      fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-                      whiteSpace: "normal",
-                    }}
-                  />
-                </div>
+                {/* TypeAnimation hidden on mobile */}
+                {!isMobile && (
+                  <div style={{ minHeight: "3em", display: "flex", alignItems: "center" }}>
+                    <TypeAnimation
+                      sequence={[
+                        "Book a Psychologist",
+                        1500,
+                        "Access Online Counselling",
+                        1500,
+                        "Meet Psychologists In-Person",
+                        1500,
+                        "Trusted Therapy Across States",
+                        1500,
+                        "Affordable Therapy Sessions",
+                        1500,
+                      ]}
+                      wrapper="div"
+                      speed={10}
+                      repeat={Infinity}
+                      deletionSpeed={20}
+                      className="theme-gradient"
+                      style={{
+                        display: "inline-block",
+                        fontWeight: 700,
+                        lineHeight: "1.5em",
+                        fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                        whiteSpace: "normal",
+                      }}
+                    />
+                  </div>
+                )}
 
-                <p className="description">
-                  Book <strong>certified psychologists</strong> online or in-person in Noida. Trusted therapist anytime.
+                <p
+                  className="description"
+                  style={{ textAlign: isMobile ? "center" : "left" }}
+                >
+                  Book <strong>certified psychologists</strong> online or
+                  in-person in Noida. Trusted therapist anytime.
                 </p>
 
                 <div className="rbt-like-total">
@@ -140,7 +174,9 @@ export default function Banner() {
                     ))}
 
                     <div className="more-author-text">
-                      <h5 className="total-join-students">Over 5,245+ already on their wellness journey.</h5>
+                      <h5 className="total-join-students">
+                        Over 5,245+ already on their wellness journey.
+                      </h5>
                       <p className="subtitle">Your well-being awaits.</p>
                     </div>
                   </div>
@@ -169,7 +205,10 @@ export default function Banner() {
           </div>
 
           {/* Swiper Profiles */}
-          <div className="col-lg-4 col-md-12 col-sm-12 col-12" style={{ marginTop: isMobile ? 10 : 60, marginBottom: 100 }}>
+          <div
+            className="col-lg-4 col-md-12 col-sm-12 col-12"
+            style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}
+          >
             {data.length > 0 && (
               <div className="content">
                 <div className="pb--60 swiper rbt-dot-bottom-center banner-swiper-active">
