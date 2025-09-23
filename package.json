@@ -7,7 +7,7 @@
     "@ckeditor/ckeditor5-react": "^8.0.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
-    "@fortawesome/fontawesome-free": "^6.5.2",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.16.5",
     "@mui/x-date-pickers": "^7.11.1",
