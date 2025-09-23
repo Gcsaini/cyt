@@ -117,105 +117,119 @@ export default function ProfileCardVert(props) {
             </div>
           </Link>
         </div>
-        <div className="rbt-card-body">
-          <ul className="rbt-meta">
-            <li style={{ fontSize: 16 }}>
-              <i className="feather-message-circle"></i>
-              {data.language_spoken}
-            </li>
-            <li style={{ fontSize: 16 }}>
-              <i className="feather-map-pin"></i>
-              {data.state}
-            </li>
-          </ul>
-          <div className="rbt-card-top">
-            <div className="rbt-review">
-              <h4 className="rbt-card-title">
-                <Link
-                  to={`/view-profile/${data._id}`}
-                  style={{ cursor: "pointer" }}
-                >
-                  {data.user.name}
-                </Link>
-              </h4>
+       <div className="rbt-card-body">
+  <ul className="rbt-meta">
+    <li style={{ fontSize: 16 }}>
+      <i className="feather-message-circle"></i>
+      {data.language_spoken}
+    </li>
+    <li style={{ fontSize: 16 }}>
+      <i className="feather-map-pin"></i>
+      {data.state}
+    </li>
+  </ul>
 
-              <div className="rbt-review">
-                <div className="rating">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-              </div>
-            </div>
-            {showBookmark && (
-              <div className="rbt-bookmark-btn">
-                <a
-                  style={{ cursor: "pointer" }}
-                  className="rbt-round-btn"
-                  title="Bookmark"
-                  onClick={() => handleBookmark(data._id, bookmark)}
-                >
-                  {bookmark ? (
-                    <BookmarkAddedIcon sx={{ fontSize: 24 }} />
-                  ) : (
-                    <BookmarkBorderIcon sx={{ fontSize: 24 }} />
-                  )}
-                </a>
-              </div>
-            )}
-          </div>
-          <div style={{ marginTop: 7, display: "flex" }}>
-            <span>
-              <i className="feather-user"></i>
-            </span>
-            <span style={{ fontSize: 16, marginLeft: 5 }}>
-              {data.profile_type}
-            </span>
-          </div>
+  <div className="rbt-card-top">
+    <div className="rbt-review">
+      <h4
+        className="rbt-card-title"
+        style={{ display: "flex", alignItems: "center", gap: "6px" }}
+      >
+        <Link
+          to={`/view-profile/${data._id}`}
+          style={{ cursor: "pointer" }}
+        >
+          {data.user.name}
+        </Link>
 
+        {/* ✅ Verified Green Tick (Conditional) */}
+        {data.isVerified && (
+          <i
+            className="fas fa-check-circle"
+            style={{ color: "green", fontSize: 18 }}
+            title="Verified"
+          ></i>
+        )}
+      </h4>
 
-          <div style={{ marginTop: 5, display: "flex" }}>
-            <span>
-              <i className="feather-book"></i>
-            </span>
-            <span style={{ fontSize: 16, marginLeft: 5 }}>
-              {getMinMaxPrice(fees)}
-            </span>
-          </div>
+      {/* ✅ Stars ab niche hain */}
+      <div className="rating" style={{ marginTop: 4 }}>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+      </div>
+    </div>
 
-          <div
-            style={{
-              marginTop: 24,
-              marginBottom: 10,
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Link
-              className="view-btn view-btn-border"
-              to={`/view-profile/${data._id}`}
-              style={{
-                padding: isMobile ? "0 27px" : "0 27px",
-                cursor: "pointer",
-              }}
-            >
-              View Profile
-            </Link>
-            <Link
-              className="rbt-btn btn-gradient book-btn"
-              to={`/therapist-checkout/${data._id}`}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: isTablet ? "0 27px" : "0 27px",
-              }}
-            >
-              <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
-            </Link>
-          </div>
-        </div>
+    {showBookmark && (
+      <div className="rbt-bookmark-btn">
+        <a
+          style={{ cursor: "pointer" }}
+          className="rbt-round-btn"
+          title="Bookmark"
+          onClick={() => handleBookmark(data._id, bookmark)}
+        >
+          {bookmark ? (
+            <BookmarkAddedIcon sx={{ fontSize: 24 }} />
+          ) : (
+            <BookmarkBorderIcon sx={{ fontSize: 24 }} />
+          )}
+        </a>
+      </div>
+    )}
+  </div>
+
+  <div style={{ marginTop: 7, display: "flex" }}>
+    <span>
+      <i className="feather-user"></i>
+    </span>
+    <span style={{ fontSize: 16, marginLeft: 5 }}>
+      {data.profile_type}
+    </span>
+  </div>
+
+  <div style={{ marginTop: 5, display: "flex" }}>
+    <span>
+      <i className="feather-book"></i>
+    </span>
+    <span style={{ fontSize: 16, marginLeft: 5 }}>
+      {getMinMaxPrice(fees)}
+    </span>
+  </div>
+
+  <div
+    style={{
+      marginTop: 24,
+      marginBottom: 10,
+      display: "flex",
+      justifyContent: "space-between",
+    }}
+  >
+    <Link
+      className="view-btn view-btn-border"
+      to={`/view-profile/${data._id}`}
+      style={{
+        padding: isMobile ? "0 27px" : "0 27px",
+        cursor: "pointer",
+      }}
+    >
+      View Profile
+    </Link>
+    <Link
+      className="rbt-btn btn-gradient book-btn"
+      to={`/therapist-checkout/${data._id}`}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: isTablet ? "0 27px" : "0 27px",
+      }}
+    >
+      <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+    </Link>
+  </div>
+</div>
+
       </div>
     </div>
   );
