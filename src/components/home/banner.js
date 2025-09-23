@@ -98,43 +98,43 @@ export default function Banner() {
                 )}
 
                 {/* H1 Banner */}
-                <h1
-                  className={isMobile ? "banner-text-title" : "title"}
-                  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
-                  style={{
-                    fontSize: isMobile ? "3.5rem" : "4rem",
-                    lineHeight: isMobile ? "3.5rem" : "4.5rem",
-                    marginTop: 0,
-                    textAlign: isMobile ? "center" : "left",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  Bharat's Growing Network of 
+               <h1
+  className={isMobile ? "banner-text-title" : "title"}
+  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+  style={{
+    fontSize: isMobile ? "3.5rem" : "4rem",
+    lineHeight: isMobile ? "3.5rem" : "4.5rem",
+    marginTop: 0,
+    textAlign: isMobile ? "center" : "left",
+    wordBreak: "break-word",
+  }}
+>
+  Bharat's Growing Network of
+  {isMobile ? <br /> : " "} {/* ✅ Mobile = break, Laptop = space */}
 
-                  {isMobile && <br />}
-                  <span
-                    className="theme-gradient"
-                    style={{
-                      background: "linear-gradient(90deg, #228756, #56ab2f)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  > 
-                  
-                     Verified Therapists
-                  </span>{" "}
-                  Connecting You to{" "}
-                  <span
-                    className="theme-gradient-alt"
-                    style={{
-                      background: "linear-gradient(90deg, #004e92, #005bea)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Trusted Counselling Support
-                  </span>
-                </h1>
+  <span
+    className="theme-gradient"
+    style={{
+      background: "linear-gradient(90deg, #228756, #56ab2f)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    Verified Therapists
+  </span>{" "}
+  Connecting You to{" "}
+  <span
+    className="theme-gradient-alt"
+    style={{
+      background: "linear-gradient(90deg, #004e92, #005bea)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    Trusted Counselling Support
+  </span>
+</h1>
+
 
                 {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
