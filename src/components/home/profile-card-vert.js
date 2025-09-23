@@ -136,10 +136,10 @@ export default function ProfileCardVert(props) {
           {/* Language & State */}
           <ul className="rbt-meta">
             <li style={{ fontSize: 16 }}>
-              <i className="feather-message-circle"></i> {data.language_spoken}
+              <i className="fas fa-globe"></i> {data.language_spoken}
             </li>
             <li style={{ fontSize: 16 }}>
-              <i className="feather-map-pin"></i> {data.state}
+              <i className="fas fa-map-marker-alt"></i> {data.state}
             </li>
           </ul>
 
@@ -179,21 +179,26 @@ export default function ProfileCardVert(props) {
             )}
           </div>
 
-          {/* Profile Type (simple, like before) */}
-          <div style={{ marginTop: 7, display: "flex", alignItems: "center" }}>
-            <span>
-              <i className="feather-user"></i>
-            </span>
-            <span style={{ fontSize: 16, marginLeft: 5 }}>{data.profile_type}</span>
-          </div>
+          {/* Profile Type */}
+<div style={{ marginTop: 7, display: "flex", alignItems: "center" }}>
+  <span>
+    <i className="fas fa-user-md"></i> {/* Professional psychologist icon */}
+  </span>
+  <span style={{ fontSize: 16, marginLeft: 5 }}>{data.profile_type}</span>
+</div>
 
-          {/* Fees */}
-          <div style={{ marginTop: 5, display: "flex", alignItems: "center" }}>
-            <span>
-              <i className="feather-book"></i>
-            </span>
-            <span style={{ fontSize: 16, marginLeft: 5 }}>{getMinMaxPrice(fees)}</span>
-          </div>
+
+ {/* Fees */}
+<div style={{ marginTop: 5, display: "flex", alignItems: "center" }}>
+  <span>
+    <i className="fas fa-credit-card"></i> {/* Credit card icon */}
+  </span>
+  <span style={{ fontSize: 16, marginLeft: 5 }}>
+    {getMinMaxPrice(fees)} per session
+  </span>
+</div>
+
+
 
           {/* Buttons */}
           <div
