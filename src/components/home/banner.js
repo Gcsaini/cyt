@@ -96,7 +96,21 @@ export default function Banner() {
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
-
+ {/* Mobile-only Tagline with Micro Animation */}
+                {isMobile && (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      marginBottom: 6,
+                      fontSize: "0.95rem",
+                      color: "#228756",
+                      fontWeight: 500,
+                      animation: "fadeIn 1s ease-in-out",
+                    }}
+                  >
+                    Because Healing Starts With Your Choice
+                  </div>
+                )}
                 {/* H1 Banner */}
                <h1
   className={isMobile ? "banner-text-title" : "title"}
