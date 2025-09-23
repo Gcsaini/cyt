@@ -96,21 +96,27 @@ export default function Banner() {
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
- {/* Mobile-only Tagline with Micro Animation */}
-                {isMobile && (
-                  <div
-                    style={{
-                      textAlign: "center",
-                      marginBottom: 6,
-                      fontSize: "0.95rem",
-                      color: "#228756",
-                      fontWeight: 500,
-                      animation: "fadeIn 1s ease-in-out",
-                    }}
-                  >
-                    Because Healing Starts With Your Choice
-                  </div>
-                )}
+{/* Mobile-only Tagline with Micro Animation */}
+{isMobile && (
+  <div
+    style={{
+      display: "inline-block",
+      textAlign: "center",
+      marginBottom: 12,
+      padding: "6px 14px",
+      fontSize: "0.95rem",
+      color: "#fff",
+      fontWeight: 600,
+      borderRadius: "20px",
+      background: "linear-gradient(135deg, #228756, #007f99)",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+      animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
+    }}
+  >
+    Because Healing Starts With Your Choice
+  </div>
+)}
+
                 {/* H1 Banner */}
                <h1
   className={isMobile ? "banner-text-title" : "title"}
