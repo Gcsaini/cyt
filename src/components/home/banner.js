@@ -109,7 +109,8 @@ export default function Banner() {
                     wordBreak: "break-word",
                   }}
                 >
-                  Bharat's Growing Network of
+                  Bharat's Growing Network of 
+
                   {isMobile && <br />}
                   <span
                     className="theme-gradient"
@@ -118,8 +119,9 @@ export default function Banner() {
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}
-                  >
-                    Verified Therapists
+                  > 
+                  
+                     Verified Therapists
                   </span>{" "}
                   Connecting You to{" "}
                   <span

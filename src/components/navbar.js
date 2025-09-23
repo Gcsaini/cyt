@@ -251,36 +251,11 @@ export default function App() {
 
                     </li>
                     <li className="has-dropdown has-menu-child-item">
-                      <Link className="" to="#">
-                        Services<i className="feather-chevron-down"></i>
+                      <Link to={""} style={{ cursor: "pointer" }}>
+                        Mind Matters Programs
                       </Link>
-                      <ul className="submenu">
-                        <li className="has-dropdown">
-                          <Link to={"/services/cyt-tands"} style={{ cursor: "pointer" }}>
-                            Personalized Wellbeing
-                          </Link>
-                        </li>
-
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Student Orientations"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Educational Institutions
-                          </Link>
-                        </li>
-                        <li className="has-dropdown">
-                          <Link
-                            to={"/Student Orientations"}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Corporate Needs
-                          </Link>
-                        </li>
 
 
-
-                      </ul>
                     </li>
                     <li className="has-dropdown has-menu-child-item">
                       <Link className="" to="#">
