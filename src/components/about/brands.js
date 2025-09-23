@@ -3,7 +3,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { FaHandshake, FaGlobe, FaLeaf, FaBrain, FaHeart, FaUserFriends } from "react-icons/fa";
 
-// Brand items with static subtle gradients
+// Brand items with static subtle gradients and titles
 const brands = [
   { icon: FaHandshake, gradient: "linear-gradient(135deg, #0097b2, #00c2cc)", title: "Collaboration & Partnership" },
   { icon: FaGlobe, gradient: "linear-gradient(135deg, #2a9d8f, #007f99)", title: "Global Presence" },
@@ -102,6 +102,13 @@ export default function BrandsSection() {
             display: flex;
             justify-content: center;
             align-items: center;
+          }
+
+          /* Center h4 on mobile */
+          @media (max-width: 767px) {
+            .brand-swiper .swiper-slide h4 {
+              text-align: center;
+            }
           }
         `}
       </style>
