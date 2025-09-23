@@ -1,242 +1,109 @@
 import { useEffect, useState } from "react";
-import CounterImg from "../../assets/img/counter-01.png";
-import CounterImg2 from "../../assets/img/counter-02.png";
-import CounterImg3 from "../../assets/img/counter-03.png";
-import CounterImg4 from "../../assets/img/counter-04.png";
 import { useInView } from "react-intersection-observer";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ImageTag from "../../utils/image-tag";
-export default function Counter() {
+import { FaUsers, FaBrain, FaHeart, FaHandsHelping } from "react-icons/fa";
+
+export default function CounterWithColors() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { ref, inView } = useInView({ threshold: 0 });
-  const initialValue = 0;
-  const [count, setCount] = useState(initialValue);
-  const [count1, setCount1] = useState(initialValue);
-  const [count2, setCount2] = useState(initialValue);
-  const [count3, setCount3] = useState(initialValue);
+
   const duration = 2500;
-  const targetValue = 100;
-  const initialValue1 = 1800;
-  const targetValue1 = 5245;
-  const initialValue2 = 12750;
-  const targetValue2 = 11989;
-  const initialValue3 = 1000;
-  const targetValue3 = 1252;
-  useEffect(() => {
-    let startValue = initialValue;
-    const interval = Math.floor(duration / (targetValue - initialValue));
 
-    const counter = setInterval(() => {
-      startValue += 1;
-      setCount(startValue);
-      if (startValue >= targetValue) {
-        clearInterval(counter);
-      }
-    }, interval);
+  const counters = [
+    { initial: 0, target: 100, icon: FaUsers, subtitle: "Listed Therapists", color: "#ffe0e0" },
+    { initial: 1800, target: 5245, icon: FaBrain, subtitle: "Wellness Counts", color: "#e0f7ff" },
+    { initial: 12750, target: 11989, icon: FaHeart, subtitle: "Community Growth", color: "#e0ffe4" },
+    { initial: 1000, target: 1252, icon: FaHandsHelping, subtitle: "Valuable Words", color: "#fff0e0" },
+  ];
 
-    return () => {
-      clearInterval(counter);
-    };
-  }, [targetValue, initialValue, inView]);
+  const [values, setValues] = useState(counters.map(c => c.initial));
 
   useEffect(() => {
-    let startValue = initialValue1;
-    const interval = Math.floor(duration / (targetValue1 - initialValue1));
+    counters.forEach((counter, index) => {
+      let startValue = counter.initial;
+      const stepTime = Math.floor(duration / Math.abs(counter.target - counter.initial));
+      const interval = setInterval(() => {
+        if (startValue < counter.target) {
+          startValue += 1;
+          setValues(prev => {
+            const newArr = [...prev];
+            newArr[index] = startValue;
+            return newArr;
+          });
+        } else {
+          clearInterval(interval);
+        }
+      }, stepTime);
+      return () => clearInterval(interval);
+    });
+  }, [inView]);
 
-    const counter = setInterval(() => {
-      startValue += 1;
-      setCount1(startValue);
-      if (startValue >= targetValue1) {
-        clearInterval(counter);
-      }
-    }, interval);
+  const fontStyle = { fontSize: isMobile ? 26 : 36 };
 
-    return () => {
-      clearInterval(counter);
-    };
-  }, [targetValue1, initialValue1, inView]);
-
-  useEffect(() => {
-    let startValue = initialValue2;
-    const interval = Math.floor(duration / (targetValue2 - initialValue2));
-
-    const counter = setInterval(() => {
-      startValue += 1;
-      setCount2(startValue);
-      if (startValue >= targetValue2) {
-        clearInterval(counter);
-      }
-    }, interval);
-
-    return () => {
-      clearInterval(counter);
-    };
-  }, [targetValue2, initialValue2, inView]);
-
-  useEffect(() => {
-    let startValue = initialValue3;
-    const interval = Math.floor(duration / (targetValue3 - initialValue3));
-
-    const counter = setInterval(() => {
-      startValue += 1;
-      setCount3(startValue);
-      if (startValue >= targetValue3) {
-        clearInterval(counter);
-      }
-    }, interval);
-
-    return () => {
-      clearInterval(counter);
-    };
-  }, [targetValue3, initialValue3, inView]);
-  const fontStyle = {
-    fontSize: isMobile ? 26 : 36,
-  };
   return (
-    <div
-      className="rbt-counterup-area bg-color-white rbt-section-gap"
-      ref={ref}
-    >
+    <div className="rbt-counterup-area bg-color-white rbt-section-gap" ref={ref}>
       <div className="conter-style-2">
         <div className="container">
           <div className="row g-5 align-items-center">
+            {/* Counters */}
             <div className="col-lg-6 order-2 order-lg-1">
-              <div className="row row--30">
-                <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                  <div className="rbt-counterup rbt-hover-03">
-                    <div className="inner">
-                      <div className="icon">
-                        <ImageTag alt="Icons" height={"100"} src={CounterImg} />
-                      </div>
-                      <div className="content">
-                        <h3 className="counter">
-                          <span className="odometer">
-                            <div className="odometer odometer-auto-theme">
-                              <div className="odometer-inside">
-                                <span
-                                  className="odometer-digit"
-                                  style={fontStyle}
-                                >
-                                  {count}
-                                </span>
-                              </div>
-                            </div>
-                          </span>
-                        </h3>
-                        <span className="subtitle">Listed Therapists</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-6 mt--60">
-                  <div className="rbt-counterup rbt-hover-03">
-                    <div className="inner">
-                      <div className="icon">
-                        <ImageTag
-                          alt="Icons"
-                          height={"100"}
-                          src={CounterImg2}
-                        />
-                      </div>
-                      <div className="content">
-                        <h3 className="counter">
-                          <span className="odometer">
-                            <div className="odometer odometer-auto-theme">
-                              <div className="odometer-inside">
-                                <span
-                                  className="odometer-digit"
-                                  style={fontStyle}
-                                >
-                                  {count1}
-                                </span>
-                              </div>
-                            </div>
-                          </span>
-                        </h3>
-                        <span className="subtitle">Wellness Counts</span>
+              <div className="row">
+                {counters.map((counter, index) => {
+                  const Icon = counter.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="col-6 mb-4"
+                    >
+                      <div
+                        className="rbt-counterup rbt-hover-03"
+                        style={{
+                          backgroundColor: counter.color,
+                          borderRadius: "15px",
+                          padding: "20px",
+                          boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
+                          transition: "transform 0.3s, box-shadow 0.3s",
+                        }}
+                      >
+                        <div className="inner text-center">
+                          <div
+                            className="brand-icon"
+                            style={{
+                              width: 100,
+                              height: 100,
+                              borderRadius: "50%",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              margin: "auto",
+                              backgroundColor: "rgba(0,0,0,0.05)",
+                            }}
+                          >
+                            <Icon style={{ color: "#007f99", fontSize: 36 }} />
+                          </div>
+                          <div className="content mt-2">
+                            <h3 className="counter" style={fontStyle}>{values[index]}</h3>
+                            <span className="subtitle">{counter.subtitle}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-6 mt_mobile--40">
-                  <div className="rbt-counterup rbt-hover-03">
-                    <div className="inner">
-                      <div className="icon">
-                        <ImageTag
-                          alt="Icons"
-                          height={"100"}
-                          src={CounterImg3}
-                        />
-                      </div>
-                      <div className="content">
-                        <h3 className="counter">
-                          <span className="odometer">
-                            <div className="odometer odometer-auto-theme">
-                              <div className="odometer-inside">
-                                <span
-                                  className="odometer-digit"
-                                  style={fontStyle}
-                                >
-                                  {count2}
-                                </span>
-                              </div>
-                            </div>
-                          </span>
-                        </h3>
-                        <span className="subtitle">
-                          Community Growth
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-6 mt--60 mt_mobile--40">
-                  <div className="rbt-counterup rbt-hover-03">
-                    <div className="inner">
-                      <div className="icon">
-                        <ImageTag
-                          alt="Icons"
-                          height={"100"}
-                          src={CounterImg4}
-                        />
-                      </div>
-                      <div className="content">
-                        <h3 className="counter">
-                          <span className="odometer">
-                            <div className="odometer odometer-auto-theme">
-                              <div className="odometer-inside">
-                                <span
-                                  className="odometer-digit"
-                                  style={fontStyle}
-                                >
-                                  {count3}
-                                </span>
-                              </div>
-                            </div>
-                          </span>
-                        </h3>
-                        <span className="subtitle">Valuble Words</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
+
+            {/* Why Choose Us */}
             <div className="col-lg-6 order-1 order-lg-2">
               <div className="inner pl--50 pl_sm--0 pl_md--0">
                 <div className="section-title text-start">
-                  <span className="subtitle bg-secondary-opacity">
-                    WHY CHOOSE US
-                  </span>
-                  <h2 className="title">
-                    A Complete Approach to Your Well-Being
-                  </h2>
+                  <span className="subtitle bg-secondary-opacity">WHY CHOOSE US</span>
+                  <h2 className="title">A Complete Approach to Your Well-Being</h2>
                   <p className="description has-medium-font-size mt--20 mb--0">
-                    We go beyond just therapy sessions by providing client and therapist dashboards for 
-                    seamless interaction, holistic programs that support your overall well-being, and 
-                    special discounts to make care more affordable. With a trusted network of certified experts, 
-                    we’re here to make your journey toward 
-                    better mental health easier, accessible, and more personalized.
+                    We go beyond just therapy sessions by providing client and therapist dashboards for seamless interaction,
+                    holistic programs that support your overall well-being, and special discounts to make care more affordable.
+                    With a trusted network of certified experts, we’re here to make your journey toward better mental health
+                    easier, accessible, and more personalized.
                   </p>
                 </div>
                 <div className="rbt-feature-wrapper mt--30">
@@ -275,6 +142,7 @@ export default function Counter() {
                 </div>
               </div>
             </div>
+            {/* End Why Choose Us */}
           </div>
         </div>
       </div>

@@ -3,14 +3,14 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { FaHandshake, FaGlobe, FaLeaf, FaBrain, FaHeart, FaUserFriends } from "react-icons/fa";
 
-// Brand items with static subtle gradients and titles
+// Brand items with professional gradients and titles
 const brands = [
-  { icon: FaHandshake, gradient: "linear-gradient(135deg, #0097b2, #00c2cc)", title: "Collaboration & Partnership" },
-  { icon: FaGlobe, gradient: "linear-gradient(135deg, #2a9d8f, #007f99)", title: "Global Presence" },
-  { icon: FaLeaf, gradient: "linear-gradient(135deg, #00d9a5, #006d77)", title: "Sustainable Practices" },
-  { icon: FaBrain, gradient: "linear-gradient(135deg, #0097b2, #7ed957)", title: "Expert Knowledge" },
-  { icon: FaHeart, gradient: "linear-gradient(135deg, #00c2ff, #007f99)", title: "Client Care & Support" },
-  { icon: FaUserFriends, gradient: "linear-gradient(135deg, #2a9d8f, #014f86)", title: "Community Engagement" },
+  { icon: FaHandshake, gradient: "linear-gradient(135deg, #007f99, #00c2cc)", title: "Collaboration & Partnership" },
+  { icon: FaGlobe, gradient: "linear-gradient(135deg, #2a9d8f, #00b3a1)", title: "Global Presence" },
+  { icon: FaLeaf, gradient: "linear-gradient(135deg, #006d77, #00d9a5)", title: "Sustainable Practices" },
+  { icon: FaBrain, gradient: "linear-gradient(135deg, #007f99, #7ed957)", title: "Expert Knowledge" },
+  { icon: FaHeart, gradient: "linear-gradient(135deg, #0097b2, #00c2ff)", title: "Client Care & Support" },
+  { icon: FaUserFriends, gradient: "linear-gradient(135deg, #014f86, #2a9d8f)", title: "Community Engagement" },
 ];
 
 export default function BrandsSection() {
@@ -20,7 +20,9 @@ export default function BrandsSection() {
         <div className="row align-items-center g-5">
           <div className="col-lg-3">
             <div className="brand-content-left">
-              <h4 className="mb--0">Collaborating with Professional Psychologists & Therapists</h4>
+              <h4 className="mb--0 main-heading">
+                Collaborating with Professional Psychologists & Therapists
+              </h4>
             </div>
           </div>
 
@@ -36,12 +38,13 @@ export default function BrandsSection() {
               autoplay={{ delay: 2500, disableOnInteraction: false }}
               loop={true}
               modules={[Autoplay]}
+              className="brand-swiper"
             >
               {brands.map((brand, index) => {
                 const Icon = brand.icon;
                 return (
                   <SwiperSlide key={index}>
-                    <div style={{ textAlign: "center" }}>
+                    <div className="brand-slide">
                       <div
                         className="brand-icon"
                         style={{ background: brand.gradient }}
@@ -49,16 +52,7 @@ export default function BrandsSection() {
                         <div className="shape-circle"></div>
                         <Icon style={{ zIndex: 1, color: "#fff", fontSize: 36 }} />
                       </div>
-                      <h4
-                        style={{
-                          fontSize: 16,
-                          marginTop: 10,
-                          fontWeight: 600,
-                          color: "#007f99",
-                        }}
-                      >
-                        {brand.title}
-                      </h4>
+                      <div className="brand-title">{brand.title}</div>
                     </div>
                   </SwiperSlide>
                 );
@@ -98,16 +92,29 @@ export default function BrandsSection() {
             z-index: 0;
           }
 
-          .brand-swiper .swiper-slide {
+          .brand-slide {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            min-height: 150px;
           }
 
-          /* Center h4 on mobile */
+          .brand-title {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #003f4d; /* dark color for visibility on gradient */
+            text-align: center;
+            max-width: 120px;
+            word-wrap: break-word;
+          }
+
+          /* Center main heading only on mobile */
           @media (max-width: 767px) {
-            .brand-swiper .swiper-slide h4 {
+            .brand-content-left {
               text-align: center;
+              margin-bottom: 20px;
             }
           }
         `}
