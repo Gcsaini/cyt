@@ -13,6 +13,7 @@ import Services from "../components/home/services";
 import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
 import PaymentSuccessModal from "../components/view_profile/payment-success-popup";
+import Brands from "../components/about/brands";
 
 
 export default function HomePage() {
@@ -23,9 +24,10 @@ export default function HomePage() {
         <MyNavbar />
         <main className="rbt-main-wrapper">
           <Banner />
+         
             <Services />
            <State/>
-        
+         <Brands/>
         
           <ProfileCard />
           <Counter />
