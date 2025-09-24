@@ -8,17 +8,17 @@ import { postData } from "../../../utils/actions";
 import VerifyOtpDialog from "../../global/verify-otp-dialog";
 import { SESSION_STATUS } from "../../../utils/constant";
 import { Box, CircularProgress, useMediaQuery } from "@mui/material";
-import { FaPlay, FaStop, FaUser, FaNotesMedical, FaClock, FaTimes } from "react-icons/fa";
+import { FaPlay, FaStop, FaUser, FaNotesMedical, FaClock, FaTimes, FaPhone } from "react-icons/fa";
 
 const AppointmentsContent = ({ appointments, onRefresh }) => {
   const [open, setOpen] = useState(false);
-  const [optView, setOtpView] = useState(false);
+  const [otpView, setOtpView] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [sessionEnding, setSessionEnding] = useState(false);
   const [pin, setPin] = useState("");
   const [bookingId, setBookingId] = useState("");
-  const [visibleCount, setVisibleCount] = useState(6); // initially show 6 cards
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const isMobile = useMediaQuery("(max-width:768px)");
 
@@ -46,81 +46,103 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
   const handleView = (item) => {
     setOpen(true);
     setModalContent(
-      <div
-        style={{
-          padding: isMobile ? 20 : 24,
-          borderRadius: 16,
-          background: "#fff",
-          width: isMobile ? "95vw" : 500,
-          maxHeight: isMobile ? "90vh" : "80vh",
-          margin: "auto",
-          boxShadow: "0 12px 25px rgba(0,0,0,0.12)",
-          overflowY: "auto",
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          gap: 14,
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, paddingBottom: 16 }}>
+        {/* Close button */}
         <FaTimes
           onClick={handleClose}
-          style={{
-            position: "absolute",
-            top: 16,
-            right: 16,
-            cursor: "pointer",
-            fontSize: 20,
-            color: "#333",
-          }}
+          style={{ position: "sticky", top: 0, alignSelf: "flex-end", cursor: "pointer", fontSize: 20, color: "#333" }}
         />
-        {/* Client info & details */}
-        <div style={{ marginBottom: 16 }}>
-          <h5 style={{ margin: "0 0 6px 0", fontSize: isMobile ? 18 : 16 }}>
-            {item.client?.name || "Unknown Client"}
-          </h5>
-          <p style={{ margin: "0 0 4px 0", fontSize: isMobile ? 16 : 14 }}>
-            Service: {item.service} / {item.format}
-          </p>
-          <p style={{ margin: "0 0 4px 0", fontSize: isMobile ? 16 : 14 }}>
-            Fees: ₹{item.transaction?.amount || "-"}
-          </p>
-          <p style={{ margin: 0, fontSize: isMobile ? 16 : 14 }}>
-            Payment Status:{" "}
-            <span
+
+        {/* Gradient Title */}
+        <h3
+          style={{
+            background: "linear-gradient(135deg, #00b874, #00d2ff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontWeight: "bold",
+            margin: 0,
+          }}
+        >
+          Appointment Details
+        </h3>
+
+        {/* Client Photo & Name */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
+          {item.client?.photo ? (
+            <img
+              src={item.client.photo}
+              alt={item.client?.name || "Client"}
+              style={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover" }}
+            />
+          ) : (
+            <div
               style={{
-                color: getPaymentStatusColor(item.transaction?.status?.name),
-                fontWeight: 600,
+                width: 60,
+                height: 60,
+                borderRadius: "50%",
+                background: "#ccc",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 24,
+                color: "#fff",
               }}
             >
+              <FaUser />
+            </div>
+          )}
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            <h5 style={{ margin: 0 }}>{item.client?.name || "Unknown Client"}</h5>
+            {item.client?.phone && (
+              <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+                <FaPhone /> {item.client.phone}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Booking & Payment Info */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
+          <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+            <FaClock /> Booking: {formatDateTime(item.booking_date)}
+          </p>
+          <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+            <FaNotesMedical /> Service: {item.service} / {item.format}
+          </p>
+          <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+            <FaUser /> Fees: ₹{item.transaction?.amount || "-"}
+          </p>
+          <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+            <FaUser /> Payment Status:{" "}
+            <span style={{ color: getPaymentStatusColor(item.transaction?.status?.name), fontWeight: 600 }}>
               {item.transaction?.status?.name || "-"}
             </span>
           </p>
-          <p
-            style={{
-              margin: 4,
-              fontSize: isMobile ? 16 : 14,
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-            }}
-          >
-            <FaClock /> Booking: {formatDateTime(item.booking_date)}
-          </p>
         </div>
-        <div style={{ marginBottom: 10, fontSize: isMobile ? 16 : 14 }}>
-          <strong>Booked For:</strong> {item.whom === "Self" ? "Self" : item.cname}
-        </div>
-        {item.whom !== "Self" && (
-          <div style={{ marginBottom: 10, fontSize: isMobile ? 16 : 14 }}>
-            <p style={{ margin: 0 }}>Relation: {item.relation_with_client}</p>
-            <p style={{ margin: 0 }}>Age: {item.age}</p>
-          </div>
-        )}
-        <div style={{ marginTop: 10, fontSize: isMobile ? 16 : 14 }}>
-          <strong>Notes:</strong>
-          <p style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <FaNotesMedical /> {item.notes || "No notes available"}
+
+        {/* Booked For / Relation / Age */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
+          <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+            <FaUser /> Booked For: {item.whom === "Self" ? "Self" : item.cname}
           </p>
+          {item.whom !== "Self" && (
+            <>
+              <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+                <FaUser /> Relation: {item.relation_with_client}
+              </p>
+              <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+                <FaUser /> Age: {item.age}
+              </p>
+            </>
+          )}
+        </div>
+
+        {/* Notes */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
+          <p style={{ margin: 0, fontWeight: "bold", display: "flex", alignItems: "center", gap: 6 }}>
+            <FaNotesMedical /> Notes
+          </p>
+          <p style={{ margin: 0 }}>{item.notes || "No notes available"}</p>
         </div>
       </div>
     );
@@ -181,13 +203,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
 
   return (
     <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-          gap: 16,
-        }}
-      >
+      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: 16 }}>
         {visibleAppointments.map((appt) => (
           <div
             key={appt._id}
@@ -240,7 +256,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
         ))}
       </div>
 
-      {/* Load More Button */}
       {visibleCount < appointments.length && (
         <div style={{ textAlign: "center", marginTop: 24 }}>
           <button
@@ -262,7 +277,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
       )}
 
       <ModalComponent open={open} handleClose={handleClose} content={modalContent} />
-      <VerifyOtpDialog open={optView} onClose={handleOtpViewClose} placeholder="Enter Pin" label="Pin" value={pin} handleChange={handlePinChange} handleClick={handleVerifyOtp} loading={loading} />
+      <VerifyOtpDialog open={otpView} onClose={handleOtpViewClose} placeholder="Enter Pin" label="Pin" value={pin} handleChange={handlePinChange} handleClick={handleVerifyOtp} loading={loading} />
     </>
   );
 };
