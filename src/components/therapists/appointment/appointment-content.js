@@ -61,7 +61,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           gap: 12
         }}
       >
-        {/* Close Button */}
         <FaTimes
           onClick={handleClose}
           style={{
@@ -74,7 +73,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           }}
         />
 
-        {/* Client Info */}
         <div style={{ marginBottom: 16 }}>
           <h5 style={{ margin: "0 0 4px 0" }}>{item.client?.name || "Unknown Client"}</h5>
           <p style={{ margin: "0 0 2px 0", fontSize: 13 }}>Service: {item.service} / {item.format}</p>
@@ -89,7 +87,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           </p>
         </div>
 
-        {/* Appointment Info */}
         <div style={{ marginBottom: 10 }}>
           <strong>Booked For:</strong> {item.whom === "Self" ? "Self" : item.cname}
         </div>
@@ -160,20 +157,25 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill, minmax(300px, 1fr))",
+          gap: 16,
+        }}
+      >
         {appointments.map((appt) => (
           <div
             key={appt._id}
             style={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
+              flexDirection: "column",
               justifyContent: "space-between",
-              alignItems: "flex-start",
               padding: 16,
               borderRadius: 16,
               background: "#fff",
               boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s, box-shadow 0.3s"
+              transition: "transform 0.3s, box-shadow 0.3s",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "scale(1.02)";
@@ -184,8 +186,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.1)";
             }}
           >
-            {/* Left Section */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <h6 style={{ margin: 0 }}>{appt.client?.name}</h6>
               <p style={{ margin: 0, fontSize: 12, color: "#555" }}>{appt.service} / {appt.format}</p>
               <p style={{ margin: 0, fontSize: 12, display: "flex", alignItems: "center", gap: 4 }}>
@@ -196,8 +197,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div style={{ display: "flex", gap: 8, marginTop: isMobile ? 8 : 0 }}>
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
               <button onClick={() => handleView(appt)} style={{ padding: "6px 12px", borderRadius: 8, background: "#f0f0f0", border: "1px solid #ccc", display: "flex", alignItems: "center", gap: 5 }}>
                 <FaUser /> View
               </button>
@@ -214,7 +214,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
         ))}
       </div>
 
-      {/* Modal & OTP */}
       <ModalComponent open={open} handleClose={handleClose} content={modalContent} />
       <VerifyOtpDialog open={optView} onClose={handleOtpViewClose} placeholder="Enter Pin" label="Pin" value={pin} handleChange={handlePinChange} handleClick={handleVerifyOtp} loading={loading} />
     </>
