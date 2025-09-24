@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { useMediaQuery, LinearProgress } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
   FaUsers,
   FaCalendarCheck,
   FaWallet,
   FaChartPie,
-  FaCertificate,
-  FaUserCircle,
-  FaClock,
   FaLightbulb,
   FaTimes,
 } from "react-icons/fa";
@@ -16,7 +13,7 @@ import {
 const shortcutCards = [
   {
     title: "My Clients",
-    icon: <FaUsers size={40} />, // ⬆️ bigger
+    icon: <FaUsers size={40} />,
     link: "/dashboard/clients",
     iconBg: "linear-gradient(135deg, #228756, #56ab2f)",
   },
@@ -40,12 +37,6 @@ const shortcutCards = [
   },
 ];
 
-const profileTips = [
-  { icon: <FaCertificate size={24} />, text: "Add new certifications" },
-  { icon: <FaUserCircle size={24} />, text: "Update your profile photo" },
-  { icon: <FaClock size={24} />, text: "Set your availability schedule" },
-];
-
 const dailyTips = [
   { icon: <FaLightbulb size={22} />, text: "Check in with clients regularly for better engagement." },
   { icon: <FaLightbulb size={22} />, text: "Update session notes after each meeting." },
@@ -55,96 +46,10 @@ const dailyTips = [
 
 export default function DashboardSections() {
   const isMobile = useMediaQuery("(max-width:768px)");
-  const profileCompletion = 65;
   const [showTooltip, setShowTooltip] = useState(true);
 
   return (
     <div style={{ padding: "20px", position: "relative" }}>
-      {/* ---------- Complete Your Profile Section ---------- */}
-      <section
-        style={{
-          padding: "30px 20px",
-          backgroundColor: "#f8f9fc",
-          borderRadius: "12px",
-          marginBottom: "30px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-        }}
-      >
-        <div style={{ marginBottom: 22, textAlign: "center" }}>
-          <h2 style={{ margin: 0, fontSize: isMobile ? "1.9rem" : "2.2rem" }}>
-            Complete Your Profile
-          </h2>
-          <p
-            style={{
-              margin: 0,
-              fontSize: isMobile ? "1.15rem" : "1.25rem",
-              color: "#555",
-            }}
-          >
-            Enhance your visibility and reach more clients
-          </p>
-        </div>
-
-        <div style={{ margin: "22px 0" }}>
-          <LinearProgress
-            variant="determinate"
-            value={profileCompletion}
-            sx={{
-              height: 16,
-              borderRadius: 6,
-              backgroundColor: "#e0e0e0",
-              "& .MuiLinearProgress-bar": {
-                borderRadius: 6,
-                background: "linear-gradient(90deg, #228756, #007f99)",
-              },
-            }}
-          />
-          <div style={{ textAlign: "right", fontSize: "1rem", marginTop: 6 }}>
-            {profileCompletion}% completed
-          </div>
-        </div>
-
-        {/* Profile tips */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: 12 }}>
-          {profileTips.map((tip, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-                padding: "16px 20px",
-                borderRadius: 10,
-                backgroundColor: "#fff",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-                cursor: "pointer",
-                transition: "transform 0.2s, box-shadow 0.2s",
-              }}
-              className="hover-effect"
-            >
-              <div
-                style={{
-                  width: 54,
-                  height: 54,
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, #228756, #007f99)",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "1.5rem",
-                }}
-              >
-                {tip.icon}
-              </div>
-              <span style={{ fontSize: isMobile ? 16 : 18, fontWeight: 500 }}>
-                {tip.text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ---------- Dashboard Shortcuts Section ---------- */}
       <div className="dashboard-shortcuts" style={{ marginTop: "22px" }}>
         <div
@@ -268,10 +173,6 @@ export default function DashboardSections() {
           @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px);}
             to { opacity: 1; transform: translateY(0);}
-          }
-          .hover-effect:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
           }
         `}
       </style>

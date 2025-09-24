@@ -22,6 +22,9 @@ export default function Banner() {
   const [favrioutes, setFavrioutes] = React.useState([]);
   const [randomAvatars, setRandomAvatars] = React.useState([]);
 
+  // Base URL for therapist images
+  const imageBasePath = "https://your-server.com/uploads"; // <-- Replace with your actual server/base URL
+
   // Fetch therapist profiles
   const getData = async () => {
     try {
@@ -227,7 +230,11 @@ export default function Banner() {
                         tabIndex="0"
                       >
                         <ImageTag
-                          src={item.user?.profile || "default-avatar.png"}
+                          src={
+                            item.user?.profile
+                              ? `${imageBasePath}/${item.user.profile}`
+                              : "default-avatar.png"
+                          }
                           width={55}
                           height={55}
                           alt={`Certified Psychologist Avatar ${i + 1} - ${item.user?.name}`}
@@ -295,7 +302,7 @@ export default function Banner() {
                   >
                     {data.slice(0, 10).map((item) => (
                       <SwiperSlide key={item._id}>
-                        <ProfileCardVert data={item} favrioutes={favrioutes} />
+                        <ProfileCardVert data={item} favrioutes={favrioutes} imageBasePath={imageBasePath} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
