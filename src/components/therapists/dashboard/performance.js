@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaWallet, FaChartPie, FaLightbulb, FaTimes } from "react-icons/fa";
+import {
+  FaUsers,
+  FaCalendarCheck,
+  FaWallet,
+  FaChartPie,
+  FaLightbulb,
+  FaTimes,
+  FaRupeeSign,
+} from "react-icons/fa";
 
 const shortcutCards = [
   {
@@ -113,11 +121,11 @@ export default function DashboardSections() {
         className="rbt-pricing-area"
         style={{
           marginTop: "40px",
-          width: "100%", 
-          maxWidth: isMobile ? "100%" : "900px", 
+          width: "100%",
+          maxWidth: isMobile ? "95%" : "900px", // mobile me aur wide
           marginLeft: "auto",
           marginRight: "auto",
-          padding: "20px",
+          padding: isMobile ? "10px" : "20px",
           backgroundColor: "#fff",
           borderRadius: "14px",
           boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
@@ -132,12 +140,14 @@ export default function DashboardSections() {
                     Premium Dashboard Subscription
                   </h3>
                   <p className="description rainbow-subtitle">
-                    Enhance your professional presence, increase client trust, and streamline your bookings with our premium monthly plan.
+                    Enhance your professional presence, increase client trust, and
+                    streamline your bookings with our premium monthly plan.
                   </p>
                   <div className="price-wrapper">
-                   <span className="price-amount">
-  <span style={{ marginRight: "4px" }}>₹</span>499 <sup>/month</sup>
-</span>
+                    <span className="price-amount">
+                      <FaRupeeSign style={{ marginRight: "4px" }} />
+                      499 <sup>/month</sup>
+                    </span>
                   </div>
                   <div className="pricing-btn-group">
                     <a href="#" className="rbt-btn btn-gradient w-100 text-center">
@@ -149,40 +159,49 @@ export default function DashboardSections() {
                   </div>
                   <div className="rating" style={{ marginTop: "10px" }}>
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-star-fill"
+                        viewBox="0 0 16 16"
+                      >
                         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
                       </svg>
                     ))}
                   </div>
-                  <small className="subtitle">Rated 4.5/5 by 1000+ therapists</small>
+                  <small className="subtitle">rated 4.5/5 Stars in 1000+ reviews.</small>
                 </div>
               </div>
+
               <div className="col-lg-6 col-md-6 col-12">
                 <div className="pricing-right position-relative">
                   <div className="pricing-offer">
+                    {/* Features Section */}
                     <div className="single-list">
-                      <h4 className="price-title">What you get – Professional Tools</h4>
+                      <h4 className="price-title">What will you get</h4>
                       <ul className="plan-offer-list">
-                        <li><i className="rbt feather-check"></i> Priority Profile Listing</li>
                         <li><i className="rbt feather-check"></i> Verified Profile Badge</li>
-                        <li><i className="rbt feather-check"></i> Professional Tools</li>
-                        <li><i className="rbt feather-check"></i> Storage for up to 30 bookings</li>
-                     
+                        <li><i className="rbt feather-check"></i> Professional Tools (Edit profile, booking history, events & coupons)</li>
+                        <li><i className="rbt feather-check"></i> Priority Profile Listing</li>
+                        <li><i className="rbt feather-check"></i> 30 Bookings per month included</li>
                       </ul>
                     </div>
+
+                    {/* Marketing Section */}
                     <div className="single-list mt--40">
                       <h4 className="price-title">Marketing & Growth Boost</h4>
                       <ul className="plan-offer-list">
-                        <li><i className="rbt feather-check"></i> 4 social media posts/month</li>
-                        <li><i className="rbt feather-check"></i> 1 monthly consultation call</li>
-                        <li><i className="rbt feather-check"></i> No commission on bookings, earn fully</li>
-                        <li><i className="rbt feather-check"></i> Analytics & insights</li>
-                    
-                        <li><i className="rbt feather-check"></i> 24/7 Support</li>
+                        <li><i className="rbt feather-check"></i> 4 weekly social media posts about your profile</li>
+                        <li><i className="rbt feather-check"></i> 1 monthly consultation call for marketing strategy</li>
+                        <li><i className="rbt feather-check"></i> No commission on client bookings</li>
+                        <li><i className="rbt feather-check"></i> Analytics & insights to track client growth</li>
                       </ul>
                     </div>
                   </div>
-                  <div className="pricing-badge rainbow-badge"><span>BEST VALUE</span></div>
+                  <div className="pricing-badge rainbow-badge"><span>POPULAR</span></div>
                 </div>
               </div>
             </div>
