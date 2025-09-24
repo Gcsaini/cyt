@@ -5,12 +5,16 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation";
+import { TypeAnimation } from "react-type-animation"; // ✅ Make sure installed
+import ImageTag from "../../utils/image-tag";
 import { fetchById, fetchData } from "../../utils/actions";
 import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
 import { getDecodedToken } from "../../utils/jwt";
 import ErrorPage from "../../pages/error-page";
 import ProfileCardVert from "./profile-card-vert";
+import ClientImg from "../../assets/img/avatar-027dc8.png";
+import Fabiha from "../../assets/img/psychologist.png";
+import counselling1 from "../../assets/img/counselling.png";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -19,31 +23,17 @@ export default function Banner() {
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [data, setData] = React.useState([]);
   const [favrioutes, setFavrioutes] = React.useState([]);
-  const [randomAvatars, setRandomAvatars] = React.useState([]);
 
-  // Replace this with your actual server path
-  const imageBasePath = "https://your-server.com/uploads";
-
-  // Fetch therapist profiles
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfiles, { priority: 1 });
-      if (res.status) {
-        setData(res.data);
-
-        // Filter items with a valid profile image
-        const validProfiles = res.data.filter(item => item.user?.profile);
-
-        // Pick 3 random avatars
-        setRandomAvatars(validProfiles.sort(() => 0.5 - Math.random()).slice(0, 3));
-      } else return <ErrorPage />;
+      if (res.status) setData(res.data);
+      else return <ErrorPage />;
     } catch (err) {
-      console.error(err);
       return <ErrorPage />;
     }
   };
 
-  // Fetch favourite therapists
   const getFavrioutes = async () => {
     try {
       const res = await fetchById(GetFavriouteTherapistListUrl);
@@ -84,64 +74,89 @@ export default function Banner() {
       <div className="container mt--60">
         <div className="row justify-content-between align-items-center">
           {/* Banner Text */}
-          <div className="col-lg-8 col-md-12 col-sm-12 col-12" style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            className="col-lg-8 col-md-12 col-sm-12 col-12"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start", // left aligned
+              textAlign: "left",
+              flexDirection: "column",
+            }}
+          >
             <div className="content">
               <div className="inner">
                 {!isMobile && (
-                  <div className="rbt-new-badge rbt-new-badge-one" style={{ marginTop: isTablet ? 25 : 0 }}>
+                  <div
+                    className="rbt-new-badge rbt-new-badge-one"
+                    style={{ marginTop: isTablet ? 25 : 0 }}
+                  >
                     <span className="rbt-new-badge-icon">
                       <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                     </span>{" "}
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
+{/* Mobile-only Tagline with Micro Animation */}
+{isMobile && (
+  <div
+    style={{
+      display: "inline-block",
+      textAlign: "center",
+      marginBottom: 12,
+      padding: "6px 14px",
+      fontSize: "0.95rem",
+      color: "#fff",
+      fontWeight: 600,
+      borderRadius: "20px",
+      background: "linear-gradient(135deg, #228756, #007f99)",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+      animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
+    }}
+  >
+    Because Healing Starts With Your Choice
+  </div>
+)}
 
-                {isMobile && (
-                  <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}>
-                    <div
-                      style={{
-                        textAlign: "center",
-                        padding: "6px 14px",
-                        fontSize: "0.95rem",
-                        color: "#fff",
-                        fontWeight: 600,
-                        borderRadius: "20px",
-                        background: "linear-gradient(135deg, #228756, #007f99)",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-                        animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
-                      }}
-                    >
-                      Because Healing Starts With Your Choice
-                    </div>
-                  </div>
-                )}
+                {/* H1 Banner */}
+               <h1
+  className={isMobile ? "banner-text-title" : "title"}
+  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+  style={{
+    fontSize: isMobile ? "3.5rem" : "4rem",
+    lineHeight: isMobile ? "3.5rem" : "4.5rem",
+    marginTop: 0,
+    textAlign: isMobile ? "center" : "left",
+    wordBreak: "break-word",
+  }}
+>
+  Bharat's Growing Network of
+  {isMobile ? <br /> : " "} {/* ✅ Mobile = break, Laptop = space */}
 
-                <h1
-                  className={isMobile ? "banner-text-title" : "title"}
-                  style={{
-                    fontSize: isMobile ? "3.5rem" : "4rem",
-                    lineHeight: isMobile ? "3.5rem" : "4.5rem",
-                    marginTop: 0,
-                    textAlign: isMobile ? "center" : "left",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  Bharat's Growing Network of {isMobile ? <br /> : " "}
-                  <span
-                    className="theme-gradient"
-                    style={{ background: "linear-gradient(90deg, #228756, #56ab2f)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-                  >
-                    Verified Therapists
-                  </span>{" "}
-                  Connecting You to{" "}
-                  <span
-                    className="theme-gradient-alt"
-                    style={{ background: "linear-gradient(90deg, #004e92, #005bea)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-                  >
-                    Trusted Counselling Support
-                  </span>
-                </h1>
+  <span
+    className="theme-gradient"
+    style={{
+      background: "linear-gradient(90deg, #228756, #56ab2f)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    Verified Therapists
+  </span>{" "}
+  Connecting You to{" "}
+  <span
+    className="theme-gradient-alt"
+    style={{
+      background: "linear-gradient(90deg, #004e92, #005bea)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    Trusted Counselling Support
+  </span>
+</h1>
 
+
+                {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
                   <div style={{ minHeight: "3em", display: "flex", alignItems: "center" }}>
                     <TypeAnimation
@@ -162,26 +177,49 @@ export default function Banner() {
                       repeat={Infinity}
                       deletionSpeed={20}
                       className="theme-gradient"
-                      style={{ display: "inline-block", fontWeight: 700, lineHeight: "1.5em", fontSize: "clamp(1.5rem, 3vw, 2rem)", whiteSpace: "normal" }}
+                      style={{
+                        display: "inline-block",
+                        fontWeight: 700,
+                        lineHeight: "1.5em",
+                        fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                        whiteSpace: "normal",
+                      }}
                     />
                   </div>
                 )}
 
-                <p className="description" style={{ textAlign: isMobile ? "center" : "left", marginTop: "15px" }}>
-                  Book <span style={{ color: "#004e92", fontWeight: "bold" }}>verified psychologists</span> online or in-person in Noida. Trusted therapist anytime.
-                </p>
+                {/* Centered description on mobile */}
+                <p
+  className="description"
+  style={{
+    textAlign: isMobile ? "center" : "left",
+    marginTop: "15px",
+    
+  }}
+>
+  Book{" "}
+  <span style={{ color: "#004e92", fontWeight: "bold" }}>
+    verified psychologists
+  </span>{" "}
+  online or in-person in Noida. Trusted therapist anytime.
+</p>
 
                 {/* Avatar Section */}
                 <div className="rbt-like-total">
                   <div className="profile-share" style={{ justifyContent: isMobile ? "center" : "flex-start" }}>
-                    {randomAvatars.map((item, i) => (
-                      <Link key={i} to={`/therapist-profile/${item._id}`} className="avatar">
-                        <img
-                          src={item.user?.profile ? `${imageBasePath}/${item.user.profile}` : "default-avatar.png"}
-                          alt={item.user?.name || `Therapist ${i + 1}`}
+                    {[ClientImg, Fabiha, counselling1].map((img, i) => (
+                      <Link
+                        key={i}
+                        to="#"
+                        className="avatar"
+                        data-tooltip={`Verified Psychologist ${i + 1}`}
+                        tabIndex="0"
+                      >
+                        <ImageTag
+                          src={img}
                           width={55}
                           height={55}
-                          style={{ borderRadius: "50%", objectFit: "cover" }}
+                          alt={`Certified Psychologist Avatar ${i + 1} - Choose Your Therapist`}
                         />
                       </Link>
                     ))}
@@ -195,8 +233,24 @@ export default function Banner() {
                   </div>
                 </div>
 
-                <div className="slider-btn" style={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", marginTop: "20px" }}>
-                  <Link className="rbt-btn btn-gradient hover-icon-reverse" to="/view-all-therapist" style={{ cursor: "pointer" }}>
+                {/* Get Started Button */}
+                <div
+                  className="slider-btn"
+                  style={{
+                    display: "flex",
+                    justifyContent: isMobile ? "center" : "flex-start",
+                    marginTop: "20px",
+                  }}
+                >
+                  <Link
+                    className="rbt-btn btn-gradient hover-icon-reverse"
+                    to="/view-all-therapist"
+                    style={{
+                      cursor: "pointer",
+                     
+                     
+                    }}
+                  >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Check Therapist Directory</span>
                       <span className="btn-icon">
@@ -213,7 +267,10 @@ export default function Banner() {
           </div>
 
           {/* Swiper Profiles */}
-          <div className="col-lg-4 col-md-12 col-sm-12 col-12" style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}>
+          <div
+            className="col-lg-4 col-md-12 col-sm-12 col-12"
+            style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}
+          >
             {data.length > 0 && (
               <div className="content">
                 <div className="pb--60 swiper rbt-dot-bottom-center banner-swiper-active">
@@ -231,7 +288,7 @@ export default function Banner() {
                   >
                     {data.slice(0, 10).map((item) => (
                       <SwiperSlide key={item._id}>
-                        <ProfileCardVert data={item} favrioutes={favrioutes} imageBasePath={imageBasePath} />
+                        <ProfileCardVert data={item} favrioutes={favrioutes} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
