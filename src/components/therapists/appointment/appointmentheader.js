@@ -1,7 +1,7 @@
 import React from "react";
 import "./appointmentheader.css";
 
-export default function AppointmentHeader({ onStartSession }) {
+export default function AppointmentHeader() {
   return (
     <div className="premium-header-container">
       <div className="premium-header">
@@ -25,11 +25,6 @@ export default function AppointmentHeader({ onStartSession }) {
           </span>
           <h3 className="premium-title">Check Your Session Booking Here</h3>
         </div>
-
-        {/* CTA Button */}
-        <button className="premium-cta-btn" onClick={onStartSession}>
-          Start a New Session
-        </button>
       </div>
 
       <style>
@@ -47,7 +42,7 @@ export default function AppointmentHeader({ onStartSession }) {
           .premium-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             gap: 16px;
             flex-wrap: wrap;
           }
@@ -76,7 +71,7 @@ export default function AppointmentHeader({ onStartSession }) {
           }
 
           .premium-title {
-            font-size: 2.2rem;
+            font-size: 2.4rem; /* larger for desktop */
             font-weight: 800;
             color: #000;
             margin: 0;
@@ -88,28 +83,10 @@ export default function AppointmentHeader({ onStartSession }) {
             position: absolute;
             left: 0;
             bottom: -8px;
-            width: 90px;
+            width: 100px; 
             height: 5px;
             background: linear-gradient(90deg, #00b874, #00d2ff);
             border-radius: 3px;
-          }
-
-          .premium-cta-btn {
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #00b874, #00d2ff);
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 6px 22px rgba(0,0,0,0.2);
-          }
-
-          .premium-cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
           }
 
           @media screen and (max-width: 768px) {
@@ -119,7 +96,7 @@ export default function AppointmentHeader({ onStartSession }) {
             }
 
             .premium-title {
-              font-size: 1.9rem;
+              font-size: 2.2rem; /* larger for mobile */
             }
 
             .premium-icon {
@@ -133,19 +110,8 @@ export default function AppointmentHeader({ onStartSession }) {
             }
 
             .premium-title::after {
-              width: 60px;
+              width: 70px;
               height: 4px;
-            }
-
-            .premium-cta-btn {
-              width: 100%;
-              text-align: center;
-              margin-top: 12px;
-            }
-
-            .premium-title-wrapper {
-              width: 100%;
-              justify-content: flex-start;
             }
           }
         `}
