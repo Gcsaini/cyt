@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box, CircularProgress, useMediaQuery, Modal } from "@mui/material";
 import { FaPlay, FaStop, FaUser, FaNotesMedical, FaClock, FaTimes, FaPhone, FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { postData } from "../../../utils/actions";
-import { StartSessionUrl, EndSessionUrl } from "../../../utils/url";
+import { postData, fetchData } from "../../../utils/actions";
+import { StartSessionUrl, EndSessionUrl, getBookings } from "../../../utils/url"; // Fixed URL
 import VerifyOtpDialog from "../../global/verify-otp-dialog";
 import { SESSION_STATUS } from "../../../utils/constant";
 import { formatDateTime } from "../../../utils/time";
@@ -41,13 +41,38 @@ const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) =
   const [pin, setPin] = useState("");
   const [bookingId, setBookingId] = useState("");
   const [visibleCount, setVisibleCount] = useState(6);
-
   const isMobile = useMediaQuery("(max-width:768px)");
 
+  const audioRef = useRef(null); // Notification sound
+
+  // Load notification sound
   useEffect(() => {
-    // New bookings automatically appear without refresh
-    setAppointments(initialAppointments);
-  }, [initialAppointments]);
+    audioRef.current = new Audio("/notification.mp3"); // Put your file in public folder
+  }, []);
+
+  // Live update using polling
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetchData(getBookings); // Use correct URL
+        if (response?.status && Array.isArray(response.data)) {
+          // Check for new bookings
+          const newAppointments = response.data.filter(
+            (appt) => !appointments.some((a) => a._id === appt._id)
+          );
+          if (newAppointments.length > 0) {
+            toast.info(`${newAppointments.length} new booking(s) received!`);
+            audioRef.current && audioRef.current.play();
+            setAppointments((prev) => [...newAppointments, ...prev]);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching appointments:", err);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [appointments]);
 
   const handleClose = () => setOpen(false);
   const handleOtpViewClose = () => setOtpView(false);
@@ -144,7 +169,6 @@ const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) =
         setOtpView(false);
         toast.success(response.message);
         setAppointments(prev => prev.map(appt => appt._id === bookingId ? { ...appt, status: SESSION_STATUS.STARTED } : appt));
-        onRefresh && onRefresh();
       } else toast.error(response.message);
     } catch (err) {
       toast.error(err.response?.data?.message);
@@ -160,7 +184,6 @@ const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) =
       if (response.status) {
         toast.success(response.message);
         setAppointments(prev => prev.map(appt => appt._id === item._id ? { ...appt, status: SESSION_STATUS.COMPLETED } : appt));
-        onRefresh && onRefresh();
       } else toast.error(response.message);
     } catch (err) {
       toast.error(err.response?.data?.message);
@@ -170,7 +193,6 @@ const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) =
   };
 
   const handleLoadMore = () => setVisibleCount(prev => prev + 6);
-
   const visibleAppointments = appointments.slice(0, visibleCount);
 
   return (
@@ -179,9 +201,7 @@ const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) =
         {visibleAppointments.map((appt) => {
           const sessionNumber = appointments.filter(a => a.client?._id === appt.client?._id && new Date(a.booking_date) <= new Date(appt.booking_date)).length;
           return (
-            <div key={appt._id} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 18, borderRadius: 16, background: "#fff", boxShadow: appt.status === SESSION_STATUS.STARTED ? "0 12px 25px rgba(0,200,255,0.25)" : "0 8px 20px rgba(0,0,0,0.1)", border: appt.status === SESSION_STATUS.STARTED ? "2px solid #00b874" : "1px solid #eee" }}>
-              
-              {/* Badges */}
+            <div key={appt._id} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 18, borderRadius: 16, background: "#fff", boxShadow: "0 8px 20px rgba(0,0,0,0.1)", border: "1px solid #eee" }}>
               <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
                 <span style={{ padding: "2px 6px", borderRadius: 12, fontSize: 12, fontWeight: 600, color: "#fff", background: "#00b874" }}>Session {sessionNumber}</span>
                 <span style={{ padding: "2px 6px", borderRadius: 12, fontSize: 12, fontWeight: 600, color: "#fff", background: appt.status === SESSION_STATUS.STARTED ? "linear-gradient(135deg,#00b874,#00d2ff)" : appt.status === SESSION_STATUS.COMPLETED ? "linear-gradient(135deg,#007bff,#00d2ff)" : "#ffc107" }}>{appt.status === SESSION_STATUS.COMPLETED ? "Completed" : appt.status}</span>
@@ -192,7 +212,6 @@ const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) =
               <p style={{ margin: "4px 0", fontSize: 14 }}><FaClock /> {formatDateTime(appt.booking_date)}</p>
               <p style={{ margin: "4px 0", fontSize: 14 }}>Payment: <span style={{ color: getPaymentStatusColor(appt.transaction?.status?.name), fontWeight: 600 }}>{appt.transaction?.status?.name || "-"}</span></p>
 
-              {/* Actions */}
               <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
                 <button onClick={() => handleView(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "#f0f0f0", border: "1px solid #ccc", display: "flex", alignItems: "center", gap: 6 }}><FaUser /> View</button>
 
