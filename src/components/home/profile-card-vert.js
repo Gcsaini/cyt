@@ -12,6 +12,8 @@ import {
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
 import { getDecodedToken } from "../../utils/jwt";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import RecommendIcon from "@mui/icons-material/ThumbUpAlt"; // ✅ Recommended icon
 
 export default function ProfileCardVert(props) {
   const { data, favrioutes } = props;
@@ -66,7 +68,7 @@ export default function ProfileCardVert(props) {
   }, [data, favrioutes]);
 
   return (
-    <div className="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active">
+    <div className="swiper-slide">
       <div className="rbt-card variation-01">
         {/* Profile Image */}
         <div className="rbt-card-img" style={{ position: "relative" }}>
@@ -76,6 +78,8 @@ export default function ProfileCardVert(props) {
               style={{ height: "250px", width: "100%", objectFit: "cover" }}
               src={`${imagePath}/${data.user.profile}`}
             />
+
+            {/* Badge */}
             <div
               className="rbt-badge-group"
               style={{
@@ -85,7 +89,6 @@ export default function ProfileCardVert(props) {
                 zIndex: 2,
               }}
             >
-              {/* Recommended Badge */}
               {data.priority === 1 && (
                 <span
                   className="rbt-badge-6"
@@ -102,11 +105,10 @@ export default function ProfileCardVert(props) {
                     boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
                   }}
                 >
-                  <i className="fas fa-check-circle" style={{ fontSize: "14px" }}></i>
+                  <RecommendIcon sx={{ fontSize: 16 }} />
                   Recommended
                 </span>
               )}
-              {/* Verified Badge */}
               {data.priority === 2 && (
                 <span
                   className="rbt-badge-6"
@@ -114,7 +116,7 @@ export default function ProfileCardVert(props) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "5px",
-                    backgroundColor: "#161899",
+                    backgroundColor: "#1976d2",
                     color: "#fff",
                     padding: "5px 14px",
                     borderRadius: "8px",
@@ -123,7 +125,7 @@ export default function ProfileCardVert(props) {
                     boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
                   }}
                 >
-                  <i className="fas fa-check-circle" style={{ fontSize: "14px" }}></i>
+                  <VerifiedIcon sx={{ fontSize: 16 }} />
                   Verified
                 </span>
               )}
@@ -143,23 +145,15 @@ export default function ProfileCardVert(props) {
             </li>
           </ul>
 
-          {/* Name & Reviews & Bookmark */}
-          <div className="rbt-card-top">
-            <h4 className="rbt-card-title">
+          {/* Name + Icon + Bookmark */}
+          <div className="rbt-card-top" style={{ display: "flex", justifyContent: "space-between" }}>
+            <h4 className="rbt-card-title" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
                 {data.user.name}
               </Link>
+              {data.priority === 1 && <RecommendIcon sx={{ fontSize: 18, color: "#15aa3a" }} />}
+              {data.priority === 2 && <VerifiedIcon sx={{ fontSize: 18, color: "#1976d2" }} />}
             </h4>
-
-            <div className="rbt-review" style={{ marginTop: 4 }}>
-              <div className="rating">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </div>
-            </div>
 
             {showBookmark && (
               <div className="rbt-bookmark-btn">
@@ -179,26 +173,30 @@ export default function ProfileCardVert(props) {
             )}
           </div>
 
+          {/* Stars under name */}
+          <div className="rbt-review" style={{ marginTop: 4 }}>
+            <div className="rating" style={{ color: "#f5a623" }}>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+            </div>
+          </div>
+
           {/* Profile Type */}
-<div style={{ marginTop: 7, display: "flex", alignItems: "center" }}>
-  <span>
-    <i className="fas fa-user-md"></i> {/* Professional psychologist icon */}
-  </span>
-  <span style={{ fontSize: 16, marginLeft: 5 }}>{data.profile_type}</span>
-</div>
+          <div style={{ marginTop: 7, display: "flex", alignItems: "center" }}>
+            <i className="fas fa-user-md"></i>
+            <span style={{ fontSize: 16, marginLeft: 5 }}>{data.profile_type}</span>
+          </div>
 
-
- {/* Fees */}
-<div style={{ marginTop: 5, display: "flex", alignItems: "center" }}>
-  <span>
-    <i className="fas fa-credit-card"></i> {/* Credit card icon */}
-  </span>
-  <span style={{ fontSize: 16, marginLeft: 5 }}>
-    {getMinMaxPrice(fees)} per session
-  </span>
-</div>
-
-
+          {/* Fees */}
+          <div style={{ marginTop: 5, display: "flex", alignItems: "center" }}>
+            <i className="fas fa-credit-card"></i>
+            <span style={{ fontSize: 16, marginLeft: 5 }}>
+              {getMinMaxPrice(fees)} per session
+            </span>
+          </div>
 
           {/* Buttons */}
           <div
@@ -213,7 +211,7 @@ export default function ProfileCardVert(props) {
               className="view-btn view-btn-border"
               to={`/view-profile/${data._id}`}
               style={{
-                padding: isMobile ? "0 27px" : "0 27px",
+                padding: "0 27px",
                 cursor: "pointer",
               }}
             >
@@ -226,7 +224,7 @@ export default function ProfileCardVert(props) {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: isTablet ? "0 27px" : "0 27px",
+                padding: "0 27px",
               }}
             >
               <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>

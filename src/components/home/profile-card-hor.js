@@ -1,9 +1,13 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { Link } from "react-router-dom";
-import { getMinMaxPrice, truncateString } from "../../utils/helpers";
+import { getMinMaxPrice } from "../../utils/helpers";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import VerifiedIcon from "@mui/icons-material/Verified"; // ✅ Badge + Name ke aage
+import PersonIcon from "@mui/icons-material/Person"; 
+import LanguageIcon from "@mui/icons-material/Language"; 
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn"; 
 import React from "react";
 import { getDecodedToken } from "../../utils/jwt";
 import { postData } from "../../utils/actions";
@@ -12,12 +16,11 @@ import {
   InsertFavriouteTherapistUrl,
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
-export default function ProfileCardHor({ pageData, favrioutes }) {
 
+export default function ProfileCardHor({ pageData, favrioutes }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [bookmark, setBookmark] = React.useState(false);
-
   const [showBookmark, setShowBookmark] = React.useState(true);
 
   const handleBookmark = (id, value) => {
@@ -68,46 +71,59 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
   return (
     <div className="col-12 mt--30 sal-animate">
       <div className="rbt-card variation-01 rbt-hover card-list-2">
+        {/* Image + Badge */}
         <div className="rbt-card-img" style={{ position: "relative" }}>
           <Link to={`/view-profile/${pageData._id}`}>
             <ImageTag
               alt="profile image"
               src={`${imagePath}/${pageData.user.profile}`}
-              style={{ height: isMobile ? 255 : 235, width: "100%", objectFit: "cover" }}
+              style={{
+                height: isMobile ? 255 : 235,
+                width: "100%",
+                objectFit: "cover",
+              }}
             />
+            {/* Verified Badge with Blue Color */}
             <div
               className="rbt-badge-group"
               style={{
                 position: "absolute",
                 bottom: "10px",
-                right: "10px", // badge on bottom-right
+                right: "10px",
                 zIndex: 2,
               }}
             >
               <span
                 className="rbt-badge-6"
                 style={{
-                  backgroundColor: "#161899ff", // solid green
+                  backgroundColor: "#1976d2", // ✅ Blue
                   color: "#fff",
                   padding: "5px 12px",
                   borderRadius: "6px",
                   fontSize: "12px",
                   fontWeight: "600",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
                 }}
               >
-                Verified
+                <VerifiedIcon sx={{ fontSize: 16 }} /> Verified
               </span>
             </div>
           </Link>
         </div>
+
+        {/* Card Body */}
         <div className="rbt-card-body">
           <div className="rbt-card-top">
-            <div className="rbt-review">
-              <h4 className="rbt-card-title">
+            <div className="rbt-review" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <h4 className="rbt-card-title" style={{ margin: 0 }}>
                 <Link to={`/view-profile/${pageData._id}`}>
                   {pageData.user.name}
                 </Link>
               </h4>
+              {/* Verified icon next to name */}
+              <VerifiedIcon sx={{ fontSize: 18, color: "#1976d2" }} />
             </div>
             {showBookmark && (
               <div className="rbt-bookmark-btn">
@@ -126,23 +142,24 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
               </div>
             )}
           </div>
-          <ul className="rbt-meta" style={{ marginTop: 0 }}>
-            <li>
-              <i className="feather-user"></i>
-              {pageData.profile_type}
-            </li>
-            <li>
-              <i className="feather-message-circle"></i>
-              {pageData.language_spoken}
-            </li>
 
-            <li>
-              <i className="feather-book"></i>
+          {/* Meta info with new icons */}
+          <ul className="rbt-meta" style={{ marginTop: 0 }}>
+            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <PersonIcon sx={{ fontSize: 18 }} /> {pageData.profile_type}
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <LanguageIcon sx={{ fontSize: 18 }} /> {pageData.language_spoken}
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <MonetizationOnIcon sx={{ fontSize: 18 }} />{" "}
               <span style={{ lineHeight: "2rem" }}>
                 {getMinMaxPrice(pageData.fees)}
               </span>
             </li>
           </ul>
+
+          {/* Buttons */}
           <div
             style={{
               display: "flex",
@@ -168,7 +185,6 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
                 padding: isMobile || isTablet ? "0 20px" : "0 16px",
               }}
             >
-
               <span>Book Now</span>
             </Link>
           </div>
