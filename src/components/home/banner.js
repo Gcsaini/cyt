@@ -100,22 +100,29 @@ export default function Banner() {
 {isMobile && (
   <div
     style={{
-      display: "inline-block",
-      textAlign: "center",
+      display: "flex",
+      justifyContent: "center", // ✅ Center horizontally
       marginBottom: 12,
-      padding: "6px 14px",
-      fontSize: "0.95rem",
-      color: "#fff",
-      fontWeight: 600,
-      borderRadius: "20px",
-      background: "linear-gradient(135deg, #228756, #007f99)",
-      boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-      animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
     }}
   >
-    Because Healing Starts With Your Choice
+    <div
+      style={{
+        textAlign: "center",
+        padding: "6px 14px",
+        fontSize: "0.95rem",
+        color: "#fff",
+        fontWeight: 600,
+        borderRadius: "20px",
+        background: "linear-gradient(135deg, #228756, #007f99)",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+        animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
+      }}
+    >
+      Because Healing Starts With Your Choice
+    </div>
   </div>
 )}
+
 
                 {/* H1 Banner */}
                <h1
