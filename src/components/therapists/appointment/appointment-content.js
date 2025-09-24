@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./appointment-tab-content.css";
 import ModalComponent from "../Modal/Modal-component";
 import { formatDateTime } from "../../../utils/time";
-import { EndSessionUrl, imagePath, StartSessionUrl } from "../../../utils/url";
+import { EndSessionUrl, StartSessionUrl } from "../../../utils/url";
 import { toast } from "react-toastify";
 import { postData } from "../../../utils/actions";
 import VerifyOtpDialog from "../../global/verify-otp-dialog";
 import { SESSION_STATUS } from "../../../utils/constant";
 import { Box, CircularProgress, useMediaQuery } from "@mui/material";
-import { FaPlay, FaStop, FaUser, FaPhone, FaEnvelope, FaNotesMedical, FaTimes } from "react-icons/fa";
+import { FaPlay, FaStop, FaUser, FaNotesMedical, FaClock, FaTimes } from "react-icons/fa";
 
 const AppointmentsContent = ({ appointments, onRefresh }) => {
   const [open, setOpen] = useState(false);
@@ -45,15 +45,22 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
   const handleView = (item) => {
     setOpen(true);
     setModalContent(
-      <div style={{
-        padding: isMobile ? 16 : 24,
-        borderRadius: 16,
-        background: "#fff",
-        maxWidth: isMobile ? "90vw" : 500,
-        margin: "auto",
-        boxShadow: "0 12px 25px rgba(0,0,0,0.12)",
-        position: "relative"
-      }}>
+      <div
+        style={{
+          padding: isMobile ? 16 : 24,
+          borderRadius: 16,
+          background: "#fff",
+          width: isMobile ? "95vw" : 500,
+          maxHeight: isMobile ? "90vh" : "80vh",
+          margin: "auto",
+          boxShadow: "0 12px 25px rgba(0,0,0,0.12)",
+          overflowY: "auto",
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          gap: 12
+        }}
+      >
         {/* Close Button */}
         <FaTimes
           onClick={handleClose}
@@ -66,42 +73,23 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
             color: "#333"
           }}
         />
+
         {/* Client Info */}
-        <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 16 }}>
-          {item.client?.profile ? (
-            <img
-              src={`${imagePath}/${item.client.profile}`}
-              alt={item.client?.name}
-              style={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover", border: "2px solid #007f99" }}
-            />
-          ) : (
-            <div style={{
-              width: 60,
-              height: 60,
-              borderRadius: "50%",
-              background: "#007f99",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 28
-            }}>
-              <FaUser />
-            </div>
-          )}
-          <div>
-            <h5 style={{ marginBottom: 4 }}>{item.client?.name}</h5>
-            <p style={{ margin: 0, fontSize: 13, color: "#555" }}><FaPhone style={{ marginRight: 6 }} />{item.client?.phone}</p>
-            <p style={{ margin: 0, fontSize: 13, color: "#555" }}><FaEnvelope style={{ marginRight: 6 }} />{item.client?.email}</p>
-            <p style={{ margin: 0, fontSize: 13 }}>Fees: ₹{item.transaction?.amount}</p>
-          </div>
+        <div style={{ marginBottom: 16 }}>
+          <h5 style={{ margin: "0 0 4px 0" }}>{item.client?.name || "Unknown Client"}</h5>
+          <p style={{ margin: "0 0 2px 0", fontSize: 13 }}>Service: {item.service} / {item.format}</p>
+          <p style={{ margin: "0 0 2px 0", fontSize: 13 }}>Fees: ₹{item.transaction?.amount || "-"}</p>
+          <p style={{ margin: 0, fontSize: 13 }}>
+            Payment Status: <span style={{ color: getPaymentStatusColor(item.transaction?.status?.name), fontWeight: 600 }}>
+              {item.transaction?.status?.name || "-"}
+            </span>
+          </p>
+          <p style={{ margin: 2, fontSize: 13, display: "flex", alignItems: "center", gap: 4 }}>
+            <FaClock /> Booking: {formatDateTime(item.booking_date)}
+          </p>
         </div>
 
         {/* Appointment Info */}
-        <div style={{ marginBottom: 10 }}>
-          <strong>Type of Appointment:</strong> {item.service} / {item.format}
-        </div>
-
         <div style={{ marginBottom: 10 }}>
           <strong>Booked For:</strong> {item.whom === "Self" ? "Self" : item.cname}
         </div>
@@ -113,28 +101,11 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           </div>
         )}
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 20, marginTop: 10 }}>
-          <div><strong>Appointment Date:</strong> {formatDateTime(item.booking_date)}</div>
-          <div><strong>Session Start:</strong> {item.session_started_at ? formatDateTime(item.session_started_at) : "-"}</div>
-          <div><strong>Session End:</strong> {item.session_completed_at ? formatDateTime(item.session_completed_at) : "-"}</div>
-        </div>
-
         <div style={{ marginTop: 10 }}>
           <strong>Notes:</strong>
           <p style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 13 }}>
             <FaNotesMedical /> {item.notes || "No notes available"}
           </p>
-        </div>
-
-        <div style={{ marginTop: 10 }}>
-          <strong>Payment Status:</strong>
-          <span style={{
-            marginLeft: 8,
-            color: getPaymentStatusColor(item.transaction?.status?.name),
-            fontWeight: 600
-          }}>
-            {item.transaction?.status?.name || "-"}
-          </span>
         </div>
       </div>
     );
@@ -197,7 +168,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               justifyContent: "space-between",
-              alignItems: "center",
+              alignItems: "flex-start",
               padding: 16,
               borderRadius: 16,
               background: "#fff",
@@ -213,22 +184,16 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.1)";
             }}
           >
-            {/* Client Info */}
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              {appt.client?.profile ? (
-                <img src={`${imagePath}/${appt.client.profile}`} alt={appt.client?.name} style={{ width: 50, height: 50, borderRadius: "50%", objectFit: "cover", border: "2px solid #007f99" }} />
-              ) : (
-                <div style={{ width: 50, height: 50, borderRadius: "50%", background: "#007f99", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>
-                  <FaUser />
-                </div>
-              )}
-              <div>
-                <h6 style={{ margin: 0 }}>{appt.client?.name}</h6>
-                <p style={{ margin: 0, fontSize: 12, color: "#555" }}>{appt.service} / {appt.format}</p>
-                <p style={{ margin: 0, fontSize: 12 }}>
-                  Payment: <span style={{ color: getPaymentStatusColor(appt.transaction?.status?.name), fontWeight: 600 }}>{appt.transaction?.status?.name || "-"}</span>
-                </p>
-              </div>
+            {/* Left Section */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
+              <h6 style={{ margin: 0 }}>{appt.client?.name}</h6>
+              <p style={{ margin: 0, fontSize: 12, color: "#555" }}>{appt.service} / {appt.format}</p>
+              <p style={{ margin: 0, fontSize: 12, display: "flex", alignItems: "center", gap: 4 }}>
+                <FaClock /> {formatDateTime(appt.booking_date)}
+              </p>
+              <p style={{ margin: 0, fontSize: 12 }}>
+                Payment: <span style={{ color: getPaymentStatusColor(appt.transaction?.status?.name), fontWeight: 600 }}>{appt.transaction?.status?.name || "-"}</span>
+              </p>
             </div>
 
             {/* Action Buttons */}
