@@ -1,307 +1,195 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import PersonSearchIcon from "@mui/icons-material/PersonSearch";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation";
 import ImageTag from "../../utils/image-tag";
-import { fetchById, fetchData } from "../../utils/actions";
-import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
+import { Link } from "react-router-dom";
+import { getMinMaxPrice } from "../../utils/helpers";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import VerifiedIcon from "@mui/icons-material/Verified"; // ✅ Badge + Name ke aage
+import PersonIcon from "@mui/icons-material/Person"; 
+import LanguageIcon from "@mui/icons-material/Language"; 
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn"; 
+import React from "react";
 import { getDecodedToken } from "../../utils/jwt";
-import ErrorPage from "../../pages/error-page";
-import ProfileCardVert from "./profile-card-vert";
-import "swiper/css";
-import "swiper/css/pagination";
+import { postData } from "../../utils/actions";
+import {
+  imagePath,
+  InsertFavriouteTherapistUrl,
+  RemoveFavriouteTherapistUrl,
+} from "../../utils/url";
 
-export default function Banner() {
+export default function ProfileCardHor({ pageData, favrioutes }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
-  const [data, setData] = React.useState([]);
-  const [favrioutes, setFavrioutes] = React.useState([]);
-  const [randomAvatars, setRandomAvatars] = React.useState([]);
+  const [bookmark, setBookmark] = React.useState(false);
+  const [showBookmark, setShowBookmark] = React.useState(true);
 
-  // Fetch therapist profiles
-  const getData = async () => {
-    try {
-      const res = await fetchData(getTherapistProfiles, { priority: 1 });
-      if (res.status) {
-        setData(res.data);
-
-        // Pick 3 random avatars on load
-        setRandomAvatars(res.data.sort(() => 0.5 - Math.random()).slice(0, 3));
-      } else return <ErrorPage />;
-    } catch (err) {
-      return <ErrorPage />;
+  const handleBookmark = (id, value) => {
+    setBookmark((prevBookmark) => !prevBookmark);
+    let isSuccess = true;
+    if (value) {
+      isSuccess = removeFavrioute(id);
+    } else {
+      isSuccess = addFavrioute(id);
+    }
+    if (!isSuccess) {
+      setBookmark(false);
     }
   };
 
-  // Fetch favourite therapists
-  const getFavrioutes = async () => {
+  const addFavrioute = async (id) => {
     try {
-      const res = await fetchById(GetFavriouteTherapistListUrl);
-      if (res.status) setFavrioutes(res.data.therapists || []);
-    } catch (err) {
-      console.error(err);
+      const response = await postData(InsertFavriouteTherapistUrl, {
+        therapistId: id,
+      });
+      return !!response.status;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const removeFavrioute = async (id) => {
+    try {
+      const response = await postData(RemoveFavriouteTherapistUrl, {
+        therapistId: id,
+      });
+      return !!response.status;
+    } catch (error) {
+      return false;
     }
   };
 
   React.useEffect(() => {
-    getData();
-    const user = getDecodedToken();
-    if (user?.role !== 1) getFavrioutes();
-  }, []);
+    const data = getDecodedToken();
+    if (data) {
+      if (data.role === 1) {
+        setShowBookmark(false);
+      }
+    }
+    setBookmark(favrioutes.includes(pageData._id));
+  }, [pageData, favrioutes]);
 
   return (
-    <section
-      className="rbt-banner-area rbt-banner-1"
-      style={{
-        paddingTop: isMobile ? "60px" : "80px",
-        paddingBottom: isMobile ? "40px" : "100px",
-      }}
-    >
-      <Helmet>
-        <title>
-          Top Verified Psychologists in India | Online & In-Person Therapy Sessions
-        </title>
-        <meta
-          name="description"
-          content="Find certified psychologists and therapists across India. Book online or in-person counselling sessions, mental health support, and therapy with trusted experts in Noida and beyond."
-        />
-        <meta
-          name="keywords"
-          content="verified psychologists India, online therapy India, book psychologist online, mental health counselling, in-person therapy, Noida therapists, affordable therapy sessions, certified therapists, wellness support, trusted counselling"
-        />
-      </Helmet>
-
-      <div className="container mt--60">
-        <div className="row justify-content-between align-items-center">
-          {/* Banner Text */}
-          <div
-            className="col-lg-8 col-md-12 col-sm-12 col-12"
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              textAlign: "left",
-              flexDirection: "column",
-            }}
-          >
-            <div className="content">
-              <div className="inner">
-                {!isMobile && (
-                  <div
-                    className="rbt-new-badge rbt-new-badge-one"
-                    style={{ marginTop: isTablet ? 25 : 0 }}
-                  >
-                    <span className="rbt-new-badge-icon">
-                      <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
-                    </span>{" "}
-                    Trusted by People, Powered by Verified Therapists
-                  </div>
-                )}
-
-                {/* Mobile-only Tagline */}
-                {isMobile && (
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      marginBottom: 12,
-                    }}
-                  >
-                    <div
-                      style={{
-                        textAlign: "center",
-                        padding: "6px 14px",
-                        fontSize: "0.95rem",
-                        color: "#fff",
-                        fontWeight: 600,
-                        borderRadius: "20px",
-                        background: "linear-gradient(135deg, #228756, #007f99)",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-                        animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
-                      }}
-                    >
-                      Because Healing Starts With Your Choice
-                    </div>
-                  </div>
-                )}
-
-                {/* H1 Banner */}
-                <h1
-                  className={isMobile ? "banner-text-title" : "title"}
-                  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
-                  style={{
-                    fontSize: isMobile ? "3.5rem" : "4rem",
-                    lineHeight: isMobile ? "3.5rem" : "4.5rem",
-                    marginTop: 0,
-                    textAlign: isMobile ? "center" : "left",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  Bharat's Growing Network of
-                  {isMobile ? <br /> : " "}
-                  <span
-                    className="theme-gradient"
-                    style={{
-                      background: "linear-gradient(90deg, #228756, #56ab2f)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Verified Therapists
-                  </span>{" "}
-                  Connecting You to{" "}
-                  <span
-                    className="theme-gradient-alt"
-                    style={{
-                      background: "linear-gradient(90deg, #004e92, #005bea)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Trusted Counselling Support
-                  </span>
-                </h1>
-
-                {/* TypeAnimation hidden on mobile */}
-                {!isMobile && (
-                  <div style={{ minHeight: "3em", display: "flex", alignItems: "center" }}>
-                    <TypeAnimation
-                      sequence={[
-                        "Book a Psychologist",
-                        1500,
-                        "Access Online Counselling",
-                        1500,
-                        "Meet Psychologists In-Person",
-                        1500,
-                        "Trusted Therapy Across States",
-                        1500,
-                        "Affordable Therapy Sessions",
-                        1500,
-                      ]}
-                      wrapper="div"
-                      speed={10}
-                      repeat={Infinity}
-                      deletionSpeed={20}
-                      className="theme-gradient"
-                      style={{
-                        display: "inline-block",
-                        fontWeight: 700,
-                        lineHeight: "1.5em",
-                        fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                        whiteSpace: "normal",
-                      }}
-                    />
-                  </div>
-                )}
-
-                {/* Centered description on mobile */}
-                <p
-                  className="description"
-                  style={{
-                    textAlign: isMobile ? "center" : "left",
-                    marginTop: "15px",
-                  }}
-                >
-                  Book{" "}
-                  <span style={{ color: "#004e92", fontWeight: "bold" }}>
-                    verified psychologists
-                  </span>{" "}
-                  online or in-person in Noida. Trusted therapist anytime.
-                </p>
-
-                {/* Avatar Section */}
-                <div className="rbt-like-total">
-                  <div className="profile-share" style={{ justifyContent: isMobile ? "center" : "flex-start" }}>
-                    {randomAvatars.map((item, i) => (
-                      <Link
-                        key={i}
-                        to={`/therapist-profile/${item._id}`}
-                        className="avatar"
-                        data-tooltip={`Psychologist ${item.name || i + 1}`}
-                        tabIndex="0"
-                      >
-                        <ImageTag
-                          src={item.profile || "default-avatar.png"} // directly from data
-                          width={55}
-                          height={55}
-                          alt={`Certified Psychologist Avatar ${i + 1} - ${item.name}`}
-                        />
-                      </Link>
-                    ))}
-
-                    <div className="more-author-text" style={{ textAlign: isMobile ? "center" : "left" }}>
-                      <h5 className="total-join-students">
-                        Over 5,245+ already on their wellness journey.
-                      </h5>
-                      <p className="subtitle">Your well-being awaits.</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Get Started Button */}
-                <div
-                  className="slider-btn"
-                  style={{
-                    display: "flex",
-                    justifyContent: isMobile ? "center" : "flex-start",
-                    marginTop: "20px",
-                  }}
-                >
-                  <Link
-                    className="rbt-btn btn-gradient hover-icon-reverse"
-                    to="/view-all-therapist"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <span className="icon-reverse-wrapper">
-                      <span className="btn-text">Check Therapist Directory</span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                      <span className="btn-icon">
-                        <i className="feather-arrow-right"></i>
-                      </span>
-                    </span>
-                  </Link>
-                </div>
-              </div>
+    <div className="col-12 mt--30 sal-animate">
+      <div className="rbt-card variation-01 rbt-hover card-list-2">
+        {/* Image + Badge */}
+        <div className="rbt-card-img" style={{ position: "relative" }}>
+          <Link to={`/view-profile/${pageData._id}`}>
+            <ImageTag
+              alt="profile image"
+              src={`${imagePath}/${pageData.user.profile}`}
+              style={{
+                height: isMobile ? 255 : 235,
+                width: "100%",
+                objectFit: "cover",
+              }}
+            />
+            {/* Verified Badge with Blue Color */}
+            <div
+              className="rbt-badge-group"
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                zIndex: 2,
+              }}
+            >
+              <span
+                className="rbt-badge-6"
+                style={{
+                  backgroundColor: "#1976d2", // ✅ Blue
+                  color: "#fff",
+                  padding: "5px 12px",
+                  borderRadius: "6px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+              >
+                <VerifiedIcon sx={{ fontSize: 16 }} /> Verified
+              </span>
             </div>
-          </div>
+          </Link>
+        </div>
 
-          {/* Swiper Profiles */}
-          <div
-            className="col-lg-4 col-md-12 col-sm-12 col-12"
-            style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}
-          >
-            {data.length > 0 && (
-              <div className="content">
-                <div className="pb--60 swiper rbt-dot-bottom-center banner-swiper-active">
-                  <Swiper
-                    breakpoints={{
-                      412: { slidesPerView: 1 },
-                      680: { slidesPerView: 2, spaceBetween: 30 },
-                      768: { slidesPerView: 2, spaceBetween: 30 },
-                      1024: { slidesPerView: 1 },
-                    }}
-                    autoplay={{ delay: 3000, disableOnInteraction: false }}
-                    loop
-                    modules={[Autoplay]}
-                    className="mySwiper"
-                  >
-                    {data.slice(0, 10).map((item) => (
-                      <SwiperSlide key={item._id}>
-                        <ProfileCardVert data={item} favrioutes={favrioutes} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
+        {/* Card Body */}
+        <div className="rbt-card-body">
+          <div className="rbt-card-top">
+            <div className="rbt-review" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <h4 className="rbt-card-title" style={{ margin: 0 }}>
+                <Link to={`/view-profile/${pageData._id}`}>
+                  {pageData.user.name}
+                </Link>
+              </h4>
+              {/* Verified icon next to name */}
+              <VerifiedIcon sx={{ fontSize: 18, color: "#1976d2" }} />
+            </div>
+            {showBookmark && (
+              <div className="rbt-bookmark-btn">
+                <a
+                  style={{ cursor: "pointer" }}
+                  className="rbt-round-btn"
+                  title="Bookmark"
+                  onClick={() => handleBookmark(pageData._id, bookmark)}
+                >
+                  {bookmark ? (
+                    <BookmarkAddedIcon sx={{ fontSize: 24 }} />
+                  ) : (
+                    <BookmarkBorderIcon sx={{ fontSize: 24 }} />
+                  )}
+                </a>
               </div>
             )}
           </div>
+
+          {/* Meta info with new icons */}
+          <ul className="rbt-meta" style={{ marginTop: 0 }}>
+            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <PersonIcon sx={{ fontSize: 18 }} /> {pageData.profile_type}
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <LanguageIcon sx={{ fontSize: 18 }} /> {pageData.language_spoken}
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <MonetizationOnIcon sx={{ fontSize: 18 }} />{" "}
+              <span style={{ lineHeight: "2rem" }}>
+                {getMinMaxPrice(pageData.fees)}
+              </span>
+            </li>
+          </ul>
+
+          {/* Buttons */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: 5,
+            }}
+          >
+            <Link
+              className="view-btn view-btn-border"
+              to={`/view-profile/${pageData._id}`}
+              style={{
+                padding: isMobile || isTablet ? "0 26px" : "0 10px",
+              }}
+            >
+              View Profile
+            </Link>
+            <Link
+              className="rbt-btn btn-gradient book-btn"
+              to={`/therapist-checkout/${pageData._id}`}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: isMobile || isTablet ? "0 20px" : "0 16px",
+              }}
+            >
+              <span>Book Now</span>
+            </Link>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

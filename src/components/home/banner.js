@@ -5,16 +5,13 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation"; // ✅ Make sure installed
+import { TypeAnimation } from "react-type-animation";
 import ImageTag from "../../utils/image-tag";
 import { fetchById, fetchData } from "../../utils/actions";
 import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
 import { getDecodedToken } from "../../utils/jwt";
 import ErrorPage from "../../pages/error-page";
 import ProfileCardVert from "./profile-card-vert";
-import ClientImg from "../../assets/img/avatar-027dc8.png";
-import Fabiha from "../../assets/img/psychologist.png";
-import counselling1 from "../../assets/img/counselling.png";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -23,17 +20,27 @@ export default function Banner() {
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [data, setData] = React.useState([]);
   const [favrioutes, setFavrioutes] = React.useState([]);
+  const [randomAvatars, setRandomAvatars] = React.useState([]);
 
+  // Fetch therapist profiles
   const getData = async () => {
     try {
       const res = await fetchData(getTherapistProfiles, { priority: 1 });
-      if (res.status) setData(res.data);
-      else return <ErrorPage />;
+      if (res.status) {
+        setData(res.data);
+
+        // Filter only items with user profile images
+        const validProfiles = res.data.filter(item => item.user?.profile);
+
+        // Pick 3 random avatars
+        setRandomAvatars(validProfiles.sort(() => 0.5 - Math.random()).slice(0, 3));
+      } else return <ErrorPage />;
     } catch (err) {
       return <ErrorPage />;
     }
   };
 
+  // Fetch favourite therapists
   const getFavrioutes = async () => {
     try {
       const res = await fetchById(GetFavriouteTherapistListUrl);
@@ -78,7 +85,7 @@ export default function Banner() {
             className="col-lg-8 col-md-12 col-sm-12 col-12"
             style={{
               display: "flex",
-              justifyContent: "flex-start", // left aligned
+              justifyContent: "flex-start",
               textAlign: "left",
               flexDirection: "column",
             }}
@@ -96,72 +103,70 @@ export default function Banner() {
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
-{/* Mobile-only Tagline with Micro Animation */}
-{isMobile && (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center", // ✅ Center horizontally
-      marginBottom: 12,
-    }}
-  >
-    <div
-      style={{
-        textAlign: "center",
-        padding: "6px 14px",
-        fontSize: "0.95rem",
-        color: "#fff",
-        fontWeight: 600,
-        borderRadius: "20px",
-        background: "linear-gradient(135deg, #228756, #007f99)",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-        animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
-      }}
-    >
-      Because Healing Starts With Your Choice
-    </div>
-  </div>
-)}
 
+                {/* Mobile-only Tagline */}
+                {isMobile && (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginBottom: 12,
+                    }}
+                  >
+                    <div
+                      style={{
+                        textAlign: "center",
+                        padding: "6px 14px",
+                        fontSize: "0.95rem",
+                        color: "#fff",
+                        fontWeight: 600,
+                        borderRadius: "20px",
+                        background: "linear-gradient(135deg, #228756, #007f99)",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+                        animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
+                      }}
+                    >
+                      Because Healing Starts With Your Choice
+                    </div>
+                  </div>
+                )}
 
                 {/* H1 Banner */}
-               <h1
-  className={isMobile ? "banner-text-title" : "title"}
-  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
-  style={{
-    fontSize: isMobile ? "3.5rem" : "4rem",
-    lineHeight: isMobile ? "3.5rem" : "4.5rem",
-    marginTop: 0,
-    textAlign: isMobile ? "center" : "left",
-    wordBreak: "break-word",
-  }}
->
-  Bharat's Growing Network of
-  {isMobile ? <br /> : " "} {/* ✅ Mobile = break, Laptop = space */}
-
-  <span
-    className="theme-gradient"
-    style={{
-      background: "linear-gradient(90deg, #228756, #56ab2f)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-  >
-    Verified Therapists
-  </span>{" "}
-  Connecting You to{" "}
-  <span
-    className="theme-gradient-alt"
-    style={{
-      background: "linear-gradient(90deg, #004e92, #005bea)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-  >
-    Trusted Counselling Support
-  </span>
-</h1>
-
+                <h1
+                  className={isMobile ? "banner-text-title" : "title"}
+                  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
+                  style={{
+                    fontSize: isMobile ? "3.5rem" : "4rem",
+                    lineHeight: isMobile ? "3.5rem" : "4.5rem",
+                    marginTop: 0,
+                    textAlign: isMobile ? "center" : "left",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  Bharat's Growing Network of
+                  {isMobile ? <br /> : " "}
+                  <span
+                    className="theme-gradient"
+                    style={{
+                      background: "linear-gradient(90deg, #228756, #56ab2f)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Verified Therapists
+                  </span>{" "}
+                  Connecting You to{" "}
+                  <span
+                    className="theme-gradient-alt"
+                    style={{
+                      background: "linear-gradient(90deg, #004e92, #005bea)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Trusted Counselling Support
+                  </span>
+                </h1>
 
                 {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
@@ -197,36 +202,35 @@ export default function Banner() {
 
                 {/* Centered description on mobile */}
                 <p
-  className="description"
-  style={{
-    textAlign: isMobile ? "center" : "left",
-    marginTop: "15px",
-    
-  }}
->
-  Book{" "}
-  <span style={{ color: "#004e92", fontWeight: "bold" }}>
-    verified psychologists
-  </span>{" "}
-  online or in-person in Noida. Trusted therapist anytime.
-</p>
+                  className="description"
+                  style={{
+                    textAlign: isMobile ? "center" : "left",
+                    marginTop: "15px",
+                  }}
+                >
+                  Book{" "}
+                  <span style={{ color: "#004e92", fontWeight: "bold" }}>
+                    verified psychologists
+                  </span>{" "}
+                  online or in-person in Noida. Trusted therapist anytime.
+                </p>
 
                 {/* Avatar Section */}
                 <div className="rbt-like-total">
                   <div className="profile-share" style={{ justifyContent: isMobile ? "center" : "flex-start" }}>
-                    {[ClientImg, Fabiha, counselling1].map((img, i) => (
+                    {randomAvatars.map((item, i) => (
                       <Link
                         key={i}
-                        to="#"
+                        to={`/therapist-profile/${item._id}`}
                         className="avatar"
-                        data-tooltip={`Verified Psychologist ${i + 1}`}
+                        data-tooltip={`Verified Psychologist ${item.user?.name || i + 1}`}
                         tabIndex="0"
                       >
                         <ImageTag
-                          src={img}
+                          src={item.user?.profile || "default-avatar.png"}
                           width={55}
                           height={55}
-                          alt={`Certified Psychologist Avatar ${i + 1} - Choose Your Therapist`}
+                          alt={`Certified Psychologist Avatar ${i + 1} - ${item.user?.name}`}
                         />
                       </Link>
                     ))}
@@ -252,11 +256,7 @@ export default function Banner() {
                   <Link
                     className="rbt-btn btn-gradient hover-icon-reverse"
                     to="/view-all-therapist"
-                    style={{
-                      cursor: "pointer",
-                     
-                     
-                    }}
+                    style={{ cursor: "pointer" }}
                   >
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Check Therapist Directory</span>
