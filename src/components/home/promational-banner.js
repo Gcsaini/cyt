@@ -90,7 +90,7 @@ export default function PromotionalBannerCTA() {
                 {/* Headline */}
                 <h2
                   style={{
-                    fontSize: 44,
+                    fontSize: 40,
                     fontWeight: 800,
                     marginBottom: 25,
                     lineHeight: 1.2,
@@ -107,6 +107,7 @@ export default function PromotionalBannerCTA() {
                 {banner.description.map((line, index) => (
                   <p
                     key={index}
+                    className="banner-description"
                     style={{
                       fontSize: 20,
                       marginBottom: 15,
@@ -153,14 +154,17 @@ export default function PromotionalBannerCTA() {
         {`
           @media (max-width: 768px) {
             .banner-heading {
-              font-size: 28px !important; /* smaller font for mobile */
-              line-height: 1.3 !important; /* tighter line spacing */
+              font-size: 28px !important;
+              line-height: 1.3 !important;
+            }
+            .banner-description {
+              display: none !important; /* hide description on mobile */
             }
           }
           @media (max-width: 480px) {
             .banner-heading {
               font-size: 24px !important;
-              line-height: 1.4 !important; /* wraps nicely in up to 4 lines */
+              line-height: 1.4 !important;
             }
           }
         `}
