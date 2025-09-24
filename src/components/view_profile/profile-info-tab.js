@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import { successColor } from "../../utils/colors";
-import {getValidServices } from "../../utils/helpers";
+import { getValidServices } from "../../utils/helpers";
+
 export default function ProfileInfoTab({ pageData }) {
   const [tab, setTab] = React.useState(1);
   const [services, setServices] = React.useState();
-  const [formats, setFormats] = React.useState();
+
   const handleClick = (id) => {
     setTab(id);
   };
@@ -23,17 +24,46 @@ export default function ProfileInfoTab({ pageData }) {
 
   useEffect(() => {
     setConfig(pageData);
-  }, [pageData])
+  }, [pageData]);
+
+  // Glassmorphism card style
+  const glassCard = {
+    backdropFilter: "blur(10px)",
+    background: "rgba(255, 255, 255, 0.8)",
+    borderRadius: "15px",
+    padding: "20px",
+    marginBottom: "20px",
+    boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.1)",
+    border: "1px solid rgba(255, 255, 255, 0.3)",
+    transition: "all 0.3s ease",
+  };
+
+  const chipStyle = {
+    display: "inline-block",
+    padding: "6px 12px",
+    borderRadius: "20px",
+    margin: "4px",
+    background: "rgba(0,0,0,0.05)",
+    color: "#333",
+    fontWeight: 500,
+    fontSize: 14,
+    cursor: "default",
+  };
 
   return (
     <div
-      className="rbt-advance-tab-area bg-color-white"
-      style={{ paddingBottom: 50 }}
+      className="rbt-advance-tab-area"
+      style={{
+        paddingBottom: 50,
+        background: "#fff",
+        minHeight: "100vh",
+      }}
     >
       <div className="container">
         <div className="row g-5">
           <div className="col-lg-10 offset-lg-1">
-            <div className="advance-tab-button">
+            {/* Tabs */}
+            <div className="advance-tab-button mb-4">
               <ul className="nav nav-tabs tab-button-style-2" id="myTab-4">
                 <li>
                   <Link
@@ -46,18 +76,6 @@ export default function ProfileInfoTab({ pageData }) {
                       Overview
                     </span>
                   </Link>
-                </li>
-                <li>
-                  {/* <Link
-                    className={tab === 2 ? "tab-button active" : "tab-button"}
-                    id="profile-tab-4"
-                    aria-selected={tab === 2 ? "true" : "false"}
-                    onClick={() => handleClick(2)}
-                  >
-                    <span className="title" style={{ cursor: "pointer" }}>
-                      Location
-                    </span>
-                  </Link>*/}
                 </li>
                 <li>
                   <Link
@@ -79,138 +97,99 @@ export default function ProfileInfoTab({ pageData }) {
                     onClick={() => handleClick(4)}
                   >
                     <span className="title" style={{ cursor: "pointer" }}>
-                      Availability{" "}
+                      Availability
                     </span>
                   </Link>
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="col-lg-10 offset-lg-1">
+
+            {/* Tab Contents */}
             <div className="tab-content advance-tab-content-style-2">
+
+              {/* Overview Tab */}
               <div
-                className={
-                  tab === 1 ? "tab-pane fade active show" : "tab-pane fade"
-                }
+                className={tab === 1 ? "tab-pane fade active show" : "tab-pane fade"}
                 id="home-4"
                 role="tabpanel"
                 aria-labelledby="home-tab-4"
               >
-                <h4 className="rbt-title-style-3">About me</h4>
-                <div className="content">
-                  <p>{pageData.user.bio}</p>
-                  <h4 className="rbt-title-style-3">Services</h4>
-                  <div className="content">
-                    <div className="row g-3">
-                      {pageData.services.split(",").map((item, index) => {
-                        return (
-                          <div className="col-lg-4 col-md-6 col-12" key={item}>
-                            <ul className="plan-offer-list">
-                              <li>
-                                <i className="feather-check"></i> &nbsp;{item}
-                              </li>
-                            </ul>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <h4 className="rbt-title-style-3" style={{ marginTop: 20 }}>
-                    Expertise
-                  </h4>
-                  <div className="content">
-                    <div className="row g-3">
-                      {pageData.experties.split(",").map((item, index) => {
-                        return (
-                          <div className="col-lg-4 col-md-6 col-12" key={item}>
-                            <ul className="plan-offer-list">
-                              <li>
-                                <i className="feather-check"></i> &nbsp;{item}
-                              </li>
-                            </ul>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={
-                  tab === 2 ? "tab-pane fade active show" : "tab-pane fade"
-                }
-                id="profile-4"
-                role="tabpanel"
-                aria-labelledby="profile-tab-4"
-              >
-                <div className="content">
-                  <p>
-                    Physical education ipsum dolor sit amet consectetur,
-                    adipisicing elit. Tempora sequi doloremque dicta quia unde
-                    odio nam minus reiciendis ullam aliquam, dolorum ab quisquam
-                    cum numquam nemo iure cumque iste. Accusamus necessitatibus.
+                {/* About Me */}
+                <div style={glassCard}>
+                  <h4 className="rbt-title-style-3 mb-3">About Me</h4>
+                  <p style={{ fontSize: 16, lineHeight: 1.6, color: "#333" }}>
+                    {pageData.user.bio}
                   </p>
                 </div>
+
+                {/* Services */}
+                <div style={glassCard}>
+                  <h4 className="rbt-title-style-3 mb-3">Services</h4>
+                  <div>
+                    {pageData.services.split(",").map((item) => (
+                      <span key={item} style={chipStyle}>{item}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Expertise */}
+                <div style={glassCard}>
+                  <h4 className="rbt-title-style-3 mb-3">Expertise</h4>
+                  <div>
+                    {pageData.experties.split(",").map((item) => (
+                      <span key={item} style={chipStyle}>{item}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
+
+              {/* Fees Tab */}
               <div
-                className={
-                  tab === 3 ? "tab-pane fade active show" : "tab-pane fade"
-                }
+                className={tab === 3 ? "tab-pane fade active show" : "tab-pane fade"}
                 id="contact-4"
                 role="tabpanel"
                 aria-labelledby="contact-tab-4"
               >
                 <div className="content">
-                  {services && services.map((item) => {
-                    return <div key={item._id}>
-                      <h4 className="rbt-title-style-3" >
-                       {item.name}
-                      </h4>
-                      <div className="col-lg-6 col-md-12 col-12">
-                        <ul className="rbt-list-style-2">
-                          {item.formats.map((format) => {
-                            return <li key={format._id}>
-                              <i className="feather-check"></i>{format.type.toUpperCase().charAt(0) + format.type.slice(1)} : ₹
-                              {format.fee}
-                            </li>
-                          })}
-                        </ul>
-                      </div>
+                  {services && services.map((item) => (
+                    <div key={item._id} style={glassCard}>
+                      <h4 className="rbt-title-style-3 mb-2">{item.name}</h4>
+                      <ul className="rbt-list-style-2" style={{ color: "#333" }}>
+                        {item.formats.map((format) => (
+                          <li key={format._id}>
+                            <i className="feather-check text-success me-2"></i>
+                            {format.type.charAt(0).toUpperCase() + format.type.slice(1)}: ₹{format.fee}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  })}
+                  ))}
                 </div>
-               
               </div>
+
+              {/* Availability Tab */}
               <div
-                className={
-                  tab === 4 ? "tab-pane fade active show" : "tab-pane fade"
-                }
-                id="contact-4"
+                className={tab === 4 ? "tab-pane fade active show" : "tab-pane fade"}
+                id="business-4"
                 role="tabpanel"
                 aria-labelledby="business-tab-4"
               >
                 <div className="content">
                   {pageData.availabilities &&
-                    pageData.availabilities.map((item,index) => {
-                      return (
-                        <div key={index} className="rbt-title-style-3">
-                          <h4>{item.day}</h4>
-                          {item.times.map((time,index) => {
-                            return (
-                              <span
-                                style={{ marginRight: 40, fontSize: 16 }}
-                                key={index}
-                              >
-                                <WatchLaterIcon style={listStyleTime} />
-                                &nbsp;{time.open}-{time.close}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      );
-                    })}
+                    pageData.availabilities.map((item, index) => (
+                      <div key={index} style={glassCard}>
+                        <h4 className="rbt-title-style-3 mb-2">{item.day}</h4>
+                        {item.times.map((time, idx) => (
+                          <span style={{ marginRight: 40, fontSize: 16, color: "#333" }} key={idx}>
+                            <WatchLaterIcon style={listStyleTime} />
+                            &nbsp;{time.open}-{time.close}
+                          </span>
+                        ))}
+                      </div>
+                    ))}
                 </div>
               </div>
+
             </div>
           </div>
         </div>
