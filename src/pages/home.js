@@ -27,14 +27,13 @@ export default function HomePage() {
          
             <Services />
            <State/>
-         <Brands/>
-        
+         <PromationalBanner />
           <ProfileCard />
           <Counter />
           <HomeWorkshop isWhite={false} />
           <Blogs />
 
-          <PromationalBanner />
+          <Brands/>
           <Feedback />
          
           <CallToAction />
