@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
 
-// Banner data with brand name only in headings
+// Banner data
 const banners = [
   {
     id: 1,
@@ -64,9 +64,7 @@ export default function PromotionalBannerCTA() {
           }}
           modules={[Autoplay]}
           className="mySwiper"
-          style={{
-            borderRadius: 20,
-          }}
+          style={{ borderRadius: 20 }}
         >
           {banners.map((banner) => (
             <SwiperSlide key={banner.id}>
@@ -98,7 +96,9 @@ export default function PromotionalBannerCTA() {
                     lineHeight: 1.2,
                     color: banner.headingColor,
                     textShadow: "2px 2px 6px rgba(0,0,0,0.35)",
+                    wordBreak: "break-word",
                   }}
+                  className="banner-heading"
                 >
                   {banner.title}
                 </h2>
@@ -147,6 +147,24 @@ export default function PromotionalBannerCTA() {
           ))}
         </Swiper>
       </div>
+
+      {/* Responsive CSS */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .banner-heading {
+              font-size: 28px !important; /* smaller font for mobile */
+              line-height: 1.3 !important; /* tighter line spacing */
+            }
+          }
+          @media (max-width: 480px) {
+            .banner-heading {
+              font-size: 24px !important;
+              line-height: 1.4 !important; /* wraps nicely in up to 4 lines */
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }
