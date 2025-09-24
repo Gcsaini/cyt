@@ -18,6 +18,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
   const [sessionEnding, setSessionEnding] = useState(false);
   const [pin, setPin] = useState("");
   const [bookingId, setBookingId] = useState("");
+  const [visibleCount, setVisibleCount] = useState(6); // initially show 6 cards
 
   const isMobile = useMediaQuery("(max-width:768px)");
 
@@ -72,7 +73,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
             color: "#333",
           }}
         />
-
+        {/* Client info & details */}
         <div style={{ marginBottom: 16 }}>
           <h5 style={{ margin: "0 0 6px 0", fontSize: isMobile ? 18 : 16 }}>
             {item.client?.name || "Unknown Client"}
@@ -106,18 +107,15 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
             <FaClock /> Booking: {formatDateTime(item.booking_date)}
           </p>
         </div>
-
         <div style={{ marginBottom: 10, fontSize: isMobile ? 16 : 14 }}>
           <strong>Booked For:</strong> {item.whom === "Self" ? "Self" : item.cname}
         </div>
-
         {item.whom !== "Self" && (
           <div style={{ marginBottom: 10, fontSize: isMobile ? 16 : 14 }}>
             <p style={{ margin: 0 }}>Relation: {item.relation_with_client}</p>
             <p style={{ margin: 0 }}>Age: {item.age}</p>
           </div>
         )}
-
         <div style={{ marginTop: 10, fontSize: isMobile ? 16 : 14 }}>
           <strong>Notes:</strong>
           <p style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -175,16 +173,22 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
     }
   };
 
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
+
+  const visibleAppointments = appointments.slice(0, visibleCount);
+
   return (
     <>
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", // Desktop: 3 cards per row
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
           gap: 16,
         }}
       >
-        {appointments.map((appt) => (
+        {visibleAppointments.map((appt) => (
           <div
             key={appt._id}
             style={{
@@ -208,7 +212,9 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           >
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               <h6 style={{ margin: 0, fontSize: isMobile ? 16 : 16 }}>{appt.client?.name}</h6>
-              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, color: "#555" }}>{appt.service} / {appt.format}</p>
+              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, color: "#555" }}>
+                {appt.service} / {appt.format}
+              </p>
               <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, display: "flex", alignItems: "center", gap: 6 }}>
                 <FaClock /> {formatDateTime(appt.booking_date)}
               </p>
@@ -224,7 +230,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               {appt.status !== SESSION_STATUS.COMPLETED && appt.status !== SESSION_STATUS.CANCELED && (
                 appt.status === SESSION_STATUS.STARTED ? (
                   sessionEnding ? <Box><CircularProgress size={26} /></Box> :
-                    <button onClick={() => endSession(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#ff4d4f,#ff7a5c)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaStop /> End</button>
+                  <button onClick={() => endSession(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#ff4d4f,#ff7a5c)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaStop /> End</button>
                 ) : (
                   <button onClick={() => handlePin(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#00b874,#00d2ff)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaPlay /> Start</button>
                 )
@@ -233,6 +239,27 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           </div>
         ))}
       </div>
+
+      {/* Load More Button */}
+      {visibleCount < appointments.length && (
+        <div style={{ textAlign: "center", marginTop: 24 }}>
+          <button
+            onClick={handleLoadMore}
+            style={{
+              padding: "10px 20px",
+              borderRadius: 10,
+              background: "linear-gradient(135deg,#00b874,#00d2ff)",
+              color: "#fff",
+              fontWeight: 600,
+              border: "none",
+              cursor: "pointer",
+              fontSize: 16,
+            }}
+          >
+            Load More
+          </button>
+        </div>
+      )}
 
       <ModalComponent open={open} handleClose={handleClose} content={modalContent} />
       <VerifyOtpDialog open={optView} onClose={handleOtpViewClose} placeholder="Enter Pin" label="Pin" value={pin} handleChange={handlePinChange} handleClick={handleVerifyOtp} loading={loading} />
