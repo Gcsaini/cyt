@@ -124,36 +124,6 @@ export default function MainLayout(props) {
                               </ul>
                             </nav>
 
-                            {/* 
-                              Coming Soon Section - Commented out so it does not render
-                              You can uncomment later when ready 
-                            */}
-                            {/*
-                            <div className="section-title mt--40 mb--20">
-                              <h6 className="rbt-title-style-2">
-                                Additional <span style={{ backgroundColor: "rgb(250, 10, 10)", padding: "5px", borderRadius: "5px", color: "#fff" }}>Coming soon</span>
-                              </h6>
-                            </div>
-                            <nav className="mainmenu-nav">
-                              <ul className="dashboard-mainmenu rbt-default-sidebar-list">
-                                <li>
-                                  <Link to="">
-                                    <i className="fa-solid fa-place-of-worship"></i>
-                                    <span>Case history</span>
-                                    <span style={{ backgroundColor: "rgba(43, 194, 76, 1)", padding: "5px", marginLeft: "10px", borderRadius: "5px", color: "#fff" }}>Coming soon</span>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/instructor/instructor-announcements">
-                                    <i className="fa-solid fa-blog"></i>
-                                    <span>Blog</span>
-                                    <span style={{ backgroundColor: "rgba(43, 194, 76, 1)", padding: "5px", marginLeft: 10, borderRadius: "5px", color: "#fff" }}>Coming soon</span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </nav>
-                            */}
-
                             {/* User Section */}
                             <div className="section-title mt--40 mb--20">
                               <h6 className="rbt-title-style-2">User</h6>
@@ -187,6 +157,51 @@ export default function MainLayout(props) {
                                 </li>
                               </ul>
                             </nav>
+
+                            {/* ------------------- Ads / Promo Section ------------------- */}
+                            <div
+                              style={{
+                                marginTop: 30,
+                                padding: 16,
+                                borderRadius: 12,
+                                background: "linear-gradient(135deg, #00b874, #007f99)",
+                                color: "#fff",
+                                textAlign: "center",
+                                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  alignItems: "center",
+                                  gap: 10,
+                                }}
+                              >
+                                <i className="fas fa-bullhorn" style={{ fontSize: 32 }}></i>
+                                <h6 style={{ margin: 0, fontWeight: 600 }}>Boost Your Visibility!</h6>
+                                <p style={{ fontSize: 13, margin: 0 }}>
+                                  Upgrade your profile to get featured to more clients
+                                </p>
+                                <Link
+                                  to="/premium-upgrade"
+                                  style={{
+                                    marginTop: 8,
+                                    padding: "6px 16px",
+                                    backgroundColor: "#fff",
+                                    color: "#007f99",
+                                    borderRadius: 8,
+                                    fontWeight: 600,
+                                    fontSize: 14,
+                                    textDecoration: "none",
+                                    display: "inline-block",
+                                  }}
+                                >
+                                  Upgrade Now
+                                </Link>
+                              </div>
+                            </div>
+                            {/* ---------------------------------------------------------- */}
                           </div>
                         </div>
                       </div>

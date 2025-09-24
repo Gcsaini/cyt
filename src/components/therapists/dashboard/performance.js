@@ -16,7 +16,6 @@ const profileTips = [
   { icon: <FaClock />, text: "Set your availability schedule" },
 ];
 
-// Therapist-specific daily tips
 const dailyTips = [
   { icon: <FaLightbulb />, text: "Check in with clients regularly for better engagement." },
   { icon: <FaLightbulb />, text: "Update session notes after each meeting." },
@@ -25,14 +24,14 @@ const dailyTips = [
 ];
 
 export default function DashboardSections() {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const profileCompletion = 65; // Example
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const profileCompletion = 65;
   const [showTooltip, setShowTooltip] = useState(true);
 
   return (
     <div style={{ padding: "20px", position: "relative" }}>
-      
-      {/* ---------- Profile Completion Section ---------- */}
+
+      {/* ---------- Complete Your Profile Section ---------- */}
       <section
         style={{
           padding: "30px 20px",
@@ -64,19 +63,12 @@ export default function DashboardSections() {
           <div style={{ textAlign: "right", fontSize: "0.85rem", marginTop: 5 }}>{profileCompletion}% completed</div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            gap: "16px",
-            marginTop: 10,
-          }}
-        >
+        {/* Profile tips stacked column (mobile or desktop) */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: 10 }}>
           {profileTips.map((tip, i) => (
             <div
               key={i}
               style={{
-                flex: 1,
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
@@ -108,24 +100,14 @@ export default function DashboardSections() {
             </div>
           ))}
         </div>
-
-        <style>
-          {`
-            .hover-effect:hover {
-              transform: translateY(-3px);
-              box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-            }
-          `}
-        </style>
       </section>
 
-      {/* ---------- Dashboard Shortcuts Section ---------- */}
+      {/* ---------- Dashboard Shortcuts Section (grid) ---------- */}
       <div className="dashboard-shortcuts" style={{ marginTop: "20px" }}>
         <div
-          className="container"
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(4, 1fr)",
+            gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
             gap: "20px",
           }}
         >
@@ -172,7 +154,7 @@ export default function DashboardSections() {
               >
                 {card.icon}
               </div>
-              <span style={{ fontSize: isMobile ? "1.05rem" : "1.15rem", textAlign: "center" }}>
+              <span style={{ fontSize: isMobile ? "1rem" : "1.15rem", textAlign: "center" }}>
                 {card.title}
               </span>
             </Link>
@@ -180,7 +162,7 @@ export default function DashboardSections() {
         </div>
       </div>
 
-      {/* ---------- Floating Daily Tips Toolkit ---------- */}
+      {/* ---------- Floating Daily Tips Tooltip ---------- */}
       {showTooltip && (
         <div
           style={{
@@ -226,6 +208,10 @@ export default function DashboardSections() {
           @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px);}
             to { opacity: 1; transform: translateY(0);}
+          }
+          .hover-effect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
           }
         `}
       </style>
