@@ -1,26 +1,56 @@
 import React, { useState } from "react";
 import { useMediaQuery, LinearProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaWallet, FaChartPie, FaCertificate, FaUserCircle, FaClock, FaLightbulb, FaTimes } from "react-icons/fa";
+import {
+  FaUsers,
+  FaCalendarCheck,
+  FaWallet,
+  FaChartPie,
+  FaCertificate,
+  FaUserCircle,
+  FaClock,
+  FaLightbulb,
+  FaTimes,
+} from "react-icons/fa";
 
 const shortcutCards = [
-  { title: "My Clients", icon: <FaUsers size={28} />, link: "/dashboard/clients", iconBg: "linear-gradient(135deg, #228756, #56ab2f)" },
-  { title: "My Sessions", icon: <FaCalendarCheck size={28} />, link: "/dashboard/sessions", iconBg: "linear-gradient(135deg, #004e92, #005bea)" },
-  { title: "Earnings", icon: <FaWallet size={28} />, link: "/dashboard/earnings", iconBg: "linear-gradient(135deg, #ff7e5f, #feb47b)" },
-  { title: "Reports", icon: <FaChartPie size={28} />, link: "/dashboard/reports", iconBg: "linear-gradient(135deg, #6a11cb, #2575fc)" },
+  {
+    title: "My Clients",
+    icon: <FaUsers size={40} />, // ⬆️ bigger
+    link: "/dashboard/clients",
+    iconBg: "linear-gradient(135deg, #228756, #56ab2f)",
+  },
+  {
+    title: "My Sessions",
+    icon: <FaCalendarCheck size={40} />,
+    link: "/dashboard/sessions",
+    iconBg: "linear-gradient(135deg, #004e92, #005bea)",
+  },
+  {
+    title: "Earnings",
+    icon: <FaWallet size={40} />,
+    link: "/dashboard/earnings",
+    iconBg: "linear-gradient(135deg, #ff7e5f, #feb47b)",
+  },
+  {
+    title: "Reports",
+    icon: <FaChartPie size={40} />,
+    link: "/dashboard/reports",
+    iconBg: "linear-gradient(135deg, #6a11cb, #2575fc)",
+  },
 ];
 
 const profileTips = [
-  { icon: <FaCertificate />, text: "Add new certifications" },
-  { icon: <FaUserCircle />, text: "Update your profile photo" },
-  { icon: <FaClock />, text: "Set your availability schedule" },
+  { icon: <FaCertificate size={24} />, text: "Add new certifications" },
+  { icon: <FaUserCircle size={24} />, text: "Update your profile photo" },
+  { icon: <FaClock size={24} />, text: "Set your availability schedule" },
 ];
 
 const dailyTips = [
-  { icon: <FaLightbulb />, text: "Check in with clients regularly for better engagement." },
-  { icon: <FaLightbulb />, text: "Update session notes after each meeting." },
-  { icon: <FaLightbulb />, text: "Set reminders for upcoming client sessions." },
-  { icon: <FaLightbulb />, text: "Review client progress weekly to personalize care." },
+  { icon: <FaLightbulb size={22} />, text: "Check in with clients regularly for better engagement." },
+  { icon: <FaLightbulb size={22} />, text: "Update session notes after each meeting." },
+  { icon: <FaLightbulb size={22} />, text: "Set reminders for upcoming client sessions." },
+  { icon: <FaLightbulb size={22} />, text: "Review client progress weekly to personalize care." },
 ];
 
 export default function DashboardSections() {
@@ -30,7 +60,6 @@ export default function DashboardSections() {
 
   return (
     <div style={{ padding: "20px", position: "relative" }}>
-
       {/* ---------- Complete Your Profile Section ---------- */}
       <section
         style={{
@@ -41,17 +70,27 @@ export default function DashboardSections() {
           boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
         }}
       >
-        <div style={{ marginBottom: 20, textAlign: "center" }}>
-          <h3 style={{ margin: 0, fontSize: isMobile ? "1.4rem" : "1.8rem" }}>Complete Your Profile</h3>
-          <p style={{ margin: 0, fontSize: "0.95rem", color: "#555" }}>Enhance your visibility and reach more clients</p>
+        <div style={{ marginBottom: 22, textAlign: "center" }}>
+          <h2 style={{ margin: 0, fontSize: isMobile ? "1.9rem" : "2.2rem" }}>
+            Complete Your Profile
+          </h2>
+          <p
+            style={{
+              margin: 0,
+              fontSize: isMobile ? "1.15rem" : "1.25rem",
+              color: "#555",
+            }}
+          >
+            Enhance your visibility and reach more clients
+          </p>
         </div>
 
-        <div style={{ margin: "20px 0" }}>
+        <div style={{ margin: "22px 0" }}>
           <LinearProgress
             variant="determinate"
             value={profileCompletion}
             sx={{
-              height: 12,
+              height: 16,
               borderRadius: 6,
               backgroundColor: "#e0e0e0",
               "& .MuiLinearProgress-bar": {
@@ -60,19 +99,21 @@ export default function DashboardSections() {
               },
             }}
           />
-          <div style={{ textAlign: "right", fontSize: "0.85rem", marginTop: 5 }}>{profileCompletion}% completed</div>
+          <div style={{ textAlign: "right", fontSize: "1rem", marginTop: 6 }}>
+            {profileCompletion}% completed
+          </div>
         </div>
 
-        {/* Profile tips stacked column (mobile or desktop) */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: 10 }}>
+        {/* Profile tips */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: 12 }}>
           {profileTips.map((tip, i) => (
             <div
               key={i}
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
-                padding: "12px 16px",
+                gap: 14,
+                padding: "16px 20px",
                 borderRadius: 10,
                 backgroundColor: "#fff",
                 boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
@@ -83,32 +124,34 @@ export default function DashboardSections() {
             >
               <div
                 style={{
-                  width: 40,
-                  height: 40,
+                  width: 54,
+                  height: 54,
                   borderRadius: "50%",
                   background: "linear-gradient(135deg, #228756, #007f99)",
                   color: "#fff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "1.2rem",
+                  fontSize: "1.5rem",
                 }}
               >
                 {tip.icon}
               </div>
-              <span style={{ fontSize: 14, fontWeight: 500 }}>{tip.text}</span>
+              <span style={{ fontSize: isMobile ? 16 : 18, fontWeight: 500 }}>
+                {tip.text}
+              </span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ---------- Dashboard Shortcuts Section (grid) ---------- */}
-      <div className="dashboard-shortcuts" style={{ marginTop: "20px" }}>
+      {/* ---------- Dashboard Shortcuts Section ---------- */}
+      <div className="dashboard-shortcuts" style={{ marginTop: "22px" }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)",
-            gap: "20px",
+            gap: "24px",
           }}
         >
           {shortcutCards.map((card, index) => (
@@ -120,8 +163,8 @@ export default function DashboardSections() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "24px",
-                borderRadius: "12px",
+                padding: "28px",
+                borderRadius: "14px",
                 color: "#333",
                 textDecoration: "none",
                 fontWeight: 600,
@@ -141,9 +184,9 @@ export default function DashboardSections() {
             >
               <div
                 style={{
-                  marginBottom: "12px",
-                  width: "60px",
-                  height: "60px",
+                  marginBottom: "16px",
+                  width: "82px",
+                  height: "82px",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -154,7 +197,12 @@ export default function DashboardSections() {
               >
                 {card.icon}
               </div>
-              <span style={{ fontSize: isMobile ? "1rem" : "1.15rem", textAlign: "center" }}>
+              <span
+                style={{
+                  fontSize: isMobile ? "1.3rem" : "1.4rem",
+                  textAlign: "center",
+                }}
+              >
                 {card.title}
               </span>
             </Link>
@@ -169,18 +217,30 @@ export default function DashboardSections() {
             position: "fixed",
             bottom: 20,
             right: 20,
-            width: isMobile ? "90%" : 320,
+            width: isMobile ? "92%" : 360,
             backgroundColor: "#fff",
-            borderRadius: 12,
+            borderRadius: 14,
             boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
-            padding: "16px",
+            padding: "20px",
             zIndex: 999,
             animation: "fadeInUp 0.8s ease",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-            <h4 style={{ margin: 0, fontSize: "1rem", color: "#228756" }}>Daily Tips</h4>
-            <FaTimes style={{ cursor: "pointer" }} onClick={() => setShowTooltip(false)} />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: 12,
+            }}
+          >
+            <h4 style={{ margin: 0, fontSize: "1.25rem", color: "#228756" }}>
+              Daily Tips
+            </h4>
+            <FaTimes
+              style={{ cursor: "pointer", fontSize: 20 }}
+              onClick={() => setShowTooltip(false)}
+            />
           </div>
           <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
             {dailyTips.map((tip, i) => (
@@ -189,9 +249,9 @@ export default function DashboardSections() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 8,
-                  padding: "6px 0",
-                  fontSize: 14,
+                  gap: 12,
+                  padding: "8px 0",
+                  fontSize: 16,
                   color: "#333",
                 }}
               >
