@@ -14,7 +14,7 @@ export default function AppointmentHeader() {
               height="28"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#007f99"
+              stroke="#fff"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -32,8 +32,8 @@ export default function AppointmentHeader() {
           .premium-header-container {
             width: 100%;
             padding: 40px 36px;
-            background: #f8f9fc;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+            background: linear-gradient(135deg, #00b874, #00d2ff); /* green-blue gradient */
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
             border-radius: 22px;
             margin-bottom: 32px;
             position: relative;
@@ -57,7 +57,7 @@ export default function AppointmentHeader() {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #e6f7fa;
+            background: rgba(255,255,255,0.3);
             border-radius: 50%;
             width: 52px;
             height: 52px;
@@ -67,13 +67,13 @@ export default function AppointmentHeader() {
           .premium-icon svg {
             width: 28px;
             height: 28px;
-            stroke: #007f99;
+            stroke: #fff; /* white stroke for contrast */
           }
 
           .premium-title {
-            font-size: 2.4rem; /* larger for desktop */
+            font-size: 2.4rem;
             font-weight: 800;
-            color: #000;
+            color: #fff; /* white text */
             margin: 0;
             position: relative;
           }
@@ -85,7 +85,7 @@ export default function AppointmentHeader() {
             bottom: -8px;
             width: 100px; 
             height: 5px;
-            background: linear-gradient(90deg, #00b874, #00d2ff);
+            background: rgba(255,255,255,0.6);
             border-radius: 3px;
           }
 
@@ -96,7 +96,7 @@ export default function AppointmentHeader() {
             }
 
             .premium-title {
-              font-size: 2.2rem; /* larger for mobile */
+              font-size: 2.2rem;
             }
 
             .premium-icon {
