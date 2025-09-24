@@ -8,9 +8,10 @@ import { postData } from "../../../utils/actions";
 import VerifyOtpDialog from "../../global/verify-otp-dialog";
 import { SESSION_STATUS } from "../../../utils/constant";
 import { Box, CircularProgress, useMediaQuery } from "@mui/material";
-import { FaPlay, FaStop, FaUser, FaNotesMedical, FaClock, FaTimes, FaPhone } from "react-icons/fa";
+import { FaPlay, FaStop, FaUser, FaNotesMedical, FaClock, FaTimes, FaPhone, FaCheck } from "react-icons/fa";
 
-const AppointmentsContent = ({ appointments, onRefresh }) => {
+const AppointmentsContent = ({ appointments: initialAppointments, onRefresh }) => {
+  const [appointments, setAppointments] = useState(initialAppointments);
   const [open, setOpen] = useState(false);
   const [otpView, setOtpView] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -47,13 +48,11 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
     setOpen(true);
     setModalContent(
       <div style={{ display: "flex", flexDirection: "column", gap: 16, paddingBottom: 16 }}>
-        {/* Close button */}
         <FaTimes
           onClick={handleClose}
           style={{ position: "sticky", top: 0, alignSelf: "flex-end", cursor: "pointer", fontSize: 20, color: "#333" }}
         />
 
-        {/* Gradient Title */}
         <h3
           style={{
             background: "linear-gradient(135deg, #00b874, #00d2ff)",
@@ -66,7 +65,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           Appointment Details
         </h3>
 
-        {/* Client Photo & Name */}
         <div style={{ display: "flex", alignItems: "center", gap: 12, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
           {item.client?.photo ? (
             <img
@@ -101,7 +99,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           </div>
         </div>
 
-        {/* Booking & Payment Info */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
           <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
             <FaClock /> Booking: {formatDateTime(item.booking_date)}
@@ -120,7 +117,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           </p>
         </div>
 
-        {/* Booked For / Relation / Age */}
         <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
           <p style={{ margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
             <FaUser /> Booked For: {item.whom === "Self" ? "Self" : item.cname}
@@ -137,7 +133,6 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           )}
         </div>
 
-        {/* Notes */}
         <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: 12, borderRadius: 12, boxShadow: "0 4px 15px rgba(0,0,0,0.08)", background: "#fff" }}>
           <p style={{ margin: 0, fontWeight: "bold", display: "flex", alignItems: "center", gap: 6 }}>
             <FaNotesMedical /> Notes
@@ -171,6 +166,11 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
         setPin("");
         setOtpView(false);
         toast.success(response.message);
+
+        setAppointments((prev) =>
+          prev.map((appt) => (appt._id === bookingId ? { ...appt, status: SESSION_STATUS.STARTED } : appt))
+        );
+
         onRefresh && onRefresh();
       } else toast.error(response.message);
     } catch (err) {
@@ -186,6 +186,11 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
       const response = await postData(EndSessionUrl, { bookingId: item._id });
       if (response.status) {
         toast.success(response.message);
+
+        setAppointments((prev) =>
+          prev.map((appt) => (appt._id === item._id ? { ...appt, status: SESSION_STATUS.COMPLETED } : appt))
+        );
+
         onRefresh && onRefresh();
       } else toast.error(response.message);
     } catch (err) {
@@ -204,56 +209,145 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
   return (
     <>
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: 16 }}>
-        {visibleAppointments.map((appt) => (
-          <div
-            key={appt._id}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              padding: 18,
-              borderRadius: 16,
-              background: "#fff",
-              boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s, box-shadow 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.02)";
-              e.currentTarget.style.boxShadow = "0 12px 25px rgba(0,0,0,0.12)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.1)";
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <h6 style={{ margin: 0, fontSize: isMobile ? 16 : 16 }}>{appt.client?.name}</h6>
-              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, color: "#555" }}>
+        {visibleAppointments.map((appt) => {
+          // premium card if session is active
+          const isPremium = appt.status === SESSION_STATUS.STARTED;
+          return (
+            <div
+              key={appt._id}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                padding: 18,
+                borderRadius: 16,
+                background: "#fff",
+                boxShadow: isPremium ? "0 12px 25px rgba(0,200,255,0.25)" : "0 8px 20px rgba(0,0,0,0.1)",
+                border: isPremium ? "2px solid #00b874" : "1px solid #eee",
+                transition: "transform 0.3s, box-shadow 0.3s, border 0.3s",
+                position: "relative",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.03)";
+                e.currentTarget.style.boxShadow = isPremium
+                  ? "0 15px 30px rgba(0,200,255,0.35)"
+                  : "0 12px 25px rgba(0,0,0,0.12)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = isPremium
+                  ? "0 12px 25px rgba(0,200,255,0.25)"
+                  : "0 8px 20px rgba(0,0,0,0.1)";
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                <h6 style={{ margin: 0, fontSize: isMobile ? 16 : 16 }}>{appt.client?.name}</h6>
+                <span
+                  style={{
+                    padding: "2px 8px",
+                    borderRadius: 12,
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: "#fff",
+                    background: appt.status === SESSION_STATUS.STARTED
+                      ? "linear-gradient(135deg,#00b874,#00d2ff)"
+                      : appt.status === SESSION_STATUS.COMPLETED
+                      ? "#28a745"
+                      : "#ffc107",
+                  }}
+                >
+                  {appt.status}
+                </span>
+              </div>
+
+              <p style={{ margin: "4px 0", fontSize: isMobile ? 14 : 14, color: "#555" }}>
                 {appt.service} / {appt.format}
               </p>
-              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, display: "flex", alignItems: "center", gap: 6 }}>
+              <p style={{ margin: "4px 0", fontSize: isMobile ? 14 : 14, display: "flex", alignItems: "center", gap: 6 }}>
                 <FaClock /> {formatDateTime(appt.booking_date)}
               </p>
-              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14 }}>
+              <p style={{ margin: "4px 0", fontSize: isMobile ? 14 : 14 }}>
                 Payment: <span style={{ color: getPaymentStatusColor(appt.transaction?.status?.name), fontWeight: 600 }}>{appt.transaction?.status?.name || "-"}</span>
               </p>
-            </div>
 
-            <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
-              <button onClick={() => handleView(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "#f0f0f0", border: "1px solid #ccc", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}>
-                <FaUser /> View
-              </button>
-              {appt.status !== SESSION_STATUS.COMPLETED && appt.status !== SESSION_STATUS.CANCELED && (
-                appt.status === SESSION_STATUS.STARTED ? (
-                  sessionEnding ? <Box><CircularProgress size={26} /></Box> :
-                  <button onClick={() => endSession(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#ff4d4f,#ff7a5c)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaStop /> End</button>
+              <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+                <button
+                  onClick={() => handleView(appt)}
+                  style={{
+                    padding: "8px 14px",
+                    borderRadius: 8,
+                    background: "#f0f0f0",
+                    border: "1px solid #ccc",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                    fontSize: isMobile ? 14 : 14,
+                  }}
+                >
+                  <FaUser /> View
+                </button>
+                {appt.status !== SESSION_STATUS.COMPLETED && appt.status !== SESSION_STATUS.CANCELED ? (
+                  appt.status === SESSION_STATUS.STARTED ? (
+                    sessionEnding ? (
+                      <Box><CircularProgress size={26} /></Box>
+                    ) : (
+                      <button
+                        onClick={() => endSession(appt)}
+                        style={{
+                          padding: "8px 14px",
+                          borderRadius: 8,
+                          background: "linear-gradient(135deg,#ff4d4f,#ff7a5c)",
+                          color: "#fff",
+                          border: "none",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 6,
+                          fontSize: isMobile ? 14 : 14,
+                        }}
+                      >
+                        <FaStop /> End
+                      </button>
+                    )
+                  ) : (
+                    <button
+                      onClick={() => handlePin(appt)}
+                      style={{
+                        padding: "8px 14px",
+                        borderRadius: 8,
+                        background: "linear-gradient(135deg,#00b874,#00d2ff)",
+                        color: "#fff",
+                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 6,
+                        fontSize: isMobile ? 14 : 14,
+                      }}
+                    >
+                      <FaPlay /> Start
+                    </button>
+                  )
                 ) : (
-                  <button onClick={() => handlePin(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#00b874,#00d2ff)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaPlay /> Start</button>
-                )
-              )}
+                  <button
+                    disabled
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      background: "linear-gradient(135deg,#28a745,#00d2ff)",
+                      color: "#fff",
+                      border: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      fontSize: isMobile ? 14 : 14,
+                    }}
+                  >
+                    <FaCheck /> Completed
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {visibleCount < appointments.length && (
