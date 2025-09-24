@@ -9,11 +9,7 @@ const banners = [
   {
     id: 1,
     title: "Take Professional Help & Boost Your Brain Health with ChooseYourTherapist",
-    description: [
-      "Understand how your brain functions and how stress affects it.",
-      "Get professional online therapy support from certified therapists.",
-      "Start today to enhance focus, clarity, and emotional balance."
-    ],
+    description: "Get professional online therapy and enhance your focus today.", // one-liner
     buttonText: "Book Your Session",
     link: "/therapist-registration",
     gradient: "linear-gradient(135deg, #007f99, #00d2ff)",
@@ -23,11 +19,7 @@ const banners = [
   {
     id: 2,
     title: "Join as an Independent Therapist & Grow Your Practice with ChooseYourTherapist",
-    description: [
-      "Work independently and help clients transform their mental health.",
-      "Access our platform to reach more clients and manage your schedule efficiently.",
-      "Submit your resume to become part of the certified therapist network."
-    ],
+    description: "Help clients transform their mental health independently.", // one-liner
     buttonText: "Submit Resume",
     link: "/therapist-submit-resume",
     gradient: "linear-gradient(135deg, #00b894, #00d084)",
@@ -72,7 +64,7 @@ export default function PromotionalBannerCTA() {
                 style={{
                   position: "relative",
                   width: "100%",
-                  minHeight: 450,
+                  minHeight: 350, // adjusted for one-liner
                   borderRadius: 20,
                   overflow: "hidden",
                   cursor: "pointer",
@@ -92,7 +84,7 @@ export default function PromotionalBannerCTA() {
                   style={{
                     fontSize: 40,
                     fontWeight: 800,
-                    marginBottom: 25,
+                    marginBottom: 15,
                     lineHeight: 1.2,
                     color: banner.headingColor,
                     textShadow: "2px 2px 6px rgba(0,0,0,0.35)",
@@ -103,43 +95,24 @@ export default function PromotionalBannerCTA() {
                   {banner.title}
                 </h2>
 
-                {/* Multi-line description */}
-                {banner.description.map((line, index) => (
-                  <p
-                    key={index}
-                    className="banner-description"
-                    style={{
-                      fontSize: 20,
-                      marginBottom: 15,
-                      maxWidth: 800,
-                      textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
-                    }}
-                  >
-                    {line}
-                  </p>
-                ))}
+                {/* One-line description */}
+                <p
+                  style={{
+                    fontSize: 18,
+                    marginBottom: 25,
+                    maxWidth: 700,
+                    textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
+                  }}
+                  className="banner-description"
+                >
+                  {banner.description}
+                </p>
 
-                {/* Highlighted CTA Button */}
+                {/* CTA Button */}
                 <button
                   onClick={() => navigate(banner.link)}
-                  style={{
-                    padding: "16px 36px",
-                    background: banner.buttonColor,
-                    border: "none",
-                    borderRadius: 10,
-                    color: "#000",
-                    fontWeight: 700,
-                    fontSize: 18,
-                    cursor: "pointer",
-                    transition: "all 0.3s",
-                    boxShadow: "0 6px 15px rgba(0,0,0,0.25)",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform = "scale(1.08)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.transform = "scale(1)")
-                  }
+                  className="banner-button"
+                  style={{ background: banner.buttonColor }}
                 >
                   {banner.buttonText}
                 </button>
@@ -152,19 +125,45 @@ export default function PromotionalBannerCTA() {
       {/* Responsive CSS */}
       <style>
         {`
+          .banner-button {
+            padding: 16px 36px;
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+          }
+
+          /* Desktop hover */
+          .banner-button:hover {
+            transform: scale(1.08);
+          }
+
+          /* Mobile tap effect */
+          .banner-button:active {
+            transform: scale(1.08);
+          }
+
           @media (max-width: 768px) {
             .banner-heading {
               font-size: 28px !important;
               line-height: 1.3 !important;
             }
             .banner-description {
-              display: none !important; /* hide description on mobile */
+              font-size: 16px !important;
             }
           }
+
           @media (max-width: 480px) {
             .banner-heading {
               font-size: 24px !important;
               line-height: 1.4 !important;
+            }
+            .banner-description {
+              font-size: 14px !important;
             }
           }
         `}
