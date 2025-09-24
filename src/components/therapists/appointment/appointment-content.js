@@ -74,33 +74,33 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
         />
 
         <div style={{ marginBottom: 16 }}>
-          <h5 style={{ margin: "0 0 4px 0" }}>{item.client?.name || "Unknown Client"}</h5>
-          <p style={{ margin: "0 0 2px 0", fontSize: 13 }}>Service: {item.service} / {item.format}</p>
-          <p style={{ margin: "0 0 2px 0", fontSize: 13 }}>Fees: ₹{item.transaction?.amount || "-"}</p>
-          <p style={{ margin: 0, fontSize: 13 }}>
+          <h5 style={{ margin: "0 0 4px 0", fontSize: isMobile ? 16 : 18 }}>{item.client?.name || "Unknown Client"}</h5>
+          <p style={{ margin: "0 0 2px 0", fontSize: isMobile ? 12 : 14 }}>Service: {item.service} / {item.format}</p>
+          <p style={{ margin: "0 0 2px 0", fontSize: isMobile ? 12 : 14 }}>Fees: ₹{item.transaction?.amount || "-"}</p>
+          <p style={{ margin: 0, fontSize: isMobile ? 12 : 14 }}>
             Payment Status: <span style={{ color: getPaymentStatusColor(item.transaction?.status?.name), fontWeight: 600 }}>
               {item.transaction?.status?.name || "-"}
             </span>
           </p>
-          <p style={{ margin: 2, fontSize: 13, display: "flex", alignItems: "center", gap: 4 }}>
+          <p style={{ margin: 2, fontSize: isMobile ? 12 : 14, display: "flex", alignItems: "center", gap: 4 }}>
             <FaClock /> Booking: {formatDateTime(item.booking_date)}
           </p>
         </div>
 
-        <div style={{ marginBottom: 10 }}>
+        <div style={{ marginBottom: 10, fontSize: isMobile ? 12 : 14 }}>
           <strong>Booked For:</strong> {item.whom === "Self" ? "Self" : item.cname}
         </div>
 
         {item.whom !== "Self" && (
-          <div style={{ marginBottom: 10 }}>
+          <div style={{ marginBottom: 10, fontSize: isMobile ? 12 : 14 }}>
             <p style={{ margin: 0 }}>Relation: {item.relation_with_client}</p>
             <p style={{ margin: 0 }}>Age: {item.age}</p>
           </div>
         )}
 
-        <div style={{ marginTop: 10 }}>
+        <div style={{ marginTop: 10, fontSize: isMobile ? 12 : 14 }}>
           <strong>Notes:</strong>
-          <p style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 13 }}>
+          <p style={{ display: "flex", alignItems: "center", gap: 5 }}>
             <FaNotesMedical /> {item.notes || "No notes available"}
           </p>
         </div>
@@ -187,12 +187,12 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <h6 style={{ margin: 0 }}>{appt.client?.name}</h6>
-              <p style={{ margin: 0, fontSize: 12, color: "#555" }}>{appt.service} / {appt.format}</p>
-              <p style={{ margin: 0, fontSize: 12, display: "flex", alignItems: "center", gap: 4 }}>
+              <h6 style={{ margin: 0, fontSize: isMobile ? 14 : 16 }}>{appt.client?.name}</h6>
+              <p style={{ margin: 0, fontSize: isMobile ? 12 : 14, color: "#555" }}>{appt.service} / {appt.format}</p>
+              <p style={{ margin: 0, fontSize: isMobile ? 12 : 14, display: "flex", alignItems: "center", gap: 4 }}>
                 <FaClock /> {formatDateTime(appt.booking_date)}
               </p>
-              <p style={{ margin: 0, fontSize: 12 }}>
+              <p style={{ margin: 0, fontSize: isMobile ? 12 : 14 }}>
                 Payment: <span style={{ color: getPaymentStatusColor(appt.transaction?.status?.name), fontWeight: 600 }}>{appt.transaction?.status?.name || "-"}</span>
               </p>
             </div>
