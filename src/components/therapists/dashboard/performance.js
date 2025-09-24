@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaWallet, FaChartPie, FaLightbulb, FaTimes } from "react-icons/fa";
+import { FaUsers, FaCalendarCheck, FaWallet, FaChartPie } from "react-icons/fa";
 
 const shortcutCards = [
   {
@@ -30,16 +30,8 @@ const shortcutCards = [
   },
 ];
 
-const dailyTips = [
-  { icon: <FaLightbulb size={22} />, text: "Check in with clients regularly for better engagement." },
-  { icon: <FaLightbulb size={22} />, text: "Update session notes after each meeting." },
-  { icon: <FaLightbulb size={22} />, text: "Set reminders for upcoming client sessions." },
-  { icon: <FaLightbulb size={22} />, text: "Review client progress weekly to personalize care." },
-];
-
 export default function DashboardSections() {
   const isMobile = useMediaQuery("(max-width:768px)");
-  const [showTooltip, setShowTooltip] = useState(true);
 
   return (
     <div style={{ padding: "20px", position: "relative" }}>
@@ -113,8 +105,8 @@ export default function DashboardSections() {
         className="rbt-pricing-area"
         style={{
           marginTop: "40px",
-          width: "100%", 
-          maxWidth: isMobile ? "100%" : "900px", 
+          width: isMobile ? "95%" : "900px", // Mobile width thoda bada
+          maxWidth: "100%",
           marginLeft: "auto",
           marginRight: "auto",
           padding: "20px",
@@ -135,9 +127,9 @@ export default function DashboardSections() {
                     Enhance your professional presence, increase client trust, and streamline your bookings with our premium monthly plan.
                   </p>
                   <div className="price-wrapper">
-                   <span className="price-amount">
-  <span style={{ marginRight: "4px" }}>₹</span>499 <sup>/month</sup>
-</span>
+                    <span className="price-amount">
+                      <span style={{ marginRight: "4px" }}>₹</span>499 <sup>/month</sup>
+                    </span>
                   </div>
                   <div className="pricing-btn-group">
                     <a href="#" className="rbt-btn btn-gradient w-100 text-center">
@@ -167,7 +159,6 @@ export default function DashboardSections() {
                         <li><i className="rbt feather-check"></i> Verified Profile Badge</li>
                         <li><i className="rbt feather-check"></i> Professional Tools</li>
                         <li><i className="rbt feather-check"></i> Storage for up to 30 bookings</li>
-                     
                       </ul>
                     </div>
                     <div className="single-list mt--40">
@@ -177,7 +168,6 @@ export default function DashboardSections() {
                         <li><i className="rbt feather-check"></i> 1 monthly consultation call</li>
                         <li><i className="rbt feather-check"></i> No commission on bookings, earn fully</li>
                         <li><i className="rbt feather-check"></i> Analytics & insights</li>
-                    
                         <li><i className="rbt feather-check"></i> 24/7 Support</li>
                       </ul>
                     </div>
@@ -190,67 +180,6 @@ export default function DashboardSections() {
         </div>
       </div>
 
-      {/* ---------- Floating Daily Tips Tooltip ---------- */}
-      {showTooltip && (
-        <div
-          style={{
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            width: isMobile ? "92%" : 360,
-            backgroundColor: "#fff",
-            borderRadius: 14,
-            boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
-            padding: "20px",
-            zIndex: 999,
-            animation: "fadeInUp 0.8s ease",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 12,
-            }}
-          >
-            <h4 style={{ margin: 0, fontSize: "1.25rem", color: "#228756" }}>
-              Daily Tips
-            </h4>
-            <FaTimes
-              style={{ cursor: "pointer", fontSize: 20 }}
-              onClick={() => setShowTooltip(false)}
-            />
-          </div>
-          <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
-            {dailyTips.map((tip, i) => (
-              <li
-                key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "8px 0",
-                  fontSize: 16,
-                  color: "#333",
-                }}
-              >
-                <span style={{ color: "#007f99" }}>{tip.icon}</span>
-                <span>{tip.text}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px);}
-            to { opacity: 1; transform: translateY(0);}
-          }
-        `}
-      </style>
     </div>
   );
 }
