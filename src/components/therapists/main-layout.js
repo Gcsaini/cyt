@@ -162,12 +162,12 @@ export default function MainLayout(props) {
                             <div
                               style={{
                                 marginTop: 30,
-                                padding: 16,
+                                padding: 20,
                                 borderRadius: 12,
                                 background: "linear-gradient(135deg, #00b874, #007f99)",
-                                color: "#fff",
+                                color: "#fff", // Text color white
                                 textAlign: "center",
-                                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                                boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
                               }}
                             >
                               <div
@@ -178,23 +178,42 @@ export default function MainLayout(props) {
                                   gap: 10,
                                 }}
                               >
-                                <i className="fas fa-bullhorn" style={{ fontSize: 32 }}></i>
-                                <h6 style={{ margin: 0, fontWeight: 600 }}>Boost Your Visibility!</h6>
-                                <p style={{ fontSize: 13, margin: 0 }}>
+                                <i
+                                  className="fas fa-bullhorn"
+                                  style={{ fontSize: 36, color: "#fff" }}
+                                ></i>
+                                <h6
+                                  style={{
+                                    margin: 0,
+                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    color: "#fff",
+                                  }}
+                                >
+                                  Boost Your Visibility!
+                                </h6>
+                                <p
+                                  style={{
+                                    fontSize: 14,
+                                    margin: 0,
+                                    color: "#fff",
+                                  }}
+                                >
                                   Upgrade your profile to get featured to more clients
                                 </p>
                                 <Link
                                   to="/premium-upgrade"
                                   style={{
-                                    marginTop: 8,
-                                    padding: "6px 16px",
-                                    backgroundColor: "#fff",
+                                    marginTop: 10,
+                                    padding: "8px 20px",
+                                    background: "#fff",
                                     color: "#007f99",
                                     borderRadius: 8,
                                     fontWeight: 600,
                                     fontSize: 14,
                                     textDecoration: "none",
                                     display: "inline-block",
+                                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                                   }}
                                 >
                                   Upgrade Now
