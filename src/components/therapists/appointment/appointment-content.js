@@ -47,7 +47,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
     setModalContent(
       <div
         style={{
-          padding: isMobile ? 16 : 24,
+          padding: isMobile ? 20 : 24,
           borderRadius: 16,
           background: "#fff",
           width: isMobile ? "95vw" : 500,
@@ -58,7 +58,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
           position: "relative",
           display: "flex",
           flexDirection: "column",
-          gap: 12
+          gap: 14,
         }}
       >
         <FaTimes
@@ -68,39 +68,59 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
             top: 16,
             right: 16,
             cursor: "pointer",
-            fontSize: 18,
-            color: "#333"
+            fontSize: 20,
+            color: "#333",
           }}
         />
 
         <div style={{ marginBottom: 16 }}>
-          <h5 style={{ margin: "0 0 4px 0", fontSize: isMobile ? 16 : 18 }}>{item.client?.name || "Unknown Client"}</h5>
-          <p style={{ margin: "0 0 2px 0", fontSize: isMobile ? 12 : 14 }}>Service: {item.service} / {item.format}</p>
-          <p style={{ margin: "0 0 2px 0", fontSize: isMobile ? 12 : 14 }}>Fees: ₹{item.transaction?.amount || "-"}</p>
-          <p style={{ margin: 0, fontSize: isMobile ? 12 : 14 }}>
-            Payment Status: <span style={{ color: getPaymentStatusColor(item.transaction?.status?.name), fontWeight: 600 }}>
+          <h5 style={{ margin: "0 0 6px 0", fontSize: isMobile ? 18 : 16 }}>
+            {item.client?.name || "Unknown Client"}
+          </h5>
+          <p style={{ margin: "0 0 4px 0", fontSize: isMobile ? 16 : 14 }}>
+            Service: {item.service} / {item.format}
+          </p>
+          <p style={{ margin: "0 0 4px 0", fontSize: isMobile ? 16 : 14 }}>
+            Fees: ₹{item.transaction?.amount || "-"}
+          </p>
+          <p style={{ margin: 0, fontSize: isMobile ? 16 : 14 }}>
+            Payment Status:{" "}
+            <span
+              style={{
+                color: getPaymentStatusColor(item.transaction?.status?.name),
+                fontWeight: 600,
+              }}
+            >
               {item.transaction?.status?.name || "-"}
             </span>
           </p>
-          <p style={{ margin: 2, fontSize: isMobile ? 12 : 14, display: "flex", alignItems: "center", gap: 4 }}>
+          <p
+            style={{
+              margin: 4,
+              fontSize: isMobile ? 16 : 14,
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
             <FaClock /> Booking: {formatDateTime(item.booking_date)}
           </p>
         </div>
 
-        <div style={{ marginBottom: 10, fontSize: isMobile ? 12 : 14 }}>
+        <div style={{ marginBottom: 10, fontSize: isMobile ? 16 : 14 }}>
           <strong>Booked For:</strong> {item.whom === "Self" ? "Self" : item.cname}
         </div>
 
         {item.whom !== "Self" && (
-          <div style={{ marginBottom: 10, fontSize: isMobile ? 12 : 14 }}>
+          <div style={{ marginBottom: 10, fontSize: isMobile ? 16 : 14 }}>
             <p style={{ margin: 0 }}>Relation: {item.relation_with_client}</p>
             <p style={{ margin: 0 }}>Age: {item.age}</p>
           </div>
         )}
 
-        <div style={{ marginTop: 10, fontSize: isMobile ? 12 : 14 }}>
+        <div style={{ marginTop: 10, fontSize: isMobile ? 16 : 14 }}>
           <strong>Notes:</strong>
-          <p style={{ display: "flex", alignItems: "center", gap: 5 }}>
+          <p style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <FaNotesMedical /> {item.notes || "No notes available"}
           </p>
         </div>
@@ -160,7 +180,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill, minmax(300px, 1fr))",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", // Desktop: 3 cards per row
           gap: 16,
         }}
       >
@@ -171,7 +191,7 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              padding: 16,
+              padding: 18,
               borderRadius: 16,
               background: "#fff",
               boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
@@ -186,27 +206,27 @@ const AppointmentsContent = ({ appointments, onRefresh }) => {
               e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.1)";
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <h6 style={{ margin: 0, fontSize: isMobile ? 14 : 16 }}>{appt.client?.name}</h6>
-              <p style={{ margin: 0, fontSize: isMobile ? 12 : 14, color: "#555" }}>{appt.service} / {appt.format}</p>
-              <p style={{ margin: 0, fontSize: isMobile ? 12 : 14, display: "flex", alignItems: "center", gap: 4 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <h6 style={{ margin: 0, fontSize: isMobile ? 16 : 16 }}>{appt.client?.name}</h6>
+              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, color: "#555" }}>{appt.service} / {appt.format}</p>
+              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14, display: "flex", alignItems: "center", gap: 6 }}>
                 <FaClock /> {formatDateTime(appt.booking_date)}
               </p>
-              <p style={{ margin: 0, fontSize: isMobile ? 12 : 14 }}>
+              <p style={{ margin: 0, fontSize: isMobile ? 15 : 14 }}>
                 Payment: <span style={{ color: getPaymentStatusColor(appt.transaction?.status?.name), fontWeight: 600 }}>{appt.transaction?.status?.name || "-"}</span>
               </p>
             </div>
 
-            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-              <button onClick={() => handleView(appt)} style={{ padding: "6px 12px", borderRadius: 8, background: "#f0f0f0", border: "1px solid #ccc", display: "flex", alignItems: "center", gap: 5 }}>
+            <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+              <button onClick={() => handleView(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "#f0f0f0", border: "1px solid #ccc", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}>
                 <FaUser /> View
               </button>
               {appt.status !== SESSION_STATUS.COMPLETED && appt.status !== SESSION_STATUS.CANCELED && (
                 appt.status === SESSION_STATUS.STARTED ? (
-                  sessionEnding ? <Box><CircularProgress size={24} /></Box> :
-                    <button onClick={() => endSession(appt)} style={{ padding: "6px 12px", borderRadius: 8, background: "linear-gradient(135deg,#ff4d4f,#ff7a5c)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 5 }}><FaStop /> End</button>
+                  sessionEnding ? <Box><CircularProgress size={26} /></Box> :
+                    <button onClick={() => endSession(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#ff4d4f,#ff7a5c)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaStop /> End</button>
                 ) : (
-                  <button onClick={() => handlePin(appt)} style={{ padding: "6px 12px", borderRadius: 8, background: "linear-gradient(135deg,#00b874,#00d2ff)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 5 }}><FaPlay /> Start</button>
+                  <button onClick={() => handlePin(appt)} style={{ padding: "8px 14px", borderRadius: 8, background: "linear-gradient(135deg,#00b874,#00d2ff)", color: "#fff", border: "none", display: "flex", alignItems: "center", gap: 6, fontSize: isMobile ? 15 : 14 }}><FaPlay /> Start</button>
                 )
               )}
             </div>
