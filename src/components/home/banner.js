@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { TypeAnimation } from "react-type-animation";
-import ImageTag from "../../utils/image-tag";
 import { fetchById, fetchData } from "../../utils/actions";
 import { GetFavriouteTherapistListUrl, getTherapistProfiles } from "../../utils/url";
 import { getDecodedToken } from "../../utils/jwt";
@@ -22,8 +21,8 @@ export default function Banner() {
   const [favrioutes, setFavrioutes] = React.useState([]);
   const [randomAvatars, setRandomAvatars] = React.useState([]);
 
-  // Base URL for therapist images
-  const imageBasePath = "https://your-server.com/uploads"; // <-- Replace with your actual server/base URL
+  // Replace this with your actual server path
+  const imageBasePath = "https://your-server.com/uploads";
 
   // Fetch therapist profiles
   const getData = async () => {
@@ -32,13 +31,14 @@ export default function Banner() {
       if (res.status) {
         setData(res.data);
 
-        // Filter only items with user profile images
+        // Filter items with a valid profile image
         const validProfiles = res.data.filter(item => item.user?.profile);
 
         // Pick 3 random avatars
         setRandomAvatars(validProfiles.sort(() => 0.5 - Math.random()).slice(0, 3));
       } else return <ErrorPage />;
     } catch (err) {
+      console.error(err);
       return <ErrorPage />;
     }
   };
@@ -84,22 +84,11 @@ export default function Banner() {
       <div className="container mt--60">
         <div className="row justify-content-between align-items-center">
           {/* Banner Text */}
-          <div
-            className="col-lg-8 col-md-12 col-sm-12 col-12"
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              textAlign: "left",
-              flexDirection: "column",
-            }}
-          >
+          <div className="col-lg-8 col-md-12 col-sm-12 col-12" style={{ display: "flex", flexDirection: "column" }}>
             <div className="content">
               <div className="inner">
                 {!isMobile && (
-                  <div
-                    className="rbt-new-badge rbt-new-badge-one"
-                    style={{ marginTop: isTablet ? 25 : 0 }}
-                  >
+                  <div className="rbt-new-badge rbt-new-badge-one" style={{ marginTop: isTablet ? 25 : 0 }}>
                     <span className="rbt-new-badge-icon">
                       <PersonSearchIcon sx={{ color: "#228756", fontSize: 30 }} />
                     </span>{" "}
@@ -107,15 +96,8 @@ export default function Banner() {
                   </div>
                 )}
 
-                {/* Mobile-only Tagline */}
                 {isMobile && (
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      marginBottom: 12,
-                    }}
-                  >
+                  <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}>
                     <div
                       style={{
                         textAlign: "center",
@@ -134,10 +116,8 @@ export default function Banner() {
                   </div>
                 )}
 
-                {/* H1 Banner */}
                 <h1
                   className={isMobile ? "banner-text-title" : "title"}
-                  aria-label="Bharat's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support"
                   style={{
                     fontSize: isMobile ? "3.5rem" : "4rem",
                     lineHeight: isMobile ? "3.5rem" : "4.5rem",
@@ -146,32 +126,22 @@ export default function Banner() {
                     wordBreak: "break-word",
                   }}
                 >
-                  Bharat's Growing Network of
-                  {isMobile ? <br /> : " "}
+                  Bharat's Growing Network of {isMobile ? <br /> : " "}
                   <span
                     className="theme-gradient"
-                    style={{
-                      background: "linear-gradient(90deg, #228756, #56ab2f)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
+                    style={{ background: "linear-gradient(90deg, #228756, #56ab2f)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
                   >
                     Verified Therapists
                   </span>{" "}
                   Connecting You to{" "}
                   <span
                     className="theme-gradient-alt"
-                    style={{
-                      background: "linear-gradient(90deg, #004e92, #005bea)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
+                    style={{ background: "linear-gradient(90deg, #004e92, #005bea)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
                   >
                     Trusted Counselling Support
                   </span>
                 </h1>
 
-                {/* TypeAnimation hidden on mobile */}
                 {!isMobile && (
                   <div style={{ minHeight: "3em", display: "flex", alignItems: "center" }}>
                     <TypeAnimation
@@ -192,52 +162,26 @@ export default function Banner() {
                       repeat={Infinity}
                       deletionSpeed={20}
                       className="theme-gradient"
-                      style={{
-                        display: "inline-block",
-                        fontWeight: 700,
-                        lineHeight: "1.5em",
-                        fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                        whiteSpace: "normal",
-                      }}
+                      style={{ display: "inline-block", fontWeight: 700, lineHeight: "1.5em", fontSize: "clamp(1.5rem, 3vw, 2rem)", whiteSpace: "normal" }}
                     />
                   </div>
                 )}
 
-                {/* Centered description on mobile */}
-                <p
-                  className="description"
-                  style={{
-                    textAlign: isMobile ? "center" : "left",
-                    marginTop: "15px",
-                  }}
-                >
-                  Book{" "}
-                  <span style={{ color: "#004e92", fontWeight: "bold" }}>
-                    verified psychologists
-                  </span>{" "}
-                  online or in-person in Noida. Trusted therapist anytime.
+                <p className="description" style={{ textAlign: isMobile ? "center" : "left", marginTop: "15px" }}>
+                  Book <span style={{ color: "#004e92", fontWeight: "bold" }}>verified psychologists</span> online or in-person in Noida. Trusted therapist anytime.
                 </p>
 
                 {/* Avatar Section */}
                 <div className="rbt-like-total">
                   <div className="profile-share" style={{ justifyContent: isMobile ? "center" : "flex-start" }}>
                     {randomAvatars.map((item, i) => (
-                      <Link
-                        key={i}
-                        to={`/therapist-profile/${item._id}`}
-                        className="avatar"
-                        data-tooltip={`Verified Psychologist ${item.user?.name || i + 1}`}
-                        tabIndex="0"
-                      >
-                        <ImageTag
-                          src={
-                            item.user?.profile
-                              ? `${imageBasePath}/${item.user.profile}`
-                              : "default-avatar.png"
-                          }
+                      <Link key={i} to={`/therapist-profile/${item._id}`} className="avatar">
+                        <img
+                          src={item.user?.profile ? `${imageBasePath}/${item.user.profile}` : "default-avatar.png"}
+                          alt={item.user?.name || `Therapist ${i + 1}`}
                           width={55}
                           height={55}
-                          alt={`Certified Psychologist Avatar ${i + 1} - ${item.user?.name}`}
+                          style={{ borderRadius: "50%", objectFit: "cover" }}
                         />
                       </Link>
                     ))}
@@ -251,20 +195,8 @@ export default function Banner() {
                   </div>
                 </div>
 
-                {/* Get Started Button */}
-                <div
-                  className="slider-btn"
-                  style={{
-                    display: "flex",
-                    justifyContent: isMobile ? "center" : "flex-start",
-                    marginTop: "20px",
-                  }}
-                >
-                  <Link
-                    className="rbt-btn btn-gradient hover-icon-reverse"
-                    to="/view-all-therapist"
-                    style={{ cursor: "pointer" }}
-                  >
+                <div className="slider-btn" style={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start", marginTop: "20px" }}>
+                  <Link className="rbt-btn btn-gradient hover-icon-reverse" to="/view-all-therapist" style={{ cursor: "pointer" }}>
                     <span className="icon-reverse-wrapper">
                       <span className="btn-text">Check Therapist Directory</span>
                       <span className="btn-icon">
@@ -281,10 +213,7 @@ export default function Banner() {
           </div>
 
           {/* Swiper Profiles */}
-          <div
-            className="col-lg-4 col-md-12 col-sm-12 col-12"
-            style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}
-          >
+          <div className="col-lg-4 col-md-12 col-sm-12 col-12" style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}>
             {data.length > 0 && (
               <div className="content">
                 <div className="pb--60 swiper rbt-dot-bottom-center banner-swiper-active">
