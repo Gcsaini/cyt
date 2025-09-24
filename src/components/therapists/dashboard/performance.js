@@ -116,16 +116,16 @@ export default function DashboardSections() {
         </div>
       </div>
 
-      {/* ---------- Wide Premium Pricing Section ---------- */}
+      {/* ---------- Premium Pricing Section ---------- */}
       <div
         className="rbt-pricing-area"
         style={{
           marginTop: "40px",
           width: "100%",
-          maxWidth: isMobile ? "95%" : "900px", // mobile me aur wide
+          maxWidth: isMobile ? "95%" : "900px",
           marginLeft: "auto",
           marginRight: "auto",
-          padding: isMobile ? "10px" : "20px",
+          padding: "20px",
           backgroundColor: "#fff",
           borderRadius: "14px",
           boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
@@ -134,30 +134,30 @@ export default function DashboardSections() {
         <div className="advance-pricing">
           <div className="inner">
             <div className="row row--0">
+              {/* Left Side */}
               <div className="col-lg-6 col-md-6 col-12">
                 <div className="pricing-left">
                   <h3 className="main-title rainbow-title">
                     Premium Dashboard Subscription
                   </h3>
                   <p className="description rainbow-subtitle">
-                    Enhance your professional presence, increase client trust, and
-                    streamline your bookings with our premium monthly plan.
+                    Enhance your professional presence, increase client trust, and streamline your bookings with our premium monthly plan.
                   </p>
-                  <div className="price-wrapper">
+                  <div className="price-wrapper" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <FaRupeeSign size={22} />
                     <span className="price-amount">
-                      <FaRupeeSign style={{ marginRight: "4px" }} />
                       499 <sup>/month</sup>
                     </span>
                   </div>
-                  <div className="pricing-btn-group">
+                  <div className="pricing-btn-group" style={{ marginTop: "15px" }}>
                     <a href="#" className="rbt-btn btn-gradient w-100 text-center">
                       Subscribe Now
                     </a>
-                    <a href="#" className="rbt-btn btn-border w-100 text-center">
+                    <a href="#" className="rbt-btn btn-border w-100 text-center" style={{ marginTop: "10px" }}>
                       Upgrade
                     </a>
                   </div>
-                  <div className="rating" style={{ marginTop: "10px" }}>
+                  <div className="rating" style={{ marginTop: "12px" }}>
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
@@ -172,21 +172,22 @@ export default function DashboardSections() {
                       </svg>
                     ))}
                   </div>
-                  <small className="subtitle">rated 4.5/5 Stars in 1000+ reviews.</small>
+                  <small className="subtitle">Rated 4.5/5 Stars in 1000+ reviews.</small>
                 </div>
               </div>
 
+              {/* Right Side */}
               <div className="col-lg-6 col-md-6 col-12">
                 <div className="pricing-right position-relative">
                   <div className="pricing-offer">
-                    {/* Features Section */}
+                    {/* Tools Section */}
                     <div className="single-list">
-                      <h4 className="price-title">What will you get</h4>
+                      <h4 className="price-title">What you get – Professional Tools</h4>
                       <ul className="plan-offer-list">
-                        <li><i className="rbt feather-check"></i> Verified Profile Badge</li>
-                        <li><i className="rbt feather-check"></i> Professional Tools (Edit profile, booking history, events & coupons)</li>
                         <li><i className="rbt feather-check"></i> Priority Profile Listing</li>
-                        <li><i className="rbt feather-check"></i> 30 Bookings per month included</li>
+                        <li><i className="rbt feather-check"></i> Verified Profile Badge</li>
+                        <li><i className="rbt feather-check"></i> Professional Tools</li>
+                        <li><i className="rbt feather-check"></i> Storage for up to 30 bookings</li>
                       </ul>
                     </div>
 
@@ -194,10 +195,11 @@ export default function DashboardSections() {
                     <div className="single-list mt--40">
                       <h4 className="price-title">Marketing & Growth Boost</h4>
                       <ul className="plan-offer-list">
-                        <li><i className="rbt feather-check"></i> 4 weekly social media posts about your profile</li>
-                        <li><i className="rbt feather-check"></i> 1 monthly consultation call for marketing strategy</li>
-                        <li><i className="rbt feather-check"></i> No commission on client bookings</li>
-                        <li><i className="rbt feather-check"></i> Analytics & insights to track client growth</li>
+                        <li><i className="rbt feather-check"></i> 4 social media posts/month</li>
+                        <li><i className="rbt feather-check"></i> 1 monthly consultation call</li>
+                        <li><i className="rbt feather-check"></i> No commission on bookings, earn fully</li>
+                        <li><i className="rbt feather-check"></i> Analytics & insights</li>
+                        <li><i className="rbt feather-check"></i> 24/7 Support</li>
                       </ul>
                     </div>
                   </div>
@@ -264,6 +266,23 @@ export default function DashboardSections() {
 
       <style>
         {`
+          .plan-offer-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+          }
+          .plan-offer-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+          }
+          .plan-offer-list li i {
+            color: #228756;
+            flex-shrink: 0;
+            margin-top: 3px;
+          }
           @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px);}
             to { opacity: 1; transform: translateY(0);}
