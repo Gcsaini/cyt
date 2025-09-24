@@ -2,41 +2,43 @@ import React, { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
-  FaUsers,
-  FaCalendarCheck,
-  FaWallet,
-  FaChartPie,
+  FaRegUserCircle,
+  FaNotesMedical,
+  FaRegCalendarAlt,
+  FaGift,
   FaLightbulb,
   FaTimes,
 } from "react-icons/fa";
 
+// -------------------------- Shortcut Cards --------------------------
 const shortcutCards = [
   {
-    title: "My Clients",
-    icon: <FaUsers size={40} />,
-    link: "/dashboard/clients",
-    iconBg: "linear-gradient(135deg, #228756, #56ab2f)",
+    title: "Edit Profile",
+    icon: <FaRegUserCircle size={40} />,
+    link: "/settings",
+    iconBg: "linear-gradient(135deg, #FF512F, #DD2476)",
   },
   {
-    title: "My Sessions",
-    icon: <FaCalendarCheck size={40} />,
-    link: "/dashboard/sessions",
-    iconBg: "linear-gradient(135deg, #004e92, #005bea)",
+    title: "Therapy Bookings",
+    icon: <FaNotesMedical size={40} />,
+    link: "/appointments",
+    iconBg: "linear-gradient(135deg, #11998e, #38ef7d)",
   },
   {
-    title: "Earnings",
-    icon: <FaWallet size={40} />,
-    link: "/dashboard/earnings",
-    iconBg: "linear-gradient(135deg, #ff7e5f, #feb47b)",
+    title: "Create Event",
+    icon: <FaRegCalendarAlt size={40} />,
+    link: "/workshops",
+    iconBg: "linear-gradient(135deg, #f7971e, #ffd200)",
   },
   {
-    title: "Reports",
-    icon: <FaChartPie size={40} />,
-    link: "/dashboard/reports",
+    title: "Create Coupons",
+    icon: <FaGift size={40} />,
+    link: "/coupons",
     iconBg: "linear-gradient(135deg, #6a11cb, #2575fc)",
   },
 ];
 
+// -------------------------- Daily Tips --------------------------
 const dailyTips = [
   { icon: <FaLightbulb size={22} />, text: "Check in with clients regularly for better engagement." },
   { icon: <FaLightbulb size={22} />, text: "Update session notes after each meeting." },
@@ -44,6 +46,7 @@ const dailyTips = [
   { icon: <FaLightbulb size={22} />, text: "Review client progress weekly to personalize care." },
 ];
 
+// -------------------------- Main Component --------------------------
 export default function DashboardSections() {
   const isMobile = useMediaQuery("(max-width:768px)");
   const [showTooltip, setShowTooltip] = useState(true);
