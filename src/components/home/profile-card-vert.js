@@ -13,69 +13,70 @@ import {
 } from "../../utils/url";
 import { getDecodedToken } from "../../utils/jwt";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import RecommendIcon from "@mui/icons-material/ThumbUpAlt"; // ✅ Recommended icon
+import RecommendIcon from "@mui/icons-material/ThumbUpAlt";
 
 export default function ProfileCardVert(props) {
   const { data, favrioutes } = props;
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [bookmark, setBookmark] = React.useState(favrioutes.includes(data._id));
   const [showBookmark, setShowBookmark] = React.useState(true);
   const [fees, setFees] = React.useState([]);
 
   const handleBookmark = (id, value) => {
-    setBookmark((prevBookmark) => !prevBookmark);
-    let isSuccess = true;
-    if (value) {
-      isSuccess = removeFavrioute(id);
-    } else {
-      isSuccess = addFavrioute(id);
-    }
-    if (!isSuccess) {
-      setBookmark(false);
-    }
+    setBookmark((prev) => !prev);
+    if (!value) addFavrioute(id);
+    else removeFavrioute(id);
   };
 
   const addFavrioute = async (id) => {
     try {
-      const response = await postData(InsertFavriouteTherapistUrl, {
-        therapistId: id,
-      });
+      const response = await postData(InsertFavriouteTherapistUrl, { therapistId: id });
       return !!response.status;
-    } catch (error) {
+    } catch {
       return false;
     }
   };
 
   const removeFavrioute = async (id) => {
     try {
-      const response = await postData(RemoveFavriouteTherapistUrl, {
-        therapistId: id,
-      });
+      const response = await postData(RemoveFavriouteTherapistUrl, { therapistId: id });
       return !!response.status;
-    } catch (error) {
+    } catch {
       return false;
     }
   };
 
   React.useEffect(() => {
     const token = getDecodedToken();
-    if (token && token.role === 1) {
-      setShowBookmark(false);
-    }
+    if (token && token.role === 1) setShowBookmark(false);
     setBookmark(favrioutes.includes(data._id));
     setFees(data.fees);
   }, [data, favrioutes]);
 
   return (
     <div className="swiper-slide">
-      <div className="rbt-card variation-01">
+      <div
+        className="rbt-card variation-01"
+        style={{
+          borderRadius: "16px",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
+          transition: "transform 0.3s ease",
+          backgroundColor: "#fff",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {/* Profile Image */}
-        <div className="rbt-card-img" style={{ position: "relative" }}>
-          <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
+        <div style={{ position: "relative", overflow: "hidden", borderTopLeftRadius: "16px", borderTopRightRadius: "16px" }}>
+          <Link to={`/view-profile/${data._id}`} style={{ display: "block" }}>
             <ImageTag
               alt="Profile-photo"
-              style={{ height: "250px", width: "100%", objectFit: "cover" }}
+              style={{
+                display: "block",
+                width: "100%",
+                height: "250px",
+                objectFit: "cover",
+              }}
               src={`${imagePath}/${data.user.profile}`}
             />
 
@@ -86,23 +87,23 @@ export default function ProfileCardVert(props) {
                 position: "absolute",
                 bottom: "10px",
                 left: "10px",
-                zIndex: 2,
+                display: "flex",
+                gap: "8px",
               }}
             >
               {data.priority === 1 && (
                 <span
-                  className="rbt-badge-6"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "5px",
-                    backgroundColor: "#15aa3a",
+                    background: "linear-gradient(135deg, #34d399, #059669)",
                     color: "#fff",
                     padding: "5px 14px",
-                    borderRadius: "8px",
+                    borderRadius: "20px",
                     fontSize: "12px",
                     fontWeight: "600",
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   }}
                 >
                   <RecommendIcon sx={{ fontSize: 16 }} />
@@ -111,18 +112,17 @@ export default function ProfileCardVert(props) {
               )}
               {data.priority === 2 && (
                 <span
-                  className="rbt-badge-6"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "5px",
-                    backgroundColor: "#1976d2",
+                    background: "linear-gradient(135deg, #60a5fa, #1d4ed8)",
                     color: "#fff",
                     padding: "5px 14px",
-                    borderRadius: "8px",
+                    borderRadius: "20px",
                     fontSize: "12px",
                     fontWeight: "600",
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   }}
                 >
                   <VerifiedIcon sx={{ fontSize: 16 }} />
@@ -134,100 +134,160 @@ export default function ProfileCardVert(props) {
         </div>
 
         {/* Card Body */}
-        <div className="rbt-card-body">
+        <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "12px", flexGrow: 1 }}>
           {/* Language & State */}
-          <ul className="rbt-meta">
-            <li style={{ fontSize: 16 }}>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            <span
+              style={{
+                backgroundColor: "rgba(0,0,0,0.05)",
+                padding: "4px 10px",
+                borderRadius: "12px",
+                fontSize: 14,
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
               <i className="fas fa-globe"></i> {data.language_spoken}
-            </li>
-            <li style={{ fontSize: 16 }}>
+            </span>
+            <span
+              style={{
+                backgroundColor: "rgba(0,0,0,0.05)",
+                padding: "4px 10px",
+                borderRadius: "12px",
+                fontSize: 14,
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
               <i className="fas fa-map-marker-alt"></i> {data.state}
-            </li>
-          </ul>
+            </span>
+            <span
+              style={{
+                backgroundColor: "rgba(0,0,0,0.05)",
+                padding: "4px 10px",
+                borderRadius: "12px",
+                fontSize: 14,
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              <i className="fas fa-user-md"></i> {data.profile_type}
+            </span>
+          </div>
 
-          {/* Name + Icon + Bookmark */}
-          <div className="rbt-card-top" style={{ display: "flex", justifyContent: "space-between" }}>
-            <h4 className="rbt-card-title" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <Link to={`/view-profile/${data._id}`} style={{ cursor: "pointer" }}>
+          {/* Name + Bookmark */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h4
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                fontWeight: "700",
+                fontSize: "20px",
+                margin: 0,
+              }}
+            >
+              <Link to={`/view-profile/${data._id}`} style={{ textDecoration: "none", color: "#111" }}>
                 {data.user.name}
               </Link>
-              {data.priority === 1 && <RecommendIcon sx={{ fontSize: 18, color: "#15aa3a" }} />}
-              {data.priority === 2 && <VerifiedIcon sx={{ fontSize: 18, color: "#1976d2" }} />}
+              {data.priority === 1 && <RecommendIcon sx={{ fontSize: 18, color: "#34d399" }} />}
+              {data.priority === 2 && <VerifiedIcon sx={{ fontSize: 18, color: "#60a5fa" }} />}
             </h4>
 
             {showBookmark && (
-              <div className="rbt-bookmark-btn">
+              <div>
                 <a
-                  style={{ cursor: "pointer" }}
-                  className="rbt-round-btn"
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 36,
+                    height: 36,
+                    borderRadius: "50%",
+                    backgroundColor: "#fff",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                    transition: "transform 0.2s",
+                  }}
                   title="Bookmark"
                   onClick={() => handleBookmark(data._id, bookmark)}
+                  onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.9)")}
+                  onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
                 >
-                  {bookmark ? (
-                    <BookmarkAddedIcon sx={{ fontSize: 24 }} />
-                  ) : (
-                    <BookmarkBorderIcon sx={{ fontSize: 24 }} />
-                  )}
+                  {bookmark ? <BookmarkAddedIcon sx={{ fontSize: 24, color: "#f59e0b" }} /> : <BookmarkBorderIcon sx={{ fontSize: 24, color: "#888" }} />}
                 </a>
               </div>
             )}
           </div>
 
-          {/* Stars under name */}
-          <div className="rbt-review" style={{ marginTop: 4 }}>
-            <div className="rating" style={{ color: "#f5a623" }}>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
+          {/* Stars */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <div style={{ color: "#fbbf24", display: "flex", gap: "2px" }}>
+              {[...Array(5)].map((_, i) => (
+                <i key={i} className="fas fa-star"></i>
+              ))}
             </div>
-          </div>
-
-          {/* Profile Type */}
-          <div style={{ marginTop: 7, display: "flex", alignItems: "center" }}>
-            <i className="fas fa-user-md"></i>
-            <span style={{ fontSize: 16, marginLeft: 5 }}>{data.profile_type}</span>
+            <span style={{ fontSize: "14px", color: "#555" }}>4.8/5</span>
           </div>
 
           {/* Fees */}
-          <div style={{ marginTop: 5, display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "8px 16px",
+              borderRadius: "30px",
+              background: "linear-gradient(90deg, #60a5fa, #1e40af)", // blue gradient
+              color: "#fff",
+              fontWeight: 600,
+              fontSize: "15px",
+              width: "fit-content",
+            }}
+          >
             <i className="fas fa-credit-card"></i>
-            <span style={{ fontSize: 16, marginLeft: 5 }}>
-              {getMinMaxPrice(fees)} per session
-            </span>
+            <span>{getMinMaxPrice(fees)} per session</span>
           </div>
 
           {/* Buttons */}
-          <div
-            style={{
-              marginTop: 24,
-              marginBottom: 10,
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
+          <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", marginTop: "auto" }}>
             <Link
-              className="view-btn view-btn-border"
               to={`/view-profile/${data._id}`}
               style={{
-                padding: "0 27px",
-                cursor: "pointer",
+                padding: "8px 20px",
+                borderRadius: "12px",
+                border: "1px solid #1976d2",
+                color: "#1976d2",
+                textDecoration: "none",
+                fontWeight: 600,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.3s",
               }}
             >
               View Profile
             </Link>
 
             <Link
-              className="rbt-btn btn-gradient book-btn"
               to={`/therapist-checkout/${data._id}`}
               style={{
+                padding: "8px 20px",
+                borderRadius: "12px",
+                background: "linear-gradient(135deg, #34d399, #059669)", // green gradient
+                color: "#fff",
+                textDecoration: "none",
+                fontWeight: 600,
                 display: "flex",
                 justifyContent: "center",
-                padding: "0 27px",
+                alignItems: "center",
+                transition: "all 0.3s",
               }}
             >
-              <span>&nbsp;&nbsp;Book Now&nbsp;&nbsp;</span>
+              Book Now
             </Link>
           </div>
         </div>
