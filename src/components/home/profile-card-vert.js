@@ -163,19 +163,6 @@ export default function ProfileCardVert(props) {
             >
               <i className="fas fa-map-marker-alt"></i> {data.state}
             </span>
-            <span
-              style={{
-                backgroundColor: "rgba(0,0,0,0.05)",
-                padding: "4px 10px",
-                borderRadius: "12px",
-                fontSize: 14,
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-              }}
-            >
-              <i className="fas fa-user-md"></i> {data.profile_type}
-            </span>
           </div>
 
           {/* Name + Bookmark */}
@@ -233,36 +220,42 @@ export default function ProfileCardVert(props) {
             <span style={{ fontSize: "14px", color: "#555" }}>4.8/5</span>
           </div>
 
-          {/* Fees */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "8px 16px",
-              borderRadius: "30px",
-              background: "linear-gradient(90deg, #60a5fa, #1e40af)", // blue gradient
-              color: "#fff",
-              fontWeight: 600,
-              fontSize: "15px",
-              width: "fit-content",
-            }}
-          >
-            <i className="fas fa-credit-card"></i>
-            <span>{getMinMaxPrice(fees)} per session</span>
+          {/* Profile Type & Fees */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            <span style={{ fontSize: "14px", color: "#555" }}>
+              <i className="fas fa-user-md"></i> {data.profile_type}
+            </span>
+            <span
+              style={{
+                fontSize: "14px",
+                color: "#111",
+                fontWeight: 600,
+              }}
+            >
+              <i className="fas fa-credit-card"></i> {getMinMaxPrice(fees)} per session
+            </span>
           </div>
 
           {/* Buttons */}
-          <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", marginTop: "auto" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: isMobile ? "8px" : "10px",
+              marginTop: "auto",
+            }}
+          >
             <Link
               to={`/view-profile/${data._id}`}
               style={{
-                padding: "8px 20px",
+                flex: 1,
+                padding: isMobile ? "12px 0" : "8px 20px",
                 borderRadius: "12px",
                 border: "1px solid #1976d2",
                 color: "#1976d2",
                 textDecoration: "none",
                 fontWeight: 600,
+                fontSize: isMobile ? "16px" : "14px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -275,12 +268,14 @@ export default function ProfileCardVert(props) {
             <Link
               to={`/therapist-checkout/${data._id}`}
               style={{
-                padding: "8px 20px",
+                flex: 1,
+                padding: isMobile ? "12px 0" : "8px 20px",
                 borderRadius: "12px",
-                background: "linear-gradient(135deg, #34d399, #059669)", // green gradient
+                background: "linear-gradient(135deg, #34d399, #059669)",
                 color: "#fff",
                 textDecoration: "none",
                 fontWeight: 600,
+                fontSize: isMobile ? "16px" : "14px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
