@@ -56,7 +56,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Main Navigation */}
+              {/* Desktop Navigation */}
               <div className="rbt-main-navigation d-none d-xl-block">
                 <nav className="mainmenu-nav">
                   <ul className="mainmenu">
@@ -86,18 +86,17 @@ export default function App() {
                       <i className="feather-search"></i>
                     </button>
                   </li>
-
                   <li className="account-access rbt-user-wrapper d-none d-xl-block">
                     {userType === 1 || userType === 2 ? (
                       <Link
                         to={userType === 1 ? "/my-dashboard" : "/therapist-dashboard"}
                         className="service-menu-parent"
                       >
-                        <i className="feather-user"></i>&nbsp; {userType === 1 ? "Profile" : "Therapist Profile"}
+                        <i className="feather-user"></i> {userType === 1 ? "Profile" : "Therapist Profile"}
                       </Link>
                     ) : (
                       <Link to="/login" className="service-menu-parent">
-                        <i className="feather-user"></i>&nbsp;Sign In/Sign Up
+                        <i className="feather-user"></i> Sign In/Sign Up
                       </Link>
                     )}
                   </li>
@@ -107,7 +106,7 @@ export default function App() {
                     className="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none"
                     to="/therapist-registration"
                   >
-                    <span data-text="Are Your a Therapist?">Are You a Therapist?</span>
+                    <span data-text="Are You a Therapist?">Are You a Therapist?</span>
                   </Link>
                 </div>
 
@@ -128,13 +127,41 @@ export default function App() {
       {/* Mobile Menu */}
       <div className={show ? "popup-mobile-menu active" : "popup-mobile-menu"}>
         <div className="inner-wrapper">
-          {/* existing mobile menu content */}
+          <div className="mobile-menu-header">
+            <button className="close-menu" onClick={() => setShow(false)}>
+              <i className="feather-x"></i>
+            </button>
+          </div>
+          <ul className="mobile-menu">
+            <li><Link to="/" onClick={() => setShow(false)}>Home</Link></li>
+            <li><Link to="/view-all-therapist" onClick={() => setShow(false)}>Therapist Directory</Link></li>
+            <li><Link to="#" onClick={() => setShow(false)}>Mind Matters Programs</Link></li>
+            <li className="has-dropdown">
+              <Link to="#" onClick={() => setShow(false)}>About <i className="feather-chevron-down"></i></Link>
+              <ul className="submenu">
+                <li><Link to="/about-us" onClick={() => setShow(false)}>About us</Link></li>
+                <li><Link to="/contact-us" onClick={() => setShow(false)}>Contact us</Link></li>
+              </ul>
+            </li>
+            <li><Link to="/faqs" onClick={() => setShow(false)}>Faqs</Link></li>
+            <li>
+              {userType === 1 || userType === 2 ? (
+                <Link to={userType === 1 ? "/my-dashboard" : "/therapist-dashboard"} onClick={() => setShow(false)}>
+                  {userType === 1 ? "Profile" : "Therapist Profile"}
+                </Link>
+              ) : (
+                <Link to="/login" onClick={() => setShow(false)}>Sign In/Sign Up</Link>
+              )}
+            </li>
+            <li>
+              <Link to="/therapist-registration" onClick={() => setShow(false)}>Are You a Therapist?</Link>
+            </li>
+          </ul>
         </div>
       </div>
 
       {/* CSS */}
       <style jsx>{`
-        /* Top Strip */
         .top-strip {
           width: 100%;
           position: sticky;
@@ -143,7 +170,6 @@ export default function App() {
           right: 0;
           z-index: 10000;
         }
-
         .top-strip-desktop {
           display: flex;
           justify-content: space-between;
@@ -155,41 +181,38 @@ export default function App() {
           height: ${GREEN_STRIP_HEIGHT}px;
           line-height: ${GREEN_STRIP_HEIGHT}px;
         }
-        .top-strip-desktop .left-info {
-          display: flex;
-          align-items: center;
-        }
-        .top-strip-desktop .divider {
-          margin: 0 10px;
-        }
-        .top-strip-desktop .right-info {
-          text-align: right;
-        }
+        .top-strip-desktop .left-info { display: flex; align-items: center; }
+        .top-strip-desktop .divider { margin: 0 10px; }
+        .top-strip-desktop .right-info { text-align: right; }
+        @media (max-width: 991px) { .top-strip-desktop { display: none; } }
 
-        /* Hide top strip completely on mobile */
-        @media (max-width: 991px) {
-          .top-strip-desktop {
-            display: none;
-          }
-        }
-
-        /* Header */
         .rbt-header.rbt-header-10 {
           position: sticky;
-          top: ${GREEN_STRIP_HEIGHT}px; /* desktop: below green strip */
+          top: ${GREEN_STRIP_HEIGHT}px;
           z-index: 10001;
           background: #fff;
         }
+        @media (max-width: 991px) { .rbt-header.rbt-header-10 { top: 0; } }
 
-        @media (max-width: 991px) {
-          .rbt-header.rbt-header-10 {
-            top: 0; /* mobile: stick at top */
-          }
+        /* Mobile Menu */
+        .popup-mobile-menu {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 80%;
+          height: 100%;
+          background: #fff;
+          z-index: 10010;
+          overflow-y: auto;
+          transition: all 0.3s ease-in-out;
+          box-shadow: 2px 0 12px rgba(0,0,0,0.2);
         }
-
-        .rbt-header-wrapper {
-          padding-top: 0;
-        }
+        .popup-mobile-menu.active { left: 0; }
+        .mobile-menu-header { display: flex; justify-content: flex-end; padding: 15px; border-bottom: 1px solid #eee; }
+        .mobile-menu { list-style: none; padding: 20px; }
+        .mobile-menu li { margin-bottom: 15px; }
+        .mobile-menu li a { text-decoration: none; color: #333; font-weight: 500; }
+        .mobile-menu .submenu { padding-left: 15px; list-style: disc; }
       `}</style>
     </>
   );
