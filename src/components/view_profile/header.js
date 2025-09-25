@@ -143,6 +143,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
             flexDirection: isMobile ? "column" : "row",
             alignItems: isMobile ? "center" : "flex-start",
             gap: isMobile ? 20 : 60,
+            position: "relative",
           }}
         >
           {/* Profile Picture with Premium Style */}
@@ -158,7 +159,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginTop: isMobile ? -60 : 0, // mobile half border overlap
+              marginTop: isMobile ? -60 : 0,
             }}
           >
             <ImageTag
@@ -256,14 +257,18 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 <span>{pageData.user?.gender || "-"}</span>
               </li>
             </ul>
+          </div>
 
-            {/* Buttons */}
+          {/* Buttons for Laptop Right Vertical Stack */}
+          {!isMobile && (
             <div
               style={{
                 display: "flex",
-                flexDirection: isMobile ? "column" : "row",
+                flexDirection: "column",
                 gap: 15,
-                alignItems: isMobile ? "stretch" : "center",
+                position: "absolute",
+                right: 40,
+                top: 160, // ⬅️ aur niche adjust
               }}
             >
               <button
@@ -278,7 +283,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                   cursor: "pointer",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   transition: "0.3s transform",
-                  minWidth: isMobile ? "100%" : 150,
+                  minWidth: 150,
                   textAlign: "center",
                 }}
                 onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
@@ -299,7 +304,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                   cursor: "pointer",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   transition: "0.3s transform",
-                  minWidth: isMobile ? "100%" : 150,
+                  minWidth: 150,
                   textAlign: "center",
                 }}
                 onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
@@ -308,7 +313,61 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 Share Profile
               </button>
             </div>
-          </div>
+          )}
+
+          {/* Buttons for Mobile Horizontal */}
+          {isMobile && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 15,
+                width: "100%",
+              }}
+            >
+              <button
+                onClick={handleClick}
+                style={{
+                  padding: "12px 25px",
+                  borderRadius: 25,
+                  background: "linear-gradient(90deg, #00c6ff, #0072ff)",
+                  color: "#fff",
+                  fontWeight: 600,
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  transition: "0.3s transform",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+                onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+              >
+                Book Now
+              </button>
+
+              <button
+                onClick={handleShare}
+                style={{
+                  padding: "12px 25px",
+                  borderRadius: 25,
+                  background: "linear-gradient(90deg, #43e97b, #38f9d7)",
+                  color: "#fff",
+                  fontWeight: 600,
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  transition: "0.3s transform",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+                onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+              >
+                Share Profile
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
