@@ -102,7 +102,7 @@ export default function Banner() {
   <div style={{ textAlign: "center", marginBottom: 10 }}>
     {/* Google Business Link (Top Icon) */}
     <a
-      href="https://search.google.com/local/writereview?placeid=12001203109189345391
+      href="https://share.google/eHqCWD5en5vV2ZSyV
 " // <-- apna Google Business link daalo
       target="_blank"
       rel="noopener noreferrer"
