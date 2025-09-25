@@ -96,20 +96,20 @@ export default function State() {
         .state-cards {
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-between;
-          gap: 16px;
+          gap: 20px;
+          justify-content: flex-start;
         }
         .state-card {
-          display: flex;
-          align-items: center;
-          width: calc(50% - 8px);
-          max-width: 280px; /* increased width for laptop */
-          height: 100px; /* slightly taller */
+          flex: 1 1 calc(25% - 20px); /* 4 per row on desktop */
+          max-width: 280px;
+          height: 120px;
           background: #fff;
           border-radius: 12px;
           box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
           overflow: hidden;
           text-decoration: none;
+          display: flex;
+          align-items: center;
           transition: transform 0.3s, box-shadow 0.3s;
         }
         .state-card:hover {
@@ -117,7 +117,7 @@ export default function State() {
           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
         }
         .state-image {
-          width: 80px; /* increased image size */
+          width: 80px;
           height: 80px;
           background-size: cover;
           background-position: center;
@@ -130,7 +130,7 @@ export default function State() {
         }
         .state-name {
           font-weight: 700;
-          font-size: 1.9rem; /* increased font size */
+          font-size: 1.9rem;
           color: #000;
         }
         .state-loadmore {
@@ -141,7 +141,7 @@ export default function State() {
           background: linear-gradient(135deg, #5a4bda, #4437b8);
           color: #fff;
           font-weight: 600;
-          font-size: 1.1rem; /* slightly bigger text */
+          font-size: 1.1rem;
           padding: 14px 40px;
           border: none;
           border-radius: 8px;
@@ -157,31 +157,33 @@ export default function State() {
         /* Responsive */
         @media (max-width: 1024px) {
           .state-card {
-            max-width: 48%;
-            height: 95px;
+            flex: 1 1 calc(33.33% - 20px); /* 3 per row on tablet */
+            height: 110px;
           }
           .state-image {
             width: 70px;
             height: 70px;
-          }
-          .state-name {
-            font-size: 1.15rem;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .state-card {
-            width: 100%;
-            height: 90px;
-            margin-bottom: 16px;
-          }
-          .state-image {
-            width: 70px;
-            height: 70px;
-            margin: 0 16px;
           }
           .state-name {
             font-size: 1.5rem;
+          }
+        }
+        @media (max-width: 768px) {
+          .state-cards {
+            gap: 12px;
+          }
+          .state-card {
+            flex: 1 1 100%; /* full width on mobile */
+            max-width: 100%; /* remove max-width restriction */
+            height: 130px; /* taller for mobile */
+          }
+          .state-image {
+            width: 90px;  /* larger image */
+            height: 90px;
+            margin: 0 16px;
+          }
+          .state-name {
+            font-size: 2rem; /* larger text */
           }
         }
       `}</style>
