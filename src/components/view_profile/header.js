@@ -85,7 +85,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     }
   };
 
-  const headerHeight = isMobile ? 300 : 350; // approximate floating header height
+  const headerHeight = isMobile ? 300 : 350;
 
   return (
     <>
@@ -104,7 +104,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         <link rel="canonical" href={profileUrl} />
       </Helmet>
 
-      {/* Banner wrapper (extends half header) */}
+      {/* Banner wrapper */}
       <div
         className="rbt-page-banner-wrapper"
         style={{
@@ -125,11 +125,11 @@ export default function ProfileHeader({ pageData, favrioutes }) {
       <div
         style={{
           position: "relative",
-          marginTop: -(isMobile ? 115 : 125), // lifts header halfway over banner
+          marginTop: -(isMobile ? 115 : 125),
           zIndex: 10,
           display: "flex",
           justifyContent: "center",
-          padding: isMobile ? "0 10px" : 0, // horizontal padding for mobile
+          padding: isMobile ? "0 10px" : 0,
         }}
       >
         <div
@@ -137,7 +137,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
             background: "linear-gradient(135deg, #0f3d2f, #138556)",
             borderRadius: 20,
             padding: isMobile ? "120px 15px 40px" : "140px 40px 50px",
-            maxWidth: isMobile ? 500 : 1100, // restrict width on mobile
+            maxWidth: isMobile ? 500 : 1100,
             width: "100%",
             boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
             color: "#fff",
@@ -147,17 +147,19 @@ export default function ProfileHeader({ pageData, favrioutes }) {
             gap: isMobile ? 20 : 60,
           }}
         >
-          {/* Profile Picture */}
+          {/* Profile Picture (Premium LinkedIn Style) */}
           <div
             style={{
               flexShrink: 0,
-              boxShadow: "0px 4px 20px rgba(0,0,0,0.3)",
-              borderRadius: 15,
+              borderRadius: "50%",
               overflow: "hidden",
+              position: "relative",
+              padding: 5,
+              background: "linear-gradient(135deg, #4facfe, #00f2fe)", // premium gradient border
+              boxShadow: "0px 6px 20px rgba(0,0,0,0.3)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginTop: isMobile ? 20 : 0,
             }}
           >
             <ImageTag
@@ -165,14 +167,28 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               src={`${imagePath}/${pageData.user.profile}`}
               style={{
                 objectFit: "cover",
-                borderRadius: 15,
-                width: isMobile ? 180 : 280,
-                height: isMobile ? 180 : 220,
+                borderRadius: "50%",
+                width: isMobile ? 160 : 200,
+                height: isMobile ? 160 : 200,
               }}
             />
+            {/* Verified Badge */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 10,
+                right: 10,
+                background: "#fff",
+                borderRadius: "50%",
+                padding: 4,
+                boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
+              }}
+            >
+              <i className="feather-check-circle" style={{ color: "#0072ff", fontSize: 18 }}></i>
+            </div>
           </div>
 
-          {/* Info */}
+          {/* Info Section */}
           <div
             style={{
               flex: 1,
