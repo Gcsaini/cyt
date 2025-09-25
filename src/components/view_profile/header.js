@@ -228,8 +228,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 fontSize: isMobile ? 14 : 18,
                 fontWeight: 400,
                 marginBottom: 10,
-                wordBreak: "break-word",    // ⬅️ wrap long text
-                overflowWrap: "break-word", // ⬅️ fallback
+                wordBreak: "break-word",
+                overflowWrap: "break-word",
               }}
             >
               {pageData.qualification}
@@ -243,7 +243,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 gap: 15,
                 justifyContent: isMobile ? "center" : "flex-start",
                 fontSize: 14,
-                marginBottom: 15,
+                marginBottom: 5,
               }}
             >
               <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
@@ -259,6 +259,26 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 <span>{pageData.user?.gender || "-"}</span>
               </li>
             </ul>
+
+            {/* Premium Experience Badge */}
+            {pageData.year_of_exp && (
+              <div
+                style={{
+                  marginTop: 8,
+                  alignSelf: isMobile ? "center" : "flex-start",
+                  background: "linear-gradient(135deg, #f39c12, #e74c3c)",
+                  color: "#fff",
+                  fontWeight: 600,
+                  fontSize: isMobile ? 12 : 14,
+                  padding: "6px 12px",
+                  borderRadius: 25,
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                  display: "inline-block",
+                }}
+              >
+                {pageData.year_of_exp} years experience
+              </div>
+            )}
           </div>
 
           {/* Buttons for Laptop Right Vertical Stack */}
@@ -270,7 +290,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 gap: 15,
                 position: "absolute",
                 right: 40,
-                top: 160,
+                top: 200, // adjusted a bit lower
               }}
             >
               <button
