@@ -53,8 +53,9 @@ export default function Banner() {
     <section
       className="rbt-banner-area rbt-banner-1"
       style={{
-        paddingTop: isMobile ? "20px" : "0px",
-        paddingBottom: isMobile ? "40px" : "100px",
+        paddingTop: isMobile ? "10px" : "0px", // padding can't be negative
+  marginTop: isMobile ? "0px" : "-60px", // negative shift
+  paddingBottom: isMobile ? "40px" : "100px",
       }}
     >
       <Helmet>
