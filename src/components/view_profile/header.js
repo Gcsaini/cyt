@@ -85,8 +85,6 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     }
   };
 
-  const headerHeight = isMobile ? 300 : 350;
-
   return (
     <>
       <Helmet>
@@ -142,24 +140,25 @@ export default function ProfileHeader({ pageData, favrioutes }) {
             boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
             color: "#fff",
             display: "flex",
-            flexDirection: isMobile ? "column" : "row-reverse",
+            flexDirection: isMobile ? "column" : "row",
             alignItems: isMobile ? "center" : "flex-start",
             gap: isMobile ? 20 : 60,
           }}
         >
-          {/* Profile Picture (Premium LinkedIn Style) */}
+          {/* Profile Picture with Premium Style */}
           <div
             style={{
               flexShrink: 0,
               borderRadius: "50%",
-              overflow: "hidden",
+              overflow: "visible",
               position: "relative",
               padding: 5,
-              background: "linear-gradient(135deg, #4facfe, #00f2fe)", // premium gradient border
+              background: "linear-gradient(135deg, #2ecc71, #27ae60)",
               boxShadow: "0px 6px 20px rgba(0,0,0,0.3)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              marginTop: isMobile ? -60 : 0, // mobile half border overlap
             }}
           >
             <ImageTag
@@ -170,21 +169,25 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 borderRadius: "50%",
                 width: isMobile ? 160 : 200,
                 height: isMobile ? 160 : 200,
+                background: "#fff",
               }}
             />
-            {/* Verified Badge */}
+            {/* Premium Badge */}
             <div
               style={{
                 position: "absolute",
-                bottom: 10,
-                right: 10,
+                bottom: 8,
+                right: 8,
                 background: "#fff",
                 borderRadius: "50%",
-                padding: 4,
+                padding: 5,
                 boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
               }}
             >
-              <i className="feather-check-circle" style={{ color: "#0072ff", fontSize: 18 }}></i>
+              <i
+                className="feather-star"
+                style={{ color: "#f1c40f", fontSize: 20 }}
+              ></i>
             </div>
           </div>
 
@@ -254,6 +257,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               </li>
             </ul>
 
+            {/* Buttons */}
             <div
               style={{
                 display: "flex",
