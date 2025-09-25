@@ -129,14 +129,15 @@ export default function ProfileHeader({ pageData, favrioutes }) {
           zIndex: 10,
           display: "flex",
           justifyContent: "center",
+          padding: isMobile ? "0 10px" : 0, // horizontal padding for mobile
         }}
       >
         <div
           style={{
             background: "linear-gradient(135deg, #0f3d2f, #138556)",
             borderRadius: 20,
-            padding: isMobile ? "120px 20px 40px" : "140px 40px 50px",
-            maxWidth: 1100,
+            padding: isMobile ? "120px 15px 40px" : "140px 40px 50px",
+            maxWidth: isMobile ? 500 : 1100, // restrict width on mobile
             width: "100%",
             boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
             color: "#fff",
