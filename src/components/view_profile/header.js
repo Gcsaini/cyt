@@ -85,6 +85,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     }
   };
 
+  const headerHeight = isMobile ? 300 : 350; // approximate floating header height
+
   return (
     <>
       <Helmet>
@@ -102,21 +104,42 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         <link rel="canonical" href={profileUrl} />
       </Helmet>
 
-      {/* Premium Dark Green Header */}
+      {/* Banner wrapper (extends half header) */}
+      <div
+        className="rbt-page-banner-wrapper"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          height: isMobile ? 230 : 250,
+        }}
+      >
+        <div
+          className="rbt-banner-image"
+          style={{
+            height: "100%",
+          }}
+        ></div>
+      </div>
+
+      {/* Floating header */}
       <div
         style={{
-          background: "linear-gradient(135deg, #0f3d2f, #138556)",
-          borderRadius: 20,
-          margin: "20px auto",
-          padding: isMobile ? "120px 20px 40px" : "140px 40px 50px",
-          maxWidth: 1100,
-          boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
           position: "relative",
-          color: "#fff",
+          marginTop: -(isMobile ? 115 : 125), // lifts header halfway over banner
+          zIndex: 10,
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <div
           style={{
+            background: "linear-gradient(135deg, #0f3d2f, #138556)",
+            borderRadius: 20,
+            padding: isMobile ? "120px 20px 40px" : "140px 40px 50px",
+            maxWidth: 1100,
+            width: "100%",
+            boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
+            color: "#fff",
             display: "flex",
             flexDirection: isMobile ? "column" : "row-reverse",
             alignItems: isMobile ? "center" : "flex-start",
@@ -130,10 +153,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               boxShadow: "0px 4px 20px rgba(0,0,0,0.3)",
               borderRadius: 15,
               overflow: "hidden",
-              marginTop: isMobile ? 20 : 0,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              marginTop: isMobile ? 20 : 0,
             }}
           >
             <ImageTag
@@ -158,13 +181,34 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               justifyContent: "center",
             }}
           >
-            <h1 style={{ color: "#fff", fontSize: isMobile ? 26 : 36, marginBottom: 5, fontWeight: 700 }}>
+            <h1
+              style={{
+                color: "#fff",
+                fontSize: isMobile ? 26 : 36,
+                marginBottom: 5,
+                fontWeight: 700,
+              }}
+            >
               {pageData.user.name}
             </h1>
-            <h2 style={{ color: "#fff", fontSize: isMobile ? 18 : 24, fontWeight: 500, marginBottom: 5 }}>
+            <h2
+              style={{
+                color: "#fff",
+                fontSize: isMobile ? 18 : 24,
+                fontWeight: 500,
+                marginBottom: 5,
+              }}
+            >
               {pageData.profile_type}
             </h2>
-            <h3 style={{ color: "#fff", fontSize: isMobile ? 14 : 18, fontWeight: 400, marginBottom: 10 }}>
+            <h3
+              style={{
+                color: "#fff",
+                fontSize: isMobile ? 14 : 18,
+                fontWeight: 400,
+                marginBottom: 10,
+              }}
+            >
               {pageData.qualification}
             </h3>
 
@@ -193,7 +237,14 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               </li>
             </ul>
 
-            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 15, alignItems: isMobile ? "stretch" : "center" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                gap: 15,
+                alignItems: isMobile ? "stretch" : "center",
+              }}
+            >
               <button
                 onClick={handleClick}
                 style={{
@@ -239,6 +290,9 @@ export default function ProfileHeader({ pageData, favrioutes }) {
           </div>
         </div>
       </div>
+
+      {/* Content below */}
+      <div style={{ paddingTop: isMobile ? 60 : 80 }}></div>
     </>
   );
 }
