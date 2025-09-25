@@ -110,13 +110,13 @@ export default function Banner() {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: 2, // 🔥 gap kam kiya (pehle 12 tha)
+        marginBottom: 2, 
       }}
     >
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
         alt="Google Business"
-        style={{ width: "42px", height: "42px" }}
+        style={{ width: "50px", height: "50px" }}
       />
     </a>
 
@@ -127,7 +127,7 @@ export default function Banner() {
         justifyContent: "center",
         alignItems: "center",
         gap: "8px",
-        marginBottom: 12, // thoda natural spacing tagline ke liye
+        marginBottom: 12, 
       }}
     >
       {/* 5 Golden Stars */}

@@ -1,48 +1,55 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
 export default function CallToActionAbout() {
   return (
-    <div className="rbt-call-to-action-area rbt-section-gap bg-gradient-8">
-      <div className="rbt-callto-action rbt-cta-default style-6">
-        <div className="container">
-          
-          <div className="row g-5 align-items-center content-wrapper">
-            <div className="col-xxl-3 col-xl-3 col-lg-6">
-              <div className="inner">
-                <div className="content text-start">
-                  <h2 className="title color-white mb--0">
-                    Are You a Therapist?
-                  </h2>
+    <div className="elementor-widget-container">
+      <div className="rbt-callto-action-area">
+        <div className="rbt-call-to-action rbt-cta-default style-4 bg-gradient-6 mt--75">
+          <div className="container">
+            <div className="row align-items-center content-wrapper row--30 mt_dec--30 position-relative flex-lg-row flex-column-reverse">
+              
+              {/* Content Column */}
+              <div className="col-lg-8 mt--30 offset-lg-3">
+                <div className="inner">
+                  <div className="content text-left">
+                    <h2 className="title sal-animate" data-sal="slide-up">
+                      Are You a Therapist?
+                    </h2>
+
+                    <p className="mt--20" style={{ color: "#000" }}>
+                      Access your personalized dashboard on our platform to seamlessly connect online with clients to serve and manage your profile with ease.
+                    </p>
+
+                    <div className="call-to-btn text-start mt--30">
+                      <a
+                        className="rbt-btn btn-gradient hover-icon-reverse"
+                        href="/therapist-registration"
+                      >
+                        <span className="icon-reverse-wrapper">
+                          <span className="btn-text">Join Us</span>
+                          <span className="btn-icon"><i className="feather-arrow-right"></i></span>
+                          <span className="btn-icon"><i className="feather-arrow-right"></i></span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xxl-6 col-xl-6 col-lg-6">
-              <div className="inner-content text-start">
-                <p className="color-white">
-                  Access your personalized dashboard on our platform to
-                  seamlessly connect online with clients to serve and manage
-                  your profile with ease.
-                </p>
+
+              {/* Thumbnail Column */}
+              <div className="col-lg-4 mb--30">
+                <div className="thumbnail text-lg-end text-center">
+                  <img
+                    decoding="async"
+                    src="https://rainbowthemes.net/themes/histudy/wp-content/uploads/2024/03/cta.webp"
+                    title="cta"
+                    alt="cta"
+                    loading="lazy"
+                    className="img-fluid"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-xxl-3 col-xl-3 col-lg-6">
-              <div className="call-to-btn text-start text-xl-end">
-                <Link
-                  style={{ cursor: "pointer" }}
-                  className="rbt-btn btn-white hover-icon-reverse"
-                  ti={"/therapist-registration"}
-                >
-                  <span className="icon-reverse-wrapper">
-                    <span className="btn-text">Subscribe CYT</span>
-                    <span className="btn-icon">
-                      <i className="feather-arrow-right"></i>
-                    </span>
-                    <span className="btn-icon">
-                      <i className="feather-arrow-right"></i>
-                    </span>
-                  </span>
-                </Link>
-              </div>
+
             </div>
           </div>
         </div>
