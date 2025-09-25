@@ -228,6 +228,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 fontSize: isMobile ? 14 : 18,
                 fontWeight: 400,
                 marginBottom: 10,
+                wordBreak: "break-word",    // ⬅️ wrap long text
+                overflowWrap: "break-word", // ⬅️ fallback
               }}
             >
               {pageData.qualification}
@@ -268,7 +270,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 gap: 15,
                 position: "absolute",
                 right: 40,
-                top: 160, // ⬅️ aur niche adjust
+                top: 160,
               }}
             >
               <button
@@ -315,7 +317,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
             </div>
           )}
 
-          {/* Buttons for Mobile Horizontal */}
+          {/* Mobile Buttons */}
           {isMobile && (
             <div
               style={{
