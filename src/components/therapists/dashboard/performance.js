@@ -1,34 +1,35 @@
 import React from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaWallet, FaChartPie } from "react-icons/fa";
+import { FaUserEdit, FaCalendarCheck, FaCalendarPlus, FaTags } from "react-icons/fa";
 
 const shortcutCards = [
   {
     title: "Edit Profile",
-    icon: <FaUsers size={40} />,
-    link: "/dashboard/profile",
-    iconBg: "linear-gradient(135deg, #228756, #56ab2f)",
+    icon: <FaUserEdit size={40} />,
+    link: "/settings",
+    iconBg: "linear-gradient(135deg, #11998e, #38ef7d)", // luxury green
   },
   {
     title: "Therapy Bookings",
     icon: <FaCalendarCheck size={40} />,
     link: "/appointments",
-    iconBg: "linear-gradient(135deg, #004e92, #005bea)",
+    iconBg: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)", // dark premium blue-gray
   },
   {
     title: "Create Event",
-    icon: <FaWallet size={40} />,
-    link: "/dashboard/events",
-    iconBg: "linear-gradient(135deg, #ff7e5f, #feb47b)",
+    icon: <FaCalendarPlus size={40} />,
+    link: "/workshops",
+    iconBg: "linear-gradient(135deg, #f7971e, #ffd200)", // elegant orange-gold
   },
   {
     title: "Create Coupons",
-    icon: <FaChartPie size={40} />,
-    link: "/dashboard/coupons",
-    iconBg: "linear-gradient(135deg, #6a11cb, #2575fc)",
+    icon: <FaTags size={40} />,
+    link: "/coupons",
+    iconBg: "linear-gradient(135deg, #6a11cb, #2575fc, #00d4ff)", // luxury purple-blue mix
   },
 ];
+
 
 export default function DashboardSections() {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -105,7 +106,7 @@ export default function DashboardSections() {
         className="rbt-pricing-area"
         style={{
           marginTop: "40px",
-          width: isMobile ? "95%" : "900px", // Mobile width thoda bada
+          width: isMobile ? "110%" : "905px", // Mobile width thoda bada
           maxWidth: "100%",
           marginLeft: "auto",
           marginRight: "auto",
