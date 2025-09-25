@@ -24,7 +24,6 @@ export default function App() {
   }, []);
 
   const GREEN_STRIP_HEIGHT = 35; // desktop
-  const GREEN_STRIP_HEIGHT_MOBILE = 20; // mobile
 
   return (
     <>
@@ -39,9 +38,6 @@ export default function App() {
           <div className="right-info">
             <span><i className="feather-map-pin"></i> Block D-137, Sector 51, Noida, Uttar Pradesh 201301</span>
           </div>
-        </div>
-        <div className="top-strip-mobile">
-          <span><i className="feather-phone"></i> +91-807-775-7951 | <i className="feather-mail"></i> info.cyt@gmail.com</span>
         </div>
       </div>
 
@@ -170,34 +166,25 @@ export default function App() {
           text-align: right;
         }
 
-        .top-strip-mobile {
-          display: none;
-          background-color: #2ecc71;
-          height: ${GREEN_STRIP_HEIGHT_MOBILE}px;
-          line-height: ${GREEN_STRIP_HEIGHT_MOBILE}px;
-          text-align: center;
-          font-size: 12px;
-          color: #fff;
-        }
-
+        /* Hide top strip completely on mobile */
         @media (max-width: 991px) {
           .top-strip-desktop {
             display: none;
-          }
-          .top-strip-mobile {
-            display: block;
-          }
-          .rbt-header.rbt-header-10 {
-            top: 0; /* make header stick exactly below green strip */
           }
         }
 
         /* Header */
         .rbt-header.rbt-header-10 {
           position: sticky;
-          top: ${GREEN_STRIP_HEIGHT}px;
+          top: ${GREEN_STRIP_HEIGHT}px; /* desktop: below green strip */
           z-index: 10001;
           background: #fff;
+        }
+
+        @media (max-width: 991px) {
+          .rbt-header.rbt-header-10 {
+            top: 0; /* mobile: stick at top */
+          }
         }
 
         .rbt-header-wrapper {
