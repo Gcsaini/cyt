@@ -53,7 +53,7 @@ export default function Banner() {
     <section
       className="rbt-banner-area rbt-banner-1"
       style={{
-        paddingTop: isMobile ? "60px" : "80px",
+        paddingTop: isMobile ? "60px" : "0px",
         paddingBottom: isMobile ? "40px" : "100px",
       }}
     >
