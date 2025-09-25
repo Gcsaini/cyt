@@ -55,7 +55,7 @@ export default function Banner() {
       style={{
         paddingTop: isMobile ? "10px" : "0px", // padding can't be negative
   marginTop: isMobile ? "0px" : "-60px", // negative shift
-  paddingBottom: isMobile ? "40px" : "100px",
+  paddingBottom: isMobile ? "30px" : "30px",
       }}
     >
       <Helmet>
