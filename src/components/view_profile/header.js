@@ -105,7 +105,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
       {/* Premium Dark Green Header */}
       <div
         style={{
-          background: "linear-gradient(135deg, #0f3d2f, #138556)", // dark green gradient
+          background: "linear-gradient(135deg, #0f3d2f, #138556)",
           borderRadius: 20,
           margin: "20px auto",
           padding: isMobile ? "120px 20px 40px" : "140px 40px 50px",
@@ -118,8 +118,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         <div
           style={{
             display: "flex",
-            flexDirection: isMobile ? "column" : "row-reverse", // image right desktop
-            alignItems: isMobile ? "center" : "stretch", // stretch image height to match text
+            flexDirection: isMobile ? "column" : "row-reverse",
+            alignItems: isMobile ? "center" : "flex-start",
             gap: isMobile ? 20 : 60,
           }}
         >
@@ -143,13 +143,21 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 objectFit: "cover",
                 borderRadius: 15,
                 width: isMobile ? 180 : "auto",
-                height: isMobile ? 180 : "100%", // fill height of text block on desktop
+                height: isMobile ? 180 : 220, // reduced desktop height
               }}
             />
           </div>
 
           {/* Info */}
-          <div style={{ flex: 1, textAlign: isMobile ? "center" : "left", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div
+            style={{
+              flex: 1,
+              textAlign: isMobile ? "center" : "left",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <h1 style={{ color: "#fff", fontSize: isMobile ? 26 : 36, marginBottom: 5, fontWeight: 700 }}>
               {pageData.user.name}
             </h1>
@@ -185,7 +193,6 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               </li>
             </ul>
 
-            {/* Buttons */}
             <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 15 }}>
               <button
                 onClick={handleClick}
