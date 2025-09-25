@@ -97,9 +97,51 @@ export default function Banner() {
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
-{/* Mobile-only Tagline with Micro Animation */}
+           {/* Mobile-only Rating + Tagline */}
 {isMobile && (
-  <div style={{ textAlign: "center", marginBottom: 12 }}>
+  <div style={{ textAlign: "center", marginBottom: 16 }}>
+    {/* ⭐ Google Rating */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "8px",
+        marginBottom: 10,
+      }}
+    >
+      {/* 5 Golden Stars */}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span key={i} style={{ color: "#f4b400", fontSize: "1.6rem" }}>★</span>
+      ))}
+
+      {/* Rating Text */}
+      <span
+        style={{
+          fontWeight: 700,
+          fontSize: "1.1rem",
+          color: "#222",
+        }}
+      >
+        4.9/5 Google Rating
+      </span>
+
+      {/* Google Business Link */}
+      <a
+        href="https://www.google.com/maps/place/YourBusinessID" // <-- apna Google Business link daalo
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ display: "flex", alignItems: "center" }}
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+          alt="Google Business"
+          style={{ width: "26px", height: "26px" }}
+        />
+      </a>
+    </div>
+
+    {/* Tagline with animation */}
     <div
       style={{
         display: "inline-block",
@@ -117,6 +159,7 @@ export default function Banner() {
     </div>
   </div>
 )}
+
 
 
                 {/* H1 Banner */}
