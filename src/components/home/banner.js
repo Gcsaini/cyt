@@ -97,61 +97,66 @@ export default function Banner() {
                     Trusted by People, Powered by Verified Therapists
                   </div>
                 )}
-           {/* Mobile-only Rating + Tagline */}
+      {/* Google Rating + Tagline (Only Mobile) */}
 {isMobile && (
-  <div style={{ textAlign: "center", marginBottom: 16 }}>
+  <div style={{ textAlign: "center", marginBottom: 20 }}>
+    {/* Google Business Link (Top Icon) */}
+    <a
+      href="https://www.google.com/maps/place/12001203109189345391" // <-- apna Google Business link daalo
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: 12,
+      }}
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+        alt="Google Business"
+        style={{ width: "42px", height: "42px" }} // bigger size
+      />
+    </a>
+
     {/* ⭐ Google Rating */}
     <div
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        gap: "8px",
-        marginBottom: 10,
+        gap: "10px",
+        marginBottom: 14,
       }}
     >
       {/* 5 Golden Stars */}
       {Array.from({ length: 5 }).map((_, i) => (
-        <span key={i} style={{ color: "#f4b400", fontSize: "1.6rem" }}>★</span>
+        <span key={i} style={{ color: "#f4b400", fontSize: "1.8rem" }}>★</span>
       ))}
 
       {/* Rating Text */}
       <span
         style={{
           fontWeight: 700,
-          fontSize: "1.1rem",
+          fontSize: "1.3rem",
           color: "#222",
         }}
       >
         4.9/5 Google Rating
       </span>
-
-      {/* Google Business Link */}
-      <a
-        href="https://www.google.com/maps/place/YourBusinessID" // <-- apna Google Business link daalo
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ display: "flex", alignItems: "center" }}
-      >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-          alt="Google Business"
-          style={{ width: "26px", height: "26px" }}
-        />
-      </a>
     </div>
 
     {/* Tagline with animation */}
     <div
       style={{
         display: "inline-block",
-        padding: "6px 14px",
-        fontSize: "0.95rem",
+        padding: "8px 18px",
+        fontSize: "1.05rem",
         color: "#fff",
         fontWeight: 600,
-        borderRadius: "20px",
+        borderRadius: "22px",
         background: "linear-gradient(135deg, #228756, #007f99)",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
         animation: "fadeIn 1s ease-in-out, pulse 2s infinite",
       }}
     >
