@@ -250,7 +250,7 @@ export default function Services() {
                     <LazyImage alt="Icons" dim={"80"} src={specialoffer} />
                   </div>
                   <div className="content">
-                    <h3 className="title">Special Offers</h3>
+                    <h3 className="title">Offers</h3>
                     <div className="read-more-btn">
                       <span className="rbt-btn-link">
                         Grab Deal <i className="feather-arrow-right"></i>
