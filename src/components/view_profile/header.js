@@ -108,7 +108,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
           background: "linear-gradient(135deg, #0f3d2f, #138556)", // dark green gradient
           borderRadius: 20,
           margin: "20px auto",
-          padding: isMobile ? "100px 20px 40px" : "140px 40px 50px", // pushed content down
+          padding: isMobile ? "120px 20px 40px" : "140px 40px 50px",
           maxWidth: 1100,
           boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
           position: "relative",
@@ -118,9 +118,9 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         <div
           style={{
             display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: "center",
-            gap: isMobile ? 20 : 40,
+            flexDirection: isMobile ? "column" : "row-reverse", // image right desktop
+            alignItems: isMobile ? "center" : "stretch", // stretch image height to match text
+            gap: isMobile ? 20 : 60,
           }}
         >
           {/* Profile Picture */}
@@ -131,26 +131,32 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               borderRadius: 15,
               overflow: "hidden",
               marginTop: isMobile ? 20 : 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <ImageTag
               alt={`${pageData.user.name} - ${pageData.qualification}`}
               src={`${imagePath}/${pageData.user.profile}`}
-              width={isMobile ? 120 : 150}
-              height={isMobile ? 120 : 150}
-              style={{ objectFit: "cover", borderRadius: 15 }}
+              style={{
+                objectFit: "cover",
+                borderRadius: 15,
+                width: isMobile ? 180 : "auto",
+                height: isMobile ? 180 : "100%", // fill height of text block on desktop
+              }}
             />
           </div>
 
           {/* Info */}
-          <div style={{ flex: 1, textAlign: isMobile ? "center" : "left" }}>
-            <h1 style={{ color: "#fff", fontSize: isMobile ? 24 : 32, marginBottom: 5, fontWeight: 700 }}>
+          <div style={{ flex: 1, textAlign: isMobile ? "center" : "left", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <h1 style={{ color: "#fff", fontSize: isMobile ? 26 : 36, marginBottom: 5, fontWeight: 700 }}>
               {pageData.user.name}
             </h1>
-            <h2 style={{ color: "#fff", fontSize: isMobile ? 18 : 22, fontWeight: 500, marginBottom: 5 }}>
+            <h2 style={{ color: "#fff", fontSize: isMobile ? 18 : 24, fontWeight: 500, marginBottom: 5 }}>
               {pageData.profile_type}
             </h2>
-            <h3 style={{ color: "#fff", fontSize: isMobile ? 14 : 16, fontWeight: 400, marginBottom: 10 }}>
+            <h3 style={{ color: "#fff", fontSize: isMobile ? 14 : 18, fontWeight: 400, marginBottom: 10 }}>
               {pageData.qualification}
             </h3>
 
@@ -161,31 +167,31 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 display: "flex",
                 gap: 15,
                 justifyContent: isMobile ? "center" : "flex-start",
-                fontSize: 13,
+                fontSize: 14,
                 marginBottom: 15,
               }}
             >
-              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
-                <i className="feather-message-circle" style={{ color: "#fff" }}></i>
-                <span style={{ color: "#fff" }}>{pageData.language_spoken}</span>
+              <li style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                <i className="feather-message-circle"></i>
+                <span>{pageData.language_spoken}</span>
               </li>
-              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
-                <i className="feather-map-pin" style={{ color: "#fff" }}></i>
-                <span style={{ color: "#fff" }}>{pageData.state}</span>
+              <li style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                <i className="feather-map-pin"></i>
+                <span>{pageData.state}</span>
               </li>
-              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
-                <i className="feather-users" style={{ color: "#fff" }}></i>
-                <span style={{ color: "#fff" }}>{pageData.user?.gender || "-"}</span>
+              <li style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                <i className="feather-users"></i>
+                <span>{pageData.user?.gender || "-"}</span>
               </li>
             </ul>
 
             {/* Buttons */}
-            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10 }}>
+            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 15 }}>
               <button
                 onClick={handleClick}
                 style={{
                   flex: 1,
-                  padding: "10px 20px",
+                  padding: "12px 25px",
                   borderRadius: 25,
                   background: "linear-gradient(90deg, #00c6ff, #0072ff)",
                   color: "#fff",
@@ -205,7 +211,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 onClick={handleShare}
                 style={{
                   flex: 1,
-                  padding: "10px 20px",
+                  padding: "12px 25px",
                   borderRadius: 25,
                   background: "linear-gradient(90deg, #43e97b, #38f9d7)",
                   color: "#fff",
