@@ -142,8 +142,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               style={{
                 objectFit: "cover",
                 borderRadius: 15,
-                width: isMobile ? 180 : "auto",
-                height: isMobile ? 180 : 220, // reduced desktop height
+                width: isMobile ? 180 : 280,
+                height: isMobile ? 180 : 220,
               }}
             />
           </div>
@@ -179,25 +179,24 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                 marginBottom: 15,
               }}
             >
-              <li style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                <i className="feather-message-circle"></i>
+              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
+                <i className="feather-message-circle" style={{ color: "#fff" }}></i>
                 <span>{pageData.language_spoken}</span>
               </li>
-              <li style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                <i className="feather-map-pin"></i>
+              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
+                <i className="feather-map-pin" style={{ color: "#fff" }}></i>
                 <span>{pageData.state}</span>
               </li>
-              <li style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                <i className="feather-users"></i>
+              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
+                <i className="feather-users" style={{ color: "#fff" }}></i>
                 <span>{pageData.user?.gender || "-"}</span>
               </li>
             </ul>
 
-            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 15 }}>
+            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 15, alignItems: isMobile ? "stretch" : "center" }}>
               <button
                 onClick={handleClick}
                 style={{
-                  flex: 1,
                   padding: "12px 25px",
                   borderRadius: 25,
                   background: "linear-gradient(90deg, #00c6ff, #0072ff)",
@@ -207,6 +206,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                   cursor: "pointer",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   transition: "0.3s transform",
+                  minWidth: isMobile ? "100%" : 150,
+                  textAlign: "center",
                 }}
                 onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
@@ -217,7 +218,6 @@ export default function ProfileHeader({ pageData, favrioutes }) {
               <button
                 onClick={handleShare}
                 style={{
-                  flex: 1,
                   padding: "12px 25px",
                   borderRadius: 25,
                   background: "linear-gradient(90deg, #43e97b, #38f9d7)",
@@ -227,6 +227,8 @@ export default function ProfileHeader({ pageData, favrioutes }) {
                   cursor: "pointer",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   transition: "0.3s transform",
+                  minWidth: isMobile ? "100%" : 150,
+                  textAlign: "center",
                 }}
                 onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
