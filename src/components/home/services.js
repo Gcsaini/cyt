@@ -117,7 +117,7 @@ export default function Services() {
                     <LazyImage alt="Icons" dim={"80"} src={TherypyImg} />
                   </div>
                   <div className="content">
-                    <h5 className="title">Therapy Session</h5>
+                    <h5 className="title">Therapist</h5>
                     <div className="read-more-btn">
                       <span className="rbt-btn-link">
                         Book Now <i className="feather-arrow-right"></i>
@@ -174,7 +174,7 @@ export default function Services() {
                     <LazyImage alt="Icons" dim={"80"} src={WorkplaceImg} />
                   </div>
                   <div className="content">
-                    <h5 className="title">Mindfulness Tour</h5>
+                    <h5 className="title">Mindfulness</h5>
                     <div className="read-more-btn">
                       <span className="rbt-btn-link">
                         Coming Soon <i className="feather-arrow-right"></i>
