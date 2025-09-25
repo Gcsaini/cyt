@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
-import { whiteColor } from "../../utils/colors";
 import { getDecodedToken } from "../../utils/jwt";
 import {
   imagePath,
@@ -59,11 +58,9 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     if (!isSuccess) setBookmark(false);
   };
 
-  // --- UPDATED SHARE FUNCTION ---
   const handleShare = async () => {
     const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!\n\n${profileUrl}`;
 
-    // Web Share API for mobile
     if (navigator.share) {
       try {
         await navigator.share({
@@ -77,12 +74,10 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         showCopyPrompt(shareText);
       }
     } else {
-      // Fallback for desktop
       showCopyPrompt(shareText);
     }
   };
 
-  // Show a prompt with share text for all users
   const showCopyPrompt = (text) => {
     const copied = window.prompt("Copy and share this profile:", text);
     if (copied !== null) {
@@ -92,7 +87,6 @@ export default function ProfileHeader({ pageData, favrioutes }) {
 
   return (
     <>
-      {/* SEO + Open Graph */}
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -106,86 +100,126 @@ export default function ProfileHeader({ pageData, favrioutes }) {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={`${imagePath}/${pageData.user.profile}`} />
         <link rel="canonical" href={profileUrl} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: pageData.user.name,
-            image: `${imagePath}/${pageData.user.profile}`,
-            gender: pageData.user?.gender || "Not specified",
-            jobTitle: pageData.qualification,
-            description: description,
-            address: { "@type": "PostalAddress", addressRegion: pageData.state },
-          })}
-        </script>
       </Helmet>
 
-      {/* Page Content */}
-      <div className="rbt-page-banner-wrapper">
-        <div className="rbt-banner-image"></div>
-      </div>
-      <div className="rbt-dashboard-area rbt-section-overlayping-top" style={{ paddingBottom: 30 }}>
-        <div className="container mt--60">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="rbt-dashboard-content-wrapper" style={{ marginTop: isMobile ? 100 : 0 }}>
-                <div className="tutor-bg-photo bg_image bg_image--22 height-350"></div>
-                <div
-                  className="rbt-tutor-information"
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <div className="rbt-tutor-information-left" style={{ textAlign: isMobile ? "center" : "left" }}>
-                    <div className="thumbnail rbt-avatars size-lg">
-                      <ImageTag
-                        alt={`${pageData.user.name} - ${pageData.qualification}`}
-                        width="250"
-                        height="250"
-                        src={`${imagePath}/${pageData.user.profile}`}
-                        style={{ borderRadius: 10, padding: 0, width: 140, height: 130 }}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="tutor-content">
-                      <h1 className="title" style={{ color: whiteColor, fontSize: isMobile ? "30px" : "36px", margin: 4 }}>
-                        {pageData.user.name}
-                      </h1>
-                      <h2 className="title" style={{ color: whiteColor, fontSize: isMobile ? "20px" : "24px", fontWeight: 500 }}>
-                        {pageData.profile_type}
-                      </h2>
-                      <h3 className="title" style={{ color: whiteColor, fontSize: isMobile ? "18px" : "20px", fontWeight: 400 }}>
-                        {pageData.qualification}
-                      </h3>
-                      <ul className="rbt-meta rbt-meta-white mt--5">
-                        <li><i className="feather-message-circle"></i> {pageData.language_spoken}</li>
-                        <li><i className="feather-map-pin"></i> {pageData.state}</li>
-                        <li><i className="feather-users"></i> {pageData.user?.gender || "-"}</li>
-                      </ul>
-                    </div>
-                  </div>
+      {/* Premium Dark Green Header */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, #0f3d2f, #138556)", // dark green gradient
+          borderRadius: 20,
+          margin: "20px auto",
+          padding: isMobile ? "100px 20px 40px" : "140px 40px 50px", // pushed content down
+          maxWidth: 1100,
+          boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
+          position: "relative",
+          color: "#fff",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: "center",
+            gap: isMobile ? 20 : 40,
+          }}
+        >
+          {/* Profile Picture */}
+          <div
+            style={{
+              flexShrink: 0,
+              boxShadow: "0px 4px 20px rgba(0,0,0,0.3)",
+              borderRadius: 15,
+              overflow: "hidden",
+              marginTop: isMobile ? 20 : 0,
+            }}
+          >
+            <ImageTag
+              alt={`${pageData.user.name} - ${pageData.qualification}`}
+              src={`${imagePath}/${pageData.user.profile}`}
+              width={isMobile ? 120 : 150}
+              height={isMobile ? 120 : 150}
+              style={{ objectFit: "cover", borderRadius: 15 }}
+            />
+          </div>
 
-                  {/* Buttons side by side even on mobile */}
-                  <div style={{ marginTop: 20, display: "flex", gap: 10, flex: isMobile ? "1 1 100%" : "none" }}>
-                    <button
-                      onClick={handleClick}
-                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
-                    >
-                      Book Now
-                    </button>
-                    <button
-                      onClick={handleShare}
-                      style={{ flex: 1, backgroundColor: "white", borderRadius: 4, padding: "10px 30px", border: "1px solid #ccc", cursor: "pointer" }}
-                    >
-                      Share Profile
-                    </button>
-                  </div>
-                </div>
-              </div>
+          {/* Info */}
+          <div style={{ flex: 1, textAlign: isMobile ? "center" : "left" }}>
+            <h1 style={{ color: "#fff", fontSize: isMobile ? 24 : 32, marginBottom: 5, fontWeight: 700 }}>
+              {pageData.user.name}
+            </h1>
+            <h2 style={{ color: "#fff", fontSize: isMobile ? 18 : 22, fontWeight: 500, marginBottom: 5 }}>
+              {pageData.profile_type}
+            </h2>
+            <h3 style={{ color: "#fff", fontSize: isMobile ? 14 : 16, fontWeight: 400, marginBottom: 10 }}>
+              {pageData.qualification}
+            </h3>
+
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                display: "flex",
+                gap: 15,
+                justifyContent: isMobile ? "center" : "flex-start",
+                fontSize: 13,
+                marginBottom: 15,
+              }}
+            >
+              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
+                <i className="feather-message-circle" style={{ color: "#fff" }}></i>
+                <span style={{ color: "#fff" }}>{pageData.language_spoken}</span>
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
+                <i className="feather-map-pin" style={{ color: "#fff" }}></i>
+                <span style={{ color: "#fff" }}>{pageData.state}</span>
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: 5, color: "#fff" }}>
+                <i className="feather-users" style={{ color: "#fff" }}></i>
+                <span style={{ color: "#fff" }}>{pageData.user?.gender || "-"}</span>
+              </li>
+            </ul>
+
+            {/* Buttons */}
+            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10 }}>
+              <button
+                onClick={handleClick}
+                style={{
+                  flex: 1,
+                  padding: "10px 20px",
+                  borderRadius: 25,
+                  background: "linear-gradient(90deg, #00c6ff, #0072ff)",
+                  color: "#fff",
+                  fontWeight: 600,
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  transition: "0.3s transform",
+                }}
+                onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+              >
+                Book Now
+              </button>
+
+              <button
+                onClick={handleShare}
+                style={{
+                  flex: 1,
+                  padding: "10px 20px",
+                  borderRadius: 25,
+                  background: "linear-gradient(90deg, #43e97b, #38f9d7)",
+                  color: "#fff",
+                  fontWeight: 600,
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  transition: "0.3s transform",
+                }}
+                onMouseEnter={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+              >
+                Share Profile
+              </button>
             </div>
           </div>
         </div>
