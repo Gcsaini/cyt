@@ -127,7 +127,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
           zIndex: 10,
           display: "flex",
           justifyContent: "center",
-          padding: isMobile ? "0 0px" : 0,
+          padding: isMobile ? "0 10px" : 0,
         }}
       >
         <div
