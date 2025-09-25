@@ -53,8 +53,8 @@ export default function Banner() {
     <section
       className="rbt-banner-area rbt-banner-1"
       style={{
-        paddingTop: isMobile ? "10px" : "0px", // padding can't be negative
-  marginTop: isMobile ? "0px" : "-60px", // negative shift
+        paddingTop: isMobile ? "0px" : "0px", // padding can't be negative
+  marginTop: isMobile ? "-40px" : "-60px", // negative shift
   paddingBottom: isMobile ? "30px" : "30px",
       }}
     >
@@ -99,23 +99,24 @@ export default function Banner() {
                 )}
       {/* Google Rating + Tagline (Only Mobile) */}
 {isMobile && (
-  <div style={{ textAlign: "center", marginBottom: 20 }}>
+  <div style={{ textAlign: "center", marginBottom: 10 }}>
     {/* Google Business Link (Top Icon) */}
     <a
-      href="https://www.google.com/maps/place/12001203109189345391" // <-- apna Google Business link daalo
+      href="https://search.google.com/local/writereview?placeid=12001203109189345391
+" // <-- apna Google Business link daalo
       target="_blank"
       rel="noopener noreferrer"
       style={{
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: 12,
+        marginBottom: 2, // 🔥 gap kam kiya (pehle 12 tha)
       }}
     >
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
         alt="Google Business"
-        style={{ width: "42px", height: "42px" }} // bigger size
+        style={{ width: "42px", height: "42px" }}
       />
     </a>
 
@@ -125,8 +126,8 @@ export default function Banner() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        gap: "10px",
-        marginBottom: 14,
+        gap: "8px",
+        marginBottom: 12, // thoda natural spacing tagline ke liye
       }}
     >
       {/* 5 Golden Stars */}
@@ -164,6 +165,7 @@ export default function Banner() {
     </div>
   </div>
 )}
+
 
 
 
