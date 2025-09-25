@@ -130,7 +130,7 @@ export default function State() {
         }
         .state-name {
           font-weight: 700;
-          font-size: 1.8rem; /* increased font size */
+          font-size: 1.9rem; /* increased font size */
           color: #000;
         }
         .state-loadmore {
