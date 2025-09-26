@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet"; // SEO ke liye
 import Footer from "../components/footer";
 import Banner from "../components/home/banner";
 import State from "../components/home/state";
@@ -17,30 +18,49 @@ import Brands from "../components/about/brands";
 
 
 export default function HomePage() {
+  // const [showPopup, setShowPopup] = useState(false); // agar popup use karna ho
 
   return (
     <div id="__next">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Affordable Psychologists Network | In-Person & Online Therapy | Choose Your Therapist</title>
+        <meta
+          name="description"
+          content="Connect with our affordable network of psychologists at Choose Your Therapist. Book professional in-person or online therapy sessions, mental health counseling, and personalized support from expert psychologists near you.
+"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://chooseyourtherapist.in/" />
+      </Helmet>
+
       <main className="">
+        {/* Navbar */}
         <MyNavbar />
+
         <main className="rbt-main-wrapper">
+          {/* Homepage Sections */}
           <Banner />
-         
-            <Services />
-           <State/>
-         <PromationalBanner />
+          <Services />
+          <State />
+          <PromationalBanner />
           <ProfileCard />
           <Counter />
           <HomeWorkshop isWhite={false} />
           <Blogs />
 
-          <Brands/>
+          <Brands />
+
           <Feedback />
-         
+
           <CallToAction />
           <NewsLetter />
-          {/* <Popup open={showPopup} onClose={() => setShowPopup(false)} /> */}
+
+          {/* Payment Success Modal (Optional) */}
+          {/* <PaymentSuccessModal open={showPopup} onClose={() => setShowPopup(false)} /> */}
         </main>
-      
+
+        {/* Footer */}
         <Footer />
       </main>
     </div>
