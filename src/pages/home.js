@@ -14,6 +14,7 @@ import Services from "../components/home/services";
 import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
 import PaymentSuccessModal from "../components/view_profile/payment-success-popup";
+
 import Brands from "../components/about/brands";
 
 
@@ -22,13 +23,18 @@ export default function HomePage() {
 
   return (
     <div id="__next">
-      {/* SEO Meta Tags */}
+      {/* SEO Meta Tags with Local SEO & Keywords */}
       <Helmet>
-        <title>Affordable Psychologists Network | In-Person & Online Therapy | Choose Your Therapist</title>
+        <title>
+          Affordable Psychologists Network in Noida | In-Person & Online Therapy | Choose Your Therapist
+        </title>
         <meta
           name="description"
-          content="Connect with our affordable network of psychologists at Choose Your Therapist. Book professional in-person or online therapy sessions, mental health counseling, and personalized support from expert psychologists near you.
-"
+          content="Connect with our trusted network of psychologists in Noida through Choose Your Therapist. Book affordable in-person or online therapy sessions, mental health counseling, and expert support from local psychologists near you."
+        />
+        <meta
+          name="keywords"
+          content="Affordable Psychologists, Network of Psychologists, Online Therapy, In-Person Therapy, Mental Health Counseling, Expert Psychologists, Choose Your Therapist, Psychologists in Noida, Local Therapy Noida"
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://chooseyourtherapist.in/" />
@@ -49,10 +55,10 @@ export default function HomePage() {
           <HomeWorkshop isWhite={false} />
           <Blogs />
 
+          
           <Brands />
-
-          <Feedback />
-
+          
+          
           <CallToAction />
           <NewsLetter />
 

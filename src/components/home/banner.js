@@ -58,20 +58,22 @@ export default function Banner() {
   paddingBottom: isMobile ? "30px" : "30px",
       }}
     >
-      <Helmet>
-        <title>
-          Top Verified Psychologists in India | Online & In-Person Therapy Sessions
-        </title>
-        <meta
-          name="description"
-          content="Find certified psychologists and therapists across India. Book online or in-person counselling sessions, mental health support, and therapy with trusted experts in Noida and beyond."
-        />
-        <meta
-          name="keywords"
-          content="verified psychologists India, online therapy India, book psychologist online, mental health counselling, in-person therapy, Noida therapists, affordable therapy sessions, certified therapists, wellness support, trusted counselling"
-        />
-      </Helmet>
-
+    <Helmet>
+            <title>
+              Affordable Psychologists Network in Noida | In-Person & Online Therapy | Choose Your Therapist
+            </title>
+            <meta
+              name="description"
+              content="Connect with our trusted network of psychologists in Noida through Choose Your Therapist. Book affordable in-person or online therapy sessions, mental health counseling, and expert support from local psychologists near you."
+            />
+            <meta
+              name="keywords"
+              content="Affordable Psychologists, Network of Psychologists, Online Therapy, In-Person Therapy, Mental Health Counseling, Expert Psychologists, Choose Your Therapist, Psychologists in Noida, Local Therapy Noida"
+            />
+            <meta name="robots" content="index, follow" />
+            <link rel="canonical" href="https://chooseyourtherapist.in/" />
+          </Helmet>
+          
       <div className="container mt--60">
         <div className="row justify-content-between align-items-center">
           {/* Banner Text */}
