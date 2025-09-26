@@ -5,7 +5,13 @@ import GujaratImg from "../../assets/img/Gujrat.png";
 import UttarakhandImg from "../../assets/img/Uttarakhand.png";
 import DelhiImg from "../../assets/img/Delhi.png";
 import RajasthanImg from "../../assets/img/Rajasthan.png";
-
+import AndhraPradeshImg from "../../assets/img/AndhraPradesh.jpg";
+import arunachalpradeshImg from "../../assets/img/arunachalpradesh.jpg";
+import assamImg from "../../assets/img/assam.jpg";
+import biharImg from "../../assets/img/bihar.webp";
+import haryanaImg from "../../assets/img/gurgaon.png";
+import chattishgarhImg from "../../assets/img/chattishgarh.avif";
+import goaImg from "../../assets/img/goa.webp";
 const fallbackImage = GujaratImg;
 
 const stateImages = {
@@ -13,6 +19,13 @@ const stateImages = {
   Uttarakhand: UttarakhandImg,
   Delhi: DelhiImg,
   Rajasthan: RajasthanImg,
+  "Andhra Pradesh": AndhraPradeshImg, 
+  "Arunachal Pradesh": arunachalpradeshImg,// 
+  "Assam": assamImg, 
+   "Bihar": biharImg, 
+   "Haryana": haryanaImg, 
+   "Chhattisgarh": chattishgarhImg, 
+    "Goa": goaImg, 
 };
 
 export default function State() {
@@ -30,7 +43,8 @@ export default function State() {
           <div className="state-subtitle">
             <hr />
             <span>
-              Available in <span className="highlight">{filteredStates.length}</span> states
+              Available in{" "}
+              <span className="highlight">{filteredStates.length}</span> states
             </span>
             <hr />
           </div>
@@ -42,7 +56,9 @@ export default function State() {
             <a key={index} href="#" className="state-card">
               <div
                 className="state-image"
-                style={{ backgroundImage: `url(${stateImages[state] || fallbackImage})` }}
+                style={{
+                  backgroundImage: `url(${stateImages[state] || fallbackImage})`,
+                }}
               ></div>
               <div className="state-name">{state}</div>
             </a>
@@ -178,7 +194,7 @@ export default function State() {
             height: 130px; /* taller for mobile */
           }
           .state-image {
-            width: 90px;  /* larger image */
+            width: 90px; /* larger image */
             height: 90px;
             margin: 0 16px;
           }
