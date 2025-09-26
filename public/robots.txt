@@ -1,3 +1,12 @@
 # https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
-Disallow:
+Disallow: /
+
+Allow: /$
+Allow: /about-us
+Allow: /view-all-therapist
+Allow: /therapist-registration
+
+Sitemap: https://chooseyourtherapist.in/sitemap.xml
+
