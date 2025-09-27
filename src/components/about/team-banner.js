@@ -1,3 +1,6 @@
+import React from "react";
+import ImageTag from "../../utils/image-tag";
+
 import TeamImg from "../../assets/img/deepdirec.png";
 import TeamImg3 from "../../assets/img/ffabb.png";
 import TeamImg4 from "../../assets/img/akt.png";
@@ -6,203 +9,239 @@ import vibhor from "../../assets/img/vibhor.png";
 import RitikaGupta from "../../assets/img/RitikaGupta.png";
 import anushka from "../../assets/img/anushka.png";
 import Ayushi from "../../assets/img/ayushi.png";
-import "swiper/css";
-import "swiper/css/pagination";
-import React from "react";
-import ImageTag from "../../utils/image-tag";
-import { Link } from "react-router-dom";
 
 const teamInfo = [
   {
     name: "Mr. Deepak Kumar",
-    deg: "Founder & Director |Psychologist (B.A, M.A, Ph.D Psychology-NET)",
-    address: " Uttarakhand, IN",
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    deg: "Founder & Director | Psychologist (B.A, M.A, Ph.D Psychology-NET)",
+    address: "Uttarakhand, IN",
     profile: TeamImg,
     content:
       "As a practicing psychologist, our Director’s vision is to create a world where mental wellness is valued equally to physical health and seeking help is a sign of strength.",
   },
-
   {
     name: "Mr. Ashish Kumar Thakran",
-    deg: "Co-Founder | Enterepreneur",
-    address: " Uttarakhand, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    deg: "Co-Founder | Entrepreneur",
+    address: "Uttarakhand, IN",
     profile: TeamImg4,
     content:
-      "As a co-founder, the vision is to integrate technology with care, making mental health support more approachable, scalable, and impactful for individuals and communities.", },
-
-  
+      "As a co-founder, the vision is to integrate technology with care, making mental health support more approachable, scalable, and impactful for individuals and communities.",
+  },
   {
     name: "Ms. Fabiha Sultana Shaik",
-    deg: "Cheif Advisor | Psychologist",
-    address: " Andhra Pradesh, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    deg: "Chief Advisor | Psychologist",
+    address: "Andhra Pradesh, IN",
     profile: TeamImg3,
     content:
-      "As Chief Advisor and Psychologist, the vision is to explore the intricacies of the human mind and implement innovative strategies that enhance our platform, promoting stigma-free care and holistic well-being for all.", },
+      "As Chief Advisor and Psychologist, the vision is to explore the intricacies of the human mind and implement innovative strategies that enhance our platform, promoting stigma-free care and holistic well-being for all.",
+  },
   {
     name: "Ms. Ayushi Pandwal",
     deg: "External Research & Academic Advisor | Assistant Professor",
-    address: " Noida, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    address: "Noida, IN",
     profile: Ayushi,
     content:
-      "As External Research and Academic Advisor, the vision is to strengthen scholarly initiatives, promote evidence-based practices, and support meaningful academic growth for individuals and institutions.", },
+      "As External Research and Academic Advisor, the vision is to strengthen scholarly initiatives, promote evidence-based practices, and support meaningful academic growth for individuals and institutions.",
+  },
   {
     name: "Ms. Ritika Gupta",
     deg: "Operations Lead",
-    address: " Noida, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    address: "Noida, IN",
     profile: RitikaGupta,
     content:
-      "She is the Operations Lead who blends efficiency with empathy, ensuring that our platform runs seamlessly while staying true to its mission of holistic wellbeing. She is a creative thinker and analytical planner, turning ideas into action and building processes that drive meaningful impact.",
+      "She is the Operations Lead who blends efficiency with empathy, ensuring that our platform runs seamlessly while staying true to its mission of holistic wellbeing.",
   },
   {
     name: "Ms. Anushka Singh",
     deg: "Community Growth Lead | M.A Clinical Psychology",
-    address: " Ranchi, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    address: "Ranchi, IN",
     profile: anushka,
     content:
-      "She is the Community Growth Lead, passionate about building strong, supportive networks that promote holistic wellbeing. She is a strategic thinker and relationship builder, creating initiatives that connect people, encourage collaboration, and drive meaningful community impact.",
+      "She is the Community Growth Lead, passionate about building strong, supportive networks that promote holistic wellbeing.",
   },
-  
   {
     name: "Mr. Gopichand Saini",
-    deg: "Chief Technology officer",
-    address: " Noida, Uttarpradesh, IN",
-
-    instagram: "https://www.instagram.com/g.c.saini?igsh=ZzVqajVwcHc0Mjdq",
-    facebook: "https://www.facebook.com/gopichand.saini.3?mibextid=ZbWKwL",
-    linkdin: "https://www.linkedin.com/in/gopichand-saini-0a979313b/",
+    deg: "Chief Technology Officer",
+    address: "Noida, Uttar Pradesh, IN",
     profile: TeamImg5,
     content:
-      "Welcome to CYT, where innovation meets excellence. As the Chief Technology Officer, I am proud to lead a dedicated team committed to delivering cutting-edge solutions that drive your success. Our passion for technology, combined with our customer-centric approach, empowers us to create impactful, sustainable, and scalable innovations. Join us on our journey to shape the future, one breakthrough at a time.",
+      "Welcome to CYT, where innovation meets excellence. As the CTO, I am proud to lead a dedicated team committed to delivering impactful and scalable innovations.",
   },
   {
     name: "Mr. Vibhor Verma",
     deg: "Legal Advisor | Advocate",
-    address: " Uttarakhand, IN",
-
-    instagram: "",
-    facebook: "",
-    linkdin: "",
+    address: "Uttarakhand, IN",
     profile: vibhor,
     content:
-      "I am impassioned about the intricacies of the human mind and the way it works.  Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas and projects aimed at enhancing the quality of our work to provide stigma free and holistic wellbeing through our platform",
+      "I am impassioned about the intricacies of the human mind and the way it works. Also, a creative thinker and analyst who enjoys generating out-of-the-box ideas.",
   },
- 
 ];
-export default function TeamBanner() {
-  const [team, setTeam] = React.useState(teamInfo[0]);
-  const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
-  const handleClick = (id) => {
-    setTeam(teamInfo[id]);
-    setSelectedIndex(id);
-  };
+export default function TeamBanner() {
   return (
-    <div
-      className="rbt-team-area bg-color-white rbt-section-gapBottom"
-      style={{ marginTop: 40 }}
-    >
-      <div className="container">
-        <div className="row mb--60">
-          <div className="col-lg-12">
-            <div className="section-title text-center">
-              <h2 className="title">The Faces Behind the Vision</h2>
-              <p className="description mt--10">
-              "Choose Your Therapist" vision comes alive through people. Each face represents compassion, skill, and dedication — working together to build a platform where mental well-being is prioritized and every journey is valued.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="row g-5">
-          <div className="col-lg-7">
-            <div className="rbt-team-tab-content tab-content" id="myTabContent">
-              <div
-                className="tab-pane fade active show"
-                id="team-tab0"
-                role="tabpanel"
-                aria-labelledby="team-tab0-tab"
-              >
-                <div className="inner">
-                  <div className="rbt-team-thumbnail">
-                    <div className="thumb">
-                      <ImageTag
-                        alt="Testimonial"
-                        height="555"
-                        width="415"
-                        src={team.profile}
-                      />
-                    </div>
-                  </div>
-                  <div className="rbt-team-details">
-                    <div className="author-info">
-                      <h4 className="title">{team.name}</h4>
-                      <span className="designation theme-gradient">
-                        {team.deg}
-                      </span>
-                      <span className="team-form">
-                        <i className="feather-map-pin"></i>
-                        <span className="location">{team.address}</span>
-                      </span>
-                    </div>
-                    <p>{team.content}</p>
-                   
-                  </div>
+    <>
+      <style>{`
+        .team-section {
+          padding: 60px 20px;
+          background: #fff;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 32px;
+          font-weight: 700;
+          margin-bottom: 10px;
+          color: #222;
+        }
+
+        .section-subtitle {
+          text-align: center;
+          max-width: 700px;
+          margin: 0 auto 40px auto;
+          font-size: 16px;
+          color: #666;
+          line-height: 1.6;
+        }
+
+        .team-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .team-card {
+          background: #fafafa;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+          border: 1px solid #e5e5e5;
+        }
+
+        .team-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+          border: 2px solid #22c55e;
+        }
+
+        .team-img {
+          width: 100%;
+          height: 260px;
+          overflow: hidden;
+        }
+
+        .team-img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Desktop default */
+          transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-img img {
+          transform: scale(1.05);
+        }
+
+        .team-info {
+          padding: 15px 20px 25px 20px;
+          text-align: center;
+        }
+
+        .team-info h4 {
+          font-size: 20px;
+          font-weight: 700;
+          color: #111;
+          margin-bottom: 6px;
+        }
+
+        .team-info .deg {
+          display: block;
+          font-size: 14px;
+          font-weight: 600;
+          background: linear-gradient(90deg, #16a34a, #22c55e, #4ade80);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 6px;
+        }
+
+        .team-info .address {
+          font-size: 13px;
+          color: #777;
+          margin-bottom: 10px;
+        }
+
+        .team-info .content {
+          font-size: 14px;
+          color: #555;
+          line-height: 1.5;
+        }
+
+        /* Desktop */
+        @media (min-width: 992px) {
+          .team-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+          .team-img {
+            height: 220px;
+          }
+          .team-img img {
+            object-fit: cover; /* Desktop: cover */
+          }
+        }
+
+        /* Tablet */
+        @media (min-width: 600px) and (max-width: 991px) {
+          .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .team-img {
+            height: 200px;
+          }
+          .team-img img {
+            object-fit: cover; /* Tablet: cover */
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 599px) {
+          .team-grid {
+            grid-template-columns: 1fr;
+          }
+          .team-img {
+            height: 180px;
+          }
+          .team-img img {
+            object-fit: contain; /* Mobile: contain to avoid face cut */
+          }
+        }
+      `}</style>
+
+      <div className="team-section">
+        <div className="container">
+          <h2 className="section-title">The Faces Behind the Vision</h2>
+          <p className="section-subtitle">
+            "Choose Your Therapist" vision comes alive through people. Each face
+            represents compassion, skill, and dedication — working together to
+            build a platform where mental well-being is prioritized and every
+            journey is valued.
+          </p>
+
+          <div className="team-grid">
+            {teamInfo.map((member, index) => (
+              <div className="team-card" key={index}>
+                <div className="team-img">
+                  <ImageTag src={member.profile} alt={member.name} />
+                </div>
+                <div className="team-info">
+                  <h4>{member.name}</h4>
+                  <span className="deg">{member.deg}</span>
+                  <p className="address">{member.address}</p>
+                  <p className="content">{member.content}</p>
                 </div>
               </div>
-              <div className="top-circle-shape"></div>
-            </div>
-          </div>
-          <div className="col-lg-5">
-            <ul className="rbt-team-tab-thumb nav nav-tabs" id="myTab">
-              {teamInfo.map((item, index) => {
-                return (
-                  <li key={index}>
-                    <Link
-                      onClick={() => handleClick(index)}
-                      id="team-tab0-tab"
-                      className={index === selectedIndex ? "active" : ""}
-                      aria-selected={index === selectedIndex ? "true" : "false"}
-                    >
-                      <div className="rbt-team-thumbnail">
-                        <div className="thumb">
-                          <ImageTag
-                            alt="Testimonial"
-                            height="555"
-                            width="415"
-                            src={item.profile}
-                          />
-                        </div>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
