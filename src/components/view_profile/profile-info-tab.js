@@ -117,7 +117,7 @@ export default function ProfileInfoTab({ pageData }) {
                 {/* About Me */}
                 <div style={glassCard}>
                   <h4 className="rbt-title-style-3 mb-3">About Me</h4>
-                  <p style={{ fontSize: 16, lineHeight: 1.6, color: "#333" }}>
+                  <p style={{ fontSize: 16, lineHeight: 1.6, color: "#333",  textAlign: "justify" }}>
                     {pageData.user.bio}
                   </p>
                 </div>
