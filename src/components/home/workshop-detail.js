@@ -129,7 +129,7 @@ export default function WorkshopDetail(props) {
                         <h4 className="title mb--20">Event Description</h4>
                       </div>
                       <div
-                        style={{ textAlign: "justify", lineHeight: "1.8", color: "#333" }}
+                       
                         dangerouslySetInnerHTML={{ __html: data.desc }}
                       />
                     </div>
