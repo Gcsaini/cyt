@@ -30,36 +30,85 @@ export default function WellnessCard({ data }) {
       >
         {/* Image */}
         <Link to={`/workshop-detail/${data._id}`} style={{ display: "block" }}>
-          <ImageTag
-            alt={truncateString(data.title, 20)}
-            loading="lazy"
+          <div
             style={{
-              height: 200,
-              width: "100%",
-              objectFit: "cover",
-              transition: "transform 0.3s",
+              padding: 12, // 👈 gives breathing space
+              borderRadius: 16,
+              overflow: "hidden",
             }}
-            src={`${imagePath}/${data.workshop_image}`}
-          />
+          >
+            <ImageTag
+              alt={truncateString(data.title, 20)}
+              loading="lazy"
+              style={{
+                height: 200,
+                width: "100%",
+                objectFit: "cover",
+                transition: "transform 0.3s",
+                borderRadius: 12, // 👈 rounded image edges
+              }}
+              src={`${imagePath}/${data.workshop_image}`}
+            />
+          </div>
         </Link>
 
         {/* Card Body */}
-        <div style={{ padding: 16, display: "flex", flexDirection: "column", gap: 10 }}>
+        <div
+          style={{
+            padding: 16,
+            display: "flex",
+            flexDirection: "column",
+            gap: 10,
+          }}
+        >
           {/* Price */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div style={{ fontWeight: 600, fontSize: 16, color: "#007f99" }}>₹{data.price}</div>
-            <div style={{ fontSize: 14, color: "#888", textDecoration: "line-through" }}>₹{data.mrp}</div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ fontWeight: 600, fontSize: 16, color: "#007f99" }}>
+              ₹{data.price}
+            </div>
+            <div
+              style={{
+                fontSize: 14,
+                color: "#888",
+                textDecoration: "line-through",
+              }}
+            >
+              ₹{data.mrp}
+            </div>
           </div>
 
           {/* Title */}
-          <h4 style={{ margin: 0, fontSize: 16, fontWeight: 600, color: "#333" }}>
-            <Link to={`/workshop-detail/${data._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+          <h4
+            style={{
+              margin: 0,
+              fontSize: 16,
+              fontWeight: 600,
+              color: "#333",
+            }}
+          >
+            <Link
+              to={`/workshop-detail/${data._id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               {truncateString(data.title, 60)}
             </Link>
           </h4>
 
           {/* Meta Info */}
-          <div style={{ display: "flex", gap: 12, fontSize: 13, color: "#555" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 12,
+              fontSize: 13,
+              color: "#555",
+            }}
+          >
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
               <FaTag color="#007f99" /> {data.category}
             </div>
@@ -68,8 +117,17 @@ export default function WellnessCard({ data }) {
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#555" }}>
-            <FaCalendarAlt color="#28a745" /> {data.event_date} ({data.event_time})
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              fontSize: 13,
+              color: "#555",
+            }}
+          >
+            <FaCalendarAlt color="#28a745" /> {data.event_date} (
+            {data.event_time})
           </div>
 
           {/* Check Now Button */}
@@ -87,8 +145,12 @@ export default function WellnessCard({ data }) {
               textDecoration: "none",
               transition: "all 0.3s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.05)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "scale(1)")
+            }
           >
             Check Now
           </Link>
