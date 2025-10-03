@@ -40,11 +40,14 @@ export default function WorkshopDetail(props) {
       </Helmet>
 
       {/* Breadcrumb & Header */}
-      <div className="rbt-breadcrumb-default rbt-breadcrumb-style-3">
+      <div
+        className="rbt-breadcrumb-default rbt-breadcrumb-style-3"
+        style={{ paddingTop: "20px", marginTop: "0px" }}
+      >
         <div className="breadcrumb-inner breadcrumb-dark">
           <LazyImage alt="BG Image" width="1920" height="1408" src={BgImage} />
         </div>
-        <div className="container mt--40">
+        <div className="container mt--20">
           <div className="row">
             <div className="col-lg-8">
               <div className="content text-start">
@@ -62,7 +65,9 @@ export default function WorkshopDetail(props) {
                   </li>
                 </ul>
                 <h2 className="title mb--0">{data.title}</h2>
-                <p className="description">{data.short_desc}</p>
+                <p className="description" style={{ textAlign: "justify" }}>
+                  {data.short_desc}
+                </p>
                 <div className="rbt-author-meta mb--20">
                   <div className="rbt-avater">
                     <Link to={`/view-profile/${data.post_by._id}`}>
@@ -100,7 +105,7 @@ export default function WorkshopDetail(props) {
       </div>
 
       {/* Workshop Details */}
-      <div className="rbt-course-details-area rbt-section-gap">
+      <div className="rbt-course-details-area rbt-section-gap" style={{ paddingTop: "30px" }}>
         <div className="container">
           <div className="row g-5">
             <div className="col-lg-8">
@@ -123,7 +128,10 @@ export default function WorkshopDetail(props) {
                       <div className="section-title">
                         <h4 className="title mb--20">Event Description</h4>
                       </div>
-                      <div dangerouslySetInnerHTML={{ __html: data.desc }} />
+                      <div
+                        style={{ textAlign: "justify", lineHeight: "1.8", color: "#333" }}
+                        dangerouslySetInnerHTML={{ __html: data.desc }}
+                      />
                     </div>
                   </div>
                 </div>
