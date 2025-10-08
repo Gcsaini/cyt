@@ -33,7 +33,8 @@ export default function TherapistRegistration() {
   const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.toLowerCase());
 
   const handleSubmit = async () => {
-    setError(""); setSuccess("");
+    setError(""); 
+    setSuccess("");
 
     if (!profileType) { setError("Please select profile type"); return; }
     if (!mode) { setError("Please select service mode"); return; }
