@@ -26,11 +26,11 @@ export default function HomePage() {
       {/* SEO Meta Tags with Local SEO & Keywords */}
       <Helmet>
         <title>
-          Affordable Psychologists Network in Noida | In-Person & Online Therapy | Choose Your Therapist
+          Affordable Psychologists Network| In-Person & Online Therapy | Choose Your Therapist
         </title>
         <meta
           name="description"
-          content="Connect with our trusted network of psychologists in Noida through Choose Your Therapist. Book affordable in-person or online therapy sessions, mental health counseling, and expert support from local psychologists near you."
+          content="Connect with our trusted network of psychologists through Choose Your Therapist. Book affordable in-person or online therapy sessions, mental health counseling, and expert support from local psychologists near you."
         />
         <meta
           name="keywords"

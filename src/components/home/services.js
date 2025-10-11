@@ -11,80 +11,8 @@ import LazyImage from "../../utils/lazy-image";
 export default function Services() {
   return (
     <>
-      {/* Inline CSS for micro-interactions */}
-      <style>{`
-        .service-card {
-          display: block;
-          background: #fff;
-          border-radius: 20px;
-          padding: 20px;
-          text-align: center;
-          transition: all 0.4s ease;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-          overflow: hidden;
-          position: relative;
-        }
-        .service-card .icons img {
-          transition: transform 0.4s ease;
-        }
-        .service-card:hover .icons img {
-          transform: scale(1.15) rotate(3deg);
-        }
-        .service-card .title {
-          font-weight: 700;
-          font-size: 1.90rem;
-          margin-top: 12px;
-          transition: color 0.3s ease;
-        }
-        .service-card:hover .title {
-          color: #228756;
-        }
-        .service-card .rbt-btn-link {
-          display: inline-flex;
-          align-items: center;
-          font-weight: 600;
-          margin-top: 10px;
-          color: #007f99;
-          position: relative;
-          overflow: hidden;
-        }
-        .service-card .rbt-btn-link i {
-          margin-left: 6px;
-          transition: transform 0.3s ease;
-        }
-        .service-card:hover .rbt-btn-link i {
-          transform: translateX(5px);
-        }
-        .service-card::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: 20px;
-          border: 2px solid transparent;
-          background: linear-gradient(90deg,#228756,#007f99,#1e90ff);
-          background-size: 300% 300%;
-          opacity: 0;
-          transition: opacity 0.4s ease;
-          z-index: -1;
-        }
-        .service-card:hover::after {
-          opacity: 1;
-          animation: borderGlow 3s linear infinite;
-        }
-        @keyframes borderGlow {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .special-offer {
-          background: linear-gradient(135deg, #fff9e6, #fff);
-          border: 2px dashed #51ad14ff;
-        }
-        .special-offer:hover .title {
-          color: #22bfe6ff;
-        }
-      `}</style>
-
+ 
+      {/* Services Section */}
       <div
         className="rbt-categories-area bg-color-white rbt-section-gapBottom"
         style={{ marginTop: 0 }}
@@ -99,7 +27,7 @@ export default function Services() {
                 <h2 className="title">
                   <span className="theme-gradient">Personalized Care for You</span>
                 </h2>
-                <p>
+                <p style={{ textAlign: "justify" }}>
                   Personalized care that puts you first. From emotional support to
                   mental clarity, we create a safe space to nurture your unique path
                   toward lasting well-being.
@@ -260,6 +188,100 @@ export default function Services() {
                 </div>
               </a>
             </div>
+     {/* Premium Banner Section */}
+      <div style={{
+        background: "linear-gradient(90deg, #22bb33, #1f7f25)",
+        borderRadius: 12,
+        padding: "20px 15px",
+        marginBottom: 30,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#fff",
+        fontWeight: 600,
+        fontSize: "1.2rem",
+        gap: 15,
+        flexWrap: "wrap",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
+      }}>
+        <i className="feather-phone-call" style={{ fontSize: "1.5rem" }}></i>
+        <span>To Book a Session Call Now: <a href="tel:+918077757951" style={{ color: "#fff", textDecoration: "underline" }}>+91 80777 57951</a> – Available 24/7</span>
+      </div>
+
+      {/* Inline CSS for micro-interactions */}
+      <style>{`
+        .service-card {
+          display: block;
+          background: #fff;
+          border-radius: 20px;
+          padding: 20px;
+          text-align: center;
+          transition: all 0.4s ease;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          overflow: hidden;
+          position: relative;
+        }
+        .service-card .icons img {
+          transition: transform 0.4s ease;
+        }
+        .service-card:hover .icons img {
+          transform: scale(1.15) rotate(3deg);
+        }
+        .service-card .title {
+          font-weight: 700;
+          font-size: 0rem;
+          margin-top: 12px;
+          transition: color 0.3s ease;
+        }
+        .service-card:hover .title {
+          color: #228756;
+        }
+        .service-card .rbt-btn-link {
+          display: inline-flex;
+          align-items: center;
+          font-weight: 600;
+          margin-top: 10px;
+          color: #007f99;
+          position: relative;
+          overflow: hidden;
+        }
+        .service-card .rbt-btn-link i {
+          margin-left: 6px;
+          transition: transform 0.3s ease;
+        }
+        .service-card:hover .rbt-btn-link i {
+          transform: translateX(5px);
+        }
+        .service-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          border: 2px solid transparent;
+          background: linear-gradient(90deg,#228756,#007f99,#1e90ff);
+          background-size: 300% 300%;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          z-index: -1;
+        }
+        .service-card:hover::after {
+          opacity: 1;
+          animation: borderGlow 3s linear infinite;
+        }
+        @keyframes borderGlow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .special-offer {
+          background: linear-gradient(135deg, #fff9e6, #fff);
+          border: 2px dashed #51ad14ff;
+        }
+        .special-offer:hover .title {
+          color: #22bfe6ff;
+        }
+      `}</style>
+
           </div>
         </div>
       </div>
