@@ -221,7 +221,7 @@ export default function TherapistRegistration() {
 
                 <div style={{ marginTop: 20 }}>
                   <Link
-                    to="/therapist-directory"
+                    to="/view-all-therapist"
                     style={{
                       display: "inline-block",
                       padding: "10px 20px",
