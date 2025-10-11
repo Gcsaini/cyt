@@ -75,10 +75,7 @@ export default function Footer() {
                     <li><a href="#">Workplace Stress & Burnout</a></li>
                     <li><a href="#">Self-Esteem & Confidence Building</a></li>
                     <li><a href="#">Mindfulness & Meditation</a></li>
-                    <li><a href="#">Parenting & Family Issues</a></li>
-                    <li><a href="#">Grief & Loss Support</a></li>
-                    <li><a href="#">Addiction & Recovery</a></li>
-                    <li><a href="#">Life Transitions & Coping</a></li>
+                    
                   </ul>
                 </div>
               </div>
@@ -110,11 +107,7 @@ export default function Footer() {
                     <li><a href="/therapist-registration">Sign Up</a></li>
                   </ul>
 
-                  <h5 className="ft-title mt-3">For Clients</h5>
-                  <ul className="ft-link">
-                    <li><a href="/view-all-therapist">Therapist Directory</a></li>
-                  </ul>
-
+        
                   <h5 className="ft-title mt-3">Professional Types</h5>
                   <ul className="ft-link">
                     <li><a href="#">Counselling Psychologist</a></li>
