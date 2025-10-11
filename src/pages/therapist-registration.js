@@ -2,11 +2,7 @@ import ImageTag from "../utils/image-tag";
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";
-import {
-  Dialog,
-  DialogContent,
-  DialogActions,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogActions } from "@mui/material";
 import { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -16,6 +12,7 @@ import { profileTypeList } from "../utils/static-lists";
 import { postData, postFormData } from "../utils/actions";
 import FormMessage from "../components/global/form-message";
 import FormProgressBar from "../components/global/form-progressbar";
+import { FaPhoneAlt } from "react-icons/fa"; // Icon for CTA
 
 export default function TherapistRegistration() {
   const [name, setName] = useState("");
@@ -116,18 +113,19 @@ export default function TherapistRegistration() {
     setLoading(false);
   };
 
-  const qualificationCriteria = [
-    { type: "Psychologist", icon: "🧠", criteria: "M.A./M.Sc in Psychology, Clinical Training" },
-    { type: "Counsellor", icon: "🤝", criteria: "Relevant Diploma/Certification in Counselling" },
-    { type: "Psychiatrist", icon: "💊", criteria: "MBBS + Psychiatry Specialization" },
-    { type: "Social Worker", icon: "🌱", criteria: "M.Phil in Psychiatric Social Work or equivalent" },
-  ];
-
   const joinSteps = [
     { icon: "📄", title: "Submit Resume", desc: "Send us your credentials for verification." },
     { icon: "✅", title: "Receive Approval", desc: "Within 7 days, get confirmation email for eligibility." },
     { icon: "💳", title: "Activate Profile", desc: "Complete one-time listing payment to create your profile." },
     { icon: "🌐", title: "Connect Independently", desc: "Manage visibility and connect with clients without employment constraints." },
+  ];
+
+  const premiumFeatures = [
+    { icon: "🏅", title: "Verified Badge", desc: "Stand out with a verified professional badge." },
+    { icon: "💎", title: "Featured Listings", desc: "Get featured for faster client acquisition." },
+    { icon: "📊", title: "Analytics Dashboard", desc: "Track profile views and client interest." },
+    { icon: "🗂", title: "Client Management", desc: "Manage appointments, payments, and feedback easily." },
+    { icon: "📣", title: "Marketing Support", desc: "Optional promotion to a wider audience." },
   ];
 
   return (
@@ -145,44 +143,20 @@ export default function TherapistRegistration() {
         <div className="container">
           <div className="row align-items-start g-5">
             <div className="col-lg-7">
-              <h1
-                style={{
-                  fontWeight: 700,
-                  fontSize: isMobile ? "28px" : "44px",
-                  color: "#002b5b",
-                  lineHeight: 1.3,
-                }}
-              >
+              <h1 style={{ fontWeight: 700, fontSize: isMobile ? "28px" : "44px", color: "#002b5b", lineHeight: 1.3 }}>
                 Join <span className="theme-gradient">India’s Verified Therapist Network</span>
               </h1>
-              <p
-                style={{
-                  marginTop: 15,
-                  fontSize: isMobile ? 16 : 18,
-                  color: "#5a5a5a",
-                  maxWidth: 550,
-                }}
-              >
+              {/* STARTING DESCRIPTION JUSTIFIED */}
+              <p style={{ marginTop: 15, fontSize: isMobile ? 16 : 18, color: "#5a5a5a", maxWidth: 550, textAlign: "justify" }}>
                 Build your verified professional profile, increase your client base, and become part of India’s largest mental health network. Remain fully independent while benefiting from a trusted platform for verified mental health professionals.
               </p>
 
-              {/* Premium Steps Section */}
+              {/* Steps Section */}
               <div style={{ marginTop: 30 }}>
                 <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Steps to Join:</h5>
                 <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
                   {joinSteps.map((step, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        background: "#ffffff",
-                        borderRadius: 12,
-                        padding: "15px 20px",
-                        boxShadow: "0 8px 20px rgba(0,0,0,0.05)",
-                        gap: 15,
-                      }}
-                    >
+                    <div key={idx} style={{ display: "flex", alignItems: "flex-start", background: "#ffffff", borderRadius: 12, padding: "15px 20px", boxShadow: "0 8px 20px rgba(0,0,0,0.05)", gap: 15 }}>
                       <div style={{ fontSize: 28 }}>{step.icon}</div>
                       <div>
                         <strong>{step.title}</strong>
@@ -193,51 +167,54 @@ export default function TherapistRegistration() {
                 </div>
               </div>
 
-              {/* Pricing & Why Join */}
+              {/* Premium Features */}
               <div style={{ marginTop: 30 }}>
-                <div
+                <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Premium Features:</h5>
+                <div style={{
+                  display: "flex",
+                  flexDirection: isMobile ? "column" : "row",
+                  flexWrap: isMobile ? "unset" : "wrap",
+                  gap: 15
+                }}>
+                  {premiumFeatures.map((item, idx) => (
+                    <div key={idx} style={{
+                      flex: isMobile ? "unset" : "1 1 45%",
+                      display: "flex",
+                      gap: 10,
+                      background: "#fff",
+                      padding: 15,
+                      borderRadius: 12,
+                      boxShadow: "0 5px 15px rgba(0,0,0,0.05)"
+                    }}>
+                      <div style={{ fontSize: 28 }}>{item.icon}</div>
+                      <div>
+                        <strong>{item.title}</strong>
+                        <p style={{ fontSize: 14, margin: 0, color: "#555" }}>{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div style={{ marginTop: 20 }}>
+                <Link
+                  to="/view-all-therapist"
                   style={{
-                    background: "#fff",
-                    padding: 20,
-                    borderRadius: 15,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.05)",
+                    display: "inline-block",
+                    padding: "10px 20px",
+                    background: "#007bff",
+                    color: "#fff",
+                    borderRadius: 10,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                    transition: "0.3s",
                   }}
+                  onMouseOver={(e) => (e.currentTarget.style.background = "#0056b3")}
+                  onMouseOut={(e) => (e.currentTarget.style.background = "#007bff")}
                 >
-                  <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Pricing & Subscription:</h5>
-                  <ul style={{ paddingLeft: 20, fontSize: isMobile ? 14 : 16, color: "#002b5b" }}>
-                    <li>💰 List your profile at ₹499 only (one-time)</li>
-                    <li>📅 Subscription charges: ₹999/month</li>
-                  </ul>
-                </div>
-
-                <h5 style={{ fontWeight: 600, marginTop: 20 }}>Why Join?</h5>
-                <ul style={{ color: "#002b5b", fontSize: isMobile ? 14 : 16, marginTop: 10 }}>
-                  <li>🌿 Verified professional profile enhances credibility</li>
-                  <li>🤝 Access a trusted network of mental health professionals</li>
-                  <li>📈 Expand your client reach nationwide and globally</li>
-                  <li>📝 Easy booking, scheduling, and documentation tools</li>
-                  <li>🔍 Improve online visibility with profile SEO</li>
-                </ul>
-
-                <div style={{ marginTop: 20 }}>
-                  <Link
-                    to="/view-all-therapist"
-                    style={{
-                      display: "inline-block",
-                      padding: "10px 20px",
-                      background: "#007bff",
-                      color: "#fff",
-                      borderRadius: 10,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      transition: "0.3s",
-                    }}
-                    onMouseOver={(e) => (e.currentTarget.style.background = "#0056b3")}
-                    onMouseOut={(e) => (e.currentTarget.style.background = "#007bff")}
-                  >
-                    Check Our Therapist Directory
-                  </Link>
-                </div>
+                  Check Our Therapist Directory
+                </Link>
               </div>
             </div>
 
@@ -352,6 +329,44 @@ export default function TherapistRegistration() {
                   <Link className="rbt-btn-link" to="/login">
                     Already have an account? Login
                   </Link>
+                </div>
+
+                {/* --- CTA Card Below Form --- */}
+                <div
+                  style={{
+                    marginTop: 30,
+                    padding: 20,
+                    borderRadius: 12,
+                    background: "linear-gradient(135deg, #007bff 0%, #00c6ff 100%)",
+                    color: "#fff",
+                    textAlign: "center",
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 10
+                  }}
+                >
+                  <FaPhoneAlt size={28} />
+                  <h5 style={{ fontWeight: 600, marginBottom: 5 }}>Have Questions or Need Help?</h5>
+                  <p style={{ marginBottom: 10 }}>Call us now to get assistance with your registration or any queries.</p>
+                  <a
+                    href="tel:+918077757951"
+                    style={{
+                      display: "inline-block",
+                      padding: "10px 20px",
+                      background: "#fff",
+                      color: "#007bff",
+                      fontWeight: 600,
+                      borderRadius: 10,
+                      textDecoration: "none",
+                      transition: "0.3s",
+                    }}
+                    onMouseOver={(e) => (e.currentTarget.style.background = "#e6e6e6")}
+                    onMouseOut={(e) => (e.currentTarget.style.background = "#fff")}
+                  >
+                    +91 80777 57951
+                  </a>
                 </div>
               </div>
             </div>
