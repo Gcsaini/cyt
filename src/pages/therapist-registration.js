@@ -44,7 +44,6 @@ export default function TherapistRegistration() {
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
-
     if (!profileType) return setError("Please select profile type");
     if (!mode) return setError("Please select service mode");
     if (name.length < 5) return setError("Please enter full name");
@@ -134,55 +133,77 @@ export default function TherapistRegistration() {
 
       {/* Hero Section */}
       <div
-        className="rbt-hero-section"
         style={{
-          background: "linear-gradient(135deg, #dff6ff 0%, #ffffff 60%, #e0f7ff 100%)",
-          padding: isMobile ? "60px 0 50px" : "100px 0",
+          background: "linear-gradient(135deg, #e6f5ea 0%, #ffffff 60%, #d9f0e6 100%)",
+          padding: isMobile ? "60px 15px" : "100px 0",
         }}
       >
         <div className="container">
           <div className="row align-items-start g-5">
             <div className="col-lg-7">
-              
-              {/* Promotional Headline */}
-              <h1 
+              <h1
                 style={{
-                  fontWeight: 900, 
-                  fontSize: isMobile ? "32px" : "52px", 
-                  color: "#002b5b", 
+                  fontWeight: 900,
+                  fontSize: isMobile ? "40px" : "60px",
+                  color: "#0f3d26",
                   lineHeight: 1.2,
-                  background: "linear-gradient(90deg, #007bff, #00c6ff)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
+                  marginBottom: 15,
                 }}
               >
-                Join <span className="theme-gradient">India’s Verified Therapist Network</span>
+                Join{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(90deg, #020802ff, #000000ff)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  India’s Verified Therapist Network
+                </span>
               </h1>
-
-              {/* Promotional Subtext */}
-              <p style={{ marginTop: 15, fontSize: isMobile ? 18 : 22, color: "#22bb33", fontWeight: 700 }}>
-                Listing Fee Only <span style={{ fontSize: isMobile ? 20 : 26 }}>₹499</span> – Get Verified & Featured!
+              <p style={{
+                fontSize: isMobile ? 18 : 20,
+                color: "#000000ff",
+                maxWidth: 550,
+                lineHeight: 1.6,
+              }}>
+                Build your verified professional profile, increase your client base, and become part of India’s trusted mental health network.
               </p>
 
-              {/* Optional subscription note */}
-              <p style={{ marginTop: 10, fontSize: isMobile ? 14 : 16, color: "#555", maxWidth: 550, textAlign: "justify" }}>
-                First month free, then ₹999/month subscription for premium visibility. Build your verified professional profile, increase your client base, and become part of India’s largest mental health network.
-              </p>
+              <div
+                style={{
+                  marginTop: 20,
+                  display: "inline-block",
+                  padding: "8px 16px",
+                  background: "#e1f5e3",
+                  color: "#000a01ff",
+                  fontWeight: 200,
+                  borderRadius: 25,
+                  fontSize: isMobile ? 16 : 18,
+                }}
+              >
+              <p>One-time Listing Fee ₹499 Only – Pay via UPI: chooseyourtherapist@okhdfcbank – Get verified, featured, and listed on India’s trusted therapist network.
+             </p> </div>
 
               {/* Steps Section */}
-              <div style={{ marginTop: 30 }}>
-                <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Steps to Join:</h5>
-                <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-                  {joinSteps.map((step, idx) => (
-                    <div key={idx} style={{ display: "flex", alignItems: "flex-start", background: "#ffffff", borderRadius: 12, padding: "15px 20px", boxShadow: "0 8px 20px rgba(0,0,0,0.05)", gap: 15 }}>
-                      <div style={{ fontSize: 28 }}>{step.icon}</div>
-                      <div>
-                        <strong>{step.title}</strong>
-                        <p style={{ margin: 2, fontSize: 14, color: "#555" }}>{step.desc}</p>
-                      </div>
+              <div style={{ marginTop: 40 }}>
+                {joinSteps.map((step, idx) => (
+                  <div key={idx} style={{
+                    display: "flex",
+                    gap: 15,
+                    background: "#ffffff",
+                    padding: "15px 20px",
+                    borderRadius: 12,
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                    marginBottom: 15,
+                  }}>
+                    <div style={{ fontSize: 28 }}>{step.icon}</div>
+                    <div>
+                      <strong style={{ color: "#22bb33" }}>{step.title}</strong>
+                      <p style={{ margin: 2, fontSize: 14, color: "#555" }}>{step.desc}</p>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
 
               {/* Premium Features */}
@@ -214,26 +235,27 @@ export default function TherapistRegistration() {
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* Check Therapist Directory Button */}
               <div style={{ marginTop: 20 }}>
                 <Link
                   to="/view-all-therapist"
                   style={{
                     display: "inline-block",
                     padding: "10px 20px",
-                    background: "#007bff",
+                    background: "#22bb33",
                     color: "#fff",
                     borderRadius: 10,
                     fontWeight: 600,
                     textDecoration: "none",
                     transition: "0.3s",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.background = "#0056b3")}
-                  onMouseOut={(e) => (e.currentTarget.style.background = "#007bff")}
+                  onMouseOver={(e) => (e.currentTarget.style.background = "#1f9e2b")}
+                  onMouseOut={(e) => (e.currentTarget.style.background = "#22bb33")}
                 >
                   Check Our Therapist Directory
                 </Link>
               </div>
+
             </div>
 
             {/* Registration Form */}
@@ -301,7 +323,7 @@ export default function TherapistRegistration() {
                 {/* CTA Card */}
                 <div style={{
                   marginTop: 30, padding: 20, borderRadius: 12,
-                  background: "linear-gradient(135deg, #007bff 0%, #00c6ff 100%)",
+                  background: "linear-gradient(135deg, #22bb33 0%, #a1e887 100%)",
                   color: "#fff", textAlign: "center", boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
                   display: "flex", flexDirection: "column", alignItems: "center", gap: 10
                 }}>
@@ -310,7 +332,7 @@ export default function TherapistRegistration() {
                   <p style={{ marginBottom: 10 }}>Call us now to get assistance with your registration or any queries.</p>
                   <a href="tel:+918077757951" style={{
                     display: "inline-block", padding: "10px 20px", background: "#fff",
-                    color: "#007bff", fontWeight: 600, borderRadius: 10, textDecoration: "none",
+                    color: "#22bb33", fontWeight: 600, borderRadius: 10, textDecoration: "none",
                     transition: "0.3s"
                   }} onMouseOver={(e) => (e.currentTarget.style.background = "#e6e6e6")}
                      onMouseOut={(e) => (e.currentTarget.style.background = "#fff")}>
@@ -319,6 +341,89 @@ export default function TherapistRegistration() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Joining Criteria Section */}
+      <div
+        style={{
+          background: "#f3faf5",
+          padding: isMobile ? "60px 15px" : "100px 0",
+        }}
+      >
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 50 }}>
+            <h2 style={{
+              fontSize: isMobile ? "28px" : "40px",
+              fontWeight: 900,
+              color: "#0f3d26",
+              marginBottom: 10,
+            }}>
+              Joining Criteria for Mental Health Professionals
+            </h2>
+            <p style={{
+              fontSize: isMobile ? 16 : 18,
+              color: "#1f4d2b",
+              maxWidth: 650,
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}>
+              At ChooseYourTherapist.in, we connect clients with qualified and certified mental health professionals. To ensure quality, we accept applications based on the following educational qualifications recognized in India.
+            </p>
+          </div>
+
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            flexWrap: "wrap",
+            gap: 25,
+            justifyContent: "center",
+          }}>
+            {[
+              {
+                title: "Counselling Psychologists",
+                qualification: "M.A./M.Sc. in Psychology / Counselling Psychology from a recognized university.",
+                eligibility: "Must have completed relevant internships or practical training in counselling."
+              },
+              {
+                title: "Clinical Psychologists",
+                qualification: "M.Phil in Clinical Psychology from a recognized institute.",
+                eligibility: "Registration with the Rehabilitation Council of India (RCI) is mandatory."
+              },
+              {
+                title: "Special Education Professionals",
+                qualification: "B.Ed in Special Education or equivalent from a recognized institution.",
+                eligibility: "Must have relevant experience or certification in working with children or adults with special needs."
+              },
+              {
+                title: "Psychiatrists",
+                qualification: "M.D. in Psychiatry from a recognized medical college.",
+                eligibility: "Must be registered with the Medical Council of India (MCI)/State Medical Council."
+              }
+            ].map((item, idx) => (
+              <div key={idx} style={{
+                flex: isMobile ? "unset" : "1 1 45%",
+                background: "#ffffff",
+                padding: 25,
+                borderRadius: 15,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+              }}>
+                <h4 style={{ fontWeight: 700, color: "#22bb33", marginBottom: 12 }}>
+                  {item.title}
+                </h4>
+                <p style={{ fontWeight: 600, marginBottom: 4 }}>Minimum Qualification:</p>
+                <p style={{ marginBottom: 10 }}>{item.qualification}</p>
+                <p style={{ fontWeight: 600, marginBottom: 4 }}>Eligibility:</p>
+                <p>{item.eligibility}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 40, textAlign: "center", maxWidth: 700, margin: "40px auto 0" }}>
+            <p style={{ fontSize: isMobile ? 14 : 16, color: "#555", lineHeight: 1.6 }}>
+              <strong>Additional Notes:</strong> All professionals must provide valid certificates and registration proof during registration. Only professionals meeting the above criteria will be listed on our platform. Continuous professional development is encouraged to maintain the highest quality of mental health services.
+            </p>
           </div>
         </div>
       </div>
