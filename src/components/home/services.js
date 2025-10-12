@@ -70,7 +70,7 @@ export default function Services() {
           {/* Premium Banner Section */}
           <div className="premium-banner">
             <i className="feather-phone-call banner-icon"></i>
-            <span>
+            <span className="premium-text">
               To Book a Session Call Now:{" "}
               <a
                 href="tel:+918077757951"
@@ -156,14 +156,22 @@ export default function Services() {
             }
             .premium-banner:hover { background: linear-gradient(90deg, #28c23f, #249b2e); }
             .banner-icon { font-size: 1.7rem; }
+
+            /* Animated text on mobile */
             @media (max-width: 768px) {
               .banner-icon { display: none !important; }
               .premium-banner {
-                flex-wrap: nowrap !important;
-                font-size: 1.3rem !important;
+                overflow: hidden;
+              }
+              .premium-text {
+                display: inline-block;
                 white-space: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+                padding-left: 100%;
+                animation: scrollText 12s linear infinite;
+              }
+              @keyframes scrollText {
+                0%   { transform: translateX(0%); }
+                100% { transform: translateX(-100%); }
               }
             }
 
@@ -184,8 +192,8 @@ export default function Services() {
 
             /* About Section */
             .about-section { margin-top: 20px; padding: 60px 30px; background: linear-gradient(180deg, #f9fafb, #ffffff); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-            .about-title { font-size: 3.3rem; font-weight: 800; color: #1f7f25; margin-bottom: 25px; }
-            .about-text p { font-size: 1.48 rem; color: #333; text-align: justify; line-height: 1.9; margin: 0; letter-spacing: 0.3px; }
+            .about-title { font-size: 3.9 rem; font-weight: 800; color: #1f7f25; margin-bottom: 25px; }
+            .about-text p { font-size: 1.49 rem; color: #333; text-align: justify; line-height: 1.9; margin: 0; letter-spacing: 0.3px; }
             .about-text strong { color: #1f7f25; }
             .about-icons { display: flex; justify-content: center; }
             .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
@@ -197,16 +205,16 @@ export default function Services() {
             /* Mobile Adjustments */
             @media (max-width: 992px) {
               .about-section { text-align: center; padding: 50px 20px; }
-              .about-title { font-size: 3rem; }       /* desktop size retained bigger */
+              .about-title { font-size: 3rem; }
               .about-text p { font-size: 1.45rem; line-height: 1.8; }
-              .icon-grid { grid-template-columns: repeat(2, 1fr); margin-top: 30px; gap: 20px; } /* keep grid left-right */
+              .icon-grid { grid-template-columns: repeat(2, 1fr); margin-top: 30px; gap: 20px; }
               .icon-box span { font-size: 1.2rem; }
               .icon-box i { font-size: 2.7rem; }
             }
             @media (max-width: 576px) {
               .about-title { font-size: 2.6rem; }
               .about-text p { font-size: 1.3rem; line-height: 1.7; }
-              .icon-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* left-right grid */
+              .icon-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
               .icon-box i { font-size: 2.5rem; }
               .icon-box span { font-size: 1.15rem; }
             }
