@@ -26,7 +26,7 @@ export default function HomePage() {
       {/* SEO Meta Tags with Local SEO & Keywords */}
       <Helmet>
         <title>
-          Affordable Psychologists Network| In-Person & Online Therapy | Choose Your Therapist
+          India's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support | Choose Your Therapist
         </title>
         <meta
           name="description"

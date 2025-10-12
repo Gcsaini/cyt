@@ -60,7 +60,7 @@ export default function Banner() {
     >
     <Helmet>
             <title>
-              Affordable Psychologists Network in Noida | In-Person & Online Therapy | Choose Your Therapist
+             India's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support | Choose Your Therapist
             </title>
             <meta
               name="description"
