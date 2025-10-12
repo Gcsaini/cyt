@@ -161,11 +161,11 @@ export default function AboutUsBanner() {
             <span className="about-type-wrapper">
               <TypeAnimation
                 sequence={[
-                  "Verified ✅",
+                  "Verified",
                   2000,
-                  "Accessible 🌍",
+                  "Accessible",
                   2000,
-                  "Specialized 🎯",
+                  "Specialized",
                   2000,
                 ]}
                 wrapper="span"
