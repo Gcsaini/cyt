@@ -1,72 +1,79 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 
 const styles = `
 .about-banner {
   position: relative;
-  background: linear-gradient(135deg, #0f7a5aff, #047857, #065f46);
-  color: #fff;
+  background: linear-gradient(135deg, #e6f4ea, #d1f0d1);
+  color: #065f28;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 90vh; /* reduced height */
-  padding: 40px 20px;
+  min-height: 90vh;
+  padding: 50px 20px;
   overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
 .about-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(6, 95, 40, 0.05);
   z-index: 0;
+  border-radius: 20px;
 }
 
 .about-content {
   position: relative;
   z-index: 2;
-  max-width: 850px;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 50px 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 /* Badge */
 .about-badge {
   display: inline-flex;
   align-items: center;
-  background: #fff;
-  color: #065f28ff;
-  padding: 8px 18px;
+  background: #22c55e;
+  color: #ffffff;
+  padding: 10px 25px;
   border-radius: 50px;
   font-weight: 600;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 25px;
+  font-size: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 /* Title */
 .about-title {
-  font-size: 46px;
+  font-size: 50px;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #065f28;
 }
 
 @media (max-width: 768px) {
   .about-title {
-    font-size: 30px;
+    font-size: 32px;
   }
 }
 
-/* Type animation fix */
+/* Type animation wrapper to fix jump */
 .about-type-wrapper {
   display: inline-block;
-  min-width: 200px;  /* fixed width */
+  min-width: 180px; /* fixed width prevents jump */
   text-align: left;
   vertical-align: middle;
 }
 
 .about-type {
-  background: linear-gradient(to right, #134113ff, #1a974eff); /* golden-orange */
+  background: linear-gradient(to right, #22c55e, #16a34a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
@@ -77,9 +84,9 @@ const styles = `
 .about-subtitle {
   font-size: 18px;
   line-height: 1.6;
-  margin-bottom: 32px;
-  color: #e5e5e5;
-  max-width: 700px;
+  margin-bottom: 35px;
+  color: #555;
+  max-width: 750px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -93,7 +100,7 @@ const styles = `
 }
 
 .btn {
-  padding: 14px 30px;
+  padding: 14px 35px;
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
@@ -102,24 +109,25 @@ const styles = `
 }
 
 .btn-primary {
-  background: linear-gradient(to right, #fbbf24, #f97316);
-  color: #ffffffff;
-  box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(34,197,94,0.3);
 }
 
 .btn-primary:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(34,197,94,0.4);
 }
 
 .btn-outline {
-  background: rgba(8, 70, 39, 0.1);
-  border: 2px solid #fff;
-  color: #fff;
+  background: #ffffff;
+  border: 2px solid #22c55e;
+  color: #22c55e;
 }
 
 .btn-outline:hover {
-  background: #fff;
-  color: #065f46;
+  background: #22c55e;
+  color: #ffffff;
 }
 
 /* Decorative wave at bottom */
@@ -136,8 +144,6 @@ const styles = `
 `;
 
 export default function AboutUsBanner() {
-  useMediaQuery((theme) => theme.breakpoints.down("md")); 
-
   return (
     <>
       <style>{styles}</style>
@@ -146,7 +152,7 @@ export default function AboutUsBanner() {
         <div className="about-overlay" />
         <div className="about-content">
           <div className="about-badge">
-            <PersonSearchIcon style={{ fontSize: 24, marginRight: "6px" }} />
+            <PersonSearchIcon style={{ fontSize: 24, marginRight: "8px" }} />
             <span>About CYT</span>
           </div>
 
@@ -172,9 +178,9 @@ export default function AboutUsBanner() {
           </h1>
 
           <p className="about-subtitle">
-            At CYT, we believe therapy should be easy to access, safe, and led
-            by trusted professionals. Our mission is to connect you with the
-            right therapist for your unique needs.
+            At CYT, therapy is safe, easy to access, and delivered by trusted
+            professionals. Join India’s leading network of verified therapists
+            and experience premium healthcare with a hospital-grade, professional feel.
           </p>
 
           <div className="about-buttons">

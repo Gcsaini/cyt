@@ -143,12 +143,30 @@ export default function TherapistRegistration() {
         <div className="container">
           <div className="row align-items-start g-5">
             <div className="col-lg-7">
-              <h1 style={{ fontWeight: 700, fontSize: isMobile ? "28px" : "44px", color: "#002b5b", lineHeight: 1.3 }}>
+              
+              {/* Promotional Headline */}
+              <h1 
+                style={{
+                  fontWeight: 900, 
+                  fontSize: isMobile ? "32px" : "52px", 
+                  color: "#002b5b", 
+                  lineHeight: 1.2,
+                  background: "linear-gradient(90deg, #007bff, #00c6ff)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}
+              >
                 Join <span className="theme-gradient">India’s Verified Therapist Network</span>
               </h1>
-              {/* STARTING DESCRIPTION JUSTIFIED */}
-              <p style={{ marginTop: 15, fontSize: isMobile ? 16 : 18, color: "#5a5a5a", maxWidth: 550, textAlign: "justify" }}>
-                Build your verified professional profile, increase your client base, and become part of India’s largest mental health network. Remain fully independent while benefiting from a trusted platform for verified mental health professionals.
+
+              {/* Promotional Subtext */}
+              <p style={{ marginTop: 15, fontSize: isMobile ? 18 : 22, color: "#22bb33", fontWeight: 700 }}>
+                Listing Fee Only <span style={{ fontSize: isMobile ? 20 : 26 }}>₹499</span> – Get Verified & Featured!
+              </p>
+
+              {/* Optional subscription note */}
+              <p style={{ marginTop: 10, fontSize: isMobile ? 14 : 16, color: "#555", maxWidth: 550, textAlign: "justify" }}>
+                First month free, then ₹999/month subscription for premium visibility. Build your verified professional profile, increase your client base, and become part of India’s largest mental health network.
               </p>
 
               {/* Steps Section */}
@@ -224,27 +242,16 @@ export default function TherapistRegistration() {
                 <h4 className="title mb-3">Tell Us About You!</h4>
                 <p style={{ color: "#d50000" }}>{error}</p>
 
+                {/* Form Fields */}
                 <div className="form-group mb-3">
-                  <select
-                    value={profileType}
-                    onChange={(e) => setProfileType(e.target.value)}
-                    className="form-control"
-                  >
+                  <select value={profileType} onChange={(e) => setProfileType(e.target.value)} className="form-control">
                     <option value="">Select profile type</option>
-                    {profileTypeList.map((item) => (
-                      <option key={item} value={item}>
-                        {item}
-                      </option>
-                    ))}
+                    {profileTypeList.map((item) => (<option key={item} value={item}>{item}</option>))}
                   </select>
                 </div>
 
                 <div className="form-group mb-3">
-                  <select
-                    value={mode}
-                    onChange={(e) => setMode(e.target.value)}
-                    className="form-control"
-                  >
+                  <select value={mode} onChange={(e) => setMode(e.target.value)} className="form-control">
                     <option value="">Service Mode</option>
                     <option value={1}>Virtual</option>
                     <option value={2}>In-Person</option>
@@ -252,35 +259,9 @@ export default function TherapistRegistration() {
                   </select>
                 </div>
 
-                <div className="form-group mb-3">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="form-control"
-                  />
-                </div>
-
-                <div className="form-group mb-3">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="form-control"
-                  />
-                </div>
-
-                <div className="form-group mb-3">
-                  <input
-                    type="text"
-                    placeholder="Phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="form-control"
-                  />
-                </div>
+                <div className="form-group mb-3"><input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" /></div>
+                <div className="form-group mb-3"><input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" /></div>
+                <div className="form-group mb-3"><input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="form-control" /></div>
 
                 <div className="form-group mb-3">
                   <span>Interested to serve:</span>
@@ -301,70 +282,38 @@ export default function TherapistRegistration() {
 
                 <div className="form-group mb-3">
                   <span>Resume</span>
-                  <input
-                    type="file"
-                    accept=".pdf"
-                    className="resume-upload"
-                    onChange={handleFileChange}
-                  />
+                  <input type="file" accept=".pdf" className="resume-upload" onChange={handleFileChange} />
                 </div>
 
                 <div className="form-submit-group mb-3">
                   <p style={{ color: "#22bb33" }}>{success}</p>
                   {loading ? (
-                    <Box sx={{ display: "flex", justifyContent: "center" }}>
-                      <CircularProgress />
-                    </Box>
+                    <Box sx={{ display: "flex", justifyContent: "center" }}><CircularProgress /></Box>
                   ) : (
-                    <button
-                      onClick={handleSubmit}
-                      className="rbt-btn btn-gradient radius-round w-100"
-                    >
-                      Submit
-                    </button>
+                    <button onClick={handleSubmit} className="rbt-btn btn-gradient radius-round w-100">Submit</button>
                   )}
                 </div>
 
                 <div className="rbt-lost-password text-end mt-2">
-                  <Link className="rbt-btn-link" to="/login">
-                    Already have an account? Login
-                  </Link>
+                  <Link className="rbt-btn-link" to="/login">Already have an account? Login</Link>
                 </div>
 
-                {/* --- CTA Card Below Form --- */}
-                <div
-                  style={{
-                    marginTop: 30,
-                    padding: 20,
-                    borderRadius: 12,
-                    background: "linear-gradient(135deg, #007bff 0%, #00c6ff 100%)",
-                    color: "#fff",
-                    textAlign: "center",
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 10
-                  }}
-                >
+                {/* CTA Card */}
+                <div style={{
+                  marginTop: 30, padding: 20, borderRadius: 12,
+                  background: "linear-gradient(135deg, #007bff 0%, #00c6ff 100%)",
+                  color: "#fff", textAlign: "center", boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                  display: "flex", flexDirection: "column", alignItems: "center", gap: 10
+                }}>
                   <FaPhoneAlt size={28} />
                   <h5 style={{ fontWeight: 600, marginBottom: 5 }}>Have Questions or Need Help?</h5>
                   <p style={{ marginBottom: 10 }}>Call us now to get assistance with your registration or any queries.</p>
-                  <a
-                    href="tel:+918077757951"
-                    style={{
-                      display: "inline-block",
-                      padding: "10px 20px",
-                      background: "#fff",
-                      color: "#007bff",
-                      fontWeight: 600,
-                      borderRadius: 10,
-                      textDecoration: "none",
-                      transition: "0.3s",
-                    }}
-                    onMouseOver={(e) => (e.currentTarget.style.background = "#e6e6e6")}
-                    onMouseOut={(e) => (e.currentTarget.style.background = "#fff")}
-                  >
+                  <a href="tel:+918077757951" style={{
+                    display: "inline-block", padding: "10px 20px", background: "#fff",
+                    color: "#007bff", fontWeight: 600, borderRadius: 10, textDecoration: "none",
+                    transition: "0.3s"
+                  }} onMouseOver={(e) => (e.currentTarget.style.background = "#e6e6e6")}
+                     onMouseOut={(e) => (e.currentTarget.style.background = "#fff")}>
                     +91 80777 57951
                   </a>
                 </div>
@@ -382,22 +331,11 @@ export default function TherapistRegistration() {
           <DialogContent dividers>
             <div className="col-md-6 col-12 mb-3">
               <label htmlFor="otp">OTP*</label>
-              <input
-                type="text"
-                placeholder="OTP"
-                value={otp}
-                onChange={(e) => handleChange(e.target.value)}
-              />
+              <input type="text" placeholder="OTP" value={otp} onChange={(e) => handleChange(e.target.value)} />
             </div>
           </DialogContent>
           <DialogActions>
-            {loading ? (
-              <FormProgressBar />
-            ) : (
-              <button className="rbt-btn btn-gradient w-100" onClick={verifyOtp}>
-                Submit OTP
-              </button>
-            )}
+            {loading ? <FormProgressBar /> : <button className="rbt-btn btn-gradient w-100" onClick={verifyOtp}>Submit OTP</button>}
           </DialogActions>
         </div>
       </Dialog>
