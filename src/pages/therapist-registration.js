@@ -144,8 +144,8 @@ export default function TherapistRegistration() {
               <h1
                 style={{
                   fontWeight: 900,
-                  fontSize: isMobile ? "40px" : "60px",
-                  color: "#0f3d26",
+                  fontSize: isMobile ? "35px" : "60px",
+                  color: "#000000ff",
                   lineHeight: 1.2,
                   marginBottom: 15,
                 }}
