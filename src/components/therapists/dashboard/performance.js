@@ -75,63 +75,123 @@ export default function DashboardSections() {
           ))}
         </div>
       </div>
+{/* Business Card Section */}
+<div style={{ marginTop: "60px", display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+  <h2 style={{ marginBottom: "18px", fontSize: "1.8rem", fontWeight: "700", color: "#065f46" }}>
+    Showcase Your Professional Profile
+  </h2>
 
-      {/* Business Card Section */}
-      <div style={{ marginTop: "60px", display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-        <h2 style={{ marginBottom: "18px", fontSize: "1.8rem", fontWeight: "700", color: "#1e3a8a" }}>
-          Showcase Your Professional Profile
-        </h2>
+  <div
+    ref={cardRef}
+    style={{
+      width: isMobile ? "90%" : "400px",
+      background: "linear-gradient(145deg, #e6f4ea, #d1f1c4)",
+      borderRadius: "20px",
+      padding: "28px 24px",
+      boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+      textAlign: "center",
+      borderLeft: "6px solid #16a34a",
+      borderBottom: "6px solid #16a34a",
+      position: "relative",
+      overflow: "hidden",
+      fontFamily: "'Inter', sans-serif",
+      color: "#065f46",
+      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      cursor: "pointer",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = "scale(1.05)";
+      e.currentTarget.style.boxShadow = "0 15px 40px rgba(0,0,0,0.25)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = "scale(1)";
+      e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.18)";
+    }}
+  >
+    {/* Top-right decorative corner */}
+    <div style={{
+      position: "absolute",
+      top: "-15px",
+      right: "-15px",
+      width: "40px",
+      height: "40px",
+      background: "#22c55e",
+      borderRadius: "50%",
+      opacity: 0.3,
+      transform: "rotate(45deg)",
+      transition: "transform 0.3s ease",
+    }}></div>
 
-        <div
-          ref={cardRef}
-          style={{
-            width: isMobile ? "90%" : "400px",
-            background: "#ffffff",
-            borderRadius: "20px",
-            padding: "28px 24px",
-            boxShadow: "0 6px 25px rgba(0,0,0,0.15)",
-            textAlign: "center",
-            border: "2px solid #1e40af",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          {/* Info */}
-          <h3 style={{ color: "#1e40af", fontSize: "1.5rem", marginBottom: "4px", fontWeight: "700" }}>{therapistData.name}</h3>
-          <p style={{ color: "#1f2937", fontSize: "1rem", margin: 0, fontWeight: 500 }}>{therapistData.profileType}</p>
-          <p style={{ color: "#1e3a8a", fontWeight: "600", marginTop: 6, marginBottom: 10 }}>{therapistData.experience}</p>
+    {/* Bottom-left decorative corner */}
+    <div style={{
+      position: "absolute",
+      bottom: "-15px",
+      left: "-15px",
+      width: "40px",
+      height: "40px",
+      background: "#16a34a",
+      borderRadius: "50%",
+      opacity: 0.3,
+      transform: "rotate(-45deg)",
+      transition: "transform 0.3s ease",
+    }}></div>
 
-       
+    {/* Name */}
+    <h3 style={{ fontSize: "2.1rem", marginBottom: "6px", fontWeight: "800" }}>{therapistData.name}</h3>
+    
+    {/* Profile Type */}
+    <p style={{ fontSize: "1.3rem", margin: 0, fontWeight: 500 }}>{therapistData.profileType}</p>
+    
+    {/* Experience with label */}
+    <p style={{ fontSize: "1rem", marginTop: 6, marginBottom: 10, fontWeight: 600 }}>
+      Experience: {therapistData.experience}
+    </p>
 
-          {/* Overlay if profile not ready */}
-          <p style={{ fontSize: "0.8rem", color: "#475569", marginTop: 8, fontWeight: 500 }}>
-  ⭐ Listed on <strong>www.chooseyourtherapist.in</strong> ⭐
-</p>
-        </div>
+    {/* Listed Badge */}
+    <p
+      style={{
+        fontSize: "0.85rem",
+        fontWeight: 600,
+        marginTop: 12,
+        padding: "6px 12px",
+        borderRadius: "12px",
+        background: "linear-gradient(135deg, #16a34a, #22c55e)",
+        color: "#ffffff",
+        display: "inline-block",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+      }}
+    >
+      www.chooseyourtherapist.in
+    </p>
+  </div>
 
-        {/* Download Button */}
-        <button
-          onClick={downloadCard}
-          disabled={!profileSet}
-          style={{
-            marginTop: "22px",
-            background: !profileSet ? "#94a3b8" : "linear-gradient(135deg, #1e40af, #3b82f6)",
-            color: "white",
-            border: "none",
-            padding: "10px 22px",
-            borderRadius: "10px",
-            fontSize: "1rem",
-            fontWeight: "600",
-            cursor: !profileSet ? "not-allowed" : "pointer",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
-          <FaDownload /> Download JPG
-        </button>
-      </div>
+  {/* Download Button */}
+  <button
+    onClick={downloadCard}
+    disabled={!profileSet}
+    style={{
+      marginTop: "22px",
+      background: !profileSet ? "#94a3b8" : "linear-gradient(135deg, #16a34a, #22c55e)",
+      color: "white",
+      border: "none",
+      padding: "10px 22px",
+      borderRadius: "10px",
+      fontSize: "1rem",
+      fontWeight: "600",
+      cursor: !profileSet ? "not-allowed" : "pointer",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.12)",
+      display: "flex",
+      alignItems: "center",
+      gap: "6px",
+    }}
+  >
+    <FaDownload /> Download JPG
+  </button>
+</div>
+
+
+
+
     </div>
   );
 }

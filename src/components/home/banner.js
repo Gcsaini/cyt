@@ -183,7 +183,7 @@ export default function Banner() {
     wordBreak: "break-word",
   }}
 >
-  Bharat's Growing Network of
+ India's Growing Network of
   {isMobile ? <br /> : " "} {/* ✅ Mobile = break, Laptop = space */}
 
   <span
