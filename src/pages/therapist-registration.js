@@ -8,7 +8,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { threapistRegistrationUrl, verifyOtpUrl } from "../utils/url";
 import { Link } from "react-router-dom";
-import { profileTypeList } from "../utils/static-lists";
 import { postData, postFormData } from "../utils/actions";
 import FormMessage from "../components/global/form-message";
 import FormProgressBar from "../components/global/form-progressbar";
@@ -186,7 +185,8 @@ export default function TherapistRegistration() {
               </h1>
 
               <p style={{ fontSize: 18, color: "#000", maxWidth: 550 }}>
-                Create your verified therapist profile today and make it easier for clients to find and trust your services.      </p>
+                Create your verified therapist profile today and make it easier for clients to find and trust your services.
+              </p>
 
               <div
                 style={{
@@ -204,15 +204,18 @@ export default function TherapistRegistration() {
 
               <div style={{ marginTop: 40 }}>
                 {joinSteps.map((step, idx) => (
-                  <div key={idx} style={{
-                    display: "flex",
-                    gap: 15,
-                    background: "#ffffff",
-                    padding: "15px 20px",
-                    borderRadius: 12,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-                    marginBottom: 15,
-                  }}>
+                  <div
+                    key={idx}
+                    style={{
+                      display: "flex",
+                      gap: 15,
+                      background: "#ffffff",
+                      padding: "15px 20px",
+                      borderRadius: 12,
+                      boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                      marginBottom: 15,
+                    }}
+                  >
                     <div style={{ fontSize: 28 }}>{step.icon}</div>
                     <div>
                       <strong style={{ color: "#22bb33" }}>{step.title}</strong>
@@ -224,22 +227,27 @@ export default function TherapistRegistration() {
 
               <div style={{ marginTop: 30 }}>
                 <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Premium Features:</h5>
-                <div style={{
-                  display: "flex",
-                  flexDirection: isMobile ? "column" : "row",
-                  flexWrap: isMobile ? "unset" : "wrap",
-                  gap: 15
-                }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: isMobile ? "column" : "row",
+                    flexWrap: isMobile ? "unset" : "wrap",
+                    gap: 15,
+                  }}
+                >
                   {premiumFeatures.map((item, idx) => (
-                    <div key={idx} style={{
-                      flex: isMobile ? "unset" : "1 1 45%",
-                      display: "flex",
-                      gap: 10,
-                      background: "#fff",
-                      padding: 15,
-                      borderRadius: 12,
-                      boxShadow: "0 5px 15px rgba(0,0,0,0.05)"
-                    }}>
+                    <div
+                      key={idx}
+                      style={{
+                        flex: isMobile ? "unset" : "1 1 45%",
+                        display: "flex",
+                        gap: 10,
+                        background: "#fff",
+                        padding: 15,
+                        borderRadius: 12,
+                        boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
+                      }}
+                    >
                       <div style={{ fontSize: 28 }}>{item.icon}</div>
                       <div>
                         <strong>{item.title}</strong>
@@ -281,11 +289,17 @@ export default function TherapistRegistration() {
                     className="form-control"
                   >
                     <option value="">Select profile type</option>
-                    {profileTypeList.map((item) => (
-                      <option key={item} value={item}>
-                        {item}
-                      </option>
-                    ))}
+                    <option value="Psychologist">Psychologist</option>
+                    <option value="Psychiatrist">Psychiatrist</option>
+                    <option value="Counsellor">Counsellor</option>
+                    <option value="Therapist">Therapist</option>
+                    <option value="Clinical Psychologist">Clinical Psychologist</option>
+                    <option value="Rehabilitation Psychologist">Rehabilitation Psychologist</option>
+                    <option value="Clinical Nutritionist">Clinical Nutritionist</option> {/* 🆕 Added */}
+                    <option value="Life Coach">Life Coach</option>
+                    <option value="Wellness Coach">Wellness Coach</option>
+                    <option value="Social Worker">Social Worker</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 

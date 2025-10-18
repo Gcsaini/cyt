@@ -1,26 +1,130 @@
+import { useState, useEffect } from "react";
 import logo1 from "../assets/img/logo.png";
 import ImageTag from "../utils/image-tag";
 
 export default function Footer() {
+  const [cookiesAccepted, setCookiesAccepted] = useState(false);
+
+  useEffect(() => {
+    const isAccepted = localStorage.getItem("cookiesAccepted") === "true";
+    setCookiesAccepted(isAccepted);
+  }, []);
+
+  const handleAcceptCookies = () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    setCookiesAccepted(true);
+  };
+
   return (
-    <div>
+    <div style={{ position: "relative" }}>
+      {/* 🍪 Cookie Consent Banner */}
+      {!cookiesAccepted && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "90%",
+            maxWidth: "600px",
+            background: "#f0fff4",
+            border: "1px solid #a5d6a7",
+            borderRadius: "12px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+            padding: "16px 20px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            zIndex: 9999,
+            animation: "fadeIn 0.4s ease-in-out",
+          }}
+        >
+          <div
+            style={{
+              color: "#1b5e20",
+              textAlign: "center",
+              fontSize: "15px",
+              lineHeight: 1.5,
+              marginBottom: "12px",
+            }}
+          >
+            🍪 We use cookies to enhance your browsing experience and ensure a
+            secure connection. Please read our{" "}
+            <a
+              href="/privacy-policy"
+              style={{
+                color: "#2e7d32",
+                fontWeight: 600,
+                textDecoration: "underline",
+              }}
+            >
+              Privacy Policy
+            </a>
+            .
+          </div>
+          <button
+            onClick={handleAcceptCookies}
+            style={{
+              background: "#2e7d32",
+              color: "#fff",
+              border: "none",
+              borderRadius: "25px",
+              padding: "8px 30px",
+              cursor: "pointer",
+              fontWeight: 600,
+              fontSize: "15px",
+              boxShadow: "0 2px 6px rgba(46,125,50,0.2)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.target.style.background = "#1b5e20")}
+            onMouseOut={(e) => (e.target.style.background = "#2e7d32")}
+          >
+            Accept
+          </button>
+        </div>
+      )}
+
+      {/* Animation CSS */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+          }
+
+          @media (max-width: 600px) {
+            .cookie-banner {
+              width: 95%;
+              padding: 14px 16px;
+              font-size: 14px;
+            }
+          }
+        `}
+      </style>
+
+      {/* Separator */}
       <div className="rbt-separator-mid">
         <div className="container">
           <hr className="rbt-separator m-0" />
         </div>
       </div>
 
+      {/* Footer Content */}
       <footer className="rbt-footer footer-style-1">
         <div className="footer-top">
           <div className="container">
             <div className="row row--15 mt_dec--30">
-
               {/* Logo & Tagline */}
               <div className="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
                 <div className="footer-widget">
                   <div className="logo">
                     <a href="/">
-                      <ImageTag alt="Choose Your Therapist" height={"50"} width={"152"} src={logo1} />
+                      <ImageTag
+                        alt="Choose Your Therapist"
+                        height={"50"}
+                        width={"152"}
+                        src={logo1}
+                      />
                     </a>
                   </div>
                   <p className="description mt--20">
@@ -43,7 +147,6 @@ export default function Footer() {
                     </a>
                   </div>
 
-                  {/* Additional List under Connect With Us */}
                   <div className="mt-4">
                     <h5 className="ft-title">Quick Links</h5>
                     <ul className="ft-link">
@@ -75,12 +178,11 @@ export default function Footer() {
                     <li><a href="#">Workplace Stress & Burnout</a></li>
                     <li><a href="#">Self-Esteem & Confidence Building</a></li>
                     <li><a href="#">Mindfulness & Meditation</a></li>
-                    
                   </ul>
                 </div>
               </div>
 
-              {/* For Psychology Students */}
+              {/* For Students */}
               <div className="col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
                 <div className="footer-widget">
                   <h5 className="ft-title">Mentorship for Students</h5>
@@ -98,7 +200,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* For Therapists + For Clients */}
+              {/* For Therapists */}
               <div className="col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
                 <div className="footer-widget">
                   <h5 className="ft-title">For Therapists</h5>
@@ -106,8 +208,6 @@ export default function Footer() {
                     <li><a href="/login">Login</a></li>
                     <li><a href="/therapist-registration">Sign Up</a></li>
                   </ul>
-
-        
                   <h5 className="ft-title mt-3">Professional Types</h5>
                   <ul className="ft-link">
                     <li><a href="#">Counselling Psychologist</a></li>
@@ -144,7 +244,6 @@ export default function Footer() {
                   </ul>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -152,32 +251,41 @@ export default function Footer() {
 
       {/* Disclaimer Section */}
       <div className="container mt-4 mb-4">
-        <div style={{ 
-          background: "#f5f5f5", 
-          padding: "15px 20px", 
-          borderRadius: 8, 
-          fontSize: 14, 
-          lineHeight: 1.5 
-        }}>
-          <strong>Disclaimer:</strong> This platform is a <u>network of independent therapists</u>. 
-          All therapists work independently, and the platform only connects you to a therapist. 
-          If you face any difficulty connecting to a therapist, you can contact <strong>+91 80777 57951</strong>. 
-          For <u>emergency situations</u>, please contact the free helpline <strong>Tele Manas Toll-Free: 1800 89 14416</strong>.
+        <div
+          style={{
+            background: "#f5f5f5",
+            padding: "15px 20px",
+            borderRadius: 8,
+            fontSize: 14,
+            lineHeight: 1.5,
+          }}
+        >
+          <strong>Disclaimer:</strong> This platform is a{" "}
+          <u>network of independent therapists</u>. All therapists work independently, and the
+          platform only connects you to a therapist. If you face any difficulty connecting to a
+          therapist, you can contact <strong>+91 80777 57951</strong>. For{" "}
+          <u>emergency situations</u>, please contact the free helpline{" "}
+          <strong>Tele Manas Toll-Free: 1800 89 14416</strong>.
         </div>
       </div>
 
-      {/* Bottom Copyright */}
+      {/* Bottom Section */}
       <div className="rbt-separator-mid">
         <div className="container">
           <hr className="rbt-separator m-0" />
         </div>
       </div>
+
       <div className="copyright-area copyright-style-1 ptb--20">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
               <p className="rbt-link-hover text-center text-lg-start">
-                © 2024 <a href="https://chooseyourtherapist.in">Choose Your Therapist LLP.</a> All Rights Reserved
+                © 2024{" "}
+                <a href="https://chooseyourtherapist.in">
+                  Choose Your Therapist LLP.
+                </a>{" "}
+                All Rights Reserved
               </p>
             </div>
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
