@@ -21,6 +21,26 @@ export default function App() {
         setUserType(1);
       }
     }
+
+    // Google Tag Integration
+    const script1 = document.createElement("script");
+    script1.async = true;
+    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-GFBR3SJQT3";
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GFBR3SJQT3');
+    `;
+    document.head.appendChild(script2);
+
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
   }, []);
 
   const GREEN_STRIP_HEIGHT = 35; // desktop
