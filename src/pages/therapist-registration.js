@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { postData, postFormData } from "../utils/actions";
 import FormMessage from "../components/global/form-message";
 import FormProgressBar from "../components/global/form-progressbar";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaUserTie, FaStar, FaHandshake, FaCheckCircle } from "react-icons/fa";
 
 export default function TherapistRegistration() {
   const [formData, setFormData] = useState({
@@ -127,24 +127,8 @@ export default function TherapistRegistration() {
     setLoading(false);
   };
 
-  const joinSteps = [
-    { icon: "📄", title: "Submit Resume", desc: "Send us your credentials for verification." },
-    { icon: "✅", title: "Receive Approval", desc: "Within 7 days, get confirmation email for eligibility." },
-    { icon: "💳", title: "Activate Profile", desc: "Complete verification to activate your therapist profile." },
-    { icon: "🌐", title: "Connect Independently", desc: "Manage visibility and connect with clients freely." },
-  ];
-
-  const premiumFeatures = [
-    { icon: "🏅", title: "Verified Badge", desc: "Stand out with a verified professional badge." },
-    { icon: "💎", title: "Featured Listings", desc: "Get featured for faster client acquisition." },
-    { icon: "📊", title: "Analytics Dashboard", desc: "Track profile views and client interest." },
-    { icon: "🗂", title: "Client Management", desc: "Manage appointments, payments, and feedback easily." },
-    { icon: "📣", title: "Marketing Support", desc: "Optional promotion to a wider audience." },
-  ];
-
   return (
     <>
-      {/* Remove blue focus outline */}
       <style>{`
         input:focus, select:focus, textarea:focus, button:focus {
           outline: none !important;
@@ -156,131 +140,93 @@ export default function TherapistRegistration() {
 
       <div
         style={{
-          background: "linear-gradient(135deg, #e6f5ea 0%, #ffffff 60%, #d9f0e6 100%)",
-          padding: isMobile ? "60px 15px" : "100px 0",
+          background: "linear-gradient(145deg, #ecfdf5, #ffffff)",
+          padding: isMobile ? "60px 20px" : "100px 0",
         }}
       >
         <div className="container">
-          <div className="row align-items-start g-5">
-            {/* Left Section */}
-            <div className="col-lg-7">
+          <div
+            className="row align-items-center g-5"
+            style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}
+          >
+            {/* LEFT SIDE CONTENT */}
+            <div className="col-lg-6" style={{ paddingRight: isMobile ? 0 : 30 }}>
               <h1
                 style={{
+                  fontSize: isMobile ? "36px" : "60px",
                   fontWeight: 900,
-                  fontSize: isMobile ? "35px" : "60px",
                   color: "#000",
                   lineHeight: 1.2,
+                  marginBottom: 20,
                 }}
               >
-                Join{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(90deg, #020802ff, #000000ff)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  India’s Verified Therapist Network
-                </span>
+                Let Clients <span style={{ color: "#059669" }}>Find You</span> Effortlessly
               </h1>
 
-              <p style={{ fontSize: 18, color: "#000", maxWidth: 550 }}>
-                Create your verified therapist profile today and make it easier for clients to find and trust your services.
+              <p style={{ fontSize: "18px", color: "#333", maxWidth: 550 }}>
+                Join India’s trusted network of mental health professionals.
+                Submit your profile and start receiving verified leads from clients seeking support.
               </p>
 
               <div
                 style={{
-                  marginTop: 20,
-                  display: "inline-block",
-                  padding: "8px 16px",
-                  background: "#e1f5e3",
-                  color: "#000",
-                  borderRadius: 25,
-                  fontSize: 16,
+                  marginTop: 25,
+                  background: "#dcfce7",
+                  borderLeft: "5px solid #16a34a",
+                  padding: "15px 20px",
+                  borderRadius: 10,
                 }}
               >
-                Join a growing community empowering lives every day.
+                <p style={{ margin: 0, fontSize: "16px", color: "#166534" }}>
+                  🌿 <strong>We value your expertise!</strong>  
+                  Let’s make mental health accessible — together.
+                </p>
               </div>
 
-              <div style={{ marginTop: 40 }}>
-                {joinSteps.map((step, idx) => (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 15,
+                  marginTop: 40,
+                }}
+              >
+                {[FaUserTie, FaHandshake, FaStar, FaCheckCircle].map((Icon, i) => (
                   <div
-                    key={idx}
+                    key={i}
                     style={{
-                      display: "flex",
-                      gap: 15,
-                      background: "#ffffff",
-                      padding: "15px 20px",
+                      flex: "1 1 45%",
+                      background: "#fff",
                       borderRadius: 12,
-                      boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-                      marginBottom: 15,
+                      padding: "18px 20px",
+                      boxShadow: "0 8px 20px rgba(0,0,0,0.06)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 15,
                     }}
                   >
-                    <div style={{ fontSize: 28 }}>{step.icon}</div>
-                    <div>
-                      <strong style={{ color: "#22bb33" }}>{step.title}</strong>
-                      <p style={{ margin: 2, fontSize: 14, color: "#555" }}>{step.desc}</p>
+                    <Icon color="#16a34a" size={30} />
+                    <div style={{ fontWeight: 600, color: "#1e293b" }}>
+                      {i === 0 && "Verified Listing"}
+                      {i === 1 && "Grow Your Reach"}
+                      {i === 2 && "Client Trust Boost"}
+                      {i === 3 && "Lead Support"}
                     </div>
                   </div>
                 ))}
               </div>
-
-              <div style={{ marginTop: 30 }}>
-                <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Premium Features:</h5>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: isMobile ? "column" : "row",
-                    flexWrap: isMobile ? "unset" : "wrap",
-                    gap: 15,
-                  }}
-                >
-                  {premiumFeatures.map((item, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        flex: isMobile ? "unset" : "1 1 45%",
-                        display: "flex",
-                        gap: 10,
-                        background: "#fff",
-                        padding: 15,
-                        borderRadius: 12,
-                        boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-                      }}
-                    >
-                      <div style={{ fontSize: 28 }}>{item.icon}</div>
-                      <div>
-                        <strong>{item.title}</strong>
-                        <p style={{ fontSize: 14, margin: 0, color: "#555" }}>{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ marginTop: 20 }}>
-                <Link
-                  to="/view-all-therapist"
-                  style={{
-                    display: "inline-block",
-                    padding: "10px 20px",
-                    background: "#22bb33",
-                    color: "#fff",
-                    borderRadius: 10,
-                    fontWeight: 600,
-                    textDecoration: "none",
-                  }}
-                >
-                  Check Therapist Directory
-                </Link>
-              </div>
             </div>
 
-            {/* Right Section - Form */}
-            <div className="col-lg-5">
-              <div className="rbt-contact-form p-5 rounded shadow bg-white">
-                <h4 className="title mb-3">Tell Us About You!</h4>
-                <p style={{ color: "#d50000" }}>{error}</p>
+            {/* RIGHT SIDE FORM */}
+            <div className="col-lg-6">
+              <div
+                className="p-5 rounded shadow bg-white"
+                style={{ borderLeft: "5px solid #16a34a" }}
+              >
+                <h3 style={{ marginBottom: 10, fontWeight: 700, color: "#065f46" }}>
+                  Therapist Registration Form
+                </h3>
+                <p style={{ color: "#d32f2f", fontWeight: 500 }}>{error}</p>
 
                 <div className="form-group mb-3">
                   <select
@@ -295,7 +241,7 @@ export default function TherapistRegistration() {
                     <option value="Therapist">Therapist</option>
                     <option value="Clinical Psychologist">Clinical Psychologist</option>
                     <option value="Rehabilitation Psychologist">Rehabilitation Psychologist</option>
-                    <option value="Clinical Nutritionist">Clinical Nutritionist</option> {/* 🆕 Added */}
+                    <option value="Clinical Nutritionist">Clinical Nutritionist</option>
                     <option value="Life Coach">Life Coach</option>
                     <option value="Wellness Coach">Wellness Coach</option>
                     <option value="Social Worker">Social Worker</option>
@@ -316,45 +262,39 @@ export default function TherapistRegistration() {
                   </select>
                 </div>
 
-                <div className="form-group mb-3">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-                    className="form-control"
-                  />
-                </div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+                  className="form-control mb-3"
+                />
 
-                <div className="form-group mb-3">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-                    className="form-control"
-                  />
-                </div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                  className="form-control mb-3"
+                />
 
-                <div className="form-group mb-3">
-                  <input
-                    type="text"
-                    placeholder="Phone"
-                    value={formData.phone}
-                    onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
-                    className="form-control"
-                  />
-                </div>
+                <input
+                  type="text"
+                  placeholder="Phone"
+                  value={formData.phone}
+                  onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
+                  className="form-control mb-3"
+                />
 
                 <div className="form-group mb-3">
                   <span>Interested to serve:</span>
                   {[
-                    "Prescribe Medication(Only for Psychiatrist)",
-                    "Individual counselling",
-                    "Couple counselling",
-                    "Teen counselling",
-                    "Workshops/Events conducting",
-                    "Internship/Training",
+                    "Prescribe Medication (Psychiatrist only)",
+                    "Individual Counselling",
+                    "Couple Counselling",
+                    "Teen Counselling",
+                    "Workshops / Events",
+                    "Internship / Training",
                   ].map((val, i) => (
                     <p key={i} className="rbt-checkbox-wrapper mb-1">
                       <input
@@ -363,23 +303,23 @@ export default function TherapistRegistration() {
                         onChange={handleCheckboxChange}
                         checked={formData.checkedValues.includes(val)}
                       />
-                      <label>{val}</label>
+                      <label style={{ marginLeft: 6 }}>{val}</label>
                     </p>
                   ))}
                 </div>
 
                 <div className="form-group mb-3">
-                  <span>Resume</span>
+                  <span>Upload Resume (PDF)</span>
                   <input
                     type="file"
                     accept=".pdf"
-                    className="resume-upload"
+                    className="form-control mt-1"
                     onChange={handleFileChange}
                   />
                 </div>
 
                 <div className="form-submit-group mb-3">
-                  <p style={{ color: "#22bb33" }}>{success}</p>
+                  <p style={{ color: "#16a34a" }}>{success}</p>
                   {loading ? (
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
                       <CircularProgress />
@@ -388,56 +328,58 @@ export default function TherapistRegistration() {
                     <button
                       onClick={handleSubmit}
                       className="rbt-btn btn-gradient radius-round w-100"
+                      style={{
+                        background: "linear-gradient(135deg, #16a34a, #22c55e)",
+                        border: "none",
+                        padding: "10px 0",
+                        color: "#fff",
+                        fontWeight: 600,
+                        borderRadius: 10,
+                      }}
                     >
                       Submit
                     </button>
                   )}
                 </div>
 
-                <div className="rbt-lost-password text-end mt-2">
+                <div className="text-end mt-2">
                   <Link className="rbt-btn-link" to="/login">
                     Already have an account? Login
                   </Link>
                 </div>
+              </div>
 
-                {/* Call to Action */}
-                <div
+              {/* Support Card */}
+              <div
+                style={{
+                  marginTop: 30,
+                  background: "linear-gradient(135deg, #16a34a, #22c55e)",
+                  color: "#fff",
+                  padding: "20px",
+                  borderRadius: 12,
+                  textAlign: "center",
+                  boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                }}
+              >
+                <FaPhoneAlt size={26} />
+                <h5 style={{ fontWeight: 600, margin: "10px 0 5px" }}>
+                  Have Questions or Need Help?
+                </h5>
+                <p>Call us now for registration or query support</p>
+                <a
+                  href="tel:+918077757951"
                   style={{
-                    marginTop: 30,
-                    padding: 20,
-                    borderRadius: 12,
-                    background: "linear-gradient(135deg, #22bb33 0%, #a1e887 100%)",
-                    color: "#fff",
-                    textAlign: "center",
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 10,
+                    display: "inline-block",
+                    padding: "10px 20px",
+                    background: "#fff",
+                    color: "#16a34a",
+                    fontWeight: 600,
+                    borderRadius: 8,
+                    textDecoration: "none",
                   }}
                 >
-                  <FaPhoneAlt size={28} />
-                  <h5 style={{ fontWeight: 600, marginBottom: 5 }}>
-                    Have Questions or Need Help?
-                  </h5>
-                  <p style={{ marginBottom: 10 }}>
-                    Call us now for registration or query support.
-                  </p>
-                  <a
-                    href="tel:+918077757951"
-                    style={{
-                      display: "inline-block",
-                      padding: "10px 20px",
-                      background: "#fff",
-                      color: "#22bb33",
-                      fontWeight: 600,
-                      borderRadius: 10,
-                      textDecoration: "none",
-                    }}
-                  >
-                    +91 80777 57951
-                  </a>
-                </div>
+                  +91 80777 57951
+                </a>
               </div>
             </div>
           </div>
@@ -450,21 +392,27 @@ export default function TherapistRegistration() {
           <h5>Enter OTP</h5>
           <FormMessage success={success} error={otpError} />
           <DialogContent dividers>
-            <div className="col-md-6 col-12 mb-3">
-              <label htmlFor="otp">OTP*</label>
-              <input
-                type="text"
-                placeholder="OTP"
-                value={otp}
-                onChange={(e) => handleOtpChange(e.target.value)}
-              />
-            </div>
+            <input
+              type="text"
+              placeholder="OTP"
+              value={otp}
+              onChange={(e) => handleOtpChange(e.target.value)}
+              className="form-control"
+            />
           </DialogContent>
           <DialogActions>
             {loading ? (
               <FormProgressBar />
             ) : (
-              <button className="rbt-btn btn-gradient w-100" onClick={verifyOtp}>
+              <button
+                className="rbt-btn btn-gradient w-100"
+                style={{
+                  background: "linear-gradient(135deg, #16a34a, #22c55e)",
+                  color: "#fff",
+                  fontWeight: 600,
+                }}
+                onClick={verifyOtp}
+              >
                 Submit OTP
               </button>
             )}
