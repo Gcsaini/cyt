@@ -13,7 +13,6 @@ export default function DashboardSections() {
   const cardRef = useRef(null);
   const { therapistInfo, profileSet } = useTherapistStore();
 
-  // Profile completion dynamic: 0 if no profile, else 90%
   const profileCompletion = profileSet ? 90 : 0;
 
   const shortcutCards = [
@@ -148,7 +147,7 @@ export default function DashboardSections() {
       {/* Profile completion + Graphs */}
       <div style={{ display: isMobile ? "block" : "flex", gap: "40px", marginTop: "50px" }}>
         {/* Profile Completion */}
-        <div style={{ width: isMobile ? "100%" : "200px", marginBottom: isMobile ? "30px" : 0, textAlign: "center" }}>
+        <div style={{ width: isMobile ? "100%" : "200px", marginBottom: isMobile ? "20px" : 0, textAlign: "center" }}>
           <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#065f46", marginBottom: "16px" }}>Profile Completion</h3>
           <svg width="150" height="150">
             <circle cx="75" cy="75" r="65" stroke="#d1f1c4" strokeWidth="10" fill="none" />
@@ -167,7 +166,7 @@ export default function DashboardSections() {
             <text x="75" y="80" textAnchor="middle" fontSize="24" fill="#065f46" fontWeight="700">{profileCompletion}%</text>
           </svg>
 
-          <div style={{ marginTop: "20px", height: "120px" }}>
+          <div style={{ marginTop: "15px", height: isMobile ? "80px" : "120px" }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={miniGraphData}>
                 <Bar dataKey="value" fill="#16a34a" radius={[6,6,0,0]} />
@@ -177,7 +176,7 @@ export default function DashboardSections() {
         </div>
 
         {/* Monthly Sessions Graph */}
-        <div style={{ flex: 1, height: "300px" }}>
+        <div style={{ flex: 1, height: isMobile ? "250px" : "300px" }}>
           <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#065f46", marginBottom: "16px" }}>Monthly Sessions</h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={sessionData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -193,10 +192,10 @@ export default function DashboardSections() {
       </div>
 
       {/* Green divider line */}
-      <hr style={{ border: "0", height: "2px", background: "#16a34a", margin: "50px 0" }} />
+      <hr style={{ border: "0", height: "2px", background: "#16a34a", margin: "40px 0" }} />
 
       {/* Business Card + Letter Section */}
-      <div style={{ display: isMobile ? "block" : "flex", gap: "40px" }}>
+      <div style={{ display: isMobile ? "block" : "flex", gap: isMobile ? "30px" : "40px" }}>
         {/* Business Card */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
           <div
