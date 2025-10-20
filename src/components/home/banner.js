@@ -50,14 +50,16 @@ export default function Banner() {
   }, []);
 
   return (
-    <section
-      className="rbt-banner-area rbt-banner-1"
-      style={{
-        paddingTop: isMobile ? "0px" : "0px", // padding can't be negative
-  marginTop: isMobile ? "-40px" : "-60px", // negative shift
-  paddingBottom: isMobile ? "30px" : "30px",
-      }}
-    >
+   <section
+  className="rbt-banner-area rbt-banner-1"
+  style={{
+    paddingTop: isMobile ? "0px" : "0px",
+    marginTop: isMobile ? "-40px" : "-60px",
+    paddingBottom: isMobile ? "0px" : "0px", // no negative padding
+    marginBottom: isMobile ? "20px" : "40px", // ye bottom gap kam karega
+  }}
+>
+
     <Helmet>
             <title>
              India's Growing Network of Verified Therapists Connecting You to Trusted Counselling Support | Choose Your Therapist

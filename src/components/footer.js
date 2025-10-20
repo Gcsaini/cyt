@@ -4,10 +4,18 @@ import ImageTag from "../utils/image-tag";
 
 export default function Footer() {
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
+  const [showWhatsappPopup, setShowWhatsappPopup] = useState(true);
 
   useEffect(() => {
     const isAccepted = localStorage.getItem("cookiesAccepted") === "true";
     setCookiesAccepted(isAccepted);
+
+    // Hide WhatsApp popup after 6 seconds
+    const timer = setTimeout(() => {
+      setShowWhatsappPopup(false);
+    }, 6000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleAcceptCookies = () => {
@@ -84,12 +92,58 @@ export default function Footer() {
         </div>
       )}
 
+      {/* WhatsApp Floating Button with Popup */}
+      <div style={{ position: "fixed", bottom: "20px", left: "20px", zIndex: 9999 }}>
+        {showWhatsappPopup && (
+          <div
+            style={{
+              background: "#25D366",
+              color: "#fff",
+              padding: "10px 16px",
+              borderRadius: "20px",
+              marginBottom: "8px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              fontSize: "14px",
+              animation: "fadeInUp 0.5s ease",
+            }}
+          >
+            Quick help? Start a WhatsApp chat now!
+          </div>
+        )}
+        <a
+          href="https://wa.me/918077757951"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            backgroundColor: "#25D366",
+            borderRadius: "50%",
+            width: "60px",
+            height: "60px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+            cursor: "pointer",
+          }}
+        >
+          <i
+            className="feather-message-circle"
+            style={{ color: "#fff", fontSize: "28px" }}
+          ></i>
+        </a>
+      </div>
+
       {/* Animation CSS */}
       <style>
         {`
           @keyframes fadeIn {
             from { opacity: 0; transform: translate(-50%, 20px); }
             to { opacity: 1; transform: translate(-50%, 0); }
+          }
+
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
           }
 
           @media (max-width: 600px) {
