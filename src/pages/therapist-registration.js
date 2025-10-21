@@ -11,18 +11,10 @@ import { Link } from "react-router-dom";
 import { postData, postFormData } from "../utils/actions";
 import FormMessage from "../components/global/form-message";
 import FormProgressBar from "../components/global/form-progressbar";
-import {
-  FaPhoneAlt,
-  FaUserTie,
-  FaStar,
-  FaHandshake,
-  FaCheckCircle,
-} from "react-icons/fa";
-import { Helmet } from "react-helmet";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { FaPhoneAlt } from "react-icons/fa";
 
-export default function TherapistRegistration() {
-  // --- form & UI state
+export default function TherapistRegistration() 
+{
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -38,23 +30,20 @@ export default function TherapistRegistration() {
   const [open, setOpen] = useState(false);
   const [otpError, setOtpError] = useState("");
   const [otp, setOtp] = useState("");
-
-  // responsive
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // nothing special here, but keeping for parity with previous versions
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // --- helpers
   const handleFileChange = (event) =>
     setFormData((prev) => ({ ...prev, selectedFile: event.target.files[0] }));
 
   const validateEmail = (email) =>
-    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
-      (email || "").toLowerCase()
-    );
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.toLowerCase());
 
   const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
@@ -66,36 +55,34 @@ export default function TherapistRegistration() {
     }));
   };
 
-  // --- submit registration (keeps backend as-is)
   const handleSubmit = async () => {
-    const { name, phone, email, profileType, mode, checkedValues, selectedFile } =
-      formData;
+    const { name, phone, email, profileType, mode, checkedValues, selectedFile } = formData;
 
     setError("");
     setSuccess("");
 
     if (!profileType) return setError("Please select profile type");
     if (!mode) return setError("Please select service mode");
-    if (!name || name.trim().length < 5) return setError("Please enter full name");
+    if (name.length < 5) return setError("Please enter full name");
     if (!validateEmail(email)) return setError("Please enter valid email id");
-    if (!phone || phone.trim().length !== 10) return setError("Please enter valid phone number");
-    if (!checkedValues.length) return setError("Please check any 'Interested to serve'");
+    if (phone.length !== 10) return setError("Please enter valid phone number");
+    if (!checkedValues.length)
+      return setError("Please check any 'Interested to serve'");
     if (!selectedFile) return setError("Please upload your resume");
 
     setLoading(true);
     const data = new FormData();
     data.append("file", selectedFile);
-    data.append("name", name.trim());
-    data.append("phone", phone.trim());
-    data.append("email", email.trim());
+    data.append("name", name);
+    data.append("phone", phone);
+    data.append("email", email);
     data.append("type", profileType);
     data.append("mode", mode);
     data.append("serve", checkedValues.join(", "));
 
     try {
       const response = await postFormData(threapistRegistrationUrl, data);
-      // expecting same response structure as before: response.status truthy on success
-      if (response && response.status) {
+      if (response.status) {
         setOpen(true);
         setFormData({
           name: "",
@@ -107,17 +94,15 @@ export default function TherapistRegistration() {
           selectedFile: null,
         });
         setError("");
-        setSuccess(""); // success message will show after OTP verify
       } else {
-        setError(response?.message || "Something went wrong. Please try again.");
+        setError("Something went wrong");
       }
     } catch (err) {
-      setError(err?.response?.data?.message || "Something went wrong. Please try again.");
+      setError(err.response?.data?.message || "Something went wrong");
     }
     setLoading(false);
   };
 
-  // --- OTP verify
   const handleOtpChange = (value) => setOtp(value.replace(/\D/g, "").slice(0, 6));
   const onClose = () => setOpen(false);
 
@@ -128,335 +113,199 @@ export default function TherapistRegistration() {
     try {
       setLoading(true);
       const response = await postData(verifyOtpUrl, { email: formData.email, otp });
-      if (response && response.status) {
+      if (response.status) {
         setOtp("");
         setOpen(false);
         setSuccess(
           "Thank you for submitting your resume. Our admin will review your profile soon. You will receive approval via email."
         );
       } else {
-        setOtpError(response?.message || "OTP verification failed");
+        setOtpError(response.message);
       }
     } catch (err) {
-      setOtpError(err?.response?.data?.message || "OTP verification failed");
+      setOtpError(err.response?.data?.message || "OTP verification failed");
     }
     setLoading(false);
   };
 
-  // --- FAQ content (expanded set, visible both left+right)
-  const faqs = [
-    {
-      question: "Who can register as a therapist?",
-      answer:
-        "Counselling Psychologists, Clinical Psychologists, Psychiatrists, Special Educators, and Rehabilitation Psychologists with valid Indian qualifications can register. See eligibility below.",
-    },
-    {
-      question: "What are the Indian qualification criteria?",
-      answer:
-        "Counselling Psychologist: M.A./M.Sc in Psychology or Counselling (2+ yrs experience recommended). Clinical Psychologist: M.Phil/PhD in Clinical Psychology + RCI registration required. Psychiatrist: MBBS + MD/DNB in Psychiatry + Medical Council registration. Special Educator: B.Ed. (Special Education) or equivalent (RCI recommended). Rehabilitation Psychologist: M.Sc/M.Phil in Rehabilitation Psychology (RCI recommended).",
-    },
-    {
-      question: "What is the benefit of registering?",
-      answer:
-        "Profile visibility — your verified profile becomes discoverable by users searching for mental health professionals, helping you build credibility and showcase your expertise.",
-    },
-    {
-      question: "Do I get leads directly?",
-      answer:
-        "This platform currently focuses on profile visibility. Clients can discover and view your profile; contact flow depends on your chosen settings and approval status.",
-    },
-    {
-      question: "Can I register for virtual sessions only?",
-      answer: "Yes — select 'Virtual' in Service Mode. You can also choose 'In-Person' or 'Virtual & In-Person'.",
-    },
-    {
-      question: "How long does verification take?",
-      answer:
-        "Verification typically takes 24–48 hours. Our admin team manually reviews educational and professional documents before making the profile public.",
-    },
-    {
-      question: "What documents should I upload?",
-      answer:
-        "Upload a PDF resume/CV highlighting your qualifications, registration numbers (if any), and experience. Ensure the document clearly lists degrees and institutions.",
-    },
-    {
-      question: "Can I update my profile after approval?",
-      answer:
-        "Yes. After approval you can log in and update your profile details, add specialities, or upload new documents as needed.",
-    },
+  const joinSteps = [
+    { icon: "📄", title: "Submit Resume", desc: "Send us your credentials for verification." },
+    { icon: "✅", title: "Receive Approval", desc: "Within 7 days, get confirmation email for eligibility." },
+    { icon: "💳", title: "Activate Profile", desc: "Complete verification to activate your therapist profile." },
+    { icon: "🌐", title: "Connect Independently", desc: "Manage visibility and connect with clients freely." },
+  ];
+
+  const premiumFeatures = [
+    { icon: "🏅", title: "Verified Badge", desc: "Stand out with a verified professional badge." },
+    { icon: "💎", title: "Featured Listings", desc: "Get featured for faster client acquisition." },
+    { icon: "📊", title: "Analytics Dashboard", desc: "Track profile views and client interest." },
+    { icon: "🗂", title: "Client Management", desc: "Manage appointments, payments, and feedback easily." },
+    { icon: "📣", title: "Marketing Support", desc: "Optional promotion to a wider audience." },
   ];
 
   return (
     <>
-      <Helmet>
-        <title>Therapist Registration — Increase Profile Visibility | Choose Your Therapist</title>
-        <meta
-          name="description"
-          content="Register as a verified therapist (Counselling, Clinical, Psychiatrist, Special Educator, Rehabilitation) to increase profile visibility among clients in India."
-        />
-        <meta
-          name="keywords"
-          content="Therapist registration India, counselling psychologist registration, clinical psychologist registration, psychiatrist registration, special educator registration, profile visibility"
-        />
-      </Helmet>
-
-      {/* ---------- Styles (single place) ---------- */}
+      {/* Remove blue focus outline */}
       <style>{`
-        /* Base */
-        body { background: #fff; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #0f172a; }
-        * { box-sizing: border-box; }
-
-        /* Focus resets */
-        input:focus, select:focus, textarea:focus, button:focus { outline: none !important; box-shadow: none !important; }
-
-        /* Premium banner - lighter / soft green */
-        .premium-banner {
-          width: 100%;
-          background: linear-gradient(120deg, #f0fff4 0%, #adfab7ff 40%, #d2faceff 100%);
-          padding: 88px 20px;
-          text-align: center;
-          color: #064e3b;
-        }
-        .premium-banner h1 {
-          margin: 0;
-          font-size: 50px;
-          font-weight: 900;
-          letter-spacing: -0.5px;
-        }
-        .premium-banner p {
-          margin: 12px 0 0;
-          font-size: 18px;
-          font-weight: 500;
-          color: #065f46;
-        }
-
-        @media (max-width: 768px) {
-          .premium-banner { padding: 48px 16px; }
-          .premium-banner h1 { font-size: 30px; }
-          .premium-banner p { font-size: 15px; }
-        }
-
-        /* Main container spacing */
-        .main-section {
-          background: #fff;
-          padding: 64px 20px;
-        }
-        .row-flex {
-          display: flex;
-          gap: 30px;
-          align-items: flex-start;
-          flex-wrap: wrap;
-        }
-        .col-left { flex: 1 1 55%; min-width: 300px; }
-        .col-right { flex: 1 1 40%; min-width: 300px; }
-
-        /* Left side styles */
-        .headline { font-size: 40px; font-weight: 900; margin: 0 0 12px; color: #0f172a; line-height: 1.08; }
-        .subhead { font-size: 16px; color: #334155; margin-bottom: 22px; max-width: 720px; }
-
-        .criteria-card {
-          background: #f8fffa;
-          border-left: 4px solid #16a34a;
-          padding: 18px 20px;
-          margin-top: 18px;
-          color: #065f46;
-        }
-        .criteria-card h4 { margin: 0 0 10px; font-size: 18px; }
-        .criteria-card ul { margin: 0; padding-left: 18px; font-size: 14.5px; color: #065f46; }
-
-        /* Benefits grid */
-        .benefits-grid {
-          display: flex;
-          gap: 16px;
-          flex-wrap: wrap;
-          margin-top: 28px;
-        }
-        .benefit-card {
-          background: #fff;
-          flex: 1 1 45%;
-          min-width: 220px;
-          border-radius: 12px;
-          padding: 16px 18px;
-          box-shadow: 0 8px 20px rgba(3,7,18,0.06);
-          display: flex;
-          gap: 14px;
-          align-items: center;
-        }
-        .benefit-title { font-weight: 700; font-size: 19px; margin: 0; color: #0f172a; }
-        .benefit-desc { margin: 4px 0 0; font-size: 14px; color: #475569; font-weight: 500; }
-
-        /* Right side form card */
-        .form-card {
-          background: #fff;
-          padding: 26px;
-          box-shadow: 0 12px 30px rgba(2,6,23,0.06);
-          border-left: 6px solid #16a34a;
-        }
-        .form-card h3 { margin: 0 0 10px; color: #065f46; font-size: 20px; font-weight: 800; }
-        .form-control { width: 100%; padding: 12px 14px; border: 1px solid #e6e9ef; border-radius: 8px; font-size: 15px; color: #0f172a; }
-        .form-control:focus { border-color: #16a34a; }
-
-        .checkbox-list p { margin: 8px 0; display: flex; align-items: center; gap: 10px; font-weight: 500; color: #0f172a; }
-
-        /* Premium submit */
-        .premium-btn {
-          background: linear-gradient(135deg, #16a34a, #22c55e);
-          color: #fff;
-          font-weight: 800;
-          font-size: 18px;
-          border-radius: 10px;
-          padding: 14px 18px;
-          border: none;
-          width: 100%;
-          cursor: pointer;
-          transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-        .premium-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(2,6,23,0.12); }
-
-        .support-card {
-          margin-top: 22px;
-          background: linear-gradient(135deg, #e8fff3, #dffdec);
-          color: #065f46;
-          padding: 18px;
-          text-align: center;
-          border-radius: 10px;
-        }
-        .support-card a { text-decoration: none; display: inline-block; margin-top: 10px; background: #fff; color: #16a34a; padding: 8px 16px; border-radius: 8px; font-weight: 700; }
-
-        /* FAQ section */
-        .faq-section {
-          background: #f8fafb;
-          padding: 64px 20px;
-          margin-top: 22px;
-        }
-        .faq-section h2 { text-align: center; font-size: 32px; margin-bottom: 28px; color: #064e3b; font-weight: 900; }
-        .faq-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 18px;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-        .faq-item {
-          background: #fff;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 8px 24px rgba(2,6,23,0.04);
-        }
-        .faq-item h5 { margin: 0 0 8px; color: #065f46; font-size: 16px; font-weight: 700; }
-        .faq-item p { margin: 0; color: #334155; font-size: 15px; line-height: 1.45; }
-
-        @media (max-width: 992px) {
-          .col-left { flex: 1 1 100%; }
-          .col-right { flex: 1 1 100%; }
-          .benefit-card { flex: 1 1 100%; }
-          .faq-grid { grid-template-columns: 1fr; }
-          .premium-banner { padding: 48px 16px; }
+        input:focus, select:focus, textarea:focus, button:focus {
+          outline: none !important;
+          box-shadow: none !important;
         }
       `}</style>
 
-      {/* ---------- Page content ---------- */}
       <MyNavbar />
 
-      {/* Banner */}
-      <div className="premium-banner" role="banner" aria-label="Premium banner: get discovered as a verified therapist">
-        <h1>Get Discovered as a Verified Therapist</h1>
-        <p>Enhance your profile visibility and connect with clients looking for qualified mental health professionals.</p>
-      </div>
-
-      {/* Main registration + left content */}
-      <div className="main-section">
+      <div
+        style={{
+          background: "linear-gradient(135deg, #e6f5ea 0%, #ffffff 60%, #d9f0e6 100%)",
+          padding: isMobile ? "60px 15px" : "100px 0",
+        }}
+      >
         <div className="container">
-          <div className="row-flex">
-            {/* LEFT: Content, criteria, benefits */}
-            <div className="col-left">
-              <h1 className="headline">Let Clients <span style={{ color: "#16a34a" }}>Discover Your Profile</span></h1>
-              <p className="subhead">
-                Submit your professional profile to increase your discoverability. Our platform helps qualified mental health professionals
-                (counsellors, clinical psychologists, psychiatrists and special educators) present their qualifications and service modes clearly to clients.
+          <div className="row align-items-start g-5">
+            {/* Left Section */}
+            <div className="col-lg-7">
+              <h1
+                style={{
+                  fontWeight: 900,
+                  fontSize: isMobile ? "35px" : "60px",
+                  color: "#000",
+                  lineHeight: 1.2,
+                }}
+              >
+                Join{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(90deg, #020802ff, #000000ff)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  India’s Verified Therapist Network
+                </span>
+              </h1>
+
+              <p style={{ fontSize: 18, color: "#000", maxWidth: 550 }}>
+                Create your verified therapist profile today and make it easier for clients to find and trust your services.
               </p>
 
-              {/* Eligibility criteria */}
-              <div className="criteria-card" aria-labelledby="eligibility-heading">
-                <h3 id="eligibility-heading">Eligibility Criteria (India)</h3>
-                <ul>
-                  <li><strong>Counselling Psychologist:</strong> M.A./M.Sc in Psychology or Counselling (2+ years experience recommended). RCI registration optional.</li>
-                  <li><strong>Clinical Psychologist:</strong> M.Phil or PhD in Clinical Psychology. RCI registration mandatory.</li>
-                  <li><strong>Psychiatrist:</strong> MBBS + MD/DNB (Psychiatry). Valid Medical Council registration required.</li>
-                  <li><strong>Special Educator:</strong> B.Ed. (Special Education) or equivalent. RCI registration recommended.</li>
-                  <li><strong>Rehabilitation Psychologist:</strong> M.Sc/M.Phil in Rehabilitation Psychology. RCI registration recommended.</li>
-                </ul>
+              <div
+                style={{
+                  marginTop: 20,
+                  display: "inline-block",
+                  padding: "8px 16px",
+                  background: "#e1f5e3",
+                  color: "#000",
+                  borderRadius: 25,
+                  fontSize: 16,
+                }}
+              >
+                Join a growing community empowering lives every day.
               </div>
 
-              {/* Benefits */}
-              <div className="benefits-grid" aria-hidden={false}>
-                <div className="benefit-card">
-                  <FaUserTie color="#16a34a" size={90} />
-                  <div>
-                    <p className="benefit-title">Verified Profile</p>
-                    <p className="benefit-desc">Build trust and become verified professionals stand out when clients search.</p>
+              <div style={{ marginTop: 40 }}>
+                {joinSteps.map((step, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      display: "flex",
+                      gap: 15,
+                      background: "#ffffff",
+                      padding: "15px 20px",
+                      borderRadius: 12,
+                      boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                      marginBottom: 15,
+                    }}
+                  >
+                    <div style={{ fontSize: 28 }}>{step.icon}</div>
+                    <div>
+                      <strong style={{ color: "#22bb33" }}>{step.title}</strong>
+                      <p style={{ margin: 2, fontSize: 14, color: "#555" }}>{step.desc}</p>
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                <div className="benefit-card">
-                  <FaHandshake color="#16a34a" size={90} />
-                  <div>
-                    <p className="benefit-title">Enhanced Visibility</p>
-                    <p className="benefit-desc">Your profile gets highlighted to clients searching for services you offer.</p>
-                  </div>
+              <div style={{ marginTop: 30 }}>
+                <h5 style={{ fontWeight: 600, marginBottom: 15 }}>Premium Features:</h5>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: isMobile ? "column" : "row",
+                    flexWrap: isMobile ? "unset" : "wrap",
+                    gap: 15,
+                  }}
+                >
+                  {premiumFeatures.map((item, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        flex: isMobile ? "unset" : "1 1 45%",
+                        display: "flex",
+                        gap: 10,
+                        background: "#fff",
+                        padding: 15,
+                        borderRadius: 12,
+                        boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
+                      }}
+                    >
+                      <div style={{ fontSize: 28 }}>{item.icon}</div>
+                      <div>
+                        <strong>{item.title}</strong>
+                        <p style={{ fontSize: 14, margin: 0, color: "#555" }}>{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
+              </div>
 
-                <div className="benefit-card">
-                  <FaStar color="#16a34a" size={90} />
-                  <div>
-                    <p className="benefit-title">Professional Credibility</p>
-                    <p className="benefit-desc">Showcase credentials, experience, and service modes to attract the right audience.</p>
-                  </div>
-                </div>
-
-                <div className="benefit-card">
-                  <FaCheckCircle color="#16a34a" size={90} />
-                  <div>
-                    <p className="benefit-title">Profile Support</p>
-                    <p className="benefit-desc">Guidance to optimise your profile for better discoverability and clarity.</p>
-                  </div>
-                </div>
+              <div style={{ marginTop: 20 }}>
+                <Link
+                  to="/view-all-therapist"
+                  style={{
+                    display: "inline-block",
+                    padding: "10px 20px",
+                    background: "#22bb33",
+                    color: "#fff",
+                    borderRadius: 10,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                  }}
+                >
+                  Check Therapist Directory
+                </Link>
               </div>
             </div>
 
-            {/* RIGHT: Registration form */}
-            <div className="col-right">
-              <div className="form-card" role="form" aria-labelledby="registration-heading">
-                <h2 id="registration-heading">Registration Form</h2>
+            {/* Right Section - Form */}
+            <div className="col-lg-5">
+              <div className="rbt-contact-form p-5 rounded shadow bg-white">
+                <h4 className="title mb-3">Tell Us About You!</h4>
+                <p style={{ color: "#d50000" }}>{error}</p>
 
-                {/* error / success */}
-                {error ? <p style={{ color: "#dc2626", fontWeight: 700 }}>{error}</p> : null}
-                {success ? <p style={{ color: "#16a34a", fontWeight: 700 }}>{success}</p> : null}
-
-                {/* Profile Type */}
-                <div style={{ margin: "14px 0" }}>
+                <div className="form-group mb-3">
                   <select
-                    className="form-control"
                     value={formData.profileType}
                     onChange={(e) => setFormData((p) => ({ ...p, profileType: e.target.value }))}
-                    aria-label="Select profile type"
+                    className="form-control"
                   >
                     <option value="">Select profile type</option>
                     <option value="Counselling Psychologist">Counselling Psychologist</option>
                     <option value="Psychiatrist">Psychiatrist</option>
+                   
+                    
                     <option value="Clinical Psychologist">Clinical Psychologist</option>
-                    <option value="Special Educator">Special Educator</option>
                     <option value="Rehabilitation Psychologist">Rehabilitation Psychologist</option>
+                    <option value="Special Educator">Special Educator</option>
+                    
                   </select>
                 </div>
 
-                {/* Service Mode */}
-                <div style={{ margin: "14px 0" }}>
+                <div className="form-group mb-3">
                   <select
-                    className="form-control"
                     value={formData.mode}
                     onChange={(e) => setFormData((p) => ({ ...p, mode: e.target.value }))}
-                    aria-label="Select service mode"
+                    className="form-control"
                   >
                     <option value="">Service Mode</option>
                     <option value={1}>Virtual</option>
@@ -465,120 +314,133 @@ export default function TherapistRegistration() {
                   </select>
                 </div>
 
-                {/* Name */}
-                <div style={{ margin: "14px 0" }}>
+                <div className="form-group mb-3">
                   <input
                     type="text"
                     placeholder="Full Name"
-                    className="form-control"
                     value={formData.name}
                     onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-                    aria-label="Full name"
+                    className="form-control"
                   />
                 </div>
 
-                {/* Email */}
-                <div style={{ margin: "14px 0" }}>
+                <div className="form-group mb-3">
                   <input
                     type="email"
                     placeholder="Email"
-                    className="form-control"
                     value={formData.email}
                     onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-                    aria-label="Email address"
+                    className="form-control"
                   />
                 </div>
 
-                {/* Phone */}
-                <div style={{ margin: "14px 0" }}>
+                <div className="form-group mb-3">
                   <input
                     type="text"
                     placeholder="Phone"
-                    className="form-control"
                     value={formData.phone}
                     onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
-                    aria-label="Phone number"
+                    className="form-control"
                   />
                 </div>
 
-                {/* Interested to serve */}
-                <div style={{ margin: "14px 0" }}>
-                  <div style={{ fontWeight: 700, marginBottom: 8 }}>Interested to serve:</div>
-                  <div className="checkbox-list" role="group" aria-label="Interested services">
-                    {[
-                      "Prescribe Medication (Psychiatrist only)",
-                      "Individual Counselling",
-                      "Couple Counselling",
-                      "Teen Counselling",
-                      "Workshops / Events",
-                      "Internship / Training",
-                    ].map((val, i) => (
-                      <p key={i}>
-                        <input
-                          type="checkbox"
-                          id={`serve-${i}`}
-                          value={val}
-                          onChange={handleCheckboxChange}
-                          checked={formData.checkedValues.includes(val)}
-                          aria-checked={formData.checkedValues.includes(val)}
-                        />
-                        <label htmlFor={`serve-${i}`} style={{ marginLeft: 8 }}>{val}</label>
-                      </p>
-                    ))}
-                  </div>
+                <div className="form-group mb-3">
+                  <span>Interested to serve:</span>
+                  {[
+                    "Prescribe Medication(Only for Psychiatrist)",
+                    "Individual counselling",
+                    "Couple counselling",
+                    "Teen counselling",
+                    "Workshops/Events conducting",
+                    "Internship/Training",
+                  ].map((val, i) => (
+                    <p key={i} className="rbt-checkbox-wrapper mb-1">
+                      <input
+                        type="checkbox"
+                        value={val}
+                        onChange={handleCheckboxChange}
+                        checked={formData.checkedValues.includes(val)}
+                      />
+                      <label>{val}</label>
+                    </p>
+                  ))}
                 </div>
 
-                {/* Upload resume */}
-                <div style={{ margin: "14px 0" }}>
-                  <div style={{ fontWeight: 700 }}>Upload Resume (PDF)</div>
+                <div className="form-group mb-3">
+                  <span>Resume</span>
                   <input
                     type="file"
                     accept=".pdf"
+                    className="resume-upload"
                     onChange={handleFileChange}
-                    style={{ marginTop: 8 }}
-                    aria-label="Upload resume PDF"
                   />
                 </div>
 
-                {/* Submit */}
-                <div style={{ marginTop: 18 }}>
+                <div className="form-submit-group mb-3">
+                  <p style={{ color: "#22bb33" }}>{success}</p>
                   {loading ? (
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
                       <CircularProgress />
                     </Box>
                   ) : (
-                    <button className="premium-btn" onClick={handleSubmit} aria-label="Submit registration">
+                    <button
+                      onClick={handleSubmit}
+                      className="rbt-btn btn-gradient radius-round w-100"
+                    >
                       Submit
                     </button>
                   )}
                 </div>
 
-                <div style={{ marginTop: 12, textAlign: "right" }}>
-                  <Link to="/login" className="rbt-btn-link">Already have an account? Login</Link>
+                <div className="rbt-lost-password text-end mt-2">
+                  <Link className="rbt-btn-link" to="/login">
+                    Already have an account? Login
+                  </Link>
                 </div>
 
-                {/* Support */}
-                
+                {/* Call to Action */}
+                <div
+                  style={{
+                    marginTop: 30,
+                    padding: 20,
+                    borderRadius: 12,
+                    background: "linear-gradient(135deg, #22bb33 0%, #a1e887 100%)",
+                    color: "#fff",
+                    textAlign: "center",
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  <FaPhoneAlt size={28} />
+                  <h5 style={{ fontWeight: 600, marginBottom: 5 }}>
+                    Have Questions or Need Help?
+                  </h5>
+                  <p style={{ marginBottom: 10 }}>
+                    Call us now for registration or query support.
+                  </p>
+                  <a
+                    href="tel:+918077757951"
+                    style={{
+                      display: "inline-block",
+                      padding: "10px 20px",
+                      background: "#fff",
+                      color: "#22bb33",
+                      fontWeight: 600,
+                      borderRadius: 10,
+                      textDecoration: "none",
+                    }}
+                  >
+                    +91 80777 57951
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* FAQ Section (both sides visible; grid auto-splits) */}
-      <section className="faq-section" aria-labelledby="faq-heading">
-        <div className="container">
-          <h2 id="faq-heading">Frequently Asked Questions</h2>
-          <div className="faq-grid" role="list">
-            {faqs.map((f, idx) => (
-              <article className="faq-item" key={idx} role="listitem" aria-labelledby={`faq-q-${idx}`}>
-                <h5 id={`faq-q-${idx}`}>{f.question}</h5>
-                <p>{f.answer}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* OTP Dialog */}
       <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
@@ -586,20 +448,21 @@ export default function TherapistRegistration() {
           <h5>Enter OTP</h5>
           <FormMessage success={success} error={otpError} />
           <DialogContent dividers>
-            <input
-              type="text"
-              placeholder="OTP"
-              value={otp}
-              onChange={(e) => handleOtpChange(e.target.value)}
-              className="form-control"
-              aria-label="OTP input"
-            />
+            <div className="col-md-6 col-12 mb-3">
+              <label htmlFor="otp">OTP*</label>
+              <input
+                type="text"
+                placeholder="OTP"
+                value={otp}
+                onChange={(e) => handleOtpChange(e.target.value)}
+              />
+            </div>
           </DialogContent>
           <DialogActions>
             {loading ? (
               <FormProgressBar />
             ) : (
-              <button className="premium-btn" onClick={verifyOtp} aria-label="Submit OTP">
+              <button className="rbt-btn btn-gradient w-100" onClick={verifyOtp}>
                 Submit OTP
               </button>
             )}
@@ -607,7 +470,6 @@ export default function TherapistRegistration() {
         </div>
       </Dialog>
 
-      {/* Newsletter & Footer */}
       <NewsLetter />
       <Footer />
     </>
