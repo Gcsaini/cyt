@@ -154,7 +154,7 @@ export default function Banner() {
                     wordBreak: "break-word",
                   }}
                 >
-                  India's Growing Network of
+                  Connecting You to
                   {isMobile ? <br /> : " "} {/* ✅ Mobile = break, Laptop = space */}
 
                   <span
@@ -165,9 +165,9 @@ export default function Banner() {
                       WebkitTextFillColor: "transparent",
                     }}
                   >
-                    Verified Therapists
+                    Affordable,
                   </span>{" "}
-                  Connecting You to{" "}
+                 Verified Therapists{" "}
                   <span
                     className="theme-gradient-alt"
                     style={{
@@ -176,7 +176,7 @@ export default function Banner() {
                       WebkitTextFillColor: "transparent",
                     }}
                   >
-                    Trusted Counselling Support
+                    Who Truly Understand You
                   </span>
                 </h1>
 
@@ -279,4 +279,5 @@ export default function Banner() {
 
     </section>
   );
+
 }
