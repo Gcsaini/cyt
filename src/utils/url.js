@@ -85,4 +85,4 @@ export const ApplyCouponUrl = `${apiUrl}/coupon/apply`;
 export const UpdatePaymentStatusUrl = `${apiUrl}/update-payment-status`;
 export const StartSessionUrl = `${apiUrl}/start-session`;
 export const EndSessionUrl = `${apiUrl}/end-session`;
-export const SubmitConsultationUrl = `${apiUrl}/submit-consultation`;
+export const SubmitConsultationUrl = `${apiUrl}/save-lead`;

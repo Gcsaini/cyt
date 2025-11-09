@@ -16,7 +16,7 @@ export default function ConsultationForm() {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // "success" or "error"
+  const [messageType, setMessageType] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
