@@ -4,7 +4,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation"; // ✅ Make sure installed
+import { TypeAnimation } from "react-type-animation";
 import ImageTag from "../../utils/image-tag";
 
 import ConsultationForm from "./consultation-form";
@@ -24,8 +24,8 @@ export default function Banner() {
       style={{
         paddingTop: isMobile ? "0px" : "0px",
         marginTop: isMobile ? "-40px" : "-60px",
-        paddingBottom: isMobile ? "0px" : "0px", // no negative padding
-        marginBottom: isMobile ? "20px" : "40px", // ye bottom gap kam karega
+        paddingBottom: isMobile ? "0px" : "0px",
+        marginBottom: isMobile ? "20px" : "40px",
       }}
     >
 
@@ -52,7 +52,7 @@ export default function Banner() {
             className="col-lg-8 col-md-12 col-sm-12 col-12"
             style={{
               display: "flex",
-              justifyContent: "flex-start", // left aligned
+              justifyContent: "flex-start",
               textAlign: "left",
               flexDirection: "column",
             }}
@@ -181,37 +181,6 @@ export default function Banner() {
                 </h1>
 
 
-                {/* TypeAnimation hidden on mobile */}
-                {!isMobile && (
-                  <div style={{ minHeight: "3em", display: "flex", alignItems: "center" }}>
-                    <TypeAnimation
-                      sequence={[
-                        "Book a Psychologist",
-                        1500,
-                        "Access Online Counselling",
-                        1500,
-                        "Meet Psychologists In-Person",
-                        1500,
-                        "Trusted Therapy Across States",
-                        1500,
-                        "Affordable Therapy Sessions",
-                        1500,
-                      ]}
-                      wrapper="div"
-                      speed={10}
-                      repeat={Infinity}
-                      deletionSpeed={20}
-                      className="theme-gradient"
-                      style={{
-                        display: "inline-block",
-                        fontWeight: 700,
-                        lineHeight: "1.5em",
-                        fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                        whiteSpace: "normal",
-                      }}
-                    />
-                  </div>
-                )}
 
                 {/* Centered description on mobile */}
                 <p
@@ -265,6 +234,7 @@ export default function Banner() {
                     display: "flex",
                     justifyContent: isMobile ? "center" : "flex-start",
                     marginTop: "20px",
+                    gap: "15px",
                   }}
                 >
                   <Link
@@ -296,10 +266,17 @@ export default function Banner() {
             className="col-lg-4 col-md-12 col-sm-12 col-12"
             style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}
           >
-            <ConsultationForm />
+            <div style={{
+              position: "sticky",
+              top: "80px",
+              zIndex: 10
+            }}>
+              <ConsultationForm />
+            </div>
           </div>
         </div>
       </div>
+
     </section>
   );
 }

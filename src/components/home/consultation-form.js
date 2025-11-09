@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { postData } from "../../utils/actions";
 import { SubmitConsultationUrl } from "../../utils/url";
 
 export default function ConsultationForm() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const [formData, setFormData] = useState({
     name: "",
@@ -106,14 +105,14 @@ export default function ConsultationForm() {
             fontWeight: "600",
             marginBottom: "10px"
           }}>
-            Book a Consultation
+            15-Minute Free Therapy
           </h3>
           <p style={{
             color: "#666",
             fontSize: "16px",
             marginBottom: "20px"
           }}>
-            Get personalized guidance for your mental wellness journey
+Talk to a certified psychologist for free and discover how therapy can help you feel better.
           </p>
         </div>
 

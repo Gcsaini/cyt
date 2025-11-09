@@ -41,39 +41,16 @@ const HorTherapistCards = () => {
 
   if (loading) {
     return (
-      <Box sx={{ py: 8, backgroundColor: '#f8f9fa', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Box sx={{ py: 8, backgroundColor: '#ffffff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <CircularProgress />
       </Box>
     );
   }
 
   return (
-    <Box sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
+    <Box sx={{ py: 6, backgroundColor: '#ffffff' }}>
       <Container maxWidth={false} sx={{ px: 2.5 }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '2rem', md: '2.5rem' },
-              fontWeight: 'bold',
-              mb: 2,
-              color: '#333',
-            }}
-          >
-            Meet Our Expert <span style={{ color: '#228756' }}>Therapists</span>
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: '#666',
-              fontSize: '1.9rem',
-              maxWidth: '600px',
-              mx: 'auto',
-            }}
-          >
-            Connect with verified, experienced professionals ready to help you on your journey
-          </Typography>
-        </Box>
+
 
         <Box sx={{ position: 'relative', overflow: 'hidden' }}>
          {therapists.length>0 && <Swiper

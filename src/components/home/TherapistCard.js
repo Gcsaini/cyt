@@ -106,9 +106,18 @@ const TherapistCard = (props) => {
                 </div>
 
                 {/* Languages */}
-                <div className="flex flex-col gap-1">
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
                     {therapist.language_spoken?.split(',').map((lang) => (
-                        <span key={lang.trim()} className="rbt-badge-5">{lang.trim()}</span>
+                        <span key={lang.trim()} style={{
+                            display: 'inline-block',
+                            backgroundColor: '#e8f5e9',
+                            color: '#228756',
+                            padding: '4px 10px',
+                            borderRadius: '12px',
+                            fontSize: '12px',
+                            fontWeight: 500,
+                            whiteSpace: 'nowrap'
+                        }}>{lang.trim()}</span>
                     ))}
                 </div>
                 {/* Book Button */}
