@@ -4,10 +4,14 @@ let baseFrontendUrl;
 const currentDomain = window.location.hostname;
 
 if (currentDomain === "localhost") {
-  apiUrl = "https://api.chooseyourtherapist.in/api";
+  // apiUrl = "https://api.chooseyourtherapist.in/api";
   // apiUrl = "http://localhost:4000/api";
-  baseApi = "http://localhost:4000";
-  baseFrontendUrl = "http://localhost:3000/";
+  // baseApi = "http://localhost:4000";
+  // baseFrontendUrl = "http://localhost:3000/";
+
+  apiUrl = "https://api.chooseyourtherapist.in/api";
+  baseApi = "https://api.chooseyourtherapist.in";
+  baseFrontendUrl = "https://chooseyourtherapist.in/";
 } else {
   apiUrl = "https://api.chooseyourtherapist.in/api";
   baseApi = "https://api.chooseyourtherapist.in";
@@ -81,3 +85,4 @@ export const ApplyCouponUrl = `${apiUrl}/coupon/apply`;
 export const UpdatePaymentStatusUrl = `${apiUrl}/update-payment-status`;
 export const StartSessionUrl = `${apiUrl}/start-session`;
 export const EndSessionUrl = `${apiUrl}/end-session`;
+export const SubmitConsultationUrl = `${apiUrl}/submit-consultation`;

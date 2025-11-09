@@ -16,6 +16,7 @@ import MyNavbar from "../components/navbar";
 import PaymentSuccessModal from "../components/view_profile/payment-success-popup";
 
 import Brands from "../components/about/brands";
+import HorTherapistCards from "../components/home/HorTherapistCard";
 
 
 export default function HomePage() {
@@ -47,7 +48,7 @@ export default function HomePage() {
         <main className="rbt-main-wrapper">
           {/* Homepage Sections */}
           <Banner />
-        
+          <HorTherapistCards/>
           <Services />
           <State />
           <PromationalBanner />
