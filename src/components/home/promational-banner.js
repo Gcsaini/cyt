@@ -3,7 +3,8 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
-import { FaBrain, FaUserMd } from "react-icons/fa"; // premium icons
+import therapysession from "../../assets/img/therapysessioncyt.png";
+import therapistNetwork from "../../assets/img/therapist.png";
 
 // Banner data
 const banners = [
@@ -13,10 +14,10 @@ const banners = [
     description: "Access verified therapists online and achieve focus, clarity, and wellbeing from the comfort of your home.",
     buttonText: "Book Your Session Now",
     link: "/view-all-therapist",
-    gradient: "linear-gradient(135deg, #007f99, #00d2ff)",
+    gradient: "linear-gradient(135deg, #5b9e5eff 0%, #4CAF50 100%)",
     headingColor: "#ffffff",
-    buttonColor: "#ffdd00",
-    icon: <FaBrain size={120} color="rgba(255,255,255,0.9)" /> // Brain icon for therapy
+    buttonColor: "#60db66ff",
+    
   },
   {
     id: 2,
@@ -24,10 +25,10 @@ const banners = [
     description: "Get verified, expand your client base, manage appointments easily, and start earning as a professional therapist today.",
     buttonText: "Submit Your Resume",
     link: "/therapist-registration",
-    gradient: "linear-gradient(135deg, #00b894, #00d084)",
+    gradient: "linear-gradient(135deg, #457046ff 0%, #66BB6A 100%)",
     headingColor: "#ffffff",
-    buttonColor: "#00ffcc",
-    icon: <FaUserMd size={120} color="rgba(255,255,255,0.9)" /> // Doctor icon for therapists
+    buttonColor: "#60db66ff",
+   
   },
 ];
 
@@ -53,12 +54,12 @@ export default function PromotionalBannerCTA() {
                   flexDirection: "row",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  minHeight: 350,
+                  minHeight: "30vh",
                   borderRadius: 20,
                   overflow: "hidden",
                   cursor: "pointer",
                   background: banner.gradient,
-                  padding: "40px",
+                  padding: "30px",
                   color: "#fff",
                   boxShadow: "0 12px 30px rgba(0,0,0,0.25)",
                 }}
@@ -68,26 +69,31 @@ export default function PromotionalBannerCTA() {
                 <div style={{ flex: 1, paddingRight: 20 }}>
                   <h2
                     style={{
-                      fontSize: 40,
-                      fontWeight: 800,
-                      marginBottom: 20,
-                      lineHeight: 1.2,
+                      fontSize: 32,
+                      fontWeight: 700,
+                      marginBottom: 15,
+                      lineHeight: 1.3,
                       color: banner.headingColor,
-                      textShadow: "2px 2px 6px rgba(0,0,0,0.35)",
+                      textShadow: "1px 1px 3px rgba(0,0,0,0.2)",
                     }}
                   >
                     {banner.title}
                   </h2>
                   <p
                     style={{
-                      fontSize: 18,
-                      marginBottom: 30,
+                      fontSize: 16,
+                      marginBottom: 25,
                       maxWidth: 500,
-                      textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
+                      textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
+                      lineHeight: 1.5,
                     }}
                   >
                     {banner.description}
                   </p>
+                </div>
+
+                {/* Right Content (Button) */}
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <button
                     onClick={() => navigate(banner.link)}
                     className="banner-button"
@@ -95,11 +101,6 @@ export default function PromotionalBannerCTA() {
                   >
                     {banner.buttonText}
                   </button>
-                </div>
-
-                {/* Right Content (Icon) */}
-                <div style={{ flex: 1, textAlign: "center" }}>
-                  {banner.icon}
                 </div>
               </div>
             </SwiperSlide>
@@ -132,6 +133,8 @@ export default function PromotionalBannerCTA() {
             .banner-slide {
               flex-direction: column !important;
               text-align: center;
+              height: auto !important;
+              min-height: 400px !important;
             }
             .banner-slide div {
               padding: 0 !important;

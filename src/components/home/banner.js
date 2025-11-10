@@ -1,10 +1,13 @@
 import React from "react";
 
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import SpaIcon from "@mui/icons-material/Spa";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { TypeAnimation } from "react-type-animation";
+
 import ImageTag from "../../utils/image-tag";
 
 import ConsultationForm from "./consultation-form";
@@ -22,10 +25,10 @@ export default function Banner() {
     <section
       className="rbt-banner-area rbt-banner-1"
       style={{
-        paddingTop: isMobile ? "0px" : "0px",
-        marginTop: isMobile ? "-40px" : "-60px",
-        paddingBottom: isMobile ? "0px" : "0px",
-        marginBottom: isMobile ? "20px" : "40px",
+        paddingTop: isMobile ? "20px" : "30px",
+        marginTop: isMobile ? "0px" : "0px",
+        paddingBottom: isMobile ? "20px" : "30px",
+        marginBottom: isMobile ? "10px" : "20px",
       }}
     >
 
@@ -45,14 +48,14 @@ export default function Banner() {
         <link rel="canonical" href="https://chooseyourtherapist.in/" />
       </Helmet>
 
-      <div className="container mt--60">
+      <div className="container mt--20">
         <div className="row justify-content-between align-items-center">
           {/* Banner Text */}
           <div
             className="col-lg-8 col-md-12 col-sm-12 col-12"
             style={{
               display: "flex",
-              justifyContent: "flex-start",
+              justifyContent: "flex-start", // left aligned
               textAlign: "left",
               flexDirection: "column",
             }}
@@ -154,7 +157,7 @@ export default function Banner() {
                     wordBreak: "break-word",
                   }}
                 >
-                  Connecting You to
+                  India's Growing Network of
                   {isMobile ? <br /> : " "} {/* ✅ Mobile = break, Laptop = space */}
 
                   <span
@@ -165,9 +168,9 @@ export default function Banner() {
                       WebkitTextFillColor: "transparent",
                     }}
                   >
-                    Affordable,
+                    Verified Therapists
                   </span>{" "}
-                 Verified Therapists{" "}
+                  Connecting You to{" "}
                   <span
                     className="theme-gradient-alt"
                     style={{
@@ -176,9 +179,10 @@ export default function Banner() {
                       WebkitTextFillColor: "transparent",
                     }}
                   >
-                    Who Truly Understand You
+                    Trusted Counselling Support
                   </span>
                 </h1>
+
 
 
 
@@ -234,7 +238,6 @@ export default function Banner() {
                     display: "flex",
                     justifyContent: isMobile ? "center" : "flex-start",
                     marginTop: "20px",
-                    gap: "15px",
                   }}
                 >
                   <Link
@@ -264,20 +267,12 @@ export default function Banner() {
           {/* Consultation Form */}
           <div
             className="col-lg-4 col-md-12 col-sm-12 col-12"
-            style={{ marginTop: isMobile ? 20 : 60, marginBottom: 100 }}
+            style={{ marginTop: isMobile ? 10 : 20, marginBottom: isMobile ? 20 : 30 }}
           >
-            <div style={{
-              position: "sticky",
-              top: "80px",
-              zIndex: 10
-            }}>
-              <ConsultationForm />
-            </div>
+            <ConsultationForm />
           </div>
         </div>
       </div>
-
     </section>
   );
-
 }

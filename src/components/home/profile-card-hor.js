@@ -5,9 +5,11 @@ import { getMinMaxPrice } from "../../utils/helpers";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import VerifiedIcon from "@mui/icons-material/Verified"; // ✅ Badge + Name ke aage
-import PersonIcon from "@mui/icons-material/Person"; 
-import LanguageIcon from "@mui/icons-material/Language"; 
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn"; 
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import PersonIcon from "@mui/icons-material/Person";
+import LanguageIcon from "@mui/icons-material/Language";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import WorkIcon from "@mui/icons-material/Work";
 import React from "react";
 import { getDecodedToken } from "../../utils/jwt";
 import { postData } from "../../utils/actions";
@@ -17,7 +19,13 @@ import {
   RemoveFavriouteTherapistUrl,
 } from "../../utils/url";
 
-export default function ProfileCardHor({ pageData, favrioutes }) {
+export default function ProfileCardHor({ pageData, favrioutes, showRecommended = false, showOnlyBookButton = false }) {
+  console.log("ProfileCardHor rendering with pageData:", pageData, "showRecommended:", showRecommended, "showOnlyBookButton:", showOnlyBookButton);
+
+  // Determine badge type based on data.priority or fallback to showRecommended prop
+  const isRecommended = pageData.priority === 1 || (pageData.priority === undefined && showRecommended);
+  const isVerified = pageData.priority === 2 || (pageData.priority === undefined && !showRecommended);
+
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const [bookmark, setBookmark] = React.useState(false);
@@ -83,31 +91,48 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
                 objectFit: "cover",
               }}
             />
-            {/* Verified Badge with Blue Color */}
+            {/* Badge - Verified or Recommended based on prop */}
             <div
               className="rbt-badge-group"
               style={{
                 position: "absolute",
-                bottom: "10px",
-                right: "10px",
+                bottom: "0",
+                right: "0",
                 zIndex: 2,
               }}
             >
               <span
                 className="rbt-badge-6"
                 style={{
-                  backgroundColor: "#1976d2", // ✅ Blue
+                  background: isRecommended
+                    ? "linear-gradient(135deg, #36b477ff 0%, #35c06fff 50%, #2c7754ff 100%)"
+                    : "linear-gradient(135deg, #1976d2 0%, #1565c0 50%, #0d47a1 100%)",
                   color: "#fff",
-                  padding: "5px 12px",
-                  borderRadius: "6px",
-                  fontSize: "12px",
-                  fontWeight: "600",
+                  padding: "10px 18px 10px 24px",
+                  fontSize: "13px",
+                  fontWeight: "800",
                   display: "flex",
                   alignItems: "center",
-                  gap: "5px",
+                  gap: "6px",
+                  position: "relative",
+                  borderRadius: "0 25px 25px 0",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2)",
+                  transform: "translateX(-12px) translateY(2px)",
+                  clipPath: "polygon(12px 0%, 100% 0%, 88% 100%, 0% 100%)",
+                  textShadow: "0 1px 2px rgba(0,0,0,0.3)",
+                  border: "2px solid rgba(255,255,255,0.2)",
+                  backdropFilter: "blur(10px)",
                 }}
               >
-                <VerifiedIcon sx={{ fontSize: 16 }} /> Verified
+                {isRecommended ? (
+                  <>
+                    <ThumbUpIcon sx={{ fontSize: 16 }} /> Recommended
+                  </>
+                ) : (
+                  <>
+                    <VerifiedIcon sx={{ fontSize: 16 }} /> Verified
+                  </>
+                )}
               </span>
             </div>
           </Link>
@@ -122,8 +147,12 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
                   {pageData.user.name}
                 </Link>
               </h4>
-              {/* Verified icon next to name */}
-              <VerifiedIcon sx={{ fontSize: 18, color: "#1976d2" }} />
+              {/* Icon next to name - Verified or Recommended */}
+              {isRecommended ? (
+                <ThumbUpIcon sx={{ fontSize: 18, color: "#228756" }} />
+              ) : (
+                <VerifiedIcon sx={{ fontSize: 18, color: "#1976d2" }} />
+              )}
             </div>
             {showBookmark && (
               <div className="rbt-bookmark-btn">
@@ -145,49 +174,114 @@ export default function ProfileCardHor({ pageData, favrioutes }) {
 
           {/* Meta info with new icons */}
           <ul className="rbt-meta" style={{ marginTop: 0 }}>
-            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <PersonIcon sx={{ fontSize: 18 }} /> {pageData.profile_type}
+            <li style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              color: "#228756",
+              fontWeight: "600",
+              fontSize: "14px"
+            }}>
+              <PersonIcon sx={{ fontSize: 18, color: "#228756" }} /> {pageData.profile_type}
             </li>
             <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <LanguageIcon sx={{ fontSize: 18 }} /> {pageData.language_spoken}
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <MonetizationOnIcon sx={{ fontSize: 18 }} />{" "}
-              <span style={{ lineHeight: "2rem" }}>
-                {getMinMaxPrice(pageData.fees)}
-              </span>
-            </li>
+            {pageData.state && (
+              <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <LocationOnIcon sx={{ fontSize: 18 }} /> {pageData.state}
+              </li>
+            )}
+            {pageData.year_of_exp && (
+              <li style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <WorkIcon sx={{ fontSize: 18 }} /> {pageData.year_of_exp} experience
+              </li>
+            )}
           </ul>
 
+          {/* Services - Show up to 3 services as tags */}
+          {pageData.services_offered && (
+            <div style={{ marginTop: '8px' }}>
+              <div style={{
+                fontSize: '12px',
+                fontWeight: '600',
+                color: '#333',
+                marginBottom: '4px'
+              }}>
+                Services
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {pageData.services_offered.split(',').slice(0, 3).map((service, index) => (
+                  <span key={index} style={{
+                    display: 'inline-block',
+                    backgroundColor: '#e8f5e9',
+                    color: '#228756',
+                    padding: '4px 8px',
+                    borderRadius: '12px',
+                    fontSize: '11px',
+                    fontWeight: '500',
+                    whiteSpace: 'nowrap',
+                    border: '1px solid #c8e6c9'
+                  }}>
+                    {service.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Buttons */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: 5,
-            }}
-          >
-            <Link
-              className="view-btn view-btn-border"
-              to={`/view-profile/${pageData._id}`}
-              style={{
-                padding: isMobile || isTablet ? "0 26px" : "0 10px",
-              }}
-            >
-              View Profile
-            </Link>
-            <Link
-              className="rbt-btn btn-gradient book-btn"
-              to={`/therapist-checkout/${pageData._id}`}
+          {showOnlyBookButton ? (
+            <div
               style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: isMobile || isTablet ? "0 20px" : "0 16px",
+                marginTop: 5,
               }}
             >
-              <span>Book Now</span>
-            </Link>
-          </div>
+              <Link
+                className="rbt-btn btn-gradient book-btn"
+                to={`/therapist-checkout/${pageData._id}`}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: isMobile || isTablet ? "0 30px" : "0 40px",
+                  width: "100%",
+                }}
+              >
+                <span>Book Now</span>
+              </Link>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: 5,
+              }}
+            >
+              <Link
+                className="view-btn view-btn-border"
+                to={`/view-profile/${pageData._id}`}
+                style={{
+                  padding: isMobile || isTablet ? "0 26px" : "0 10px",
+                }}
+              >
+                View Profile
+              </Link>
+              <Link
+                className="rbt-btn btn-gradient book-btn"
+                to={`/therapist-checkout/${pageData._id}`}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: isMobile || isTablet ? "0 20px" : "0 16px",
+                }}
+              >
+                <span>Book Now</span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

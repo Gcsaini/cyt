@@ -211,6 +211,8 @@ export default function App() {
           top: ${GREEN_STRIP_HEIGHT}px;
           z-index: 10001;
           background: #fff;
+          box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+          border-bottom: 1px solid #f0f0f0;
         }
         @media (max-width: 991px) { .rbt-header.rbt-header-10 { top: 0; } }
 

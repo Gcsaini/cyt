@@ -59,7 +59,7 @@ const TherapistCard = (props) => {
                     <div style={{ flex: 1, minWidth: 0 }}>
                         <h3 style={{
                             fontWeight: 600,
-                            fontSize: '16px',
+                            fontSize: '17px',
                             margin: '0 0 4px 0',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
@@ -101,7 +101,7 @@ const TherapistCard = (props) => {
                         textOverflow: 'ellipsis',
                         whiteSpace: 'nowrap',
                     }}>
-                        {therapist.state},India
+                        {therapist.state} ,India
                     </span>
                 </div>
 

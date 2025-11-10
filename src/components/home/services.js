@@ -17,12 +17,62 @@ export default function Services() {
         style={{ marginTop: 0 }}
       >
         <div className="container">
+          {/* About Choose Your Therapist Section - Moved to Top */}
+          
+
+              
+          {/* About Choose Your Therapist Section - Moved to Top */}
+          <div className="about-section row align-items-center">
+            {/* Left: Text */}
+            <div className="col-lg-7 col-md-12 about-text">
+              <h2 className="about-title">About Choose Your Therapist</h2>
+              <p>
+                <strong>Choose Your Therapist</strong> is a growing network of independent
+                mental health professionals dedicated to providing accessible, confidential,
+                and compassionate care. Our platform connects you directly with licensed
+                therapists, psychologists, and counselors who work independently to help
+                you find the right support. Whether you're looking for personal growth,
+                emotional healing, or professional guidance, our mission is to make mental
+                wellness approachable for everyone — with trust, transparency, and care
+                at its core.
+              </p>
+            </div>
+
+            {/* Right: Icon Grid (6 Cards) */}
+            <div className="col-lg-5 col-md-12 about-icons">
+              <div className="icon-grid">
+                <div className="icon-box">
+                  <i className="feather-heart"></i>
+                  <span>Compassionate Care</span>
+                </div>
+                <div className="icon-box">
+                  <i className="feather-users"></i>
+                  <span>Trusted Professionals</span>
+                </div>
+                <div className="icon-box">
+                  <i className="feather-globe"></i>
+                  <span>Nationwide Network</span>
+                </div>
+                <div className="icon-box">
+                  <i className="feather-shield"></i>
+                  <span>Confidential & Safe</span>
+                </div>
+                <div className="icon-box">
+                  <i className="feather-award"></i>
+                  <span>Certified Experts</span>
+                </div>
+                <div className="icon-box">
+                  <i className="feather-clipboard"></i>
+                  <span>Structured Programs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="row">
             <div className="col-lg-12">
-              <div className="section-title text-center">
-                <span className="subtitle bg-primary-opacity">
-                  PERSONALIZED SERVICES
-                </span>
+              <div className="section-title" style={{ marginTop: "40px" }}>
+               
                 <h2 className="title">
                   <span className="theme-gradient">Personalized Care for You</span>
                 </h2>
@@ -86,53 +136,7 @@ export default function Services() {
             </span>
           </div>
 
-          {/* About Us Section */}
-          <div className="about-section row align-items-center">
-            {/* Left: Text */}
-            <div className="col-lg-7 col-md-12 about-text">
-              <h2 className="about-title">About Choose Your Therapist</h2>
-              <p>
-                <strong>Choose Your Therapist</strong> is a growing network of independent
-                mental health professionals dedicated to providing accessible, confidential,
-                and compassionate care. Our platform connects you directly with licensed
-                therapists, psychologists, and counselors who work independently to help
-                you find the right support. Whether you're looking for personal growth,
-                emotional healing, or professional guidance, our mission is to make mental
-                wellness approachable for everyone — with trust, transparency, and care
-                at its core.
-              </p>
-            </div>
 
-            {/* Right: Icon Grid (6 Cards) */}
-            <div className="col-lg-5 col-md-12 about-icons">
-              <div className="icon-grid">
-                <div className="icon-box">
-                  <i className="feather-heart"></i>
-                  <span>Compassionate Care</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-users"></i>
-                  <span>Trusted Professionals</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-globe"></i>
-                  <span>Nationwide Network</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-shield"></i>
-                  <span>Confidential & Safe</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-award"></i>
-                  <span>Certified Experts</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-clipboard"></i>
-                  <span>Structured Programs</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* Inline CSS */}
           <style>{`
@@ -179,7 +183,7 @@ export default function Services() {
             .service-card { display: block; background: #fff; border-radius: 20px; padding: 20px; text-align: center; transition: all 0.4s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; position: relative; }
             .service-card .icons img { transition: transform 0.4s ease; }
             .service-card:hover .icons img { transform: scale(1.15) rotate(3deg); }
-            .service-card .title { font-weight: 700; font-size: 1.5rem; margin-top: 12px; transition: color 0.3s ease; }
+            .service-card .title { font-weight: 700; font-size: 2rem; margin-top: 12px; transition: color 0.3s ease; }
             .service-card:hover .title { color: #228756; }
             .service-card .rbt-btn-link { display: inline-flex; align-items: center; font-weight: 600; margin-top: 10px; color: #007f99; position: relative; overflow: hidden; }
             .service-card .rbt-btn-link i { margin-left: 6px; transition: transform 0.3s ease; }
