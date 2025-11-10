@@ -23,7 +23,7 @@ const banners = [
     id: 2,
     title: "Grow Your Practice. Join India’s Trusted Therapist Network",
     description: "Get verified, expand your client base, manage appointments easily, and start earning as a professional therapist today.",
-    buttonText: "Submit Your Resume",
+    buttonText: "Submit Your Resum",
     link: "/therapist-registration",
     gradient: "linear-gradient(135deg, #457046ff 0%, #66BB6A 100%)",
     headingColor: "#ffffff",
