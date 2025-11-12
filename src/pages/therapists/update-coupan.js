@@ -24,7 +24,7 @@ export default function UpdateCoupanPage() {
       
         React.useEffect(() => {
           getData();
-        }, []);
+        }, [getData]);
 
     console.log("dataaaaa",data);
   return (

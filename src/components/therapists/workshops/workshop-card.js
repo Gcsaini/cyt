@@ -25,7 +25,7 @@ export default function WorkshopCard({ data, onDelete }) {
 
   useEffect(() => {
     setIsActive(data.is_active === 1 ? true : false);
-  }, []);
+  }, [data.is_active]);
 
   return (
     <div className="col-lg-4 col-md-6 col-12">

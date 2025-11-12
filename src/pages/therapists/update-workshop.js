@@ -24,7 +24,7 @@ export default function UpdateWorkshopPage() {
 
   React.useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
   return (
     <MainLayout>
       <div className="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">

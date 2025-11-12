@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { FaUsers, FaBrain, FaHeart, FaHandsHelping } from "react-icons/fa";
@@ -10,12 +10,12 @@ export default function CounterWithWhyChooseUs() {
   const duration = 2500; // total animation duration
   const intervalTime = 25; // interval per step
 
-  const counters = [
+  const counters = useMemo(() => [
     { initial: 0, target: 100, icon: FaUsers, subtitle: "Listed Therapists", color: "#007f99" },
     { initial: 1800, target: 5245, icon: FaBrain, subtitle: "Wellness Counts", color: "#228756" },
     { initial: 12750, target: 11989, icon: FaHeart, subtitle: "Community Growth", color: "#004e92" },
     { initial: 1000, target: 1252, icon: FaHandsHelping, subtitle: "Valuable Words", color: "#56ab2f" },
-  ];
+  ], []);
 
   const [values, setValues] = useState(counters.map(c => c.initial));
 

@@ -31,7 +31,7 @@ export default function WrokshopDetailPage() {
 
   React.useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
   return loading ? (
     <PageLoading />
   ) : (

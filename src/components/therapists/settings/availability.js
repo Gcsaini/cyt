@@ -89,15 +89,15 @@ const Availability = () => {
     return initialTimes;
   };
 
-  const getData = async () => {
-    const transformedTimes = transformScheduleToTimes(therapistInfo.availabilities);
-    setTimesAll(transformedTimes);
-  };
   useEffect(() => {
     if (!validateTimes()) {
+      const getData = async () => {
+        const transformedTimes = transformScheduleToTimes(therapistInfo.availabilities);
+        setTimesAll(transformedTimes);
+      };
       getData();
     }
-  }, [setTimes]);
+  }, [times, therapistInfo.availabilities]);
 
   const selectStyle = { lineHeight: "20px", height: "50px" };
   return (

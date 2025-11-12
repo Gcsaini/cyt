@@ -102,7 +102,7 @@ export default function Login() {
         navigate(`/my-dashboard`);
       }
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>

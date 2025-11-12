@@ -64,7 +64,7 @@ export default function Services() {
   React.useEffect(() => {
     const data = serviceContent.find((x) => x.id === id);
     setData(data);
-  }, [id]);
+  }, [id, serviceContent]);
 
   return data ? (
     <div id="__next">

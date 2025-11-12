@@ -363,7 +363,7 @@ const setConfig = async (profile) => {
         afterdiscount: firstFormat.fee,
       }));
     }
-  }, [selectedService])
+  }, [selectedService, profile.fees])
 
   const handleCouponApply = async () => {
     setCouponError("");

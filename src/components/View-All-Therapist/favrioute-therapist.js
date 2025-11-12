@@ -73,24 +73,23 @@ export default function FavriouteTherapist() {
     return pageNumbers;
   };
 
-  const getData = async () => {
-    try {
-      const res = await fetchById(GetFavriouteTherapistUrl, filter);
-      if (res.status) {
-        setData(res.data);
-        setCount(res.totalCount);
-        setTotalPages(Math.ceil(res.totalCount / 10));
-      } else {
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetchById(GetFavriouteTherapistUrl, filter);
+        if (res.status) {
+          setData(res.data);
+          setCount(res.totalCount);
+          setTotalPages(Math.ceil(res.totalCount / 10));
+        } else {
+          return <ErrorPage />;
+        }
+      } catch (err) {
         return <ErrorPage />;
       }
-    } catch (err) {
-      return <ErrorPage />;
-    }
-  };
-
-  React.useEffect(() => {
+    };
     getData();
-  }, [filter, getData]);
+  }, [filter]);
 
   return (
     <>

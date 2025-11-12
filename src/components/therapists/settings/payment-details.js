@@ -52,25 +52,24 @@ export default function PaymentDetails() {
     }
   };
 
-  const getData = async () => {
-    try {
-      setPageLoading(true);
-      const res = await fetchById(getAccountDetailsUrl);
-
-      if (Object.keys(res.data).length > 0) {
-        setMultiplePaymentStore(res.data);
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-    setPageLoading(false);
-  };
-
   React.useEffect(() => {
     if (paymentStore.ac_name === "" && paymentStore.upi === "") {
+      const getData = async () => {
+        try {
+          setPageLoading(true);
+          const res = await fetchById(getAccountDetailsUrl);
+
+          if (Object.keys(res.data).length > 0) {
+            setMultiplePaymentStore(res.data);
+          }
+        } catch (err) {
+          setError(err.message);
+        }
+        setPageLoading(false);
+      };
       getData();
     }
-  }, []);
+  }, [paymentStore.ac_name, paymentStore.upi]);
 
   return pageLoading ? (
     <FormProgressBar />

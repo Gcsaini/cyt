@@ -26,7 +26,7 @@ export default function ProfileSettings() {
     if (isEmpty) {
       fetchTherapistInfo();
     }
-  }, []);
+  }, [isEmpty, fetchTherapistInfo]);
 
   return (
     <MainLayout>
