@@ -646,6 +646,7 @@ const setConfig = async (profile) => {
                       href="https://maps.app.goo.gl/2byXtVajMfGuLRSF8?g_st=ipc"
                       style={{ color: "#20c2a6" }}
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Map Location
                     </a>

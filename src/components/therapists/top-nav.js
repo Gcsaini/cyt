@@ -138,6 +138,7 @@ export default function DashboardTopNav() {
                       className="search-trigger-active rbt-round-btn"
                       href="https://chooseyourtherapist.in"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <i className="fa-solid fa-globe"></i>
                     </a>
