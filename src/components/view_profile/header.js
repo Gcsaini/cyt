@@ -52,11 +52,7 @@ export default function ProfileHeader({ pageData, favrioutes }) {
     }
   };
 
-  const handleBookmark = async (id, value) => {
-    setBookmark((prev) => !prev);
-    const isSuccess = value ? await removeFavrioute(id) : await addFavrioute(id);
-    if (!isSuccess) setBookmark(false);
-  };
+
 
   const handleShare = async () => {
     const shareText = `${pageData.user.name}, a ${pageData.profile_type} based in ${pageData.state}. Connect and book a session today!\n\n${profileUrl}`;

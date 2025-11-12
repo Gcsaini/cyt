@@ -83,7 +83,7 @@ export default function ViewAllTherapist() {
     if (data && data.role !== 1) {
       getFavrioutes();
     }
-  }, []);
+  }, [getData, getFavrioutes]);
 
   const profileTypeOptions = React.useMemo(() => {
     const types = allData.map((item) => item.profile_type).filter(Boolean);

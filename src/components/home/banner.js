@@ -1,9 +1,6 @@
 import React from "react";
 
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
-import PsychologyIcon from "@mui/icons-material/Psychology";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import SpaIcon from "@mui/icons-material/Spa";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useMediaQuery from "@mui/material/useMediaQuery";

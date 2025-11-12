@@ -33,14 +33,14 @@ export default function FavTherapistCard({ data, removeFav }) {
             }}
             onClick={() => removeFav(data.therapist._id)}
           >
-            <a
+            <button
               className="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
               title="Delete"
-              alt={"delete"}
-              
+              type="button"
+
             >
               <i className="feather-trash-2 pl--0"></i>
-            </a>
+            </button>
           </div>
         </div>
         <div className="rbt-card-body">

@@ -2,12 +2,8 @@ import MyNavbar from "../components/navbar";
 import Footer from "../components/footer";
 import Newsletter from "../components/home/newsletter";
 import Faqs from "../components/home/faqs";
-import { Link } from "react-router-dom";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import PageBreadCrumb from "../components/global/page-breadcrumb";
 export default function FaqPage() {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <div id="__next">
       <MyNavbar />

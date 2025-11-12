@@ -1,4 +1,4 @@
-import ImageTag from "../utils/image-tag";
+
 import MyNavbar from "../components/navbar";
 import NewsLetter from "../components/home/newsletter";
 import Footer from "../components/footer";

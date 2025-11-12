@@ -1,7 +1,7 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ImageTag from "../../utils/image-tag";
 import { Link } from "react-router-dom";
-import { getMinMaxPrice } from "../../utils/helpers";
+
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import VerifiedIcon from "@mui/icons-material/Verified"; // ✅ Badge + Name ke aage
@@ -24,7 +24,6 @@ export default function ProfileCardHor({ pageData, favrioutes, showRecommended =
 
   // Determine badge type based on data.priority or fallback to showRecommended prop
   const isRecommended = pageData.priority === 1 || (pageData.priority === undefined && showRecommended);
-  const isVerified = pageData.priority === 2 || (pageData.priority === undefined && !showRecommended);
 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -156,7 +155,7 @@ export default function ProfileCardHor({ pageData, favrioutes, showRecommended =
             </div>
             {showBookmark && (
               <div className="rbt-bookmark-btn">
-                <a
+                <button
                   style={{ cursor: "pointer" }}
                   className="rbt-round-btn"
                   title="Bookmark"
@@ -167,7 +166,7 @@ export default function ProfileCardHor({ pageData, favrioutes, showRecommended =
                   ) : (
                     <BookmarkBorderIcon sx={{ fontSize: 24 }} />
                   )}
-                </a>
+                </button>
               </div>
             )}
           </div>

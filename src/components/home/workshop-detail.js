@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async"; // SEO
-import demoPhoto from "../../assets/img/2.png";
+
 import LazyImage from "../../utils/lazy-image";
 import BgImage from "../../assets/img/bg-image-10.png";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ export default function WorkshopDetail(props) {
   const [open, setOpen] = React.useState(false);
   const [sidebar, setSidebar] = React.useState(false);
 
-  const handleMenuClick = () => setOpen(!open);
+
   const handleSidebarClick = () => setSidebar(!sidebar);
 
   // Short description for meta tags

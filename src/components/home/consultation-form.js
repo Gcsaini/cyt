@@ -5,7 +5,6 @@ import { SubmitConsultationUrl } from "../../utils/url";
 
 export default function ConsultationForm() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const [formData, setFormData] = useState({
     name: "",

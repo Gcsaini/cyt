@@ -4,9 +4,8 @@ import { allTimes } from "../../../utils/static-lists";
 import useTherapistStore from "../../../store/therapistStore";
 import FormProgressBar from "../../global/form-progressbar";
 import FormMessage from "../../global/form-message";
-import { fetchById, postData } from "../../../utils/actions";
+import { postData } from "../../../utils/actions";
 import {
-  getAvailabilitiesUrl,
   updateAvailabilitiesUrl,
 } from "../../../utils/url";
 
@@ -14,7 +13,6 @@ const Availability = () => {
   const { therapistInfo, times, setTimes, setTimesAll, addOvertime, deleteOvertime } =
     useTherapistStore();
   const [loading, setLoading] = useState(false);
-  const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 

@@ -1,5 +1,4 @@
-import LazyImage from "../../utils/lazy-image";
-import ContactImg from "../../assets/img/contact.webp";
+
 export default function ServiceNew() {
     return (
         <div className="rbt-contact-address undefined">

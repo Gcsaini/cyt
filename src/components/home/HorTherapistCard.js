@@ -61,7 +61,7 @@ const HorTherapistCards = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   if (error) {
     return <ErrorPage />;

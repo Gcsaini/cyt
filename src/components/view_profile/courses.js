@@ -1,11 +1,4 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import WellNessCard from "../home/wellness-card";
 export default function ProfileCourses() {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <div className="rbt-course-area bg-color-white rbt-section-gap">
       <div className="container">

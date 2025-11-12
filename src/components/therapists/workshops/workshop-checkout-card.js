@@ -3,10 +3,6 @@ import ImageTag from "../../../utils/image-tag";
 import { imagePath } from "../../../utils/url";
 export default function WorkshopCheckoutCard({ pageData }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const listStyle = {
-    lineHeight: "21px",
-    display: "block",
-  };
   return (
     <div className="col-12 sal-animate">
       <div className="rbt-card variation-01 rbt-hover card-list-2">

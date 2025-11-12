@@ -5,12 +5,7 @@ import {
   Assessment,
   Security,
   Psychology,
-  PhoneAndroid,
-  CloudDone,
-  VerifiedUser,
-  Speed,
-  SupportAgent,
-  Analytics
+  PhoneAndroid
 } from "@mui/icons-material";
 
 export default function TechnologyShowcase() {

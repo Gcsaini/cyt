@@ -19,9 +19,9 @@ export default function PaymentDetails() {
     setError("");
     setSuccess("");
     if (
-      paymentStore.upi == "" &&
+      paymentStore.upi === "" &&
       (paymentStore.ac_name.length < 3 ||
-        paymentStore.ac_number == "" ||
+        paymentStore.ac_number === "" ||
         paymentStore.ifsc.length < 4)
     ) {
       setError("Either enter account details or upi id");

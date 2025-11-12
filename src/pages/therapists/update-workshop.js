@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MainLayout from "../../components/therapists/main-layout";
 import UpdateWorkshop from "../../components/therapists/workshops/update-workshop";
 import { fetchById } from "../../utils/actions";

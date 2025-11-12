@@ -5,13 +5,13 @@ export default function BlogCard() {
         <div className="rbt-card-img">
           <a href="/blog-details/30">
             <img
-              alt="Card image"
+              alt=""
               fetchpriority="high"
               width="450"
               height="267"
               decoding="async"
               data-nimg="1"
-              style="color: transparent"
+              style={{color: 'transparent'}}
               srcset="
                   /_next/image?url=%2Fimages%2Fblog%2Fblog-grid-02.jpg&amp;w=640&amp;q=75  1x,
                   /_next/image?url=%2Fimages%2Fblog%2Fblog-grid-02.jpg&amp;w=1080&amp;q=75 2x

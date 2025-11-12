@@ -1,6 +1,5 @@
 import MyPassword from "../../components/dashboard/my-password";
 import UserLayout from "../../components/dashboard/user-layout";
-import MainLayout from "../../components/therapists/main-layout";
 
 export default function ChangeMyPassword() {
   return (

@@ -42,7 +42,7 @@ export default function CounterWithWhyChooseUs() {
     });
 
     return () => intervals.forEach(clearInterval);
-  }, [inView]);
+  }, [inView, counters]);
 
   const fontStyle = { fontSize: isMobile ? 26 : 36 };
 

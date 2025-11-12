@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { postData } from "../../utils/actions";
-import { changeClientPasswordUrl, changePasswordUrl } from "../../utils/url";
+import { changeClientPasswordUrl } from "../../utils/url";
 import FormMessage from "../global/form-message";
 import FormProgressBar from "../global/form-progressbar";
 import { removeToken } from "../../utils/jwt";

@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./checkout-styles.css";
 import FormMessage from "../global/form-message";
 import { postData } from "../../utils/actions";
-import { ApplyCouponUrl, BookTherapistUrl, BookTherapistUrlAnomalously, verifyOtpUrl } from "../../utils/url";
+import { ApplyCouponUrl, BookTherapistUrl, verifyOtpUrl } from "../../utils/url";
 import { useNavigate } from "react-router-dom";
 import FormProgressBar from "../global/form-progressbar";
 import useUserStore from "../../store/userStore";
@@ -14,7 +14,6 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import { toast } from "react-toastify";
 import { getToken } from "../../utils/jwt";
 const styles = {
   iconStyle: {

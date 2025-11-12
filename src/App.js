@@ -20,10 +20,7 @@ import Register from "./pages/register";
 import Success from "./pages/success";
 import TherapistDashboard from "./pages/therapists/dashboard";
 import ProfileSettings from "./pages/therapists/settings";
-import Appointment from "./pages/therapists/appointment";
-import Notification from "./pages/therapists/notifications";
-import Invoices from "./pages/therapists/invoices";
-import Reviews from "./pages/therapists/reviews";
+
 import TherapistProtectedRoute from "./utils/therapistProtectedRoute";
 import { useEffect } from "react";
 import useTherapistStore from "./store/therapistStore";

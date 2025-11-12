@@ -90,7 +90,7 @@ export default function FavriouteTherapist() {
 
   React.useEffect(() => {
     getData();
-  }, [filter]);
+  }, [filter, getData]);
 
   return (
     <>
@@ -222,15 +222,11 @@ export default function FavriouteTherapist() {
                           onChange={handleChange}
                         >
                           <option value={""}>Default</option>
-                          {ExpList.map((item) => {
-                            if (item !== "Select") {
-                              return (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              );
-                            }
-                          })}
+                          {ExpList.filter((item) => item !== "Select").map((item) => (
+                            <option value={item} key={item}>
+                              {item}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -266,15 +262,11 @@ export default function FavriouteTherapist() {
                           name="qualification"
                         >
                           <option value={""}>Default</option>
-                          {EducationList.map((item) => {
-                            if (item !== "Select") {
-                              return (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              );
-                            }
-                          })}
+                          {EducationList.filter((item) => item !== "Select").map((item) => (
+                            <option value={item} key={item}>
+                              {item}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>

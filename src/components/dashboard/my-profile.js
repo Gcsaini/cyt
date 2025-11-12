@@ -214,7 +214,7 @@ export default function MyProfile(props) {
             >
               {stateList.map((item) => {
                 return (
-                  <option key={item == "Select" ? "" : item} value={item}>
+                  <option key={item === "Select" ? "" : item} value={item}>
                     {item}
                   </option>
                 );
