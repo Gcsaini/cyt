@@ -55,6 +55,8 @@ import CreateCoupanPage from "./pages/therapists/create-coupan";
 import UpdateCoupanPage from "./pages/therapists/update-coupan";
 import AppointmentsPage from "./pages/therapists/appointment";
 import ComingSoon from "./pages/coming-soon";
+import TherapyBooking from "./pages/therapy-booking";
+import MindMatters from "./pages/mind-matters";
 const theme = createTheme();
 
 function App() {
@@ -117,6 +119,8 @@ function App() {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/all-workshop" element={<AllWorkshop />} />
               <Route path="/new-service" element={<SerivcePage />} />
+              <Route path="/therapy-booking" element={<TherapyBooking />} />
+              <Route path="/mind-matters" element={<MindMatters />} />
 
               <Route
                 path="/workshop-detail/:id"

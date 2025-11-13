@@ -89,3 +89,63 @@ export const postData = (url, data) => {
       });
   });
 };
+
+export const postFormUrlEncoded = (url, data) => {
+  return new Promise((resolve, reject) => {
+    const token = getToken();
+    const formData = new URLSearchParams();
+    Object.keys(data).forEach(key => {
+      formData.append(key, data[key]);
+    });
+
+    axios
+      .post(url, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+export const postJsonData = (url, data) => {
+  return new Promise((resolve, reject) => {
+    const token = getToken();
+    axios
+      .post(url, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+export const postJsonDataNoAuth = (url, data) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};

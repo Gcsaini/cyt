@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { postData } from "../../utils/actions";
+import PhoneIcon from "@mui/icons-material/Phone";
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
+import MessageIcon from "@mui/icons-material/Message";
+import { postJsonDataNoAuth } from "../../utils/actions";
 import { SubmitConsultationUrl } from "../../utils/url";
 
 export default function ConsultationForm() {
@@ -66,12 +70,30 @@ export default function ConsultationForm() {
     setLoading(true);
 
     try {
-      const response = await postData(SubmitConsultationUrl, {
+      const dataToSend = {
         name: formData.name.trim(),
         phone: formData.phone.trim(),
         email: formData.email.trim(),
         concern: formData.concern.trim()
-      });
+      };
+
+      console.log("Sending consultation data:", dataToSend);
+
+      // Try different data structures that the backend might expect
+      const response = await postJsonDataNoAuth(SubmitConsultationUrl, dataToSend);
+
+      // If that doesn't work, try wrapped in 'data' object
+      // const response = await postJsonDataNoAuth(SubmitConsultationUrl, { data: dataToSend });
+
+      // Or try with different field names
+      // const response = await postJsonDataNoAuth(SubmitConsultationUrl, {
+      //   full_name: formData.name.trim(),
+      //   phone_number: formData.phone.trim(),
+      //   email_address: formData.email.trim(),
+      //   message: formData.concern.trim()
+      // });
+
+      console.log("Consultation response:", response);
 
       if (response.status) {
         setMessage("Thank you! Your consultation request has been submitted successfully. We'll get back to you soon.");
@@ -97,23 +119,38 @@ export default function ConsultationForm() {
   };
 
   return (
-    <div className="content" style={{ backgroundColor: "white", padding: "20px", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+    <div className="content" style={{
+      backgroundColor: "white",
+      padding: isMobile ? "20px" : "25px",
+      borderRadius: "15px",
+      boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+      border: "2px solid #228756",
+      width: isMobile ? "100%" : "auto",
+      boxSizing: "border-box",
+      maxWidth: isMobile ? "100%" : "none"
+    }}>
       <div className="inner">
-        <div style={{ marginBottom: 20 }}>
+        <div style={{ marginBottom: 20, backgroundColor: "#228756", color: "white", padding: "15px", borderRadius: "10px", textAlign: "center" }}>
           <h3 style={{
-            color: "#228756",
-            fontSize: isMobile ? "24px" : "28px",
+            color: "white",
+            fontSize: isMobile ? "clamp(18px, 5vw, 22px)" : "28px",
             fontWeight: "600",
-            marginBottom: "10px"
+            marginBottom: "8px",
+            whiteSpace: isMobile ? "nowrap" : "normal",
+            overflow: isMobile ? "hidden" : "visible",
+            textOverflow: isMobile ? "ellipsis" : "clip"
           }}>
-          Free Talk with Psychologist
+            15-Minute Free Consultation
           </h3>
           <p style={{
-            color: "#666",
-            fontSize: "16px",
-            marginBottom: "20px"
+            color: "white",
+            fontSize: isMobile ? "clamp(9px, 2.5vw, 11px)" : "12px",
+            marginBottom: "0",
+            whiteSpace: isMobile ? "nowrap" : "normal",
+            overflow: isMobile ? "hidden" : "visible",
+            textOverflow: isMobile ? "ellipsis" : "clip"
           }}>
-Talk to a certified psychologist for free and discover how therapy can help you feel better.
+            A free consultation to explore your therapy needs with a psychologist.
           </p>
         </div>
 
@@ -132,8 +169,13 @@ Talk to a certified psychologist for free and discover how therapy can help you 
           </div>
         )}
 
-        <form onSubmit={handleSubmit} style={{ maxWidth: "400px" }}>
-          <div style={{ marginBottom: "15px" }}>
+        <form onSubmit={handleSubmit} style={{
+          maxWidth: "400px",
+          width: isMobile ? "100%" : "auto",
+          boxSizing: "border-box"
+        }}>
+          <div style={{ marginBottom: "15px", position: "relative" }}>
+            <PersonIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <input
               type="text"
               name="name"
@@ -143,20 +185,29 @@ Talk to a certified psychologist for free and discover how therapy can help you 
               required
               style={{
                 width: "100%",
-                padding: "12px 15px",
+                padding: "12px 15px 12px 40px",
                 border: "1px solid #ddd",
                 borderRadius: "8px",
                 fontSize: "16px",
                 outline: "none",
-                transition: "border-color 0.3s",
+                transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s",
                 boxSizing: "border-box"
               }}
-              onFocus={(e) => e.target.style.borderColor = "#228756"}
-              onBlur={(e) => e.target.style.borderColor = "#ddd"}
+              onFocus={(e) => {
+                e.target.style.borderColor = "#228756";
+                e.target.style.transform = "scale(1.02)";
+                e.target.style.boxShadow = "0 0 8px rgba(34, 135, 86, 0.3)";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "#ddd";
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
+          <div style={{ marginBottom: "15px", position: "relative" }}>
+            <PhoneIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <input
               type="tel"
               name="phone"
@@ -166,20 +217,29 @@ Talk to a certified psychologist for free and discover how therapy can help you 
               required
               style={{
                 width: "100%",
-                padding: "12px 15px",
+                padding: "12px 15px 12px 40px",
                 border: "1px solid #ddd",
                 borderRadius: "8px",
                 fontSize: "16px",
                 outline: "none",
-                transition: "border-color 0.3s",
+                transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s",
                 boxSizing: "border-box"
               }}
-              onFocus={(e) => e.target.style.borderColor = "#228756"}
-              onBlur={(e) => e.target.style.borderColor = "#ddd"}
+              onFocus={(e) => {
+                e.target.style.borderColor = "#228756";
+                e.target.style.transform = "scale(1.02)";
+                e.target.style.boxShadow = "0 0 8px rgba(34, 135, 86, 0.3)";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "#ddd";
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
+          <div style={{ marginBottom: "15px", position: "relative" }}>
+            <EmailIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <input
               type="email"
               name="email"
@@ -189,20 +249,29 @@ Talk to a certified psychologist for free and discover how therapy can help you 
               required
               style={{
                 width: "100%",
-                padding: "12px 15px",
+                padding: "12px 15px 12px 40px",
                 border: "1px solid #ddd",
                 borderRadius: "8px",
                 fontSize: "16px",
                 outline: "none",
-                transition: "border-color 0.3s",
+                transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s",
                 boxSizing: "border-box"
               }}
-              onFocus={(e) => e.target.style.borderColor = "#228756"}
-              onBlur={(e) => e.target.style.borderColor = "#ddd"}
+              onFocus={(e) => {
+                e.target.style.borderColor = "#228756";
+                e.target.style.transform = "scale(1.02)";
+                e.target.style.boxShadow = "0 0 8px rgba(34, 135, 86, 0.3)";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "#ddd";
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}
             />
           </div>
 
-          <div style={{ marginBottom: "20px" }}>
+          <div style={{ marginBottom: "20px", position: "relative" }}>
+            <MessageIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <textarea
               name="concern"
               placeholder="Tell us about your concern (optional)"
@@ -211,18 +280,26 @@ Talk to a certified psychologist for free and discover how therapy can help you 
               rows={4}
               style={{
                 width: "100%",
-                padding: "12px 15px",
+                padding: "12px 15px 12px 40px",
                 border: "1px solid #ddd",
                 borderRadius: "8px",
                 fontSize: "16px",
                 outline: "none",
-                transition: "border-color 0.3s",
+                transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s",
                 resize: "vertical",
                 minHeight: "80px",
                 boxSizing: "border-box"
               }}
-              onFocus={(e) => e.target.style.borderColor = "#228756"}
-              onBlur={(e) => e.target.style.borderColor = "#ddd"}
+              onFocus={(e) => {
+                e.target.style.borderColor = "#228756";
+                e.target.style.transform = "scale(1.02)";
+                e.target.style.boxShadow = "0 0 8px rgba(34, 135, 86, 0.3)";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "#ddd";
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}
             />
           </div>
 
@@ -249,7 +326,7 @@ Talk to a certified psychologist for free and discover how therapy can help you 
               if (!loading) e.target.style.backgroundColor = "#228756";
             }}
           >
-            {loading ? "Submitting..." : "Request Consultation"}
+            {loading ? "Submitting..." : "Request a Call "}
           </button>
         </form>
       </div>
