@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AppointmentTabHead from "../../components/therapists/appointment/appointment-tab-head";
+
 import AppointmentPageSidebar from "../../components/therapists/appointment/appointmentheader";
 import MainLayout from "../../components/therapists/main-layout";
 import AppointmentsContent from "../../components/therapists/appointment/appointment-content";

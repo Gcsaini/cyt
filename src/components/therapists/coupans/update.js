@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { postData } from "../../../utils/actions";
 import FormMessage from "../../global/form-message";
 import FormProgressBar from "../../global/form-progressbar";
-import { CreateCoupansUrl, UpdateCoupansUrl } from "../../../utils/url";
+import { UpdateCoupansUrl } from "../../../utils/url";
 import { useNavigate } from "react-router-dom";
-import { formatDate } from "../../../utils/time";
 
 
 export default function UpdateCoupan({ pageData }) {

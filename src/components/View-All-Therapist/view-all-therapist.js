@@ -48,36 +48,36 @@ export default function ViewAllTherapist() {
     setFilter((prevFilter) => ({ ...prevFilter, [name]: value }));
   };
 
-  const getData = async () => {
-    try {
-      setLoading(true);
-      const res = await fetchData(getTherapistProfiles, filter);
-      if (res.status) {
-        setAllData(res.data || []);
-        setCount(res.totalCount || 0);
-        setData(res.data?.slice(0, visibleCount) || []);
-      } else {
-        return <ErrorPage />;
-      }
-    } catch (err) {
-      return <ErrorPage />;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getFavrioutes = async () => {
-    try {
-      const res = await fetchById(GetFavriouteTherapistListUrl);
-      if (res.status) {
-        setFavrioutes(res.data.therapists || []);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   React.useEffect(() => {
+    const getData = async () => {
+      try {
+        setLoading(true);
+        const res = await fetchData(getTherapistProfiles, filter);
+        if (res.status) {
+          setAllData(res.data || []);
+          setCount(res.totalCount || 0);
+          setData(res.data?.slice(0, visibleCount) || []);
+        } else {
+          return <ErrorPage />;
+        }
+      } catch (err) {
+        return <ErrorPage />;
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const getFavrioutes = async () => {
+      try {
+        const res = await fetchById(GetFavriouteTherapistListUrl);
+        if (res.status) {
+          setFavrioutes(res.data.therapists || []);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     getData();
     const data = getDecodedToken();
     if (data && data.role !== 1) {

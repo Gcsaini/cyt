@@ -326,7 +326,7 @@ export default function Profile() {
             >
               {stateList.map((item) => {
                 return (
-                  <option key={item == "Select" ? "" : item} value={item}>
+                  <option key={item === "Select" ? "" : item} value={item}>
                     {item}
                   </option>
                 );
@@ -341,8 +341,8 @@ export default function Profile() {
               id="office"
               type="text"
               value={
-                therapistInfo.office_address == "null" ||
-                  therapistInfo.office_address == null
+                therapistInfo.office_address === "null" ||
+                  therapistInfo.office_address === null
                   ? ""
                   : therapistInfo.office_address
               }
@@ -361,7 +361,7 @@ export default function Profile() {
             >
               {ExpList.map((item) => {
                 return (
-                  <option value={item == "Select" ? "" : item} key={item}>
+                  <option value={item === "Select" ? "" : item} key={item}>
                     {item}
                   </option>
                 );
@@ -380,7 +380,7 @@ export default function Profile() {
             >
               {EducationList.map((item) => {
                 return (
-                  <option value={item == "Select" ? "" : item} key={item}>
+                  <option value={item === "Select" ? "" : item} key={item}>
                     {item}
                   </option>
                 );

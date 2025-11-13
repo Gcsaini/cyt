@@ -45,13 +45,13 @@ export default function AppointmentTabHead({ setActiveTab }) {
         </div></li>
         <li className="nav-item" role="presentation"> 
            <div className="form-sorts dropdown">
-          <a
-            href="javascript:void(0);"
+          <button
             className="dropdown-toggle"
             id="table-filter"
+            style={{ border: 'none', background: 'none', cursor: 'pointer' }}
           >
             <i className="fa-solid fa-filter me-2"></i>Filter By
-          </a>
+          </button>
           <div className="filter-dropdown-menu">
             <div className="filter-set-view">
               <div className="accordion" id="accordionExample">

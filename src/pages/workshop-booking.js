@@ -29,7 +29,7 @@ export default function WorkshopBookingPage() {
 
     useEffect(() => {
         getData();
-    }, [id]);
+    }, [id, getData]);
 
     if (error) {
         return <ErrorPage />;

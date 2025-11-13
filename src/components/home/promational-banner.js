@@ -3,8 +3,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useNavigate } from "react-router-dom";
-import therapysession from "../../assets/img/therapysessioncyt.png";
-import therapistNetwork from "../../assets/img/therapist.png";
+
 
 // Banner data
 const banners = [

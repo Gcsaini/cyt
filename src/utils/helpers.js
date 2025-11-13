@@ -82,7 +82,6 @@ export const getServiceFormats = (obj) => {
 
   if (obj.cca !== "" || obj.ccv !== "" || obj.ccip !== "") {
     let formats = [];
-    let prices = [];
     if (obj.ccv !== "") {
       formats.push({ format: "Video Call", price: parseInt(obj.ccv) });
     }
@@ -100,7 +99,6 @@ export const getServiceFormats = (obj) => {
 
   if (obj.tca !== "" || obj.tcv !== "" || obj.tcip !== "") {
     let formats = [];
-    let prices = [];
     if (obj.tcv !== "") {
       formats.push({ format: "Video Call", price: parseInt(obj.tcv) });
     }

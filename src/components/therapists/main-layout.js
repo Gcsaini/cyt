@@ -20,19 +20,18 @@ export default function MainLayout(props) {
     navigate("/login");
   };
 
-  const getData = async () => {
-    try {
-      const res = await fetchById(checkProfileSet);
-      if (res.status) {
-        setProfileSet(res.data.check);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   React.useEffect(() => {
     if (!profileSet) {
+      const getData = async () => {
+        try {
+          const res = await fetchById(checkProfileSet);
+          if (res.status) {
+            setProfileSet(res.data.check);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
       getData();
     }
   }, [profileSet]);

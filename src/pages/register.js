@@ -104,7 +104,7 @@ export default function Register() {
         navigate(`/my-dashboard`);
       }
     }
-  }, []);
+  }, [navigate]);
   return (
     <div>
       <MyNavbar />

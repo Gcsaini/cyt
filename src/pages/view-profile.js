@@ -22,33 +22,33 @@ export default function ViewProfile() {
   const [loading, setLoading] = useState(true);
   const [favrioutes, setFavrioutes] = useState([]);
 
-  const getData = async () => {
-    try {
-      const res = await fetchData(getTherapistProfile + id);
-      if (res.status && Object.keys(res.data).length > 0) {
-        setProfile(res.data);
-      } else {
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetchData(getTherapistProfile + id);
+        if (res.status && Object.keys(res.data).length > 0) {
+          setProfile(res.data);
+        } else {
+          setError(true);
+        }
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
         setError(true);
       }
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      setError(true);
-    }
-  };
+    };
 
-  const getFavrioutes = async () => {
-    try {
-      const res = await fetchById(GetFavriouteTherapistListUrl);
-      if (res.status) {
-        setFavrioutes(res.data.therapists || []);
+    const getFavrioutes = async () => {
+      try {
+        const res = await fetchById(GetFavriouteTherapistListUrl);
+        if (res.status) {
+          setFavrioutes(res.data.therapists || []);
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    };
 
-  useEffect(() => {
     getData();
     const data = getDecodedToken();
     if (data && data.role !== 1) {

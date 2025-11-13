@@ -118,7 +118,7 @@ export default function Forgotpassword() {
         navigate(`/my-dashboard`);
       }
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>

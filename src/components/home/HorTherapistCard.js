@@ -31,35 +31,34 @@ const HorTherapistCards = () => {
     }
   ];
 
-  const getData = async () => {
-    try {
-      console.log("Fetching therapist profiles...");
-      const res = await fetchData(getTherapistProfiles);
-      console.log("API Response:", res);
-      if (res.status) {
-        // Filter to only show recommended therapists (priority === 1)
-        const recommendedTherapists = (res.data || []).filter(therapist => therapist.priority === 1);
-        setTherapists(recommendedTherapists);
-        console.log("Recommended therapists data:", recommendedTherapists);
-      } else {
-        setError(true);
-        console.log("API returned error status");
-      }
-    } catch (err) {
-      console.log("API Error:", err);
-      console.log("Using fallback data for testing");
-      // Filter fallback data to only show recommended (assuming priority 1)
-      const recommendedFallback = fallbackData.filter(therapist => therapist.priority === 1);
-      setTherapists(recommendedFallback);
-      // setError(true); // Comment out to show fallback data
-    } finally {
-      setLoading(false);
-    }
-  };
-
   console.log("HorTherapistCard state - therapists:", therapists, "loading:", loading, "error:", error);
 
   useEffect(() => {
+    const getData = async () => {
+      try {
+        console.log("Fetching therapist profiles...");
+        const res = await fetchData(getTherapistProfiles);
+        console.log("API Response:", res);
+        if (res.status) {
+          // Filter to only show recommended therapists (priority === 1)
+          const recommendedTherapists = (res.data || []).filter(therapist => therapist.priority === 1);
+          setTherapists(recommendedTherapists);
+          console.log("Recommended therapists data:", recommendedTherapists);
+        } else {
+          setError(true);
+          console.log("API returned error status");
+        }
+      } catch (err) {
+        console.log("API Error:", err);
+        console.log("Using fallback data for testing");
+        // Filter fallback data to only show recommended (assuming priority 1)
+        const recommendedFallback = fallbackData.filter(therapist => therapist.priority === 1);
+        setTherapists(recommendedFallback);
+        // setError(true); // Comment out to show fallback data
+      } finally {
+        setLoading(false);
+      }
+    };
     getData();
   }, []);
 

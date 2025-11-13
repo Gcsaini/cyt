@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet"; // SEO ke liye
 import Footer from "../components/footer";
 import Banner from "../components/home/banner";
@@ -6,14 +5,12 @@ import State from "../components/home/state";
 import Blogs from "../components/home/blogs";
 import CallToAction from "../components/home/call-to-action";
 import Counter from "../components/home/counter";
-import Feedback from "../components/home/feedback";
 import NewsLetter from "../components/home/newsletter";
 import ProfileCard from "../components/home/profile-card";
 import PromationalBanner from "../components/home/promational-banner";
 import Services from "../components/home/services";
 import HomeWorkshop from "../components/home/workshops";
 import MyNavbar from "../components/navbar";
-import PaymentSuccessModal from "../components/view_profile/payment-success-popup";
 
 import Brands from "../components/about/brands";
 import HorTherapistCards from "../components/home/HorTherapistCard";

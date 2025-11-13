@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserLayout from "../../components/dashboard/user-layout";
 import { fetchById } from "../../utils/actions";
-import { getBookings, GetFavriouteTherapistUrl } from "../../utils/url";
+import { getBookings } from "../../utils/url";
 import PageWrapper from "../../components/global/page-wrapper";
 import CreateTable from "../../components/global/create-table";
 import { toast } from "react-toastify";

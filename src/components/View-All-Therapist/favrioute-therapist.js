@@ -73,22 +73,21 @@ export default function FavriouteTherapist() {
     return pageNumbers;
   };
 
-  const getData = async () => {
-    try {
-      const res = await fetchById(GetFavriouteTherapistUrl, filter);
-      if (res.status) {
-        setData(res.data);
-        setCount(res.totalCount);
-        setTotalPages(Math.ceil(res.totalCount / 10));
-      } else {
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetchById(GetFavriouteTherapistUrl, filter);
+        if (res.status) {
+          setData(res.data);
+          setCount(res.totalCount);
+          setTotalPages(Math.ceil(res.totalCount / 10));
+        } else {
+          return <ErrorPage />;
+        }
+      } catch (err) {
         return <ErrorPage />;
       }
-    } catch (err) {
-      return <ErrorPage />;
-    }
-  };
-
-  React.useEffect(() => {
+    };
     getData();
   }, [filter]);
 
@@ -222,15 +221,11 @@ export default function FavriouteTherapist() {
                           onChange={handleChange}
                         >
                           <option value={""}>Default</option>
-                          {ExpList.map((item) => {
-                            if (item !== "Select") {
-                              return (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              );
-                            }
-                          })}
+                          {ExpList.filter((item) => item !== "Select").map((item) => (
+                            <option value={item} key={item}>
+                              {item}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -266,15 +261,11 @@ export default function FavriouteTherapist() {
                           name="qualification"
                         >
                           <option value={""}>Default</option>
-                          {EducationList.map((item) => {
-                            if (item !== "Select") {
-                              return (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              );
-                            }
-                          })}
+                          {EducationList.filter((item) => item !== "Select").map((item) => (
+                            <option value={item} key={item}>
+                              {item}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>

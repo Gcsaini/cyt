@@ -19,9 +19,9 @@ export default function PaymentDetails() {
     setError("");
     setSuccess("");
     if (
-      paymentStore.upi == "" &&
+      paymentStore.upi === "" &&
       (paymentStore.ac_name.length < 3 ||
-        paymentStore.ac_number == "" ||
+        paymentStore.ac_number === "" ||
         paymentStore.ifsc.length < 4)
     ) {
       setError("Either enter account details or upi id");
@@ -52,25 +52,24 @@ export default function PaymentDetails() {
     }
   };
 
-  const getData = async () => {
-    try {
-      setPageLoading(true);
-      const res = await fetchById(getAccountDetailsUrl);
-
-      if (Object.keys(res.data).length > 0) {
-        setMultiplePaymentStore(res.data);
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-    setPageLoading(false);
-  };
-
   React.useEffect(() => {
     if (paymentStore.ac_name === "" && paymentStore.upi === "") {
+      const getData = async () => {
+        try {
+          setPageLoading(true);
+          const res = await fetchById(getAccountDetailsUrl);
+
+          if (Object.keys(res.data).length > 0) {
+            setMultiplePaymentStore(res.data);
+          }
+        } catch (err) {
+          setError(err.message);
+        }
+        setPageLoading(false);
+      };
       getData();
     }
-  }, []);
+  }, [paymentStore.ac_name, paymentStore.upi]);
 
   return pageLoading ? (
     <FormProgressBar />

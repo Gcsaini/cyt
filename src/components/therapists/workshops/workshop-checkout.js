@@ -214,9 +214,7 @@ export default function WorkshopCheckout({ data }) {
 
     }
 
-    useEffect(() => {
-        setConfigFn(data);
-    }, [data]);
+
 
 
     useEffect(() => {

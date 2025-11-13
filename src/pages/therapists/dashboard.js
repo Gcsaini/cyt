@@ -1,8 +1,6 @@
 import React from "react";
 import MainLayout from "../../components/therapists/main-layout";
-import Upcomingappointment from "../../components/therapists/dashboard/upcommingappointment";
 import PerformanceComponent from "../../components/therapists/dashboard/performance";
-import TodayAppointment from "../../components/therapists/dashboard/todayappointment";
 import { GetDashboardDataUrl } from "../../utils/url";
 import LinearProgress from "@mui/material/LinearProgress";
 import { fetchById } from "../../utils/actions";
