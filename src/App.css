@@ -27792,9 +27792,13 @@ ul.rbt-dropdown-menu.currency-menu li .sub-menu {
 }
 .mainbar-row .rbt-main-navigation {
   flex: 1 1;
-  display: flex;
   margin: 0 30px;
   justify-content: center;
+}
+@media (min-width: 1200px) {
+  .mainbar-row .rbt-main-navigation {
+    display: flex;
+  }
 }
 .mainbar-row.rbt-navigation-end .rbt-main-navigation {
   justify-content: end;

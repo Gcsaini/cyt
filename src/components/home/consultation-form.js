@@ -7,7 +7,7 @@ import MessageIcon from "@mui/icons-material/Message";
 import { postJsonDataNoAuth } from "../../utils/actions";
 import { SubmitConsultationUrl } from "../../utils/url";
 
-export default function ConsultationForm() {
+export default function ConsultationForm({ showHeading = true }) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [formData, setFormData] = useState({
@@ -20,6 +20,7 @@ export default function ConsultationForm() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -95,8 +96,7 @@ export default function ConsultationForm() {
       console.log("Consultation response:", response);
 
       if (response.status) {
-        setMessage("Thank you! Your consultation request has been submitted successfully. We'll get back to you soon.");
-        setMessageType("success");
+        setShowSuccessPopup(true);
         // Reset form
         setFormData({
           name: "",
@@ -124,53 +124,57 @@ export default function ConsultationForm() {
       borderRadius: "15px",
       boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
       border: "2px solid #228756",
-      width: isMobile ? "100%" : "auto",
-      boxSizing: "border-box",
-      maxWidth: isMobile ? "100%" : "none"
+      width: "100%",
+      maxWidth: "800px",
+      margin: "0 auto",
+      boxSizing: "border-box"
     }}>
       <div className="inner">
-        <div style={{ marginBottom: 20, backgroundColor: "#228756", color: "white", padding: "15px", borderRadius: "10px", textAlign: "center" }}>
-          <h3 style={{
-            color: "white",
-            fontSize: isMobile ? "clamp(16px, 4.5vw, 20px)" : "24px",
-            fontWeight: "600",
-            marginBottom: "8px",
-            whiteSpace: isMobile ? "nowrap" : "normal",
-            overflow: isMobile ? "hidden" : "visible",
-            textOverflow: isMobile ? "ellipsis" : "clip"
-          }}>
-            15-Minute Free Consultation
-          </h3>
-          <p style={{
-            color: "white",
-            fontSize: isMobile ? "clamp(8px, 2.2vw, 10px)" : "11px",
-            marginBottom: "0",
-            whiteSpace: isMobile ? "nowrap" : "normal",
-            overflow: isMobile ? "hidden" : "visible",
-            textOverflow: isMobile ? "ellipsis" : "clip"
-          }}>
-            A free consultation to explore your therapy needs with a psychologist.
-          </p>
-        </div>
+        {showHeading && (
+          <div style={{ marginBottom: 20, backgroundColor: "#e8f5e8", color: "#228756", padding: "15px", borderRadius: "10px", textAlign: "center", border: "2px solid #228756" }}>
+            <h3 style={{
+              color: "#228756",
+              fontSize: isMobile ? "clamp(16px, 4.5vw, 20px)" : "32px",
+              fontWeight: "600",
+              marginBottom: "8px",
+              whiteSpace: isMobile ? "nowrap" : "normal",
+              overflow: isMobile ? "hidden" : "visible",
+              textOverflow: isMobile ? "ellipsis" : "clip"
+            }}>
+              15-Minute Free Consultation
+            </h3>
+            <p style={{
+              color: "#228756",
+              fontSize: isMobile ? "clamp(8px, 2.2vw, 10px)" : "11px",
+              marginBottom: "0",
+              whiteSpace: isMobile ? "nowrap" : "normal",
+              overflow: isMobile ? "hidden" : "visible",
+              textOverflow: isMobile ? "ellipsis" : "clip"
+            }}>
+              A free consultation to explore your therapy needs with a psychologist.
+            </p>
+          </div>
+        )}
 
-        {message && (
+        {message && messageType === "error" && (
           <div style={{
             padding: "12px 16px",
             marginBottom: "20px",
             borderRadius: "8px",
             fontSize: "14px",
             fontWeight: "500",
-            backgroundColor: messageType === "success" ? "#d4edda" : "#f8d7da",
-            color: messageType === "success" ? "#155724" : "#721c24",
-            border: `1px solid ${messageType === "success" ? "#c3e6cb" : "#f5c6cb"}`
+            backgroundColor: "#f8d7da",
+            color: "#721c24",
+            border: "1px solid #f5c6cb"
           }}>
             {message}
           </div>
         )}
 
         <form onSubmit={handleSubmit} style={{
-          maxWidth: "400px",
-          width: isMobile ? "100%" : "auto",
+          maxWidth: "700px",
+          width: "100%",
+          margin: "0 auto",
           boxSizing: "border-box"
         }}>
           <div style={{ marginBottom: "15px", position: "relative" }}>
@@ -329,6 +333,183 @@ export default function ConsultationForm() {
           </button>
         </form>
       </div>
+
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            zIndex: 10000,
+            animation: "fadeIn 0.3s ease-out"
+          }}
+          onClick={() => setShowSuccessPopup(false)}
+        >
+          <div
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
+              borderRadius: isMobile ? "15px" : "20px",
+              padding: isMobile ? "20px" : "30px",
+              width: "90%",
+              maxWidth: isMobile ? "320px" : "400px",
+              textAlign: "center",
+              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
+              border: "3px solid #228756",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              animation: "slideUp 0.4s ease-out"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setShowSuccessPopup(false)}
+              style={{
+                position: "absolute",
+                top: isMobile ? "10px" : "15px",
+                right: isMobile ? "10px" : "15px",
+                background: "none",
+                border: "none",
+                fontSize: isMobile ? "20px" : "24px",
+                color: "#666",
+                cursor: "pointer",
+                padding: "5px",
+                borderRadius: "50%",
+                width: isMobile ? "30px" : "35px",
+                height: isMobile ? "30px" : "35px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.2s ease"
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = "#f0f0f0";
+                e.target.style.color = "#333";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = "transparent";
+                e.target.style.color = "#666";
+              }}
+            >
+              ×
+            </button>
+
+            {/* Therapy Icon */}
+            <div style={{
+              width: isMobile ? "70px" : "80px",
+              height: isMobile ? "70px" : "80px",
+              borderRadius: "50%",
+              background: "linear-gradient(135deg, #228756 0%, #56ab2f 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "0 auto 20px",
+              boxShadow: "0 8px 25px rgba(34, 135, 86, 0.4)"
+            }}>
+              <svg
+                width={isMobile ? "35" : "40"}
+                height={isMobile ? "35" : "40"}
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ color: "white" }}
+              >
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  fill="currentColor"
+                />
+                <circle cx="8.5" cy="8.5" r="1.5" fill="white"/>
+                <circle cx="15.5" cy="8.5" r="1.5" fill="white"/>
+                <path
+                  d="M12 17c-1.5 0-3-1-3-3s1.5-3 3-3 3 1 3 3-1.5 3-3 3z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h2 style={{
+              color: "#228756",
+              fontSize: isMobile ? "20px" : "24px",
+              fontWeight: "700",
+              marginBottom: "15px",
+              textShadow: "0 2px 4px rgba(0,0,0,0.1)"
+            }}>
+              Success!
+            </h2>
+
+            {/* Message */}
+            <p style={{
+              color: "#333",
+              fontSize: isMobile ? "14px" : "16px",
+              lineHeight: "1.6",
+              marginBottom: "25px",
+              fontWeight: "500"
+            }}>
+              Thank you! Your consultation request has been submitted successfully. Our therapist will reach out to you within 10 minutes.
+            </p>
+
+            {/* Action Button */}
+            <button
+              onClick={() => setShowSuccessPopup(false)}
+              style={{
+                background: "linear-gradient(135deg, #228756 0%, #56ab2f 100%)",
+                color: "white",
+                border: "none",
+                padding: isMobile ? "10px 25px" : "12px 30px",
+                borderRadius: "25px",
+                fontSize: isMobile ? "14px" : "16px",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 15px rgba(34, 135, 86, 0.3)",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+                minWidth: isMobile ? "120px" : "140px"
+              }}
+              onMouseOver={(e) => {
+                e.target.style.transform = "translateY(-2px)";
+                e.target.style.boxShadow = "0 6px 20px rgba(34, 135, 86, 0.4)";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 4px 15px rgba(34, 135, 86, 0.3)";
+              }}
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Custom Animations */}
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -50%) translateY(30px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      `}</style>
     </div>
   );
 }

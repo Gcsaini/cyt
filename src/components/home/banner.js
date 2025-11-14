@@ -522,13 +522,13 @@ export default function Banner() {
                         padding: "0 5px"
                       }}>
                         <div style={{
-                          backgroundColor: "white",
+                          backgroundColor: "#f1ff71f5",
                           padding: "6px 10px",
                           borderRadius: "18px",
                           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          fontSize: "0.75rem",
+                          fontSize: "0.78rem",
                           fontWeight: "500",
-                          color: "#228756",
+                          color: "#000000ff",
                           whiteSpace: "nowrap",
                           minHeight: "28px",
                           display: "flex",
@@ -540,13 +540,13 @@ export default function Banner() {
                           💰 Affordable Therapists
                         </div>
                         <div style={{
-                          backgroundColor: "white",
+                          backgroundColor: "#6cff98c9",
                           padding: "6px 10px",
                           borderRadius: "18px",
                           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          fontSize: "0.75rem",
+                          fontSize: "0.78rem",
                           fontWeight: "500",
-                          color: "#228756",
+                          color: "#000000ff",
                           whiteSpace: "nowrap",
                           minHeight: "28px",
                           display: "flex",
@@ -558,13 +558,13 @@ export default function Banner() {
                           📞 Free Follow-Up
                         </div>
                         <div style={{
-                          backgroundColor: "white",
+                          backgroundColor: "#fc97ffc9",
                           padding: "6px 10px",
                           borderRadius: "18px",
                           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          fontSize: "0.75rem",
+                          fontSize: "0.78rem",
                           fontWeight: "500",
-                          color: "#228756",
+                          color: "#000000ff",
                           whiteSpace: "nowrap",
                           minHeight: "28px",
                           display: "flex",
