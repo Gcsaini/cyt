@@ -633,7 +633,7 @@ export default function Banner() {
                           <h5 className="total-join-students">
                             Over 5,245+ already on their wellness journey.
                           </h5>
-                          <p className="subtitle">Your well-being awa</p>
+                          <p className="subtitle">Your well-being awaits.</p>
                         </div>
                       </div>
                     </div>

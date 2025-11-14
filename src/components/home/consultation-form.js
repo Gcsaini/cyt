@@ -132,7 +132,7 @@ export default function ConsultationForm() {
         <div style={{ marginBottom: 20, backgroundColor: "#228756", color: "white", padding: "15px", borderRadius: "10px", textAlign: "center" }}>
           <h3 style={{
             color: "white",
-            fontSize: isMobile ? "clamp(18px, 5vw, 22px)" : "28px",
+            fontSize: isMobile ? "clamp(16px, 4.5vw, 20px)" : "24px",
             fontWeight: "600",
             marginBottom: "8px",
             whiteSpace: isMobile ? "nowrap" : "normal",
@@ -143,7 +143,7 @@ export default function ConsultationForm() {
           </h3>
           <p style={{
             color: "white",
-            fontSize: isMobile ? "clamp(9px, 2.5vw, 11px)" : "12px",
+            fontSize: isMobile ? "clamp(8px, 2.2vw, 10px)" : "11px",
             marginBottom: "0",
             whiteSpace: isMobile ? "nowrap" : "normal",
             overflow: isMobile ? "hidden" : "visible",
