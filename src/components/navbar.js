@@ -5,6 +5,7 @@ import logo1 from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import ImageTag from "../utils/image-tag";
 import { getDecodedToken, getToken } from "../utils/jwt";
+import BottomNavigation from "./bottom-navigation";
 
 export default function App() {
   const [show, setShow] = React.useState(false);
@@ -150,8 +151,8 @@ export default function App() {
                   </Link>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <div className="mobile-menu-bar d-block d-xl-none" onClick={() => setShow(true)}>
+                {/* Mobile Menu Button - Hidden on mobile since we use bottom nav */}
+                <div className="mobile-menu-bar d-none d-xl-none" onClick={() => setShow(true)}>
                   <div className="hamberger">
                     <button className="hamberger-button rbt-round-btn">
                       <i className="feather-menu"></i>
@@ -666,6 +667,9 @@ export default function App() {
           }
         }
       `}</style>
+
+      {/* Bottom Navigation for Mobile */}
+      <BottomNavigation />
     </>
   );
 }
