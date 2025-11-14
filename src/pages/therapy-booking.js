@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Footer from "../components/footer";
 import MyNavbar from "../components/navbar";
@@ -9,6 +10,25 @@ export default function TherapyBooking() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isTablet = useMediaQuery("(max-width: 1024px)");
   return (
+    <>
+      <Helmet>
+        <title>Book Your Free 15-Minute Consultation | Choose Your Therapist</title>
+        <meta name="description" content="Get your free 15-minute consultation with a professional psychologist. Take the first step towards better mental health with verified therapists at Choose Your Therapist." />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Book Your Free 15-Minute Consultation | Choose Your Therapist" />
+        <meta property="og:description" content="Get your free 15-minute consultation with a professional psychologist. Take the first step towards better mental health with verified therapists at Choose Your Therapist." />
+        <meta property="og:image" content="https://i.postimg.cc/gj1yngrd/choose.png" />
+        <meta property="og:url" content="https://www.chooseyourtherapist.in/therapy-booking" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Choose Your Therapist" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:title" content="Book Your Free 15-Minute Consultation | Choose Your Therapist" />
+        <meta name="twitter:description" content="Get your free 15-minute consultation with a professional psychologist. Take the first step towards better mental health with verified therapists at Choose Your Therapist." />
+        <meta name="twitter:image" content="https://i.postimg.cc/gj1yngrd/choose.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
     <div id="__next">
       <MyNavbar />
       {/* Hero Section */}
@@ -154,5 +174,6 @@ export default function TherapyBooking() {
 
       <Footer />
     </div>
+    </>
   );
 }
