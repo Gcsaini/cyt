@@ -125,7 +125,7 @@ export default function ConsultationForm({ showHeading = true }) {
       boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
       border: "2px solid #228756",
       width: "100%",
-      maxWidth: "800px",
+      maxWidth: "100%",
       margin: "0 auto",
       boxSizing: "border-box"
     }}>
@@ -172,12 +172,14 @@ export default function ConsultationForm({ showHeading = true }) {
         )}
 
         <form onSubmit={handleSubmit} style={{
-          maxWidth: "700px",
           width: "100%",
           margin: "0 auto",
-          boxSizing: "border-box"
+          boxSizing: "border-box",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
         }}>
-          <div style={{ marginBottom: "15px", position: "relative" }}>
+          <div style={{ marginBottom: "15px", position: "relative", width: "100%" }}>
             <PersonIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <input
               type="text"
@@ -209,7 +211,7 @@ export default function ConsultationForm({ showHeading = true }) {
             />
           </div>
 
-          <div style={{ marginBottom: "15px", position: "relative" }}>
+          <div style={{ marginBottom: "15px", position: "relative", width: "100%" }}>
             <PhoneIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <input
               type="tel"
@@ -241,7 +243,7 @@ export default function ConsultationForm({ showHeading = true }) {
             />
           </div>
 
-          <div style={{ marginBottom: "15px", position: "relative" }}>
+          <div style={{ marginBottom: "15px", position: "relative", width: "100%" }}>
             <EmailIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <input
               type="email"
@@ -273,7 +275,7 @@ export default function ConsultationForm({ showHeading = true }) {
             />
           </div>
 
-          <div style={{ marginBottom: "20px", position: "relative" }}>
+          <div style={{ marginBottom: "20px", position: "relative", width: "100%" }}>
             <MessageIcon style={{ position: "absolute", left: 12, top: 12, color: "#228756", fontSize: 20 }} />
             <textarea
               name="concern"
@@ -306,22 +308,23 @@ export default function ConsultationForm({ showHeading = true }) {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "12px 20px",
-              backgroundColor: loading ? "#ccc" : "#228756",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              fontWeight: "600",
-              cursor: loading ? "not-allowed" : "pointer",
-              transition: "background-color 0.3s",
-              boxSizing: "border-box"
-            }}
+          <div style={{ width: "100%" }}>
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                width: "100%",
+                padding: "12px 20px",
+                backgroundColor: loading ? "#ccc" : "#228756",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                fontSize: "16px",
+                fontWeight: "600",
+                cursor: loading ? "not-allowed" : "pointer",
+                transition: "background-color 0.3s",
+                boxSizing: "border-box"
+              }}
             onMouseOver={(e) => {
               if (!loading) e.target.style.backgroundColor = "#1a6b45";
             }}
@@ -331,6 +334,7 @@ export default function ConsultationForm({ showHeading = true }) {
           >
             {loading ? "Submitting..." : "Request a Call "}
           </button>
+          </div>
         </form>
       </div>
 

@@ -19,6 +19,20 @@ export default function TherapyBooking() {
         position: "relative",
         overflow: "hidden"
       }}>
+        {/* Watermark Background Image */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.08,
+          backgroundImage: `url("https://i.postimg.cc/259Rrm3G/three_shapefb0d.png")`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          pointerEvents: "none"
+        }}></div>
         {/* Background Pattern */}
         <div style={{
           position: "absolute",

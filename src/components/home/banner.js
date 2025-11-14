@@ -583,7 +583,7 @@ export default function Banner() {
                       <BannerSlider isMobile={true} />
                     </div>
 
-                    <ConsultationForm />
+                    <ConsultationForm showHeading={false} />
                   </>
                 )}
 
@@ -678,9 +678,14 @@ export default function Banner() {
               style={{ marginTop: 20, marginBottom: 30 }}
             >
               <div style={{
+                backgroundColor: "white",
+                padding: isMobile ? "20px" : "30px",
+                borderRadius: "15px",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                border: "2px solid #e8f5e8",
                 marginBottom: "20px"
               }}>
-                <ConsultationForm />
+                <ConsultationForm showHeading={false} />
               </div>
             </div>
           )}
