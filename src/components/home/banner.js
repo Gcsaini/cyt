@@ -337,6 +337,8 @@ const BannerSlider = ({ isMobile }) => {
           --slide-direction-bottom: 0;
         }
 
+
+
       `}</style>
     </div>
   );
@@ -354,11 +356,11 @@ export default function Banner() {
     <section
         className="rbt-banner-area rbt-banner-1"
         style={{
-          paddingTop: isMobile ? "40px" : "30px",
-          marginTop: isMobile ? "0px" : "0px",
+          paddingTop: isMobile ? "19px" : "30px",
+          marginTop: isMobile ? "-50px" : "0px",
           paddingBottom: isMobile ? "40px" : "30px",
           marginBottom: isMobile ? "10px" : "20px",
-          backgroundColor: isMobile ? "#228756" : "transparent",
+          
         }}
       >
 
@@ -450,140 +452,501 @@ export default function Banner() {
 
                 {isMobile && (
                   <>
-                    {/* Main Banner Heading */}
+                    {/* App-like Mobile Banner */}
                     <div style={{
-                      textAlign: "center",
-                      marginBottom: "15px",
-                      width: "100%",
-                      boxSizing: "border-box",
-                      overflow: "hidden"
+                      borderRadius: "0 0 24px 24px",
+                      padding: "24px 20px",
+                      margin: "0 -20px 20px -20px",
+                      boxShadow: "0 8px 32px rgba(34, 135, 86, 0.15)"
                     }}>
-                      <h1 style={{
-                        fontSize: "clamp(1.8rem, 6vw, 2.4rem)",
-                        fontWeight: "700",
-                        color: "#10422aff",
-                        marginBottom: "10px",
-                        lineHeight: "1.1",
-                        textShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                        textAlign: "center",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis"
-                      }}>
-                        Find Your{" "}
-                        <span style={{
-                          position: "relative",
-                          color: "#228756"
+                      {/* Header Section */}
+                      <div style={{ textAlign: "left", marginBottom: "24px" }}>
+                        <h1 style={{
+                          fontSize: "clamp(2.2rem, 10vw, 2.8rem)",
+                          fontWeight: "800",
+                          color: "#228756",
+                          marginBottom: "8px",
+                          lineHeight: "1.1"
                         }}>
-                          Affordable
+                          Find Your{" "}
                           <span style={{
-                            position: "absolute",
-                            bottom: "-8px",
-                            left: "-8px",
-                            right: "-8px",
-                            height: "6px",
-                            backgroundImage: `url("data:image/svg+xml,%3csvg width='60' height='6' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M0 3 Q 7.5 0, 15 3 T 30 3 T 45 3 T 60 3' stroke='%23ffd700' stroke-width='2' fill='none' stroke-linecap='round'/%3e%3c/svg%3e")`,
-                            backgroundRepeat: "repeat-x",
-                            backgroundPosition: "0 50%",
-                            transform: "rotate(-0.5deg)",
-                            opacity: 1
-                          }}></span>
-                        </span>{" "}
-                        <span style={{
-                          fontFamily: "'Dancing Script', cursive",
-                          fontSize: "1.1em",
-                          color: "#10422aff",
+                            color: "#228756",
+                            fontWeight: "900"
+                          }}>
+                            Affordable
+                          </span>{" "}
+                          Therapist & Professional Support
+                        </h1>
+                      </div>
+
+                      {/* Search Bar */}
+                      <div style={{
+                        backgroundColor: "rgba(255,255,255,0.95)",
+                        borderRadius: "16px",
+                        padding: "12px 16px",
+                        marginBottom: "20px",
+                        boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px"
+                      }}>
+                        <i className="feather-search" style={{
+                          color: "#666",
+                          fontSize: "18px"
+                        }}></i>
+                        <input
+                          type="text"
+                          placeholder="Search therapists, conditions..."
+                          style={{
+                            border: "none",
+                            outline: "none",
+                            flex: 1,
+                            fontSize: "16px",
+                            color: "#333",
+                            background: "transparent"
+                          }}
+                        />
+                        <div style={{
+                          backgroundColor: "#228756",
+                          borderRadius: "8px",
+                          padding: "6px 12px",
+                          color: "white",
+                          fontSize: "12px",
                           fontWeight: "600"
                         }}>
-                          Therapist
-                        </span>
-                      </h1>
-                      <p style={{
-                        fontSize: "1.1rem",
-                        color: "#2d5a47",
-                        fontWeight: "500",
-                        marginBottom: "0",
-                        lineHeight: "1.3",
-                        padding: "0 10px"
-                      }}>
-                       Start your journey to mental clarity and emotional balance.
-                      </p>
+                          Search
+                        </div>
+                      </div>
 
-                      {/* Feature Pills */}
+                      {/* Quick Action Buttons */}
                       <div style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        gap: "6px",
-                        marginTop: "15px",
-                        flexWrap: "wrap",
-                        alignItems: "center",
-                        width: "100%",
-                        boxSizing: "border-box",
-                        padding: "0 5px"
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "12px",
+                        marginBottom: "24px"
+                      }}>
+                        <Link to="/therapy-booking" style={{
+                          backgroundColor: "rgba(255,255,255,0.95)",
+                          borderRadius: "16px",
+                          padding: "20px 16px",
+                          textDecoration: "none",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "8px",
+                          boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                          transition: "all 0.2s ease",
+                          border: "2px solid transparent"
+                        }}
+                        onMouseOver={(e) => {
+                          e.target.style.transform = "translateY(-2px)";
+                          e.target.style.boxShadow = "0 8px 24px rgba(0,0,0,0.15)";
+                          e.target.style.borderColor = "#228756";
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.transform = "translateY(0)";
+                          e.target.style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)";
+                          e.target.style.borderColor = "transparent";
+                        }}>
+                          <div style={{
+                            backgroundColor: "#228756",
+                            borderRadius: "50%",
+                            width: "48px",
+                            height: "48px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                          }}>
+                            <i className="feather-calendar" style={{
+                              color: "white",
+                              fontSize: "20px"
+                            }}></i>
+                          </div>
+                          <div style={{ textAlign: "center" }}>
+                            <div style={{
+                              fontSize: "14px",
+                              fontWeight: "700",
+                              color: "#333",
+                              marginBottom: "2px"
+                            }}>
+                              Book Consultation
+                            </div>
+                            <div style={{
+                              fontSize: "12px",
+                              color: "#666"
+                            }}>
+                              15 min free call
+                            </div>
+                          </div>
+                        </Link>
+
+                        <Link to="/view-all-therapist" style={{
+                          backgroundColor: "rgba(255,255,255,0.95)",
+                          borderRadius: "16px",
+                          padding: "20px 16px",
+                          textDecoration: "none",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "8px",
+                          boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                          transition: "all 0.2s ease",
+                          border: "2px solid transparent"
+                        }}
+                        onMouseOver={(e) => {
+                          e.target.style.transform = "translateY(-2px)";
+                          e.target.style.boxShadow = "0 8px 24px rgba(0,0,0,0.15)";
+                          e.target.style.borderColor = "#228756";
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.transform = "translateY(0)";
+                          e.target.style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)";
+                          e.target.style.borderColor = "transparent";
+                        }}>
+                          <div style={{
+                            backgroundColor: "#B2DFDB",
+                            borderRadius: "50%",
+                            width: "48px",
+                            height: "48px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                          }}>
+                            <i className="feather-users" style={{
+                              color: "white",
+                              fontSize: "20px"
+                            }}></i>
+                          </div>
+                          <div style={{ textAlign: "center" }}>
+                            <div style={{
+                              fontSize: "14px",
+                              fontWeight: "700",
+                              color: "#333",
+                              marginBottom: "2px"
+                            }}>
+                              Find Therapists
+                            </div>
+                            <div style={{
+                              fontSize: "12px",
+                              color: "#666"
+                            }}>
+                              Browse directory
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+
+
+                    </div>
+
+                    {/* Feature Cards Section */}
+                    <div style={{ padding: "0 20px", marginBottom: "24px" }}>
+                      <h3 style={{
+                        fontSize: "18px",
+                        fontWeight: "700",
+                        color: "#333",
+                        marginBottom: "16px",
+                        textAlign: "center"
+                      }}>
+                        Why Choose Us?
+                      </h3>
+
+                      <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "12px"
                       }}>
                         <div style={{
-                          backgroundColor: "#f1ff71f5",
-                          padding: "6px 10px",
-                          borderRadius: "18px",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          fontSize: "0.78rem",
-                          fontWeight: "500",
-                          color: "#000000ff",
-                          whiteSpace: "nowrap",
-                          minHeight: "28px",
-                          display: "flex",
-                          alignItems: "center",
-                          flex: "1 1 auto",
-                          minWidth: "0",
-                          maxWidth: "calc(33.333% - 4px)"
+                          backgroundColor: "white",
+                          borderRadius: "16px",
+                          padding: "16px",
+                          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                          border: "1px solid #f0f0f0"
                         }}>
-                          💰 Affordable Therapists
+                          <div style={{
+                            borderRadius: "50%",
+                            width: "40px",
+                            height: "40px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginBottom: "12px"
+                          }}>
+                            <i className="feather-shield" style={{
+                              color: "#228756",
+                              fontSize: "18px"
+                            }}></i>
+                          </div>
+                          <h4 style={{
+                            fontSize: "14px",
+                            fontWeight: "700",
+                            color: "#333",
+                            marginBottom: "4px"
+                          }}>
+                            Verified Therapists
+                          </h4>
+                          <p style={{
+                            fontSize: "12px",
+                            color: "#666",
+                            lineHeight: "1.4",
+                            margin: "0"
+                          }}>
+                            All professionals are certified and verified
+                          </p>
                         </div>
+
                         <div style={{
-                          backgroundColor: "#6cff98c9",
-                          padding: "6px 10px",
-                          borderRadius: "18px",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          fontSize: "0.78rem",
-                          fontWeight: "500",
-                          color: "#000000ff",
-                          whiteSpace: "nowrap",
-                          minHeight: "28px",
-                          display: "flex",
-                          alignItems: "center",
-                          flex: "1 1 auto",
-                          minWidth: "0",
-                          maxWidth: "calc(33.333% - 4px)"
+                          backgroundColor: "white",
+                          borderRadius: "16px",
+                          padding: "16px",
+                          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                          border: "1px solid #f0f0f0"
                         }}>
-                          📞 Free Follow-Up
+                          <div style={{
+                            borderRadius: "50%",
+                            width: "40px",
+                            height: "40px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginBottom: "12px"
+                          }}>
+                            <i className="feather-dollar-sign" style={{
+                              color: "#228756",
+                              fontSize: "18px"
+                            }}></i>
+                          </div>
+                          <h4 style={{
+                            fontSize: "14px",
+                            fontWeight: "700",
+                            color: "#333",
+                            marginBottom: "4px"
+                          }}>
+                            Affordable Care
+                          </h4>
+                          <p style={{
+                            fontSize: "12px",
+                            color: "#666",
+                            lineHeight: "1.4",
+                            margin: "0"
+                          }}>
+                            Quality therapy starting from ₹500/session
+                          </p>
                         </div>
+
                         <div style={{
-                          backgroundColor: "#fc97ffc9",
-                          padding: "6px 10px",
-                          borderRadius: "18px",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          fontSize: "0.78rem",
-                          fontWeight: "500",
-                          color: "#000000ff",
-                          whiteSpace: "nowrap",
-                          minHeight: "28px",
-                          display: "flex",
-                          alignItems: "center",
-                          flex: "1 1 auto",
-                          minWidth: "0",
-                          maxWidth: "calc(33.333% - 4px)"
+                          backgroundColor: "white",
+                          borderRadius: "16px",
+                          padding: "16px",
+                          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                          border: "1px solid #f0f0f0"
                         }}>
-                          🌐 Multilingual Support
+                          <div style={{
+                            borderRadius: "50%",
+                            width: "40px",
+                            height: "40px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginBottom: "12px"
+                          }}>
+                            <i className="feather-globe" style={{
+                              color: "#228756",
+                              fontSize: "18px"
+                            }}></i>
+                          </div>
+                          <h4 style={{
+                            fontSize: "14px",
+                            fontWeight: "700",
+                            color: "#333",
+                            marginBottom: "4px"
+                          }}>
+                            Online & In-Person
+                          </h4>
+                          <p style={{
+                            fontSize: "12px",
+                            color: "#666",
+                            lineHeight: "1.4",
+                            margin: "0"
+                          }}>
+                            Flexible consultation options
+                          </p>
+                        </div>
+
+                        <div style={{
+                          backgroundColor: "white",
+                          borderRadius: "16px",
+                          padding: "16px",
+                          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                          border: "1px solid #f0f0f0"
+                        }}>
+                          <div style={{
+                            borderRadius: "50%",
+                            width: "40px",
+                            height: "40px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginBottom: "12px"
+                          }}>
+                            <i className="feather-heart" style={{
+                              color: "#228756",
+                              fontSize: "18px"
+                            }}></i>
+                          </div>
+                          <h4 style={{
+                            fontSize: "14px",
+                            fontWeight: "700",
+                            color: "#333",
+                            marginBottom: "4px"
+                          }}>
+                            Confidential
+                          </h4>
+                          <p style={{
+                            fontSize: "12px",
+                            color: "#666",
+                            lineHeight: "1.4",
+                            margin: "0"
+                          }}>
+                            Your privacy is completely protected
+                          </p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Banner Slider for Ads - Mobile Only */}
-                    <div style={{ marginTop: "15px", marginBottom: "15px" }}>
-                      <BannerSlider isMobile={true} />
+                    {/* Top Therapists Section */}
+                    <div style={{ padding: "0 20px", marginBottom: "24px" }}>
+                      <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        marginBottom: "16px"
+                      }}>
+                        <h3 style={{
+                          fontSize: "18px",
+                          fontWeight: "700",
+                          color: "#333",
+                          margin: "0"
+                        }}>
+                          Top Therapists
+                        </h3>
+                        <Link to="/view-all-therapist" style={{
+                          color: "#228756",
+                          textDecoration: "none",
+                          fontSize: "14px",
+                          fontWeight: "600"
+                        }}>
+                          View All →
+                        </Link>
+                      </div>
+
+                      {/* Horizontal Scrollable Therapist Cards */}
+                      <div style={{
+                        display: "flex",
+                        gap: "12px",
+                        overflowX: "auto",
+                        paddingBottom: "8px",
+                        scrollbarWidth: "none",
+                        msOverflowStyle: "none",
+                        WebkitOverflowScrolling: "touch"
+                      }}
+                      className="hide-scrollbar">
+                        {/* Sample Therapist Cards */}
+                        {[1, 2, 3, 4].map((index) => (
+                          <Link
+                            key={index}
+                            to="/view-all-therapist"
+                            style={{
+                              minWidth: "140px",
+                              backgroundColor: "white",
+                              borderRadius: "16px",
+                              padding: "16px",
+                              boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                              border: "1px solid #f0f0f0",
+                              textDecoration: "none",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              gap: "8px",
+                              transition: "all 0.2s ease"
+                            }}
+                            onMouseOver={(e) => {
+                              e.target.style.transform = "translateY(-2px)";
+                              e.target.style.boxShadow = "0 4px 20px rgba(0,0,0,0.12)";
+                            }}
+                            onMouseOut={(e) => {
+                              e.target.style.transform = "translateY(0)";
+                              e.target.style.boxShadow = "0 2px 12px rgba(0,0,0,0.08)";
+                            }}
+                          >
+                            <div style={{
+                              width: "60px",
+                              height: "60px",
+                              borderRadius: "50%",
+                              backgroundColor: "#e8f5e8",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              border: "2px solid #228756"
+                            }}>
+                              <i className="feather-user" style={{
+                                color: "#228756",
+                                fontSize: "24px"
+                              }}></i>
+                            </div>
+                            <div style={{ textAlign: "center" }}>
+                              <div style={{
+                                fontSize: "14px",
+                                fontWeight: "700",
+                                color: "#333",
+                                marginBottom: "2px"
+                              }}>
+                                Dr. Sharma
+                              </div>
+                              <div style={{
+                                fontSize: "12px",
+                                color: "#666",
+                                marginBottom: "4px"
+                              }}>
+                                Clinical Psychologist
+                              </div>
+                              <div style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "2px",
+                                justifyContent: "center"
+                              }}>
+                                {[1,2,3,4,5].map((star) => (
+                                  <i key={star} className="feather-star" style={{
+                                    fontSize: "10px",
+                                    color: star <= 4 ? "#FFD700" : "#ddd"
+                                  }}></i>
+                                ))}
+                                <span style={{
+                                  fontSize: "10px",
+                                  color: "#666",
+                                  marginLeft: "4px"
+                                }}>
+                                  4.8
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+
+                      <style jsx>{`
+                        .hide-scrollbar::-webkit-scrollbar {
+                          display: none;
+                        }
+                        .hide-scrollbar {
+                          -ms-overflow-style: none;
+                          scrollbar-width: none;
+                        }
+                      `}</style>
                     </div>
 
-                    <ConsultationForm showHeading={false} />
+
                   </>
                 )}
 

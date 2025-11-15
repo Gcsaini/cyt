@@ -7,6 +7,7 @@ export default function BottomNavigation() {
   const location = useLocation();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [userType, setUserType] = useState(0);
+  const [cookiesAccepted, setCookiesAccepted] = useState(true);
 
   useEffect(() => {
     const data = getToken();
@@ -18,6 +19,10 @@ export default function BottomNavigation() {
         setUserType(1);
       }
     }
+
+    // Check if cookies are accepted
+    const isAccepted = localStorage.getItem("cookiesAccepted") === "true";
+    setCookiesAccepted(isAccepted);
   }, []);
 
   // Only show on mobile
@@ -43,7 +48,7 @@ export default function BottomNavigation() {
     {
       id: "book",
       label: "Book",
-      icon: "feather-calendar",
+      icon: "feather-phone",
       path: "/therapy-booking",
       active: location.pathname === "/therapy-booking"
     },
@@ -57,14 +62,14 @@ export default function BottomNavigation() {
     {
       id: "offer",
       label: "Offer",
-      icon: "feather-gift",
+      icon: "feather-package",
       path: "/mind-matters",
       active: location.pathname === "/mind-matters"
     }
   ];
 
   return (
-    <div className="bottom-navigation">
+    <div className={`bottom-navigation ${!cookiesAccepted ? 'with-cookie-banner' : ''}`}>
       <div className="bottom-nav-container">
         {navItems.map((item) => (
           <Link
@@ -89,8 +94,8 @@ export default function BottomNavigation() {
           background: #ffffff;
           border-top: 1px solid #e8e8e8;
           box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-          z-index: 1000;
-          padding-bottom: env(safe-area-inset-bottom, 0);
+          z-index: 9999;
+          padding-bottom: 0;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
         }
@@ -186,8 +191,13 @@ export default function BottomNavigation() {
         /* Safe area for iPhone X and newer */
         @supports (padding-bottom: env(safe-area-inset-bottom)) {
           .bottom-navigation {
-            padding-bottom: calc(env(safe-area-inset-bottom, 0) + 10px);
+            padding-bottom: env(safe-area-inset-bottom, 0);
           }
+        }
+
+        /* Adjust for cookie banner */
+        .bottom-navigation.with-cookie-banner {
+          bottom: 100px; /* Account for cookie banner height + margin */
         }
 
         /* Dark mode support */
