@@ -361,9 +361,23 @@ export default function Banner() {
       try {
         const res = await fetchData(getTherapistProfiles);
         if (res.status && res.data) {
-          // Filter to only show recommended therapists (priority === 1) and limit to 6 for mobile view
-          const recommendedTherapists = (res.data || []).filter(therapist => therapist.priority === 1).slice(0, 6);
-          setTopTherapists(recommendedTherapists);
+          // Get all therapists data
+          const allTherapists = res.data || [];
+
+          // First, get all priority 1 therapists
+          const priorityTherapists = allTherapists.filter(therapist => therapist.priority === 1);
+
+          // If we have less than 10 priority therapists, fill with other therapists
+          let recommendedTherapists = [...priorityTherapists];
+
+          if (recommendedTherapists.length < 10) {
+            const remainingNeeded = 10 - recommendedTherapists.length;
+            const otherTherapists = allTherapists.filter(therapist => therapist.priority !== 1).slice(0, remainingNeeded);
+            recommendedTherapists = [...recommendedTherapists, ...otherTherapists];
+          }
+
+          // Limit to 10 therapists for mobile view
+          setTopTherapists(recommendedTherapists.slice(0, 10));
         }
       } catch (error) {
         console.log("Error fetching top therapists:", error);
@@ -547,7 +561,7 @@ export default function Banner() {
                           textShadow: "0 4px 8px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2)",
                           letterSpacing: "-0.02em"
                         }}>
-                          Find Your Perfect Therapist
+                          Find Your Afffordable Therapist
                         </h1>
                         <p style={{
                           color: "rgba(255,255,255,0.95)",
@@ -781,13 +795,12 @@ export default function Banner() {
                         </Link>
                       </div>
 
-
                     </div>
 
 
 
                     {/* Top Therapists Section */}
-                    <div style={{ padding: "0 20px", marginBottom: "24px" }}>
+                    <div style={{ padding: "0 20px", marginBottom: "100px" }}>
                       <div style={{
                         display: "flex",
                         alignItems: "center",
@@ -849,7 +862,7 @@ export default function Banner() {
                         {/* Therapist Cards */}
                         {topTherapistsLoading ? (
                           // Loading skeleton
-                          Array.from({ length: 4 }).map((_, index) => (
+                          Array.from({ length: 10 }).map((_, index) => (
                             <div
                               key={index}
                               style={{

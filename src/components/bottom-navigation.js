@@ -87,17 +87,19 @@ export default function BottomNavigation() {
 
       <style jsx>{`
         .bottom-navigation {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
+          position: fixed !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
           background: #ffffff;
           border-top: 1px solid #e8e8e8;
           box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-          z-index: 9999;
+          z-index: 10000 !important;
           padding-bottom: 0;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
+          transform: translateZ(0);
+          will-change: transform;
         }
 
         .bottom-nav-container {
