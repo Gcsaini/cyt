@@ -165,21 +165,62 @@ export default function NewsLetter() {
       className="rbt-newsletter-area newsletter-style-2 rbt-section-gap"
       ref={ref}
       style={{
-  background: "linear-gradient(to right, rgb(32, 117, 143), rgb(36, 168, 97))"
-}}
+        background: 'linear-gradient(135deg, #228756 0%, #1a6b45 50%, #007f99 100%)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
     >
-      <div className="container">
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 50%)',
+        pointerEvents: 'none'
+      }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="row row--15 align-items-center">
           <div className="col-lg-12">
             <div className="inner text-center">
-              <div className="section-title text-center">
-                <span className="subtitle bg-white-opacity">
+              <div className="section-title text-center" style={{ marginBottom: '40px' }}>
+                <span className="subtitle" style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  color: '#fff',
+                  padding: '8px 20px',
+                  borderRadius: '50px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  display: 'inline-block',
+                  marginBottom: '16px',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  backdropFilter: 'blur(10px)'
+                }}>
                   Get Latest Update
                 </span>
-                <h2 className="title color-white">
+                <h2 className="title" style={{
+                  color: '#fff',
+                  fontSize: '3rem',
+                  fontWeight: '800',
+                  marginBottom: '20px',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em',
+                  textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
+                }}>
                   <strong>Subscribe</strong>
                 </h2>
-                <p className="description color-white mt--20">
+                <p className="description" style={{
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  fontSize: '1.1rem',
+                  lineHeight: 1.6,
+                  marginBottom: '0',
+                  fontWeight: '400',
+                  maxWidth: '600px',
+                  margin: '0 auto 20px auto',
+                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
+                }}>
                   Stay informed and inspired on your mental health journey.
                   Subscribe to our newsletter for expert insights, tips, and
                   updates.

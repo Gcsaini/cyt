@@ -35,15 +35,44 @@ export default function PromotionalBannerCTA() {
   const navigate = useNavigate();
 
   return (
-    <div className="rbt-banner-area" style={{ position: "relative", paddingBottom: 60, zIndex: 1 }}>
-      <div className="container mt--60" style={{ borderRadius: 20, overflow: "hidden" }}>
+    <div className="rbt-banner-area" style={{
+      position: "relative",
+      paddingBottom: 60,
+      zIndex: 1,
+      background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+      overflow: 'hidden'
+    }}>
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 20% 30%, rgba(34, 135, 86, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(0, 127, 153, 0.03) 0%, transparent 50%)',
+        pointerEvents: 'none'
+      }}></div>
+
+      <div className="container mt--60" style={{
+        borderRadius: 24,
+        overflow: "hidden",
+        position: 'relative',
+        zIndex: 1,
+        background: 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.08)'
+      }}>
         <Swiper
-          spaceBetween={30}
+          spaceBetween={0}
           slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 6000, disableOnInteraction: false }}
           modules={[Autoplay]}
           className="mySwiper"
-          style={{ borderRadius: 20 }}
+          style={{
+            borderRadius: 24,
+            overflow: 'hidden'
+          }}
         >
           {banners.map((banner) => (
             <SwiperSlide key={banner.id}>

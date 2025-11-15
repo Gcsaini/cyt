@@ -47,8 +47,23 @@ export default function CounterWithWhyChooseUs() {
   const fontStyle = { fontSize: isMobile ? 26 : 36 };
 
   return (
-    <div className="rbt-counterup-why-area bg-color-white rbt-section-gap" ref={ref}>
-      <div className="container">
+    <div className="rbt-counterup-why-area rbt-section-gap" ref={ref} style={{
+      background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 20% 80%, rgba(34, 135, 86, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0, 127, 153, 0.03) 0%, transparent 50%)',
+        pointerEvents: 'none'
+      }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="row g-5 align-items-center">
           {/* Counters */}
           <div className="col-lg-6 order-2 order-lg-1">
@@ -60,33 +75,84 @@ export default function CounterWithWhyChooseUs() {
                     <div
                       className="rbt-counterup rbt-hover-03"
                       style={{
-                        borderRadius: "15px",
-                        padding: "20px",
-                        boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-                        backgroundColor: "#fff",
+                        borderRadius: "20px",
+                        padding: isMobile ? "24px 16px" : "30px 20px",
+                        boxShadow: "0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04)",
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%)',
                         textAlign: "center",
-                        transition: "transform 0.3s, box-shadow 0.3s",
+                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        backdropFilter: 'blur(10px)',
+                        position: 'relative',
+                        overflow: 'hidden'
+                      }}
+                      onMouseOver={(e) => {
+                        e.target.style.transform = 'translateY(-8px) scale(1.02)';
+                        e.target.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.transform = 'translateY(0) scale(1)';
+                        e.target.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04)';
                       }}
                     >
+                      {/* Decorative gradient overlay */}
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `linear-gradient(135deg, ${counter.color}15 0%, transparent 70%)`,
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease',
+                        pointerEvents: 'none'
+                      }}></div>
+
                       <div
                         className="brand-icon"
                         style={{
-                          width: 100,
-                          height: 100,
+                          width: isMobile ? 80 : 100,
+                          height: isMobile ? 80 : 100,
                           borderRadius: "50%",
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
                           margin: "auto",
-                          backgroundColor: counter.color,
-                          transition: "transform 0.3s",
+                          background: `linear-gradient(135deg, ${counter.color} 0%, ${counter.color}dd 100%)`,
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          boxShadow: `0 8px 24px ${counter.color}40`,
+                          position: 'relative',
+                          zIndex: 2
                         }}
                       >
-                        <Icon style={{ color: "#fff", fontSize: 36 }} />
+                        <Icon style={{
+                          color: "#fff",
+                          fontSize: isMobile ? 28 : 36,
+                          filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))'
+                        }} />
                       </div>
-                      <div className="content mt-2">
-                        <h3 className="counter" style={fontStyle}>{values[index]}</h3>
-                        <span className="subtitle">{counter.subtitle}</span>
+                      <div className="content mt-3" style={{ position: 'relative', zIndex: 2 }}>
+                        <h3 className="counter" style={{
+                          ...fontStyle,
+                          background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          fontWeight: '800',
+                          letterSpacing: '-0.02em'
+                        }}>
+                          {values[index]}
+                        </h3>
+                        <span className="subtitle" style={{
+                          color: '#64748b',
+                          fontSize: isMobile ? '13px' : '14px',
+                          fontWeight: '500',
+                          marginTop: '8px',
+                          display: 'block',
+                          lineHeight: 1.4
+                        }}>
+                          {counter.subtitle}
+                        </span>
                       </div>
                     </div>
                   </div>

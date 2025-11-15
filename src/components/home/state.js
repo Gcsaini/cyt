@@ -35,18 +35,84 @@ export default function State() {
   const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
 
   return (
-    <div className="state-section">
-      <div className="state-container">
+    <div className="state-section" style={{
+      padding: '60px 20px',
+      background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 30% 20%, rgba(34, 135, 86, 0.03) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0, 127, 153, 0.03) 0%, transparent 50%)',
+        pointerEvents: 'none'
+      }}></div>
+
+      <div className="state-container" style={{
+        maxWidth: '1200px',
+        margin: 'auto',
+        position: 'relative',
+        zIndex: 1
+      }}>
         {/* Header */}
-        <div className="state-header">
-          <h2>Explore Therapists Across India</h2>
-          <div className="state-subtitle">
-            <hr />
-            <span>
+        <div className="state-header" style={{
+          textAlign: 'center',
+          marginBottom: '40px'
+        }}>
+          <h2 style={{
+            fontSize: '3rem',
+            fontWeight: '800',
+            background: 'linear-gradient(135deg, #228756 0%, #007f99 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: '20px',
+            lineHeight: 1.2,
+            letterSpacing: '-0.02em'
+          }}>
+            Explore Therapists Across India
+          </h2>
+          <div className="state-subtitle" style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '20px',
+            marginTop: '16px'
+          }}>
+            <hr style={{
+              flex: 1,
+              height: '2px',
+              border: 'none',
+              background: 'linear-gradient(90deg, transparent 0%, #e2e8f0 50%, transparent 100%)',
+              borderRadius: '1px'
+            }} />
+            <span style={{
+              fontSize: '1.1rem',
+              color: '#64748b',
+              fontWeight: '500',
+              whiteSpace: 'nowrap'
+            }}>
               Available in{" "}
-              <span className="highlight">{filteredStates.length}</span> states
+              <span className="highlight" style={{
+                color: '#228756',
+                fontWeight: '700',
+                fontSize: '1.2rem'
+              }}>
+                {filteredStates.length}
+              </span>{" "}
+              states
             </span>
-            <hr />
+            <hr style={{
+              flex: 1,
+              height: '2px',
+              border: 'none',
+              background: 'linear-gradient(90deg, transparent 0%, #e2e8f0 50%, transparent 100%)',
+              borderRadius: '1px'
+            }} />
           </div>
         </div>
 

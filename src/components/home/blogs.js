@@ -5,13 +5,52 @@ import BlogCardImg4 from "../../assets/img/blog5.png";
 import ImageTag from "../../utils/image-tag";
 export default function Blogs() {
   return (
-    <div className="rbt-rbt-blog-area rbt-section-gap bg-color-white">
-      <div className="container">
-        <div className="row g-5 align-items-center mb--30">
+    <div className="rbt-rbt-blog-area rbt-section-gap" style={{
+      background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 25% 25%, rgba(34, 135, 86, 0.03) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(0, 127, 153, 0.03) 0%, transparent 50%)',
+        pointerEvents: 'none'
+      }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="row g-5 align-items-center" style={{ marginBottom: '30px' }}>
           <div className="col-lg-6 col-md-6 col-12">
             <div className="section-title">
-              <span className="subtitle bg-pink-opacity">Blog Post</span>
-              <h2 className="title">Mental Health Chronicles</h2>
+              <span className="subtitle" style={{
+                background: 'linear-gradient(135deg, rgba(34, 135, 86, 0.1) 0%, rgba(0, 127, 153, 0.1) 100%)',
+                color: '#228756',
+                padding: '8px 16px',
+                borderRadius: '50px',
+                fontSize: '14px',
+                fontWeight: '600',
+                display: 'inline-block',
+                marginBottom: '16px',
+                border: '1px solid rgba(34, 135, 86, 0.2)'
+              }}>
+                Blog Post
+              </span>
+              <h2 className="title" style={{
+                fontSize: '2.8rem',
+                fontWeight: '800',
+                background: 'linear-gradient(135deg, #228756 0%, #007f99 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                marginBottom: '0',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em'
+              }}>
+                Mental Health Chronicles
+              </h2>
             </div>
           </div>
           <div className="col-lg-6 col-md-6 col-12">
@@ -19,6 +58,34 @@ export default function Blogs() {
               <a
                 className="rbt-btn btn-gradient hover-icon-reverse"
                 href="404-3"
+                style={{
+                  background: 'linear-gradient(135deg, #228756 0%, #1a6b45 100%)',
+                  color: '#fff',
+                  padding: '14px 28px',
+                  borderRadius: '50px',
+                  textDecoration: 'none',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  boxShadow: '0 4px 15px rgba(34, 135, 86, 0.3)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #1a6b45 0%, #228756 100%)';
+                  e.target.style.transform = 'translateY(-3px) scale(1.02)';
+                  e.target.style.boxShadow = '0 8px 25px rgba(34, 135, 86, 0.4)';
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #228756 0%, #1a6b45 100%)';
+                  e.target.style.transform = 'translateY(0) scale(1)';
+                  e.target.style.boxShadow = '0 4px 15px rgba(34, 135, 86, 0.3)';
+                }}
               >
                 <div className="icon-reverse-wrapper">
                   <span className="btn-text">See All Articles</span>
