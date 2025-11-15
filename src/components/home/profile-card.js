@@ -78,41 +78,14 @@ export default function ProfileCard() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="row">
           <div className="col-lg-12">
-            <div className="section-title text-center" style={{ marginBottom: '40px' }}>
-              <span className="subtitle" style={{
-                background: 'linear-gradient(135deg, rgba(34, 135, 86, 0.1) 0%, rgba(0, 127, 153, 0.1) 100%)',
-                color: '#228756',
-                padding: '8px 20px',
-                borderRadius: '50px',
-                fontSize: '14px',
-                fontWeight: '600',
-                display: 'inline-block',
-                marginBottom: '16px',
-                border: '1px solid rgba(34, 135, 86, 0.2)'
-              }}>
+            <div className="section-title text-center" style={{ marginBottom: '15px' }}>
+              <span className="subtitle">
                 Mental Health Professional
               </span>
-              <h2 className="title" style={{
-                fontSize: '3rem',
-                fontWeight: '800',
-                background: 'linear-gradient(135deg, #228756 0%, #007f99 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                marginBottom: '20px',
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em'
-              }}>
+              <h2 className="title">
                 Therapist Directory
               </h2>
-              <p style={{
-                fontSize: '1.1rem',
-                color: '#64748b',
-                lineHeight: 1.6,
-                maxWidth: '600px',
-                margin: '0 auto',
-                fontWeight: '400'
-              }}>
+              <p>
                 Looking for the right therapist? Our comprehensive profiles make
                 it easy to find a therapist who meets your needs and
                 preferences. Start your search here.

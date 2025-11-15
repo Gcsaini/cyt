@@ -75,23 +75,17 @@ const HorTherapistCards = () => {
   }
 
   return (
-    <Box sx={{
-      py: isMobile ? 4 : 6,
-      background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
-      position: 'relative',
-      overflow: 'hidden',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'radial-gradient(circle at 20% 80%, rgba(34, 135, 86, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0, 127, 153, 0.03) 0%, transparent 50%)',
-        pointerEvents: 'none'
-      }
+    <div style={{
+      padding: isMobile ? '40px 0' : '60px 0',
+      backgroundColor: '#ffffff',
+      position: 'relative'
     }}>
-      <Container maxWidth={false} sx={{ px: isMobile ? 2 : 3, position: 'relative', zIndex: 1 }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: `0 ${isMobile ? '16px' : '24px'}`,
+        position: 'relative'
+      }}>
 
         {/* Recommended Therapists Heading */}
         <div style={{
@@ -171,18 +165,7 @@ const HorTherapistCards = () => {
           </div>
         </div>
 
-        <Box sx={{
-          position: 'relative',
-          overflow: 'hidden',
-          borderRadius: isMobile ? '20px' : '24px',
-          background: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-          p: isMobile ? 2 : 3,
-          mx: isMobile ? 2 : 0
-        }}>
-         {therapists.length>0 && <Swiper
+        {therapists.length>0 && <Swiper
             modules={[Autoplay]}
             spaceBetween={isMobile ? 12 : 16}
             slidesPerView={1}
@@ -209,15 +192,14 @@ const HorTherapistCards = () => {
             speed={1000}
             grabCursor={true}
             style={{
-              padding: isMobile ? '0 8px' : '0 12px',
-              borderRadius: '16px'
+              padding: '0'
             }}
           >
             {therapists.map((therapist) => (
               <SwiperSlide key={therapist._id} style={{
                 display: 'flex',
                 justifyContent: 'center',
-                padding: isMobile ? '8px 0' : '12px 0'
+                padding: isMobile ? '8px 16px' : '12px 24px'
               }}>
                 <Box sx={{
                   width: '100%',
@@ -232,9 +214,7 @@ const HorTherapistCards = () => {
                 </Box>
               </SwiperSlide>
             ))}
-          </Swiper>
-}
-        </Box>
+          </Swiper>}
 {/* 
         <Box sx={{ textAlign: 'center', mt: 4 }}>
           <Typography variant="body2" sx={{ color: '#666' }}>
@@ -258,8 +238,8 @@ const HorTherapistCards = () => {
             </Box>
           </Typography>
         </Box> */}
-      </Container>
-    </Box>
+      </div>
+    </div>
   );
 };
 

@@ -9,25 +9,27 @@ import { useNavigate } from "react-router-dom";
 const banners = [
   {
     id: 1,
-    title: "Transform Your Mental Health with Expert Therapy",
-    description: "Access verified therapists online and achieve focus, clarity, and wellbeing from the comfort of your home.",
-    buttonText: "Book Your Session Now",
+    title: "Find Your Perfect Therapist",
+    description: "Connect with verified mental health professionals for personalized care and support.",
+    buttonText: "Browse Therapists",
     link: "/view-all-therapist",
-    gradient: "linear-gradient(135deg, #5b9e5eff 0%, #4CAF50 100%)",
+    gradient: "linear-gradient(135deg, #228756 0%, #2e7d32 50%, #1b5e20 100%)",
     headingColor: "#ffffff",
-    buttonColor: "#60db66ff",
-    
+    buttonColor: "#66bb6a",
+    buttonTextColor: "#ffffff",
+    accentColor: "#81c784"
   },
   {
     id: 2,
-    title: "Grow Your Practice. Join India’s Trusted Therapist Network",
-    description: "Get verified, expand your client base, manage appointments easily, and start earning as a professional therapist today.",
-    buttonText: "Submit Your Resum",
+    title: "Join Our Therapist Network",
+    description: "Expand your practice and help more people with our trusted platform.",
+    buttonText: "Get Started",
     link: "/therapist-registration",
-    gradient: "linear-gradient(135deg, #457046ff 0%, #66BB6A 100%)",
+    gradient: "linear-gradient(135deg, #007f99 0%, #0097a7 50%, #00695c 100%)",
     headingColor: "#ffffff",
-    buttonColor: "#60db66ff",
-   
+    buttonColor: "#4dd0e1",
+    buttonTextColor: "#ffffff",
+    accentColor: "#80deea"
   },
 ];
 
@@ -79,55 +81,114 @@ export default function PromotionalBannerCTA() {
               <div
                 style={{
                   display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
+                  flexDirection: "column",
+                  justifyContent: "center",
                   alignItems: "center",
-                  minHeight: "30vh",
-                  borderRadius: 20,
+                  minHeight: "300px",
+                  maxHeight: "340px",
+                  borderRadius: 24,
                   overflow: "hidden",
                   cursor: "pointer",
                   background: banner.gradient,
-                  padding: "30px",
-                  color: "#fff",
-                  boxShadow: "0 12px 30px rgba(0,0,0,0.25)",
+                  padding: "50px 40px",
+                  textAlign: "center",
+                  boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1)",
+                  border: "2px solid rgba(255, 255, 255, 0.1)",
+                  position: "relative"
                 }}
                 className="banner-slide"
               >
-                {/* Left Content */}
-                <div style={{ flex: 1, paddingRight: 20 }}>
+                {/* Decorative background elements */}
+                <div style={{
+                  position: "absolute",
+                  top: "-50%",
+                  right: "-20%",
+                  width: "200px",
+                  height: "200px",
+                  borderRadius: "50%",
+                  background: `radial-gradient(circle, ${banner.accentColor}20 0%, transparent 70%)`,
+                  pointerEvents: "none"
+                }}></div>
+                <div style={{
+                  position: "absolute",
+                  bottom: "-30%",
+                  left: "-15%",
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "50%",
+                  background: `radial-gradient(circle, ${banner.accentColor}15 0%, transparent 70%)`,
+                  pointerEvents: "none"
+                }}></div>
+
+                {/* Content */}
+                <div style={{ maxWidth: "650px", width: "100%", position: "relative", zIndex: 1 }}>
+                  <div style={{
+                    display: "inline-block",
+                    padding: "8px 16px",
+                    background: "rgba(255, 255, 255, 0.15)",
+                    borderRadius: "20px",
+                    marginBottom: "16px",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}>
+                    <span style={{
+                      color: banner.headingColor,
+                      fontSize: "14px",
+                      fontWeight: "600",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px"
+                    }}>
+                      ✨ Featured
+                    </span>
+                  </div>
+
                   <h2
                     style={{
                       fontSize: 32,
-                      fontWeight: 700,
-                      marginBottom: 15,
-                      lineHeight: 1.3,
+                      fontWeight: 800,
+                      marginBottom: 16,
+                      lineHeight: 1.2,
                       color: banner.headingColor,
-                      textShadow: "1px 1px 3px rgba(0,0,0,0.2)",
+                      textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
+                      letterSpacing: "-0.5px"
                     }}
                   >
                     {banner.title}
                   </h2>
                   <p
                     style={{
-                      fontSize: 16,
-                      marginBottom: 25,
-                      maxWidth: 500,
-                      textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
-                      lineHeight: 1.5,
+                      fontSize: 18,
+                      marginBottom: 32,
+                      color: "rgba(255, 255, 255, 0.9)",
+                      lineHeight: 1.6,
+                      fontWeight: 400,
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)"
                     }}
                   >
                     {banner.description}
                   </p>
-                </div>
-
-                {/* Right Content (Button) */}
-                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <button
                     onClick={() => navigate(banner.link)}
                     className="banner-button"
-                    style={{ background: banner.buttonColor }}
+                    style={{
+                      background: banner.buttonColor,
+                      color: banner.buttonTextColor,
+                      position: "relative",
+                      overflow: "hidden"
+                    }}
                   >
-                    {banner.buttonText}
+                    <span style={{ position: "relative", zIndex: 1 }}>
+                      {banner.buttonText}
+                    </span>
+                    <div style={{
+                      position: "absolute",
+                      top: 0,
+                      left: "-100%",
+                      width: "100%",
+                      height: "100%",
+                      background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+                      transition: "left 0.5s",
+                    }} className="button-shine"></div>
                   </button>
                 </div>
               </div>
@@ -140,54 +201,65 @@ export default function PromotionalBannerCTA() {
       <style>
         {`
           .banner-button {
-            padding: 16px 36px;
+            padding: 16px 40px;
             border: none;
-            border-radius: 10px;
-            color: #000;
+            border-radius: 30px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 17px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
           }
           .banner-button:hover {
-            transform: scale(1.08);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+          }
+          .banner-button:hover .button-shine {
+            left: 100%;
           }
           .banner-button:active {
-            transform: scale(1.08);
-          }
-
-          @media (max-width: 992px) {
-            .banner-slide {
-              flex-direction: column !important;
-              text-align: center;
-              height: auto !important;
-              min-height: 400px !important;
-            }
-            .banner-slide div {
-              padding: 0 !important;
-            }
-            .banner-slide svg {
-              margin-top: 20px;
-            }
+            transform: translateY(-1px) scale(1.02);
           }
 
           @media (max-width: 768px) {
+            .banner-slide {
+              min-height: 280px !important;
+              max-height: 320px !important;
+              padding: 40px 25px !important;
+            }
             .banner-slide h2 {
               font-size: 28px !important;
-              line-height: 1.3 !important;
+              margin-bottom: 14px !important;
             }
             .banner-slide p {
               font-size: 16px !important;
+              margin-bottom: 28px !important;
+            }
+            .banner-button {
+              padding: 14px 32px !important;
+              font-size: 15px !important;
             }
           }
 
           @media (max-width: 480px) {
+            .banner-slide {
+              min-height: 260px !important;
+              max-height: 300px !important;
+              padding: 30px 20px !important;
+            }
             .banner-slide h2 {
               font-size: 24px !important;
-              line-height: 1.4 !important;
+              margin-bottom: 12px !important;
             }
             .banner-slide p {
+              font-size: 15px !important;
+              margin-bottom: 24px !important;
+            }
+            .banner-button {
+              padding: 12px 28px !important;
               font-size: 14px !important;
             }
           }

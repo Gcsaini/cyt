@@ -213,17 +213,14 @@ export default function NewsLetter() {
                 </h2>
                 <p className="description" style={{
                   color: 'rgba(255, 255, 255, 0.9)',
-                  fontSize: '1.1rem',
+                  fontSize: '1.3rem',
                   lineHeight: 1.6,
                   marginBottom: '0',
                   fontWeight: '400',
-                  maxWidth: '600px',
                   margin: '0 auto 20px auto',
                   textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)'
                 }}>
-                  Stay informed and inspired on your mental health journey.
-                  Subscribe to our newsletter for expert insights, tips, and
-                  updates.
+                  Stay informed and inspired on your mental health journey. Subscribe to our newsletter for expert insights, tips, and updates.
                 </p>
               </div>
 

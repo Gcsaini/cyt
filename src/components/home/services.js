@@ -21,58 +21,12 @@ export default function Services() {
           
 
               
-          {/* About Choose Your Therapist Section - Moved to Top */}
-          <div className="about-section row align-items-center">
-            {/* Left: Text */}
-            <div className="col-lg-7 col-md-12 about-text">
-              <h2 className="about-title">About Choose Your Therapist</h2>
-              <p>
-                <strong>Choose Your Therapist</strong> is a growing network of independent
-                mental health professionals dedicated to providing accessible, confidential,
-                and compassionate care. Our platform connects you directly with licensed
-                therapists, psychologists, and counselors who work independently to help
-                you find the right support. Whether you're looking for personal growth,
-                emotional healing, or professional guidance, our mission is to make mental
-                wellness approachable for everyone — with trust, transparency, and care
-                at its core.
-              </p>
-            </div>
-
-            {/* Right: Icon Grid (6 Cards) */}
-            <div className="col-lg-5 col-md-12 about-icons">
-              <div className="icon-grid">
-                <div className="icon-box">
-                  <i className="feather-heart"></i>
-                  <span>Compassionate Care</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-users"></i>
-                  <span>Trusted Professionals</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-globe"></i>
-                  <span>Nationwide Network</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-shield"></i>
-                  <span>Confidential & Safe</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-award"></i>
-                  <span>Certified Experts</span>
-                </div>
-                <div className="icon-box">
-                  <i className="feather-clipboard"></i>
-                  <span>Structured Programs</span>
-                </div>
-              </div>
-            </div>
-          </div>
+       
 
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title" style={{ marginTop: "40px" }}>
-               
+
                 <h2 className="title">
                   <span className="theme-gradient">Personalized Care for You</span>
                 </h2>
